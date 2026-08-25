@@ -39,7 +39,7 @@ async function renderDiagrams(diagrams) {
     startOnLoad: false,
     securityLevel: 'strict',
     htmlLabels: false,
-    fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif",
+    fontFamily: "'Sarasa UI SC Web', 'Sarasa UI SC', 'PingFang SC', 'Microsoft YaHei', sans-serif",
     flowchart: { htmlLabels: false, diagramPadding: 12 },
     theme: 'default',
   });

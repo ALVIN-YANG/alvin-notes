@@ -1,5 +1,6 @@
 ---
 import AgentKnowledgeMap from '../components/AgentKnowledgeMap.astro';
+import '../styles/fonts.css';
 import '../styles/agent-knowledge-mintlify.css';
 ---
 
@@ -14,6 +15,13 @@ import '../styles/agent-knowledge-mintlify.css';
     />
     <meta name="theme-color" content="#edf0f4" />
     <link rel="icon" href="/favicon.png" />
+    <link
+      rel="preload"
+      href="/fonts/sarasa/sarasa-ui-sc-regular-subset.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
     <title>Agent 学习地图</title>
   </head>
   <body>
@@ -26,8 +34,8 @@ import '../styles/agent-knowledge-mintlify.css';
 <style is:global>
   :root {
     color-scheme: light;
-    --sl-font-utility: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    --sl-font-mono: "Geist Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    --sl-font-utility: var(--font-sans);
+    --sl-font-mono: var(--font-mono);
   }
 
   * { box-sizing: border-box; }

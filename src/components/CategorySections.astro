@@ -283,7 +283,7 @@ function formatDate(doc: typeof allDocs[number]) {
     color: var(--sl-color-white);
     margin: 0;
     line-height: 1.2;
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
     transition: color 0.2s ease;
   }
 
@@ -300,7 +300,7 @@ function formatDate(doc: typeof allDocs[number]) {
     display: block;
     margin-top: 0.5rem;
     color: var(--sl-color-gray-2);
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: var(--sl-font-utility);
     font-size: 0.72rem;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.03em;
@@ -344,7 +344,7 @@ function formatDate(doc: typeof allDocs[number]) {
 
   .section-link-title {
     min-width: 0;
-    font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', 'Source Han Sans SC', sans-serif;
+    font-family: var(--sl-font);
     font-size: 0.85rem;
     font-weight: 400;
     line-height: 1.45;
@@ -357,7 +357,7 @@ function formatDate(doc: typeof allDocs[number]) {
 
   .section-link time {
     color: var(--sl-color-gray-2);
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: var(--sl-font-utility);
     font-size: 0.7rem;
     font-variant-numeric: tabular-nums;
   }

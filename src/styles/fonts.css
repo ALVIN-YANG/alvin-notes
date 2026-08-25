@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Sarasa UI SC Web';
+  src: url('/fonts/sarasa/sarasa-ui-sc-regular-subset.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300 549;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sarasa UI SC Web';
+  src: url('/fonts/sarasa/sarasa-ui-sc-semibold-subset.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 550 699;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sarasa UI SC Web';
+  src: url('/fonts/sarasa/sarasa-ui-sc-bold-subset.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sarasa Mono SC Web';
+  src: url('/fonts/sarasa/sarasa-mono-sc-regular-subset.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300 599;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sarasa Mono SC Web';
+  src: url('/fonts/sarasa/sarasa-mono-sc-bold-subset.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: 'Sarasa UI SC Web', 'Sarasa UI SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'Sarasa Mono SC Web', 'Sarasa Mono SC', 'SFMono-Regular', Consolas, monospace;
+}

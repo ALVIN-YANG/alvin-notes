@@ -1,5 +1,5 @@
 .agent-map {
-  --map-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --map-font: var(--font-sans);
   --map-ink: #202631;
   --map-text: #454d5a;
   --map-muted: #77808d;
@@ -12,6 +12,7 @@
   min-width: 0;
   color: var(--map-ink);
   font-family: var(--map-font);
+  font-synthesis: style;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

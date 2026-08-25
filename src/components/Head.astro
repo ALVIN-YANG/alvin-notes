@@ -5,6 +5,13 @@ import Analytics from '@vercel/analytics/astro';
 
 <StarlightHead />
 <Analytics />
+<link
+  rel="preload"
+  href="/fonts/sarasa/sarasa-ui-sc-regular-subset.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin="anonymous"
+/>
 
 <!-- Remove the retired PWA from browsers that visited older deployments. -->
 <script is:inline>
