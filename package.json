@@ -23,7 +23,6 @@
     "model-arena:verify": "node scripts/verify-model-arena.mjs"
   },
   "dependencies": {
-    "@antv/x6": "^3.1.8",
     "@astrojs/sitemap": "^3.1.2",
     "@astrojs/starlight": "^0.37.6",
     "@vercel/analytics": "^2.0.1",

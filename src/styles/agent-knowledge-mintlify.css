@@ -248,11 +248,47 @@
 .agent-map .map-canvas {
   position: absolute;
   inset: 0;
+  overflow: hidden;
   cursor: grab;
+  touch-action: none;
 }
 
-.agent-map .map-canvas:active { cursor: grabbing; }
-.agent-map .map-canvas .x6-graph-svg { overflow: visible; }
+.agent-map .map-canvas.is-panning { cursor: grabbing; }
+
+.agent-map .map-world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content;
+  padding: 48px 56px 120px;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.agent-map .domain-grid {
+  --map-card-width: 540px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, var(--map-card-width));
+  align-items: start;
+  gap: 96px 112px;
+}
+
+.agent-map .map-paths {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.agent-map .map-connector {
+  fill: none;
+  stroke: #8fa1bc;
+  stroke-width: 2;
+  opacity: .34;
+  vector-effect: non-scaling-stroke;
+}
 
 .agent-map .map-guide {
   position: absolute;
@@ -323,6 +359,12 @@
 
 .agent-map .knowledge-domain-card {
   position: relative;
+  z-index: 1;
+  grid-column: var(--grid-column);
+  grid-row: var(--grid-row);
+  width: var(--map-card-width);
+  height: auto;
+  align-self: start;
   overflow: hidden;
   border-radius: 24px;
   background: var(--domain-tint);
@@ -370,7 +412,7 @@
   background: var(--domain-accent);
   color: #fff;
   font-size: 15px;
-  font-weight: 720;
+  font-weight: 680;
   place-items: center;
   box-shadow: 0 8px 20px color-mix(in srgb, var(--domain-accent) 24%, transparent);
 }
@@ -383,7 +425,7 @@
 
 .agent-map .domain-heading-copy strong {
   font-size: 25px;
-  font-weight: 700;
+  font-weight: 680;
   letter-spacing: -.045em;
   line-height: 1.17;
 }
@@ -446,7 +488,7 @@
 }
 
 .agent-map .map-group-heading strong {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 670;
   letter-spacing: -.015em;
 }
@@ -466,17 +508,17 @@
 .agent-map .map-point {
   display: flex;
   min-width: 0;
-  min-height: 36px;
-  padding: 6px 9px;
+  min-height: 42px;
+  padding: 7px 9px;
   border: 0;
   border-radius: 10px;
   background: rgba(255, 255, 255, .9);
   color: #4e5662;
   box-shadow: 0 1px 2px rgba(30, 38, 50, .055);
-  font-size: 10.5px;
+  font-size: 12.5px;
   font-weight: 500;
   letter-spacing: -.01em;
-  line-height: 1.28;
+  line-height: 1.35;
   text-align: left;
   cursor: pointer;
   align-items: center;
@@ -615,7 +657,7 @@
   margin: 0;
   color: var(--map-ink);
   font-size: clamp(24px, 2.2vw, 31px);
-  font-weight: 720;
+  font-weight: 680;
   letter-spacing: -.048em;
   line-height: 1.18;
 }
@@ -653,7 +695,7 @@
   margin: 24px 0 10px;
   color: #4c5664;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 680;
   letter-spacing: -.01em;
 }
 
@@ -758,32 +800,6 @@
 .agent-map .panel-reading a:hover { background: var(--map-blue-soft); color: var(--map-blue); }
 .agent-map .panel-reading i { font-size: 13px; font-style: normal; }
 
-.agent-map .map-loading {
-  position: absolute;
-  z-index: 60;
-  inset: 0;
-  display: grid;
-  background: #edf0f4;
-  color: var(--map-muted);
-  place-content: center;
-  justify-items: center;
-  gap: 12px;
-}
-
-.agent-map .map-loading > span {
-  width: 26px;
-  height: 26px;
-  border: 2px solid #cfd5dd;
-  border-top-color: var(--map-blue);
-  border-radius: 50%;
-  animation: spin 750ms linear infinite;
-}
-
-.agent-map .map-loading p { margin: 0; font-size: 11px; }
-.agent-map .map-loading.is-error > span { display: none; }
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
 @media (max-width: 1180px) {
   .agent-map .map-toolbar {
     grid-template-columns: minmax(200px, 1fr) minmax(270px, 380px) auto;
@@ -793,6 +809,8 @@
   .agent-map .fit-map span { display: none; }
   .agent-map .fit-map { width: 38px; padding: 0; justify-content: center; }
   .agent-map .level-filter button { padding-inline: 9px; }
+  .agent-map .domain-grid { --map-card-width: 500px; gap: 80px 88px; }
+  .agent-map .map-world { padding: 38px 44px 110px; }
 }
 
 @media (max-width: 900px) {
@@ -832,6 +850,19 @@
   .agent-map .panel-heading { padding-inline: 22px; }
   .agent-map .panel-heading h2 { font-size: 25px; }
   .agent-map .panel-body { padding-inline: 22px; }
+}
+
+@media (max-width: 640px) {
+  .agent-map .domain-grid {
+    --map-card-width: calc(100vw - 32px);
+    gap: 64px;
+  }
+
+  .agent-map .map-world { padding: 16px 16px 96px; }
+  .agent-map .knowledge-domain-card { border-radius: 20px; }
+  .agent-map .domain-card-header { padding-inline: 18px; }
+  .agent-map .domain-groups { padding-inline: 16px; }
+  .agent-map .map-points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

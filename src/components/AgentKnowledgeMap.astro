@@ -2,9 +2,32 @@
 import knowledgeData from '../data/agent-knowledge.json';
 
 const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
+const levelLabels = { core: '核心', scenario: '场景', advanced: '进阶' };
+const domainPalette = {
+  foundations: { accent: '#446fdb', tint: '#f2f5fc', wash: '#e6edfb' },
+  'model-context': { accent: '#2d8b69', tint: '#f0f7f3', wash: '#e0f0e7' },
+  'knowledge-state': { accent: '#ad7b23', tint: '#faf6ed', wash: '#f3e8cf' },
+  'tools-environment': { accent: '#356fda', tint: '#eef4ff', wash: '#dfe9fb' },
+  'runtime-orchestration': { accent: '#7a5db0', tint: '#f5f2fa', wash: '#ebe4f5' },
+  'evaluation-evolution': { accent: '#27848d', tint: '#eff7f7', wash: '#dceced' },
+  'safety-governance': { accent: '#c35f58', tint: '#fbf2f1', wash: '#f3e2df' },
+  'production-platform': { accent: '#4b88a9', tint: '#f1f6f8', wash: '#deebf0' },
+  'interaction-collaboration': { accent: '#a6782f', tint: '#f9f5ed', wash: '#efe5d2' },
+};
+const gridPositions = [
+  { column: 1, row: 1 },
+  { column: 2, row: 1 },
+  { column: 3, row: 1 },
+  { column: 3, row: 2 },
+  { column: 2, row: 2 },
+  { column: 1, row: 2 },
+  { column: 1, row: 3 },
+  { column: 2, row: 3 },
+  { column: 3, row: 3 },
+];
 ---
 
-<agent-knowledge-map class="agent-map" data-level-filter="all" data-density="overview">
+<agent-knowledge-map class="agent-map" data-level-filter="all" data-density="points">
   <header class="map-toolbar">
     <a class="map-brand" href="/" aria-label="返回博客首页">
       <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m14.5 6.5-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -36,16 +59,81 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
   </header>
 
   <main class="map-workspace">
-    <div class="map-canvas" data-map-canvas aria-label="可以拖动和缩放的 Agent 学习地图"></div>
+    <div class="map-canvas" data-map-canvas aria-label="可以拖动和缩放的 Agent 学习地图">
+      <div class="map-world" data-map-world>
+        <div class="domain-grid" data-domain-grid>
+          <svg class="map-paths" data-map-paths aria-hidden="true"></svg>
+          {
+            knowledgeData.domains.map((domain, index) => {
+              const colors = domainPalette[domain.id as keyof typeof domainPalette];
+              const position = gridPositions[index];
+              const pointCount = domain.groups.reduce((total, group) => total + group.points.length, 0);
+              const style = [
+                `--domain-accent: ${colors.accent}`,
+                `--domain-tint: ${colors.tint}`,
+                `--domain-wash: ${colors.wash}`,
+                `--grid-column: ${position.column}`,
+                `--grid-row: ${position.row}`,
+              ].join(';');
+
+              return (
+                <article
+                  class="knowledge-domain-card"
+                  data-domain-id={domain.id}
+                  data-domain-index={index}
+                  style={style}
+                >
+                  <button type="button" class="domain-card-header" data-focus-domain={domain.id}>
+                    <span class="domain-stage">{domain.code}</span>
+                    <span class="domain-heading-copy">
+                      <strong>{domain.title}</strong>
+                      <small>{domain.summary}</small>
+                    </span>
+                    <span class="domain-count">{pointCount}</span>
+                  </button>
+
+                  <div class="domain-groups">
+                    {
+                      domain.groups.map((group) => (
+                        <section class="map-group" data-level={group.level} data-group-id={group.id}>
+                          <button type="button" class="map-group-heading" data-focus-group={group.id}>
+                            <strong>{group.title}</strong>
+                            <span>{levelLabels[group.level as keyof typeof levelLabels] ?? group.level}</span>
+                          </button>
+                          <div class="map-points">
+                            {
+                              group.points.map((point) => (
+                                <button
+                                  type="button"
+                                  class="map-point"
+                                  data-open-point={point.id}
+                                  data-level={group.level}
+                                >
+                                  {point.title}
+                                </button>
+                              ))
+                            }
+                          </div>
+                        </section>
+                      ))
+                    }
+                  </div>
+                </article>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
 
     <div class="map-guide" data-map-guide>
       <span class="guide-mark" aria-hidden="true"></span>
-      <span>拖动画布浏览，放大后查看每个知识点</span>
+      <span>拖动画布浏览，滚轮缩放，点击知识点查看详情</span>
     </div>
 
     <div class="map-zoom" aria-label="画布缩放">
       <button type="button" data-zoom="out" aria-label="缩小">−</button>
-      <span data-zoom-value>40%</span>
+      <span data-zoom-value>100%</span>
       <button type="button" data-zoom="in" aria-label="放大">＋</button>
     </div>
 
@@ -64,8 +152,7 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
       </div>
 
       <div class="panel-body">
-        <article class="panel-article" data-panel-content>
-        </article>
+        <article class="panel-article" data-panel-content></article>
 
         <section class="panel-sources">
           <h3>书中位置</h3>
@@ -78,11 +165,6 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
         </section>
       </div>
     </aside>
-
-    <div class="map-loading" data-map-loading>
-      <span></span>
-      <p>正在整理画布</p>
-    </div>
   </main>
 
   <div class="sr-only" aria-live="polite" data-announcer></div>
@@ -91,99 +173,7 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
 
 <script>
   const levelNames = { core: '核心', scenario: '场景', advanced: '进阶' };
-
-  const palette = {
-    foundations: { accent: '#446fdb', tint: '#f2f5fc', wash: '#e6edfb' },
-    'model-context': { accent: '#2d8b69', tint: '#f0f7f3', wash: '#e0f0e7' },
-    'knowledge-state': { accent: '#ad7b23', tint: '#faf6ed', wash: '#f3e8cf' },
-    'tools-environment': { accent: '#356fda', tint: '#eef4ff', wash: '#dfe9fb' },
-    'runtime-orchestration': { accent: '#7a5db0', tint: '#f5f2fa', wash: '#ebe4f5' },
-    'evaluation-evolution': { accent: '#27848d', tint: '#eff7f7', wash: '#dceced' },
-    'safety-governance': { accent: '#c35f58', tint: '#fbf2f1', wash: '#f3e2df' },
-    'production-platform': { accent: '#4b88a9', tint: '#f1f6f8', wash: '#deebf0' },
-    'interaction-collaboration': { accent: '#a6782f', tint: '#f9f5ed', wash: '#efe5d2' },
-  };
-
-  const layout = [
-    { x: 80, y: 80 },
-    { x: 748, y: 80 },
-    { x: 1416, y: 80 },
-    { x: 2084, y: 80 },
-    { x: 2752, y: 80 },
-    { x: 414, y: 880 },
-    { x: 1082, y: 880 },
-    { x: 1750, y: 880 },
-    { x: 2418, y: 880 },
-  ];
-
-  const cardWidth = 620;
-
-  const estimateCardHeight = (domain) => {
-    const groupsHeight = domain.groups.reduce((total, group) => {
-      const rows = Math.ceil(group.points.length / 3);
-      return total + 42 + rows * 43;
-    }, 0);
-    return Math.max(580, 102 + groupsHeight);
-  };
-
-  const createDomainCard = (cell) => {
-    const data = cell.getData();
-    const size = cell.size();
-    const root = document.createElement('article');
-    root.className = 'knowledge-domain-card';
-    root.dataset.domainId = data.domain.id;
-    root.style.width = `${size.width}px`;
-    root.style.height = `${size.height}px`;
-    root.style.setProperty('--domain-accent', data.colors.accent);
-    root.style.setProperty('--domain-tint', data.colors.tint);
-    root.style.setProperty('--domain-wash', data.colors.wash);
-
-    const header = document.createElement('button');
-    header.type = 'button';
-    header.className = 'domain-card-header';
-    header.dataset.focusDomain = data.domain.id;
-    header.innerHTML = `
-      <span class="domain-stage">${escapeHTML(data.domain.code)}</span>
-      <span class="domain-heading-copy">
-        <strong>${escapeHTML(data.domain.title)}</strong>
-        <small>${escapeHTML(data.domain.summary)}</small>
-      </span>
-      <span class="domain-count">${data.pointCount}</span>
-    `;
-    root.append(header);
-
-    const groups = document.createElement('div');
-    groups.className = 'domain-groups';
-    data.domain.groups.forEach((group) => {
-      const section = document.createElement('section');
-      section.className = 'map-group';
-      section.dataset.level = group.level;
-      section.dataset.groupId = group.id;
-
-      const heading = document.createElement('button');
-      heading.type = 'button';
-      heading.className = 'map-group-heading';
-      heading.dataset.focusGroup = group.id;
-      heading.innerHTML = `<strong>${escapeHTML(group.title)}</strong><span>${levelNames[group.level] ?? group.level}</span>`;
-
-      const points = document.createElement('div');
-      points.className = 'map-points';
-      group.points.forEach((point) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'map-point';
-        button.dataset.openPoint = point.id;
-        button.dataset.level = group.level;
-        button.textContent = point.title;
-        points.append(button);
-      });
-
-      section.append(heading, points);
-      groups.append(section);
-    });
-    root.append(groups);
-    return root;
-  };
+  const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
 
   const escapeHTML = (value) => String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -192,30 +182,7 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 
-  let graphPromise;
-  let shapeReady = false;
-
-  const loadGraph = async () => {
-    if (!graphPromise) {
-      graphPromise = Promise.all([
-        import('@antv/x6/es/graph/graph'),
-        import('@antv/x6/es/shape/html'),
-      ]).then(([graphModule, htmlModule]) => {
-        if (!shapeReady) {
-          htmlModule.HTML.register({
-            shape: 'agent-domain-card',
-            width: cardWidth,
-            height: 680,
-            effect: ['data'],
-            html: createDomainCard,
-          });
-          shapeReady = true;
-        }
-        return graphModule.Graph;
-      });
-    }
-    return graphPromise;
-  };
+  const clamp = (value, minimum, maximum) => Math.min(maximum, Math.max(minimum, value));
 
   class AgentKnowledgeMap extends HTMLElement {
     connectedCallback() {
@@ -228,11 +195,9 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
       const data = JSON.parse(dataNode.textContent);
       const pointById = new Map();
       const groupById = new Map();
-      const domainById = new Map();
       const pointRecords = [];
 
       data.domains.forEach((domain, domainIndex) => {
-        domainById.set(domain.id, domain);
         domain.groups.forEach((group, groupIndex) => {
           groupById.set(group.id, { group, domain });
           group.points.forEach((point, pointIndex) => {
@@ -244,13 +209,17 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
       });
 
       const canvas = this.querySelector('[data-map-canvas]');
+      const world = this.querySelector('[data-map-world]');
+      const grid = this.querySelector('[data-domain-grid]');
+      const paths = this.querySelector('[data-map-paths]');
       const searchInput = this.querySelector('[data-search-input]');
       const searchResults = this.querySelector('[data-search-results]');
       const panel = this.querySelector('[data-point-panel]');
       const announcer = this.querySelector('[data-announcer]');
-      let graph;
-      let activeLevel = 'all';
-      let highlightedPoint = '';
+      const domainCards = [...this.querySelectorAll('[data-domain-id]')]
+        .sort((left, right) => Number(left.dataset.domainIndex) - Number(right.dataset.domainIndex));
+      const view = { x: 0, y: 0, scale: 1 };
+      let dragState;
 
       const setText = (selector, value) => {
         const node = this.querySelector(selector);
@@ -258,37 +227,121 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
       };
 
       const setDensity = (scale) => {
-        this.dataset.density = scale < 0.52 ? 'overview' : scale < 0.72 ? 'groups' : 'points';
+        this.dataset.density = scale < 0.58 ? 'overview' : scale < 0.78 ? 'groups' : 'points';
         setText('[data-zoom-value]', `${Math.round(scale * 100)}%`);
       };
 
-      const findDomainNode = (domainId) => graph?.getCellById(`domain-${domainId}`);
+      const renderView = () => {
+        world.style.transform = `translate3d(${view.x}px, ${view.y}px, 0) scale(${view.scale})`;
+        setDensity(view.scale);
+      };
+
+      const setView = ({ x = view.x, y = view.y, scale = view.scale }) => {
+        view.x = x;
+        view.y = y;
+        view.scale = clamp(scale, 0.26, 1.3);
+        renderView();
+      };
+
+      const zoomAt = (nextScale, clientX, clientY) => {
+        const bounds = canvas.getBoundingClientRect();
+        const localX = clientX - bounds.left;
+        const localY = clientY - bounds.top;
+        const contentX = (localX - view.x) / view.scale;
+        const contentY = (localY - view.y) / view.scale;
+        const scale = clamp(nextScale, 0.26, 1.3);
+        setView({
+          x: localX - contentX * scale,
+          y: localY - contentY * scale,
+          scale,
+        });
+      };
+
+      const drawConnectors = () => {
+        const width = grid.scrollWidth;
+        const height = grid.scrollHeight;
+        paths.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        paths.setAttribute('width', String(width));
+        paths.setAttribute('height', String(height));
+        paths.replaceChildren();
+
+        domainCards.slice(0, -1).forEach((from, index) => {
+          const to = domainCards[index + 1];
+          const sameRow = Math.abs(from.offsetTop - to.offsetTop) < 4;
+          let startX;
+          let startY;
+          let endX;
+          let endY;
+          let pathData;
+
+          if (sameRow) {
+            const movingRight = to.offsetLeft > from.offsetLeft;
+            startX = movingRight ? from.offsetLeft + from.offsetWidth : from.offsetLeft;
+            endX = movingRight ? to.offsetLeft : to.offsetLeft + to.offsetWidth;
+            startY = from.offsetTop + Math.min(92, from.offsetHeight * 0.24);
+            endY = to.offsetTop + Math.min(92, to.offsetHeight * 0.24);
+            const direction = movingRight ? 1 : -1;
+            const bend = Math.max(34, Math.abs(endX - startX) * 0.44);
+            pathData = `M ${startX} ${startY} C ${startX + bend * direction} ${startY}, ${endX - bend * direction} ${endY}, ${endX} ${endY}`;
+          } else {
+            startX = from.offsetLeft + from.offsetWidth / 2;
+            endX = to.offsetLeft + to.offsetWidth / 2;
+            startY = from.offsetTop + from.offsetHeight;
+            endY = to.offsetTop;
+            const bend = Math.max(36, Math.abs(endY - startY) * 0.5);
+            pathData = `M ${startX} ${startY} C ${startX} ${startY + bend}, ${endX} ${endY - bend}, ${endX} ${endY}`;
+          }
+
+          const path = document.createElementNS(SVG_NAMESPACE, 'path');
+          path.setAttribute('class', 'map-connector');
+          path.setAttribute('d', pathData);
+          paths.append(path);
+        });
+      };
+
+      const domainCard = (domainId) => this.querySelector(`[data-domain-id="${CSS.escape(domainId)}"]`);
+
+      const focusDomain = (domainId, scale = 0.96) => {
+        const card = domainCard(domainId);
+        if (!card) return;
+        const panelSpace = !panel.hidden && window.innerWidth >= 900 ? panel.offsetWidth + 36 : 0;
+        const availableWidth = Math.max(320, canvas.clientWidth - panelSpace);
+        const contentX = grid.offsetLeft + card.offsetLeft + card.offsetWidth / 2;
+        const contentY = grid.offsetTop + card.offsetTop;
+        setView({
+          x: availableWidth / 2 - contentX * scale,
+          y: 28 - contentY * scale,
+          scale,
+        });
+      };
+
+      const fitMap = () => {
+        const horizontal = (canvas.clientWidth - 64) / world.scrollWidth;
+        const vertical = (canvas.clientHeight - 64) / world.scrollHeight;
+        const scale = clamp(Math.min(horizontal, vertical), 0.26, 0.68);
+        setView({
+          x: (canvas.clientWidth - world.scrollWidth * scale) / 2,
+          y: (canvas.clientHeight - world.scrollHeight * scale) / 2,
+          scale,
+        });
+      };
+
+      const resetView = () => {
+        const mobile = window.innerWidth < 640;
+        setView({ x: mobile ? 0 : 18, y: mobile ? 0 : 14, scale: 1 });
+      };
 
       const clearHighlights = () => {
         this.querySelectorAll('.map-point.is-active, .map-group.is-focused').forEach((node) => {
           node.classList.remove('is-active', 'is-focused');
         });
-        highlightedPoint = '';
-      };
-
-      const centerDomain = (domainId, scale = 0.82) => {
-        const node = findDomainNode(domainId);
-        if (!node || !graph) return;
-        graph.zoomTo(scale, { minScale: 0.25, maxScale: 1.25 });
-        if (window.innerWidth < 900) {
-          const bounds = node.getBBox();
-          graph.translate(18 - bounds.x * scale, 26 - bounds.y * scale);
-          return;
-        }
-        graph.centerCell(node);
-        if (!panel.hidden && window.innerWidth >= 900) graph.translateBy(-170, 0);
       };
 
       const focusGroup = (groupId) => {
         const record = groupById.get(groupId);
         if (!record) return;
         closePanel();
-        centerDomain(record.domain.id, 0.86);
+        focusDomain(record.domain.id, 1);
         window.requestAnimationFrame(() => {
           this.querySelector(`[data-group-id="${CSS.escape(groupId)}"]`)?.classList.add('is-focused');
         });
@@ -370,8 +423,7 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
         setPanelReading(record);
 
         clearHighlights();
-        highlightedPoint = record.point.id;
-        if (focus) centerDomain(record.domain.id, window.innerWidth < 900 ? 0.9 : 0.86);
+        if (focus) focusDomain(record.domain.id, window.innerWidth < 900 ? 1 : 0.96);
         window.requestAnimationFrame(() => {
           this.querySelector(`[data-open-point="${CSS.escape(record.point.id)}"]`)?.classList.add('is-active');
         });
@@ -386,16 +438,6 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
         clearHighlights();
         document.title = 'Agent 学习地图';
         if (updateUrl && location.hash) history.replaceState(null, '', `${location.pathname}${location.search}`);
-      };
-
-      const fitMap = () => {
-        if (!graph) return;
-        graph.zoomToFit({
-          padding: window.innerWidth < 900 ? 34 : { top: 76, right: 76, bottom: 68, left: 76 },
-          minScale: 0.22,
-          maxScale: 0.5,
-        });
-        graph.centerContent();
       };
 
       const renderSearch = () => {
@@ -421,10 +463,9 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
       };
 
       const applyLevel = (level) => {
-        activeLevel = level;
         this.dataset.levelFilter = level;
-        this.querySelectorAll('[data-level]').forEach((button) => {
-          if (button.closest('.level-filter')) button.setAttribute('aria-pressed', String(button.dataset.level === level));
+        this.querySelectorAll('.level-filter [data-level]').forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.level === level));
         });
       };
 
@@ -467,7 +508,7 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
         const domainButton = target.closest('[data-focus-domain]');
         if (domainButton) {
           closePanel();
-          centerDomain(domainButton.dataset.focusDomain, 0.76);
+          focusDomain(domainButton.dataset.focusDomain, 0.96);
           return;
         }
 
@@ -489,8 +530,10 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
         }
 
         const zoomButton = target.closest('[data-zoom]');
-        if (zoomButton && graph) {
-          graph.zoom(zoomButton.dataset.zoom === 'in' ? 0.12 : -0.12, { minScale: 0.22, maxScale: 1.25 });
+        if (zoomButton) {
+          const bounds = canvas.getBoundingClientRect();
+          const delta = zoomButton.dataset.zoom === 'in' ? 0.12 : -0.12;
+          zoomAt(view.scale + delta, bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
           return;
         }
 
@@ -500,47 +543,50 @@ const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
         }
       });
 
+      canvas.addEventListener('wheel', (event) => {
+        event.preventDefault();
+        const factor = Math.exp(-event.deltaY * 0.0015);
+        zoomAt(view.scale * factor, event.clientX, event.clientY);
+      }, { passive: false });
+
+      canvas.addEventListener('pointerdown', (event) => {
+        if (event.button !== 0) return;
+        const target = event.target instanceof Element ? event.target : null;
+        if (target?.closest('button, a, input')) return;
+        dragState = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, viewX: view.x, viewY: view.y };
+        canvas.setPointerCapture(event.pointerId);
+        canvas.classList.add('is-panning');
+      });
+
+      canvas.addEventListener('pointermove', (event) => {
+        if (!dragState || dragState.pointerId !== event.pointerId) return;
+        setView({
+          x: dragState.viewX + event.clientX - dragState.x,
+          y: dragState.viewY + event.clientY - dragState.y,
+        });
+      });
+
+      const endDrag = (event) => {
+        if (!dragState || dragState.pointerId !== event.pointerId) return;
+        dragState = undefined;
+        canvas.classList.remove('is-panning');
+        if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+      };
+      canvas.addEventListener('pointerup', endDrag);
+      canvas.addEventListener('pointercancel', endDrag);
+
       searchInput.addEventListener('input', renderSearch);
       searchInput.addEventListener('focus', renderSearch);
       window.addEventListener('popstate', handleLocation);
+      window.addEventListener('resize', drawConnectors);
+      new ResizeObserver(drawConnectors).observe(grid);
 
-      loadGraph().then((Graph) => {
-        graph = new Graph({
-          container: canvas,
-          background: { color: 'transparent' },
-          grid: false,
-          panning: { enabled: true, eventTypes: ['leftMouseDown', 'mouseWheel'] },
-          mousewheel: { enabled: true, modifiers: [], factor: 1.08, minScale: 0.22, maxScale: 1.25 },
-          interacting: false,
-          autoResize: true,
-        });
-
-        data.domains.forEach((domain, index) => {
-          graph.addNode({
-            id: `domain-${domain.id}`,
-            shape: 'agent-domain-card',
-            x: layout[index].x,
-            y: layout[index].y,
-            width: cardWidth,
-            height: estimateCardHeight(domain),
-            zIndex: 2,
-            data: {
-              domain,
-              pointCount: domain.groups.reduce((total, group) => total + group.points.length, 0),
-              colors: palette[domain.id],
-            },
-          });
-        });
-
-        graph.on('scale', ({ sx }) => setDensity(sx));
-        this.querySelector('[data-map-loading]').hidden = true;
+      window.requestAnimationFrame(() => {
+        drawConnectors();
         if (location.hash && pointById.has(decodeURIComponent(location.hash.slice(1)))) handleLocation();
-        else if (window.innerWidth < 900) centerDomain(data.domains[0].id, 0.56);
-        else fitMap();
-      }).catch(() => {
-        const loading = this.querySelector('[data-map-loading]');
-        loading.classList.add('is-error');
-        loading.querySelector('p').textContent = '画布加载失败，请刷新页面重试';
+        else resetView();
+        this.dataset.mapReady = 'true';
+        performance.mark('agent-map-ready');
       });
     }
   }
