@@ -16,10 +16,11 @@ const fontSourceFiles = [
 ];
 const fontSourceExtensions = /\.(?:astro|css|json|md|mdx|mjs|ts)$/;
 const requiredFontFiles = new Set([
+  'fonts/misans/NOTICE.txt',
+  'fonts/misans/misans-regular-subset.woff2',
+  'fonts/misans/misans-semibold-subset.woff2',
+  'fonts/misans/misans-bold-subset.woff2',
   'fonts/sarasa/OFL.txt',
-  'fonts/sarasa/sarasa-ui-sc-regular-subset.woff2',
-  'fonts/sarasa/sarasa-ui-sc-semibold-subset.woff2',
-  'fonts/sarasa/sarasa-ui-sc-bold-subset.woff2',
   'fonts/sarasa/sarasa-mono-sc-regular-subset.woff2',
   'fonts/sarasa/sarasa-mono-sc-bold-subset.woff2',
 ]);
@@ -74,7 +75,7 @@ if (missingCodepoints.size > 0) {
     .slice(0, 12)
     .map((codepoint) => `${String.fromCodePoint(codepoint)} (U+${codepoint.toString(16).toUpperCase()})`)
     .join(', ');
-  problems.push(`Sarasa font subset is stale; run npm run fonts:update. Missing: ${preview}`);
+  problems.push(`Font subset is stale; run npm run fonts:update. Missing: ${preview}`);
 }
 
 await walk(outputDirectory.pathname, async (file, name) => {
@@ -116,6 +117,6 @@ if (problems.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Static build verified: no PWA or Mermaid runtime; ${outputDiagramCount} diagrams are inline SVG; Sarasa ${fontManifest.version} subsets are current.`,
+    `Static build verified: no PWA or Mermaid runtime; ${outputDiagramCount} diagrams are inline SVG; MiSans ${fontManifest.version.miSans} and Sarasa Mono SC ${fontManifest.version.sarasaMono} subsets are current.`,
   );
 }

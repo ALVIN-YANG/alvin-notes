@@ -7,8 +7,10 @@ import { fileURLToPath } from 'node:url';
 
 const execFileAsync = promisify(execFile);
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const fontVersion = '1.0.41';
-const outputDirectory = path.join(repositoryRoot, 'public/fonts/sarasa');
+const miSansVersion = '2025-07-14';
+const sarasaVersion = '1.0.41';
+const miSansOutputDirectory = path.join(repositoryRoot, 'public/fonts/misans');
+const sarasaOutputDirectory = path.join(repositoryRoot, 'public/fonts/sarasa');
 const manifestPath = path.join(repositoryRoot, 'scripts/font-subset-codepoints.json');
 const sourceRoots = [
   'src/content/docs',
@@ -65,33 +67,42 @@ async function run(command, args) {
   if (stderr.trim()) console.error(stderr.trim());
 }
 
-const temporaryDirectory = await mkdtemp(path.join(tmpdir(), 'alvin-sarasa-'));
+const temporaryDirectory = await mkdtemp(path.join(tmpdir(), 'alvin-fonts-'));
 
 try {
-  const suppliedSource = process.env.SARASA_FONT_SOURCE_DIR;
-  let uiSourceDirectory;
+  const suppliedMiSansArchive = process.env.MISANS_FONT_ARCHIVE;
+  const suppliedSarasaSource = process.env.SARASA_MONO_FONT_SOURCE_DIR;
+  const miSansSourceDirectory = path.join(temporaryDirectory, 'misans');
   let monoSourceDirectory;
 
-  if (suppliedSource) {
-    uiSourceDirectory = path.join(suppliedSource, 'ui');
-    monoSourceDirectory = path.join(suppliedSource, 'mono');
+  await mkdir(miSansSourceDirectory);
+  const miSansArchive = suppliedMiSansArchive
+    ? path.resolve(suppliedMiSansArchive)
+    : path.join(temporaryDirectory, 'MiSans.zip');
+  if (!suppliedMiSansArchive) {
+    await download('https://hyperos.mi.com/font-download/MiSans.zip', miSansArchive);
+  }
+  await run('bsdtar', [
+    '-xf',
+    miSansArchive,
+    '-C',
+    miSansSourceDirectory,
+    'MiSans/woff2/MiSans-Regular.woff2',
+    'MiSans/woff2/MiSans-Semibold.woff2',
+    'MiSans/woff2/MiSans-Bold.woff2',
+  ]);
+
+  if (suppliedSarasaSource) {
+    monoSourceDirectory = path.resolve(suppliedSarasaSource);
   } else {
-    const uiArchive = path.join(temporaryDirectory, 'sarasa-ui-sc.7z');
     const monoArchive = path.join(temporaryDirectory, 'sarasa-mono-sc.7z');
-    uiSourceDirectory = path.join(temporaryDirectory, 'ui');
     monoSourceDirectory = path.join(temporaryDirectory, 'mono');
-    await mkdir(uiSourceDirectory);
     await mkdir(monoSourceDirectory);
 
     await download(
-      `https://github.com/be5invis/Sarasa-Gothic/releases/download/v${fontVersion}/SarasaUiSC-TTF-Unhinted-${fontVersion}.7z`,
-      uiArchive,
-    );
-    await download(
-      `https://github.com/be5invis/Sarasa-Gothic/releases/download/v${fontVersion}/SarasaMonoSC-TTF-Unhinted-${fontVersion}.7z`,
+      `https://github.com/be5invis/Sarasa-Gothic/releases/download/v${sarasaVersion}/SarasaMonoSC-TTF-Unhinted-${sarasaVersion}.7z`,
       monoArchive,
     );
-    await run('bsdtar', ['-xf', uiArchive, '-C', uiSourceDirectory]);
     await run('bsdtar', ['-xf', monoArchive, '-C', monoSourceDirectory]);
   }
 
@@ -105,13 +116,29 @@ try {
   const pyftsubset = path.join(virtualEnvironment, 'bin', 'pyftsubset');
   await run(pip, ['install', '--quiet', 'fonttools', 'brotli']);
 
-  await mkdir(outputDirectory, { recursive: true });
+  await mkdir(miSansOutputDirectory, { recursive: true });
+  await mkdir(sarasaOutputDirectory, { recursive: true });
   const fonts = [
-    ['SarasaUiSC-Regular.ttf', uiSourceDirectory, 'sarasa-ui-sc-regular-subset.woff2'],
-    ['SarasaUiSC-SemiBold.ttf', uiSourceDirectory, 'sarasa-ui-sc-semibold-subset.woff2'],
-    ['SarasaUiSC-Bold.ttf', uiSourceDirectory, 'sarasa-ui-sc-bold-subset.woff2'],
-    ['SarasaMonoSC-Regular.ttf', monoSourceDirectory, 'sarasa-mono-sc-regular-subset.woff2'],
-    ['SarasaMonoSC-Bold.ttf', monoSourceDirectory, 'sarasa-mono-sc-bold-subset.woff2'],
+    [
+      path.join(miSansSourceDirectory, 'MiSans/woff2/MiSans-Regular.woff2'),
+      path.join(miSansOutputDirectory, 'misans-regular-subset.woff2'),
+    ],
+    [
+      path.join(miSansSourceDirectory, 'MiSans/woff2/MiSans-Semibold.woff2'),
+      path.join(miSansOutputDirectory, 'misans-semibold-subset.woff2'),
+    ],
+    [
+      path.join(miSansSourceDirectory, 'MiSans/woff2/MiSans-Bold.woff2'),
+      path.join(miSansOutputDirectory, 'misans-bold-subset.woff2'),
+    ],
+    [
+      path.join(monoSourceDirectory, 'SarasaMonoSC-Regular.ttf'),
+      path.join(sarasaOutputDirectory, 'sarasa-mono-sc-regular-subset.woff2'),
+    ],
+    [
+      path.join(monoSourceDirectory, 'SarasaMonoSC-Bold.ttf'),
+      path.join(sarasaOutputDirectory, 'sarasa-mono-sc-bold-subset.woff2'),
+    ],
   ];
 
   const subsetOptions = [
@@ -126,29 +153,43 @@ try {
     '--recommended-glyphs',
   ];
 
-  for (const [inputName, inputDirectory, outputName] of fonts) {
-    console.log(`Building ${outputName}...`);
+  for (const [inputPath, outputPath] of fonts) {
+    console.log(`Building ${path.basename(outputPath)}...`);
     await run(pyftsubset, [
-      path.join(inputDirectory, inputName),
+      inputPath,
       ...subsetOptions,
-      `--output-file=${path.join(outputDirectory, outputName)}`,
+      `--output-file=${outputPath}`,
     ]);
   }
 
   await download(
-    `https://raw.githubusercontent.com/be5invis/Sarasa-Gothic/v${fontVersion}/LICENSE`,
-    path.join(outputDirectory, 'OFL.txt'),
+    `https://raw.githubusercontent.com/be5invis/Sarasa-Gothic/v${sarasaVersion}/LICENSE`,
+    path.join(sarasaOutputDirectory, 'OFL.txt'),
+  );
+  await writeFile(
+    path.join(miSansOutputDirectory, 'NOTICE.txt'),
+    [
+      '本网站界面使用 MiSans 字体。',
+      '官方来源：https://hyperos.mi.com/font/',
+      '许可协议：https://hyperos.mi.com/font-download/MiSans字体知识产权许可协议.pdf',
+      '',
+    ].join('\n'),
   );
   await writeFile(
     manifestPath,
     `${JSON.stringify({
-      font: 'Sarasa Gothic',
-      version: fontVersion,
+      font: 'MiSans + Sarasa Mono SC',
+      version: {
+        miSans: miSansVersion,
+        sarasaMono: sarasaVersion,
+      },
       characters: codepoints.map((codepoint) => String.fromCodePoint(codepoint)).join(''),
     }, null, 2)}\n`,
   );
 
-  console.log(`Sarasa Gothic ${fontVersion}: ${codepoints.length} source codepoints subsetted.`);
+  console.log(
+    `MiSans ${miSansVersion} + Sarasa Mono SC ${sarasaVersion}: ${codepoints.length} source codepoints subsetted.`,
+  );
 } finally {
   await rm(temporaryDirectory, { recursive: true, force: true });
 }

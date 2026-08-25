@@ -20,6 +20,8 @@ const showComments = commentsEnabled && slug !== '' && entry.body.trim().length 
     <span>Built by Alvin Yang</span>
     <span class="sep">&middot;</span>
     <span>Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> & <a href="https://starlight.astro.build" target="_blank" rel="noopener">Starlight</a></span>
+    <span class="sep">&middot;</span>
+    <span>Typography <a href="https://hyperos.mi.com/font/" target="_blank" rel="noopener">MiSans</a></span>
   </div>
 </footer>
 
@@ -41,6 +43,7 @@ const showComments = commentsEnabled && slug !== '' && entry.body.trim().length 
   }
   .custom-footer {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
