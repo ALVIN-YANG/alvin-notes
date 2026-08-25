@@ -9,6 +9,7 @@ export const collections = {
 			extend: z.object({
 				verifiedAgainst: z.string().min(1).optional(),
 				hidePageTitle: z.boolean().optional(),
+				comments: z.boolean().optional(),
 			}),
 		}),
 	}),

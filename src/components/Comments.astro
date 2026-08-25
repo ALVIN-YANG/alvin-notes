@@ -1,0 +1,61 @@
+<section class="comments" aria-labelledby="comments-heading">
+  <div class="comments-heading">
+    <h2 id="comments-heading">评论</h2>
+    <p>使用 GitHub 账号参与讨论</p>
+  </div>
+
+  <div class="giscus"></div>
+  <script
+    is:inline
+    src="https://giscus.app/client.js"
+    data-repo="ALVIN-YANG/alvin-notes"
+    data-repo-id="R_kgDOLx5gaw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOLx5ga84Cf7S2"
+    data-mapping="pathname"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+  ></script>
+</section>
+
+<style>
+  .comments {
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--sl-color-gray-6);
+  }
+
+  .comments-heading {
+    margin-bottom: 1.25rem;
+  }
+
+  h2 {
+    margin: 0;
+    color: var(--sl-color-white);
+    font-family: var(--sl-font-heading);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+    color: var(--sl-color-gray-3);
+    font-size: var(--sl-text-sm);
+  }
+
+  .giscus {
+    min-height: 7rem;
+  }
+
+  .giscus :global(.giscus-frame) {
+    width: 100%;
+    color-scheme: light;
+  }
+</style>
