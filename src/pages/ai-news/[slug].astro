@@ -1,0 +1,298 @@
+---
+import { getCollection } from 'astro:content';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { marked } from 'marked';
+import {
+  getISOWeek,
+  getReportDateRange,
+  parseWeeklyReport,
+  slugifyHeading,
+} from '../../lib/weekly-report.mjs';
+
+export async function getStaticPaths() {
+  const reports = (await getCollection('docs'))
+    .filter(entry => /^ai-news\/\d{4}-\d{2}-\d{2}-weekly$/.test(entry.id))
+    .sort((a, b) => {
+      const aDate = a.data.date instanceof Date ? a.data.date.toISOString() : String(a.data.date || a.data.lastUpdated);
+      const bDate = b.data.date instanceof Date ? b.data.date.toISOString() : String(b.data.date || b.data.lastUpdated);
+      return bDate.localeCompare(aDate);
+    });
+  const archive = reports.map(entry => ({
+    slug: entry.id.split('/').pop(),
+    title: entry.data.title,
+    date: entry.data.date instanceof Date ? entry.data.date.toISOString().slice(0, 10) : String(entry.data.date).slice(0, 10),
+  }));
+  return reports.map(entry => ({ params: { slug: entry.id.split('/').pop() }, props: { entry, archive } }));
+}
+
+const { entry, archive } = Astro.props;
+const dateValue = entry.data.date instanceof Date
+  ? entry.data.date.toISOString().slice(0, 10)
+  : String(entry.data.date).slice(0, 10);
+const report = parseWeeklyReport(entry.body || '', entry.data);
+const issue = getISOWeek(dateValue);
+const dateRange = getReportDateRange(entry.data.title, dateValue);
+const currentSlug = entry.id.split('/').pop();
+const currentIndex = archive.findIndex(item => item.slug === currentSlug);
+const newer = currentIndex > 0 ? archive[currentIndex - 1] : null;
+const older = currentIndex >= 0 && currentIndex < archive.length - 1 ? archive[currentIndex + 1] : null;
+const tocSections = report.themes.length > 0
+  ? report.themes
+  : report.sections.filter(section => !/^(本期主线|本周判断)$/.test(section.title));
+
+function renderBlock(markdown = '') {
+  return marked.parse(markdown, { gfm: true, breaks: false }) as string;
+}
+
+function renderInline(markdown = '') {
+  return marked.parseInline(markdown, { gfm: true }) as string;
+}
+
+function compactDate(value = '') {
+  return value.slice(5).replace('-', '.');
+}
+---
+
+<StarlightPage
+  frontmatter={{
+    title: report.headline,
+    description: entry.data.description,
+    template: 'splash',
+    lastUpdated: entry.data.lastUpdated,
+    hidePageTitle: true,
+  }}
+  sidebar={[]}
+>
+  <main class="weekly-shell">
+    <aside class="archive-rail" aria-label="往期周报">
+      <div class="rail-heading">
+        <span>AI WEEKLY</span>
+        <strong>往期</strong>
+      </div>
+      <nav class="archive-list">
+        {archive.map(item => (
+          <a class:list={{ active: item.slug === currentSlug }} href={`/ai-news/${item.slug}/`} aria-current={item.slug === currentSlug ? 'page' : undefined}>
+            <span>{getISOWeek(item.date).replace(/^\d{4}-/, '')}</span>
+            <time datetime={item.date}>{compactDate(item.date)}</time>
+          </a>
+        ))}
+      </nav>
+    </aside>
+
+    <article class="report-column">
+      <header class="report-masthead">
+        <div class="issue-line">
+          <span>AI WEEKLY</span>
+          <span>VOL. {issue}</span>
+        </div>
+        <h1 id="_top">{report.headline}</h1>
+        <p>{entry.data.description}</p>
+        <div class="report-meta">
+          <time datetime={dateRange.end}>{dateRange.start ? `${dateRange.start} — ${dateRange.end}` : dateRange.end}</time>
+          {report.storyCount > 0 && <span>{report.storyCount} 条信息</span>}
+          {report.sourceCount > 0 && <span>{report.sourceCount} 个来源</span>}
+          <span>约 {report.readMinutes} 分钟</span>
+        </div>
+      </header>
+
+      {tocSections.length > 0 && (
+        <nav class="mobile-toc" aria-label="本期看点">
+          <span>本期看点</span>
+          <div>
+            {tocSections.map((section, index) => (
+              <a href={`#${section.slug}`}><b>{section.number || String(index + 1).padStart(2, '0')}</b>{section.title}</a>
+            ))}
+          </div>
+        </nav>
+      )}
+
+      <div class="report-sections">
+        {report.sections.map((section, sectionIndex) => (
+          <section
+            class:list={['report-section', {
+              'is-mainline': /^(本期主线|本周判断)$/.test(section.title),
+              'is-theme': section.isTheme,
+              'has-stories': section.items.length > 0,
+            }]}
+            id={section.slug}
+          >
+            <header class="section-heading">
+              <span>{section.number || String(sectionIndex + 1).padStart(2, '0')}</span>
+              <h2>{section.title}</h2>
+            </header>
+
+            {section.intro && <div class="section-intro prose" set:html={renderBlock(section.intro)} />}
+
+            {section.items.length > 0 && (
+              <div class="story-list">
+                {section.items.map(item => (
+                  <article class="story-card">
+                    <h3 set:html={renderInline(item.heading)} />
+                    <div class="story-body prose" set:html={renderBlock(item.body)} />
+                  </article>
+                ))}
+              </div>
+            )}
+
+            {section.items.length === 0 && section.body && section.body !== section.intro && (
+              <div class="section-body prose" set:html={renderBlock(section.body)} />
+            )}
+          </section>
+        ))}
+      </div>
+
+      <nav class="report-pager" aria-label="周报翻页">
+        {older ? <a href={`/ai-news/${older.slug}/`}><span>上一期</span><strong>← {getISOWeek(older.date)}</strong></a> : <span></span>}
+        {newer ? <a class="next" href={`/ai-news/${newer.slug}/`}><span>下一期</span><strong>{getISOWeek(newer.date)} →</strong></a> : <span></span>}
+      </nav>
+    </article>
+
+    <aside class="toc-rail" aria-label="本期看点">
+      <div class="toc-card">
+        <span class="toc-kicker">本期看点</span>
+        <nav>
+          {tocSections.map((section, index) => (
+            <a href={`#${section.slug}`}>
+              <b>{section.number || String(index + 1).padStart(2, '0')}</b>
+              <span>{section.title}</span>
+            </a>
+          ))}
+        </nav>
+      </div>
+      <a class="all-news-link" href="/ai-news/">周报说明 <span aria-hidden="true">→</span></a>
+    </aside>
+  </main>
+</StarlightPage>
+
+<style>
+  .weekly-shell {
+    --report-ink: #282d2b;
+    --report-muted: #777d79;
+    --report-blue: #4776c5;
+    --report-blue-soft: #e9eef7;
+    --report-paper: rgba(255, 255, 252, 0.76);
+    --report-paper-strong: rgba(255, 255, 253, 0.94);
+    --report-line: #dfded5;
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 48rem) 12.5rem;
+    gap: 1.6rem;
+    width: min(100%, 75rem);
+    margin-inline: auto;
+    padding-bottom: 4rem;
+    color: var(--report-ink);
+  }
+
+  .archive-rail,
+  .toc-rail { position: sticky; top: calc(var(--sl-nav-height) + 1.5rem); align-self: start; }
+
+  .rail-heading { display: grid; gap: .12rem; margin-bottom: .75rem; padding-inline: .4rem; }
+  .rail-heading span,
+  .toc-kicker,
+  .issue-line { color: var(--report-blue); font-family: var(--sl-font-mono); font-size: .64rem; font-weight: 700; letter-spacing: .1em; }
+  .rail-heading strong { font-size: .88rem; font-weight: 600; }
+  .archive-list { display: grid; gap: .25rem; max-height: calc(100vh - 12rem); overflow-y: auto; scrollbar-width: thin; }
+  .archive-list a { display: flex; align-items: center; justify-content: space-between; gap: .4rem; padding: .48rem .55rem; border-radius: .55rem; color: var(--report-muted); font-family: var(--sl-font-mono); font-size: .67rem; text-decoration: none; transition: background .16s ease, color .16s ease, transform .16s ease; }
+  .archive-list a:hover { color: var(--report-ink); background: rgba(255,255,255,.62); transform: translateX(2px); }
+  .archive-list a.active { color: var(--report-blue); background: var(--report-blue-soft); font-weight: 700; }
+  .archive-list time { opacity: .72; }
+
+  .report-column { min-width: 0; }
+  .report-masthead { position: relative; overflow: hidden; margin-bottom: 1rem; padding: 2rem 2.1rem 1.7rem; border-radius: 1.15rem; background: var(--report-paper-strong); box-shadow: var(--paper-shadow); }
+  .report-masthead::after { content: ''; position: absolute; inset: auto -3.5rem -4.5rem auto; width: 11rem; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(71,118,197,.13), transparent 68%); pointer-events: none; }
+  .issue-line { display: flex; flex-wrap: wrap; gap: .65rem 1.1rem; }
+  .report-masthead h1 { max-width: 35rem; margin: .85rem 0 .7rem; color: var(--report-ink); font-family: var(--sl-font-heading); font-size: clamp(1.85rem, 4vw, 2.65rem); font-weight: 650; letter-spacing: -.025em; line-height: 1.22; text-wrap: balance; }
+  .report-masthead > p { max-width: 38rem; margin: 0; color: var(--report-muted); font-size: .92rem; line-height: 1.7; }
+  .report-meta { display: flex; flex-wrap: wrap; gap: .45rem 1rem; margin-top: 1.25rem; color: var(--report-muted); font-family: var(--sl-font-mono); font-size: .68rem; font-variant-numeric: tabular-nums; }
+  .report-meta span { position: relative; }
+  .report-meta span::before { content: '·'; margin-right: 1rem; color: #a5aaa5; }
+
+  .report-sections { display: grid; gap: 1rem; min-width: 0; }
+  .report-section { min-width: 0; scroll-margin-top: calc(var(--sl-nav-height) + 1rem); padding: 1.55rem 1.65rem; border-radius: 1rem; background: var(--report-paper); box-shadow: 0 8px 28px rgba(39,43,41,.035); }
+  .report-section.is-mainline { background: linear-gradient(120deg, var(--report-blue-soft), rgba(255,255,252,.84) 72%); }
+  .section-heading { display: flex; align-items: baseline; gap: .7rem; margin-bottom: 1rem; }
+  .section-heading > span { flex: 0 0 auto; color: var(--report-blue); font-family: var(--sl-font-mono); font-size: .7rem; font-weight: 700; }
+  .section-heading h2 { margin: 0; color: var(--report-ink); font-family: var(--sl-font-heading); font-size: 1.23rem; font-weight: 650; letter-spacing: -.01em; }
+  .section-intro { color: #4e5551; font-size: .94rem; }
+  .story-list { display: grid; gap: .72rem; min-width: 0; }
+  .story-card { padding: 1rem 1.05rem; border-radius: .8rem; background: rgba(255,255,255,.64); transition: transform .18s ease, background .18s ease, box-shadow .18s ease; }
+  .story-card:hover { transform: translateY(-1px); background: rgba(255,255,255,.9); box-shadow: 0 9px 22px rgba(42,47,44,.045); }
+  .story-card h3 { margin: 0 0 .55rem; font-family: var(--sl-font-heading); font-size: 1rem; font-weight: 620; line-height: 1.5; }
+  .story-card h3 :global(a) { color: var(--report-ink); text-decoration: none; }
+  .story-card h3 :global(a:hover) { color: var(--report-blue); }
+
+  .prose { min-width: 0; color: #555c58; font-size: .88rem; line-height: 1.75; }
+  .prose :global(p) { margin: 0 0 .72rem; }
+  .prose :global(p:last-child) { margin-bottom: 0; }
+  .prose :global(a) { color: #45699f; text-decoration-thickness: 1px; text-underline-offset: .16em; }
+  .prose :global(code) { display: inline-flex; padding: .12rem .38rem; border-radius: 999px; background: var(--report-blue-soft); color: #48638c; font-family: var(--sl-font); font-size: .72rem; }
+  .prose :global(strong) { color: #444a47; font-weight: 650; }
+  .prose :global(ul), .prose :global(ol) { margin: .4rem 0 0; padding-left: 1.25rem; }
+  .prose :global(li + li) { margin-top: .38rem; }
+  .prose :global(table) { display: table; width: 100%; margin: .3rem 0 0; border-collapse: collapse; font-size: .8rem; }
+  .prose :global(th) { padding: .55rem .6rem; color: var(--report-muted); font-weight: 600; text-align: left; background: var(--report-blue-soft); }
+  .prose :global(td) { padding: .65rem .6rem; border-bottom: 1px solid var(--report-line); vertical-align: top; }
+  .prose :global(tr:last-child td) { border-bottom: 0; }
+  .prose :global(blockquote) { margin: .6rem 0; padding: .2rem 0 .2rem .85rem; border-left: 2px solid #9ab1d5; color: var(--report-muted); }
+
+  .toc-card { padding: 1rem; border-radius: .9rem; background: rgba(255,255,252,.56); }
+  .toc-card nav { display: grid; gap: .3rem; margin-top: .7rem; }
+  .toc-card a { display: grid; grid-template-columns: 1.4rem 1fr; gap: .35rem; padding: .35rem 0; color: var(--report-muted); font-size: .72rem; line-height: 1.45; text-decoration: none; }
+  .toc-card a:hover { color: var(--report-ink); }
+  .toc-card b { color: var(--report-blue); font-family: var(--sl-font-mono); font-size: .62rem; }
+  .all-news-link { display: flex; justify-content: space-between; margin-top: .55rem; padding: .55rem 1rem; color: var(--report-muted); font-size: .7rem; text-decoration: none; }
+  .all-news-link:hover { color: var(--report-blue); }
+  .mobile-toc { display: none; }
+
+  .report-pager { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1rem; }
+  .report-pager > a { display: grid; gap: .18rem; padding: 1rem 1.1rem; border-radius: .8rem; color: var(--report-muted); background: rgba(255,255,252,.55); text-decoration: none; }
+  .report-pager > a:hover { color: var(--report-blue); background: rgba(255,255,252,.86); }
+  .report-pager span { font-size: .66rem; }
+  .report-pager strong { color: inherit; font-family: var(--sl-font-mono); font-size: .72rem; }
+  .report-pager .next { text-align: right; }
+
+  :global([data-theme='dark']) .weekly-shell {
+    --report-ink: #e7e7df;
+    --report-muted: #a1a6a1;
+    --report-blue: #8caee3;
+    --report-blue-soft: rgba(76,111,164,.2);
+    --report-paper: rgba(39,41,38,.74);
+    --report-paper-strong: rgba(43,45,42,.92);
+    --report-line: #494b45;
+  }
+  :global([data-theme='dark']) .story-card { background: rgba(255,255,255,.035); }
+  :global([data-theme='dark']) .story-card:hover { background: rgba(255,255,255,.06); }
+  :global([data-theme='dark']) .section-intro,
+  :global([data-theme='dark']) .prose { color: #b8bcb7; }
+  :global([data-theme='dark']) .prose :global(strong) { color: #d8d9d3; }
+
+  @media (max-width: 68rem) {
+    .weekly-shell { grid-template-columns: 8.5rem minmax(0, 1fr); }
+    .toc-rail { display: none; }
+    .mobile-toc { display: block; margin-bottom: 1rem; padding: 1rem 1.1rem; border-radius: .9rem; background: rgba(255,255,252,.58); }
+    .mobile-toc > span { color: var(--report-muted); font-size: .72rem; font-weight: 600; }
+    .mobile-toc > div { display: flex; gap: .5rem; margin-top: .65rem; overflow-x: auto; scrollbar-width: none; }
+    .mobile-toc a { display: inline-flex; flex: 0 0 auto; gap: .35rem; padding: .42rem .6rem; border-radius: .55rem; color: var(--report-muted); background: rgba(255,255,255,.55); font-size: .7rem; text-decoration: none; }
+    .mobile-toc b { color: var(--report-blue); font-family: var(--sl-font-mono); }
+  }
+
+  @media (max-width: 48rem) {
+    .weekly-shell { display: block; }
+    .archive-rail { position: static; margin-bottom: .8rem; }
+    .rail-heading { display: none; }
+    .archive-list { display: flex; max-height: none; overflow-x: auto; scrollbar-width: none; }
+    .archive-list a { flex: 0 0 auto; gap: .5rem; }
+    .report-masthead { padding: 1.45rem 1.25rem 1.3rem; border-radius: .9rem; }
+    .report-masthead h1 { font-size: clamp(1.65rem, 8vw, 2.1rem); }
+    .report-meta { gap: .4rem .7rem; }
+    .report-meta span::before { margin-right: .7rem; }
+    .report-section { padding: 1.25rem 1rem; border-radius: .85rem; }
+    .story-card { padding: .9rem; }
+    .section-body { overflow-x: auto; }
+    .prose :global(table) { display: block; width: 100%; max-width: 100%; overflow-x: auto; white-space: nowrap; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .archive-list a,
+    .story-card { transition: none; }
+  }
+</style>
