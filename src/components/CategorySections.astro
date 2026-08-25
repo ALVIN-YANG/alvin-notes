@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import knowledgeData from '../data/agent-knowledge.json';
 
 const categories = [
   {
@@ -138,17 +137,9 @@ function formatDate(doc: typeof allDocs[number]) {
 <header class="directory-toolbar">
   <strong class="directory-label">全部专栏</strong>
   <a class="knowledge-map-entry" href="/agent-knowledge/">
-    <svg aria-hidden="true" viewBox="0 0 24 24">
-      <circle cx="6" cy="7" r="2.2" />
-      <circle cx="18" cy="7" r="2.2" />
-      <circle cx="12" cy="17" r="2.2" />
-      <path d="m7.9 8.2 2.7 6.4m5.5-6.4-2.7 6.4M8.2 7h7.6" />
-    </svg>
     <span>
       <strong>Agent 学习地图</strong>
-      <small>{knowledgeData.meta.pointCount} 个知识点</small>
     </span>
-    <i aria-hidden="true">→</i>
   </a>
 </header>
 
@@ -203,51 +194,42 @@ function formatDate(doc: typeof allDocs[number]) {
   }
 
   .knowledge-map-entry {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
+    display: inline-grid;
+    width: 10rem;
     min-height: 3rem;
-    padding: 0.48rem 0.62rem 0.48rem 0.78rem;
-    overflow: hidden;
-    color: var(--sl-color-gray-1);
-    background: color-mix(in srgb, var(--sl-color-surface) 76%, var(--sl-color-bg));
+    padding: 0.58rem 1rem;
+    color: #fff;
+    background: #3d405b;
     border: 0;
-    border-radius: 0.85rem;
+    border-radius: 0.55rem;
     line-height: 1;
     text-decoration: none !important;
     text-decoration-line: none !important;
-    box-shadow: inset 0.22rem 0 #3f78e6, 0 1px 2px rgba(36, 41, 47, 0.022), 0 10px 28px rgba(36, 41, 47, 0.04);
-    animation: mapEntryIn 0.42s ease-out backwards;
-    transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-  }
-
-  .knowledge-map-entry > svg {
-    width: 2rem;
-    height: 2rem;
-    padding: 0.4rem;
-    flex: 0 0 auto;
-    fill: none;
-    stroke: #3f78e6;
-    stroke-width: 1.55;
-    stroke-linecap: round;
-    border-radius: 0.58rem;
-    background: color-mix(in srgb, #e6edfb 76%, var(--sl-color-surface));
-  }
-
-  .knowledge-map-entry > svg path {
-    stroke-dasharray: 24;
-    stroke-dashoffset: 0;
-  }
-
-  .knowledge-map-entry > svg circle {
-    transform-box: fill-box;
-    transform-origin: center;
+    box-shadow: 0 1px 2px rgba(27, 30, 44, 0.12), 0 9px 22px rgba(36, 40, 65, 0.1);
+    cursor: pointer;
+    place-items: center;
+    transition: background-color 0.5s ease, box-shadow 0.3s ease, transform 0.2s ease;
   }
 
   .knowledge-map-entry > span {
+    position: relative;
     display: grid;
-    gap: 0.25rem;
+    gap: 0.22rem;
+    padding-right: 0;
+    transition: padding-right 0.5s ease;
+  }
+
+  .knowledge-map-entry > span::after {
+    position: absolute;
+    top: 50%;
+    right: -0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    content: '\00bb';
+    font-size: 1rem;
+    line-height: 1;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: opacity 0.5s ease, right 0.5s ease;
   }
 
   .knowledge-map-entry strong {
@@ -257,64 +239,20 @@ function formatDate(doc: typeof allDocs[number]) {
     text-decoration: none !important;
   }
 
-  .knowledge-map-entry small {
-    color: var(--sl-color-gray-2);
-    font-size: 0.64rem;
-    font-weight: 450;
-  }
-
-  .knowledge-map-entry i {
-    display: grid;
-    width: 1.65rem;
-    height: 1.65rem;
-    border-radius: 999px;
-    background: transparent;
-    color: #356bd2;
-    font-size: 0.82rem;
-    font-style: normal;
-    place-items: center;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-  }
-
-  .knowledge-map-entry:hover {
-    color: #2458c6;
-    background: color-mix(in srgb, var(--sl-color-surface) 92%, #e6edfb);
+  .knowledge-map-entry:is(:hover, :focus-visible) {
+    color: #fff;
+    background: #34374f;
     text-decoration: none !important;
     text-decoration-line: none !important;
-    box-shadow: inset 0.22rem 0 #3f78e6, 0 2px 4px rgba(36, 41, 47, 0.025), 0 14px 32px rgba(36, 41, 47, 0.055);
+    box-shadow: 0 2px 4px rgba(27, 30, 44, 0.13), 0 12px 28px rgba(36, 40, 65, 0.14);
     transform: translateY(-1px);
   }
 
-  .knowledge-map-entry:hover i {
-    background: color-mix(in srgb, #3f78e6 10%, transparent);
-    transform: translateX(0.12rem);
+  .knowledge-map-entry:is(:hover, :focus-visible) > span {
+    padding-right: 1rem;
   }
 
-  .knowledge-map-entry:is(:hover, :focus-visible) > svg path {
-    animation: mapTrace 0.5s ease-out both;
-  }
-
-  .knowledge-map-entry:is(:hover, :focus-visible) > svg circle {
-    animation: mapNodePulse 0.42s ease-out both;
-  }
-
-  .knowledge-map-entry:is(:hover, :focus-visible) > svg circle:nth-child(2) { animation-delay: 0.08s; }
-  .knowledge-map-entry:is(:hover, :focus-visible) > svg circle:nth-child(3) { animation-delay: 0.16s; }
-
-  @keyframes mapTrace {
-    from { stroke-dashoffset: 24; }
-    to { stroke-dashoffset: 0; }
-  }
-
-  @keyframes mapNodePulse {
-    0%, 100% { transform: scale(1); }
-    48% { transform: scale(1.28); }
-  }
-
-  @keyframes mapEntryIn {
-    from { opacity: 0; transform: translateY(0.28rem); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .knowledge-map-entry:is(:hover, :focus-visible) > span::after { right: 0; opacity: 1; }
 
   .home-sections {
     display: grid;
@@ -474,15 +412,11 @@ function formatDate(doc: typeof allDocs[number]) {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .section-card,
-    .knowledge-map-entry,
-    .knowledge-map-entry > svg path,
-    .knowledge-map-entry > svg circle {
-      animation: none;
-    }
+    .section-card { animation: none; }
 
     .knowledge-map-entry,
-    .knowledge-map-entry i {
+    .knowledge-map-entry > span,
+    .knowledge-map-entry > span::after {
       transition: none;
     }
   }
