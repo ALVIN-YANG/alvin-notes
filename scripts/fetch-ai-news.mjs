@@ -14,7 +14,9 @@
  *   DEEPSEEK_API_KEY  — 周报主生成通道
  *   DEEPSEEK_BASE_URL — 可选（默认 https://api.deepseek.com）
  *   DEEPSEEK_MODEL    — 可选（默认 deepseek-v4-flash）
- *   GITHUB_MODELS_TOKEN — GitHub Models 备用生成通道
+ *   OPENAI_API_KEY     — OpenAI 兼容备用生成通道
+ *   OPENAI_BASE_URL    — 备用 API 地址（默认 https://api.openai.com/v1）
+ *   OPENAI_MODEL       — 备用模型（默认 gpt-4o-mini）
  *   GITHUB_TOKEN       — 可选（提升 GitHub API 速率限制）
  */
 
@@ -341,12 +343,12 @@ function getLLMProviders() {
       supportsThinking: true,
     });
   }
-  if (process.env.GITHUB_MODELS_TOKEN) {
+  if (process.env.OPENAI_API_KEY) {
     providers.push({
-      name: 'GitHub Models',
-      apiKey: process.env.GITHUB_MODELS_TOKEN,
-      baseUrl: (process.env.GITHUB_MODELS_BASE_URL || 'https://models.github.ai/inference').replace(/\/+$/, ''),
-      model: process.env.GITHUB_MODELS_MODEL || 'openai/gpt-4.1-mini',
+      name: 'OpenAI-compatible',
+      apiKey: process.env.OPENAI_API_KEY,
+      baseUrl: (process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1').replace(/\/+$/, ''),
+      model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
       supportsThinking: false,
     });
   }
@@ -411,7 +413,7 @@ async function callLLMProvider(provider, systemPrompt, userContent, options) {
 async function callLLM(systemPrompt, userContent, options = {}) {
   const providers = getLLMProviders();
   if (providers.length === 0) {
-    console.warn('⚠ 未设置 DEEPSEEK_API_KEY 或 GITHUB_MODELS_TOKEN，跳过 LLM 总结');
+    console.warn('⚠ 未设置 DEEPSEEK_API_KEY 或 OPENAI_API_KEY，跳过 LLM 总结');
     return null;
   }
 
@@ -990,8 +992,9 @@ function runCli() {
   DEEPSEEK_API_KEY   — DeepSeek 官方 API Key（生成周报时必须）
   DEEPSEEK_BASE_URL  — API 地址（默认 https://api.deepseek.com）
   DEEPSEEK_MODEL       — 模型名称（默认 deepseek-v4-flash）
-  GITHUB_MODELS_TOKEN  — GitHub Models 备用通道令牌（可选）
-  GITHUB_MODELS_MODEL  — 备用模型（默认 openai/gpt-4.1-mini）
+  OPENAI_API_KEY       — OpenAI 兼容备用通道令牌（可选）
+  OPENAI_BASE_URL      — 备用 API 地址（默认 https://api.openai.com/v1）
+  OPENAI_MODEL         — 备用模型（默认 gpt-4o-mini）
   GITHUB_TOKEN         — GitHub API 认证（可选，提升速率限制）`);
   }
 }

@@ -127,28 +127,28 @@ test('历史周报无需改写也能生成新版页面结构', () => {
   assert.equal(getISOWeek('2026-08-09'), '2026-W32');
 });
 
-test('LLM 提供方按 DeepSeek 和 GitHub Models 顺序配置', () => {
+test('LLM 提供方按 DeepSeek 和 OpenAI 兼容通道顺序配置', () => {
   const previous = {
     deepseek: process.env.DEEPSEEK_API_KEY,
-    github: process.env.GITHUB_MODELS_TOKEN,
+    openai: process.env.OPENAI_API_KEY,
   };
   process.env.DEEPSEEK_API_KEY = 'deepseek-test';
-  process.env.GITHUB_MODELS_TOKEN = 'github-test';
-  assert.deepEqual(getLLMProviders().map(provider => provider.name), ['DeepSeek', 'GitHub Models']);
+  process.env.OPENAI_API_KEY = 'openai-test';
+  assert.deepEqual(getLLMProviders().map(provider => provider.name), ['DeepSeek', 'OpenAI-compatible']);
   if (previous.deepseek === undefined) delete process.env.DEEPSEEK_API_KEY;
   else process.env.DEEPSEEK_API_KEY = previous.deepseek;
-  if (previous.github === undefined) delete process.env.GITHUB_MODELS_TOKEN;
-  else process.env.GITHUB_MODELS_TOKEN = previous.github;
+  if (previous.openai === undefined) delete process.env.OPENAI_API_KEY;
+  else process.env.OPENAI_API_KEY = previous.openai;
 });
 
-test('DeepSeek 失败后会自动切换到 GitHub Models', async () => {
+test('DeepSeek 失败后会自动切换到 OpenAI 兼容通道', async () => {
   const previous = {
     deepseek: process.env.DEEPSEEK_API_KEY,
-    github: process.env.GITHUB_MODELS_TOKEN,
+    openai: process.env.OPENAI_API_KEY,
     fetch: globalThis.fetch,
   };
   process.env.DEEPSEEK_API_KEY = 'deepseek-test';
-  process.env.GITHUB_MODELS_TOKEN = 'github-test';
+  process.env.OPENAI_API_KEY = 'openai-test';
   const calls = [];
   globalThis.fetch = async (url) => {
     calls.push(String(url));
@@ -161,13 +161,13 @@ test('DeepSeek 失败后会自动切换到 GitHub Models', async () => {
     assert.equal(result, '备用通道已接管');
     assert.deepEqual(calls, [
       'https://api.deepseek.com/chat/completions',
-      'https://models.github.ai/inference/chat/completions',
+      'https://api.openai.com/v1/chat/completions',
     ]);
   } finally {
     globalThis.fetch = previous.fetch;
     if (previous.deepseek === undefined) delete process.env.DEEPSEEK_API_KEY;
     else process.env.DEEPSEEK_API_KEY = previous.deepseek;
-    if (previous.github === undefined) delete process.env.GITHUB_MODELS_TOKEN;
-    else process.env.GITHUB_MODELS_TOKEN = previous.github;
+    if (previous.openai === undefined) delete process.env.OPENAI_API_KEY;
+    else process.env.OPENAI_API_KEY = previous.openai;
   }
 });
