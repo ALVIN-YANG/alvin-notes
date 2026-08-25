@@ -3,11 +3,14 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   analyzeWeeklyContent,
+  buildTranslatedWeeklyFallback,
   callLLM,
   compactWeeklySnapshots,
+  extractWeeklyCandidates,
   extractWeeklyDocument,
   findWeeklyStructureIssues,
   getLLMProviders,
+  translateTextsWithAzure,
 } from '../scripts/fetch-ai-news.mjs';
 import {
   getISOWeek,
@@ -169,5 +172,69 @@ test('DeepSeek 失败后会自动切换到 OpenAI 兼容通道', async () => {
     else process.env.DEEPSEEK_API_KEY = previous.deepseek;
     if (previous.openai === undefined) delete process.env.OPENAI_API_KEY;
     else process.env.OPENAI_API_KEY = previous.openai;
+  }
+});
+
+test('Azure Translator 只翻译英文内容并保留输入顺序', async () => {
+  const previous = {
+    key: process.env.AZURE_TRANSLATOR_KEY,
+    region: process.env.AZURE_TRANSLATOR_REGION,
+    fetch: globalThis.fetch,
+  };
+  process.env.AZURE_TRANSLATOR_KEY = 'azure-test';
+  process.env.AZURE_TRANSLATOR_REGION = 'eastasia';
+  let request;
+  globalThis.fetch = async (url, options) => {
+    request = { url: String(url), options };
+    return Response.json([{ translations: [{ text: '已翻译的英文标题' }] }]);
+  };
+
+  try {
+    const result = await translateTextsWithAzure(['English weekly report title', '已经是中文']);
+    assert.deepEqual(result, ['已翻译的英文标题', '已经是中文']);
+    assert.match(request.url, /\/translate\?api-version=3\.0&to=zh-Hans/);
+    assert.equal(request.options.headers['Ocp-Apim-Subscription-Key'], 'azure-test');
+    assert.equal(request.options.headers['Ocp-Apim-Subscription-Region'], 'eastasia');
+    assert.deepEqual(JSON.parse(request.options.body), [{ Text: 'English weekly report title' }]);
+  } finally {
+    globalThis.fetch = previous.fetch;
+    if (previous.key === undefined) delete process.env.AZURE_TRANSLATOR_KEY;
+    else process.env.AZURE_TRANSLATOR_KEY = previous.key;
+    if (previous.region === undefined) delete process.env.AZURE_TRANSLATOR_REGION;
+    else process.env.AZURE_TRANSLATOR_REGION = previous.region;
+  }
+});
+
+test('无 LLM 时能从七天快照生成通过校验的翻译周报', async () => {
+  const previous = {
+    key: process.env.AZURE_TRANSLATOR_KEY,
+    fetch: globalThis.fetch,
+  };
+  process.env.AZURE_TRANSLATOR_KEY = 'azure-test';
+  const dates = ['17', '18', '19', '20', '21', '22', '23'].map(day => `2026-08-${day}`);
+  const snapshots = dates.map(date => ({
+    date,
+    raw: readFileSync(`src/data/ai-news-daily/${date}-daily.md`, 'utf8'),
+  }));
+  globalThis.fetch = async (_url, options) => {
+    const body = JSON.parse(options.body);
+    return Response.json(body.map((_, index) => ({
+      translations: [{ text: `中文翻译内容 ${index + 1}，保留具体条件和版本说明。` }],
+    })));
+  };
+
+  try {
+    assert.ok(extractWeeklyCandidates(snapshots).length >= 20);
+    const report = await buildTranslatedWeeklyFallback(snapshots);
+    assert.deepEqual(findWeeklyStructureIssues(report), []);
+    const { content } = extractWeeklyDocument(report);
+    const stats = analyzeWeeklyContent(content);
+    assert.equal(stats.storyCount, 12);
+    assert.ok(stats.themeCount >= 3 && stats.themeCount <= 5);
+    assert.ok(stats.sourceCount >= 2);
+  } finally {
+    globalThis.fetch = previous.fetch;
+    if (previous.key === undefined) delete process.env.AZURE_TRANSLATOR_KEY;
+    else process.env.AZURE_TRANSLATOR_KEY = previous.key;
   }
 });

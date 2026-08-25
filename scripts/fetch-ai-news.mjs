@@ -17,6 +17,9 @@
  *   OPENAI_API_KEY     — OpenAI 兼容备用生成通道
  *   OPENAI_BASE_URL    — 备用 API 地址（默认 https://api.openai.com/v1）
  *   OPENAI_MODEL       — 备用模型（默认 gpt-4o-mini）
+ *   AZURE_TRANSLATOR_KEY      — 无 LLM 时用于翻译周报候选条目
+ *   AZURE_TRANSLATOR_REGION   — Translator 资源区域（按 Azure 资源填写）
+ *   AZURE_TRANSLATOR_ENDPOINT — 可选（默认官方全局端点）
  *   GITHUB_TOKEN       — 可选（提升 GitHub API 速率限制）
  */
 
@@ -425,6 +428,95 @@ async function callLLM(systemPrompt, userContent, options = {}) {
     console.warn(`  ↳ ${provider.name} 不可用，尝试下一生成通道`);
   }
   return null;
+}
+
+function getAzureTranslatorConfig() {
+  if (!process.env.AZURE_TRANSLATOR_KEY) return null;
+  return {
+    key: process.env.AZURE_TRANSLATOR_KEY,
+    region: process.env.AZURE_TRANSLATOR_REGION || '',
+    endpoint: (process.env.AZURE_TRANSLATOR_ENDPOINT || 'https://api.cognitive.microsofttranslator.com').replace(/\/+$/, ''),
+  };
+}
+
+function needsChineseTranslation(text) {
+  const latinCount = (text.match(/[A-Za-z]/g) || []).length;
+  const cjkCount = (text.match(/[\u3400-\u9fff]/g) || []).length;
+  return latinCount >= 8 && (cjkCount === 0 || latinCount > cjkCount * 3);
+}
+
+function createTranslationBatches(texts, maxCharacters = 40000, maxItems = 100) {
+  const batches = [];
+  let current = [];
+  let characterCount = 0;
+
+  texts.forEach((text, index) => {
+    if (current.length > 0 && (current.length >= maxItems || characterCount + text.length > maxCharacters)) {
+      batches.push(current);
+      current = [];
+      characterCount = 0;
+    }
+    current.push({ index, text });
+    characterCount += text.length;
+  });
+  if (current.length > 0) batches.push(current);
+  return batches;
+}
+
+async function translateTextsWithAzure(texts, targetLanguage = 'zh-Hans') {
+  const config = getAzureTranslatorConfig();
+  if (!config) return null;
+
+  const output = [...texts];
+  const pending = texts
+    .map((text, index) => ({ index, text: String(text || '').trim() }))
+    .filter(item => item.text && needsChineseTranslation(item.text));
+  if (pending.length === 0) return output;
+
+  const batches = createTranslationBatches(pending.map(item => item.text));
+  let translatedCount = 0;
+  for (const batch of batches) {
+    const url = `${config.endpoint}/translate?api-version=3.0&to=${encodeURIComponent(targetLanguage)}&textType=plain`;
+    const headers = {
+      'Content-Type': 'application/json',
+      'Ocp-Apim-Subscription-Key': config.key,
+    };
+    if (config.region) headers['Ocp-Apim-Subscription-Region'] = config.region;
+
+    let response;
+    try {
+      response = await fetch(url, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(batch.map(item => ({ Text: item.text }))),
+        signal: AbortSignal.timeout(30000),
+      });
+    } catch (err) {
+      console.warn(`⚠ Azure Translator 调用异常：${err.message}`);
+      return null;
+    }
+
+    if (!response.ok) {
+      const errorText = (await response.text()).replace(/\s+/g, ' ').slice(0, 400);
+      console.warn(`⚠ Azure Translator API ${response.status} ${response.statusText}${errorText ? `，${errorText}` : ''}`);
+      return null;
+    }
+
+    const data = await response.json();
+    if (!Array.isArray(data) || data.length !== batch.length) {
+      console.warn('⚠ Azure Translator 返回数量与请求不一致');
+      return null;
+    }
+    data.forEach((item, batchIndex) => {
+      const pendingItem = pending[batch[batchIndex].index];
+      const translated = item?.translations?.[0]?.text?.trim();
+      if (translated) output[pendingItem.index] = translated;
+    });
+    translatedCount += batch.length;
+  }
+
+  console.log(`  ✓ Azure Translator · ${translatedCount} 段`);
+  return output;
 }
 
 const CHINESE_REVIEW_PROMPT = `你是中文技术编辑。请检查用户给出的 Markdown，并把所有面向读者的英文内容改成自然、准确的简体中文。
@@ -845,6 +937,302 @@ function compactWeeklySnapshots(snapshots, limit = 160) {
   )).join('\n\n');
 }
 
+const WEEKLY_FALLBACK_GROUPS = [
+  {
+    key: 'agent-security',
+    label: 'Agent 与安全',
+    pattern: /\b(agent|mcp|sandbox|security|secure|permission|auth|oauth|privacy|prompt injection|guardrail|tool call)\b|智能体|沙箱|安全|权限|隐私|注入|工具调用/i,
+    intro: '权限、沙箱和数据处理方面的变化集中在这里。每条都保留原始发布页，方便继续核对适用范围。',
+  },
+  {
+    key: 'devtools',
+    label: '开发工具',
+    pattern: /\b(codex|claude code|cursor|opencode|goose|gemini cli|aider|continue|developer tool|coding|code hosting|ide|cli)\b|开发工具|编码|代码托管/i,
+    intro: '这一组主要影响编码、任务管理和开发环境。版本号与发布链接保留原样，便于直接回到变更记录。',
+  },
+  {
+    key: 'models-runtime',
+    label: '模型与推理',
+    pattern: /\b(model|llm|gpt|claude|gemini|qwen|deepseek|llama|ollama|vllm|inference|embedding|multimodal|vision|token)\b|模型|推理|多模态|向量|上下文/i,
+    intro: '模型、推理运行时和性能数据放在这一栏。厂商公布的数字仍需在固定任务和硬件上复测。',
+  },
+  {
+    key: 'products-infra',
+    label: '产品与基础设施',
+    pattern: /.*/,
+    intro: '其余变化落在产品接口、数据处理和部署设施。采用前需要继续核对地区、账户和版本条件。',
+  },
+];
+
+const WEEKLY_SOURCE_TYPE_PRIORITY = new Map([
+  ['一手', 0],
+  ['开发者', 1],
+  ['资讯', 2],
+  ['社区', 3],
+]);
+
+let weeklyReleaseAliasesCache;
+function getWeeklyReleaseAliases() {
+  if (weeklyReleaseAliasesCache) return weeklyReleaseAliasesCache;
+  weeklyReleaseAliasesCache = [
+    ...loadWatchlist('watched-repos.json'),
+    ...loadWatchlist('watched-devtools.json'),
+  ].map(item => item.alias).sort((a, b) => b.length - a.length);
+  return weeklyReleaseAliasesCache;
+}
+
+function parseMarkdownHeadingLink(heading) {
+  const match = heading.match(/^\[([^\]]+)]\((https?:\/\/[^)]+)\)$/);
+  return match ? { title: match[1].trim(), url: normalizeNewsUrl(match[2]) } : null;
+}
+
+function cleanWeeklyCandidateSummary(lines) {
+  const text = lines.join('\n')
+    .replace(/^\*\*(?:来源|链接)\*\*[：:].*$/gm, ' ')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/!?\[([^\]]*)]\([^)]*\)/g, '$1')
+    .replace(/https?:\/\/\S+/g, ' ')
+    .replace(/[>*_`|]/g, ' ')
+    .replace(/\.{3,}|…+/g, ' ')
+    .replace(/原始来源未提供摘要。?/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return text.slice(0, 420);
+}
+
+function extractWeeklyCandidates(snapshots) {
+  const releaseAliases = getWeeklyReleaseAliases();
+  const knownSections = new Set(['开源热门', '版本更新', '开发者工具', '行业动态']);
+  const candidates = [];
+
+  snapshots.forEach(({ date, raw }) => {
+    let section = '';
+    let item = null;
+    const flush = () => {
+      if (!item) return;
+      const body = item.lines.join('\n');
+      const headingLink = parseMarkdownHeadingLink(item.heading);
+      const explicitUrl = body.match(/\*\*链接\*\*[：:]\s*(https?:\/\/\S+)/)?.[1];
+      const sourceLine = body.match(/\*\*来源\*\*[：:]\s*([^\n]+)/)?.[1] || '';
+      const sourceParts = sourceLine.split('·').map(part => cleanFeedText(part)).filter(Boolean);
+      const sourceType = WEEKLY_SOURCE_TYPE_PRIORITY.has(sourceParts[0])
+        ? sourceParts[0]
+        : section === '开源热门' ? '社区' : section === '行业动态' ? '资讯' : '一手';
+      const source = sourceParts[1]
+        || (section === '开源热门' ? 'Trendshift' : section === '行业动态' ? '原始来源' : 'GitHub Releases');
+      const url = normalizeNewsUrl(headingLink?.url || explicitUrl || '');
+      const title = headingLink?.title || cleanFeedText(item.heading);
+      const summary = cleanWeeklyCandidateSummary(item.lines);
+
+      if (url && title && !/论文|arxiv/i.test(`${section} ${title} ${summary} ${url}`)) {
+        candidates.push({ date, section, title, url, summary, sourceType, source });
+      }
+      item = null;
+    };
+
+    raw.split('\n').forEach(line => {
+      const h2 = line.match(/^##\s+(.+)/)?.[1]?.trim();
+      if (h2 && knownSections.has(h2)) {
+        flush();
+        section = h2;
+        return;
+      }
+
+      const heading = line.match(/^###\s+(.+)/)?.[1]?.trim();
+      if (heading) {
+        const isRelease = ['版本更新', '开发者工具'].includes(section)
+          && releaseAliases.some(alias => heading === alias || heading.startsWith(`${alias} `));
+        const isLinkedItem = ['开源热门', '行业动态'].includes(section) && Boolean(parseMarkdownHeadingLink(heading));
+        if (isRelease || isLinkedItem) {
+          flush();
+          item = { heading, lines: [] };
+          return;
+        }
+      }
+      if (item) item.lines.push(line);
+    });
+    flush();
+  });
+
+  const deduped = new Map();
+  candidates.forEach(candidate => deduped.set(candidate.url || normalizeNewsTitle(candidate.title), candidate));
+  return [...deduped.values()];
+}
+
+function classifyWeeklyCandidate(candidate) {
+  const text = `${candidate.section} ${candidate.title} ${candidate.summary}`;
+  return WEEKLY_FALLBACK_GROUPS.find(group => group.pattern.test(text))?.key || 'products-infra';
+}
+
+function compareWeeklyCandidates(a, b) {
+  return (WEEKLY_SOURCE_TYPE_PRIORITY.get(a.sourceType) ?? 9) - (WEEKLY_SOURCE_TYPE_PRIORITY.get(b.sourceType) ?? 9)
+    || b.date.localeCompare(a.date)
+    || b.summary.length - a.summary.length;
+}
+
+function selectWeeklyFallbackCandidates(candidates, limit = 12) {
+  const grouped = new Map(WEEKLY_FALLBACK_GROUPS.map(group => [group.key, []]));
+  candidates.forEach(candidate => grouped.get(classifyWeeklyCandidate(candidate)).push(candidate));
+  grouped.forEach(items => items.sort(compareWeeklyCandidates));
+
+  const selected = [];
+  const selectedUrls = new Set();
+  const take = candidate => {
+    if (!candidate || selectedUrls.has(candidate.url) || selected.length >= limit) return;
+    selected.push(candidate);
+    selectedUrls.add(candidate.url);
+  };
+
+  WEEKLY_FALLBACK_GROUPS.forEach(group => {
+    const items = grouped.get(group.key);
+    const first = items[0];
+    take(first);
+    take(items.find(candidate => candidate.sourceType !== first?.sourceType));
+  });
+  const largestGroup = Math.max(...[...grouped.values()].map(items => items.length));
+  for (let index = 0; index < largestGroup && selected.length < limit; index += 1) {
+    WEEKLY_FALLBACK_GROUPS.forEach(group => take(grouped.get(group.key)[index]));
+  }
+  candidates.slice().sort(compareWeeklyCandidates).forEach(take);
+  return selected;
+}
+
+function sanitizeTranslatedWeeklyText(text) {
+  const replacements = new Map([
+    ['赋能', '支持'],
+    ['底层逻辑', '工作方式'],
+    ['技术底座', '技术基础'],
+    ['能力建设', '功能完善'],
+    ['降本增效', '降低成本并提高效率'],
+    ['全链路', '完整流程'],
+    ['闭环', '完整流程'],
+  ]);
+  let result = String(text || '')
+    .replace(/[：—]/g, '，')
+    .replace(/而是/g, '而改为')
+    .replace(/在于/g, '取决于')
+    .replace(/\s+/g, ' ')
+    .trim();
+  replacements.forEach((replacement, phrase) => {
+    result = result.replaceAll(phrase, replacement);
+  });
+  return result;
+}
+
+function trimWeeklySummary(text, maxLength = 280) {
+  const cleaned = sanitizeTranslatedWeeklyText(text).replace(/[.。\s]*(?:\.\.\.|…)+\s*$/, '').trim();
+  if (cleaned.length <= maxLength) return cleaned;
+  const excerpt = cleaned.slice(0, maxLength);
+  const lastStop = Math.max(...['。', '！', '？', '.', '!', '?'].map(mark => excerpt.lastIndexOf(mark)));
+  return lastStop >= 100 ? excerpt.slice(0, lastStop + 1) : `${excerpt.trim()}…`;
+}
+
+function escapeMarkdownText(text) {
+  return String(text || '').replace(/([\[\]|])/g, '\\$1');
+}
+
+function formatSnapshotDate(date) {
+  const [, month, day] = date.split('-').map(Number);
+  return `${month} 月 ${day} 日`;
+}
+
+function getReleaseIdentity(candidate) {
+  const alias = getWeeklyReleaseAliases().find(name => candidate.title === name || candidate.title.startsWith(`${name} `));
+  if (!alias) return null;
+  return {
+    project: alias,
+    version: candidate.title.slice(alias.length).trim() || '更新',
+  };
+}
+
+async function buildTranslatedWeeklyFallback(snapshots) {
+  const candidates = extractWeeklyCandidates(snapshots);
+  const selected = selectWeeklyFallbackCandidates(candidates);
+  const selectedGroups = WEEKLY_FALLBACK_GROUPS.filter(group => selected.some(candidate => classifyWeeklyCandidate(candidate) === group.key));
+  const versionCandidates = candidates
+    .filter(candidate => ['版本更新', '开发者工具'].includes(candidate.section) && getReleaseIdentity(candidate))
+    .sort(compareWeeklyCandidates)
+    .slice(0, 5);
+
+  if (selected.length < 8 || selectedGroups.length < 3 || versionCandidates.length < 3) {
+    throw new Error(`规则周报候选不足，信息 ${selected.length} 条，栏目 ${selectedGroups.length} 个，版本 ${versionCandidates.length} 条`);
+  }
+
+  const translatedFields = [];
+  selected.forEach(candidate => translatedFields.push(candidate.title, candidate.summary || candidate.title));
+  versionCandidates.forEach(candidate => translatedFields.push(candidate.summary || candidate.title));
+  const translated = await translateTextsWithAzure(translatedFields);
+  if (!translated) {
+    throw new Error('模型通道不可用，且 Azure Translator 未配置或调用失败');
+  }
+
+  let cursor = 0;
+  const translatedCandidates = selected.map(candidate => ({
+    ...candidate,
+    translatedTitle: sanitizeTranslatedWeeklyText(translated[cursor++]),
+    translatedSummary: trimWeeklySummary(translated[cursor++]),
+  }));
+  const translatedVersions = versionCandidates.map(candidate => ({
+    ...candidate,
+    translatedSummary: trimWeeklySummary(translated[cursor++], 100),
+  }));
+
+  const leadingLabel = selectedGroups[0].label;
+  const headline = `本周 ${leadingLabel}出现集中更新`;
+  const groupLabels = selectedGroups.map(group => group.label).join('、');
+  const parts = [
+    `# ${headline}`,
+    '',
+    '## 本期主线',
+    '',
+    `本周收录的变化主要落在 ${groupLabels}。内容优先保留官方发布、项目 Release 和开发者原文，涉及测试结果和产品声明时仍以链接中的原始条件为准。`,
+    '',
+    '以下条目保留版本号、公开条件和来源日期。相同事件已经按原始链接去重，后续变化可以直接回到发布页继续核对。',
+    '',
+  ];
+
+  selectedGroups.forEach((group, index) => {
+    parts.push(`## ${String(index + 1).padStart(2, '0')} ${group.label}`, '', group.intro, '');
+    translatedCandidates
+      .filter(candidate => classifyWeeklyCandidate(candidate) === group.key)
+      .forEach(candidate => {
+        parts.push(
+          `### [${escapeMarkdownText(candidate.translatedTitle)}](${candidate.url})`,
+          '',
+          `\`${candidate.sourceType}\` · \`${candidate.source}\` · \`${formatSnapshotDate(candidate.date)}\``,
+          '',
+          candidate.translatedSummary || candidate.translatedTitle,
+          ''
+        );
+      });
+  });
+
+  parts.push(
+    '## 项目与版本',
+    '',
+    '| 项目 | 版本或状态 | 影响 | 链接 |',
+    '| --- | --- | --- | --- |'
+  );
+  translatedVersions.forEach(candidate => {
+    const identity = getReleaseIdentity(candidate);
+    parts.push(`| ${escapeMarkdownText(identity.project)} | ${escapeMarkdownText(identity.version)} | ${escapeMarkdownText(candidate.translatedSummary || '查看发布说明')} | [Release](${candidate.url}) |`);
+  });
+
+  const watchCandidates = translatedCandidates.slice(0, 3);
+  parts.push('', '## 下周观察', '');
+  watchCandidates.forEach((candidate, index) => {
+    parts.push(`${index + 1}. ${candidate.translatedTitle} 是否发布后续版本或补充说明。可以检查原始发布页和 Release 记录。`);
+  });
+
+  const content = parts.join('\n').trim();
+  const issues = findWeeklyStructureIssues(content);
+  if (issues.length > 0) throw new Error(`规则周报未通过结构检查，${issues.join('；')}`);
+  const languageIssues = findUntranslatedEnglishBlocks(content);
+  if (languageIssues.length > 0) throw new Error(`规则周报仍有 ${languageIssues.length} 处未翻译正文`);
+  console.log(`  ✓ 无 LLM 周报 · ${translatedCandidates.length} 条信息 · ${selectedGroups.length} 个栏目`);
+  return content;
+}
+
 async function ensureWeeklyStructure(content) {
   let issues = findWeeklyStructureIssues(content);
   if (issues.length === 0) return content;
@@ -914,18 +1302,15 @@ async function generateWeekly(force = false) {
     maxTokens: 12000,
     timeoutMs: 300000,
   });
-  if (!llmResult) {
-    throw new Error('周报总结失败，已停止发布，现有文件不会被英文原始数据覆盖');
+  let checkedContent = null;
+  if (llmResult) {
+    const structuredContent = await ensureWeeklyStructure(llmResult);
+    if (structuredContent) checkedContent = await ensureChineseWeeklyContent(structuredContent);
+    if (checkedContent && findWeeklyStructureIssues(checkedContent).length > 0) checkedContent = null;
   }
-
-  const structuredContent = await ensureWeeklyStructure(llmResult);
-  if (!structuredContent) {
-    throw new Error('周报未通过结构检查，已停止发布');
-  }
-
-  const checkedContent = await ensureChineseWeeklyContent(structuredContent);
-  if (!checkedContent || findWeeklyStructureIssues(checkedContent).length > 0) {
-    throw new Error('周报未通过中文检查，已停止发布');
+  if (!checkedContent) {
+    console.warn('  ↳ LLM 编辑稿不可用，改用信源筛选、规则分栏与 Azure 翻译');
+    checkedContent = await buildTranslatedWeeklyFallback(snapshots);
   }
   const { headline, content } = extractWeeklyDocument(checkedContent);
   const stats = analyzeWeeklyContent(content);
@@ -991,12 +1376,15 @@ function runCli() {
   • Devtools Watchlist (scripts/watched-devtools.json)
 
 环境变量：
-  DEEPSEEK_API_KEY   — DeepSeek 官方 API Key（生成周报时必须）
+  DEEPSEEK_API_KEY   — DeepSeek 官方 API Key（周报自然编辑主通道）
   DEEPSEEK_BASE_URL  — API 地址（默认 https://api.deepseek.com）
   DEEPSEEK_MODEL       — 模型名称（默认 deepseek-v4-flash）
   OPENAI_API_KEY       — OpenAI 兼容备用通道令牌（可选）
   OPENAI_BASE_URL      — 备用 API 地址（默认 https://api.openai.com/v1）
   OPENAI_MODEL         — 备用模型（默认 gpt-4o-mini）
+  AZURE_TRANSLATOR_KEY      — 无 LLM 时的 Azure Translator Key（建议配置）
+  AZURE_TRANSLATOR_REGION   — Translator 资源区域
+  AZURE_TRANSLATOR_ENDPOINT — 可选，默认官方全局端点
   GITHUB_TOKEN         — GitHub API 认证（可选，提升速率限制）`);
   }
 }
@@ -1005,9 +1393,13 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
 
 export {
   analyzeWeeklyContent,
+  buildTranslatedWeeklyFallback,
   callLLM,
   compactWeeklySnapshots,
+  extractWeeklyCandidates,
   extractWeeklyDocument,
   findWeeklyStructureIssues,
+  getAzureTranslatorConfig,
   getLLMProviders,
+  translateTextsWithAzure,
 };
