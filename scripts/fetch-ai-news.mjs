@@ -389,7 +389,9 @@ async function callLLMProvider(provider, systemPrompt, userContent, options) {
     if (!res.ok) {
       const requestId = res.headers.get('x-request-id');
       const requestHint = requestId ? `，request-id ${requestId}` : '';
-      console.warn(`⚠ ${provider.name} API ${res.status} ${res.statusText}${requestHint}`);
+      const errorText = (await res.text()).replace(/\s+/g, ' ').slice(0, 500);
+      const errorHint = errorText ? `，${errorText}` : '';
+      console.warn(`⚠ ${provider.name} API ${res.status} ${res.statusText}${requestHint}${errorHint}`);
       return null;
     }
 
