@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026/08/27 04:07",
-  "checkedAtISO": "2026-08-26T20:07:57.223Z",
-  "updatedAt": "2026/08/27 04:07",
-  "updatedAtISO": "2026-08-26T20:07:57.223Z",
-  "dataHash": "e78411fe698dc036",
+  "checkedAt": "2026/08/27 17:56",
+  "checkedAtISO": "2026-08-27T09:56:27.727Z",
+  "updatedAt": "2026/08/27 17:56",
+  "updatedAtISO": "2026-08-27T09:56:27.727Z",
+  "dataHash": "04dd34ad3b6a3616",
   "methodology": {
     "operatorCount": 5,
     "boardCount": 6,
@@ -23,8 +23,8 @@
       "sourceUrl": "https://epoch.ai/eci",
       "description": "将多项公开评测拟合到同一能力尺度，适合作为通用能力基准。",
       "status": "live",
-      "updatedAt": "2026-08-26T20:07:56.111Z",
-      "contentHash": "5c8f45293edef6ee",
+      "updatedAt": "2026-08-27T09:56:26.653Z",
+      "contentHash": "1138a9fe57f9f6ed",
       "entries": [
         {
           "modelKey": "claude-fable-5",
@@ -32,7 +32,7 @@
           "organization": "Anthropic",
           "modelVersion": "claude-fable-5_high",
           "releaseDate": "2026-06-09",
-          "rawScore": 162.49,
+          "rawScore": 162.48,
           "scoreLabel": "162.5",
           "sourceRank": 1,
           "rank": 1,
@@ -44,7 +44,7 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5.5-pro_xhigh",
           "releaseDate": "2026-04-23",
-          "rawScore": 161.73,
+          "rawScore": 161.71,
           "scoreLabel": "161.7",
           "sourceRank": 8,
           "rank": 2,
@@ -56,8 +56,8 @@
           "organization": "Anthropic",
           "modelVersion": "claude-opus-5_max",
           "releaseDate": "2026-07-24",
-          "rawScore": 161.54,
-          "scoreLabel": "161.5",
+          "rawScore": 161.59,
+          "scoreLabel": "161.6",
           "sourceRank": 13,
           "rank": 3,
           "normalizedScore": 96.61
@@ -68,7 +68,7 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5.6-sol_medium",
           "releaseDate": "2026-07-09",
-          "rawScore": 161.08,
+          "rawScore": 161.06,
           "scoreLabel": "161.1",
           "sourceRank": 20,
           "rank": 4,
@@ -80,7 +80,7 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5.6-sol_proxhigh",
           "releaseDate": "2026-07-09",
-          "rawScore": 161.08,
+          "rawScore": 161.06,
           "scoreLabel": "161.1",
           "sourceRank": 28,
           "rank": 5,
@@ -92,7 +92,7 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5.6-sol_prounknown",
           "releaseDate": "2026-07-09",
-          "rawScore": 161.08,
+          "rawScore": 161.06,
           "scoreLabel": "161.1",
           "sourceRank": 29,
           "rank": 6,
@@ -104,8 +104,8 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5.6-terra_max",
           "releaseDate": "2026-07-09",
-          "rawScore": 158.78,
-          "scoreLabel": "158.8",
+          "rawScore": 158.86,
+          "scoreLabel": "158.9",
           "sourceRank": 30,
           "rank": 7,
           "normalizedScore": 89.83
@@ -128,7 +128,7 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5.4-pro-2026-03-05_xhigh",
           "releaseDate": "2026-03-05",
-          "rawScore": 158.57,
+          "rawScore": 158.55,
           "scoreLabel": "158.6",
           "sourceRank": 44,
           "rank": 9,
@@ -140,8 +140,8 @@
           "organization": "Anthropic",
           "modelVersion": "claude-opus-4-8_high",
           "releaseDate": "2026-05-28",
-          "rawScore": 157.78,
-          "scoreLabel": "157.8",
+          "rawScore": 157.73,
+          "scoreLabel": "157.7",
           "sourceRank": 48,
           "rank": 10,
           "normalizedScore": 84.75
@@ -152,8 +152,8 @@
           "organization": "Moonshot AI",
           "modelVersion": "kimi-k3_low",
           "releaseDate": "2026-07-16",
-          "rawScore": 157.49,
-          "scoreLabel": "157.5",
+          "rawScore": 157.33,
+          "scoreLabel": "157.3",
           "sourceRank": 56,
           "rank": 11,
           "normalizedScore": 83.05
@@ -164,8 +164,8 @@
           "organization": "Google",
           "modelVersion": "gemini-3.7-flash_high",
           "releaseDate": "2026-08-13",
-          "rawScore": 156.85,
-          "scoreLabel": "156.8",
+          "rawScore": 157.12,
+          "scoreLabel": "157.1",
           "sourceRank": 60,
           "rank": 12,
           "normalizedScore": 81.36
@@ -176,7 +176,7 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5.4-2026-03-05_high",
           "releaseDate": "2026-03-05",
-          "rawScore": 156.5,
+          "rawScore": 156.49,
           "scoreLabel": "156.5",
           "sourceRank": 64,
           "rank": 13,
@@ -188,18 +188,18 @@
           "organization": "Alibaba",
           "modelVersion": "qwen3.8-max_xhigh",
           "releaseDate": "2026-08-02",
-          "rawScore": 156.43,
+          "rawScore": 156.42,
           "scoreLabel": "156.4",
           "sourceRank": 70,
           "rank": 14,
           "normalizedScore": 77.97
         },
         {
-          "modelKey": "gpt-5.6-luna",
-          "model": "GPT-5.6 Luna",
+          "modelKey": "gpt-5.3-codex",
+          "model": "GPT-5.3 Codex",
           "organization": "OpenAI",
-          "modelVersion": "gpt-5.6-luna_max",
-          "releaseDate": "2026-07-09",
+          "modelVersion": "gpt-5.3-codex_high",
+          "releaseDate": "2026-02-05",
           "rawScore": 156.22,
           "scoreLabel": "156.2",
           "sourceRank": 72,
@@ -207,14 +207,14 @@
           "normalizedScore": 76.27
         },
         {
-          "modelKey": "claude-opus-4.7",
-          "model": "Claude Opus 4.7",
-          "organization": "Anthropic",
-          "modelVersion": "claude-opus-4-7_high",
-          "releaseDate": "2026-04-16",
-          "rawScore": 155.98,
-          "scoreLabel": "156",
-          "sourceRank": 79,
+          "modelKey": "gpt-5.6-luna",
+          "model": "GPT-5.6 Luna",
+          "organization": "OpenAI",
+          "modelVersion": "gpt-5.6-luna_max",
+          "releaseDate": "2026-07-09",
+          "rawScore": 156.21,
+          "scoreLabel": "156.2",
+          "sourceRank": 75,
           "rank": 16,
           "normalizedScore": 74.58
         },
@@ -224,11 +224,23 @@
           "organization": "xAI",
           "modelVersion": "grok-4.6_xhigh",
           "releaseDate": "2026-08-12",
-          "rawScore": 155.94,
-          "scoreLabel": "155.9",
-          "sourceRank": 86,
+          "rawScore": 156.15,
+          "scoreLabel": "156.2",
+          "sourceRank": 82,
           "rank": 17,
           "normalizedScore": 72.88
+        },
+        {
+          "modelKey": "claude-opus-4.7",
+          "model": "Claude Opus 4.7",
+          "organization": "Anthropic",
+          "modelVersion": "claude-opus-4-7_high",
+          "releaseDate": "2026-04-16",
+          "rawScore": 155.93,
+          "scoreLabel": "155.9",
+          "sourceRank": 87,
+          "rank": 18,
+          "normalizedScore": 71.19
         },
         {
           "modelKey": "claude-sonnet-5",
@@ -236,23 +248,35 @@
           "organization": "Anthropic",
           "modelVersion": "claude-sonnet-5_max",
           "releaseDate": "2026-06-30",
-          "rawScore": 155.9,
+          "rawScore": 155.87,
           "scoreLabel": "155.9",
-          "sourceRank": 91,
-          "rank": 18,
-          "normalizedScore": 71.19
-        },
-        {
-          "modelKey": "gpt-5.3-codex",
-          "model": "GPT-5.3 Codex",
-          "organization": "OpenAI",
-          "modelVersion": "gpt-5.3-codex_high",
-          "releaseDate": "2026-02-05",
-          "rawScore": 155.61,
-          "scoreLabel": "155.6",
-          "sourceRank": 99,
+          "sourceRank": 94,
           "rank": 19,
           "normalizedScore": 69.49
+        },
+        {
+          "modelKey": "deepseek-v4-pro-0813",
+          "model": "DeepSeek V4 Pro 0813",
+          "organization": "DeepSeek",
+          "modelVersion": "deepseek-v4-pro-0813_max",
+          "releaseDate": "2026-08-13",
+          "rawScore": 155.18,
+          "scoreLabel": "155.2",
+          "sourceRank": 102,
+          "rank": 20,
+          "normalizedScore": 67.8
+        },
+        {
+          "modelKey": "muse-spark-1-2",
+          "model": "Muse Spark 1.2",
+          "organization": "Meta",
+          "modelVersion": "muse-spark-1.2",
+          "releaseDate": "2026-08-05",
+          "rawScore": 155.16,
+          "scoreLabel": "155.2",
+          "sourceRank": 107,
+          "rank": 21,
+          "normalizedScore": 66.1
         },
         {
           "modelKey": "gpt-5.2-pro",
@@ -260,11 +284,11 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5.2-pro-2025-12-11_xhigh",
           "releaseDate": "2025-12-11",
-          "rawScore": 155.09,
+          "rawScore": 155.07,
           "scoreLabel": "155.1",
-          "sourceRank": 102,
-          "rank": 20,
-          "normalizedScore": 67.8
+          "sourceRank": 109,
+          "rank": 22,
+          "normalizedScore": 64.41
         },
         {
           "modelKey": "claude-opus-4.6",
@@ -272,11 +296,11 @@
           "organization": "Anthropic",
           "modelVersion": "claude-opus-4-6_max",
           "releaseDate": "2026-02-05",
-          "rawScore": 155.01,
+          "rawScore": 154.98,
           "scoreLabel": "155",
-          "sourceRank": 107,
-          "rank": 21,
-          "normalizedScore": 66.1
+          "sourceRank": 114,
+          "rank": 23,
+          "normalizedScore": 62.71
         },
         {
           "modelKey": "gemini-3.1-pro",
@@ -284,11 +308,11 @@
           "organization": "Google",
           "modelVersion": "gemini-3.1-pro-preview_high",
           "releaseDate": "2026-02-19",
-          "rawScore": 154.62,
+          "rawScore": 154.61,
           "scoreLabel": "154.6",
-          "sourceRank": 116,
-          "rank": 22,
-          "normalizedScore": 64.41
+          "sourceRank": 123,
+          "rank": 24,
+          "normalizedScore": 61.02
         },
         {
           "modelKey": "gemini-3.5-flash",
@@ -296,11 +320,11 @@
           "organization": "Google",
           "modelVersion": "gemini-3.5-flash_high",
           "releaseDate": "2026-05-19",
-          "rawScore": 154.45,
+          "rawScore": 154.43,
           "scoreLabel": "154.4",
-          "sourceRank": 121,
-          "rank": 23,
-          "normalizedScore": 62.71
+          "sourceRank": 128,
+          "rank": 25,
+          "normalizedScore": 59.32
         },
         {
           "modelKey": "deepseek-v4-flash-0731",
@@ -308,11 +332,11 @@
           "organization": "DeepSeek",
           "modelVersion": "deepseek-v4-flash-0731_max",
           "releaseDate": "2026-07-31",
-          "rawScore": 154.43,
-          "scoreLabel": "154.4",
-          "sourceRank": 126,
-          "rank": 24,
-          "normalizedScore": 61.02
+          "rawScore": 154.35,
+          "scoreLabel": "154.3",
+          "sourceRank": 133,
+          "rank": 26,
+          "normalizedScore": 57.63
         },
         {
           "modelKey": "muse-spark-1-1",
@@ -320,11 +344,11 @@
           "organization": "Meta",
           "modelVersion": "muse-spark-1.1_high",
           "releaseDate": "2026-07-09",
-          "rawScore": 154.37,
-          "scoreLabel": "154.4",
-          "sourceRank": 131,
-          "rank": 25,
-          "normalizedScore": 59.32
+          "rawScore": 154.33,
+          "scoreLabel": "154.3",
+          "sourceRank": 138,
+          "rank": 27,
+          "normalizedScore": 55.93
         },
         {
           "modelKey": "gemini-3.6-flash",
@@ -332,11 +356,11 @@
           "organization": "Google",
           "modelVersion": "gemini-3.6-flash_minimal",
           "releaseDate": "2026-07-21",
-          "rawScore": 154.2,
-          "scoreLabel": "154.2",
-          "sourceRank": 133,
-          "rank": 26,
-          "normalizedScore": 57.63
+          "rawScore": 154.14,
+          "scoreLabel": "154.1",
+          "sourceRank": 140,
+          "rank": 28,
+          "normalizedScore": 54.24
         },
         {
           "modelKey": "grok-4-5",
@@ -344,11 +368,11 @@
           "organization": "xAI",
           "modelVersion": "grok-4.5_high",
           "releaseDate": "2026-07-08",
-          "rawScore": 153.94,
+          "rawScore": 153.9,
           "scoreLabel": "153.9",
-          "sourceRank": 138,
-          "rank": 27,
-          "normalizedScore": 55.93
+          "sourceRank": 145,
+          "rank": 29,
+          "normalizedScore": 52.54
         },
         {
           "modelKey": "qwen3.7",
@@ -356,11 +380,11 @@
           "organization": "Alibaba",
           "modelVersion": "qwen3.7-max",
           "releaseDate": "2026-05-19",
-          "rawScore": 153.58,
+          "rawScore": 153.55,
           "scoreLabel": "153.6",
-          "sourceRank": 142,
-          "rank": 28,
-          "normalizedScore": 54.24
+          "sourceRank": 149,
+          "rank": 30,
+          "normalizedScore": 50.85
         },
         {
           "modelKey": "gpt-5.2",
@@ -370,9 +394,9 @@
           "releaseDate": "2025-12-11",
           "rawScore": 153.31,
           "scoreLabel": "153.3",
-          "sourceRank": 143,
-          "rank": 29,
-          "normalizedScore": 52.54
+          "sourceRank": 150,
+          "rank": 31,
+          "normalizedScore": 49.15
         },
         {
           "modelKey": "gemini-3-pro",
@@ -382,9 +406,9 @@
           "releaseDate": "2025-11-18",
           "rawScore": 153.06,
           "scoreLabel": "153.1",
-          "sourceRank": 149,
-          "rank": 30,
-          "normalizedScore": 50.85
+          "sourceRank": 156,
+          "rank": 32,
+          "normalizedScore": 47.46
         },
         {
           "modelKey": "muse-spark",
@@ -392,11 +416,11 @@
           "organization": "Meta",
           "modelVersion": "muse-spark",
           "releaseDate": "2026-04-08",
-          "rawScore": 152.58,
+          "rawScore": 152.56,
           "scoreLabel": "152.6",
-          "sourceRank": 151,
-          "rank": 31,
-          "normalizedScore": 49.15
+          "sourceRank": 158,
+          "rank": 33,
+          "normalizedScore": 45.76
         },
         {
           "modelKey": "claude-sonnet-4.6",
@@ -404,23 +428,11 @@
           "organization": "Anthropic",
           "modelVersion": "claude-sonnet-4-6_high",
           "releaseDate": "2026-02-17",
-          "rawScore": 152.17,
+          "rawScore": 152.16,
           "scoreLabel": "152.2",
-          "sourceRank": 152,
-          "rank": 32,
-          "normalizedScore": 47.46
-        },
-        {
-          "modelKey": "glm-5.2",
-          "model": "GLM-5.2",
-          "organization": "Z.ai",
-          "modelVersion": "glm-5.2_none",
-          "releaseDate": "2026-06-16",
-          "rawScore": 152.14,
-          "scoreLabel": "152.1",
-          "sourceRank": 160,
-          "rank": 33,
-          "normalizedScore": 45.76
+          "sourceRank": 159,
+          "rank": 34,
+          "normalizedScore": 44.07
         },
         {
           "modelKey": "grok-4-20-0309",
@@ -428,11 +440,11 @@
           "organization": "xAI",
           "modelVersion": "grok-4.20-0309-reasoning",
           "releaseDate": "2026-02-17",
-          "rawScore": 152.07,
+          "rawScore": 152.09,
           "scoreLabel": "152.1",
-          "sourceRank": 164,
-          "rank": 34,
-          "normalizedScore": 44.07
+          "sourceRank": 167,
+          "rank": 35,
+          "normalizedScore": 42.37
         },
         {
           "modelKey": "grok-4-20",
@@ -440,11 +452,23 @@
           "organization": "xAI",
           "modelVersion": "grok-4-20",
           "releaseDate": "2026-02-17",
-          "rawScore": 152.07,
+          "rawScore": 152.09,
           "scoreLabel": "152.1",
-          "sourceRank": 165,
-          "rank": 35,
-          "normalizedScore": 42.37
+          "sourceRank": 168,
+          "rank": 36,
+          "normalizedScore": 40.68
+        },
+        {
+          "modelKey": "glm-5.2",
+          "model": "GLM-5.2",
+          "organization": "Z.ai",
+          "modelVersion": "glm-5.2_none",
+          "releaseDate": "2026-06-16",
+          "rawScore": 152.02,
+          "scoreLabel": "152",
+          "sourceRank": 169,
+          "rank": 37,
+          "normalizedScore": 38.98
         },
         {
           "modelKey": "gemini-3-flash",
@@ -452,11 +476,11 @@
           "organization": "Google",
           "modelVersion": "gemini-3-flash-preview_high",
           "releaseDate": "2025-12-17",
-          "rawScore": 151.72,
+          "rawScore": 151.73,
           "scoreLabel": "151.7",
-          "sourceRank": 166,
-          "rank": 36,
-          "normalizedScore": 40.68
+          "sourceRank": 173,
+          "rank": 38,
+          "normalizedScore": 37.29
         },
         {
           "modelKey": "kimi-k2.6",
@@ -464,11 +488,11 @@
           "organization": "Moonshot AI",
           "modelVersion": "kimi-k2.6",
           "releaseDate": "2026-04-20",
-          "rawScore": 151.04,
+          "rawScore": 151,
           "scoreLabel": "151",
-          "sourceRank": 170,
-          "rank": 37,
-          "normalizedScore": 38.98
+          "sourceRank": 177,
+          "rank": 39,
+          "normalizedScore": 35.59
         },
         {
           "modelKey": "glm-5.1",
@@ -476,11 +500,11 @@
           "organization": "Z.ai",
           "modelVersion": "glm-5.1",
           "releaseDate": "2026-04-07",
-          "rawScore": 150.86,
-          "scoreLabel": "150.9",
-          "sourceRank": 171,
-          "rank": 38,
-          "normalizedScore": 37.29
+          "rawScore": 150.85,
+          "scoreLabel": "150.8",
+          "sourceRank": 178,
+          "rank": 40,
+          "normalizedScore": 33.9
         },
         {
           "modelKey": "kimi-k2.7-code",
@@ -490,9 +514,9 @@
           "releaseDate": "2026-06-12",
           "rawScore": 150.52,
           "scoreLabel": "150.5",
-          "sourceRank": 172,
-          "rank": 39,
-          "normalizedScore": 35.59
+          "sourceRank": 179,
+          "rank": 41,
+          "normalizedScore": 32.2
         },
         {
           "modelKey": "gpt-5-pro",
@@ -500,11 +524,11 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5-pro-2025-10-06_high",
           "releaseDate": "2025-10-07",
-          "rawScore": 150.27,
+          "rawScore": 150.29,
           "scoreLabel": "150.3",
-          "sourceRank": 173,
-          "rank": 40,
-          "normalizedScore": 33.9
+          "sourceRank": 180,
+          "rank": 42,
+          "normalizedScore": 30.51
         },
         {
           "modelKey": "inkling-small",
@@ -514,21 +538,9 @@
           "releaseDate": "2026-07-15",
           "rawScore": 150.17,
           "scoreLabel": "150.2",
-          "sourceRank": 176,
-          "rank": 41,
-          "normalizedScore": 32.2
-        },
-        {
-          "modelKey": "gpt-5.1-codex",
-          "model": "GPT-5.1-Codex",
-          "organization": "OpenAI",
-          "modelVersion": "gpt-5.1-codex-max",
-          "releaseDate": "2025-11-19",
-          "rawScore": 150.16,
-          "scoreLabel": "150.2",
           "sourceRank": 183,
-          "rank": 42,
-          "normalizedScore": 30.51
+          "rank": 43,
+          "normalizedScore": 28.81
         },
         {
           "modelKey": "gpt-5",
@@ -538,9 +550,9 @@
           "releaseDate": "2025-08-07",
           "rawScore": 150,
           "scoreLabel": "150",
-          "sourceRank": 184,
-          "rank": 43,
-          "normalizedScore": 28.81
+          "sourceRank": 190,
+          "rank": 44,
+          "normalizedScore": 27.12
         },
         {
           "modelKey": "gpt-5-chat",
@@ -550,9 +562,9 @@
           "releaseDate": null,
           "rawScore": 150,
           "scoreLabel": "150",
-          "sourceRank": 189,
-          "rank": 44,
-          "normalizedScore": 27.12
+          "sourceRank": 195,
+          "rank": 45,
+          "normalizedScore": 25.42
         },
         {
           "modelKey": "claude-opus-4.5",
@@ -560,11 +572,11 @@
           "organization": "Anthropic",
           "modelVersion": "claude-opus-4-5-20251101",
           "releaseDate": "2025-11-24",
-          "rawScore": 149.93,
-          "scoreLabel": "149.9",
-          "sourceRank": 190,
-          "rank": 45,
-          "normalizedScore": 25.42
+          "rawScore": 149.97,
+          "scoreLabel": "150",
+          "sourceRank": 196,
+          "rank": 46,
+          "normalizedScore": 23.73
         },
         {
           "modelKey": "gpt-5.1",
@@ -572,35 +584,11 @@
           "organization": "OpenAI",
           "modelVersion": "gpt-5.1-2025-11-13_none",
           "releaseDate": "2025-11-13",
-          "rawScore": 149.58,
+          "rawScore": 149.63,
           "scoreLabel": "149.6",
-          "sourceRank": 200,
-          "rank": 46,
-          "normalizedScore": 23.73
-        },
-        {
-          "modelKey": "deepseek-v4-pro",
-          "model": "DeepSeek v4 Pro",
-          "organization": "DeepSeek",
-          "modelVersion": "deepseek-v4-pro_none",
-          "releaseDate": "2026-04-24",
-          "rawScore": 149.49,
-          "scoreLabel": "149.5",
-          "sourceRank": 205,
+          "sourceRank": 206,
           "rank": 47,
           "normalizedScore": 22.03
-        },
-        {
-          "modelKey": "deepseek-v4",
-          "model": "DeepSeek v4 Pro",
-          "organization": "DeepSeek",
-          "modelVersion": "deepseek-v4-pro_max",
-          "releaseDate": "2026-04-24",
-          "rawScore": 149.49,
-          "scoreLabel": "149.5",
-          "sourceRank": 207,
-          "rank": 48,
-          "normalizedScore": 20.34
         },
         {
           "modelKey": "qwen3.6-plus",
@@ -608,9 +596,21 @@
           "organization": "Alibaba",
           "modelVersion": "qwen3.6-plus",
           "releaseDate": "2026-03-31",
-          "rawScore": 149.35,
+          "rawScore": 149.37,
+          "scoreLabel": "149.4",
+          "sourceRank": 211,
+          "rank": 48,
+          "normalizedScore": 20.34
+        },
+        {
+          "modelKey": "gpt-5.4-mini",
+          "model": "GPT-5.4 mini",
+          "organization": "OpenAI",
+          "modelVersion": "gpt-5.4-mini-2026-03-17_xhigh",
+          "releaseDate": "2026-03-17",
+          "rawScore": 149.33,
           "scoreLabel": "149.3",
-          "sourceRank": 209,
+          "sourceRank": 213,
           "rank": 49,
           "normalizedScore": 18.64
         },
@@ -620,23 +620,35 @@
           "organization": "Alibaba",
           "modelVersion": "qwen3.6-max-preview",
           "releaseDate": "2026-04-20",
-          "rawScore": 149.3,
+          "rawScore": 149.33,
           "scoreLabel": "149.3",
-          "sourceRank": 211,
+          "sourceRank": 215,
           "rank": 50,
           "normalizedScore": 16.95
         },
         {
-          "modelKey": "gpt-5.4-mini",
-          "model": "GPT-5.4 mini",
-          "organization": "OpenAI",
-          "modelVersion": "gpt-5.4-mini-2026-03-17_xhigh",
-          "releaseDate": "2026-03-17",
-          "rawScore": 149.29,
-          "scoreLabel": "149.3",
-          "sourceRank": 213,
+          "modelKey": "deepseek-v4-pro",
+          "model": "DeepSeek v4 Pro",
+          "organization": "DeepSeek",
+          "modelVersion": "deepseek-v4-pro_none",
+          "releaseDate": "2026-04-24",
+          "rawScore": 149.24,
+          "scoreLabel": "149.2",
+          "sourceRank": 221,
           "rank": 51,
           "normalizedScore": 15.25
+        },
+        {
+          "modelKey": "deepseek-v4",
+          "model": "DeepSeek v4 Pro",
+          "organization": "DeepSeek",
+          "modelVersion": "deepseek-v4-pro_max",
+          "releaseDate": "2026-04-24",
+          "rawScore": 149.24,
+          "scoreLabel": "149.2",
+          "sourceRank": 223,
+          "rank": 52,
+          "normalizedScore": 13.56
         },
         {
           "modelKey": "grok-4-3",
@@ -646,9 +658,9 @@
           "releaseDate": "2026-04-17",
           "rawScore": 149.16,
           "scoreLabel": "149.2",
-          "sourceRank": 219,
-          "rank": 52,
-          "normalizedScore": 13.56
+          "sourceRank": 225,
+          "rank": 53,
+          "normalizedScore": 11.86
         },
         {
           "modelKey": "inkling",
@@ -656,11 +668,11 @@
           "organization": "Thinking Machines",
           "modelVersion": "Inkling_xhigh",
           "releaseDate": "2026-07-15",
-          "rawScore": 148.77,
-          "scoreLabel": "148.8",
-          "sourceRank": 221,
-          "rank": 53,
-          "normalizedScore": 11.86
+          "rawScore": 148.73,
+          "scoreLabel": "148.7",
+          "sourceRank": 227,
+          "rank": 54,
+          "normalizedScore": 10.17
         },
         {
           "modelKey": "qwen3.7-plus",
@@ -668,11 +680,11 @@
           "organization": "Alibaba",
           "modelVersion": "qwen3.7-plus",
           "releaseDate": "2026-06-02",
-          "rawScore": 148.26,
+          "rawScore": 148.3,
           "scoreLabel": "148.3",
-          "sourceRank": 224,
-          "rank": 54,
-          "normalizedScore": 10.17
+          "sourceRank": 230,
+          "rank": 55,
+          "normalizedScore": 8.47
         },
         {
           "modelKey": "kimi-k2.5",
@@ -680,11 +692,11 @@
           "organization": "Moonshot AI",
           "modelVersion": "kimi-k2.5",
           "releaseDate": "2026-01-27",
-          "rawScore": 148.13,
-          "scoreLabel": "148.1",
-          "sourceRank": 226,
-          "rank": 55,
-          "normalizedScore": 8.47
+          "rawScore": 148.22,
+          "scoreLabel": "148.2",
+          "sourceRank": 232,
+          "rank": 56,
+          "normalizedScore": 6.78
         },
         {
           "modelKey": "kimi-k2p5",
@@ -692,11 +704,11 @@
           "organization": "Moonshot AI",
           "modelVersion": "fireworks/kimi-k2p5",
           "releaseDate": "2026-01-27",
-          "rawScore": 148.13,
-          "scoreLabel": "148.1",
-          "sourceRank": 227,
-          "rank": 56,
-          "normalizedScore": 6.78
+          "rawScore": 148.22,
+          "scoreLabel": "148.2",
+          "sourceRank": 233,
+          "rank": 57,
+          "normalizedScore": 5.08
         },
         {
           "modelKey": "minimax-m3",
@@ -704,11 +716,11 @@
           "organization": "MiniMax",
           "modelVersion": "MiniMax-M3",
           "releaseDate": "2026-06-01",
-          "rawScore": 147.54,
-          "scoreLabel": "147.5",
-          "sourceRank": 229,
-          "rank": 57,
-          "normalizedScore": 5.08
+          "rawScore": 147.76,
+          "scoreLabel": "147.8",
+          "sourceRank": 235,
+          "rank": 58,
+          "normalizedScore": 3.39
         },
         {
           "modelKey": "o3-pro",
@@ -716,11 +728,11 @@
           "organization": "OpenAI",
           "modelVersion": "o3-pro-2025-06-10_high",
           "releaseDate": "2025-06-10",
-          "rawScore": 147.44,
-          "scoreLabel": "147.4",
-          "sourceRank": 230,
-          "rank": 58,
-          "normalizedScore": 3.39
+          "rawScore": 147.51,
+          "scoreLabel": "147.5",
+          "sourceRank": 236,
+          "rank": 59,
+          "normalizedScore": 1.69
         },
         {
           "modelKey": "qwen3.5-plus",
@@ -728,21 +740,9 @@
           "organization": "Alibaba",
           "modelVersion": "qwen3.5-plus",
           "releaseDate": "2026-02-16",
-          "rawScore": 147.13,
-          "scoreLabel": "147.1",
-          "sourceRank": 233,
-          "rank": 59,
-          "normalizedScore": 1.69
-        },
-        {
-          "modelKey": "o3",
-          "model": "O3",
-          "organization": "OpenAI",
-          "modelVersion": "o3-2025-04-16_medium",
-          "releaseDate": "2025-04-16",
-          "rawScore": 147,
-          "scoreLabel": "147",
-          "sourceRank": 235,
+          "rawScore": 147.18,
+          "scoreLabel": "147.2",
+          "sourceRank": 239,
           "rank": 60,
           "normalizedScore": 0
         }
@@ -3775,7 +3775,7 @@
         "name": "Claude Opus 4.7",
         "organization": "Anthropic",
         "releaseDate": "2026-04-16",
-        "score": 82.9,
+        "score": 82.1,
         "coverage": 83.3,
         "sourceCount": 5,
         "evidenceSources": [
@@ -3806,23 +3806,6 @@
         "pricing": null
       },
       {
-        "slug": "claude-opus-4.6",
-        "name": "Claude Opus 4.6",
-        "organization": "Anthropic",
-        "releaseDate": "2026-02-05",
-        "score": 78.3,
-        "coverage": 83.3,
-        "sourceCount": 5,
-        "evidenceSources": [
-          "arena-text",
-          "terminal-bench",
-          "arena-webdev",
-          "apex-agents",
-          "epoch-eci"
-        ],
-        "pricing": null
-      },
-      {
         "slug": "claude-opus-4.8",
         "name": "Claude Opus 4.8",
         "organization": "Anthropic",
@@ -3836,6 +3819,38 @@
           "deepswe",
           "arena-webdev",
           "arena-text"
+        ],
+        "pricing": null
+      },
+      {
+        "slug": "claude-opus-4.6",
+        "name": "Claude Opus 4.6",
+        "organization": "Anthropic",
+        "releaseDate": "2026-02-05",
+        "score": 77.5,
+        "coverage": 83.3,
+        "sourceCount": 5,
+        "evidenceSources": [
+          "arena-text",
+          "terminal-bench",
+          "arena-webdev",
+          "apex-agents",
+          "epoch-eci"
+        ],
+        "pricing": null
+      },
+      {
+        "slug": "gpt-5.3-codex",
+        "name": "GPT-5.3 Codex",
+        "organization": "OpenAI",
+        "releaseDate": "2026-02-05",
+        "score": 77.5,
+        "coverage": 50,
+        "sourceCount": 3,
+        "evidenceSources": [
+          "terminal-bench",
+          "epoch-eci",
+          "apex-agents"
         ],
         "pricing": null
       },
@@ -3889,16 +3904,15 @@
         "pricing": null
       },
       {
-        "slug": "gpt-5.3-codex",
-        "name": "GPT-5.3 Codex",
-        "organization": "OpenAI",
-        "releaseDate": "2026-02-05",
-        "score": 75.3,
-        "coverage": 50,
-        "sourceCount": 3,
+        "slug": "deepseek-v4-pro-0813",
+        "name": "DeepSeek V4 Pro 0813",
+        "organization": "DeepSeek",
+        "releaseDate": "2026-08-13",
+        "score": 75.4,
+        "coverage": 33.3,
+        "sourceCount": 2,
         "evidenceSources": [
-          "terminal-bench",
-          "apex-agents",
+          "arena-webdev",
           "epoch-eci"
         ],
         "pricing": null
@@ -3938,7 +3952,7 @@
         "name": "DeepSeek V4 Flash 0731",
         "organization": "DeepSeek",
         "releaseDate": "2026-07-31",
-        "score": 71.2,
+        "score": 69.5,
         "coverage": 33.3,
         "sourceCount": 2,
         "evidenceSources": [
@@ -3970,7 +3984,7 @@
         "name": "Muse Spark 1.1",
         "organization": "Meta",
         "releaseDate": "2026-07-09",
-        "score": 66.8,
+        "score": 66,
         "coverage": 83.3,
         "sourceCount": 5,
         "evidenceSources": [
@@ -3987,7 +4001,7 @@
         "name": "GPT-5.2",
         "organization": "OpenAI",
         "releaseDate": "2025-12-11",
-        "score": 65.3,
+        "score": 64.5,
         "coverage": 66.7,
         "sourceCount": 4,
         "evidenceSources": [
@@ -3999,11 +4013,27 @@
         "pricing": null
       },
       {
+        "slug": "muse-spark-1-2",
+        "name": "Muse Spark 1.2",
+        "organization": "Meta",
+        "releaseDate": "2026-08-05",
+        "score": 64.3,
+        "coverage": 66.7,
+        "sourceCount": 4,
+        "evidenceSources": [
+          "arena-text",
+          "deepswe",
+          "arena-webdev",
+          "epoch-eci"
+        ],
+        "pricing": null
+      },
+      {
         "slug": "gemini-3-pro",
         "name": "Gemini 3 Pro Preview",
         "organization": "Google",
         "releaseDate": "2025-11-18",
-        "score": 64.9,
+        "score": 64.1,
         "coverage": 83.3,
         "sourceCount": 5,
         "evidenceSources": [
@@ -4016,17 +4046,16 @@
         "pricing": null
       },
       {
-        "slug": "muse-spark-1-2",
-        "name": "Muse Spark 1 2",
-        "organization": "Meta",
-        "releaseDate": "2026-08-05",
-        "score": 63.4,
-        "coverage": 50,
-        "sourceCount": 3,
+        "slug": "gpt-5.1-codex",
+        "name": "GPT-5.1-Codex",
+        "organization": "OpenAI",
+        "releaseDate": "2025-11-19",
+        "score": 63,
+        "coverage": 33.3,
+        "sourceCount": 2,
         "evidenceSources": [
-          "arena-text",
-          "deepswe",
-          "arena-webdev"
+          "terminal-bench",
+          "apex-agents"
         ],
         "pricing": null
       },
@@ -4035,7 +4064,7 @@
         "name": "GPT-5.6 Luna",
         "organization": "OpenAI",
         "releaseDate": "2026-07-09",
-        "score": 61.4,
+        "score": 60.9,
         "coverage": 66.7,
         "sourceCount": 4,
         "evidenceSources": [
@@ -4051,7 +4080,7 @@
         "name": "Muse Spark",
         "organization": "Meta",
         "releaseDate": "2026-04-08",
-        "score": 61,
+        "score": 59.3,
         "coverage": 50,
         "sourceCount": 3,
         "evidenceSources": [
@@ -4066,7 +4095,7 @@
         "name": "Claude Sonnet 5",
         "organization": "Anthropic",
         "releaseDate": "2026-06-30",
-        "score": 59.6,
+        "score": 59.2,
         "coverage": 83.3,
         "sourceCount": 5,
         "evidenceSources": [
@@ -4079,11 +4108,29 @@
         "pricing": null
       },
       {
+        "slug": "gemini-3.1-pro",
+        "name": "Gemini 3.1 Pro Preview",
+        "organization": "Google",
+        "releaseDate": "2026-02-19",
+        "score": 57.8,
+        "coverage": 100,
+        "sourceCount": 6,
+        "evidenceSources": [
+          "terminal-bench",
+          "arena-text",
+          "apex-agents",
+          "deepswe",
+          "epoch-eci",
+          "arena-webdev"
+        ],
+        "pricing": null
+      },
+      {
         "slug": "grok-4-5",
         "name": "Grok 4.5",
         "organization": "xAI",
         "releaseDate": "2026-07-08",
-        "score": 58.7,
+        "score": 57.8,
         "coverage": 83.3,
         "sourceCount": 5,
         "evidenceSources": [
@@ -4100,7 +4147,7 @@
         "name": "Qwen3.7 Max",
         "organization": "Alibaba",
         "releaseDate": "2026-05-19",
-        "score": 58.5,
+        "score": 56.8,
         "coverage": 50,
         "sourceCount": 3,
         "evidenceSources": [
@@ -4111,29 +4158,11 @@
         "pricing": null
       },
       {
-        "slug": "gemini-3.1-pro",
-        "name": "Gemini 3.1 Pro Preview",
-        "organization": "Google",
-        "releaseDate": "2026-02-19",
-        "score": 58.4,
-        "coverage": 100,
-        "sourceCount": 6,
-        "evidenceSources": [
-          "terminal-bench",
-          "arena-text",
-          "apex-agents",
-          "epoch-eci",
-          "deepswe",
-          "arena-webdev"
-        ],
-        "pricing": null
-      },
-      {
         "slug": "glm-5.2",
         "name": "GLM-5.2",
         "organization": "Z.ai",
         "releaseDate": "2026-06-16",
-        "score": 54.1,
+        "score": 52.4,
         "coverage": 83.3,
         "sourceCount": 5,
         "evidenceSources": [
@@ -4141,40 +4170,6 @@
           "apex-agents",
           "deepswe",
           "arena-text",
-          "epoch-eci"
-        ],
-        "pricing": null
-      },
-      {
-        "slug": "gemini-3-flash",
-        "name": "Gemini 3 Flash Preview",
-        "organization": "Google",
-        "releaseDate": "2025-12-17",
-        "score": 52.3,
-        "coverage": 83.3,
-        "sourceCount": 5,
-        "evidenceSources": [
-          "terminal-bench",
-          "apex-agents",
-          "arena-text",
-          "epoch-eci",
-          "arena-webdev"
-        ],
-        "pricing": null
-      },
-      {
-        "slug": "claude-opus-4.5",
-        "name": "Claude Opus 4.5",
-        "organization": "Anthropic",
-        "releaseDate": "2025-11-24",
-        "score": 52.3,
-        "coverage": 83.3,
-        "sourceCount": 5,
-        "evidenceSources": [
-          "terminal-bench",
-          "arena-text",
-          "apex-agents",
-          "arena-webdev",
           "epoch-eci"
         ],
         "pricing": null
@@ -4225,21 +4220,6 @@
           "apex-agents",
           "epoch-eci",
           "arena-text"
-        ],
-        "pricing": null
-      },
-      {
-        "slug": "muse-spark-1-2",
-        "name": "Muse Spark 1 2",
-        "organization": "Meta",
-        "releaseDate": "2026-08-05",
-        "score": 94.9,
-        "coverage": 50,
-        "sourceCount": 3,
-        "evidenceSources": [
-          "arena-text",
-          "deepswe",
-          "arena-webdev"
         ],
         "pricing": null
       },
@@ -4317,23 +4297,6 @@
         "pricing": null
       },
       {
-        "slug": "claude-opus-4.7",
-        "name": "Claude Opus 4.7",
-        "organization": "Anthropic",
-        "releaseDate": "2026-04-16",
-        "score": 85.6,
-        "coverage": 83.3,
-        "sourceCount": 5,
-        "evidenceSources": [
-          "arena-text",
-          "terminal-bench",
-          "arena-webdev",
-          "apex-agents",
-          "epoch-eci"
-        ],
-        "pricing": null
-      },
-      {
         "slug": "gemini-3.7-flash",
         "name": "Gemini 3.7 Flash",
         "organization": "Google",
@@ -4365,6 +4328,23 @@
         "pricing": null
       },
       {
+        "slug": "claude-opus-4.7",
+        "name": "Claude Opus 4.7",
+        "organization": "Anthropic",
+        "releaseDate": "2026-04-16",
+        "score": 83.9,
+        "coverage": 83.3,
+        "sourceCount": 5,
+        "evidenceSources": [
+          "arena-text",
+          "terminal-bench",
+          "arena-webdev",
+          "apex-agents",
+          "epoch-eci"
+        ],
+        "pricing": null
+      },
+      {
         "slug": "gpt-5.5",
         "name": "GPT-5.5",
         "organization": "OpenAI",
@@ -4379,23 +4359,6 @@
           "deepswe",
           "arena-text",
           "arena-webdev"
-        ],
-        "pricing": null
-      },
-      {
-        "slug": "claude-opus-4.6",
-        "name": "Claude Opus 4.6",
-        "organization": "Anthropic",
-        "releaseDate": "2026-02-05",
-        "score": 82.2,
-        "coverage": 83.3,
-        "sourceCount": 5,
-        "evidenceSources": [
-          "arena-text",
-          "terminal-bench",
-          "arena-webdev",
-          "apex-agents",
-          "epoch-eci"
         ],
         "pricing": null
       },
@@ -4417,6 +4380,39 @@
         "pricing": null
       },
       {
+        "slug": "claude-opus-4.6",
+        "name": "Claude Opus 4.6",
+        "organization": "Anthropic",
+        "releaseDate": "2026-02-05",
+        "score": 80.5,
+        "coverage": 83.3,
+        "sourceCount": 5,
+        "evidenceSources": [
+          "arena-text",
+          "terminal-bench",
+          "arena-webdev",
+          "apex-agents",
+          "epoch-eci"
+        ],
+        "pricing": null
+      },
+      {
+        "slug": "muse-spark-1-2",
+        "name": "Muse Spark 1.2",
+        "organization": "Meta",
+        "releaseDate": "2026-08-05",
+        "score": 80.5,
+        "coverage": 66.7,
+        "sourceCount": 4,
+        "evidenceSources": [
+          "arena-text",
+          "deepswe",
+          "arena-webdev",
+          "epoch-eci"
+        ],
+        "pricing": null
+      },
+      {
         "slug": "qwen3.8",
         "name": "Qwen3.8 Max",
         "organization": "Alibaba",
@@ -4433,19 +4429,17 @@
         "pricing": null
       },
       {
-        "slug": "muse-spark-1-1",
-        "name": "Muse Spark 1.1",
-        "organization": "Meta",
-        "releaseDate": "2026-07-09",
-        "score": 75.4,
-        "coverage": 83.3,
-        "sourceCount": 5,
+        "slug": "gpt-5.3-codex",
+        "name": "GPT-5.3 Codex",
+        "organization": "OpenAI",
+        "releaseDate": "2026-02-05",
+        "score": 76.3,
+        "coverage": 50,
+        "sourceCount": 3,
         "evidenceSources": [
-          "apex-agents",
-          "arena-text",
-          "deepswe",
-          "arena-webdev",
-          "epoch-eci"
+          "terminal-bench",
+          "epoch-eci",
+          "apex-agents"
         ],
         "pricing": null
       },
@@ -4468,62 +4462,50 @@
         "pricing": null
       },
       {
-        "slug": "gemini-3.1-pro",
-        "name": "Gemini 3.1 Pro Preview",
-        "organization": "Google",
-        "releaseDate": "2026-02-19",
-        "score": 73.7,
-        "coverage": 100,
-        "sourceCount": 6,
-        "evidenceSources": [
-          "terminal-bench",
-          "arena-text",
-          "apex-agents",
-          "epoch-eci",
-          "deepswe",
-          "arena-webdev"
-        ],
-        "pricing": null
-      },
-      {
-        "slug": "gpt-5.3-codex",
-        "name": "GPT-5.3 Codex",
-        "organization": "OpenAI",
-        "releaseDate": "2026-02-05",
-        "score": 69.5,
-        "coverage": 50,
-        "sourceCount": 3,
-        "evidenceSources": [
-          "terminal-bench",
-          "apex-agents",
-          "epoch-eci"
-        ],
-        "pricing": null
-      },
-      {
-        "slug": "muse-spark",
-        "name": "Muse Spark",
+        "slug": "muse-spark-1-1",
+        "name": "Muse Spark 1.1",
         "organization": "Meta",
-        "releaseDate": "2026-04-08",
-        "score": 67.8,
-        "coverage": 50,
-        "sourceCount": 3,
+        "releaseDate": "2026-07-09",
+        "score": 73.7,
+        "coverage": 83.3,
+        "sourceCount": 5,
         "evidenceSources": [
+          "apex-agents",
           "arena-text",
+          "deepswe",
           "arena-webdev",
           "epoch-eci"
         ],
         "pricing": null
       },
       {
-        "slug": "gpt-5.2-pro",
-        "name": "GPT-5.2 Pro",
-        "organization": "OpenAI",
-        "releaseDate": "2025-12-11",
-        "score": 67.8,
-        "coverage": 16.7,
-        "sourceCount": 1,
+        "slug": "gemini-3.1-pro",
+        "name": "Gemini 3.1 Pro Preview",
+        "organization": "Google",
+        "releaseDate": "2026-02-19",
+        "score": 72,
+        "coverage": 100,
+        "sourceCount": 6,
         "evidenceSources": [
+          "terminal-bench",
+          "arena-text",
+          "apex-agents",
+          "deepswe",
+          "epoch-eci",
+          "arena-webdev"
+        ],
+        "pricing": null
+      },
+      {
+        "slug": "deepseek-v4-pro-0813",
+        "name": "DeepSeek V4 Pro 0813",
+        "organization": "DeepSeek",
+        "releaseDate": "2026-08-13",
+        "score": 67.8,
+        "coverage": 33.3,
+        "sourceCount": 2,
+        "evidenceSources": [
+          "arena-webdev",
           "epoch-eci"
         ],
         "pricing": null
@@ -4542,35 +4524,17 @@
         "pricing": null
       },
       {
-        "slug": "gemini-3.5-flash",
-        "name": "Gemini 3.5 Flash",
-        "organization": "Google",
-        "releaseDate": "2026-05-19",
-        "score": 67,
-        "coverage": 66.7,
-        "sourceCount": 4,
-        "evidenceSources": [
-          "arena-text",
-          "deepswe",
-          "epoch-eci",
-          "arena-webdev"
-        ],
-        "pricing": null
-      },
-      {
-        "slug": "gemini-3-pro",
-        "name": "Gemini 3 Pro Preview",
-        "organization": "Google",
-        "releaseDate": "2025-11-18",
+        "slug": "muse-spark",
+        "name": "Muse Spark",
+        "organization": "Meta",
+        "releaseDate": "2026-04-08",
         "score": 66.1,
-        "coverage": 83.3,
-        "sourceCount": 5,
+        "coverage": 50,
+        "sourceCount": 3,
         "evidenceSources": [
-          "terminal-bench",
           "arena-text",
-          "apex-agents",
-          "epoch-eci",
-          "arena-webdev"
+          "arena-webdev",
+          "epoch-eci"
         ],
         "pricing": null
       },
@@ -4604,11 +4568,57 @@
         "pricing": null
       },
       {
+        "slug": "gemini-3.5-flash",
+        "name": "Gemini 3.5 Flash",
+        "organization": "Google",
+        "releaseDate": "2026-05-19",
+        "score": 65.3,
+        "coverage": 66.7,
+        "sourceCount": 4,
+        "evidenceSources": [
+          "arena-text",
+          "deepswe",
+          "epoch-eci",
+          "arena-webdev"
+        ],
+        "pricing": null
+      },
+      {
+        "slug": "gemini-3-pro",
+        "name": "Gemini 3 Pro Preview",
+        "organization": "Google",
+        "releaseDate": "2025-11-18",
+        "score": 64.4,
+        "coverage": 83.3,
+        "sourceCount": 5,
+        "evidenceSources": [
+          "terminal-bench",
+          "arena-text",
+          "apex-agents",
+          "epoch-eci",
+          "arena-webdev"
+        ],
+        "pricing": null
+      },
+      {
+        "slug": "gpt-5.2-pro",
+        "name": "GPT-5.2 Pro",
+        "organization": "OpenAI",
+        "releaseDate": "2025-12-11",
+        "score": 64.4,
+        "coverage": 16.7,
+        "sourceCount": 1,
+        "evidenceSources": [
+          "epoch-eci"
+        ],
+        "pricing": null
+      },
+      {
         "slug": "gemini-3.6-flash",
         "name": "Gemini 3.6 Flash",
         "organization": "Google",
         "releaseDate": "2026-07-21",
-        "score": 65.3,
+        "score": 63.6,
         "coverage": 66.7,
         "sourceCount": 4,
         "evidenceSources": [
@@ -4629,20 +4639,6 @@
         "sourceCount": 1,
         "evidenceSources": [
           "arena-text"
-        ],
-        "pricing": null
-      },
-      {
-        "slug": "deepseek-v4-flash-0731",
-        "name": "DeepSeek V4 Flash 0731",
-        "organization": "DeepSeek",
-        "releaseDate": "2026-07-31",
-        "score": 61,
-        "coverage": 33.3,
-        "sourceCount": 2,
-        "evidenceSources": [
-          "arena-webdev",
-          "epoch-eci"
         ],
         "pricing": null
       }
@@ -4767,10 +4763,11 @@
         "organization": "DeepSeek",
         "releaseDate": "2026-08-13",
         "score": 83,
-        "coverage": 16.7,
-        "sourceCount": 1,
+        "coverage": 33.3,
+        "sourceCount": 2,
         "evidenceSources": [
-          "arena-webdev"
+          "arena-webdev",
+          "epoch-eci"
         ],
         "pricing": null
       },
@@ -4968,16 +4965,17 @@
       },
       {
         "slug": "muse-spark-1-2",
-        "name": "Muse Spark 1 2",
+        "name": "Muse Spark 1.2",
         "organization": "Meta",
         "releaseDate": "2026-08-05",
         "score": 56.6,
-        "coverage": 50,
-        "sourceCount": 3,
+        "coverage": 66.7,
+        "sourceCount": 4,
         "evidenceSources": [
           "arena-text",
           "deepswe",
-          "arena-webdev"
+          "arena-webdev",
+          "epoch-eci"
         ],
         "pricing": null
       },
@@ -5297,8 +5295,8 @@
           "terminal-bench",
           "arena-text",
           "apex-agents",
-          "epoch-eci",
           "deepswe",
+          "epoch-eci",
           "arena-webdev"
         ],
         "pricing": null
@@ -5380,8 +5378,8 @@
         "sourceCount": 3,
         "evidenceSources": [
           "terminal-bench",
-          "apex-agents",
-          "epoch-eci"
+          "epoch-eci",
+          "apex-agents"
         ],
         "pricing": null
       },
@@ -5518,12 +5516,11 @@
         "organization": "OpenAI",
         "releaseDate": "2025-11-19",
         "score": 63,
-        "coverage": 50,
-        "sourceCount": 3,
+        "coverage": 33.3,
+        "sourceCount": 2,
         "evidenceSources": [
           "terminal-bench",
-          "apex-agents",
-          "epoch-eci"
+          "apex-agents"
         ],
         "pricing": null
       },
@@ -5651,11 +5648,11 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 2,
           "sourceRank": 8,
           "sourceCount": 60,
-          "rawScore": 161.73,
+          "rawScore": 161.71,
           "scoreLabel": "161.7",
           "normalizedScore": 98.31,
           "modelVersion": "gpt-5.5-pro_xhigh",
@@ -5760,12 +5757,12 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 3,
           "sourceRank": 13,
           "sourceCount": 60,
-          "rawScore": 161.54,
-          "scoreLabel": "161.5",
+          "rawScore": 161.59,
+          "scoreLabel": "161.6",
           "normalizedScore": 96.61,
           "modelVersion": "claude-opus-5_max",
           "model": "Claude Opus 5",
@@ -5828,11 +5825,11 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 1,
           "sourceRank": 1,
           "sourceCount": 60,
-          "rawScore": 162.49,
+          "rawScore": 162.48,
           "scoreLabel": "162.5",
           "normalizedScore": 100,
           "modelVersion": "claude-fable-5_high",
@@ -5962,11 +5959,11 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 5,
           "sourceRank": 28,
           "sourceCount": 60,
-          "rawScore": 161.08,
+          "rawScore": 161.06,
           "scoreLabel": "161.1",
           "normalizedScore": 93.22,
           "modelVersion": "gpt-5.6-sol_proxhigh",
@@ -5976,7 +5973,7 @@
         }
       ],
       "ranks": {
-        "general": 5
+        "general": 4
       }
     },
     {
@@ -6027,11 +6024,11 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 4,
           "sourceRank": 20,
           "sourceCount": 60,
-          "rawScore": 161.08,
+          "rawScore": 161.06,
           "scoreLabel": "161.1",
           "normalizedScore": 94.92,
           "modelVersion": "gpt-5.6-sol_medium",
@@ -6108,7 +6105,7 @@
       ],
       "ranks": {
         "overall": 3,
-        "general": 7,
+        "general": 6,
         "code": 2,
         "agent": 8
       }
@@ -6139,11 +6136,11 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 6,
           "sourceRank": 29,
           "sourceCount": 60,
-          "rawScore": 161.08,
+          "rawScore": 161.06,
           "scoreLabel": "161.1",
           "normalizedScore": 91.53,
           "modelVersion": "gpt-5.6-sol_prounknown",
@@ -6153,7 +6150,7 @@
         }
       ],
       "ranks": {
-        "general": 6
+        "general": 5
       }
     },
     {
@@ -6225,11 +6222,11 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 9,
           "sourceRank": 44,
           "sourceCount": 60,
-          "rawScore": 158.57,
+          "rawScore": 158.55,
           "scoreLabel": "158.6",
           "normalizedScore": 86.44,
           "modelVersion": "gpt-5.4-pro-2026-03-05_xhigh",
@@ -6239,7 +6236,7 @@
         }
       ],
       "ranks": {
-        "general": 8
+        "general": 7
       }
     },
     {
@@ -6356,12 +6353,12 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 11,
           "sourceRank": 56,
           "sourceCount": 60,
-          "rawScore": 157.49,
-          "scoreLabel": "157.5",
+          "rawScore": 157.33,
+          "scoreLabel": "157.3",
           "normalizedScore": 83.05,
           "modelVersion": "kimi-k3_low",
           "model": "Kimi K3",
@@ -6371,7 +6368,7 @@
       ],
       "ranks": {
         "overall": 4,
-        "general": 9,
+        "general": 8,
         "code": 5,
         "agent": 9
       }
@@ -6461,51 +6458,8 @@
       ],
       "ranks": {
         "overall": 5,
-        "general": 12,
+        "general": 10,
         "code": 6
-      }
-    },
-    {
-      "slug": "deepseek-v4-pro-0813",
-      "name": "DeepSeek V4 Pro 0813",
-      "organization": "DeepSeek",
-      "releaseDate": "2026-08-13",
-      "score": 83,
-      "coverage": 16.7,
-      "sourceCount": 1,
-      "operatorCount": 1,
-      "categoryScores": {
-        "general": null,
-        "code": 83,
-        "agent": null
-      },
-      "pricing": null,
-      "evidence": [
-        {
-          "sourceId": "arena-webdev",
-          "sourceShort": "WEB",
-          "sourceLabel": "Arena WebDev",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 11,
-          "sourceRank": 12,
-          "sourceCount": 60,
-          "rawScore": 1581.64,
-          "scoreLabel": "1581.6",
-          "normalizedScore": 83.05,
-          "modelVersion": "deepseek-v4-pro-0813_high",
-          "model": "DeepSeek V4 Pro 0813",
-          "organization": "DeepSeek",
-          "releaseDate": "2026-08-13"
-        }
-      ],
-      "ranks": {
-        "code": 8
       }
     },
     {
@@ -6513,12 +6467,12 @@
       "name": "Claude Opus 4.7",
       "organization": "Anthropic",
       "releaseDate": "2026-04-16",
-      "score": 82.9,
+      "score": 82.1,
       "coverage": 83.3,
       "sourceCount": 5,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 85.6,
+        "general": 83.9,
         "code": 79.7,
         "agent": 84.5
       },
@@ -6622,13 +6576,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 16,
-          "sourceRank": 79,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 18,
+          "sourceRank": 87,
           "sourceCount": 60,
-          "rawScore": 155.98,
-          "scoreLabel": "156",
-          "normalizedScore": 74.58,
+          "rawScore": 155.93,
+          "scoreLabel": "155.9",
+          "normalizedScore": 71.19,
           "modelVersion": "claude-opus-4-7_high",
           "model": "Claude Opus 4.7",
           "organization": "Anthropic",
@@ -6637,7 +6591,7 @@
       ],
       "ranks": {
         "overall": 6,
-        "general": 10,
+        "general": 11,
         "code": 10,
         "agent": 11
       }
@@ -6690,7 +6644,7 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 8,
           "sourceRank": 37,
           "sourceCount": 60,
@@ -6793,9 +6747,232 @@
       ],
       "ranks": {
         "overall": 7,
-        "general": 13,
+        "general": 12,
         "code": 19,
         "agent": 5
+      }
+    },
+    {
+      "slug": "claude-opus-4.8",
+      "name": "Claude Opus 4.8",
+      "organization": "Anthropic",
+      "releaseDate": "2026-05-28",
+      "score": 78.1,
+      "coverage": 83.3,
+      "sourceCount": 5,
+      "operatorCount": 4,
+      "categoryScores": {
+        "general": 80.5,
+        "code": 66.3,
+        "agent": 96
+      },
+      "pricing": null,
+      "evidence": [
+        {
+          "sourceId": "apex-agents",
+          "sourceShort": "APEX",
+          "sourceLabel": "APEX-Agents",
+          "operatorId": "apex-agents",
+          "operator": "APEX-Agents",
+          "category": "agent",
+          "categoryLabel": "Agent",
+          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+          "status": "live",
+          "updatedAt": "2026-08-19T01:55:55.225Z",
+          "rank": 3,
+          "sourceRank": 3,
+          "sourceCount": 51,
+          "rawScore": 0.425,
+          "scoreLabel": "42.50%",
+          "normalizedScore": 96,
+          "modelVersion": "claude-opus-4-8_max",
+          "model": "Opus 4.8",
+          "organization": "Anthropic",
+          "releaseDate": "2026-05-28"
+        },
+        {
+          "sourceId": "epoch-eci",
+          "sourceShort": "ECI",
+          "sourceLabel": "Epoch Capabilities Index",
+          "operatorId": "epoch-ai",
+          "operator": "Epoch AI",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://epoch.ai/eci",
+          "status": "live",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 10,
+          "sourceRank": 48,
+          "sourceCount": 60,
+          "rawScore": 157.73,
+          "scoreLabel": "157.7",
+          "normalizedScore": 84.75,
+          "modelVersion": "claude-opus-4-8_high",
+          "model": "Claude Opus 4.8",
+          "organization": "Anthropic",
+          "releaseDate": "2026-05-28"
+        },
+        {
+          "sourceId": "deepswe",
+          "sourceShort": "SWE",
+          "sourceLabel": "DeepSWE v1.1",
+          "operatorId": "datacurve",
+          "operator": "DataCurve",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://deepswe.datacurve.ai/",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 11,
+          "sourceRank": 26,
+          "sourceCount": 23,
+          "rawScore": 0.5897435897435898,
+          "scoreLabel": "58.97%",
+          "normalizedScore": 54.55,
+          "modelVersion": "claude-opus-4-8_max",
+          "model": "Claude Opus 4.8",
+          "organization": "Anthropic",
+          "releaseDate": "2026-05-28"
+        },
+        {
+          "sourceId": "arena-webdev",
+          "sourceShort": "WEB",
+          "sourceLabel": "Arena WebDev",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 14,
+          "sourceRank": 15,
+          "sourceCount": 60,
+          "rawScore": 1563.49,
+          "scoreLabel": "1563.5",
+          "normalizedScore": 77.97,
+          "modelVersion": "claude-opus-4-8_high",
+          "model": "Claude Opus 4.8",
+          "organization": "Anthropic",
+          "releaseDate": "2026-05-28"
+        },
+        {
+          "sourceId": "arena-text",
+          "sourceShort": "ARENA",
+          "sourceLabel": "Arena Text",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://arena.ai/leaderboard/text",
+          "status": "live",
+          "updatedAt": "2026-08-22T01:53:49.105Z",
+          "rank": 15,
+          "sourceRank": 18,
+          "sourceCount": 60,
+          "rawScore": 1481.6827573124879,
+          "scoreLabel": "1481.7",
+          "normalizedScore": 76.27,
+          "modelVersion": "claude-opus-4-8-high",
+          "model": "Claude Opus 4.8",
+          "organization": "Anthropic",
+          "releaseDate": null
+        }
+      ],
+      "ranks": {
+        "overall": 8,
+        "general": 13,
+        "code": 15,
+        "agent": 3
+      }
+    },
+    {
+      "slug": "gpt-5.3-codex",
+      "name": "GPT-5.3 Codex",
+      "organization": "OpenAI",
+      "releaseDate": "2026-02-05",
+      "score": 77.5,
+      "coverage": 50,
+      "sourceCount": 3,
+      "operatorCount": 3,
+      "categoryScores": {
+        "general": 76.3,
+        "code": null,
+        "agent": 78.2
+      },
+      "pricing": null,
+      "evidence": [
+        {
+          "sourceId": "terminal-bench",
+          "sourceShort": "TERM",
+          "sourceLabel": "Terminal-Bench 2.0",
+          "operatorId": "terminal-bench",
+          "operator": "Terminal-Bench",
+          "category": "agent",
+          "categoryLabel": "Agent",
+          "sourceUrl": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 6,
+          "sourceRank": 11,
+          "sourceCount": 44,
+          "rawScore": 0.784,
+          "scoreLabel": "78.40%",
+          "normalizedScore": 88.37,
+          "modelVersion": "gpt-5.3-codex",
+          "model": "GPT-5.3-Codex",
+          "organization": "OpenAI",
+          "releaseDate": "2026-02-05"
+        },
+        {
+          "sourceId": "epoch-eci",
+          "sourceShort": "ECI",
+          "sourceLabel": "Epoch Capabilities Index",
+          "operatorId": "epoch-ai",
+          "operator": "Epoch AI",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://epoch.ai/eci",
+          "status": "live",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 15,
+          "sourceRank": 72,
+          "sourceCount": 60,
+          "rawScore": 156.22,
+          "scoreLabel": "156.2",
+          "normalizedScore": 76.27,
+          "modelVersion": "gpt-5.3-codex_high",
+          "model": "GPT-5.3 Codex",
+          "organization": "OpenAI",
+          "releaseDate": "2026-02-05"
+        },
+        {
+          "sourceId": "apex-agents",
+          "sourceShort": "APEX",
+          "sourceLabel": "APEX-Agents",
+          "operatorId": "apex-agents",
+          "operator": "APEX-Agents",
+          "category": "agent",
+          "categoryLabel": "Agent",
+          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+          "status": "live",
+          "updatedAt": "2026-08-19T01:55:55.225Z",
+          "rank": 17,
+          "sourceRank": 23,
+          "sourceCount": 51,
+          "rawScore": 0.318,
+          "scoreLabel": "31.80%",
+          "normalizedScore": 68,
+          "modelVersion": "gpt-5.3-codex",
+          "model": "GPT 5.3 Codex",
+          "organization": "OpenAI",
+          "releaseDate": "2026-02-05"
+        }
+      ],
+      "ranks": {
+        "overall": 10,
+        "general": 17,
+        "agent": 15
       }
     },
     {
@@ -6803,12 +6980,12 @@
       "name": "Claude Opus 4.6",
       "organization": "Anthropic",
       "releaseDate": "2026-02-05",
-      "score": 78.3,
+      "score": 77.5,
       "coverage": 83.3,
       "sourceCount": 5,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 82.2,
+        "general": 80.5,
         "code": 74.6,
         "agent": 80.3
       },
@@ -6912,13 +7089,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 21,
-          "sourceRank": 107,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 23,
+          "sourceRank": 114,
           "sourceCount": 60,
-          "rawScore": 155.01,
+          "rawScore": 154.98,
           "scoreLabel": "155",
-          "normalizedScore": 66.1,
+          "normalizedScore": 62.71,
           "modelVersion": "claude-opus-4-6_max",
           "model": "Claude Opus 4.6",
           "organization": "Anthropic",
@@ -6926,144 +7103,10 @@
         }
       ],
       "ranks": {
-        "overall": 8,
+        "overall": 9,
         "general": 14,
         "code": 12,
         "agent": 14
-      }
-    },
-    {
-      "slug": "claude-opus-4.8",
-      "name": "Claude Opus 4.8",
-      "organization": "Anthropic",
-      "releaseDate": "2026-05-28",
-      "score": 78.1,
-      "coverage": 83.3,
-      "sourceCount": 5,
-      "operatorCount": 4,
-      "categoryScores": {
-        "general": 80.5,
-        "code": 66.3,
-        "agent": 96
-      },
-      "pricing": null,
-      "evidence": [
-        {
-          "sourceId": "apex-agents",
-          "sourceShort": "APEX",
-          "sourceLabel": "APEX-Agents",
-          "operatorId": "apex-agents",
-          "operator": "APEX-Agents",
-          "category": "agent",
-          "categoryLabel": "Agent",
-          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
-          "status": "live",
-          "updatedAt": "2026-08-19T01:55:55.225Z",
-          "rank": 3,
-          "sourceRank": 3,
-          "sourceCount": 51,
-          "rawScore": 0.425,
-          "scoreLabel": "42.50%",
-          "normalizedScore": 96,
-          "modelVersion": "claude-opus-4-8_max",
-          "model": "Opus 4.8",
-          "organization": "Anthropic",
-          "releaseDate": "2026-05-28"
-        },
-        {
-          "sourceId": "epoch-eci",
-          "sourceShort": "ECI",
-          "sourceLabel": "Epoch Capabilities Index",
-          "operatorId": "epoch-ai",
-          "operator": "Epoch AI",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://epoch.ai/eci",
-          "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 10,
-          "sourceRank": 48,
-          "sourceCount": 60,
-          "rawScore": 157.78,
-          "scoreLabel": "157.8",
-          "normalizedScore": 84.75,
-          "modelVersion": "claude-opus-4-8_high",
-          "model": "Claude Opus 4.8",
-          "organization": "Anthropic",
-          "releaseDate": "2026-05-28"
-        },
-        {
-          "sourceId": "deepswe",
-          "sourceShort": "SWE",
-          "sourceLabel": "DeepSWE v1.1",
-          "operatorId": "datacurve",
-          "operator": "DataCurve",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://deepswe.datacurve.ai/",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 11,
-          "sourceRank": 26,
-          "sourceCount": 23,
-          "rawScore": 0.5897435897435898,
-          "scoreLabel": "58.97%",
-          "normalizedScore": 54.55,
-          "modelVersion": "claude-opus-4-8_max",
-          "model": "Claude Opus 4.8",
-          "organization": "Anthropic",
-          "releaseDate": "2026-05-28"
-        },
-        {
-          "sourceId": "arena-webdev",
-          "sourceShort": "WEB",
-          "sourceLabel": "Arena WebDev",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 14,
-          "sourceRank": 15,
-          "sourceCount": 60,
-          "rawScore": 1563.49,
-          "scoreLabel": "1563.5",
-          "normalizedScore": 77.97,
-          "modelVersion": "claude-opus-4-8_high",
-          "model": "Claude Opus 4.8",
-          "organization": "Anthropic",
-          "releaseDate": "2026-05-28"
-        },
-        {
-          "sourceId": "arena-text",
-          "sourceShort": "ARENA",
-          "sourceLabel": "Arena Text",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://arena.ai/leaderboard/text",
-          "status": "live",
-          "updatedAt": "2026-08-22T01:53:49.105Z",
-          "rank": 15,
-          "sourceRank": 18,
-          "sourceCount": 60,
-          "rawScore": 1481.6827573124879,
-          "scoreLabel": "1481.7",
-          "normalizedScore": 76.27,
-          "modelVersion": "claude-opus-4-8-high",
-          "model": "Claude Opus 4.8",
-          "organization": "Anthropic",
-          "releaseDate": null
-        }
-      ],
-      "ranks": {
-        "overall": 9,
-        "general": 15,
-        "code": 15,
-        "agent": 3
       }
     },
     {
@@ -7114,12 +7157,12 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 7,
           "sourceRank": 30,
           "sourceCount": 60,
-          "rawScore": 158.78,
-          "scoreLabel": "158.8",
+          "rawScore": 158.86,
+          "scoreLabel": "158.9",
           "normalizedScore": 89.83,
           "modelVersion": "gpt-5.6-terra_max",
           "model": "GPT-5.6 Terra",
@@ -7172,8 +7215,8 @@
         }
       ],
       "ranks": {
-        "overall": 10,
-        "general": 27,
+        "overall": 11,
+        "general": 25,
         "code": 11
       }
     },
@@ -7269,12 +7312,12 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 12,
           "sourceRank": 60,
           "sourceCount": 60,
-          "rawScore": 156.85,
-          "scoreLabel": "156.8",
+          "rawScore": 157.12,
+          "scoreLabel": "157.1",
           "normalizedScore": 81.36,
           "modelVersion": "gemini-3.7-flash_high",
           "model": "Gemini 3.7 Flash",
@@ -7283,8 +7326,8 @@
         }
       ],
       "ranks": {
-        "overall": 12,
-        "general": 11,
+        "overall": 13,
+        "general": 9,
         "code": 14
       }
     },
@@ -7380,12 +7423,12 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 17,
-          "sourceRank": 86,
+          "sourceRank": 82,
           "sourceCount": 60,
-          "rawScore": 155.94,
-          "scoreLabel": "155.9",
+          "rawScore": 156.15,
+          "scoreLabel": "156.2",
           "normalizedScore": 72.88,
           "modelVersion": "grok-4.6_xhigh",
           "model": "Grok 4.6",
@@ -7416,70 +7459,48 @@
         }
       ],
       "ranks": {
-        "overall": 11,
+        "overall": 12,
         "code": 7,
         "agent": 6
       }
     },
     {
-      "slug": "gpt-5.3-codex",
-      "name": "GPT-5.3 Codex",
-      "organization": "OpenAI",
-      "releaseDate": "2026-02-05",
-      "score": 75.3,
-      "coverage": 50,
-      "sourceCount": 3,
-      "operatorCount": 3,
+      "slug": "deepseek-v4-pro-0813",
+      "name": "DeepSeek V4 Pro 0813",
+      "organization": "DeepSeek",
+      "releaseDate": "2026-08-13",
+      "score": 75.4,
+      "coverage": 33.3,
+      "sourceCount": 2,
+      "operatorCount": 2,
       "categoryScores": {
-        "general": 69.5,
-        "code": null,
-        "agent": 78.2
+        "general": 67.8,
+        "code": 83,
+        "agent": null
       },
       "pricing": null,
       "evidence": [
         {
-          "sourceId": "terminal-bench",
-          "sourceShort": "TERM",
-          "sourceLabel": "Terminal-Bench 2.0",
-          "operatorId": "terminal-bench",
-          "operator": "Terminal-Bench",
-          "category": "agent",
-          "categoryLabel": "Agent",
-          "sourceUrl": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+          "sourceId": "arena-webdev",
+          "sourceShort": "WEB",
+          "sourceLabel": "Arena WebDev",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
           "status": "live",
           "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 6,
-          "sourceRank": 11,
-          "sourceCount": 44,
-          "rawScore": 0.784,
-          "scoreLabel": "78.40%",
-          "normalizedScore": 88.37,
-          "modelVersion": "gpt-5.3-codex",
-          "model": "GPT-5.3-Codex",
-          "organization": "OpenAI",
-          "releaseDate": "2026-02-05"
-        },
-        {
-          "sourceId": "apex-agents",
-          "sourceShort": "APEX",
-          "sourceLabel": "APEX-Agents",
-          "operatorId": "apex-agents",
-          "operator": "APEX-Agents",
-          "category": "agent",
-          "categoryLabel": "Agent",
-          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
-          "status": "live",
-          "updatedAt": "2026-08-19T01:55:55.225Z",
-          "rank": 17,
-          "sourceRank": 23,
-          "sourceCount": 51,
-          "rawScore": 0.318,
-          "scoreLabel": "31.80%",
-          "normalizedScore": 68,
-          "modelVersion": "gpt-5.3-codex",
-          "model": "GPT 5.3 Codex",
-          "organization": "OpenAI",
-          "releaseDate": "2026-02-05"
+          "rank": 11,
+          "sourceRank": 12,
+          "sourceCount": 60,
+          "rawScore": 1581.64,
+          "scoreLabel": "1581.6",
+          "normalizedScore": 83.05,
+          "modelVersion": "deepseek-v4-pro-0813_high",
+          "model": "DeepSeek V4 Pro 0813",
+          "organization": "DeepSeek",
+          "releaseDate": "2026-08-13"
         },
         {
           "sourceId": "epoch-eci",
@@ -7491,23 +7512,23 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 19,
-          "sourceRank": 99,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 20,
+          "sourceRank": 102,
           "sourceCount": 60,
-          "rawScore": 155.61,
-          "scoreLabel": "155.6",
-          "normalizedScore": 69.49,
-          "modelVersion": "gpt-5.3-codex_high",
-          "model": "GPT-5.3 Codex",
-          "organization": "OpenAI",
-          "releaseDate": "2026-02-05"
+          "rawScore": 155.18,
+          "scoreLabel": "155.2",
+          "normalizedScore": 67.8,
+          "modelVersion": "deepseek-v4-pro-0813_max",
+          "model": "DeepSeek V4 Pro 0813",
+          "organization": "DeepSeek",
+          "releaseDate": "2026-08-13"
         }
       ],
       "ranks": {
-        "overall": 13,
-        "general": 20,
-        "agent": 15
+        "overall": 14,
+        "general": 21,
+        "code": 8
       }
     },
     {
@@ -7615,7 +7636,7 @@
         }
       ],
       "ranks": {
-        "overall": 14,
+        "overall": 15,
         "agent": 19
       }
     },
@@ -7689,11 +7710,11 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 14,
           "sourceRank": 70,
           "sourceCount": 60,
-          "rawScore": 156.43,
+          "rawScore": 156.42,
           "scoreLabel": "156.4",
           "normalizedScore": 77.97,
           "modelVersion": "qwen3.8-max_xhigh",
@@ -7725,7 +7746,7 @@
         }
       ],
       "ranks": {
-        "overall": 15,
+        "overall": 16,
         "general": 16,
         "code": 13
       }
@@ -7735,12 +7756,12 @@
       "name": "DeepSeek V4 Flash 0731",
       "organization": "DeepSeek",
       "releaseDate": "2026-07-31",
-      "score": 71.2,
+      "score": 69.5,
       "coverage": 33.3,
       "sourceCount": 2,
       "operatorCount": 2,
       "categoryScores": {
-        "general": 61,
+        "general": 57.6,
         "code": 81.4,
         "agent": null
       },
@@ -7778,13 +7799,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 24,
-          "sourceRank": 126,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 26,
+          "sourceRank": 133,
           "sourceCount": 60,
-          "rawScore": 154.43,
-          "scoreLabel": "154.4",
-          "normalizedScore": 61.02,
+          "rawScore": 154.35,
+          "scoreLabel": "154.3",
+          "normalizedScore": 57.63,
           "modelVersion": "deepseek-v4-flash-0731_max",
           "model": "DeepSeek V4 Flash 0731",
           "organization": "DeepSeek",
@@ -7792,8 +7813,7 @@
         }
       ],
       "ranks": {
-        "overall": 16,
-        "general": 30,
+        "overall": 17,
         "code": 9
       }
     },
@@ -7867,11 +7887,11 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
           "rank": 13,
           "sourceRank": 64,
           "sourceCount": 60,
-          "rawScore": 156.5,
+          "rawScore": 156.49,
           "scoreLabel": "156.5",
           "normalizedScore": 79.66,
           "modelVersion": "gpt-5.4-2026-03-05_high",
@@ -7947,52 +7967,9 @@
         }
       ],
       "ranks": {
-        "overall": 17,
+        "overall": 18,
         "general": 18,
         "agent": 7
-      }
-    },
-    {
-      "slug": "gpt-5.2-pro",
-      "name": "GPT-5.2 Pro",
-      "organization": "OpenAI",
-      "releaseDate": "2025-12-11",
-      "score": 67.8,
-      "coverage": 16.7,
-      "sourceCount": 1,
-      "operatorCount": 1,
-      "categoryScores": {
-        "general": 67.8,
-        "code": null,
-        "agent": null
-      },
-      "pricing": null,
-      "evidence": [
-        {
-          "sourceId": "epoch-eci",
-          "sourceShort": "ECI",
-          "sourceLabel": "Epoch Capabilities Index",
-          "operatorId": "epoch-ai",
-          "operator": "Epoch AI",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://epoch.ai/eci",
-          "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 20,
-          "sourceRank": 102,
-          "sourceCount": 60,
-          "rawScore": 155.09,
-          "scoreLabel": "155.1",
-          "normalizedScore": 67.8,
-          "modelVersion": "gpt-5.2-pro-2025-12-11_xhigh",
-          "model": "GPT-5.2 Pro",
-          "organization": "OpenAI",
-          "releaseDate": "2025-12-11"
-        }
-      ],
-      "ranks": {
-        "general": 22
       }
     },
     {
@@ -8035,7 +8012,50 @@
         }
       ],
       "ranks": {
-        "general": 23
+        "general": 22
+      }
+    },
+    {
+      "slug": "grok-4-20-beta1",
+      "name": "Grok 4 20 Beta1",
+      "organization": "SpaceXAI",
+      "releaseDate": null,
+      "score": 66.1,
+      "coverage": 16.7,
+      "sourceCount": 1,
+      "operatorCount": 1,
+      "categoryScores": {
+        "general": 66.1,
+        "code": null,
+        "agent": null
+      },
+      "pricing": null,
+      "evidence": [
+        {
+          "sourceId": "arena-text",
+          "sourceShort": "ARENA",
+          "sourceLabel": "Arena Text",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://arena.ai/leaderboard/text",
+          "status": "live",
+          "updatedAt": "2026-08-22T01:53:49.105Z",
+          "rank": 21,
+          "sourceRank": 25,
+          "sourceCount": 60,
+          "rawScore": 1474.6340235126122,
+          "scoreLabel": "1474.6",
+          "normalizedScore": 66.1,
+          "modelVersion": "grok-4.20-beta1",
+          "model": "Grok 4 20 Beta1",
+          "organization": "SpaceXAI",
+          "releaseDate": null
+        }
+      ],
+      "ranks": {
+        "general": 24
       }
     },
     {
@@ -8043,12 +8063,12 @@
       "name": "Muse Spark 1.1",
       "organization": "Meta",
       "releaseDate": "2026-07-09",
-      "score": 66.8,
+      "score": 66,
       "coverage": 83.3,
       "sourceCount": 5,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 75.4,
+        "general": 73.7,
         "code": 52.3,
         "agent": 94
       },
@@ -8152,13 +8172,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 25,
-          "sourceRank": 131,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 27,
+          "sourceRank": 138,
           "sourceCount": 60,
-          "rawScore": 154.37,
-          "scoreLabel": "154.4",
-          "normalizedScore": 59.32,
+          "rawScore": 154.33,
+          "scoreLabel": "154.3",
+          "normalizedScore": 55.93,
           "modelVersion": "muse-spark-1.1_high",
           "model": "Muse Spark 1.1",
           "organization": "Meta",
@@ -8166,53 +8186,10 @@
         }
       ],
       "ranks": {
-        "overall": 18,
-        "general": 17,
+        "overall": 19,
+        "general": 19,
         "code": 25,
         "agent": 4
-      }
-    },
-    {
-      "slug": "grok-4-20-beta1",
-      "name": "Grok 4 20 Beta1",
-      "organization": "SpaceXAI",
-      "releaseDate": null,
-      "score": 66.1,
-      "coverage": 16.7,
-      "sourceCount": 1,
-      "operatorCount": 1,
-      "categoryScores": {
-        "general": 66.1,
-        "code": null,
-        "agent": null
-      },
-      "pricing": null,
-      "evidence": [
-        {
-          "sourceId": "arena-text",
-          "sourceShort": "ARENA",
-          "sourceLabel": "Arena Text",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://arena.ai/leaderboard/text",
-          "status": "live",
-          "updatedAt": "2026-08-22T01:53:49.105Z",
-          "rank": 21,
-          "sourceRank": 25,
-          "sourceCount": 60,
-          "rawScore": 1474.6340235126122,
-          "scoreLabel": "1474.6",
-          "normalizedScore": 66.1,
-          "modelVersion": "grok-4.20-beta1",
-          "model": "Grok 4 20 Beta1",
-          "organization": "SpaceXAI",
-          "releaseDate": null
-        }
-      ],
-      "ranks": {
-        "general": 26
       }
     },
     {
@@ -8220,12 +8197,12 @@
       "name": "GPT-5.2",
       "organization": "OpenAI",
       "releaseDate": "2025-12-11",
-      "score": 65.3,
+      "score": 64.5,
       "coverage": 66.7,
       "sourceCount": 4,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 52.5,
+        "general": 49.1,
         "code": 47.5,
         "agent": 80.7
       },
@@ -8285,13 +8262,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 29,
-          "sourceRank": 143,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 31,
+          "sourceRank": 150,
           "sourceCount": 60,
           "rawScore": 153.31,
           "scoreLabel": "153.3",
-          "normalizedScore": 52.54,
+          "normalizedScore": 49.15,
           "modelVersion": "gpt-5.2-2025-12-11_high",
           "model": "GPT-5.2",
           "organization": "OpenAI",
@@ -8321,9 +8298,163 @@
         }
       ],
       "ranks": {
-        "overall": 19,
+        "overall": 20,
         "code": 29,
         "agent": 13
+      }
+    },
+    {
+      "slug": "gpt-5.2-pro",
+      "name": "GPT-5.2 Pro",
+      "organization": "OpenAI",
+      "releaseDate": "2025-12-11",
+      "score": 64.4,
+      "coverage": 16.7,
+      "sourceCount": 1,
+      "operatorCount": 1,
+      "categoryScores": {
+        "general": 64.4,
+        "code": null,
+        "agent": null
+      },
+      "pricing": null,
+      "evidence": [
+        {
+          "sourceId": "epoch-eci",
+          "sourceShort": "ECI",
+          "sourceLabel": "Epoch Capabilities Index",
+          "operatorId": "epoch-ai",
+          "operator": "Epoch AI",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://epoch.ai/eci",
+          "status": "live",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 22,
+          "sourceRank": 109,
+          "sourceCount": 60,
+          "rawScore": 155.07,
+          "scoreLabel": "155.1",
+          "normalizedScore": 64.41,
+          "modelVersion": "gpt-5.2-pro-2025-12-11_xhigh",
+          "model": "GPT-5.2 Pro",
+          "organization": "OpenAI",
+          "releaseDate": "2025-12-11"
+        }
+      ],
+      "ranks": {
+        "general": 28
+      }
+    },
+    {
+      "slug": "muse-spark-1-2",
+      "name": "Muse Spark 1.2",
+      "organization": "Meta",
+      "releaseDate": "2026-08-05",
+      "score": 64.3,
+      "coverage": 66.7,
+      "sourceCount": 4,
+      "operatorCount": 3,
+      "categoryScores": {
+        "general": 80.5,
+        "code": 56.6,
+        "agent": null
+      },
+      "pricing": null,
+      "evidence": [
+        {
+          "sourceId": "arena-text",
+          "sourceShort": "ARENA",
+          "sourceLabel": "Arena Text",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://arena.ai/leaderboard/text",
+          "status": "live",
+          "updatedAt": "2026-08-22T01:53:49.105Z",
+          "rank": 4,
+          "sourceRank": 4,
+          "sourceCount": 60,
+          "rawScore": 1497.6985728643472,
+          "scoreLabel": "1497.7",
+          "normalizedScore": 94.92,
+          "modelVersion": "muse-spark-1.2 (xHigh)",
+          "model": "Muse Spark 1 2",
+          "organization": "Meta",
+          "releaseDate": null
+        },
+        {
+          "sourceId": "deepswe",
+          "sourceShort": "SWE",
+          "sourceLabel": "DeepSWE v1.1",
+          "operatorId": "datacurve",
+          "operator": "DataCurve",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://deepswe.datacurve.ai/",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 13,
+          "sourceRank": 30,
+          "sourceCount": 23,
+          "rawScore": 0.5486725663716814,
+          "scoreLabel": "54.87%",
+          "normalizedScore": 45.45,
+          "modelVersion": "muse-spark-1.2_xhigh",
+          "model": "Muse Spark 1 2",
+          "organization": "Meta",
+          "releaseDate": "2026-08-05"
+        },
+        {
+          "sourceId": "arena-webdev",
+          "sourceShort": "WEB",
+          "sourceLabel": "Arena WebDev",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 20,
+          "sourceRank": 27,
+          "sourceCount": 60,
+          "rawScore": 1533.68,
+          "scoreLabel": "1533.7",
+          "normalizedScore": 67.8,
+          "modelVersion": "muse-spark-1.2_xhigh",
+          "model": "Muse Spark 1 2",
+          "organization": "Meta",
+          "releaseDate": "2026-08-05"
+        },
+        {
+          "sourceId": "epoch-eci",
+          "sourceShort": "ECI",
+          "sourceLabel": "Epoch Capabilities Index",
+          "operatorId": "epoch-ai",
+          "operator": "Epoch AI",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://epoch.ai/eci",
+          "status": "live",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 21,
+          "sourceRank": 107,
+          "sourceCount": 60,
+          "rawScore": 155.16,
+          "scoreLabel": "155.2",
+          "normalizedScore": 66.1,
+          "modelVersion": "muse-spark-1.2",
+          "model": "Muse Spark 1.2",
+          "organization": "Meta",
+          "releaseDate": "2026-08-05"
+        }
+      ],
+      "ranks": {
+        "overall": 21,
+        "general": 15,
+        "code": 21
       }
     },
     {
@@ -8331,12 +8462,12 @@
       "name": "Gemini 3 Pro Preview",
       "organization": "Google",
       "releaseDate": "2025-11-18",
-      "score": 64.9,
+      "score": 64.1,
       "coverage": 83.3,
       "sourceCount": 5,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 66.1,
+        "general": 64.4,
         "code": 32.2,
         "agent": 76
       },
@@ -8418,13 +8549,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 30,
-          "sourceRank": 149,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 32,
+          "sourceRank": 156,
           "sourceCount": 60,
           "rawScore": 153.06,
           "scoreLabel": "153.1",
-          "normalizedScore": 50.85,
+          "normalizedScore": 47.46,
           "modelVersion": "gemini-3-pro-preview",
           "model": "Gemini 3 Pro Preview",
           "organization": "Google",
@@ -8454,98 +8585,75 @@
         }
       ],
       "ranks": {
-        "overall": 20,
-        "general": 25,
+        "overall": 22,
+        "general": 27,
         "agent": 17
       }
     },
     {
-      "slug": "muse-spark-1-2",
-      "name": "Muse Spark 1 2",
-      "organization": "Meta",
-      "releaseDate": "2026-08-05",
-      "score": 63.4,
-      "coverage": 50,
-      "sourceCount": 3,
+      "slug": "gpt-5.1-codex",
+      "name": "GPT-5.1-Codex",
+      "organization": "OpenAI",
+      "releaseDate": "2025-11-19",
+      "score": 63,
+      "coverage": 33.3,
+      "sourceCount": 2,
       "operatorCount": 2,
       "categoryScores": {
-        "general": 94.9,
-        "code": 56.6,
-        "agent": null
+        "general": null,
+        "code": null,
+        "agent": 63
       },
       "pricing": null,
       "evidence": [
         {
-          "sourceId": "arena-text",
-          "sourceShort": "ARENA",
-          "sourceLabel": "Arena Text",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://arena.ai/leaderboard/text",
-          "status": "live",
-          "updatedAt": "2026-08-22T01:53:49.105Z",
-          "rank": 4,
-          "sourceRank": 4,
-          "sourceCount": 60,
-          "rawScore": 1497.6985728643472,
-          "scoreLabel": "1497.7",
-          "normalizedScore": 94.92,
-          "modelVersion": "muse-spark-1.2 (xHigh)",
-          "model": "Muse Spark 1 2",
-          "organization": "Meta",
-          "releaseDate": null
-        },
-        {
-          "sourceId": "deepswe",
-          "sourceShort": "SWE",
-          "sourceLabel": "DeepSWE v1.1",
-          "operatorId": "datacurve",
-          "operator": "DataCurve",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://deepswe.datacurve.ai/",
+          "sourceId": "terminal-bench",
+          "sourceShort": "TERM",
+          "sourceLabel": "Terminal-Bench 2.0",
+          "operatorId": "terminal-bench",
+          "operator": "Terminal-Bench",
+          "category": "agent",
+          "categoryLabel": "Agent",
+          "sourceUrl": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
           "status": "live",
           "updatedAt": "2026-08-26T02:01:12.938Z",
           "rank": 13,
-          "sourceRank": 30,
-          "sourceCount": 23,
-          "rawScore": 0.5486725663716814,
-          "scoreLabel": "54.87%",
-          "normalizedScore": 45.45,
-          "modelVersion": "muse-spark-1.2_xhigh",
-          "model": "Muse Spark 1 2",
-          "organization": "Meta",
-          "releaseDate": "2026-08-05"
+          "sourceRank": 49,
+          "sourceCount": 44,
+          "rawScore": 0.604,
+          "scoreLabel": "60.40%",
+          "normalizedScore": 72.09,
+          "modelVersion": "gpt-5.1-codex-max",
+          "model": "GPT-5.1-Codex",
+          "organization": "OpenAI",
+          "releaseDate": "2025-11-19"
         },
         {
-          "sourceId": "arena-webdev",
-          "sourceShort": "WEB",
-          "sourceLabel": "Arena WebDev",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
+          "sourceId": "apex-agents",
+          "sourceShort": "APEX",
+          "sourceLabel": "APEX-Agents",
+          "operatorId": "apex-agents",
+          "operator": "APEX-Agents",
+          "category": "agent",
+          "categoryLabel": "Agent",
+          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
           "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 20,
-          "sourceRank": 27,
-          "sourceCount": 60,
-          "rawScore": 1533.68,
-          "scoreLabel": "1533.7",
-          "normalizedScore": 67.8,
-          "modelVersion": "muse-spark-1.2_xhigh",
-          "model": "Muse Spark 1 2",
-          "organization": "Meta",
-          "releaseDate": "2026-08-05"
+          "updatedAt": "2026-08-19T01:55:55.225Z",
+          "rank": 24,
+          "sourceRank": 32,
+          "sourceCount": 51,
+          "rawScore": 0.207,
+          "scoreLabel": "20.70%",
+          "normalizedScore": 54,
+          "modelVersion": "gpt-5.1-codex",
+          "model": "GPT 5.1 Codex",
+          "organization": "OpenAI",
+          "releaseDate": "2025-11-12"
         }
       ],
       "ranks": {
-        "overall": 21,
-        "general": 4,
-        "code": 21
+        "overall": 23,
+        "agent": 24
       }
     },
     {
@@ -8588,7 +8696,7 @@
         }
       ],
       "ranks": {
-        "general": 29
+        "general": 30
       }
     },
     {
@@ -8596,12 +8704,12 @@
       "name": "GPT-5.6 Luna",
       "organization": "OpenAI",
       "releaseDate": "2026-07-09",
-      "score": 61.4,
+      "score": 60.9,
       "coverage": 66.7,
       "sourceCount": 4,
       "operatorCount": 3,
       "categoryScores": {
-        "general": 46.6,
+        "general": 45.8,
         "code": 65.4,
         "agent": null
       },
@@ -8639,13 +8747,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 15,
-          "sourceRank": 72,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 16,
+          "sourceRank": 75,
           "sourceCount": 60,
-          "rawScore": 156.22,
+          "rawScore": 156.21,
           "scoreLabel": "156.2",
-          "normalizedScore": 76.27,
+          "normalizedScore": 74.58,
           "modelVersion": "gpt-5.6-luna_max",
           "model": "GPT-5.6 Luna",
           "organization": "OpenAI",
@@ -8697,7 +8805,7 @@
         }
       ],
       "ranks": {
-        "overall": 22,
+        "overall": 24,
         "code": 16
       }
     },
@@ -8706,12 +8814,12 @@
       "name": "Muse Spark",
       "organization": "Meta",
       "releaseDate": "2026-04-08",
-      "score": 61,
+      "score": 59.3,
       "coverage": 50,
       "sourceCount": 3,
       "operatorCount": 2,
       "categoryScores": {
-        "general": 67.8,
+        "general": 66.1,
         "code": 59.3,
         "agent": null
       },
@@ -8771,13 +8879,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 31,
-          "sourceRank": 151,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 33,
+          "sourceRank": 158,
           "sourceCount": 60,
-          "rawScore": 152.58,
+          "rawScore": 152.56,
           "scoreLabel": "152.6",
-          "normalizedScore": 49.15,
+          "normalizedScore": 45.76,
           "modelVersion": "muse-spark",
           "model": "Muse Spark",
           "organization": "Meta",
@@ -8785,8 +8893,8 @@
         }
       ],
       "ranks": {
-        "overall": 23,
-        "general": 21,
+        "overall": 25,
+        "general": 23,
         "code": 18
       }
     },
@@ -8795,12 +8903,12 @@
       "name": "Claude Sonnet 5",
       "organization": "Anthropic",
       "releaseDate": "2026-06-30",
-      "score": 59.6,
+      "score": 59.2,
       "coverage": 83.3,
       "sourceCount": 5,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 55.1,
+        "general": 54.2,
         "code": 55.2,
         "agent": 72
       },
@@ -8860,13 +8968,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 18,
-          "sourceRank": 91,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 19,
+          "sourceRank": 94,
           "sourceCount": 60,
-          "rawScore": 155.9,
+          "rawScore": 155.87,
           "scoreLabel": "155.9",
-          "normalizedScore": 71.19,
+          "normalizedScore": 69.49,
           "modelVersion": "claude-sonnet-5_max",
           "model": "Claude Sonnet 5",
           "organization": "Anthropic",
@@ -8918,9 +9026,164 @@
         }
       ],
       "ranks": {
-        "overall": 24,
+        "overall": 26,
         "code": 24,
         "agent": 20
+      }
+    },
+    {
+      "slug": "gemini-3.1-pro",
+      "name": "Gemini 3.1 Pro Preview",
+      "organization": "Google",
+      "releaseDate": "2026-02-19",
+      "score": 57.8,
+      "coverage": 100,
+      "sourceCount": 6,
+      "operatorCount": 5,
+      "categoryScores": {
+        "general": 72,
+        "code": 16.9,
+        "agent": 84.7
+      },
+      "pricing": null,
+      "evidence": [
+        {
+          "sourceId": "terminal-bench",
+          "sourceShort": "TERM",
+          "sourceLabel": "Terminal-Bench 2.0",
+          "operatorId": "terminal-bench",
+          "operator": "Terminal-Bench",
+          "category": "agent",
+          "categoryLabel": "Agent",
+          "sourceUrl": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 3,
+          "sourceRank": 6,
+          "sourceCount": 44,
+          "rawScore": 0.802,
+          "scoreLabel": "80.20%",
+          "normalizedScore": 95.35,
+          "modelVersion": "gemini-3.1-pro-preview",
+          "model": "Gemini 3.1 Pro",
+          "organization": "Google",
+          "releaseDate": "2026-02-19"
+        },
+        {
+          "sourceId": "arena-text",
+          "sourceShort": "ARENA",
+          "sourceLabel": "Arena Text",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://arena.ai/leaderboard/text",
+          "status": "live",
+          "updatedAt": "2026-08-22T01:53:49.105Z",
+          "rank": 11,
+          "sourceRank": 14,
+          "sourceCount": 60,
+          "rawScore": 1486.2684401526687,
+          "scoreLabel": "1486.3",
+          "normalizedScore": 83.05,
+          "modelVersion": "gemini-3.1-pro-preview",
+          "model": "Gemini 3.1 Pro",
+          "organization": "Google",
+          "releaseDate": null
+        },
+        {
+          "sourceId": "apex-agents",
+          "sourceShort": "APEX",
+          "sourceLabel": "APEX-Agents",
+          "operatorId": "apex-agents",
+          "operator": "APEX-Agents",
+          "category": "agent",
+          "categoryLabel": "Agent",
+          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+          "status": "live",
+          "updatedAt": "2026-08-19T01:55:55.225Z",
+          "rank": 14,
+          "sourceRank": 19,
+          "sourceCount": 51,
+          "rawScore": 0.335,
+          "scoreLabel": "33.50%",
+          "normalizedScore": 74,
+          "modelVersion": "gemini-3.1-pro-preview",
+          "model": "Gemini 3.1 Pro",
+          "organization": "Google",
+          "releaseDate": "2026-02-19"
+        },
+        {
+          "sourceId": "deepswe",
+          "sourceShort": "SWE",
+          "sourceLabel": "DeepSWE v1.1",
+          "operatorId": "datacurve",
+          "operator": "DataCurve",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://deepswe.datacurve.ai/",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 23,
+          "sourceRank": 59,
+          "sourceCount": 23,
+          "rawScore": 0.1172566371681416,
+          "scoreLabel": "11.73%",
+          "normalizedScore": 0,
+          "modelVersion": "gemini-3.1-pro-preview",
+          "model": "Gemini 3.1 Pro",
+          "organization": "Google",
+          "releaseDate": "2026-02-19"
+        },
+        {
+          "sourceId": "epoch-eci",
+          "sourceShort": "ECI",
+          "sourceLabel": "Epoch Capabilities Index",
+          "operatorId": "epoch-ai",
+          "operator": "Epoch AI",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://epoch.ai/eci",
+          "status": "live",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 24,
+          "sourceRank": 123,
+          "sourceCount": 60,
+          "rawScore": 154.61,
+          "scoreLabel": "154.6",
+          "normalizedScore": 61.02,
+          "modelVersion": "gemini-3.1-pro-preview_high",
+          "model": "Gemini 3.1 Pro Preview",
+          "organization": "Google",
+          "releaseDate": "2026-02-19"
+        },
+        {
+          "sourceId": "arena-webdev",
+          "sourceShort": "WEB",
+          "sourceLabel": "Arena WebDev",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 40,
+          "sourceRank": 54,
+          "sourceCount": 60,
+          "rawScore": 1446.46,
+          "scoreLabel": "1446.5",
+          "normalizedScore": 33.9,
+          "modelVersion": "gemini-3.1-pro-preview",
+          "model": "Gemini 3.1 Pro",
+          "organization": "Google",
+          "releaseDate": "2026-02-19"
+        }
+      ],
+      "ranks": {
+        "overall": 27,
+        "general": 20,
+        "agent": 10
       }
     },
     {
@@ -8928,12 +9191,12 @@
       "name": "Grok 4.5",
       "organization": "xAI",
       "releaseDate": "2026-07-08",
-      "score": 58.7,
+      "score": 57.8,
       "coverage": 83.3,
       "sourceCount": 5,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 54.2,
+        "general": 52.5,
         "code": 56.3,
         "agent": 78
       },
@@ -9015,13 +9278,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 27,
-          "sourceRank": 138,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 29,
+          "sourceRank": 145,
           "sourceCount": 60,
-          "rawScore": 153.94,
+          "rawScore": 153.9,
           "scoreLabel": "153.9",
-          "normalizedScore": 55.93,
+          "normalizedScore": 52.54,
           "modelVersion": "grok-4.5_high",
           "model": "Grok 4.5",
           "organization": "xAI",
@@ -9051,7 +9314,7 @@
         }
       ],
       "ranks": {
-        "overall": 25,
+        "overall": 28,
         "code": 22,
         "agent": 16
       }
@@ -9061,12 +9324,12 @@
       "name": "Qwen3.7 Max",
       "organization": "Alibaba",
       "releaseDate": "2026-05-19",
-      "score": 58.5,
+      "score": 56.8,
       "coverage": 50,
       "sourceCount": 3,
       "operatorCount": 2,
       "categoryScores": {
-        "general": 59.3,
+        "general": 57.6,
         "code": 61,
         "agent": null
       },
@@ -9126,13 +9389,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 28,
-          "sourceRank": 142,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 30,
+          "sourceRank": 149,
           "sourceCount": 60,
-          "rawScore": 153.58,
+          "rawScore": 153.55,
           "scoreLabel": "153.6",
-          "normalizedScore": 54.24,
+          "normalizedScore": 50.85,
           "modelVersion": "qwen3.7-max",
           "model": "Qwen3.7 Max",
           "organization": "Alibaba",
@@ -9140,163 +9403,8 @@
         }
       ],
       "ranks": {
-        "overall": 26,
+        "overall": 29,
         "code": 17
-      }
-    },
-    {
-      "slug": "gemini-3.1-pro",
-      "name": "Gemini 3.1 Pro Preview",
-      "organization": "Google",
-      "releaseDate": "2026-02-19",
-      "score": 58.4,
-      "coverage": 100,
-      "sourceCount": 6,
-      "operatorCount": 5,
-      "categoryScores": {
-        "general": 73.7,
-        "code": 16.9,
-        "agent": 84.7
-      },
-      "pricing": null,
-      "evidence": [
-        {
-          "sourceId": "terminal-bench",
-          "sourceShort": "TERM",
-          "sourceLabel": "Terminal-Bench 2.0",
-          "operatorId": "terminal-bench",
-          "operator": "Terminal-Bench",
-          "category": "agent",
-          "categoryLabel": "Agent",
-          "sourceUrl": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 3,
-          "sourceRank": 6,
-          "sourceCount": 44,
-          "rawScore": 0.802,
-          "scoreLabel": "80.20%",
-          "normalizedScore": 95.35,
-          "modelVersion": "gemini-3.1-pro-preview",
-          "model": "Gemini 3.1 Pro",
-          "organization": "Google",
-          "releaseDate": "2026-02-19"
-        },
-        {
-          "sourceId": "arena-text",
-          "sourceShort": "ARENA",
-          "sourceLabel": "Arena Text",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://arena.ai/leaderboard/text",
-          "status": "live",
-          "updatedAt": "2026-08-22T01:53:49.105Z",
-          "rank": 11,
-          "sourceRank": 14,
-          "sourceCount": 60,
-          "rawScore": 1486.2684401526687,
-          "scoreLabel": "1486.3",
-          "normalizedScore": 83.05,
-          "modelVersion": "gemini-3.1-pro-preview",
-          "model": "Gemini 3.1 Pro",
-          "organization": "Google",
-          "releaseDate": null
-        },
-        {
-          "sourceId": "apex-agents",
-          "sourceShort": "APEX",
-          "sourceLabel": "APEX-Agents",
-          "operatorId": "apex-agents",
-          "operator": "APEX-Agents",
-          "category": "agent",
-          "categoryLabel": "Agent",
-          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
-          "status": "live",
-          "updatedAt": "2026-08-19T01:55:55.225Z",
-          "rank": 14,
-          "sourceRank": 19,
-          "sourceCount": 51,
-          "rawScore": 0.335,
-          "scoreLabel": "33.50%",
-          "normalizedScore": 74,
-          "modelVersion": "gemini-3.1-pro-preview",
-          "model": "Gemini 3.1 Pro",
-          "organization": "Google",
-          "releaseDate": "2026-02-19"
-        },
-        {
-          "sourceId": "epoch-eci",
-          "sourceShort": "ECI",
-          "sourceLabel": "Epoch Capabilities Index",
-          "operatorId": "epoch-ai",
-          "operator": "Epoch AI",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://epoch.ai/eci",
-          "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 22,
-          "sourceRank": 116,
-          "sourceCount": 60,
-          "rawScore": 154.62,
-          "scoreLabel": "154.6",
-          "normalizedScore": 64.41,
-          "modelVersion": "gemini-3.1-pro-preview_high",
-          "model": "Gemini 3.1 Pro Preview",
-          "organization": "Google",
-          "releaseDate": "2026-02-19"
-        },
-        {
-          "sourceId": "deepswe",
-          "sourceShort": "SWE",
-          "sourceLabel": "DeepSWE v1.1",
-          "operatorId": "datacurve",
-          "operator": "DataCurve",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://deepswe.datacurve.ai/",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 23,
-          "sourceRank": 59,
-          "sourceCount": 23,
-          "rawScore": 0.1172566371681416,
-          "scoreLabel": "11.73%",
-          "normalizedScore": 0,
-          "modelVersion": "gemini-3.1-pro-preview",
-          "model": "Gemini 3.1 Pro",
-          "organization": "Google",
-          "releaseDate": "2026-02-19"
-        },
-        {
-          "sourceId": "arena-webdev",
-          "sourceShort": "WEB",
-          "sourceLabel": "Arena WebDev",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 40,
-          "sourceRank": 54,
-          "sourceCount": 60,
-          "rawScore": 1446.46,
-          "scoreLabel": "1446.5",
-          "normalizedScore": 33.9,
-          "modelVersion": "gemini-3.1-pro-preview",
-          "model": "Gemini 3.1 Pro",
-          "organization": "Google",
-          "releaseDate": "2026-02-19"
-        }
-      ],
-      "ranks": {
-        "overall": 27,
-        "general": 19,
-        "agent": 10
       }
     },
     {
@@ -9304,12 +9412,12 @@
       "name": "GLM-5.2",
       "organization": "Z.ai",
       "releaseDate": "2026-06-16",
-      "score": 54.1,
+      "score": 52.4,
       "coverage": 83.3,
       "sourceCount": 5,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 50,
+        "general": 46.6,
         "code": 52.3,
         "agent": 82
       },
@@ -9413,13 +9521,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 33,
-          "sourceRank": 160,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 37,
+          "sourceRank": 169,
           "sourceCount": 60,
-          "rawScore": 152.14,
-          "scoreLabel": "152.1",
-          "normalizedScore": 45.76,
+          "rawScore": 152.02,
+          "scoreLabel": "152",
+          "normalizedScore": 38.98,
           "modelVersion": "glm-5.2_none",
           "model": "GLM-5.2",
           "organization": "Z.ai",
@@ -9427,141 +9535,9 @@
         }
       ],
       "ranks": {
-        "overall": 28,
+        "overall": 30,
         "code": 26,
         "agent": 12
-      }
-    },
-    {
-      "slug": "gemini-3-flash",
-      "name": "Gemini 3 Flash Preview",
-      "organization": "Google",
-      "releaseDate": "2025-12-17",
-      "score": 52.3,
-      "coverage": 83.3,
-      "sourceCount": 5,
-      "operatorCount": 4,
-      "categoryScores": {
-        "general": 50.9,
-        "code": 1.7,
-        "agent": 68.5
-      },
-      "pricing": null,
-      "evidence": [
-        {
-          "sourceId": "terminal-bench",
-          "sourceShort": "TERM",
-          "sourceLabel": "Terminal-Bench 2.0",
-          "operatorId": "terminal-bench",
-          "operator": "Terminal-Bench",
-          "category": "agent",
-          "categoryLabel": "Agent",
-          "sourceUrl": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 10,
-          "sourceRank": 37,
-          "sourceCount": 44,
-          "rawScore": 0.643,
-          "scoreLabel": "64.30%",
-          "normalizedScore": 79.07,
-          "modelVersion": "gemini-3-flash-preview",
-          "model": "Gemini 3 Flash",
-          "organization": "Google",
-          "releaseDate": "2025-12-17"
-        },
-        {
-          "sourceId": "apex-agents",
-          "sourceShort": "APEX",
-          "sourceLabel": "APEX-Agents",
-          "operatorId": "apex-agents",
-          "operator": "APEX-Agents",
-          "category": "agent",
-          "categoryLabel": "Agent",
-          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
-          "status": "live",
-          "updatedAt": "2026-08-19T01:55:55.225Z",
-          "rank": 22,
-          "sourceRank": 28,
-          "sourceCount": 51,
-          "rawScore": 0.24,
-          "scoreLabel": "24%",
-          "normalizedScore": 58,
-          "modelVersion": "gemini-3-flash-preview",
-          "model": "Gemini 3 Flash",
-          "organization": "Google",
-          "releaseDate": "2025-12-17"
-        },
-        {
-          "sourceId": "arena-text",
-          "sourceShort": "ARENA",
-          "sourceLabel": "Arena Text",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://arena.ai/leaderboard/text",
-          "status": "live",
-          "updatedAt": "2026-08-22T01:53:49.105Z",
-          "rank": 24,
-          "sourceRank": 30,
-          "sourceCount": 60,
-          "rawScore": 1472.7947494454168,
-          "scoreLabel": "1472.8",
-          "normalizedScore": 61.02,
-          "modelVersion": "gemini-3-flash",
-          "model": "Gemini 3 Flash",
-          "organization": "Google",
-          "releaseDate": null
-        },
-        {
-          "sourceId": "epoch-eci",
-          "sourceShort": "ECI",
-          "sourceLabel": "Epoch Capabilities Index",
-          "operatorId": "epoch-ai",
-          "operator": "Epoch AI",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://epoch.ai/eci",
-          "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 36,
-          "sourceRank": 166,
-          "sourceCount": 60,
-          "rawScore": 151.72,
-          "scoreLabel": "151.7",
-          "normalizedScore": 40.68,
-          "modelVersion": "gemini-3-flash-preview_high",
-          "model": "Gemini 3 Flash Preview",
-          "organization": "Google",
-          "releaseDate": "2025-12-17"
-        },
-        {
-          "sourceId": "arena-webdev",
-          "sourceShort": "WEB",
-          "sourceLabel": "Arena WebDev",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 59,
-          "sourceRank": 81,
-          "sourceCount": 60,
-          "rawScore": 1382.78,
-          "scoreLabel": "1382.8",
-          "normalizedScore": 1.69,
-          "modelVersion": "gemini-3-flash-preview",
-          "model": "Gemini 3 Flash",
-          "organization": "Google",
-          "releaseDate": "2025-12-17"
-        }
-      ],
-      "ranks": {
-        "overall": 29,
-        "agent": 22
       }
     },
     {
@@ -9569,12 +9545,12 @@
       "name": "Claude Opus 4.5",
       "organization": "Anthropic",
       "releaseDate": "2025-11-24",
-      "score": 52.3,
+      "score": 51.9,
       "coverage": 83.3,
       "sourceCount": 5,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 42.4,
+        "general": 41.5,
         "code": 50.9,
         "agent": 64.4
       },
@@ -9678,13 +9654,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 45,
-          "sourceRank": 190,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 46,
+          "sourceRank": 196,
           "sourceCount": 60,
-          "rawScore": 149.93,
-          "scoreLabel": "149.9",
-          "normalizedScore": 25.42,
+          "rawScore": 149.97,
+          "scoreLabel": "150",
+          "normalizedScore": 23.73,
           "modelVersion": "claude-opus-4-5-20251101",
           "model": "Claude Opus 4.5",
           "organization": "Anthropic",
@@ -9692,24 +9668,23 @@
         }
       ],
       "ranks": {
-        "overall": 30,
         "code": 27,
         "agent": 23
       }
     },
     {
-      "slug": "gpt-5.1-codex",
-      "name": "GPT-5.1-Codex",
-      "organization": "OpenAI",
-      "releaseDate": "2025-11-19",
-      "score": 52.2,
-      "coverage": 50,
-      "sourceCount": 3,
-      "operatorCount": 3,
+      "slug": "gemini-3-flash",
+      "name": "Gemini 3 Flash Preview",
+      "organization": "Google",
+      "releaseDate": "2025-12-17",
+      "score": 51.4,
+      "coverage": 83.3,
+      "sourceCount": 5,
+      "operatorCount": 4,
       "categoryScores": {
-        "general": 30.5,
-        "code": null,
-        "agent": 63
+        "general": 49.2,
+        "code": 1.7,
+        "agent": 68.5
       },
       "pricing": null,
       "evidence": [
@@ -9724,16 +9699,16 @@
           "sourceUrl": "https://www.tbench.ai/leaderboard/terminal-bench/2.0",
           "status": "live",
           "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 13,
-          "sourceRank": 49,
+          "rank": 10,
+          "sourceRank": 37,
           "sourceCount": 44,
-          "rawScore": 0.604,
-          "scoreLabel": "60.40%",
-          "normalizedScore": 72.09,
-          "modelVersion": "gpt-5.1-codex-max",
-          "model": "GPT-5.1-Codex",
-          "organization": "OpenAI",
-          "releaseDate": "2025-11-19"
+          "rawScore": 0.643,
+          "scoreLabel": "64.30%",
+          "normalizedScore": 79.07,
+          "modelVersion": "gemini-3-flash-preview",
+          "model": "Gemini 3 Flash",
+          "organization": "Google",
+          "releaseDate": "2025-12-17"
         },
         {
           "sourceId": "apex-agents",
@@ -9746,16 +9721,38 @@
           "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
           "status": "live",
           "updatedAt": "2026-08-19T01:55:55.225Z",
-          "rank": 24,
-          "sourceRank": 32,
+          "rank": 22,
+          "sourceRank": 28,
           "sourceCount": 51,
-          "rawScore": 0.207,
-          "scoreLabel": "20.70%",
-          "normalizedScore": 54,
-          "modelVersion": "gpt-5.1-codex",
-          "model": "GPT 5.1 Codex",
-          "organization": "OpenAI",
-          "releaseDate": "2025-11-12"
+          "rawScore": 0.24,
+          "scoreLabel": "24%",
+          "normalizedScore": 58,
+          "modelVersion": "gemini-3-flash-preview",
+          "model": "Gemini 3 Flash",
+          "organization": "Google",
+          "releaseDate": "2025-12-17"
+        },
+        {
+          "sourceId": "arena-text",
+          "sourceShort": "ARENA",
+          "sourceLabel": "Arena Text",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://arena.ai/leaderboard/text",
+          "status": "live",
+          "updatedAt": "2026-08-22T01:53:49.105Z",
+          "rank": 24,
+          "sourceRank": 30,
+          "sourceCount": 60,
+          "rawScore": 1472.7947494454168,
+          "scoreLabel": "1472.8",
+          "normalizedScore": 61.02,
+          "modelVersion": "gemini-3-flash",
+          "model": "Gemini 3 Flash",
+          "organization": "Google",
+          "releaseDate": null
         },
         {
           "sourceId": "epoch-eci",
@@ -9767,21 +9764,43 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 42,
-          "sourceRank": 183,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 38,
+          "sourceRank": 173,
           "sourceCount": 60,
-          "rawScore": 150.16,
-          "scoreLabel": "150.2",
-          "normalizedScore": 30.51,
-          "modelVersion": "gpt-5.1-codex-max",
-          "model": "GPT-5.1-Codex",
-          "organization": "OpenAI",
-          "releaseDate": "2025-11-19"
+          "rawScore": 151.73,
+          "scoreLabel": "151.7",
+          "normalizedScore": 37.29,
+          "modelVersion": "gemini-3-flash-preview_high",
+          "model": "Gemini 3 Flash Preview",
+          "organization": "Google",
+          "releaseDate": "2025-12-17"
+        },
+        {
+          "sourceId": "arena-webdev",
+          "sourceShort": "WEB",
+          "sourceLabel": "Arena WebDev",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 59,
+          "sourceRank": 81,
+          "sourceCount": 60,
+          "rawScore": 1382.78,
+          "scoreLabel": "1382.8",
+          "normalizedScore": 1.69,
+          "modelVersion": "gemini-3-flash-preview",
+          "model": "Gemini 3 Flash",
+          "organization": "Google",
+          "releaseDate": "2025-12-17"
         }
       ],
       "ranks": {
-        "agent": 24
+        "agent": 22
       }
     },
     {
@@ -9789,12 +9808,12 @@
       "name": "Gemini 3.6 Flash",
       "organization": "Google",
       "releaseDate": "2026-07-21",
-      "score": 50.8,
+      "score": 49.7,
       "coverage": 66.7,
       "sourceCount": 4,
       "operatorCount": 3,
       "categoryScores": {
-        "general": 65.3,
+        "general": 63.6,
         "code": 47,
         "agent": null
       },
@@ -9876,13 +9895,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 26,
-          "sourceRank": 133,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 28,
+          "sourceRank": 140,
           "sourceCount": 60,
-          "rawScore": 154.2,
-          "scoreLabel": "154.2",
-          "normalizedScore": 57.63,
+          "rawScore": 154.14,
+          "scoreLabel": "154.1",
+          "normalizedScore": 54.24,
           "modelVersion": "gemini-3.6-flash_minimal",
           "model": "Gemini 3.6 Flash",
           "organization": "Google",
@@ -9890,7 +9909,7 @@
         }
       ],
       "ranks": {
-        "general": 28,
+        "general": 29,
         "code": 30
       }
     },
@@ -9899,12 +9918,12 @@
       "name": "Claude Sonnet 4.6",
       "organization": "Anthropic",
       "releaseDate": "2026-02-17",
-      "score": 47.5,
+      "score": 46.8,
       "coverage": 100,
       "sourceCount": 6,
       "operatorCount": 5,
       "categoryScores": {
-        "general": 52.5,
+        "general": 50.9,
         "code": 35.3,
         "agent": 61.7
       },
@@ -10030,13 +10049,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 32,
-          "sourceRank": 152,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 34,
+          "sourceRank": 159,
           "sourceCount": 60,
-          "rawScore": 152.17,
+          "rawScore": 152.16,
           "scoreLabel": "152.2",
-          "normalizedScore": 47.46,
+          "normalizedScore": 44.07,
           "modelVersion": "claude-sonnet-4-6_high",
           "model": "Claude Sonnet 4.6",
           "organization": "Anthropic",
@@ -10052,12 +10071,12 @@
       "name": "Gemini 3.5 Flash",
       "organization": "Google",
       "releaseDate": "2026-05-19",
-      "score": 46.1,
+      "score": 44.9,
       "coverage": 66.7,
       "sourceCount": 4,
       "operatorCount": 3,
       "categoryScores": {
-        "general": 67,
+        "general": 65.3,
         "code": 33.1,
         "agent": null
       },
@@ -10117,13 +10136,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 23,
-          "sourceRank": 121,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 25,
+          "sourceRank": 128,
           "sourceCount": 60,
-          "rawScore": 154.45,
+          "rawScore": 154.43,
           "scoreLabel": "154.4",
-          "normalizedScore": 62.71,
+          "normalizedScore": 59.32,
           "modelVersion": "gemini-3.5-flash_high",
           "model": "Gemini 3.5 Flash",
           "organization": "Google",
@@ -10153,7 +10172,7 @@
         }
       ],
       "ranks": {
-        "general": 24
+        "general": 26
       }
     },
     {
@@ -10161,12 +10180,12 @@
       "name": "GLM-5.1",
       "organization": "Z.ai",
       "releaseDate": "2026-04-07",
-      "score": 44.9,
+      "score": 43.2,
       "coverage": 50,
       "sourceCount": 3,
       "operatorCount": 2,
       "categoryScores": {
-        "general": 42.4,
+        "general": 40.7,
         "code": 57.6,
         "agent": null
       },
@@ -10226,13 +10245,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 38,
-          "sourceRank": 171,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 40,
+          "sourceRank": 178,
           "sourceCount": 60,
-          "rawScore": 150.86,
-          "scoreLabel": "150.9",
-          "normalizedScore": 37.29,
+          "rawScore": 150.85,
+          "scoreLabel": "150.8",
+          "normalizedScore": 33.9,
           "modelVersion": "glm-5.1",
           "model": "GLM-5.1",
           "organization": "Z.ai",
@@ -10248,12 +10267,12 @@
       "name": "Kimi K2.6",
       "organization": "Moonshot AI",
       "releaseDate": "2026-04-20",
-      "score": 44.2,
+      "score": 43.1,
       "coverage": 66.7,
       "sourceCount": 4,
       "operatorCount": 3,
       "categoryScores": {
-        "general": 37.3,
+        "general": 35.6,
         "code": 55.9,
         "agent": 48
       },
@@ -10313,13 +10332,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 37,
-          "sourceRank": 170,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 39,
+          "sourceRank": 177,
           "sourceCount": 60,
-          "rawScore": 151.04,
+          "rawScore": 151,
           "scoreLabel": "151",
-          "normalizedScore": 38.98,
+          "normalizedScore": 35.59,
           "modelVersion": "kimi-k2.6",
           "model": "Kimi K2.6",
           "organization": "Moonshot AI",
@@ -10357,12 +10376,12 @@
       "name": "GPT-5",
       "organization": "OpenAI",
       "releaseDate": "2025-08-07",
-      "score": 39.5,
+      "score": 39.1,
       "coverage": 66.7,
       "sourceCount": 4,
       "operatorCount": 4,
       "categoryScores": {
-        "general": 28.8,
+        "general": 27.1,
         "code": 20.3,
         "agent": 54.4
       },
@@ -10422,13 +10441,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 43,
-          "sourceRank": 184,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 44,
+          "sourceRank": 190,
           "sourceCount": 60,
           "rawScore": 150,
           "scoreLabel": "150",
-          "normalizedScore": 28.81,
+          "normalizedScore": 27.12,
           "modelVersion": "gpt-5-2025-08-07_high",
           "model": "GPT-5",
           "organization": "OpenAI",
@@ -10466,12 +10485,12 @@
       "name": "Grok 4.20",
       "organization": "xAI",
       "releaseDate": "2026-02-17",
-      "score": 37.4,
+      "score": 36.8,
       "coverage": 50,
       "sourceCount": 3,
       "operatorCount": 3,
       "categoryScores": {
-        "general": 42.4,
+        "general": 40.7,
         "code": 0,
         "agent": 69.8
       },
@@ -10509,13 +10528,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 35,
-          "sourceRank": 165,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 36,
+          "sourceRank": 168,
           "sourceCount": 60,
-          "rawScore": 152.07,
+          "rawScore": 152.09,
           "scoreLabel": "152.1",
-          "normalizedScore": 42.37,
+          "normalizedScore": 40.68,
           "modelVersion": "grok-4-20",
           "model": "Grok 4.20",
           "organization": "xAI",
@@ -10546,115 +10565,6 @@
       ],
       "ranks": {
         "agent": 21
-      }
-    },
-    {
-      "slug": "kimi-k2.7-code",
-      "name": "Kimi K2.7 Code",
-      "organization": "Moonshot AI",
-      "releaseDate": "2026-06-12",
-      "score": 37.3,
-      "coverage": 66.7,
-      "sourceCount": 4,
-      "operatorCount": 4,
-      "categoryScores": {
-        "general": 35.6,
-        "code": 25.7,
-        "agent": 62
-      },
-      "pricing": null,
-      "evidence": [
-        {
-          "sourceId": "apex-agents",
-          "sourceShort": "APEX",
-          "sourceLabel": "APEX-Agents",
-          "operatorId": "apex-agents",
-          "operator": "APEX-Agents",
-          "category": "agent",
-          "categoryLabel": "Agent",
-          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
-          "status": "live",
-          "updatedAt": "2026-08-19T01:55:55.225Z",
-          "rank": 20,
-          "sourceRank": 26,
-          "sourceCount": 51,
-          "rawScore": 0.276,
-          "scoreLabel": "27.60%",
-          "normalizedScore": 62,
-          "modelVersion": "kimi-k2.7-code",
-          "model": "Kimi K2.7 Code",
-          "organization": "Moonshot AI",
-          "releaseDate": "2026-06-12"
-        },
-        {
-          "sourceId": "deepswe",
-          "sourceShort": "SWE",
-          "sourceLabel": "DeepSWE v1.1",
-          "operatorId": "datacurve",
-          "operator": "DataCurve",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://deepswe.datacurve.ai/",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 21,
-          "sourceRank": 54,
-          "sourceCount": 23,
-          "rawScore": 0.3053097345132743,
-          "scoreLabel": "30.53%",
-          "normalizedScore": 9.09,
-          "modelVersion": "kimi-k2.7-code",
-          "model": "Kimi K2.7 Code",
-          "organization": "Moonshot AI",
-          "releaseDate": "2026-06-12"
-        },
-        {
-          "sourceId": "arena-webdev",
-          "sourceShort": "WEB",
-          "sourceLabel": "Arena WebDev",
-          "operatorId": "lmarena",
-          "operator": "Arena",
-          "category": "code",
-          "categoryLabel": "代码",
-          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
-          "status": "live",
-          "updatedAt": "2026-08-26T02:01:12.938Z",
-          "rank": 35,
-          "sourceRank": 46,
-          "sourceCount": 60,
-          "rawScore": 1472.65,
-          "scoreLabel": "1472.7",
-          "normalizedScore": 42.37,
-          "modelVersion": "kimi-k2.7-code",
-          "model": "Kimi K2.7 Code",
-          "organization": "Moonshot AI",
-          "releaseDate": "2026-06-12"
-        },
-        {
-          "sourceId": "epoch-eci",
-          "sourceShort": "ECI",
-          "sourceLabel": "Epoch Capabilities Index",
-          "operatorId": "epoch-ai",
-          "operator": "Epoch AI",
-          "category": "general",
-          "categoryLabel": "通用",
-          "sourceUrl": "https://epoch.ai/eci",
-          "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 39,
-          "sourceRank": 172,
-          "sourceCount": 60,
-          "rawScore": 150.52,
-          "scoreLabel": "150.5",
-          "normalizedScore": 35.59,
-          "modelVersion": "kimi-k2.7-code",
-          "model": "Kimi K2.7 Code",
-          "organization": "Moonshot AI",
-          "releaseDate": "2026-06-12"
-        }
-      ],
-      "ranks": {
-        "agent": 25
       }
     },
     {
@@ -10745,6 +10655,115 @@
       }
     },
     {
+      "slug": "kimi-k2.7-code",
+      "name": "Kimi K2.7 Code",
+      "organization": "Moonshot AI",
+      "releaseDate": "2026-06-12",
+      "score": 36.4,
+      "coverage": 66.7,
+      "sourceCount": 4,
+      "operatorCount": 4,
+      "categoryScores": {
+        "general": 32.2,
+        "code": 25.7,
+        "agent": 62
+      },
+      "pricing": null,
+      "evidence": [
+        {
+          "sourceId": "apex-agents",
+          "sourceShort": "APEX",
+          "sourceLabel": "APEX-Agents",
+          "operatorId": "apex-agents",
+          "operator": "APEX-Agents",
+          "category": "agent",
+          "categoryLabel": "Agent",
+          "sourceUrl": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+          "status": "live",
+          "updatedAt": "2026-08-19T01:55:55.225Z",
+          "rank": 20,
+          "sourceRank": 26,
+          "sourceCount": 51,
+          "rawScore": 0.276,
+          "scoreLabel": "27.60%",
+          "normalizedScore": 62,
+          "modelVersion": "kimi-k2.7-code",
+          "model": "Kimi K2.7 Code",
+          "organization": "Moonshot AI",
+          "releaseDate": "2026-06-12"
+        },
+        {
+          "sourceId": "deepswe",
+          "sourceShort": "SWE",
+          "sourceLabel": "DeepSWE v1.1",
+          "operatorId": "datacurve",
+          "operator": "DataCurve",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://deepswe.datacurve.ai/",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 21,
+          "sourceRank": 54,
+          "sourceCount": 23,
+          "rawScore": 0.3053097345132743,
+          "scoreLabel": "30.53%",
+          "normalizedScore": 9.09,
+          "modelVersion": "kimi-k2.7-code",
+          "model": "Kimi K2.7 Code",
+          "organization": "Moonshot AI",
+          "releaseDate": "2026-06-12"
+        },
+        {
+          "sourceId": "arena-webdev",
+          "sourceShort": "WEB",
+          "sourceLabel": "Arena WebDev",
+          "operatorId": "lmarena",
+          "operator": "Arena",
+          "category": "code",
+          "categoryLabel": "代码",
+          "sourceUrl": "https://arena.ai/leaderboard/code/webdev",
+          "status": "live",
+          "updatedAt": "2026-08-26T02:01:12.938Z",
+          "rank": 35,
+          "sourceRank": 46,
+          "sourceCount": 60,
+          "rawScore": 1472.65,
+          "scoreLabel": "1472.7",
+          "normalizedScore": 42.37,
+          "modelVersion": "kimi-k2.7-code",
+          "model": "Kimi K2.7 Code",
+          "organization": "Moonshot AI",
+          "releaseDate": "2026-06-12"
+        },
+        {
+          "sourceId": "epoch-eci",
+          "sourceShort": "ECI",
+          "sourceLabel": "Epoch Capabilities Index",
+          "operatorId": "epoch-ai",
+          "operator": "Epoch AI",
+          "category": "general",
+          "categoryLabel": "通用",
+          "sourceUrl": "https://epoch.ai/eci",
+          "status": "live",
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 41,
+          "sourceRank": 179,
+          "sourceCount": 60,
+          "rawScore": 150.52,
+          "scoreLabel": "150.5",
+          "normalizedScore": 32.2,
+          "modelVersion": "kimi-k2.7-code",
+          "model": "Kimi K2.7 Code",
+          "organization": "Moonshot AI",
+          "releaseDate": "2026-06-12"
+        }
+      ],
+      "ranks": {
+        "agent": 25
+      }
+    },
+    {
       "slug": "minimax-m2-7",
       "name": "MiniMax-M2.7",
       "organization": "MiniMax",
@@ -10814,12 +10833,12 @@
       "name": "GPT-5.4 mini",
       "organization": "OpenAI",
       "releaseDate": "2026-03-17",
-      "score": 28.2,
+      "score": 29.3,
       "coverage": 66.7,
       "sourceCount": 4,
       "operatorCount": 3,
       "categoryScores": {
-        "general": 11,
+        "general": 12.7,
         "code": 11.9,
         "agent": 60
       },
@@ -10857,13 +10876,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 51,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 49,
           "sourceRank": 213,
           "sourceCount": 60,
-          "rawScore": 149.29,
+          "rawScore": 149.33,
           "scoreLabel": "149.3",
-          "normalizedScore": 15.25,
+          "normalizedScore": 18.64,
           "modelVersion": "gpt-5.4-mini-2026-03-17_xhigh",
           "model": "GPT-5.4 mini",
           "organization": "OpenAI",
@@ -10923,12 +10942,12 @@
       "name": "MiniMax-M3",
       "organization": "MiniMax",
       "releaseDate": "2026-06-01",
-      "score": 27.1,
+      "score": 26.3,
       "coverage": 33.3,
       "sourceCount": 2,
       "operatorCount": 2,
       "categoryScores": {
-        "general": 5.1,
+        "general": 3.4,
         "code": 49.1,
         "agent": null
       },
@@ -10966,13 +10985,13 @@
           "categoryLabel": "通用",
           "sourceUrl": "https://epoch.ai/eci",
           "status": "live",
-          "updatedAt": "2026-08-26T20:07:56.111Z",
-          "rank": 57,
-          "sourceRank": 229,
+          "updatedAt": "2026-08-27T09:56:26.653Z",
+          "rank": 58,
+          "sourceRank": 235,
           "sourceCount": 60,
-          "rawScore": 147.54,
-          "scoreLabel": "147.5",
-          "normalizedScore": 5.08,
+          "rawScore": 147.76,
+          "scoreLabel": "147.8",
+          "normalizedScore": 3.39,
           "modelVersion": "MiniMax-M3",
           "model": "MiniMax-M3",
           "organization": "MiniMax",
