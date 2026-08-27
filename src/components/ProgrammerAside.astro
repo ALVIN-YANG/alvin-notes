@@ -1,0 +1,259 @@
+---
+const quips = [
+  '能删掉的代码，比写对的代码更可靠。',
+  '先别重构，先确认这段代码真的有人调用。',
+  '你以为是缓存问题。巧了，它真是。',
+  '测试没报错，只说明测试还没发现。',
+  '线上没有玄学，只有还没加上的日志。',
+  '这个 TODO 已经具备文物价值。',
+  '临时方案最稳定的属性，就是长期存在。',
+  '别急着拆微服务，先把边界说清楚。',
+  '版本号会涨，兼容债不会自己消失。',
+  '先看 diff，再听发布成功。',
+  '只能在你电脑上跑的，叫个人成就。',
+  '重试不是恢复机制，最多算情绪管理。',
+  '一切正常，通常是监控还没覆盖到。',
+  '删接口前，先问问离线设备睡醒没有。',
+  '架构图很干净，生产环境不一定同意。',
+  '别让 Feature Flag 变成分支垃圾场。',
+  '新后端先稳住，再叫客户端上车。',
+  '没有幂等的重试，是重复制造事故。',
+];
+---
+
+<programmer-aside class="programmer-aside" data-quips={JSON.stringify(quips)}>
+  <div class="programmer-bubble" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+    <span class="programmer-quip"></span>
+  </div>
+  <button class="programmer-avatar" type="button" aria-label="听听 Alvin 怎么说" aria-expanded="false">
+    <span class="programmer-portrait" aria-hidden="true"></span>
+  </button>
+</programmer-aside>
+
+<style>
+  .programmer-aside {
+    position: fixed;
+    right: clamp(0.8rem, 1.8vw, 1.5rem);
+    bottom: clamp(0.8rem, 1.8vw, 1.4rem);
+    z-index: 45;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.7rem;
+    pointer-events: none;
+  }
+
+  .programmer-bubble {
+    position: relative;
+    max-width: min(20rem, calc(100vw - 7.5rem));
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 1rem 1rem 0.3rem 1rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 0.75rem 2.2rem rgba(36, 41, 47, 0.12);
+    color: var(--sl-color-gray-1);
+    font-family: var(--sl-font-mono);
+    font-size: 0.82rem;
+    line-height: 1.65;
+    opacity: 0;
+    transform: translate3d(0.5rem, 0.35rem, 0) scale(0.96);
+    transform-origin: right bottom;
+    visibility: hidden;
+    transition:
+      opacity 180ms ease,
+      transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      visibility 0s linear 220ms;
+  }
+
+  .programmer-bubble::after {
+    position: absolute;
+    right: -0.38rem;
+    bottom: 1.05rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+    border-right: 1px solid var(--sl-color-gray-5);
+    background: #fff;
+    content: '';
+    transform: rotate(45deg);
+  }
+
+  .programmer-aside[data-open] .programmer-bubble {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .programmer-avatar {
+    position: relative;
+    flex: 0 0 auto;
+    width: 4.6rem;
+    height: 4.6rem;
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 1.45rem;
+    background: #f8f7f1;
+    box-shadow: 0 0.55rem 1.5rem rgba(36, 41, 47, 0.13);
+    cursor: pointer;
+    pointer-events: auto;
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+
+  .programmer-avatar:hover {
+    border-color: var(--sl-color-accent);
+    box-shadow: 0 0.75rem 1.8rem rgba(36, 41, 47, 0.17);
+    transform: translateY(-2px);
+  }
+
+  .programmer-avatar:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--sl-color-accent) 34%, transparent);
+    outline-offset: 3px;
+  }
+
+  .programmer-portrait {
+    position: absolute;
+    inset: 0;
+    display: block;
+    background: #f8f7f1 url('/images/brand/alvin-programmer.webp') 50% 13% / 280% auto no-repeat;
+    transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .programmer-aside[data-open] .programmer-portrait {
+    transform: scale(1.025);
+  }
+
+  @media (max-width: 40rem) {
+    .programmer-aside {
+      right: calc(0.75rem + env(safe-area-inset-right));
+      bottom: calc(0.75rem + env(safe-area-inset-bottom));
+      gap: 0.55rem;
+    }
+
+    .programmer-avatar {
+      width: 3.75rem;
+      height: 3.75rem;
+      border-radius: 1.15rem;
+    }
+
+    .programmer-bubble {
+      max-width: calc(100vw - 5.6rem);
+      padding: 0.7rem 0.85rem;
+      border-radius: 0.9rem 0.9rem 0.25rem 0.9rem;
+      font-size: 0.76rem;
+      line-height: 1.55;
+    }
+
+    .programmer-bubble::after {
+      bottom: 0.9rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .programmer-bubble,
+    .programmer-avatar,
+    .programmer-portrait {
+      transition: none;
+    }
+  }
+
+  @media print {
+    .programmer-aside {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  class ProgrammerAside extends HTMLElement {
+    private quips: string[] = [];
+    private lastIndex = -1;
+    private autoTimer = 0;
+    private hideTimer = 0;
+    private hasSpoken = false;
+    private button: HTMLButtonElement | null = null;
+    private bubble: HTMLElement | null = null;
+    private output: HTMLElement | null = null;
+
+    connectedCallback() {
+      if (this.button) return;
+
+      try {
+        this.quips = JSON.parse(this.dataset.quips ?? '[]');
+      } catch {
+        this.quips = [];
+      }
+
+      this.button = this.querySelector('.programmer-avatar');
+      this.bubble = this.querySelector('.programmer-bubble');
+      this.output = this.querySelector('.programmer-quip');
+      if (!this.button || !this.bubble || !this.output || this.quips.length === 0) return;
+
+      this.button.addEventListener('click', this.handleClick);
+      this.scheduleAutoMessage();
+    }
+
+    disconnectedCallback() {
+      window.clearTimeout(this.autoTimer);
+      window.clearTimeout(this.hideTimer);
+      this.button?.removeEventListener('click', this.handleClick);
+      this.button = null;
+      this.bubble = null;
+      this.output = null;
+    }
+
+    private handleClick = () => {
+      this.hasSpoken = true;
+      window.clearTimeout(this.autoTimer);
+      if (this.hasAttribute('data-open')) {
+        this.hideMessage();
+        return;
+      }
+      this.showNextMessage();
+    };
+
+    private scheduleAutoMessage() {
+      const delay = 3200 + Math.floor(Math.random() * 4200);
+      this.autoTimer = window.setTimeout(() => {
+        if (this.hasSpoken) return;
+        if (document.hidden) {
+          this.scheduleAutoMessage();
+          return;
+        }
+        this.hasSpoken = true;
+        this.showNextMessage();
+      }, delay);
+    }
+
+    private showNextMessage() {
+      if (!this.button || !this.bubble || !this.output) return;
+
+      let nextIndex = Math.floor(Math.random() * this.quips.length);
+      if (this.quips.length > 1 && nextIndex === this.lastIndex) {
+        nextIndex = (nextIndex + 1) % this.quips.length;
+      }
+      this.lastIndex = nextIndex;
+      this.output.textContent = this.quips[nextIndex];
+      this.setAttribute('data-open', '');
+      this.button.setAttribute('aria-expanded', 'true');
+      this.bubble.setAttribute('aria-hidden', 'false');
+
+      window.clearTimeout(this.hideTimer);
+      this.hideTimer = window.setTimeout(() => this.hideMessage(), 6800);
+    }
+
+    private hideMessage() {
+      this.removeAttribute('data-open');
+      this.button?.setAttribute('aria-expanded', 'false');
+      this.bubble?.setAttribute('aria-hidden', 'true');
+      window.clearTimeout(this.hideTimer);
+    }
+  }
+
+  if (!customElements.get('programmer-aside')) {
+    customElements.define('programmer-aside', ProgrammerAside);
+  }
+</script>
