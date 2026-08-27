@@ -1,27 +1,4 @@
----
-const quips = [
-  '能删掉的代码，比写对的代码更可靠。',
-  '先别重构，先确认这段代码真的有人调用。',
-  '你以为是缓存问题。巧了，它真是。',
-  '测试没报错，只说明测试还没发现。',
-  '线上没有玄学，只有还没加上的日志。',
-  '这个 TODO 已经具备文物价值。',
-  '临时方案最稳定的属性，就是长期存在。',
-  '别急着拆微服务，先把边界说清楚。',
-  '版本号会涨，兼容债不会自己消失。',
-  '先看 diff，再听发布成功。',
-  '只能在你电脑上跑的，叫个人成就。',
-  '重试不是恢复机制，最多算情绪管理。',
-  '一切正常，通常是监控还没覆盖到。',
-  '删接口前，先问问离线设备睡醒没有。',
-  '架构图很干净，生产环境不一定同意。',
-  '别让 Feature Flag 变成分支垃圾场。',
-  '新后端先稳住，再叫客户端上车。',
-  '没有幂等的重试，是重复制造事故。',
-];
----
-
-<programmer-aside class="programmer-aside" data-quips={JSON.stringify(quips)}>
+<programmer-aside class="programmer-aside">
   <div class="programmer-bubble" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
     <span class="programmer-quip"></span>
   </div>
@@ -168,8 +145,10 @@ const quips = [
 </style>
 
 <script>
+  import { programmerQuips } from '../data/programmer-quips';
+
   class ProgrammerAside extends HTMLElement {
-    private quips: string[] = [];
+    private quips: readonly string[] = programmerQuips;
     private lastIndex = -1;
     private autoTimer = 0;
     private hideTimer = 0;
@@ -180,12 +159,6 @@ const quips = [
 
     connectedCallback() {
       if (this.button) return;
-
-      try {
-        this.quips = JSON.parse(this.dataset.quips ?? '[]');
-      } catch {
-        this.quips = [];
-      }
 
       this.button = this.querySelector('.programmer-avatar');
       this.bubble = this.querySelector('.programmer-bubble');
