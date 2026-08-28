@@ -36,11 +36,32 @@
       "summary": "把 think、ui、check、hunt、write、learn、read 和 health 这些工程习惯做成可单独调用的 Skill。"
     },
     {
+      "slug": "ponytail",
+      "name": "Ponytail",
+      "repo": "https://github.com/DietrichGebert/ponytail",
+      "category": "工程方法",
+      "summary": "让 Agent 依次检查需求、现有实现、标准库和平台原生能力，只写任务真正需要的代码，同时保留安全与可访问性。"
+    },
+    {
+      "slug": "superpowers",
+      "name": "Superpowers",
+      "repo": "https://github.com/obra/superpowers",
+      "category": "工程流程",
+      "summary": "从需求澄清开始，把隔离工作区、TDD 和代码审查放进固定流程，直到分支完成收尾。"
+    },
+    {
       "slug": "mattpocock-skills",
       "name": "Skills for Real Engineers",
       "repo": "https://github.com/mattpocock/skills",
       "category": "工程方法",
       "summary": "用小而可组合的 Skill 处理需求追问、领域语言、规格、测试、诊断和工程交付。"
+    },
+    {
+      "slug": "baoyu-skills",
+      "name": "Baoyu Skills",
+      "repo": "https://github.com/JimLiu/baoyu-skills",
+      "category": "内容创作",
+      "summary": "把文章配图、封面和公众号发布等内容工作拆成可单独安装的 Skill，也收录图像生成与常用工具。"
     },
     {
       "slug": "beautify-github-readme",
