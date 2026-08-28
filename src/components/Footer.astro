@@ -3,7 +3,6 @@ import EditLink from 'virtual:starlight/components/EditLink';
 import LastUpdated from 'virtual:starlight/components/LastUpdated';
 import Pagination from 'virtual:starlight/components/Pagination';
 import Comments from './Comments.astro';
-import ProgrammerAside from './ProgrammerAside.astro';
 
 const { entry, slug } = Astro.locals.starlightRoute;
 const commentsEnabled = (entry.data as typeof entry.data & { comments?: boolean }).comments !== false;
@@ -25,8 +24,6 @@ const showComments = commentsEnabled && slug !== '' && entry.body.trim().length 
     <span>Typography <a href="https://hyperos.mi.com/font/" target="_blank" rel="noopener">MiSans</a></span>
   </div>
 </footer>
-
-<ProgrammerAside />
 
 <style>
   footer {

@@ -1,7 +1,32 @@
 ---
 import DefaultHero from '@astrojs/starlight/components/Hero.astro';
+import ProgrammerAside from './ProgrammerAside.astro';
 
 const isRootHome = Astro.url.pathname === '/';
 ---
 
-{isRootHome ? null : <DefaultHero {...Astro.props} />}
+{
+  isRootHome ? (
+    <section class="home-avatar-hero" aria-label="Alvin 的话">
+      <ProgrammerAside />
+    </section>
+  ) : (
+    <DefaultHero {...Astro.props} />
+  )
+}
+
+<style>
+  .home-avatar-hero {
+    display: flex;
+    justify-content: flex-start;
+    width: min(calc(100% - 2rem), 72rem);
+    margin: 0.7rem auto 0;
+  }
+
+  @media (max-width: 40rem) {
+    .home-avatar-hero {
+      width: calc(100% - 1.5rem);
+      margin-top: 0.55rem;
+    }
+  }
+</style>
