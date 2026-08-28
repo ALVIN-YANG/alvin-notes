@@ -14,26 +14,28 @@
     bottom: clamp(0.8rem, 1.8vw, 1.4rem);
     z-index: 45;
     display: flex;
+    flex-direction: column;
     align-items: flex-end;
-    gap: 0.7rem;
+    gap: 0.65rem;
     pointer-events: none;
   }
 
   .programmer-bubble {
     position: relative;
-    max-width: min(20rem, calc(100vw - 7.5rem));
+    width: max-content;
+    max-width: min(20rem, calc(100vw - 2rem));
     padding: 0.8rem 1rem;
     border: 1px solid var(--sl-color-gray-5);
-    border-radius: 1rem 1rem 0.3rem 1rem;
-    background: rgba(255, 255, 255, 0.96);
+    border-radius: 1.25rem;
+    background: color-mix(in srgb, var(--sl-color-surface) 96%, transparent);
     box-shadow: 0 0.75rem 2.2rem rgba(36, 41, 47, 0.12);
     color: var(--sl-color-gray-1);
     font-family: var(--sl-font-mono);
     font-size: 0.82rem;
     line-height: 1.65;
     opacity: 0;
-    transform: translate3d(0.5rem, 0.35rem, 0) scale(0.96);
-    transform-origin: right bottom;
+    transform: translate3d(0, 0.45rem, 0) scale(0.96);
+    transform-origin: calc(100% - 2.3rem) bottom;
     visibility: hidden;
     transition:
       opacity 180ms ease,
@@ -43,13 +45,13 @@
 
   .programmer-bubble::after {
     position: absolute;
-    right: -0.38rem;
-    bottom: 1.05rem;
+    right: 1.95rem;
+    bottom: -0.38rem;
     width: 0.7rem;
     height: 0.7rem;
-    border-top: 1px solid var(--sl-color-gray-5);
+    border-bottom: 1px solid var(--sl-color-gray-5);
     border-right: 1px solid var(--sl-color-gray-5);
-    background: #fff;
+    background: var(--sl-color-surface);
     content: '';
     transform: rotate(45deg);
   }
@@ -95,7 +97,7 @@
     position: absolute;
     inset: 0;
     display: block;
-    background: #f8f7f1 url('/images/brand/alvin-programmer.webp') 50% 13% / 280% auto no-repeat;
+    background: #f8f7f1 url('/images/brand/alvin-programmer.webp') 50% 0 / 280% auto no-repeat;
     transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
@@ -117,15 +119,16 @@
     }
 
     .programmer-bubble {
-      max-width: calc(100vw - 5.6rem);
+      max-width: calc(100vw - 1.5rem);
       padding: 0.7rem 0.85rem;
-      border-radius: 0.9rem 0.9rem 0.25rem 0.9rem;
+      border-radius: 1.1rem;
       font-size: 0.76rem;
       line-height: 1.55;
     }
 
     .programmer-bubble::after {
-      bottom: 0.9rem;
+      right: 1.52rem;
+      bottom: -0.34rem;
     }
   }
 
