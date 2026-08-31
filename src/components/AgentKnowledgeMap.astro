@@ -445,7 +445,7 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             const previous = document.createElement('button');
             const progress = document.createElement('small');
             const next = document.createElement('button');
-            figure.className = `algorithm-visual is-${block.kind}`;
+            figure.className = `knowledge-visual algorithm-visual is-${block.kind}`;
             figure.setAttribute('aria-label', block.label);
             stage.className = 'algorithm-visual-stage';
             captionText.textContent = block.caption;
@@ -523,7 +523,7 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             figure.addEventListener('pointerleave', () => { pointerInside = false; });
 
             const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-            if (!reducedMotion.matches) {
+            if (!reducedMotion.matches && frameNodes.length > 1) {
               const timer = window.setInterval(() => {
                 if (manualNavigation || pointerInside || document.hidden || !figure.isConnected) return;
                 showFrame(activeFrame + 1);
@@ -537,11 +537,11 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
               source.href = block.sourceHref;
               source.target = '_blank';
               source.rel = 'noreferrer';
-              source.textContent = `${block.sourceLabel ?? '原题动画'} ↗`;
+              source.textContent = `${block.sourceLabel ?? '图解来源'} ↗`;
               caption.append(source);
             }
             navigation.append(previous, progress, next);
-            caption.append(navigation);
+            if (frameNodes.length > 1) caption.append(navigation);
             figure.append(stage, caption);
             container.append(figure);
             return;
@@ -647,7 +647,8 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         }
         const matches = pointRecords.filter(({ point, group, domain }) => {
           const explanation = (point.content ?? []).flatMap((block) => block.items ?? block.text ?? block.caption ?? block.label ?? '').join(' ');
-          const haystack = `${point.title} ${explanation} ${group.title} ${domain.title}`.toLocaleLowerCase('zh-CN');
+          const aliases = (point.aliases ?? []).join(' ');
+          const haystack = `${point.title} ${aliases} ${explanation} ${group.title} ${domain.title}`.toLocaleLowerCase('zh-CN');
           return haystack.includes(query);
         }).slice(0, 10);
         searchResults.innerHTML = matches.length ? matches.map(({ point, group, domain }) => `

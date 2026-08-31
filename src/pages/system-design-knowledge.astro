@@ -3,13 +3,13 @@ import AgentKnowledgeMap from '../components/AgentKnowledgeMap.astro';
 import systemDesignKnowledge from '../data/system-design-knowledge';
 import KnowledgeMapPage from '../layouts/KnowledgeMapPage.astro';
 
-const primerUrl = 'https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md';
+const primerUrl = 'https://github.com/donnemartin/system-design-primer';
 const licenseUrl = 'https://github.com/donnemartin/system-design-primer/blob/master/LICENSE.txt';
 ---
 
 <KnowledgeMapPage
   title="系统设计能力地图"
-  description="从需求澄清、容量估算到数据、缓存、异步、可靠性与取舍，梳理系统设计面试知识点。"
+  description="完整覆盖 System Design Primer，从面试主线、系统组件到八道系统题与七道面向对象设计题。"
 >
   <AgentKnowledgeMap
     data={systemDesignKnowledge}
@@ -17,9 +17,9 @@ const licenseUrl = 'https://github.com/donnemartin/system-design-primer/blob/mas
     mapId="system-design"
     panelSourceTitle="权威资料"
     sourceLink={{
-      label: 'Primer · CC BY 4.0',
-      href: licenseUrl,
-      title: `基于 System Design Primer 中文版改编，原文 ${primerUrl}`,
+      label: 'Primer · 完整覆盖',
+      href: primerUrl,
+      title: `完整覆盖 System Design Primer，内容遵循 ${licenseUrl}`,
     }}
     levelLabels={{ core: '核心', scenario: '实战', advanced: '进阶' }}
   />

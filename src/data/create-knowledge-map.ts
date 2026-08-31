@@ -10,7 +10,14 @@ export type KnowledgeVisualTokenState =
   | 'muted'
   | 'arrow'
   | 'gap'
-  | 'result';
+  | 'result'
+  | 'client'
+  | 'service'
+  | 'cache'
+  | 'queue'
+  | 'store'
+  | 'metric'
+  | 'danger';
 
 export interface KnowledgeVisualRow {
   label?: string;
@@ -30,7 +37,18 @@ export type KnowledgeContentBlock =
   | { type: 'code'; language?: string; text: string }
   | {
       type: 'visual';
-      kind: 'flow' | 'sequence' | 'linked-list' | 'stack' | 'tree' | 'grid' | 'table';
+      kind:
+        | 'flow'
+        | 'sequence'
+        | 'linked-list'
+        | 'stack'
+        | 'tree'
+        | 'grid'
+        | 'table'
+        | 'architecture'
+        | 'capacity'
+        | 'tradeoff'
+        | 'failure';
       label: string;
       caption: string;
       frames: readonly KnowledgeVisualFrame[];
@@ -47,6 +65,8 @@ export type KnowledgePointSeed =
   | {
       title: string;
       content: readonly KnowledgeContentBlock[];
+      aliases?: readonly string[];
+      coverage?: readonly string[];
       references?: readonly KnowledgeReference[];
     };
 
@@ -71,7 +91,7 @@ export interface KnowledgeDomainSeed {
   groups: readonly KnowledgeGroupSeed[];
 }
 
-interface KnowledgeMapSeed {
+export interface KnowledgeMapSeed {
   slug: string;
   updatedAt: string;
   sources?: readonly { title: string; href: string }[];
@@ -111,6 +131,12 @@ export function createKnowledgeMap(seed: KnowledgeMapSeed) {
           id: `${seed.slug}-${domainIndex + 1}-${groupIndex + 1}-${pointIndex + 1}`,
           title: normalized.title,
           content: normalized.content,
+          ...('aliases' in normalized && normalized.aliases
+            ? { aliases: normalized.aliases }
+            : {}),
+          ...('coverage' in normalized && normalized.coverage
+            ? { coverage: normalized.coverage }
+            : {}),
           ...('references' in normalized && normalized.references
             ? { references: normalized.references }
             : {}),
