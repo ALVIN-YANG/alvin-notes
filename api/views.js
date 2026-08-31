@@ -24,7 +24,7 @@ export function normalizeArticlePath(value) {
   }
 
   if (pathname === '/' || pathname.startsWith('/api/')) return null;
-  return pathname.endsWith('/') ? pathname : `${pathname}/`;
+  return pathname.replace(/\/+$/, '');
 }
 
 function escapeODataString(value) {
