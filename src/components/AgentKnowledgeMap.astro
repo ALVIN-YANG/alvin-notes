@@ -160,12 +160,20 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       <button type="button" data-zoom="in" aria-label="放大">＋</button>
     </div>
 
+    <div class="panel-scrim" data-panel-scrim hidden aria-hidden="true"></div>
+
     <aside class="point-panel" data-point-panel hidden aria-label="知识点详情">
       <div class="panel-topline">
         <span data-panel-stage></span>
-        <button type="button" data-close-panel aria-label="关闭知识点详情">
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
+        <div class="panel-actions">
+          <button type="button" data-expand-panel aria-label="展开阅读模式" aria-pressed="false">
+            <svg class="panel-expand-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M8 21H3v-5m13 5h5v-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="panel-collapse-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M9 3v6H3m12-6v6h6M9 21v-6H3m12 6v-6h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" data-close-panel aria-label="关闭知识点详情">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 7 10 10M17 7 7 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
       </div>
 
       <div class="panel-heading">
@@ -272,6 +280,8 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       const searchInput = this.querySelector('[data-search-input]');
       const searchResults = this.querySelector('[data-search-results]');
       const panel = this.querySelector('[data-point-panel]');
+      const panelScrim = this.querySelector('[data-panel-scrim]');
+      const expandPanelButton = this.querySelector('[data-expand-panel]');
       const announcer = this.querySelector('[data-announcer]');
       const domainCards = [...this.querySelectorAll('[data-domain-id]')]
         .sort((left, right) => Number(left.dataset.domainIndex) - Number(right.dataset.domainIndex));
@@ -367,7 +377,9 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       const focusDomain = (domainId, scale = 0.96) => {
         const card = domainCard(domainId);
         if (!card) return;
-        const panelSpace = !panel.hidden && window.innerWidth >= 900 ? panel.offsetWidth + 36 : 0;
+        const panelSpace = !panel.hidden && !panel.classList.contains('is-expanded') && window.innerWidth >= 900
+          ? panel.offsetWidth + 36
+          : 0;
         const availableWidth = Math.max(320, canvas.clientWidth - panelSpace);
         const contentX = grid.offsetLeft + card.offsetLeft + card.offsetWidth / 2;
         const contentY = grid.offsetTop + card.offsetTop;
@@ -556,6 +568,38 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         });
       };
 
+      const setPanelExpanded = (expanded, { announce = true, preserveScroll = true } = {}) => {
+        const nextExpanded = expanded && window.innerWidth > 900;
+        const panelBounds = panel.getBoundingClientRect();
+        const stickyHeight = panel.querySelector('.panel-topline')?.getBoundingClientRect().height ?? 0;
+        const viewportTop = panelBounds.top + stickyHeight;
+        const scrollAnchor = preserveScroll
+          ? [...panel.querySelectorAll('.panel-heading, .panel-article > *, .panel-sources')]
+              .find((node) => node.getBoundingClientRect().bottom > viewportTop)
+          : null;
+        const anchorOffset = scrollAnchor ? scrollAnchor.getBoundingClientRect().top - viewportTop : null;
+        const previousScrollTop = panel.scrollTop;
+
+        panel.classList.toggle('is-expanded', nextExpanded);
+        panelScrim.hidden = !nextExpanded;
+        expandPanelButton.setAttribute('aria-pressed', String(nextExpanded));
+        expandPanelButton.setAttribute('aria-label', nextExpanded ? '收起阅读模式' : '展开阅读模式');
+        panel.setAttribute('aria-label', nextExpanded ? '知识点详情，阅读模式' : '知识点详情');
+        if (preserveScroll) {
+          window.requestAnimationFrame(() => {
+            if (scrollAnchor?.isConnected && anchorOffset !== null) {
+              const nextPanelTop = panel.getBoundingClientRect().top;
+              const nextStickyHeight = panel.querySelector('.panel-topline')?.getBoundingClientRect().height ?? 0;
+              const nextAnchorOffset = scrollAnchor.getBoundingClientRect().top - nextPanelTop - nextStickyHeight;
+              panel.scrollTop += nextAnchorOffset - anchorOffset;
+            } else {
+              panel.scrollTop = previousScrollTop;
+            }
+          });
+        }
+        if (announce) announcer.textContent = nextExpanded ? '已展开阅读模式' : '已收起阅读模式';
+      };
+
       const openPoint = (record, { updateUrl = true, focus = true } = {}) => {
         panel.hidden = false;
         setText('[data-panel-stage]', `阶段 ${record.domain.code}`);
@@ -566,7 +610,9 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         setPanelSources(record);
 
         clearHighlights();
-        if (focus) focusDomain(record.domain.id, window.innerWidth < 900 ? 1 : 0.96);
+        if (focus && !panel.classList.contains('is-expanded')) {
+          focusDomain(record.domain.id, window.innerWidth < 900 ? 1 : 0.96);
+        }
         window.requestAnimationFrame(() => {
           this.querySelector(`[data-open-point="${CSS.escape(record.point.id)}"]`)?.classList.add('is-active');
         });
@@ -578,6 +624,7 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
 
       const closePanel = ({ updateUrl = true } = {}) => {
         clearVisualTimers();
+        setPanelExpanded(false, { announce: false, preserveScroll: false });
         panel.hidden = true;
         clearHighlights();
         document.title = config.title;
@@ -667,6 +714,17 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
           return;
         }
 
+        if (target.closest('[data-expand-panel]')) {
+          setPanelExpanded(!panel.classList.contains('is-expanded'));
+          return;
+        }
+
+        if (target.closest('[data-panel-scrim]')) {
+          setPanelExpanded(false);
+          expandPanelButton.focus();
+          return;
+        }
+
         if (target.closest('[data-fit-map]')) {
           closePanel();
           fitMap();
@@ -722,7 +780,21 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       searchInput.addEventListener('input', renderSearch);
       searchInput.addEventListener('focus', renderSearch);
       window.addEventListener('popstate', handleLocation);
-      window.addEventListener('resize', drawConnectors);
+      window.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape' || panel.hidden) return;
+        if (panel.classList.contains('is-expanded')) {
+          setPanelExpanded(false);
+          expandPanelButton.focus();
+          return;
+        }
+        closePanel();
+      });
+      window.addEventListener('resize', () => {
+        drawConnectors();
+        if (window.innerWidth <= 900 && panel.classList.contains('is-expanded')) {
+          setPanelExpanded(false, { announce: false, preserveScroll: false });
+        }
+      });
       new ResizeObserver(drawConnectors).observe(grid);
 
       window.requestAnimationFrame(() => {
