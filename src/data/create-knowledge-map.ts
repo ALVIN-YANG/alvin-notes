@@ -35,6 +35,7 @@ export type KnowledgeContentBlock =
   | { type: 'paragraph'; text: string }
   | { type: 'list'; items: readonly string[] }
   | { type: 'code'; language?: string; text: string }
+  | { type: 'link'; label: string; detail?: string; href: string }
   | {
       type: 'visual';
       kind:

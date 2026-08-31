@@ -6,6 +6,7 @@ const contentDirectory = new URL('../src/content/docs/', import.meta.url);
 const fontManifestPath = new URL('./font-subset-codepoints.json', import.meta.url);
 const systemDesignCoveragePath = new URL('../src/data/system-design/primer-coverage.json', import.meta.url);
 const systemDesignOutputPath = new URL('../dist/system-design-knowledge/index.html', import.meta.url);
+const algorithmOutputPath = new URL('../dist/algorithm-knowledge/index.html', import.meta.url);
 const fontSourceDirectories = [
   new URL('../src/content/docs/', import.meta.url),
   new URL('../src/components/', import.meta.url),
@@ -114,6 +115,31 @@ if (outputDiagramCount !== sourceDiagramCount) {
   problems.push(`Static Mermaid count mismatch: source=${sourceDiagramCount}, output=${outputDiagramCount}`);
 }
 
+const algorithmHtml = await readFile(algorithmOutputPath, 'utf8');
+const algorithmDataMatch = algorithmHtml.match(
+  /<script type="application\/json" data-map-data>([\s\S]*?)<\/script>/,
+);
+
+let algorithmProblemCount = 0;
+if (!algorithmDataMatch) {
+  problems.push('Algorithm knowledge data is missing from the built page');
+} else {
+  const algorithmData = JSON.parse(algorithmDataMatch[1]);
+  const algorithmPoints = algorithmData.domains.flatMap((domain) => (
+    domain.groups.flatMap((group) => group.points)
+  ));
+
+  for (const point of algorithmPoints) {
+    const isProblem = point.content.some((block) => block.type === 'code');
+    if (!isProblem) continue;
+    algorithmProblemCount += 1;
+    const source = point.content[0];
+    if (source?.type !== 'link' || !/^https:\/\/leetcode\.cn\/problems\/[^/]+\/$/.test(source.href)) {
+      problems.push(`Algorithm card must start with a LeetCode problem link: ${point.title}`);
+    }
+  }
+}
+
 const systemDesignCoverage = JSON.parse(await readFile(systemDesignCoveragePath, 'utf8'));
 const systemDesignHtml = await readFile(systemDesignOutputPath, 'utf8');
 const systemDesignDataMatch = systemDesignHtml.match(
@@ -193,6 +219,6 @@ if (problems.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Static build verified: no PWA or Mermaid runtime; ${outputDiagramCount} diagrams are inline SVG; all ${systemDesignCoverage.length} System Design Primer topics are covered; MiSans ${fontManifest.version.miSans} and Sarasa Mono SC ${fontManifest.version.sarasaMono} subsets are current.`,
+    `Static build verified: no PWA or Mermaid runtime; ${outputDiagramCount} diagrams are inline SVG; all ${algorithmProblemCount} algorithm cards start with a LeetCode problem link; all ${systemDesignCoverage.length} System Design Primer topics are covered; MiSans ${fontManifest.version.miSans} and Sarasa Mono SC ${fontManifest.version.sarasaMono} subsets are current.`,
   );
 }

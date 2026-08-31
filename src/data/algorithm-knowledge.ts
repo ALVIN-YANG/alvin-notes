@@ -23,17 +23,13 @@ const codeTopReference = (rank: number): KnowledgeReference => ({
   href: codeTopArticle.href,
 });
 
-const leetcodeReference = (id: string, title: string, slug: string): KnowledgeReference => ({
-  title: `LeetCode ${id} ${title}`,
-  location: '题目定义、示例与输入约束',
-  href: `https://leetcode.cn/problems/${slug}/`,
-});
-
 interface InterviewCardSpec {
   rank: number;
   id: string;
   title: string;
-  slug?: string;
+  slug: string;
+  leetcodeId?: string;
+  leetcodeTitle?: string;
   difficulty: '简单' | '中等' | '困难';
   examines: string;
   clarify: string;
@@ -49,6 +45,12 @@ interface InterviewCardSpec {
 const makeInterviewCard = (spec: InterviewCardSpec): KnowledgePointSeed => ({
   title: spec.title,
   content: [
+    {
+      type: 'link',
+      label: '查看力扣原题',
+      detail: `LeetCode ${spec.leetcodeId ?? spec.id} · ${spec.leetcodeTitle ?? spec.title}`,
+      href: `https://leetcode.cn/problems/${spec.slug}/`,
+    },
     {
       type: 'paragraph',
       text: `CodeTop 全站榜第 ${spec.rank} 位，难度 ${spec.difficulty}。${spec.examines}`,
@@ -69,7 +71,6 @@ const makeInterviewCard = (spec: InterviewCardSpec): KnowledgePointSeed => ({
   ],
   references: [
     codeTopReference(spec.rank),
-    ...(spec.slug ? [leetcodeReference(spec.id, spec.title, spec.slug)] : []),
     ...(spec.references ?? []),
   ],
 });
@@ -426,6 +427,9 @@ const quickSort = makeInterviewCard({
   rank: 8,
   id: '补充题 4',
   title: '手写快速排序',
+  slug: 'sort-an-array',
+  leetcodeId: '912',
+  leetcodeTitle: '排序数组',
   difficulty: '中等',
   examines: '这道题检查分区定义、递归边界和最坏情况意识。',
   clarify: '确认允许原地修改，并问清是否要求稳定排序。标准快速排序不稳定，随机 pivot 用来降低固定坏输入的风险。',

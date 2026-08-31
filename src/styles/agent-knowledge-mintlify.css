@@ -777,6 +777,47 @@
   letter-spacing: -.01em;
 }
 
+.agent-map .panel-primary-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3px 14px;
+  align-items: center;
+  margin: 0 0 16px;
+  padding: 13px 14px;
+  border: 1px solid color-mix(in srgb, var(--map-blue) 22%, #dfe4eb);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--map-blue) 5%, white);
+  color: var(--map-ink);
+  text-decoration: none;
+}
+
+.agent-map .panel-primary-link strong {
+  color: var(--map-blue);
+  font-size: 13px;
+  font-weight: 680;
+}
+
+.agent-map .panel-primary-link > span:not(.panel-primary-link-arrow) {
+  overflow: hidden;
+  color: var(--map-muted);
+  font-size: 11px;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.agent-map .panel-primary-link-arrow {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--map-blue);
+  font-size: 15px;
+}
+
+.agent-map .panel-primary-link:hover {
+  border-color: color-mix(in srgb, var(--map-blue) 42%, #dfe4eb);
+  background: color-mix(in srgb, var(--map-blue) 8%, white);
+}
+
 .agent-map .panel-body p {
   margin: 0;
   color: #39424f;

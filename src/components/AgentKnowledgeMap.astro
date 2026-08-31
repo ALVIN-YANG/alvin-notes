@@ -409,6 +409,29 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         clearVisualTimers();
         container.replaceChildren();
         (record.point.content ?? []).forEach((block) => {
+          if (block.type === 'link') {
+            if (!/^https?:\/\//.test(block.href)) return;
+            const link = document.createElement('a');
+            const label = document.createElement('strong');
+            link.className = 'panel-primary-link';
+            link.href = block.href;
+            link.target = '_blank';
+            link.rel = 'noreferrer';
+            label.textContent = block.label;
+            link.append(label);
+            if (block.detail) {
+              const detail = document.createElement('span');
+              detail.textContent = block.detail;
+              link.append(detail);
+            }
+            const arrow = document.createElement('span');
+            arrow.className = 'panel-primary-link-arrow';
+            arrow.setAttribute('aria-hidden', 'true');
+            arrow.textContent = '↗';
+            link.append(arrow);
+            container.append(link);
+            return;
+          }
           if (block.type === 'heading') {
             const heading = document.createElement('h3');
             heading.textContent = block.text;
