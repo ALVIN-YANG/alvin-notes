@@ -4,7 +4,15 @@ export type KnowledgeContentBlock =
   | { type: 'heading'; text: string }
   | { type: 'paragraph'; text: string }
   | { type: 'list'; items: readonly string[] }
-  | { type: 'code'; language?: string; text: string };
+  | { type: 'code'; language?: string; text: string }
+  | {
+      type: 'visual';
+      kind: 'sliding-window' | 'lru-cache' | 'reverse-list' | 'quickselect';
+      label: string;
+      caption: string;
+      sourceHref?: string;
+      sourceLabel?: string;
+    };
 
 export type KnowledgePointSeed =
   | readonly [

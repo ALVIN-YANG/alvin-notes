@@ -101,6 +101,7 @@ const algorithmKnowledge = createKnowledgeMap({
               title: '反转链表',
               content: [
                 { type: 'paragraph', text: 'CodeTop 全站高频榜中，这道题长期位于前列。面试官通常用它检查指针操作、循环不变量和边界处理，后面的 K 个一组翻转、反转区间、回文链表都会复用这段基本功。' },
+                { type: 'visual', kind: 'reverse-list', label: '反转链表的四步指针变化动画', caption: '先保存 next，再反转当前指针', sourceHref: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0206-Reverse-Linked-List', sourceLabel: '原题动画' },
                 { type: 'heading', text: '核心不变量' },
                 { type: 'paragraph', text: '进入每轮循环时，prev 指向已经反转好的前半段，curr 指向尚未处理部分的第一个节点。先保存 curr.next，再把 curr.next 指向 prev，随后让 prev 和 curr 各前进一步。顺序不能换，否则未处理链表会丢失。' },
                 { type: 'code', language: 'java', text: `ListNode prev = null;
@@ -122,6 +123,7 @@ return prev;` },
               references: [
                 { title: 'CodeTop 高频面试题榜', location: '2026-08-31 查询时位列全站第 3', href: 'https://codetop.cc/home' },
                 { title: 'LeetCode 206 Reverse Linked List', location: '题目定义、约束与迭代或递归要求', href: 'https://leetcode.cn/problems/reverse-linked-list/' },
+                { title: 'LeetCodeAnimation 206', location: '高 Star 图解项目中的原题动画，仅作延伸阅读', href: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0206-Reverse-Linked-List' },
               ],
             },
             ['链表重排', '找中点、反转后半段、交替合并是回文检查和重排题的常见组合。'],
@@ -180,6 +182,7 @@ return prev;` },
               title: '无重复字符的最长子串',
               content: [
                 { type: 'paragraph', text: '这是 CodeTop 当前全站频率最高的题。看到连续子串、最长、窗口内不能重复这三个条件，就应想到维护一个始终合法的滑动窗口。窗口使用左闭右闭区间 [left, right]，并记录每个字符最近一次出现的位置。' },
+                { type: 'visual', kind: 'sliding-window', label: '字符串 abba 的滑动窗口状态动画', caption: '重复字符出现后，left 只能向右跳', sourceHref: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0003-Longest-Substring-Without-Repeating-Characters', sourceLabel: '原题动画' },
                 { type: 'heading', text: '状态怎样移动' },
                 { type: 'paragraph', text: 'right 每次向右读入一个字符 c。若 c 上次出现在位置 p，并且 p 仍在当前窗口内，就把 left 跳到 p + 1。随后更新 c 的最近位置，再用 right - left + 1 更新答案。left 只能前进，因此处理 abba 时必须写 max(left, p + 1)，否则读到最后一个 a 会让 left 倒退。' },
                 { type: 'code', language: 'java', text: `Map<Character, Integer> last = new HashMap<>();
@@ -203,6 +206,7 @@ return answer;` },
               references: [
                 { title: 'CodeTop 高频面试题榜', location: '2026-08-31 查询时位列全站第 1', href: 'https://codetop.cc/home' },
                 { title: 'LeetCode 3 Longest Substring Without Repeating Characters', location: '题目定义、示例与输入约束', href: 'https://leetcode.cn/problems/longest-substring-without-repeating-characters/' },
+                { title: 'LeetCodeAnimation 3', location: '高 Star 图解项目中的原题动画，仅作延伸阅读', href: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0003-Longest-Substring-Without-Repeating-Characters' },
               ],
             },
             ['窗口频次与缺口', '维护当前计数、需求计数和未满足种类数，避免每轮比较整张表。'],
@@ -244,6 +248,7 @@ return answer;` },
               title: '数组中的第 K 个最大元素',
               content: [
                 { type: 'paragraph', text: '这道题在 CodeTop 当前全站榜中排第 4。题目允许重复值，第 K 大表示数组完全降序排列后的第 K 个位置。把它换成升序下标 target = n - k 后，就能使用 Quickselect，只定位目标位置，无须把整个数组排好。' },
+                { type: 'visual', kind: 'quickselect', label: 'Quickselect 寻找数组第 K 大元素的分区动画', caption: '比较 pivot 下标与 target，只保留目标所在区间', sourceHref: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0215-Kth-Largest-Element-in-an-Array', sourceLabel: '原题动画' },
                 { type: 'heading', text: 'Quickselect 怎样收缩区间' },
                 { type: 'paragraph', text: 'partition 把一个 pivot 放到最终位置 p，并保证左侧元素不大于它、右侧元素不小于它。p 等于 target 时直接返回。p 小于 target 就只处理右半段，反之只处理左半段。每轮随机选择 pivot 可以避免输入顺序稳定地触发坏分割。' },
                 { type: 'code', language: 'java', text: `int target = nums.length - k;
@@ -267,6 +272,7 @@ throw new IllegalStateException();` },
                 { title: 'LeetCode 215 Kth Largest Element in an Array', location: '题目定义与重复元素语义', href: 'https://leetcode.cn/problems/kth-largest-element-in-an-array/' },
                 { title: 'Princeton Algorithms, Quicksort', location: 'Quickselect 与随机化分割', href: 'https://algs4.cs.princeton.edu/23quicksort/' },
                 { title: 'Oracle PriorityQueue API', location: 'Java 最小堆行为与复杂度', href: 'https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/PriorityQueue.html' },
+                { title: 'LeetCodeAnimation 215', location: '高 Star 图解项目中的原题动画，仅作延伸阅读', href: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0215-Kth-Largest-Element-in-an-Array' },
               ],
             },
           ],
@@ -524,6 +530,7 @@ throw new IllegalStateException();` },
               title: 'LRU Cache',
               content: [
                 { type: 'paragraph', text: 'LRU Cache 在 CodeTop 当前全站榜中排第 2，也是典型的数据结构设计题。题目要求 get 和 put 都达到 O(1)。哈希表负责通过 key 找到节点，双向链表负责维护使用顺序，两种结构共同满足这个约束。' },
+                { type: 'visual', kind: 'lru-cache', label: '容量为三的 LRU Cache 访问与淘汰动画', caption: '每次访问移到表头，容量溢出时淘汰表尾', sourceHref: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0146-LRU-Cache', sourceLabel: '原题动画' },
                 { type: 'heading', text: '链表保存什么顺序' },
                 { type: 'paragraph', text: '使用两个哨兵节点 head 和 tail。head 后面放最近使用的节点，tail 前面放最久未使用的节点。get 命中和 put 更新都会把节点移到 head 后面。插入新节点后若超过容量，就删除 tail.prev，并同步从哈希表移除它的 key。读操作也会改变顺序，这是最容易漏掉的语义。' },
                 { type: 'code', language: 'java', text: `int get(int key) {
@@ -548,6 +555,7 @@ void moveToFront(Node node) {
                 { title: 'CodeTop 高频面试题榜', location: '2026-08-31 查询时位列全站第 2', href: 'https://codetop.cc/home' },
                 { title: 'LeetCode 146 LRU Cache', location: 'O(1) 操作要求与容量语义', href: 'https://leetcode.cn/problems/lru-cache/' },
                 { title: 'Oracle LinkedHashMap API', location: 'access-order 与 LRU 用法说明', href: 'https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/LinkedHashMap.html' },
+                { title: 'LeetCodeAnimation 146', location: '高 Star 图解项目中的原题动画，仅作延伸阅读', href: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0146-LRU-Cache' },
               ],
             },
             ['常数时间随机集合', '数组保存紧凑元素，哈希表保存位置，删除时用末尾元素补空位。'],
