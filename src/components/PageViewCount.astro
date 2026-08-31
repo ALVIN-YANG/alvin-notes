@@ -1,0 +1,98 @@
+---
+interface Props {
+  path: string;
+  withSeparator?: boolean;
+}
+
+const { path, withSeparator = false } = Astro.props;
+---
+
+<page-view-count data-path={path} aria-live="polite" aria-busy="true">
+  {withSeparator && <span class="view-separator" aria-hidden="true">·</span>}
+  <span class="view-label">浏览 <span class="view-number" data-view-number>—</span> 次</span>
+</page-view-count>
+
+<script>
+  class PageViewCount extends HTMLElement {
+    controller?: AbortController;
+
+    connectedCallback() {
+      if (this.dataset.loading === 'true' || this.dataset.loaded === 'true') return;
+
+      const path = this.dataset.path;
+      const number = this.querySelector<HTMLElement>('[data-view-number]');
+      if (!path || !number) {
+        this.hidden = true;
+        return;
+      }
+
+      this.dataset.loading = 'true';
+      this.controller = new AbortController();
+
+      const endpoint = new URL('/api/views', window.location.origin);
+      endpoint.searchParams.set('path', path);
+
+      fetch(endpoint, {
+        headers: { Accept: 'application/json' },
+        signal: this.controller.signal,
+      })
+        .then(async (response) => {
+          if (!response.ok) throw new Error(`View count request failed with ${response.status}`);
+          return response.json();
+        })
+        .then((result: { views?: unknown }) => {
+          const views = Number(result.views);
+          if (!Number.isFinite(views) || views < 0) throw new Error('Invalid view count');
+
+          number.textContent = new Intl.NumberFormat('zh-CN').format(views);
+          this.dataset.loaded = 'true';
+          this.dataset.state = 'ready';
+          this.removeAttribute('aria-busy');
+        })
+        .catch((error) => {
+          if (error instanceof DOMException && error.name === 'AbortError') return;
+          this.hidden = true;
+        })
+        .finally(() => {
+          delete this.dataset.loading;
+        });
+    }
+
+    disconnectedCallback() {
+      this.controller?.abort();
+      delete this.dataset.loading;
+    }
+  }
+
+  if (!customElements.get('page-view-count')) {
+    customElements.define('page-view-count', PageViewCount);
+  }
+</script>
+
+<style>
+  page-view-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    opacity: 0.68;
+    transition: opacity 180ms ease;
+  }
+
+  page-view-count[data-state='ready'] {
+    opacity: 1;
+  }
+
+  .view-separator {
+    color: var(--sl-color-gray-4);
+  }
+
+  .view-number {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    page-view-count {
+      transition: none;
+    }
+  }
+</style>

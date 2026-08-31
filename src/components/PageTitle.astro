@@ -1,6 +1,9 @@
 ---
-const { entry } = Astro.locals.starlightRoute;
+import PageViewCount from './PageViewCount.astro';
+
+const { entry, slug } = Astro.locals.starlightRoute;
 const hidePageTitle = (entry.data as typeof entry.data & { hidePageTitle?: boolean }).hidePageTitle === true;
+const showViewCount = !hidePageTitle && slug !== '' && slug !== 'about' && slug !== 'projects';
 
 const body = entry.body || '';
 const toPlainText = (value: string) => value
@@ -48,7 +51,7 @@ const updatedLabel = updatedDate
       <h1 id="_top">{entry.data.title}</h1>
       {articleDescription && <p class="article-description">{articleDescription}</p>}
       {
-        (updatedDate || showReadingTime) && (
+        (updatedDate || showReadingTime || showViewCount) && (
           <p class="article-meta">
             {
               updatedDate && (
@@ -59,6 +62,11 @@ const updatedLabel = updatedDate
             }
             {updatedDate && showReadingTime && <span class="meta-separator" aria-hidden="true">·</span>}
             {showReadingTime && <span>约 {readingMinutes} 分钟阅读</span>}
+            {
+              showViewCount && (
+                <PageViewCount path={Astro.url.pathname} withSeparator={Boolean(updatedDate || showReadingTime)} />
+              )
+            }
           </p>
         )
       }
