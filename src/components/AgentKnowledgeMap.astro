@@ -177,15 +177,11 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       <div class="panel-body">
         <article class="panel-article" data-panel-content></article>
 
-        <section class="panel-sources">
+        <section class="panel-sources" data-panel-sources-section>
           <h3>{panelSourceTitle}</h3>
           <div data-panel-sources></div>
         </section>
 
-        <section class="panel-reading" data-panel-reading-section>
-          <h3>相关文章</h3>
-          <div data-panel-reading></div>
-        </section>
       </div>
     </aside>
   </main>
@@ -390,20 +386,6 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         });
       };
 
-      const setPanelReading = (record) => {
-        const section = this.querySelector('[data-panel-reading-section]');
-        const container = this.querySelector('[data-panel-reading]');
-        const articles = record.domain.articles ?? [];
-        section.hidden = articles.length === 0;
-        container.replaceChildren();
-        articles.forEach((article) => {
-          const link = document.createElement('a');
-          link.href = article.href;
-          link.innerHTML = `<span>${escapeHTML(article.title)}</span><i aria-hidden="true">↗</i>`;
-          container.append(link);
-        });
-      };
-
       const setPanelContent = (record) => {
         const container = this.querySelector('[data-panel-content]');
         container.replaceChildren();
@@ -424,6 +406,15 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             container.append(list);
             return;
           }
+          if (block.type === 'code') {
+            const pre = document.createElement('pre');
+            const code = document.createElement('code');
+            if (block.language) code.dataset.language = block.language;
+            code.textContent = block.text;
+            pre.append(code);
+            container.append(pre);
+            return;
+          }
           const paragraph = document.createElement('p');
           paragraph.textContent = block.text;
           container.append(paragraph);
@@ -431,9 +422,13 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       };
 
       const setPanelSources = (record) => {
+        const section = this.querySelector('[data-panel-sources-section]');
         const container = this.querySelector('[data-panel-sources]');
+        const references = (record.point.references ?? record.group.references ?? [])
+          .filter((reference) => !reference.href || /^https?:\/\//.test(reference.href));
+        section.hidden = references.length === 0;
         container.replaceChildren();
-        (record.group.references ?? []).forEach((reference) => {
+        references.forEach((reference) => {
           const item = document.createElement('div');
           const title = reference.href ? document.createElement('a') : document.createElement('strong');
           const location = document.createElement('span');
@@ -457,7 +452,6 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         setPanelTags(record);
         setPanelContent(record);
         setPanelSources(record);
-        setPanelReading(record);
 
         clearHighlights();
         if (focus) focusDomain(record.domain.id, window.innerWidth < 900 ? 1 : 0.96);

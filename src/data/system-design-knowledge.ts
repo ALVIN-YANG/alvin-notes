@@ -15,6 +15,9 @@ const systemDesignKnowledge = createKnowledgeMap({
   slug: 'system',
   updatedAt: '2026-08-31',
   sources: [
+    { title: 'Google Site Reliability Engineering', href: 'https://sre.google/books/' },
+    { title: 'AWS Well-Architected Framework', href: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html' },
+    { title: 'Azure Architecture Center', href: 'https://learn.microsoft.com/en-us/azure/architecture/' },
     { title: 'System Design Primer 中文版', href: primerUrl },
     { title: 'CC BY 4.0 许可', href: primerLicenseUrl },
   ],
@@ -101,8 +104,24 @@ const systemDesignKnowledge = createKnowledgeMap({
           points: [
             ['线性一致', '所有操作像按某个实时顺序在单副本上执行，读会立即看到已完成写入。'],
             ['最终一致', '副本允许在一段时间内不同，如果没有新写入则最终会收敛。'],
-            ['CAP 的分区前提', '网络分区发生时，系统需在继续回应和拒绝可能陈旧的操作之间选择。'],
-            ['PACELC', '没有分区时仍要在延迟与一致性之间取舍，同步跨区复制就是常见例子。'],
+            {
+              title: 'CAP 与 PACELC',
+              content: [
+                { type: 'paragraph', text: 'CAP 讨论的是发生网络分区时，一个分布式读写系统能否同时保证线性一致和可用。Gilbert 与 Lynch 对可用的定义很强，每个发给未故障节点的请求最终都要得到响应。分区意味着节点之间的消息可能无限延迟或丢失。' },
+                { type: 'heading', text: '分区发生时怎样取舍' },
+                { type: 'paragraph', text: '如果两个副本失去联系，仍允许两边接受写入，系统保持响应能力，却无法保证所有客户端看到同一条最新历史。若要保持线性一致，无法确认最新状态的一侧就要拒绝或等待部分请求。这个选择可以按数据、操作和故障范围分别制定，不能简单给整个系统贴 CP 或 AP 标签。' },
+                { type: 'heading', text: 'PACELC 补上正常时期' },
+                { type: 'paragraph', text: 'PACELC 的表达是，出现分区 P 时在可用 A 与一致 C 之间取舍；没有分区 E 时，仍要在延迟 L 与一致 C 之间取舍。跨地域同步复制要等待远端确认，读到的数据更接近单一顺序，写延迟也会增加。异步复制延迟更低，但读副本可能落后。' },
+                { type: 'heading', text: '放到场景里判断' },
+                { type: 'list', items: ['账户扣款和唯一库存通常宁可拒绝一部分写入，也要守住余额或库存不变量。', '动态流和点赞数可以接受短暂陈旧，用版本、合并或补偿换取持续服务。', '同一系统中，登录会话、订单和推荐可以采用不同策略。'] },
+                { type: 'heading', text: '面试容易混淆的地方' },
+                { type: 'paragraph', text: 'CAP 里的 Consistency 指线性一致，和数据库 ACID 中约束始终成立的 Consistency 含义不同。Partition tolerance 也不是一个随意关闭的功能。只要系统跨节点通信，就要定义消息丢失或长时间延迟时怎样处理。回答时应先说明业务不变量，再说明哪些请求可拒绝、哪些读可以陈旧。' },
+              ],
+              references: [
+                { title: 'Gilbert and Lynch, Brewer’s Conjecture', location: 'CAP 的形式化定义与不可能性证明', href: 'https://www.cs.princeton.edu/courses/archive/spr22/cos418/papers/cap.pdf' },
+                { title: 'Daniel Abadi, Consistency Tradeoffs in Modern Distributed Database System Design', location: 'PACELC 原始论文', href: 'https://www.cs.umd.edu/~abadi/papers/abadi-pacelc.pdf' },
+              ],
+            },
           ],
         },
         {
@@ -202,7 +221,7 @@ const systemDesignKnowledge = createKnowledgeMap({
         {
           title: '流量保护', level: 'scenario',
           references: [
-            { title: '高并发限流系统设计', location: '本站 Java 架构文章', href: '/java/04-architecture/4-high-concurrency-rate-limiting/' },
+            { title: 'Google SRE, Handling Overload', location: '过载、准入控制与负载舍弃', href: 'https://sre.google/sre-book/handling-overload/' },
           ],
           points: [
             ['限流', '令牌桶允许一定突发，漏桶强调稳定出流，限额要按用户、租户、接口和全局分层。'],
@@ -244,7 +263,26 @@ const systemDesignKnowledge = createKnowledgeMap({
           points: [
             ['范围分片', '范围查询便利但容易因时间或地区热点造成负载不均。'],
             ['哈希分片', '哈希能更均匀分布数据，但打散范围查询，扩容时需要一致性哈希或虚拟节点。'],
-            ['分片键', '好的分片键要高基数、负载均匀、常与查询条件一起出现，并避免单个大租户压垮分片。'],
+            {
+              title: '分片键设计',
+              content: [
+                { type: 'paragraph', text: '分片键同时决定数据放在哪里、请求会打到哪些节点。面试里只说高基数和均匀分布还不够，还要把写入分布、查询路由、单租户上限和后续迁移放在一起评估。' },
+                { type: 'heading', text: '先用真实访问模式筛选' },
+                { type: 'paragraph', text: '列出最高频的读写请求，检查请求是否携带候选键。请求带完整分片键时，路由层可以定向访问少数分片。缺少分片键时通常要 scatter-gather，也就是向多个分片广播，再合并结果。分片越多，这类查询的尾延迟和资源开销越明显。' },
+                { type: 'heading', text: '四个检查项' },
+                { type: 'list', items: ['基数是否足够高，低基数会限制可拆出的数据范围。', '值的频率是否均匀，超级租户会把一个分片压成热点。', '值是否单调增长，时间戳和自增 ID 做范围分片时会把新写入集中到末端。', '键是否稳定，频繁修改跨分片键会带来数据迁移和并发处理成本。'] },
+                { type: 'heading', text: '范围与哈希怎样选' },
+                { type: 'paragraph', text: '范围分片支持按时间、地域或业务区间查询，也容易产生末端写热点。哈希分片通常能摊平写入，却会打散范围查询。常见折中是复合键，例如 tenantId 加 hash(objectId)，先保留租户路由能力，再拆散大租户内部热点。具体前缀顺序要由最常见查询决定。' },
+                { type: 'heading', text: '落地前怎样验证' },
+                { type: 'paragraph', text: '用生产采样或压测数据计算候选键的基数、最高频值占比、各分片 QPS 和数据量偏斜。再模拟节点扩容与大租户增长，确认迁移期间的双写、校验、切读和回滚方案。选择完成后还要监控热点键与 scatter-gather 比例，分片键不会自动保证负载均衡。' },
+                { type: 'heading', text: '面试追问' },
+                { type: 'paragraph', text: '如果某个租户远大于其他租户，可以为它增加二级桶或单独迁移。若业务必须同时支持按用户和按时间查询，主存储围绕核心写路径分片，另一种访问路径可以通过二级索引、搜索系统或派生表提供。' },
+              ],
+              references: [
+                { title: 'MongoDB Manual, Choose a Shard Key', location: '基数、频率、单调性与查询路由', href: 'https://www.mongodb.com/docs/manual/core/sharding-choose-a-shard-key/' },
+                { title: 'Amazon DynamoDB Developer Guide', location: '分区键设计与均匀负载原则', href: 'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-design.html' },
+              ],
+            },
             ['重分片与迁移', '扩容时用双写、后台搬迁、校验和切读逐步完成，需要处理迁移中的并发更新。'],
           ],
         },
@@ -278,10 +316,29 @@ const systemDesignKnowledge = createKnowledgeMap({
         {
           title: '缓存一致性与故障', level: 'scenario',
           references: [
-            { title: 'Redis 缓存一致性', location: '本站 Java 中间件文章', href: '/java/03-middleware/1-redis-cache-consistency/' },
+            { title: 'Redis cache-aside', location: '官方用例与有界陈旧说明', href: 'https://redis.io/docs/latest/develop/use-cases/cache-aside/' },
           ],
           points: [
-            ['删除缓存还是更新缓存', '删除后下次读取按主库重建更简单，直接更新能降低缺失但需要处理并发顺序。'],
+            {
+              title: '缓存一致性',
+              content: [
+                { type: 'paragraph', text: '缓存一致性要先回答业务能容忍多旧的数据。商品详情可以接受几十秒陈旧，余额和库存校验通常要回到权威存储。数据库与缓存是两个独立系统时，普通应用代码很难让两次写入形成同一个原子事务，因此方案应明确陈旧窗口和失败后的收敛路径。' },
+                { type: 'heading', text: 'Cache-aside 的基本路径' },
+                { type: 'paragraph', text: '读取时先查缓存，未命中再读数据库并回填。写入时先提交数据库，再删除缓存。删除比直接更新更容易保持统一，因为下次读取会按权威数据重建。每个缓存项仍应设置 TTL，把漏删、消息丢失和人工修改造成的陈旧限制在可计算范围内。' },
+                { type: 'heading', text: '并发窗口仍然存在' },
+                { type: 'paragraph', text: '一次慢读可能先读到旧数据库值，随后写请求更新数据库并删除缓存，最后慢读又把旧值回填。TTL 只能让它最终过期。要求更严时，可以给数据带单调版本，回填前校验版本；也可以从数据库变更日志发出失效事件，并让消费者幂等重试。涉及余额扣减等强不变量的读写，应绕过普通缓存或在权威存储内完成校验。' },
+                { type: 'heading', text: '方案选择' },
+                { type: 'list', items: ['读多写少且允许短暂陈旧时，Cache-aside 加 TTL 通常已经足够。', '本地多级缓存需要失效通知，断线后应清空本地副本，防止长期读取旧值。', '派生数据很多时，可以用 CDC 驱动缓存与索引更新，同时保留重放和版本校验。'] },
+                { type: 'heading', text: '怎样评测' },
+                { type: 'paragraph', text: '压测不能只看命中率。还要记录失效传播延迟、陈旧读取比例、缓存未命中时数据库 P99、热点键并发和故障恢复时间。测试中主动制造删除失败、消息重复、失效通道断线和缓存整体重启，确认系统会回源、限流并最终收敛。' },
+                { type: 'heading', text: '面试追问' },
+                { type: 'paragraph', text: '缓存击穿要对单个热键合并回源，缓存雪崩要打散 TTL 并保护数据库总并发。若面试官问先删缓存还是先写库，应说明两种顺序各自的并发窗口，再回到业务允许的陈旧时间和补偿机制。' },
+              ],
+              references: [
+                { title: 'Redis cache-aside', location: '官方读写路径、TTL 与显式失效', href: 'https://redis.io/docs/latest/develop/use-cases/cache-aside/' },
+                { title: 'Redis client-side caching reference', location: '失效通知、断线清理与竞态处理', href: 'https://redis.io/docs/latest/develop/reference/client-side-caching/' },
+              ],
+            },
             ['缓存穿透、击穿与雪崩', '穿透要防无效键，击穿要保护单个热键，雪崩要打散到期并保护数据库总负载。'],
             ['热键与大键', '热键需要本地缓存、副本或拆分读流量，大键要拆成可分页和独立过期的单元。'],
             ['双写与 CDC', '业务写库后通过事务日志或 CDC 驱动缓存、搜索和派生视图，需要幂等消费。'],
@@ -292,7 +349,25 @@ const systemDesignKnowledge = createKnowledgeMap({
           references: [primerReference('异步与消息队列', '#异步')],
           points: [
             ['队列与发布订阅', '队列通常将一份工作交给一个消费者，发布订阅让多个独立订阅方收到同一事件。'],
-            ['至少一次与幂等消费', '实际系统常在处理成功但确认失败时重复投递，消费端要用业务键去重。'],
+            {
+              title: '消息投递语义',
+              content: [
+                { type: 'paragraph', text: '投递语义描述消息在生产、代理、消费和结果落库的整个过程中可能丢失或重复。先问清保证覆盖到哪里。消息进了 Broker 一次，不代表业务结果只发生一次。网络超时后，生产者和消费者都可能无法判断上一次操作究竟成功没有。' },
+                { type: 'heading', text: '三种语义' },
+                { type: 'list', items: ['At-most-once 允许丢失，不会重投。消费者可以先提交位点再处理，进程在两步之间崩溃就会漏消息。', 'At-least-once 尽量避免丢失，允许重复。消费者处理完成后再提交位点，若处理成功但提交失败，恢复后会再次处理。', 'Exactly-once 要限定事务边界。Kafka 可以把读取位点和写回 Kafka 的结果放进同一事务，写到外部数据库仍需要外部系统配合。'] },
+                { type: 'heading', text: '工程上常选至少一次' },
+                { type: 'paragraph', text: '给每个业务动作一个稳定幂等键，例如 orderId 加 eventType。消费者在同一个数据库事务中检查或写入幂等记录，并更新业务数据。重复消息看到已完成记录后直接返回已有结果。若业务更新本身是按主键覆盖且版本不倒退，也可以利用存储语义实现幂等。' },
+                { type: 'heading', text: '失败与重试' },
+                { type: 'paragraph', text: '瞬时错误使用有限次数的指数退避重试，参数错误和业务拒绝不应无限重试。超过上限的消息进入死信队列，同时保留原消息、失败阶段和代码版本。重放前要确认消费者仍然幂等，否则一次修复可能制造第二次事故。' },
+                { type: 'heading', text: '顺序的边界' },
+                { type: 'paragraph', text: '多数消息系统只在同一分区内保证顺序。需要同一订单事件有序时，用 orderId 作为分区键，并在消费者检查业务版本。跨订单的全局顺序代价很高，通常也没有业务必要。' },
+                { type: 'heading', text: '面试要给出的验证方法' },
+                { type: 'paragraph', text: '测试应覆盖处理前崩溃、业务提交后确认前崩溃、重复投递、乱序和死信重放。验收指标包含重复业务结果数、消息最老年龄、重试分布、死信数量，以及从消息产生到业务结果可见的端到端延迟。' },
+              ],
+              references: [
+                { title: 'Apache Kafka Design', location: 'Message Delivery Semantics 与事务边界', href: 'https://kafka.apache.org/41/design/design/#message-delivery-semantics' },
+              ],
+            },
             ['顺序与分区', '只能在同一分区或同一键内保证顺序，需按业务实体选分区键并接受跨键并行。'],
             ['死信队列与重放', '超过重试次数的消息进入死信队列，修复后重放要保留原始事件和失败原因。'],
           ],
@@ -327,8 +402,8 @@ const systemDesignKnowledge = createKnowledgeMap({
         {
           title: '跨服务事务', level: 'scenario',
           references: [
-            { title: '分布式事务', location: '本站系统架构文章', href: '/architecture/distributed-transaction/' },
-            { title: '事件驱动、Outbox 与幂等', location: '本站系统架构文章', href: '/architecture/event-driven-architecture-outbox-idempotency/' },
+            { title: 'AWS Saga pattern', location: '分布式事务的补偿与协调模式', href: 'https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga.html' },
+            { title: 'AWS Transactional outbox pattern', location: '业务数据与消息可靠发布', href: 'https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html' },
           ],
           points: [
             ['2PC', '协调者先让所有参与者准备，再统一提交或回滚，可提供强原子性但容易阻塞并放大故障。'],
@@ -340,8 +415,8 @@ const systemDesignKnowledge = createKnowledgeMap({
         {
           title: '幂等、去重与分布式锁', level: 'scenario',
           references: [
-            { title: 'API 幂等设计', location: '本站 Java 架构文章', href: '/java/04-architecture/3-api-idempotency-design/' },
-            { title: 'Redis 与 Redisson 分布式锁', location: '本站 Java 中间件文章', href: '/java/03-middleware/5-distributed-lock-redis-redisson/' },
+            { title: 'AWS Builders Library', location: 'Making retries safe with idempotent APIs', href: 'https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/' },
+            { title: 'Redis distributed locks', location: '官方分布式锁模式与安全属性', href: 'https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/' },
           ],
           points: [
             ['业务唯一键', '用订单号、请求号或事件 ID 作为唯一约束，数据库的原子写入是最后防线。'],
@@ -449,7 +524,7 @@ const systemDesignKnowledge = createKnowledgeMap({
         {
           title: '交易、库存与任务系统', level: 'advanced',
           references: [
-            { title: '虚拟角色工作流与任务系统', location: '本站系统架构文章', href: '/architecture/virtual-character-workflow-task-system/' },
+            { title: 'Temporal durable execution', location: '长任务状态、恢复与重放', href: 'https://docs.temporal.io/temporal' },
           ],
           points: [
             ['下单幂等与状态机', '客户端请求号保证重试不重复建单，订单状态只能沿允许的转移前进。'],

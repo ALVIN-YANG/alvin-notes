@@ -6,13 +6,13 @@ import KnowledgeMapPage from '../layouts/KnowledgeMapPage.astro';
 
 <KnowledgeMapPage
   title="算法能力地图"
-  description="按数据结构、解题模式与工程实现梳理算法面试知识点。"
+  description="以 CodeTop 高频面试题为主线，按题型、解法与工程实现梳理算法能力。"
 >
   <AgentKnowledgeMap
     data={algorithmKnowledge}
     title="算法能力地图"
     mapId="algorithm"
-    panelSourceTitle="参考位置"
+    panelSourceTitle="权威资料"
     levelLabels={{ core: '基础', scenario: '高频', advanced: '进阶' }}
   />
 </KnowledgeMapPage>

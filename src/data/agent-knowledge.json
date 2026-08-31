@@ -1,18 +1,22 @@
 {
   "meta": {
-    "version": 3,
-    "updatedAt": "2026-08-21",
+    "version": 4,
+    "updatedAt": "2026-08-31",
     "domainCount": 9,
     "groupCount": 40,
     "pointCount": 209,
     "sources": [
       {
-        "title": "《智能体 AI 漫游指南》",
-        "href": "https://github.com/Chasing1020/agentic-ai-guide-zh"
+        "title": "Anthropic Engineering",
+        "href": "https://www.anthropic.com/engineering"
       },
       {
-        "title": "《深入理解 AI Agent》",
-        "href": null
+        "title": "OpenAI Agents and Evals",
+        "href": "https://developers.openai.com/api/docs/guides/evals"
+      },
+      {
+        "title": "Cognitive Architectures for Language Agents",
+        "href": "https://arxiv.org/abs/2309.02427"
       }
     ]
   },
@@ -418,16 +422,7 @@
           "location": "第 15、19、20 章"
         }
       ],
-      "articles": [
-        {
-          "title": "什么时候不该用 AI Agent",
-          "href": "/ai/when-not-to-use-ai-agent/"
-        },
-        {
-          "title": "生产级 AI Agent 工程",
-          "href": "/ai/production-ai-agent-engineering/"
-        }
-      ]
+      "articles": []
     },
     {
       "id": "model-context",
@@ -655,15 +650,63 @@
             {
               "id": "model-context-g3-p2",
               "code": "2.3.2",
-              "title": "上下文预算怎么分",
+              "title": "上下文工程",
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "预算先保证当前步骤需要的规则、状态和证据。历史对话可以摘要，完整原文可以放在外部 Artifact 里按需读取。工具描述也应只暴露当前可用的一组。"
+                  "text": "上下文工程负责决定每次模型调用能看到什么。范围包括系统规则、用户目标、当前状态、消息历史、检索证据、工具说明和工具结果。上下文窗口再大也有限，放入更多内容还会增加成本，并让过期信息与当前任务争夺注意力。"
+                },
+                {
+                  "type": "heading",
+                  "text": "每轮都做一次选择"
                 },
                 {
                   "type": "paragraph",
-                  "text": "《智能体 AI 漫游指南》把 Context 分配写成 Harness 的核心职责。预算会随任务阶段变化。开始规划时需要目标与能力清单，执行某一步时更需要局部文件和工具返回，固定比例通常不够灵活。"
+                  "text": "先保留权限边界、当前目标和未完成状态，再加入这一步能改变决策的证据。完整历史与大文件放进外部 Artifact，模型按需读取。长任务可以把旧过程压缩为带来源的状态摘要，但未完成事项、已承诺约束和关键失败不能被摘要掉。工具很多时，只暴露当前阶段可用的一组。"
+                },
+                {
+                  "type": "heading",
+                  "text": "常见操作"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "选择与当前决定直接相关的信息，并记录来源、时间和作用域。",
+                    "把规则、可信状态和外部材料分区，避免把检索内容误当成指令。",
+                    "压缩已完成过程，保留能回到原文或 Trace 的引用。",
+                    "隔离大体积工具结果，让代码或工具先筛选、聚合，再把小结果交给模型。"
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "效果与成本怎样一起比较"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "先保存一组真实任务和完整 Trace，记录成功率、首个错误位置、输入 Token、缓存命中、端到端延迟和单任务成本。每次只改一个变量，例如工具数量、检索条数或摘要策略，并在同一任务集上成对比较。质量没有下降时，Token 和延迟减少才算有效优化。"
+                },
+                {
+                  "type": "heading",
+                  "text": "容易踩的坑"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "固定比例分配预算通常不适合长任务，因为规划、执行和验收依赖的信息不同。摘要也可能把否定条件和失败细节磨掉。生产环境要保留摘要前的原始记录，并监控上下文过长、证据缺失、信息冲突和陈旧状态各自造成的失败。"
+                },
+                {
+                  "type": "heading",
+                  "text": "面试追问"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "当模型效果下降时，先用 Trace 判断它缺少信息、拿到错误信息，还是已经看到证据却推理失败。三种问题分别对应检索与组装、来源与时效治理、Prompt 或模型能力，处理方法不同。"
+                }
+              ],
+              "references": [
+                {
+                  "title": "Anthropic, Effective context engineering for AI agents",
+                  "location": "上下文工程定义、选择、压缩与长任务策略",
+                  "href": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
                 }
               ]
             },
@@ -821,16 +864,7 @@
           "location": "第 14、18、19 章"
         }
       ],
-      "articles": [
-        {
-          "title": "Context Engineering 怎么做",
-          "href": "/ai/context-engineering-guide/"
-        },
-        {
-          "title": "提示词工程",
-          "href": "/ai/prompt-engineering/"
-        }
-      ]
+      "articles": []
     },
     {
       "id": "knowledge-state",
@@ -1113,26 +1147,68 @@
             {
               "id": "knowledge-state-g4-p1",
               "code": "3.4.1",
-              "title": "工作记忆、事件记忆和事实记忆",
+              "title": "Agent Memory",
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "工作记忆服务当前任务，容量小，任务结束后可以丢弃。事件记忆记录发生过什么，事实记忆保存较稳定的用户偏好和世界知识。两本书还提到程序记忆，它更接近可复用的技能和做事方法。"
-                },
-                {
-                  "type": "paragraph",
-                  "text": "分类会影响写入与读取。当前页面位置适合放在工作记忆，用户明确确认的语言偏好可以长期保存，一次失败操作则更适合作为带时间的事件记录。"
+                  "text": "Agent Memory 是一套跨步骤或跨会话保存、检索和更新信息的机制。它与模型上下文、运行状态和知识库有关联，职责仍应分开。上下文是本次推理实际看到的 Token，运行状态记录任务走到哪一步，知识库保存外部资料，Memory 负责哪些过去信息值得在未来再次出现。"
                 },
                 {
                   "type": "heading",
-                  "text": "四类记忆关心的时间不同"
+                  "text": "常见的四类记忆"
                 },
                 {
                   "type": "list",
                   "items": [
-                    "工作记忆回答“这一刻正在做什么”，事件记忆回答“之前发生过什么”。",
-                    "事实记忆保存较稳定的认识，程序记忆则保存可重复使用的方法。"
+                    "工作记忆保存当前目标、中间结果和待办，任务结束后可以清理。",
+                    "事件记忆记录发生过什么，必须带时间、参与者和结果。",
+                    "事实记忆保存经过确认的偏好或实体属性，需要处理冲突与时效。",
+                    "程序记忆保存可复用的方法和 Skill，版本变化时要重新评测。"
                   ]
+                },
+                {
+                  "type": "heading",
+                  "text": "写入比检索更难"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "不能把每轮对话都自动写入长期记忆。写入策略应检查主体、作用域、来源、确认程度、敏感级别和有效期。用户一句临时要求不应覆盖组织规则，模型推断也不能直接升级为用户事实。适合长期保存的内容通常能在未来改变行动，而且错误后果可控。"
+                },
+                {
+                  "type": "heading",
+                  "text": "读取、冲突和遗忘"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "读取先按用户、租户和任务权限过滤，再结合相关性、时间和置信度排序。新事实与旧事实冲突时，应保留版本和来源，按业务规则选择当前值，必要时让用户确认。遗忘可以来自过期、低使用率、用户删除或隐私策略，删除还要传播到向量索引、摘要和备份生命周期。"
+                },
+                {
+                  "type": "heading",
+                  "text": "怎样落地和评测"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "最小实现可以使用结构化表保存 owner、scope、kind、content、source、createdAt、validUntil 和 version，再为可检索文本建立索引。评测要分别测该记住时能否召回、不该记住时是否写入、冲突后是否更新、删除后是否仍泄露。线上还要看记忆命中带来的任务成功率变化和额外 Token 成本。"
+                },
+                {
+                  "type": "heading",
+                  "text": "面试追问"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "家庭助手可以把房间设备列表放在结构化状态，把用户明确确认的习惯放在事实记忆，把一次控制失败放在事件记录。好感度等业务数值应由确定性服务维护，模型只能读取或请求变更，不能把自然语言摘要当成权威计分。"
+                }
+              ],
+              "references": [
+                {
+                  "title": "Cognitive Architectures for Language Agents",
+                  "location": "CoALA 的工作记忆与长期记忆分类",
+                  "href": "https://arxiv.org/abs/2309.02427"
+                },
+                {
+                  "title": "MemGPT, Towards LLMs as Operating Systems",
+                  "location": "分层记忆与有限上下文管理",
+                  "href": "https://arxiv.org/abs/2310.08560"
                 }
               ]
             },
@@ -1306,16 +1382,7 @@
           "location": "第 16、17、18 章"
         }
       ],
-      "articles": [
-        {
-          "title": "RAG 技术全景与选型",
-          "href": "/ai/rag-primer/"
-        },
-        {
-          "title": "AI Agent 记忆系统设计",
-          "href": "/ai/agent-memory-system-design/"
-        }
-      ]
+      "articles": []
     },
     {
       "id": "tools-environment",
@@ -1435,15 +1502,68 @@
             {
               "id": "tools-environment-g2-p2",
               "code": "4.2.2",
-              "title": "输入和输出 Schema",
+              "title": "Tool Calling 与 Tool 契约",
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "Schema 应说明字段类型、单位和边界，枚举值最好直接表达业务含义。工具返回也需要稳定结构，让 Agent 区分成功、等待和部分结果。"
+                  "text": "Tool Calling 的完整过程由模型和应用共同完成。应用向模型提供工具定义，模型返回工具名与参数，应用完成校验、授权和真实执行，再把结果交回模型。模型提出调用请求，并没有直接执行外部动作。"
+                },
+                {
+                  "type": "heading",
+                  "text": "一份可用的 Tool 契约"
                 },
                 {
                   "type": "paragraph",
-                  "text": "Schema 只能校验形状。账户是否属于当前用户、日期是否仍可预约，需要执行层查询真实状态。书里的工具设计把描述、类型接口和错误处理放在一起，没有把安全寄托在模型生成正确参数上。"
+                  "text": "名称和描述要让模型知道何时使用，也要写出禁用条件。输入 Schema 说明字段类型、单位、枚举和必填关系，输出使用稳定结构区分成功、等待、部分完成和失败。错误应分成参数、权限、业务拒绝和暂时故障，让 Agent 知道该改参数、申请授权、停止还是有限重试。"
+                },
+                {
+                  "type": "heading",
+                  "text": "Schema 管不到业务权限"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "结构化输出只能保证参数形状。账户是否属于当前用户、订单能否退款、设备是否允许远程解锁，都要由执行层根据最新状态判断。服务端还要忽略模型传来的用户身份与价格等可信字段，改用会话身份和权威数据重新计算。"
+                },
+                {
+                  "type": "heading",
+                  "text": "副作用怎样控制"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "只读工具可以自动执行，写操作要标明影响范围与可逆性。",
+                    "付款、发信和删数据等动作使用幂等键，并提供查询最终状态的接口。",
+                    "高风险操作在模型外执行审批，审批内容应展示具体对象和参数。",
+                    "超时后的状态不明要先查询，不能直接重复调用。"
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "怎样评测工具设计"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "准备应调用、不应调用、缺参数、权限不足和工具失败的任务集。记录工具选择准确率、参数有效率、无效重试次数、越权调用数和完成任务所需总调用数。若工具经常被选错，先检查命名、职责是否重叠和描述是否缺少边界，再考虑修改主 Prompt。"
+                },
+                {
+                  "type": "heading",
+                  "text": "面试追问"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "工具数量增长后，可以按任务阶段延迟加载或检索工具定义，减少上下文占用。一个工具承担太多分支时，参数会变复杂，错误语义也会模糊。拆分边界应围绕独立权限、独立副作用和可单独评测的业务动作。"
+                }
+              ],
+              "references": [
+                {
+                  "title": "OpenAI Function calling",
+                  "location": "工具定义、调用请求、执行结果与 Structured Outputs",
+                  "href": "https://developers.openai.com/api/docs/guides/function-calling"
+                },
+                {
+                  "title": "Anthropic, Writing effective tools for agents",
+                  "location": "工具边界、描述与评测方法",
+                  "href": "https://www.anthropic.com/engineering/writing-tools-for-agents"
                 }
               ]
             },
@@ -1786,16 +1906,7 @@
           "location": "第 18、21、22、23 章"
         }
       ],
-      "articles": [
-        {
-          "title": "生产级 Agent Tool 怎么设计",
-          "href": "/ai/production-agent-tool-design/"
-        },
-        {
-          "title": "从 Function Call 到 Agent",
-          "href": "/ai/function-call-agent/"
-        }
-      ]
+      "articles": []
     },
     {
       "id": "runtime-orchestration",
@@ -2302,16 +2413,7 @@
           "location": "第 18 至 21、26 章"
         }
       ],
-      "articles": [
-        {
-          "title": "长任务 Agent 怎么跑稳",
-          "href": "/ai/durable-agent-task-runtime/"
-        },
-        {
-          "title": "虚拟角色任务系统",
-          "href": "/architecture/virtual-character-workflow-task-system/"
-        }
-      ]
+      "articles": []
     },
     {
       "id": "evaluation-evolution",
@@ -2339,11 +2441,75 @@
             {
               "id": "evaluation-evolution-g1-p1",
               "code": "6.1.1",
-              "title": "最终结果和执行轨迹",
+              "title": "Agent 评测",
               "content": [
                 {
                   "type": "paragraph",
-                  "text": "最终结果回答任务有没有完成，执行轨迹说明 Agent 怎样到达结果。答案正确时，轨迹仍可能包含越权调用和大量浪费。轨迹看起来规范，也可能没有解决用户问题。两本书都主张把结果与过程分开评。开放任务允许多种正确答案，关键工具、证据和安全动作仍能在轨迹里检查。"
+                  "text": "Agent 评测要同时检查最终结果和执行轨迹。结果正确的任务可能包含越权调用、偶然猜中和大量浪费，轨迹合理也可能没有完成用户目标。开放任务允许多种正确路径，因此评测应约束必须满足的结果、安全边界和关键过程，避免只匹配一份标准答案。"
+                },
+                {
+                  "type": "heading",
+                  "text": "先建一组能代表生产的任务"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "样本优先来自真实失败、客服反馈和高价值主流程，再补正常、边界与对抗场景。每条任务固定初始环境、可用工具、权限、期望结果和禁止动作。持续变化的外部数据要做快照或 Mock，保证新旧版本可以在相同条件下比较。"
+                },
+                {
+                  "type": "heading",
+                  "text": "Grader 怎样分工"
+                },
+                {
+                  "type": "list",
+                  "items": [
+                    "确定性规则检查结构、业务状态、权限、金额和是否调用禁用工具。",
+                    "模型 Grader 判断语义正确性与表达质量，先用人工标注样本校准一致性。",
+                    "人工复核处理高风险、主观和模型 Grader 分歧较大的样本。"
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "text": "指标分层"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "端到端层看任务完成率、严重错误率和用户可接受性。轨迹层看工具选择、参数正确率、无效重试和首个错误步骤。运行层记录 Token、调用次数、延迟与单任务成本。一次成功率可以用 pass@k 观察模型有没有能力完成，多次连续可靠性更适合用全部 k 次都成功的比例。"
+                },
+                {
+                  "type": "heading",
+                  "text": "怎样证明一次优化有效"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "固定模型与环境，先跑基线并保留 Trace。每轮只改变一个主要变量，在同一批任务上做成对比较，并重复运行有随机性的样本。报告总体变化时还要拆出各场景结果，防止平均分掩盖高风险退化。质量门槛通过以后，再比较成本与延迟。"
+                },
+                {
+                  "type": "heading",
+                  "text": "接进日常改进"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "离线评测用于回归门禁，Shadow 和小流量 Canary 用来观察真实分布。线上 Trace 应带任务、模型、Prompt、工具与数据版本，失败回流到评测集时先去重和脱敏。定位到首个错误后，再决定改上下文、工具、编排或模型，避免所有问题都靠加 Prompt 处理。"
+                },
+                {
+                  "type": "heading",
+                  "text": "面试追问"
+                },
+                {
+                  "type": "paragraph",
+                  "text": "如果模型 Grader 与人工判断不一致，要抽样建立混淆矩阵，调整 Rubric 或拆成更小的可判定标准。评测集参与过 Prompt 调优后应视为开发集，另留隔离集检查过拟合。"
+                }
+              ],
+              "references": [
+                {
+                  "title": "OpenAI Working with evals",
+                  "location": "评测结构、数据源与 Grader",
+                  "href": "https://developers.openai.com/api/docs/guides/evals"
+                },
+                {
+                  "title": "Anthropic, Demystifying evals for AI agents",
+                  "location": "Agent 结果、轨迹、环境与评测实践",
+                  "href": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
                 }
               ]
             },
@@ -2698,16 +2864,7 @@
           "location": "第 14、21、26 章"
         }
       ],
-      "articles": [
-        {
-          "title": "AI Agent 怎么做评测",
-          "href": "/ai/agent-evaluation-observability/"
-        },
-        {
-          "title": "生产级 AI Agent 工程",
-          "href": "/ai/production-ai-agent-engineering/"
-        }
-      ]
+      "articles": []
     },
     {
       "id": "safety-governance",
@@ -3058,16 +3215,7 @@
           "location": "第 22、25、26 章中的安全内容"
         }
       ],
-      "articles": [
-        {
-          "title": "AI Agent 安全工程",
-          "href": "/ai/agent-security-engineering/"
-        },
-        {
-          "title": "Agent 怎样防 Prompt Injection",
-          "href": "/ai/agent-prompt-injection-defense/"
-        }
-      ]
+      "articles": []
     },
     {
       "id": "production-platform",
@@ -3458,16 +3606,7 @@
           "location": "第 18、19、26 章"
         }
       ],
-      "articles": [
-        {
-          "title": "事件驱动架构怎么落地",
-          "href": "/architecture/event-driven-architecture-outbox-idempotency/"
-        },
-        {
-          "title": "长任务 Agent 怎么跑稳",
-          "href": "/ai/durable-agent-task-runtime/"
-        }
-      ]
+      "articles": []
     },
     {
       "id": "interaction-collaboration",
@@ -3949,16 +4088,7 @@
           "location": "第 17、21、24 至 27 章"
         }
       ],
-      "articles": [
-        {
-          "title": "实时语音 Agent 怎么做",
-          "href": "/ai/realtime-voice-agent-engineering/"
-        },
-        {
-          "title": "生产级 AI Agent 工程",
-          "href": "/ai/production-ai-agent-engineering/"
-        }
-      ]
+      "articles": []
     }
   ],
   "relations": [

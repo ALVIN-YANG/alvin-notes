@@ -1,23 +1,23 @@
 import { createKnowledgeMap, type KnowledgeReference } from './create-knowledge-map';
 
 const highFrequencyArticle = {
-  title: 'Java 高频算法模式',
-  href: '/algorithms/java-high-frequency-algorithm-patterns/',
+  title: 'CodeTop 高频面试题榜',
+  href: 'https://codetop.cc/home',
 };
 
 const advancedArticle = {
-  title: 'Java 进阶算法模式',
-  href: '/algorithms/java-advanced-algorithm-patterns/',
+  title: 'Princeton Algorithms',
+  href: 'https://algs4.cs.princeton.edu/home/',
 };
 
 const coreReferences: KnowledgeReference[] = [
-  { title: highFrequencyArticle.title, location: '本站高频题型总结', href: highFrequencyArticle.href },
-  { title: '算法导论', location: '数据结构、算法设计与复杂度基础' },
+  { title: highFrequencyArticle.title, location: '按真实面试记录统计的题目频率', href: highFrequencyArticle.href },
+  { title: 'Introduction to Algorithms, Fourth Edition', location: 'MIT Press 教材', href: 'https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/' },
 ];
 
 const advancedReferences: KnowledgeReference[] = [
-  { title: advancedArticle.title, location: '本站进阶题型总结', href: advancedArticle.href },
-  { title: '算法导论', location: '图、动态规划、贪心和高级数据结构' },
+  { title: advancedArticle.title, location: 'Princeton University 配套教材与代码', href: advancedArticle.href },
+  { title: 'Introduction to Algorithms, Fourth Edition', location: 'MIT Press 教材', href: 'https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/' },
 ];
 
 const algorithmKnowledge = createKnowledgeMap({
@@ -97,7 +97,33 @@ const algorithmKnowledge = createKnowledgeMap({
           points: [
             ['虚拟头节点', '用 dummy 节点统一头节点删除、合并和分割时的边界逻辑。'],
             ['快慢指针', '快指针每次多走一步，可用于找中点、检测环和定位环入口。'],
-            ['反转链表', '每次改指针前先保存 next，递归版还要评估调用栈深度。'],
+            {
+              title: '反转链表',
+              content: [
+                { type: 'paragraph', text: 'CodeTop 全站高频榜中，这道题长期位于前列。面试官通常用它检查指针操作、循环不变量和边界处理，后面的 K 个一组翻转、反转区间、回文链表都会复用这段基本功。' },
+                { type: 'heading', text: '核心不变量' },
+                { type: 'paragraph', text: '进入每轮循环时，prev 指向已经反转好的前半段，curr 指向尚未处理部分的第一个节点。先保存 curr.next，再把 curr.next 指向 prev，随后让 prev 和 curr 各前进一步。顺序不能换，否则未处理链表会丢失。' },
+                { type: 'code', language: 'java', text: `ListNode prev = null;
+ListNode curr = head;
+while (curr != null) {
+    ListNode next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+}
+return prev;` },
+                { type: 'heading', text: '复杂度与边界' },
+                { type: 'paragraph', text: '迭代解访问每个节点一次，时间复杂度为 O(n)，额外空间为 O(1)。空链表直接返回 null，单节点会执行一次循环并返回自身。递归写法时间仍为 O(n)，调用栈需要 O(n) 空间，链表过长时还可能触发栈溢出。' },
+                { type: 'heading', text: '面试容易错在哪里' },
+                { type: 'list', items: ['没有提前保存 next，改完指针后找不到剩余节点。', '循环结束后返回 curr，此时 curr 已经是 null，正确的新头节点在 prev。', '只交换节点值，没有真正改变链接关系，无法迁移到区间翻转等题型。'] },
+                { type: 'heading', text: '继续追问' },
+                { type: 'paragraph', text: '如果要求反转区间 [left, right]，应先用虚拟头节点找到区间前驱，再复用局部反转。若要求 K 个一组，必须先确认剩余节点够一组，随后连接上一组尾部、当前组新头和下一段。' },
+              ],
+              references: [
+                { title: 'CodeTop 高频面试题榜', location: '2026-08-31 查询时位列全站第 3', href: 'https://codetop.cc/home' },
+                { title: 'LeetCode 206 Reverse Linked List', location: '题目定义、约束与迭代或递归要求', href: 'https://leetcode.cn/problems/reverse-linked-list/' },
+              ],
+            },
             ['链表重排', '找中点、反转后半段、交替合并是回文检查和重排题的常见组合。'],
           ],
         },
@@ -150,7 +176,35 @@ const algorithmKnowledge = createKnowledgeMap({
           points: [
             ['固定长度窗口', '每次加入一个右端元素并移除一个左端元素，窗口状态用常数时间更新。'],
             ['最小可行窗口', '右端扩张直到条件成立，左端持续收缩并更新最短结果。'],
-            ['最长合法窗口', '右端加入后只要条件失效就移动左端，每个元素最多进出一次。'],
+            {
+              title: '无重复字符的最长子串',
+              content: [
+                { type: 'paragraph', text: '这是 CodeTop 当前全站频率最高的题。看到连续子串、最长、窗口内不能重复这三个条件，就应想到维护一个始终合法的滑动窗口。窗口使用左闭右闭区间 [left, right]，并记录每个字符最近一次出现的位置。' },
+                { type: 'heading', text: '状态怎样移动' },
+                { type: 'paragraph', text: 'right 每次向右读入一个字符 c。若 c 上次出现在位置 p，并且 p 仍在当前窗口内，就把 left 跳到 p + 1。随后更新 c 的最近位置，再用 right - left + 1 更新答案。left 只能前进，因此处理 abba 时必须写 max(left, p + 1)，否则读到最后一个 a 会让 left 倒退。' },
+                { type: 'code', language: 'java', text: `Map<Character, Integer> last = new HashMap<>();
+int left = 0, answer = 0;
+for (int right = 0; right < s.length(); right++) {
+    char c = s.charAt(right);
+    if (last.containsKey(c)) {
+        left = Math.max(left, last.get(c) + 1);
+    }
+    last.put(c, right);
+    answer = Math.max(answer, right - left + 1);
+}
+return answer;` },
+                { type: 'heading', text: '为什么是线性复杂度' },
+                { type: 'paragraph', text: 'right 扫描 n 个字符，left 在整个过程中最多从 0 走到 n。哈希查询的期望成本为 O(1)，总时间为 O(n)，空间为 O(min(n, 字符集大小))。如果题目明确只有 ASCII，可以用定长 int 数组保存最近位置，并用 0 表示未出现、位置加一表示已出现。' },
+                { type: 'heading', text: '常见变体' },
+                { type: 'list', items: ['至多包含 K 种字符时，窗口中维护频次和不同字符数量。', '允许替换 K 个字符时，维护窗口长度减去最高字符频次不超过 K。', '求最小覆盖子串时，右侧负责满足条件，左侧在条件成立后尽量收缩。'] },
+                { type: 'heading', text: '面试要讲清楚' },
+                { type: 'paragraph', text: '先说窗口始终没有重复字符，再解释 left 为什么不会后退。若面试官要求返回子串，额外保存最佳窗口的起点和长度即可，算法复杂度不变。' },
+              ],
+              references: [
+                { title: 'CodeTop 高频面试题榜', location: '2026-08-31 查询时位列全站第 1', href: 'https://codetop.cc/home' },
+                { title: 'LeetCode 3 Longest Substring Without Repeating Characters', location: '题目定义、示例与输入约束', href: 'https://leetcode.cn/problems/longest-substring-without-repeating-characters/' },
+              ],
+            },
             ['窗口频次与缺口', '维护当前计数、需求计数和未满足种类数，避免每轮比较整张表。'],
           ],
         },
@@ -186,7 +240,35 @@ const algorithmKnowledge = createKnowledgeMap({
             ['稳定性', '相等键的原始顺序是否保留，会影响多字段排序和事件扫描。'],
             ['比较器契约', '比较结果应反对称、可传递并与相等语义相容，不要用减法冒整数溢出风险。'],
             ['归并排序', '分治后合并两个有序段，稳定且最坏为对数线性复杂度，但需要辅助空间。'],
-            ['快速选择', '通过 partition 只递归包含第 k 位的一侧，平均线性但最坏可退化。'],
+            {
+              title: '数组中的第 K 个最大元素',
+              content: [
+                { type: 'paragraph', text: '这道题在 CodeTop 当前全站榜中排第 4。题目允许重复值，第 K 大表示数组完全降序排列后的第 K 个位置。把它换成升序下标 target = n - k 后，就能使用 Quickselect，只定位目标位置，无须把整个数组排好。' },
+                { type: 'heading', text: 'Quickselect 怎样收缩区间' },
+                { type: 'paragraph', text: 'partition 把一个 pivot 放到最终位置 p，并保证左侧元素不大于它、右侧元素不小于它。p 等于 target 时直接返回。p 小于 target 就只处理右半段，反之只处理左半段。每轮随机选择 pivot 可以避免输入顺序稳定地触发坏分割。' },
+                { type: 'code', language: 'java', text: `int target = nums.length - k;
+int left = 0, right = nums.length - 1;
+while (left <= right) {
+    int pivot = partitionWithRandomPivot(nums, left, right);
+    if (pivot == target) return nums[pivot];
+    if (pivot < target) left = pivot + 1;
+    else right = pivot - 1;
+}
+throw new IllegalStateException();` },
+                { type: 'heading', text: '三种方案怎么选' },
+                { type: 'list', items: ['Quickselect 平均时间为 O(n)，原地处理只需 O(1) 额外空间，最坏情况会退化到 O(n²)。', '容量为 K 的最小堆时间为 O(n log k)，空间为 O(k)，适合数据流或不允许改原数组的场景。', '完整排序时间为 O(n log n)，代码最短，面试官要求利用选择算法时通常不够。'] },
+                { type: 'heading', text: 'Java 实现细节' },
+                { type: 'paragraph', text: '堆方案使用 PriorityQueue<Integer> 的自然顺序即可，每加入一个数后如果 size 大于 k 就弹出堆顶。Quickselect 要统一 partition 的区间语义，并确认返回的是 pivot 最终下标。若使用递归，还要把最坏情况下的递归栈算进空间复杂度。' },
+                { type: 'heading', text: '面试追问' },
+                { type: 'paragraph', text: '数据持续到来时应使用最小堆。K 接近 n 时仍可维护 n - k + 1 个最小值的最大堆，减少空间。若值域很小，也可以计数后从大到小累加频次。' },
+              ],
+              references: [
+                { title: 'CodeTop 高频面试题榜', location: '2026-08-31 查询时位列全站第 4', href: 'https://codetop.cc/home' },
+                { title: 'LeetCode 215 Kth Largest Element in an Array', location: '题目定义与重复元素语义', href: 'https://leetcode.cn/problems/kth-largest-element-in-an-array/' },
+                { title: 'Princeton Algorithms, Quicksort', location: 'Quickselect 与随机化分割', href: 'https://algs4.cs.princeton.edu/23quicksort/' },
+                { title: 'Oracle PriorityQueue API', location: 'Java 最小堆行为与复杂度', href: 'https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/PriorityQueue.html' },
+              ],
+            },
           ],
         },
         {
@@ -438,7 +520,36 @@ const algorithmKnowledge = createKnowledgeMap({
         {
           title: '组合数据结构', level: 'scenario', references: coreReferences,
           points: [
-            ['LRU Cache', '哈希表负责常数定位，双向链表负责常数移动最新和淘汰最旧节点。'],
+            {
+              title: 'LRU Cache',
+              content: [
+                { type: 'paragraph', text: 'LRU Cache 在 CodeTop 当前全站榜中排第 2，也是典型的数据结构设计题。题目要求 get 和 put 都达到 O(1)。哈希表负责通过 key 找到节点，双向链表负责维护使用顺序，两种结构共同满足这个约束。' },
+                { type: 'heading', text: '链表保存什么顺序' },
+                { type: 'paragraph', text: '使用两个哨兵节点 head 和 tail。head 后面放最近使用的节点，tail 前面放最久未使用的节点。get 命中和 put 更新都会把节点移到 head 后面。插入新节点后若超过容量，就删除 tail.prev，并同步从哈希表移除它的 key。读操作也会改变顺序，这是最容易漏掉的语义。' },
+                { type: 'code', language: 'java', text: `int get(int key) {
+    Node node = cache.get(key);
+    if (node == null) return -1;
+    moveToFront(node);
+    return node.value;
+}
+
+void moveToFront(Node node) {
+    remove(node);
+    addAfterHead(node);
+}` },
+                { type: 'heading', text: '必须保持的不变量' },
+                { type: 'list', items: ['哈希表中的每个 key 恰好对应链表中的一个真实节点。', '真实节点始终位于两个哨兵之间，链表首尾操作不需要单独判断空节点。', '缓存大小超过 capacity 后，淘汰与哈希删除必须在同一次 put 中完成。'] },
+                { type: 'heading', text: '复杂度与工程边界' },
+                { type: 'paragraph', text: '哈希查找、摘除节点、插入表头和删除表尾都是 O(1)，整体空间为 O(capacity)。Java 的 LinkedHashMap 支持 accessOrder，可通过 removeEldestEntry 快速实现同样语义。面试手写仍应展示哈希表与双向链表，因为它能证明你理解常数复杂度来自哪里。多线程环境还要增加锁或使用分段结构，算法题版本本身不保证并发安全。' },
+                { type: 'heading', text: '面试追问' },
+                { type: 'paragraph', text: '如果换成 LFU，需要同时按访问频次分桶，并在同频次内维持 LRU 顺序。若缓存对象带过期时间，还要定义过期检查、容量淘汰和后台清理的优先级。' },
+              ],
+              references: [
+                { title: 'CodeTop 高频面试题榜', location: '2026-08-31 查询时位列全站第 2', href: 'https://codetop.cc/home' },
+                { title: 'LeetCode 146 LRU Cache', location: 'O(1) 操作要求与容量语义', href: 'https://leetcode.cn/problems/lru-cache/' },
+                { title: 'Oracle LinkedHashMap API', location: 'access-order 与 LRU 用法说明', href: 'https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/LinkedHashMap.html' },
+              ],
+            },
             ['常数时间随机集合', '数组保存紧凑元素，哈希表保存位置，删除时用末尾元素补空位。'],
             ['最小栈', '普通栈与同步最小值栈一起入栈出栈，使查最小值保持常数时间。'],
             ['前缀统计结构', 'Trie、Fenwick Tree 或 Segment Tree 分别适合字符前缀、单点更新前缀查询和通用区间合并。'],

@@ -1,10 +1,22 @@
 export type KnowledgeLevel = 'core' | 'scenario' | 'advanced';
 
-export type KnowledgePointSeed = readonly [
-  title: string,
-  note: string,
-  interviewChecks?: readonly string[],
-];
+export type KnowledgeContentBlock =
+  | { type: 'heading'; text: string }
+  | { type: 'paragraph'; text: string }
+  | { type: 'list'; items: readonly string[] }
+  | { type: 'code'; language?: string; text: string };
+
+export type KnowledgePointSeed =
+  | readonly [
+      title: string,
+      note: string,
+      interviewChecks?: readonly string[],
+    ]
+  | {
+      title: string;
+      content: readonly KnowledgeContentBlock[];
+      references?: readonly KnowledgeReference[];
+    };
 
 export interface KnowledgeReference {
   title: string;
@@ -47,19 +59,31 @@ export function createKnowledgeMap(seed: KnowledgeMapSeed) {
       title: group.title,
       level: group.level,
       references: group.references ?? [],
-      points: group.points.map(([title, note, interviewChecks], pointIndex) => ({
-        id: `${seed.slug}-${domainIndex + 1}-${groupIndex + 1}-${pointIndex + 1}`,
-        title,
-        content: [
-          { type: 'paragraph', text: note },
-          ...(interviewChecks?.length
-            ? [
-                { type: 'heading', text: '面试要能回答' },
-                { type: 'list', items: [...interviewChecks] },
-              ]
-            : []),
-        ],
-      })),
+      points: group.points.map((point, pointIndex) => {
+        const normalized = Array.isArray(point)
+          ? {
+              title: point[0],
+              content: [
+                { type: 'paragraph' as const, text: point[1] },
+                ...(point[2]?.length
+                  ? [
+                      { type: 'heading' as const, text: '面试要能回答' },
+                      { type: 'list' as const, items: [...point[2]] },
+                    ]
+                  : []),
+              ],
+            }
+          : point;
+
+        return {
+          id: `${seed.slug}-${domainIndex + 1}-${groupIndex + 1}-${pointIndex + 1}`,
+          title: normalized.title,
+          content: normalized.content,
+          ...('references' in normalized && normalized.references
+            ? { references: normalized.references }
+            : {}),
+        };
+      }),
     })),
   }));
 
