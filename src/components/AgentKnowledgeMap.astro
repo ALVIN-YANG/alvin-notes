@@ -211,41 +211,6 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
 
   const clamp = (value, minimum, maximum) => Math.min(maximum, Math.max(minimum, value));
 
-  const algorithmVisuals = {
-    'sliding-window': {
-      frames: [
-        { step: 'right 读入 a', items: [['a', 'active'], ['b', 'muted'], ['b', 'muted'], ['a', 'muted']], note: '窗口 [0, 0] · 最长 1' },
-        { step: 'right 读入 b', items: [['a', 'active'], ['b', 'active'], ['b', 'muted'], ['a', 'muted']], note: '窗口 [0, 1] · 最长 2' },
-        { step: 'b 重复，left 跳到 2', items: [['a', 'muted'], ['b', 'duplicate'], ['b', 'active'], ['a', 'muted']], note: '窗口 [2, 2] · left 只前进' },
-        { step: 'right 读入 a', items: [['a', 'muted'], ['b', 'muted'], ['b', 'active'], ['a', 'active']], note: '窗口 [2, 3] · 最长仍为 2' },
-      ],
-    },
-    'lru-cache': {
-      frames: [
-        { step: 'put(1), put(2), put(3)', items: [['3', 'active'], ['2', 'plain'], ['1', 'plain']], note: 'MRU → 3 · 2 · 1 → LRU' },
-        { step: 'get(1) 命中', items: [['1', 'active'], ['3', 'plain'], ['2', 'plain']], note: '访问节点 1，并把它移到表头' },
-        { step: 'put(4)，容量溢出', items: [['4', 'active'], ['1', 'plain'], ['3', 'plain'], ['2', 'evicted']], note: '节点 2 位于表尾，成为淘汰对象' },
-        { step: '同步删除哈希映射', items: [['4', 'active'], ['1', 'plain'], ['3', 'plain']], note: '链表与 Map 中都只保留 4、1、3' },
-      ],
-    },
-    'reverse-list': {
-      frames: [
-        { step: '初始状态', items: [['1', 'active'], ['→', 'arrow'], ['2', 'plain'], ['→', 'arrow'], ['3', 'plain'], ['→', 'arrow'], ['∅', 'muted']], note: 'prev = null · curr = 1' },
-        { step: '保存 next，再改 curr.next', items: [['∅', 'muted'], ['←', 'arrow'], ['1', 'active'], ['  ', 'gap'], ['2', 'focus'], ['→', 'arrow'], ['3', 'plain']], note: 'prev = 1 · curr = 2' },
-        { step: '继续向前推进', items: [['∅', 'muted'], ['←', 'arrow'], ['1', 'plain'], ['←', 'arrow'], ['2', 'active'], ['  ', 'gap'], ['3', 'focus']], note: 'prev = 2 · curr = 3' },
-        { step: 'curr 到达 null', items: [['3', 'active'], ['→', 'arrow'], ['2', 'plain'], ['→', 'arrow'], ['1', 'plain'], ['→', 'arrow'], ['∅', 'muted']], note: '返回 prev，也就是新头节点 3' },
-      ],
-    },
-    quickselect: {
-      frames: [
-        { step: 'k = 2，target = n - k = 4', items: [['3', 'plain'], ['2', 'plain'], ['1', 'plain'], ['5', 'plain'], ['6', 'target'], ['4', 'focus']], note: '只需要找到升序下标 4' },
-        { step: '选择 pivot = 4 并分区', items: [['3', 'plain'], ['2', 'plain'], ['1', 'plain'], ['4', 'active'], ['6', 'focus'], ['5', 'focus']], note: 'pivot 下标 3 < target，丢弃左半段' },
-        { step: '在右半段继续分区', items: [['3', 'muted'], ['2', 'muted'], ['1', 'muted'], ['4', 'muted'], ['5', 'active'], ['6', 'focus']], note: 'pivot 下标 4 = target' },
-        { step: '命中目标', items: [['3', 'muted'], ['2', 'muted'], ['1', 'muted'], ['4', 'muted'], ['5', 'result'], ['6', 'plain']], note: '第 2 大元素是 5，无须完成全排序' },
-      ],
-    },
-  };
-
   class AgentKnowledgeMap extends HTMLElement {
     connectedCallback() {
       if (this.dataset.ready === 'true') return;
@@ -470,60 +435,101 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             return;
           }
           if (block.type === 'visual') {
-            const definition = algorithmVisuals[block.kind];
-            if (!definition) return;
+            if (!Array.isArray(block.frames) || block.frames.length === 0) return;
 
             const figure = document.createElement('figure');
             const stage = document.createElement('div');
             const caption = document.createElement('figcaption');
             const captionText = document.createElement('span');
-            const motionHint = document.createElement('small');
+            const navigation = document.createElement('div');
+            const previous = document.createElement('button');
+            const progress = document.createElement('small');
+            const next = document.createElement('button');
             figure.className = `algorithm-visual is-${block.kind}`;
             figure.setAttribute('aria-label', block.label);
             stage.className = 'algorithm-visual-stage';
-            stage.setAttribute('aria-hidden', 'true');
             captionText.textContent = block.caption;
-            motionHint.textContent = '逐步演示';
+            navigation.className = 'algorithm-visual-navigation';
+            previous.type = 'button';
+            previous.className = 'algorithm-visual-control';
+            previous.setAttribute('aria-label', '上一步');
+            previous.textContent = '←';
+            progress.className = 'algorithm-visual-progress';
+            next.type = 'button';
+            next.className = 'algorithm-visual-control';
+            next.setAttribute('aria-label', '下一步');
+            next.textContent = '→';
 
             const frameNodes = [];
 
-            definition.frames.forEach((frame, frameIndex) => {
+            block.frames.forEach((frame, frameIndex) => {
               const frameNode = document.createElement('div');
               const step = document.createElement('strong');
-              const items = document.createElement('div');
+              const rows = document.createElement('div');
               const note = document.createElement('span');
               frameNode.className = 'algorithm-visual-frame';
               step.className = 'algorithm-visual-step';
-              step.textContent = `${frameIndex + 1} / ${definition.frames.length} · ${frame.step}`;
-              items.className = 'algorithm-visual-items';
-              frame.items.forEach(([value, state]) => {
-                const token = document.createElement('span');
-                token.className = `algorithm-visual-token is-${state}`;
-                token.textContent = value;
-                items.append(token);
+              step.textContent = `${frameIndex + 1} / ${block.frames.length} · ${frame.step}`;
+              rows.className = 'algorithm-visual-rows';
+              frame.rows.forEach((row) => {
+                const rowNode = document.createElement('div');
+                const items = document.createElement('div');
+                rowNode.className = 'algorithm-visual-row';
+                if (row.label) {
+                  const label = document.createElement('small');
+                  label.className = 'algorithm-visual-row-label';
+                  label.textContent = row.label;
+                  rowNode.append(label);
+                }
+                items.className = 'algorithm-visual-items';
+                row.items.forEach(([value, state]) => {
+                  const token = document.createElement('span');
+                  token.className = `algorithm-visual-token is-${state}`;
+                  token.textContent = value;
+                  items.append(token);
+                });
+                rowNode.append(items);
+                rows.append(rowNode);
               });
               note.className = 'algorithm-visual-note';
               note.textContent = frame.note;
-              frameNode.append(step, items, note);
+              frameNode.append(step, rows, note);
               stage.append(frameNode);
               frameNodes.push(frameNode);
             });
 
             let activeFrame = 0;
+            let manualNavigation = false;
+            let pointerInside = false;
             const showFrame = (nextFrame) => {
-              activeFrame = nextFrame % frameNodes.length;
+              activeFrame = (nextFrame + frameNodes.length) % frameNodes.length;
               frameNodes.forEach((frameNode, frameIndex) => {
                 frameNode.classList.toggle('is-active', frameIndex === activeFrame);
+                frameNode.setAttribute('aria-hidden', frameIndex === activeFrame ? 'false' : 'true');
               });
+              progress.textContent = `${activeFrame + 1} / ${frameNodes.length}`;
             };
             showFrame(0);
 
-            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-            const timer = window.setInterval(() => {
-              if (reducedMotion.matches || document.hidden || !figure.isConnected) return;
+            previous.addEventListener('click', () => {
+              manualNavigation = true;
+              showFrame(activeFrame - 1);
+            });
+            next.addEventListener('click', () => {
+              manualNavigation = true;
               showFrame(activeFrame + 1);
-            }, 2600);
-            visualTimers.add(timer);
+            });
+            figure.addEventListener('pointerenter', () => { pointerInside = true; });
+            figure.addEventListener('pointerleave', () => { pointerInside = false; });
+
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (!reducedMotion.matches) {
+              const timer = window.setInterval(() => {
+                if (manualNavigation || pointerInside || document.hidden || !figure.isConnected) return;
+                showFrame(activeFrame + 1);
+              }, 3000);
+              visualTimers.add(timer);
+            }
 
             caption.append(captionText);
             if (block.sourceHref && /^https?:\/\//.test(block.sourceHref)) {
@@ -534,7 +540,8 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
               source.textContent = `${block.sourceLabel ?? '原题动画'} ↗`;
               caption.append(source);
             }
-            caption.append(motionHint);
+            navigation.append(previous, progress, next);
+            caption.append(navigation);
             figure.append(stage, caption);
             container.append(figure);
             return;

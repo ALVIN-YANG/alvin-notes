@@ -1,9 +1,9 @@
 import {
   createKnowledgeMap,
-  type KnowledgeContentBlock,
   type KnowledgePointSeed,
   type KnowledgeReference,
 } from './create-knowledge-map';
+import { getAlgorithmVisual, interviewProtocolVisual } from './algorithm-visuals';
 
 const CODETOP_UPDATED_AT = '2026-08-31';
 
@@ -29,8 +29,6 @@ const leetcodeReference = (id: string, title: string, slug: string): KnowledgeRe
   href: `https://leetcode.cn/problems/${slug}/`,
 });
 
-type AlgorithmVisual = Extract<KnowledgeContentBlock, { type: 'visual' }>;
-
 interface InterviewCardSpec {
   rank: number;
   id: string;
@@ -45,7 +43,6 @@ interface InterviewCardSpec {
   complexity: string;
   checks: readonly string[];
   followUp: string;
-  visual?: AlgorithmVisual;
   references?: readonly KnowledgeReference[];
 }
 
@@ -56,7 +53,7 @@ const makeInterviewCard = (spec: InterviewCardSpec): KnowledgePointSeed => ({
       type: 'paragraph',
       text: `CodeTop 全站榜第 ${spec.rank} 位，难度 ${spec.difficulty}。${spec.examines}`,
     },
-    ...(spec.visual ? [spec.visual] : []),
+    getAlgorithmVisual(spec.id),
     { type: 'heading', text: '开口先确认' },
     { type: 'paragraph', text: spec.clarify },
     { type: 'heading', text: '把方案推出来' },
@@ -84,6 +81,7 @@ const interviewProtocol: KnowledgePointSeed = {
       type: 'paragraph',
       text: '一道题的最终答案只提供一个结果。面试官还能从澄清问题、方案演进、代码结构、主动测试和修错方式中判断你能否稳定地解决问题。这张卡用于约束后面每一道题的练习方式。',
     },
+    interviewProtocolVisual,
     { type: 'heading', text: '前五分钟做什么' },
     {
       type: 'list',
@@ -158,14 +156,6 @@ const longestSubstring = makeInterviewCard({
     '若改成返回子串，额外保存最佳起点和长度，不要在循环中频繁创建 substring。',
   ],
   followUp: '允许最多 K 种字符时维护频次和不同字符数。求最小覆盖子串时，窗口在满足需求后持续收缩。',
-  visual: {
-    type: 'visual',
-    kind: 'sliding-window',
-    label: '字符串 abba 的滑动窗口状态动画',
-    caption: '重复字符出现后，left 只能向右跳',
-    sourceHref: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0003-Longest-Substring-Without-Repeating-Characters',
-    sourceLabel: '原题动画',
-  },
 });
 
 const lruCache = makeInterviewCard({
@@ -244,14 +234,6 @@ const lruCache = makeInterviewCard({
     '若淘汰后仍能 get 到旧值，先检查链表删除时是否同步删除哈希映射。',
   ],
   followUp: 'LFU 需要按频次分桶，并在同频次内继续维护 LRU。生产缓存还要定义并发、过期和容量淘汰的关系。',
-  visual: {
-    type: 'visual',
-    kind: 'lru-cache',
-    label: '容量为三的 LRU Cache 访问与淘汰动画',
-    caption: '每次访问移到表头，容量溢出时淘汰表尾',
-    sourceHref: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0146-LRU-Cache',
-    sourceLabel: '原题动画',
-  },
 });
 
 const reverseList = makeInterviewCard({
@@ -282,14 +264,6 @@ const reverseList = makeInterviewCard({
     '若返回 null，检查是否误把已经走到末尾的 curr 当成新头节点。',
   ],
   followUp: '区间反转需要先找到区间前驱，K 个一组还要先确认剩余节点是否够一组。',
-  visual: {
-    type: 'visual',
-    kind: 'reverse-list',
-    label: '反转链表的四步指针变化动画',
-    caption: '先保存 next，再反转当前指针',
-    sourceHref: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0206-Reverse-Linked-List',
-    sourceLabel: '原题动画',
-  },
 });
 
 const kthLargest = makeInterviewCard({
@@ -337,14 +311,6 @@ void swap(int[] nums, int i, int j) {
     '若分区死循环，检查区间端点是否每轮都排除了已经就位的 pivot。',
   ],
   followUp: '持续到来的数据应使用容量为 K 的最小堆。值域很小时，也可以计数后从大到小累计频次。',
-  visual: {
-    type: 'visual',
-    kind: 'quickselect',
-    label: 'Quickselect 寻找数组第 K 大元素的分区动画',
-    caption: '比较 pivot 下标与 target，只保留目标所在区间',
-    sourceHref: 'https://github.com/MisterBooo/LeetCodeAnimation/tree/master/problems/0215-Kth-Largest-Element-in-an-Array',
-    sourceLabel: '原题动画',
-  },
 });
 
 const reverseKGroup = makeInterviewCard({

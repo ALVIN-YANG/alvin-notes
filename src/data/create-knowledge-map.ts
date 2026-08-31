@@ -1,5 +1,28 @@
 export type KnowledgeLevel = 'core' | 'scenario' | 'advanced';
 
+export type KnowledgeVisualTokenState =
+  | 'plain'
+  | 'active'
+  | 'focus'
+  | 'target'
+  | 'duplicate'
+  | 'evicted'
+  | 'muted'
+  | 'arrow'
+  | 'gap'
+  | 'result';
+
+export interface KnowledgeVisualRow {
+  label?: string;
+  items: readonly (readonly [value: string, state: KnowledgeVisualTokenState])[];
+}
+
+export interface KnowledgeVisualFrame {
+  step: string;
+  rows: readonly KnowledgeVisualRow[];
+  note: string;
+}
+
 export type KnowledgeContentBlock =
   | { type: 'heading'; text: string }
   | { type: 'paragraph'; text: string }
@@ -7,9 +30,10 @@ export type KnowledgeContentBlock =
   | { type: 'code'; language?: string; text: string }
   | {
       type: 'visual';
-      kind: 'sliding-window' | 'lru-cache' | 'reverse-list' | 'quickselect';
+      kind: 'flow' | 'sequence' | 'linked-list' | 'stack' | 'tree' | 'grid' | 'table';
       label: string;
       caption: string;
+      frames: readonly KnowledgeVisualFrame[];
       sourceHref?: string;
       sourceLabel?: string;
     };
