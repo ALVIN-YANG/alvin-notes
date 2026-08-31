@@ -30,13 +30,14 @@ const visual = (
   caption: string,
   frames: readonly KnowledgeVisualFrame[],
   sourceHref?: string,
+  sourceLabel = '原题动画',
 ): AlgorithmVisual => ({
   type: 'visual',
   kind,
   label,
   caption,
   frames,
-  ...(sourceHref ? { sourceHref, sourceLabel: '原题动画' } : {}),
+  ...(sourceHref ? { sourceHref, sourceLabel } : {}),
 });
 
 export const interviewProtocolVisual = visual(
@@ -146,14 +147,22 @@ const algorithmVisuals: Record<string, AlgorithmVisual> = {
   ),
   '5': visual(
     'sequence',
-    '最长回文子串的中心扩展',
-    '同时检查单字符中心和字符间中心',
+    'babad 的中心扩展完整推演',
+    '每个下标都尝试奇数中心和偶数中心，并只在长度更大时更新答案',
     [
-      frame('选择字符 a 为中心', [['b', 'focus'], ['a', 'active'], ['b', 'focus'], ['a', 'plain'], ['d', 'plain']], '左右都是 b，可以扩展'),
-      frame('扩展到 bab', [['b', 'active'], ['a', 'active'], ['b', 'active'], ['a', 'plain'], ['d', 'plain']], '再向外已经到达左边界，停止'),
-      frame('枚举下一个中心', [['b', 'plain'], ['a', 'plain'], ['b', 'focus'], ['a', 'active'], ['d', 'focus']], '该中心最长长度为 1'),
-      frame('保留最长区间', [['b', 'result'], ['a', 'result'], ['b', 'result'], ['a', 'muted'], ['d', 'muted']], '返回 bab'),
+      frame('i = 0，先试奇数中心', [['b', 'active'], ['a', 'muted'], ['b', 'muted'], ['a', 'muted'], ['d', 'muted']], '中心是 b，长度为 1，当前答案为 b'),
+      frame('i = 0，再试偶数中心', [['b', 'focus'], ['a', 'target'], ['b', 'muted'], ['a', 'muted'], ['d', 'muted']], 'b 与 a 不同，字符间中心无法扩展'),
+      frame('i = 1，奇数中心从 a 开始', [['b', 'plain'], ['a', 'active'], ['b', 'plain'], ['a', 'muted'], ['d', 'muted']], 'left = right = 1，先得到 a'),
+      frame('向两边比较一对字符', [['b', 'focus'], ['a', 'active'], ['b', 'focus'], ['a', 'muted'], ['d', 'muted']], '下标 0 和 2 都是 b，可以继续扩展'),
+      frame('得到长度为 3 的 bab', [['b', 'active'], ['a', 'active'], ['b', 'active'], ['a', 'muted'], ['d', 'muted']], '3 大于当前最优长度 1，答案更新为 [0, 2]'),
+      frame('i = 1，偶数中心失败', [['b', 'muted'], ['a', 'focus'], ['b', 'target'], ['a', 'muted'], ['d', 'muted']], '相邻的 a 与 b 不同，长度为 0'),
+      frame('i = 2，奇数中心扩成 aba', [['b', 'muted'], ['a', 'active'], ['b', 'active'], ['a', 'active'], ['d', 'muted']], '同样得到长度 3 的回文 [1, 3]'),
+      frame('等长结果不覆盖旧答案', [['b', 'result'], ['a', 'result'], ['b', 'result'], ['a', 'focus'], ['d', 'muted']], '更新条件使用严格大于，所以仍保留 bab'),
+      frame('剩余中心无法得到更长结果', [['b', 'result'], ['a', 'result'], ['b', 'result'], ['a', 'muted'], ['d', 'muted']], '继续检查 i = 3 和 i = 4，最优长度保持 3'),
+      frame('返回最长回文子串', [['b', 'result'], ['a', 'result'], ['b', 'result'], ['a', 'muted'], ['d', 'muted']], 'substring(0, 3) 得到 bab'),
     ],
+    'https://www.bilibili.com/video/BV1gTu16BE1w',
+    '参考视频',
   ),
   '21': visual(
     'linked-list',

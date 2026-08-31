@@ -474,46 +474,131 @@ void swap(int[] nums, int i, int j) {
   ],
 });
 
-const longestPalindrome = makeInterviewCard({
-  rank: 9,
-  id: '5',
+const longestPalindrome: KnowledgePointSeed = {
   title: '最长回文子串',
-  slug: 'longest-palindromic-substring',
-  difficulty: '中等',
-  examines: '这道题检查奇偶中心、边界扩展和区间长度计算。',
-  clarify: '确认返回任意一个最长回文子串即可，并区分连续子串与不要求连续的子序列。',
-  reasoning: '枚举所有子串再验证需要 O(n³)。每个回文串都有中心，中心可能是一个字符，也可能是两个字符之间。枚举 2n - 1 个中心并向两侧扩展，可以把时间降到 O(n²)。',
-  code: `String longestPalindrome(String s) {
-    if (s.isEmpty()) return "";
-    int bestLeft = 0, bestRight = 0;
+  content: [
+    {
+      type: 'link',
+      label: '查看力扣原题',
+      detail: 'LeetCode 5 · 最长回文子串',
+      href: 'https://leetcode.cn/problems/longest-palindromic-substring/',
+    },
+    {
+      type: 'paragraph',
+      text: 'CodeTop 全站榜第 9 位，难度中等。题目要求在字符串中找出最长的连续回文片段。输入 babad 时，bab 和 aba 都符合要求；输入 cbbd 时，答案是 bb。存在多个并列结果时，返回其中任意一个即可。',
+    },
+    { type: 'heading', text: '先把回文和子串分开' },
+    {
+      type: 'paragraph',
+      text: '回文从左往右和从右往左读完全相同。子串还要求字符连续。babad 中下标 0 和 2 的两个 b 可以组成子序列，却不能组成子串。力扣给出的字符串长度上限是 1000，字符只包含数字和英文字母。',
+    },
+    { type: 'heading', text: '从最慢的做法开始' },
+    {
+      type: 'paragraph',
+      text: '长度为 n 的字符串一共有 n(n + 1) / 2 个子串。枚举每个子串需要平方级次数，再用双指针检查一次回文，单次最多扫描 n 个字符，总时间会到 O(n³)。重复工作出现在回文检查上，相邻子串会反复比较同一批字符。',
+    },
+    { type: 'heading', text: '枚举回文中心' },
+    {
+      type: 'paragraph',
+      text: '回文有明确的对称中心。选定中心以后，只要左右字符相同就继续向外扩展，第一次越界或字符不同便停止。这次扩展已经得到以该位置为中心的最长回文，不需要再枚举它的所有左右边界。',
+    },
+    { type: 'heading', text: '奇数中心和偶数中心都要试' },
+    {
+      type: 'list',
+      items: [
+        '奇数长度回文以一个字符为中心。处理下标 i 时，让 left 和 right 都从 i 开始。bab 的中心是 a。',
+        '偶数长度回文以两个相邻字符之间的缝隙为中心。处理下标 i 时，让 left 从 i 开始，right 从 i + 1 开始。bb 的中心位于两个 b 之间。',
+      ],
+    },
+    {
+      type: 'paragraph',
+      text: '字符串有 n 个字符中心和 n - 1 个字符间中心，总共 2n - 1 个。代码在每个下标调用两次扩展函数，最后一个下标的偶数扩展会立刻碰到右边界，不需要单独写分支。',
+    },
+    getAlgorithmVisual('5'),
+    { type: 'heading', text: '用 babad 手算一遍' },
+    {
+      type: 'paragraph',
+      text: 'i 等于 0 时，奇数扩展得到 b，偶数扩展因为 b 和 a 不同而停止。i 等于 1 时，以 a 为中心先得到 a，再比较下标 0 和 2 的两个 b，得到 bab，最优区间更新成 [0, 2]。i 等于 2 时还能得到 aba，长度同样是 3。更新条件使用严格大于，所以等长结果不会覆盖已有答案，最终稳定返回 bab。',
+    },
+    { type: 'heading', text: 'Java 实现' },
+    {
+      type: 'code',
+      language: 'java',
+      text: `String longestPalindrome(String s) {
+    if (s == null || s.length() < 2) return s;
+
+    int bestStart = 0;
+    int bestEnd = 0;
     for (int center = 0; center < s.length(); center++) {
-        int[] odd = expand(s, center, center);
-        int[] even = expand(s, center, center + 1);
-        int[] best = odd[1] - odd[0] >= even[1] - even[0] ? odd : even;
-        if (best[1] - best[0] > bestRight - bestLeft) {
-            bestLeft = best[0];
-            bestRight = best[1];
+        int oddLength = expandLength(s, center, center);
+        int evenLength = expandLength(s, center, center + 1);
+        int currentLength = Math.max(oddLength, evenLength);
+
+        int bestLength = bestEnd - bestStart + 1;
+        if (currentLength > bestLength) {
+            bestStart = center - (currentLength - 1) / 2;
+            bestEnd = center + currentLength / 2;
         }
     }
-    return s.substring(bestLeft, bestRight + 1);
+    return s.substring(bestStart, bestEnd + 1);
 }
 
-int[] expand(String s, int left, int right) {
-    while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+int expandLength(String s, int left, int right) {
+    while (left >= 0
+            && right < s.length()
+            && s.charAt(left) == s.charAt(right)) {
         left--;
         right++;
     }
-    return new int[] { left + 1, right - 1 };
+    return right - left - 1;
 }`,
-  invariant: '扩展循环中，[left, right] 始终是已确认的回文区间，退出后回退一步得到当前中心的最大范围。',
-  complexity: '时间复杂度 O(n²)，除返回值外额外空间 O(1)。',
-  checks: [
-    '测试空串、单字符、偶数回文 abba 和奇数回文 aba。',
-    '若漏掉偶数回文，检查是否同时调用 center 和 center + 1。',
-    '若 substring 越界，检查 expand 返回的是闭区间还是左闭右开区间。',
+    },
+    { type: 'heading', text: '四个地方最容易写错' },
+    {
+      type: 'list',
+      items: [
+        '先判断 left 和 right 是否仍在范围内，再读取字符。Java 的 && 会从左向右短路，顺序反过来可能直接越界。',
+        '循环退出时，left 和 right 已经各自多走一步。有效区间是 [left + 1, right - 1]，长度化简后等于 right - left - 1。',
+        '新长度严格大于当前最优长度时才更新。这样遇到 bab 和 aba 这类并列答案时，返回结果保持稳定。',
+        '起点使用 center - (length - 1) / 2，终点使用 center + length / 2。同一组整数公式可以同时处理奇数长度和偶数长度。',
+      ],
+    },
+    { type: 'heading', text: '循环里始终守住的条件' },
+    {
+      type: 'paragraph',
+      text: '扩展函数准备比较一对新字符时，[left + 1, right - 1] 已经确认是回文。当前两个字符相同，回文范围便扩大到 [left, right]，随后指针再向外移动。循环退出时，夹在两个指针之间的部分就是当前中心能得到的最大回文。外层循环结束一个中心时，[bestStart, bestEnd] 保存此前所有中心里最长的结果。',
+    },
+    { type: 'heading', text: '复杂度怎么算' },
+    {
+      type: 'paragraph',
+      text: '中心一共有 2n - 1 个，每个中心最坏向两边扩展 O(n) 次，所以总时间是 O(n²)。算法只保存中心、左右边界和最优区间，除返回字符串外只用 O(1) 额外空间。',
+    },
+    { type: 'heading', text: '写完后这样验收' },
+    {
+      type: 'list',
+      items: [
+        '用 a 检查单字符和初始区间。',
+        '用 cbbd 检查偶数中心，预期得到 bb。',
+        '用 babad 检查奇数中心和并列最长结果。',
+        '用 aaaa 检查能否连续扩展，以及边界停止后有没有少算一个字符。',
+        '若业务输入可能为空，再补空串和 null。力扣原题保证至少有一个字符，防御代码仍可以保留。',
+      ],
+    },
+    { type: 'heading', text: '面试追问怎样接' },
+    {
+      type: 'paragraph',
+      text: '动态规划也能在 O(n²) 时间内解决，但需要 O(n²) 空间。中心扩展保留相同时间上界，只用常数空间，更适合先写。面试官继续要求线性时间时，再说明 Manacher 会利用当前最右回文边界和镜像位置的已知半径，减少重复比较。没有被要求现场实现时，先把中心扩展的边界和证明讲稳。',
+    },
   ],
-  followUp: '只判断整个字符串是否回文可以用双指针。追求线性时间可讲 Manacher，但常规面试先把中心扩展写稳。',
-});
+  references: [
+    codeTopReference(9),
+    {
+      title: 'Flashield 的中心扩展法动画讲解',
+      location: '奇偶中心、四个实现细节与 babad 逐步推演',
+      href: 'https://www.bilibili.com/video/BV1gTu16BE1w',
+    },
+  ],
+};
 
 const mergeTwoLists = makeInterviewCard({
   rank: 10,
