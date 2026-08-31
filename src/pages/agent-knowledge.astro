@@ -1,66 +1,11 @@
 ---
 import AgentKnowledgeMap from '../components/AgentKnowledgeMap.astro';
-import '../styles/fonts.css';
-import '../styles/agent-knowledge-mintlify.css';
+import KnowledgeMapPage from '../layouts/KnowledgeMapPage.astro';
 ---
 
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta
-      name="description"
-      content="在自由画布中浏览并串联 AI Agent 开发所需的知识点与学习路线。"
-    />
-    <meta name="theme-color" content="#edf0f4" />
-    <link rel="icon" href="/favicon.png" />
-    <link
-      rel="preload"
-      href="/fonts/misans/misans-regular-subset.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
-    <title>Agent 学习地图</title>
-  </head>
-  <body>
-    <main class="standalone-knowledge-page">
-      <AgentKnowledgeMap />
-    </main>
-  </body>
-</html>
-
-<style is:global>
-  :root {
-    color-scheme: light;
-    --sl-font-utility: var(--font-sans);
-    --sl-font-mono: var(--font-mono);
-  }
-
-  * { box-sizing: border-box; }
-
-  html {
-    min-width: 320px;
-    background: #edf0f4;
-  }
-
-  body {
-    min-width: 320px;
-    min-height: 100vh;
-    margin: 0;
-    background: #edf0f4;
-  }
-
-  button,
-  input { font: inherit; }
-
-  .standalone-knowledge-page {
-    min-height: 100svh;
-    padding: 0;
-  }
-
-  .standalone-knowledge-page > .knowledge-explorer {
-    width: 100%;
-  }
-</style>
+<KnowledgeMapPage
+  title="Agent 学习地图"
+  description="在自由画布中浏览并串联 AI Agent 开发所需的知识点与学习路线。"
+>
+  <AgentKnowledgeMap />
+</KnowledgeMapPage>

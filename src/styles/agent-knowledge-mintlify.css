@@ -50,7 +50,7 @@
   position: relative;
   z-index: 80;
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(300px, 440px) minmax(430px, 1fr);
+  grid-template-columns: minmax(220px, 1fr) minmax(300px, 440px) auto;
   min-height: 70px;
   padding: 11px clamp(18px, 2.5vw, 38px);
   background: rgba(250, 251, 252, .94);
@@ -189,6 +189,25 @@
   align-items: center;
   gap: 12px;
 }
+
+.agent-map .map-source-link {
+  display: inline-flex;
+  height: 38px;
+  padding-inline: 11px;
+  border-radius: 11px;
+  background: #fff;
+  color: #65707d;
+  box-shadow: 0 1px 4px rgba(35, 43, 55, .07);
+  font-size: 10px;
+  font-weight: 570;
+  text-decoration: none;
+  white-space: nowrap;
+  align-items: center;
+  gap: 5px;
+}
+
+.agent-map .map-source-link:hover { color: var(--map-blue); }
+.agent-map .map-source-link span { font-size: 11px; }
 
 .agent-map .level-filter {
   display: flex;
@@ -765,11 +784,15 @@
   gap: 3px;
 }
 
-.agent-map .panel-sources strong {
+.agent-map .panel-sources strong,
+.agent-map .panel-sources a {
   color: #39424f;
   font-size: 11px;
   font-weight: 670;
+  text-decoration: none;
 }
+
+.agent-map .panel-sources a:hover { color: var(--map-blue); text-decoration: underline; text-underline-offset: 3px; }
 
 .agent-map .panel-sources span {
   color: #7a838f;
@@ -809,6 +832,7 @@
   .agent-map .fit-map span { display: none; }
   .agent-map .fit-map { width: 38px; padding: 0; justify-content: center; }
   .agent-map .level-filter button { padding-inline: 9px; }
+  .agent-map .map-source-link { display: none; }
   .agent-map .domain-grid { --map-card-width: 500px; gap: 80px 88px; }
   .agent-map .map-world { padding: 38px 44px 110px; }
 }

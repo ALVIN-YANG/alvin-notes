@@ -6,13 +6,13 @@ import Search from '@astrojs/starlight/components/Search.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
 const navLinks = [
-  { label: 'AI Agent', href: '/ai/function-call-agent/', match: '/ai/' },
+  { label: 'AI Agent', href: '/agent-knowledge/', match: '/agent-knowledge/' },
   { label: 'AI 工作流', href: '/ai-workflow/ai-coding-skills-selection-guide/', match: '/ai-workflow/' },
   { label: 'Skills', href: '/skills/', match: '/skills/' },
-  { label: 'Architecture', href: '/architecture/distributed-transaction/', match: '/architecture/' },
+  { label: '系统设计', href: '/system-design-knowledge/', match: '/system-design-knowledge/' },
   { label: 'OpenClaw', href: '/claw/openclaw/', match: '/claw/' },
   { label: 'AI News', href: '/ai-news/', match: '/ai-news/' },
-  { label: '算法', href: '/algorithms/java-high-frequency-algorithm-patterns/', match: '/algorithms/' },
+  { label: '算法', href: '/algorithm-knowledge/', match: '/algorithm-knowledge/' },
   { label: '网络', href: '/network/ai-agent-communication-protocols/', match: '/network/' },
   { label: '安全', href: '/security/1-zero-day-vulnerability-primer/', match: '/security/' },
   { label: '模型榜', href: '/model-arena', match: '/model-arena' },
@@ -24,7 +24,17 @@ const currentPath = Astro.url.pathname;
 
 function isActive(match: string): boolean {
   if (match === '/') return currentPath === '/';
-  if (match === '/algorithms/') return currentPath.startsWith('/algorithms/') || currentPath.startsWith('/java/');
+  if (match === '/algorithm-knowledge/') {
+    return currentPath.startsWith('/algorithm-knowledge/')
+      || currentPath.startsWith('/algorithms/')
+      || currentPath.startsWith('/java/');
+  }
+  if (match === '/system-design-knowledge/') {
+    return currentPath.startsWith('/system-design-knowledge/') || currentPath.startsWith('/architecture/');
+  }
+  if (match === '/agent-knowledge/') {
+    return currentPath.startsWith('/agent-knowledge/') || currentPath.startsWith('/ai/');
+  }
   if (match === '/ai-workflow/') return currentPath.startsWith('/ai-workflow/');
   return currentPath.startsWith(match);
 }
