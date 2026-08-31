@@ -277,6 +277,12 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         .sort((left, right) => Number(left.dataset.domainIndex) - Number(right.dataset.domainIndex));
       const view = { x: 0, y: 0, scale: 1 };
       let dragState;
+      const visualTimers = new Set();
+
+      const clearVisualTimers = () => {
+        visualTimers.forEach((timer) => window.clearInterval(timer));
+        visualTimers.clear();
+      };
 
       const setText = (selector, value) => {
         const node = this.querySelector(selector);
@@ -423,6 +429,7 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
 
       const setPanelContent = (record) => {
         const container = this.querySelector('[data-panel-content]');
+        clearVisualTimers();
         container.replaceChildren();
         (record.point.content ?? []).forEach((block) => {
           if (block.type === 'heading') {
@@ -464,7 +471,9 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             stage.className = 'algorithm-visual-stage';
             stage.setAttribute('aria-hidden', 'true');
             captionText.textContent = block.caption;
-            motionHint.textContent = '悬停暂停';
+            motionHint.textContent = '逐步演示';
+
+            const frameNodes = [];
 
             definition.frames.forEach((frame, frameIndex) => {
               const frameNode = document.createElement('div');
@@ -472,7 +481,6 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
               const items = document.createElement('div');
               const note = document.createElement('span');
               frameNode.className = 'algorithm-visual-frame';
-              frameNode.style.setProperty('--visual-frame', String(frameIndex));
               step.className = 'algorithm-visual-step';
               step.textContent = `${frameIndex + 1} / ${definition.frames.length} · ${frame.step}`;
               items.className = 'algorithm-visual-items';
@@ -486,7 +494,24 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
               note.textContent = frame.note;
               frameNode.append(step, items, note);
               stage.append(frameNode);
+              frameNodes.push(frameNode);
             });
+
+            let activeFrame = 0;
+            const showFrame = (nextFrame) => {
+              activeFrame = nextFrame % frameNodes.length;
+              frameNodes.forEach((frameNode, frameIndex) => {
+                frameNode.classList.toggle('is-active', frameIndex === activeFrame);
+              });
+            };
+            showFrame(0);
+
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const timer = window.setInterval(() => {
+              if (reducedMotion.matches || document.hidden || !figure.isConnected) return;
+              showFrame(activeFrame + 1);
+            }, 2600);
+            visualTimers.add(timer);
 
             caption.append(captionText);
             if (block.sourceHref && /^https?:\/\//.test(block.sourceHref)) {
@@ -552,6 +577,7 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       };
 
       const closePanel = ({ updateUrl = true } = {}) => {
+        clearVisualTimers();
         panel.hidden = true;
         clearHighlights();
         document.title = config.title;

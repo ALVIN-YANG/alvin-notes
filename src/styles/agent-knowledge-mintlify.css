@@ -801,18 +801,13 @@
   padding: 20px;
   opacity: 0;
   align-content: center;
-  animation: algorithm-visual-frame 12s steps(1, end) infinite;
-  animation-delay: calc(var(--visual-frame) * 3s);
+  pointer-events: none;
+  transition: opacity 160ms ease;
   gap: 13px;
 }
 
-.agent-map .algorithm-visual:hover .algorithm-visual-frame {
-  animation-play-state: paused;
-}
-
-@keyframes algorithm-visual-frame {
-  0%, 24.99% { opacity: 1; }
-  25%, 100% { opacity: 0; }
+.agent-map .algorithm-visual-frame.is-active {
+  opacity: 1;
 }
 
 .agent-map .algorithm-visual-step {
@@ -1055,10 +1050,10 @@
   }
 
   .agent-map .algorithm-visual-frame {
-    opacity: 0;
-    animation: none !important;
+    opacity: 0 !important;
+    transition: none !important;
   }
 
-  .agent-map .algorithm-visual-frame:first-child { opacity: 1; }
+  .agent-map .algorithm-visual-frame:first-child { opacity: 1 !important; }
   .agent-map .algorithm-visual figcaption small { display: none; }
 }
