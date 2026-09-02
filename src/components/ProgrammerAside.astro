@@ -2,7 +2,7 @@
   <button class="programmer-avatar" type="button" aria-label="听听 Alvin 怎么说" aria-expanded="false">
     <span class="programmer-portrait" aria-hidden="true"></span>
   </button>
-  <div class="programmer-bubble" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true">
+  <div class="programmer-bubble" role="status" aria-live="off" aria-atomic="true" aria-hidden="true">
     <span class="programmer-quip"></span>
   </div>
 </programmer-aside>
@@ -134,12 +134,19 @@
 <script>
   import { programmerQuips } from '../data/programmer-quips';
 
+  const FIRST_MESSAGE_MIN_MS = 4500;
+  const FIRST_MESSAGE_RANGE_MS = 3000;
+  const REPEAT_MESSAGE_MIN_MS = 18000;
+  const REPEAT_MESSAGE_RANGE_MS = 12000;
+  const VISIBILITY_RETRY_MIN_MS = 6000;
+  const VISIBILITY_RETRY_RANGE_MS = 4000;
+  const MESSAGE_VISIBLE_MS = 7600;
+
   class ProgrammerAside extends HTMLElement {
     private quips: readonly string[] = programmerQuips;
     private lastIndex = -1;
     private autoTimer = 0;
     private hideTimer = 0;
-    private hasSpoken = false;
     private button: HTMLButtonElement | null = null;
     private bubble: HTMLElement | null = null;
     private output: HTMLElement | null = null;
@@ -153,7 +160,7 @@
       if (!this.button || !this.bubble || !this.output || this.quips.length === 0) return;
 
       this.button.addEventListener('click', this.handleClick);
-      this.scheduleAutoMessage();
+      this.scheduleAutoMessage('first');
     }
 
     disconnectedCallback() {
@@ -166,43 +173,59 @@
     }
 
     private handleClick = () => {
-      this.hasSpoken = true;
       window.clearTimeout(this.autoTimer);
       if (this.hasAttribute('data-open')) {
         this.hideMessage();
         return;
       }
-      this.showNextMessage();
+      this.showNextMessage(true);
     };
 
-    private scheduleAutoMessage() {
-      const delay = 3200 + Math.floor(Math.random() * 4200);
+    private scheduleAutoMessage(timing: 'first' | 'repeat' | 'visibility-retry') {
+      window.clearTimeout(this.autoTimer);
+      const [minimum, range] = timing === 'first'
+        ? [FIRST_MESSAGE_MIN_MS, FIRST_MESSAGE_RANGE_MS]
+        : timing === 'repeat'
+          ? [REPEAT_MESSAGE_MIN_MS, REPEAT_MESSAGE_RANGE_MS]
+          : [VISIBILITY_RETRY_MIN_MS, VISIBILITY_RETRY_RANGE_MS];
+      const delay = minimum + Math.floor(Math.random() * range);
+
       this.autoTimer = window.setTimeout(() => {
-        if (this.hasSpoken) return;
-        if (document.hidden) {
-          this.scheduleAutoMessage();
+        if (!this.isReadyToSpeak()) {
+          this.scheduleAutoMessage('visibility-retry');
           return;
         }
-        this.hasSpoken = true;
-        this.showNextMessage();
+
+        this.showNextMessage(false);
       }, delay);
     }
 
-    private showNextMessage() {
+    private isReadyToSpeak() {
+      if (document.hidden || this.hasAttribute('data-open')) return false;
+      const rect = this.getBoundingClientRect();
+      return rect.bottom > 0
+        && rect.top < window.innerHeight
+        && rect.right > 0
+        && rect.left < window.innerWidth;
+    }
+
+    private showNextMessage(announce: boolean) {
       if (!this.button || !this.bubble || !this.output) return;
 
+      window.clearTimeout(this.autoTimer);
       let nextIndex = Math.floor(Math.random() * this.quips.length);
       if (this.quips.length > 1 && nextIndex === this.lastIndex) {
         nextIndex = (nextIndex + 1) % this.quips.length;
       }
       this.lastIndex = nextIndex;
+      this.bubble.setAttribute('aria-live', announce ? 'polite' : 'off');
       this.output.textContent = this.quips[nextIndex];
       this.setAttribute('data-open', '');
       this.button.setAttribute('aria-expanded', 'true');
       this.bubble.setAttribute('aria-hidden', 'false');
 
       window.clearTimeout(this.hideTimer);
-      this.hideTimer = window.setTimeout(() => this.hideMessage(), 6800);
+      this.hideTimer = window.setTimeout(() => this.hideMessage(), MESSAGE_VISIBLE_MS);
     }
 
     private hideMessage() {
@@ -210,6 +233,7 @@
       this.button?.setAttribute('aria-expanded', 'false');
       this.bubble?.setAttribute('aria-hidden', 'true');
       window.clearTimeout(this.hideTimer);
+      if (this.isConnected) this.scheduleAutoMessage('repeat');
     }
   }
 
