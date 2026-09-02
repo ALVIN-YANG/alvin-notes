@@ -6,8 +6,15 @@ import {
 } from './create-knowledge-map';
 import { getAlgorithmVisual, interviewProtocolVisual } from './algorithm-visuals';
 import { getAlgorithmTeaching } from './algorithm-teaching';
+import {
+  algorithmTemplates,
+  createAlgorithmTemplatePoint,
+  getAlgorithmTemplate,
+  getTop30ProblemById,
+  getTop30ProblemByRank,
+} from './algorithm-curriculum';
 
-const CODETOP_UPDATED_AT = '2026-09-02';
+export const CODETOP_UPDATED_AT = '2026-09-02';
 
 const codeTopArticle = {
   title: 'CodeTop 高频面试题榜',
@@ -49,12 +56,14 @@ const checkpoint = (
   answer: string,
   label = '先自己答',
   code?: { language?: string; text: string },
+  blocks?: readonly KnowledgeContentBlock[],
 ): KnowledgeContentBlock => ({
   type: 'checkpoint',
   label,
   prompt,
   answer,
   ...(code ? { code } : {}),
+  ...(blocks ? { blocks } : {}),
 });
 
 const makeInterviewCard = (spec: InterviewCardSpec): KnowledgePointSeed => {
@@ -65,6 +74,70 @@ const makeInterviewCard = (spec: InterviewCardSpec): KnowledgePointSeed => {
     detail: `LeetCode ${spec.leetcodeId ?? spec.id} · ${spec.difficulty} · CodeTop 第 ${spec.rank} 位`,
     href: `https://leetcode.cn/problems/${spec.slug}/`,
   };
+  const top30Problem = getTop30ProblemById(spec.id);
+  if (top30Problem) {
+    if (top30Problem.rank !== spec.rank || top30Problem.title !== spec.title) {
+      throw new Error(`CodeTop curriculum mismatch for ${spec.id}`);
+    }
+    const template = getAlgorithmTemplate(top30Problem.templateId);
+    return {
+      key: `codetop-${spec.rank}`,
+      title: `#${spec.rank} ${spec.title}`,
+      aliases: [spec.title, template.title],
+      content: [
+        source,
+        {
+          type: 'related',
+          label: '这道题使用的模板',
+          items: [{
+            label: template.title,
+            target: `template-${template.id}`,
+            note: `本题变化。${top30Problem.change}`,
+          }],
+        },
+        checkpoint(
+          '先在 60 秒内选出模板，并说明判断依据。',
+          `使用「${template.title}」。判断依据。${top30Problem.why} 本题变化。${top30Problem.change}`,
+          '60 秒选模板',
+        ),
+        { type: 'heading', text: '先把输入和边界说清楚' },
+        { type: 'paragraph', text: spec.clarify },
+        { type: 'paragraph', text: guide.example },
+        checkpoint(
+          '不看答案，用三分钟说出状态、移动规则、不变量和复杂度。',
+          '说完以后再展开，对照自己是否漏掉了关键边界。',
+          '3 分钟推导',
+          undefined,
+          [
+            { type: 'heading', text: guide.ideaHeading },
+            { type: 'paragraph', text: spec.reasoning },
+            getAlgorithmVisual(spec.id),
+            { type: 'heading', text: '必须守住的不变量' },
+            { type: 'paragraph', text: spec.invariant },
+            { type: 'heading', text: '实现时只检查这些位置' },
+            { type: 'list', items: guide.codeFocus },
+            { type: 'paragraph', text: spec.complexity },
+          ],
+        ),
+        checkpoint(
+          '在二十分钟内闭卷写完并手算一个输入，再展开 Java 参考实现。',
+          '对照模板结构、不变量和边界。写法不同但三者一致，也算通过。',
+          '20 分钟闭卷编码',
+          { language: 'java', text: spec.code },
+        ),
+        { type: 'heading', text: '用反例验收' },
+        { type: 'list', items: spec.checks },
+        checkpoint('怎样才算这道题已经掌握？', guide.mastery, '闭卷验收'),
+        { type: 'heading', text: '面试官继续改条件时' },
+        { type: 'paragraph', text: spec.followUp },
+      ],
+      references: [
+        codeTopReference(spec.rank),
+        ...(spec.references ?? []),
+      ],
+    };
+  }
+
   const opening: readonly KnowledgeContentBlock[] = [
     source,
     { type: 'heading', text: '先用一个输入把题意落下来' },
@@ -163,6 +236,7 @@ const makeInterviewCard = (spec: InterviewCardSpec): KnowledgePointSeed => {
 };
 
 const interviewProtocol: KnowledgePointSeed = {
+  key: 'training-protocol',
   title: '一轮算法面试怎样完整作答',
   content: [
     {
@@ -562,14 +636,29 @@ void swap(int[] nums, int i, int j) {
 });
 
 const longestPalindrome: KnowledgePointSeed = {
-  title: '最长回文子串',
+  key: 'codetop-9',
+  title: '#9 最长回文子串',
   content: [
     {
       type: 'link',
       label: '查看力扣原题',
-      detail: 'LeetCode 5 · 最长回文子串',
+      detail: 'LeetCode 5 · 中等 · CodeTop 第 9 位',
       href: 'https://leetcode.cn/problems/longest-palindromic-substring/',
     },
+    {
+      type: 'related',
+      label: '这道题使用的模板',
+      items: [{
+        label: '边界与字符串模拟',
+        target: 'template-boundary-simulation',
+        note: '本题变化。奇数中心和字符间的偶数中心都要枚举，退出时指针已经多走一步。',
+      }],
+    },
+    checkpoint(
+      '先在 60 秒内选出模板，并说明判断依据。',
+      '使用「边界与字符串模拟」。判断依据。回文由中心和左右边界共同定义，边界可以同步向外扩张。',
+      '60 秒选模板',
+    ),
     {
       type: 'paragraph',
       text: 'CodeTop 全站榜第 9 位，难度中等。题目要求在字符串中找出最长的连续回文片段。输入 babad 时，bab 和 aba 都符合要求；输入 cbbd 时，答案是 bb。存在多个并列结果时，返回其中任意一个即可。',
@@ -578,6 +667,12 @@ const longestPalindrome: KnowledgePointSeed = {
       '字符串长度为 n 时，一共有多少个字符中心和字符间中心？',
       '字符中心有 n 个，字符间中心有 n - 1 个，总共 2n - 1 个。奇数回文从字符中心扩展，偶数回文从字符间中心扩展。',
     ),
+    checkpoint(
+      '不看答案，用三分钟说出中心选择、扩展边界和复杂度。',
+      '说完以后再展开，重点检查奇偶中心是否都覆盖。',
+      '3 分钟推导',
+      undefined,
+      [
     { type: 'heading', text: '先把回文和子串分开' },
     {
       type: 'paragraph',
@@ -611,6 +706,14 @@ const longestPalindrome: KnowledgePointSeed = {
       type: 'paragraph',
       text: 'i 等于 0 时，奇数扩展得到 b，偶数扩展因为 b 和 a 不同而停止。i 等于 1 时，以 a 为中心先得到 a，再比较下标 0 和 2 的两个 b，得到 bab，最优区间更新成 [0, 2]。i 等于 2 时还能得到 aba，长度同样是 3。更新条件使用严格大于，所以等长结果不会覆盖已有答案，最终稳定返回 bab。',
     },
+      ],
+    ),
+    checkpoint(
+      '在二十分钟内闭卷写完中心扩展，再展开 Java 实现和边界说明。',
+      '对照时先检查 expandLength 的退出位置，再检查最佳区间公式。',
+      '20 分钟闭卷编码',
+      undefined,
+      [
     { type: 'heading', text: 'Java 实现' },
     {
       type: 'code',
@@ -664,6 +767,8 @@ int expandLength(String s, int left, int right) {
       type: 'paragraph',
       text: '中心一共有 2n - 1 个，每个中心最坏向两边扩展 O(n) 次，所以总时间是 O(n²)。算法只保存中心、左右边界和最优区间，除返回字符串外只用 O(1) 额外空间。',
     },
+      ],
+    ),
     { type: 'heading', text: '写完后这样验收' },
     {
       type: 'list',

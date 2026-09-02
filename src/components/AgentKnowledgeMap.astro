@@ -12,6 +12,15 @@ interface Props {
     title?: string;
   };
   levelLabels?: Record<string, string>;
+  modules?: readonly {
+    id: string;
+    label: string;
+    description: string;
+    countLabel: string;
+    guide: string;
+    searchPlaceholder: string;
+  }[];
+  defaultModule?: string;
 }
 
 const {
@@ -21,11 +30,14 @@ const {
   panelSourceTitle = '书中位置',
   sourceLink,
   levelLabels = { core: '核心', scenario: '场景', advanced: '进阶' },
+  modules = [],
+  defaultModule = modules[0]?.id ?? 'default',
 } = Astro.props;
 
 const knowledgeData = data as typeof defaultKnowledgeData;
 const serializedData = JSON.stringify(knowledgeData).replace(/</g, '\\u003c');
-const serializedConfig = JSON.stringify({ title, panelSourceTitle, levelLabels }).replace(/</g, '\\u003c');
+const serializedConfig = JSON.stringify({ title, panelSourceTitle, levelLabels, modules, defaultModule }).replace(/</g, '\\u003c');
+const initialModule = modules.find((module) => module.id === defaultModule);
 const domainPalette = [
   { accent: '#446fdb', tint: '#f2f5fc', wash: '#e6edfb' },
   { accent: '#2d8b69', tint: '#f0f7f3', wash: '#e0f0e7' },
@@ -37,27 +49,52 @@ const domainPalette = [
   { accent: '#4b88a9', tint: '#f1f6f8', wash: '#deebf0' },
   { accent: '#a6782f', tint: '#f9f5ed', wash: '#efe5d2' },
 ];
-const gridPositions = knowledgeData.domains.map((_, index) => {
+const domainIndexesByModule = new Map<string, number>();
+const gridPositions = knowledgeData.domains.map((domain) => {
+  const moduleId = 'module' in domain ? String(domain.module) : 'default';
+  const index = domainIndexesByModule.get(moduleId) ?? 0;
+  domainIndexesByModule.set(moduleId, index + 1);
   const row = Math.floor(index / 3) + 1;
   const offset = index % 3;
   return { column: row % 2 === 1 ? offset + 1 : 3 - offset, row };
 });
 ---
 
-<agent-knowledge-map class="agent-map" data-level-filter="all" data-density="points">
+<agent-knowledge-map class="agent-map" data-level-filter="all" data-module-filter={defaultModule} data-has-modules={modules.length > 0 ? 'true' : 'false'} data-density="points">
   <header class="map-toolbar">
     <a class="map-brand" href="/" aria-label="返回博客首页">
       <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m14.5 6.5-5 5 5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span>
         <strong>{title}</strong>
-        <small>{knowledgeData.meta.pointCount} 个知识点</small>
+        <small data-module-count>{initialModule?.countLabel ?? `${knowledgeData.meta.pointCount} 个知识点`}</small>
       </span>
     </a>
+
+    {modules.length > 0 && (
+      <nav class="map-module-switcher" aria-label="选择学习模块">
+        {modules.map((module, index) => (
+          <>
+            {index > 0 && <span class="module-flow" aria-hidden="true">→</span>}
+            <button
+              type="button"
+              data-module={module.id}
+              data-count-label={module.countLabel}
+              data-guide={module.guide}
+              data-search-placeholder={module.searchPlaceholder}
+              aria-pressed={String(module.id === defaultModule)}
+            >
+              <strong>{module.label}</strong>
+              <small>{module.description}</small>
+            </button>
+          </>
+        ))}
+      </nav>
+    )}
 
     <div class="map-search" data-search-shell>
       <label class="sr-only" for={`${mapId}-map-search`}>搜索知识点</label>
       <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m20 20-4.2-4.2m1.7-5.3a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-      <input id={`${mapId}-map-search`} data-search-input type="search" placeholder="搜索知识点" autocomplete="off" aria-controls={`${mapId}-map-results`} aria-expanded="false" />
+      <input id={`${mapId}-map-search`} data-search-input type="search" placeholder={initialModule?.searchPlaceholder ?? '搜索知识点'} autocomplete="off" aria-controls={`${mapId}-map-results`} aria-expanded="false" />
       <div class="map-search-results" id={`${mapId}-map-results`} data-search-results hidden></div>
     </div>
 
@@ -68,12 +105,14 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
           <span aria-hidden="true">↗</span>
         </a>
       )}
-      <div class="level-filter" aria-label="筛选知识层级">
-        <button type="button" data-level="all" aria-pressed="true">全部</button>
-        <button type="button" data-level="core" aria-pressed="false">{levelLabels.core}</button>
-        <button type="button" data-level="scenario" aria-pressed="false">{levelLabels.scenario}</button>
-        <button type="button" data-level="advanced" aria-pressed="false">{levelLabels.advanced}</button>
-      </div>
+      {modules.length === 0 && (
+        <div class="level-filter" aria-label="筛选知识层级">
+          <button type="button" data-level="all" aria-pressed="true">全部</button>
+          <button type="button" data-level="core" aria-pressed="false">{levelLabels.core}</button>
+          <button type="button" data-level="scenario" aria-pressed="false">{levelLabels.scenario}</button>
+          <button type="button" data-level="advanced" aria-pressed="false">{levelLabels.advanced}</button>
+        </div>
+      )}
       <button class="fit-map" type="button" data-fit-map aria-label="适应画布">
         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M8 21H3v-5m13 5h5v-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>适应画布</span>
@@ -104,6 +143,8 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
                   class="knowledge-domain-card"
                   data-domain-id={domain.id}
                   data-domain-index={index}
+                  data-module={'module' in domain ? domain.module : 'default'}
+                  hidden={modules.length > 0 && ('module' in domain ? domain.module : 'default') !== defaultModule}
                   style={style}
                 >
                   <button type="button" class="domain-card-header" data-focus-domain={domain.id}>
@@ -151,7 +192,7 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
 
     <div class="map-guide" data-map-guide>
       <span class="guide-mark" aria-hidden="true"></span>
-      <span>拖动画布浏览，滚轮缩放，点击知识点查看详情</span>
+      <span data-guide-copy>{initialModule?.guide ?? '拖动画布浏览，滚轮缩放，点击知识点查看详情'}</span>
     </div>
 
     <div class="map-zoom" aria-label="画布缩放">
@@ -223,7 +264,9 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       const data = JSON.parse(dataNode.textContent);
       const config = JSON.parse(configNode.textContent);
       const levelNames = config.levelLabels;
+      const modules = config.modules ?? [];
       const pointById = new Map();
+      const pointByKey = new Map();
       const groupById = new Map();
       const pointRecords = [];
 
@@ -234,6 +277,7 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             const record = { point, group, domain, domainIndex, groupIndex, pointIndex };
             pointRecords.push(record);
             pointById.set(point.id, record);
+            if (point.key) pointByKey.set(point.key, record);
           });
         });
       });
@@ -250,6 +294,7 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       const announcer = this.querySelector('[data-announcer]');
       const domainCards = [...this.querySelectorAll('[data-domain-id]')]
         .sort((left, right) => Number(left.dataset.domainIndex) - Number(right.dataset.domainIndex));
+      const visibleDomainCards = () => domainCards.filter((card) => !card.hidden);
       const view = { x: 0, y: 0, scale: 1 };
       let dragState;
       const visualTimers = new Set();
@@ -303,8 +348,9 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         paths.setAttribute('height', String(height));
         paths.replaceChildren();
 
-        domainCards.slice(0, -1).forEach((from, index) => {
-          const to = domainCards[index + 1];
+        const cards = visibleDomainCards();
+        cards.slice(0, -1).forEach((from, index) => {
+          const to = cards[index + 1];
           const sameRow = Math.abs(from.offsetTop - to.offsetTop) < 4;
           let startX;
           let startY;
@@ -418,7 +464,7 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
           return pre;
         };
 
-        (record.point.content ?? []).forEach((block) => {
+        const appendContentBlock = (block, target = container) => {
           if (block.type === 'link') {
             if (!/^https?:\/\//.test(block.href)) return;
             const link = document.createElement('a');
@@ -439,13 +485,43 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             arrow.setAttribute('aria-hidden', 'true');
             arrow.textContent = '↗';
             link.append(arrow);
-            container.append(link);
+            target.append(link);
+            return;
+          }
+          if (block.type === 'related') {
+            const section = document.createElement('section');
+            const heading = document.createElement('h3');
+            const items = document.createElement('div');
+            section.className = 'knowledge-related';
+            heading.textContent = block.label;
+            items.className = 'knowledge-related-items';
+            block.items.forEach((item) => {
+              const button = document.createElement('button');
+              const label = document.createElement('strong');
+              button.type = 'button';
+              button.dataset.relatedPoint = item.target;
+              label.textContent = item.label;
+              button.append(label);
+              if (item.note) {
+                const note = document.createElement('span');
+                note.textContent = item.note;
+                button.append(note);
+              }
+              const arrow = document.createElement('span');
+              arrow.className = 'knowledge-related-arrow';
+              arrow.setAttribute('aria-hidden', 'true');
+              arrow.textContent = '→';
+              button.append(arrow);
+              items.append(button);
+            });
+            section.append(heading, items);
+            target.append(section);
             return;
           }
           if (block.type === 'heading') {
             const heading = document.createElement('h3');
             heading.textContent = block.text;
-            container.append(heading);
+            target.append(heading);
             return;
           }
           if (block.type === 'list') {
@@ -455,11 +531,11 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
               entry.textContent = item;
               list.append(entry);
             });
-            container.append(list);
+            target.append(list);
             return;
           }
           if (block.type === 'code') {
-            container.append(createCodeBlock(block));
+            target.append(createCodeBlock(block));
             return;
           }
           if (block.type === 'checkpoint') {
@@ -482,11 +558,12 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             answerText.textContent = block.answer;
             answer.append(answerText);
             if (block.code) answer.append(createCodeBlock(block.code));
+            (block.blocks ?? []).forEach((nestedBlock) => appendContentBlock(nestedBlock, answer));
             details.addEventListener('toggle', () => {
               toggle.textContent = details.open ? '收起' : '展开';
             });
             details.append(summary, answer);
-            container.append(details);
+            target.append(details);
             return;
           }
           if (block.type === 'visual') {
@@ -598,13 +675,15 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             navigation.append(previous, progress, next);
             if (frameNodes.length > 1) caption.append(navigation);
             figure.append(stage, caption);
-            container.append(figure);
+            target.append(figure);
             return;
           }
           const paragraph = document.createElement('p');
           paragraph.textContent = block.text;
-          container.append(paragraph);
-        });
+          target.append(paragraph);
+        };
+
+        (record.point.content ?? []).forEach((block) => appendContentBlock(block));
       };
 
       const setPanelSources = (record) => {
@@ -662,9 +741,41 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         if (announce) announcer.textContent = nextExpanded ? '已展开阅读模式' : '已收起阅读模式';
       };
 
+      const applyModule = (moduleId, { reset = true, announce = true } = {}) => {
+        const module = modules.find((item) => item.id === moduleId);
+        if (!module || this.dataset.moduleFilter === moduleId) return;
+
+        this.dataset.moduleFilter = moduleId;
+        domainCards.forEach((card) => {
+          card.hidden = card.dataset.module !== moduleId;
+        });
+        this.querySelectorAll('[data-module]').forEach((button) => {
+          if (!button.closest('.map-module-switcher')) return;
+          button.setAttribute('aria-pressed', String(button.dataset.module === moduleId));
+        });
+        setText('[data-module-count]', module.countLabel);
+        setText('[data-guide-copy]', module.guide);
+        searchInput.placeholder = module.searchPlaceholder;
+        searchInput.value = '';
+        searchResults.hidden = true;
+        searchInput.setAttribute('aria-expanded', 'false');
+        applyLevel('all');
+        closePanel({ updateUrl: reset });
+
+        window.requestAnimationFrame(() => {
+          drawConnectors();
+          if (reset) resetView();
+        });
+        if (announce) announcer.textContent = `已切换到${module.label}`;
+      };
+
       const openPoint = (record, { updateUrl = true, focus = true } = {}) => {
+        if (modules.length > 0 && record.domain.module !== this.dataset.moduleFilter) {
+          applyModule(record.domain.module, { reset: false, announce: false });
+        }
         panel.hidden = false;
-        setText('[data-panel-stage]', `阶段 ${record.domain.code}`);
+        const stagePrefix = record.domain.module === 'practice' ? '实战' : record.domain.module === 'templates' ? '模板' : '阶段';
+        setText('[data-panel-stage]', `${stagePrefix} ${record.domain.code}`);
         setText('[data-panel-path]', `${record.domain.short} · ${record.group.title}`);
         setText('[data-panel-title]', record.point.title);
         setPanelTags(record);
@@ -700,16 +811,21 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
           searchInput.setAttribute('aria-expanded', 'false');
           return;
         }
-        const matches = pointRecords.filter(({ point, group, domain }) => {
-          const explanation = (point.content ?? []).map((block) => [
-            block.items?.join(' '),
+        const blockText = (block) => [
+            Array.isArray(block.items)
+              ? block.items.map((item) => typeof item === 'string' ? item : `${item.label} ${item.note ?? ''}`).join(' ')
+              : '',
             block.text,
             block.caption,
             block.label,
             block.prompt,
             block.answer,
             block.code?.text,
-          ].filter(Boolean).join(' ')).join(' ');
+            (block.blocks ?? []).map(blockText).join(' '),
+          ].filter(Boolean).join(' ');
+        const matches = pointRecords.filter(({ point, group, domain }) => {
+          if (modules.length > 0 && domain.module !== this.dataset.moduleFilter) return false;
+          const explanation = (point.content ?? []).map(blockText).join(' ');
           const aliases = (point.aliases ?? []).join(' ');
           const haystack = `${point.title} ${aliases} ${explanation} ${group.title} ${domain.title}`.toLocaleLowerCase('zh-CN');
           return haystack.includes(query);
@@ -741,6 +857,19 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
       this.addEventListener('click', (event) => {
         const target = event.target instanceof Element ? event.target : null;
         if (!target) return;
+
+        const moduleButton = target.closest('.map-module-switcher [data-module]');
+        if (moduleButton) {
+          applyModule(moduleButton.dataset.module);
+          return;
+        }
+
+        const relatedButton = target.closest('[data-related-point]');
+        if (relatedButton) {
+          const record = pointByKey.get(relatedButton.dataset.relatedPoint);
+          if (record) openPoint(record);
+          return;
+        }
 
         const pointButton = target.closest('[data-open-point]');
         if (pointButton) {

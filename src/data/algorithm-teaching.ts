@@ -77,6 +77,20 @@ export const algorithmTeachingById: Record<string, AlgorithmTeachingGuide> = {
     ],
     mastery: '合上代码，用一句话说出窗口不变量，再在五分钟内闭卷写出 abba 不会让 left 回退的实现。',
   }),
+  '5': worked({
+    example: '拿 babad 手算。以第一个 a 为字符中心向外扩展得到 bab；以第二个 b 为字符中心还能得到 aba。等长答案无需覆盖已有结果。',
+    ideaHeading: '每个中心只保留能扩出的最长回文',
+    recall: {
+      prompt: '长度为 n 的字符串一共有多少个字符中心和字符间中心？',
+      answer: '字符中心有 n 个，字符间中心有 n - 1 个，总共 2n - 1 个。两类中心分别覆盖奇数和偶数长度回文。',
+    },
+    codeFocus: [
+      '每个下标分别尝试 (i,i) 和 (i,i+1) 两种中心。',
+      '退出扩展循环时左右指针已经各多走一步，长度是 right - left - 1。',
+      '同一组整数公式同时计算奇数和偶数回文的起止下标。',
+    ],
+    mastery: '用 babad 手算奇偶中心，闭卷写出 expandLength，并解释退出以后为什么返回 right - left - 1。',
+  }),
   '146': worked({
     example: '容量为 2 时依次执行 put(1,1)、put(2,2)、get(1)、put(3,3)。访问 1 后顺序变成 1、2，加入 3 时应淘汰 2。',
     ideaHeading: '一次操作要同时维护定位和顺序',

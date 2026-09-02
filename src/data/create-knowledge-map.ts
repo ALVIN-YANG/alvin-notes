@@ -30,18 +30,26 @@ export interface KnowledgeVisualFrame {
   note: string;
 }
 
+export interface KnowledgeRelatedItem {
+  label: string;
+  target: string;
+  note?: string;
+}
+
 export type KnowledgeContentBlock =
   | { type: 'heading'; text: string }
   | { type: 'paragraph'; text: string }
   | { type: 'list'; items: readonly string[] }
   | { type: 'code'; language?: string; text: string }
   | { type: 'link'; label: string; detail?: string; href: string }
+  | { type: 'related'; label: string; items: readonly KnowledgeRelatedItem[] }
   | {
       type: 'checkpoint';
       label?: string;
       prompt: string;
       answer: string;
       code?: { language?: string; text: string };
+      blocks?: readonly KnowledgeContentBlock[];
     }
   | {
       type: 'visual';
@@ -73,6 +81,7 @@ export type KnowledgePointSeed =
   | {
       title: string;
       content: readonly KnowledgeContentBlock[];
+      key?: string;
       aliases?: readonly string[];
       coverage?: readonly string[];
       references?: readonly KnowledgeReference[];
@@ -95,6 +104,7 @@ export interface KnowledgeDomainSeed {
   title: string;
   short: string;
   summary: string;
+  module?: string;
   articles?: readonly { title: string; href: string }[];
   groups: readonly KnowledgeGroupSeed[];
 }
@@ -107,51 +117,60 @@ export interface KnowledgeMapSeed {
 }
 
 export function createKnowledgeMap(seed: KnowledgeMapSeed) {
-  const domains = seed.domains.map((domain, domainIndex) => ({
-    id: `${seed.slug}-d${domainIndex + 1}`,
-    code: String(domainIndex + 1),
-    title: domain.title,
-    short: domain.short,
-    summary: domain.summary,
-    articles: domain.articles ?? [],
-    groups: domain.groups.map((group, groupIndex) => ({
-      id: `${seed.slug}-d${domainIndex + 1}-g${groupIndex + 1}`,
-      title: group.title,
-      level: group.level,
-      references: group.references ?? [],
-      points: group.points.map((point, pointIndex) => {
-        const normalized = Array.isArray(point)
-          ? {
-              title: point[0],
-              content: [
-                { type: 'paragraph' as const, text: point[1] },
-                ...(point[2]?.length
-                  ? [
-                      { type: 'heading' as const, text: '面试要能回答' },
-                      { type: 'list' as const, items: [...point[2]] },
-                    ]
-                  : []),
-              ],
-            }
-          : point;
+  const moduleDomainIndexes = new Map<string, number>();
+  const domains = seed.domains.map((domain, domainIndex) => {
+    const module = domain.module ?? 'default';
+    const moduleDomainIndex = (moduleDomainIndexes.get(module) ?? 0) + 1;
+    moduleDomainIndexes.set(module, moduleDomainIndex);
 
-        return {
-          id: `${seed.slug}-${domainIndex + 1}-${groupIndex + 1}-${pointIndex + 1}`,
-          title: normalized.title,
-          content: normalized.content,
-          ...('aliases' in normalized && normalized.aliases
-            ? { aliases: normalized.aliases }
-            : {}),
-          ...('coverage' in normalized && normalized.coverage
-            ? { coverage: normalized.coverage }
-            : {}),
-          ...('references' in normalized && normalized.references
-            ? { references: normalized.references }
-            : {}),
-        };
-      }),
-    })),
-  }));
+    return {
+      id: `${seed.slug}-d${domainIndex + 1}`,
+      code: String(moduleDomainIndex),
+      title: domain.title,
+      short: domain.short,
+      summary: domain.summary,
+      module,
+      articles: domain.articles ?? [],
+      groups: domain.groups.map((group, groupIndex) => ({
+        id: `${seed.slug}-d${domainIndex + 1}-g${groupIndex + 1}`,
+        title: group.title,
+        level: group.level,
+        references: group.references ?? [],
+        points: group.points.map((point, pointIndex) => {
+          const normalized = Array.isArray(point)
+            ? {
+                title: point[0],
+                content: [
+                  { type: 'paragraph' as const, text: point[1] },
+                  ...(point[2]?.length
+                    ? [
+                        { type: 'heading' as const, text: '面试要能回答' },
+                        { type: 'list' as const, items: [...point[2]] },
+                      ]
+                    : []),
+                ],
+              }
+            : point;
+
+          return {
+            id: `${seed.slug}-${domainIndex + 1}-${groupIndex + 1}-${pointIndex + 1}`,
+            ...('key' in normalized && normalized.key ? { key: normalized.key } : {}),
+            title: normalized.title,
+            content: normalized.content,
+            ...('aliases' in normalized && normalized.aliases
+              ? { aliases: normalized.aliases }
+              : {}),
+            ...('coverage' in normalized && normalized.coverage
+              ? { coverage: normalized.coverage }
+              : {}),
+            ...('references' in normalized && normalized.references
+              ? { references: normalized.references }
+              : {}),
+          };
+        }),
+      })),
+    };
+  });
 
   const groups = domains.flatMap((domain) => domain.groups);
   const points = groups.flatMap((group) => group.points);

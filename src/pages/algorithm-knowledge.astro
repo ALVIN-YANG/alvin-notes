@@ -1,18 +1,37 @@
 ---
 import AgentKnowledgeMap from '../components/AgentKnowledgeMap.astro';
-import algorithmKnowledge from '../data/algorithm-knowledge';
+import algorithmKnowledge from '../data/algorithm-learning-map';
 import KnowledgeMapPage from '../layouts/KnowledgeMapPage.astro';
 ---
 
 <KnowledgeMapPage
   title="算法能力地图"
-  description="把 CodeTop 高频前 30 题压缩成六类高迁移模板，训练识别、不变量、Java 编码、测试和修错。"
+  description="先掌握 12 种可复用算法模板，再用同一套模板闭卷解决 CodeTop 高频前 30 题。"
 >
   <AgentKnowledgeMap
     data={algorithmKnowledge}
     title="算法能力地图"
     mapId="algorithm"
     panelSourceTitle="参考资料"
-    levelLabels={{ core: '模板母题', scenario: '同类迁移', advanced: '进阶补充' }}
+    levelLabels={{ core: '学习模板', scenario: '闭卷实战', advanced: '加练' }}
+    defaultModule="templates"
+    modules={[
+      {
+        id: 'templates',
+        label: '学习模板',
+        description: '12 种解题骨架',
+        countLabel: '12 个模板',
+        guide: '学完一个模板，立即进入它关联的高频题',
+        searchPlaceholder: '搜索模板或题目特征',
+      },
+      {
+        id: 'practice',
+        label: '高频 30 实战',
+        description: '闭卷解决 CodeTop Top 30',
+        countLabel: '30 道高频题',
+        guide: '先选模板，再推导、编码和手算验收',
+        searchPlaceholder: '搜索 CodeTop Top 30',
+      },
+    ]}
   />
 </KnowledgeMapPage>
