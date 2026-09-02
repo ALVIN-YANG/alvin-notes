@@ -1,5 +1,39 @@
 ---
 import { getCollection } from 'astro:content';
+import agentKnowledge from '../data/agent-knowledge.json';
+import algorithmLearningMap from '../data/algorithm-learning-map';
+import { algorithmTemplates, algorithmTop30Problems } from '../data/algorithm-curriculum';
+import systemDesignKnowledge from '../data/system-design-knowledge';
+
+const abilityMaps = [
+  {
+    id: 'algorithm',
+    title: '算法能力地图',
+    desc: '先学解题模板，再闭卷解决高频题。',
+    href: '/algorithm-knowledge/',
+    route: ['识别信号', '守住不变量', '闭卷解题'],
+    stats: `${algorithmTemplates.length} 种模板 · ${algorithmTop30Problems.length} 道高频题`,
+    pointCount: algorithmLearningMap.meta.pointCount,
+  },
+  {
+    id: 'system',
+    title: '系统设计能力地图',
+    desc: '从需求与容量出发，一路推到故障恢复。',
+    href: '/system-design-knowledge/',
+    route: ['明确约束', '设计取舍', '故障恢复'],
+    stats: `${systemDesignKnowledge.meta.domainCount} 个领域 · ${systemDesignKnowledge.meta.pointCount} 个知识点`,
+    pointCount: systemDesignKnowledge.meta.pointCount,
+  },
+  {
+    id: 'agent',
+    title: 'AI Agent 能力地图',
+    desc: '串起模型、工具、记忆、评测与生产运行。',
+    href: '/agent-knowledge/',
+    route: ['判断边界', '组织执行', '评测运行'],
+    stats: `${agentKnowledge.meta.domainCount} 个领域 · ${agentKnowledge.meta.pointCount} 个知识点`,
+    pointCount: agentKnowledge.meta.pointCount,
+  },
+] as const;
 
 const categories = [
   {
@@ -134,14 +168,36 @@ function formatDate(doc: typeof allDocs[number]) {
 }
 ---
 
-<header class="directory-toolbar">
-  <strong class="directory-label">能力地图</strong>
-  <nav class="ability-map-nav" aria-label="面试能力地图">
-    <a class="ability-map-link algorithm" href="/algorithm-knowledge/">算法</a>
-    <a class="ability-map-link system" href="/system-design-knowledge/">系统设计</a>
-    <a class="ability-map-link agent" href="/agent-knowledge/">AI Agent</a>
+<section class="ability-map-showcase" aria-labelledby="ability-map-title">
+  <header class="ability-map-heading">
+    <div>
+      <span class="ability-map-kicker">INTERVIEW MAPS</span>
+      <h2 id="ability-map-title">三张能力地图</h2>
+    </div>
+    <p>看清全貌，找到薄弱点，再进入细节。</p>
+  </header>
+
+  <nav class="ability-map-grid" aria-label="面试能力地图">
+    {
+      abilityMaps.map((map) => (
+        <a class={`ability-map-card ${map.id}`} href={map.href}>
+          <span class="ability-map-card-head">
+            <span class="ability-map-title">{map.title}</span>
+            <svg class="ability-map-arrow" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h13M13 6l6 6-6 6" />
+            </svg>
+          </span>
+          <span class="ability-map-desc">{map.desc}</span>
+          <span class="ability-map-route" aria-hidden="true">
+            {map.route.map((stop) => <span>{stop}</span>)}
+          </span>
+          <span class="ability-map-stats">{map.stats}</span>
+          <span class="sr-only">，共 {map.pointCount} 个知识点</span>
+        </a>
+      ))
+    }
   </nav>
-</header>
+</section>
 
 <div class="home-sections" aria-label="文章分栏">
   {
@@ -178,64 +234,208 @@ function formatDate(doc: typeof allDocs[number]) {
 </div>
 
 <style>
-  .directory-toolbar {
+  .ability-map-showcase {
+    margin: 1rem 0 1.4rem;
+  }
+
+  .ability-map-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .ability-map-kicker {
+    display: block;
+    margin-bottom: 0.18rem;
+    color: var(--sl-color-gray-3);
+    font-family: var(--sl-font-utility);
+    font-size: 0.62rem;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+  }
+
+  .ability-map-heading h2 {
+    margin: 0;
+    border: 0;
+    color: var(--sl-color-white);
+    font-family: var(--sl-font-heading);
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    font-weight: 650;
+    line-height: 1.2;
+  }
+
+  .ability-map-heading p {
+    max-width: 22rem;
+    margin: 0 0 0.1rem;
+    color: var(--sl-color-gray-2);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  .ability-map-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 0.72rem;
+  }
+
+  .ability-map-card {
+    --map-accent: #3f78e6;
+    --map-wash: #e9f0ff;
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 13.25rem;
+    overflow: hidden;
+    flex-direction: column;
+    padding: 1.15rem;
+    border: 1px solid color-mix(in srgb, var(--map-accent) 18%, var(--sl-color-gray-5));
+    border-radius: 0.9rem;
+    background:
+      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--map-wash) 48%, transparent) 0, transparent 46%),
+      color-mix(in srgb, var(--sl-color-surface) 78%, var(--sl-color-bg));
+    box-shadow: 0 1px 2px rgba(36, 41, 47, 0.025), 0 12px 30px rgba(36, 41, 47, 0.035);
+    color: inherit;
+    text-decoration: none !important;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  .ability-map-card::before {
+    position: absolute;
+    top: 0;
+    right: 1.15rem;
+    left: 1.15rem;
+    height: 0.16rem;
+    border-radius: 0 0 999px 999px;
+    background: var(--map-accent);
+    content: '';
+    opacity: 0.84;
+  }
+
+  .ability-map-card.system {
+    --map-accent: #2d8b69;
+    --map-wash: #dff3e9;
+  }
+
+  .ability-map-card.agent {
+    --map-accent: #7a5db0;
+    --map-wash: #eee8f8;
+  }
+
+  .ability-map-card:hover {
+    border-color: color-mix(in srgb, var(--map-accent) 42%, var(--sl-color-gray-5));
+    box-shadow: 0 2px 5px rgba(36, 41, 47, 0.035), 0 16px 34px rgba(36, 41, 47, 0.055);
+    transform: translateY(-2px);
+  }
+
+  .ability-map-card:focus-visible {
+    outline: 2px solid var(--map-accent);
+    outline-offset: 3px;
+  }
+
+  .ability-map-card-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
-    min-height: 2.75rem;
-    margin: 0.75rem 0 0.85rem;
+    gap: 0.75rem;
   }
 
-  .directory-label {
-    color: var(--sl-color-gray-1);
-    font-size: 0.9rem;
-    font-weight: 600;
+  .ability-map-title {
+    color: var(--sl-color-white);
+    font-family: var(--sl-font-heading);
+    font-size: 1.02rem;
+    font-weight: 650;
+    line-height: 1.3;
   }
 
-  .ability-map-nav {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    padding: 0.22rem;
-    border: 1px solid color-mix(in srgb, var(--sl-color-gray-5) 68%, transparent);
-    border-radius: 0.7rem;
-    background: color-mix(in srgb, var(--sl-color-surface) 74%, var(--sl-color-bg));
+  .ability-map-arrow {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: var(--map-accent);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.75;
+    transition: transform 180ms ease;
   }
 
-  .ability-map-link {
-    display: inline-flex;
-    min-height: 2.1rem;
-    padding: 0.38rem 0.72rem;
-    border-radius: 0.5rem;
+  .ability-map-card:hover .ability-map-arrow {
+    transform: translateX(0.18rem);
+  }
+
+  .ability-map-desc {
+    display: block;
+    min-height: 2.7em;
+    margin-top: 0.48rem;
     color: var(--sl-color-gray-2);
-    font-size: 0.78rem;
-    font-weight: 560;
-    line-height: 1;
-    text-decoration: none !important;
-    align-items: center;
-    gap: 0.45rem;
-    transition: color 0.18s ease, background-color 0.18s ease;
+    font-size: 0.75rem;
+    line-height: 1.45;
   }
 
-  .ability-map-link::before {
-    width: 0.38rem;
-    height: 0.38rem;
-    border-radius: 999px;
-    background: #3f78e6;
+  .ability-map-route {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+    margin-top: auto;
+    padding-top: 1.35rem;
+  }
+
+  .ability-map-route::before {
+    position: absolute;
+    top: 0.52rem;
+    right: calc(16.666% - 0.18rem);
+    left: calc(16.666% - 0.18rem);
+    height: 1px;
+    background: color-mix(in srgb, var(--map-accent) 38%, var(--sl-color-gray-5));
     content: '';
   }
 
-  .ability-map-link.system::before { background: #2d8b69; }
-  .ability-map-link.agent::before { background: #7a5db0; }
-
-  .ability-map-link:hover {
-    color: var(--sl-color-gray-1);
-    background: color-mix(in srgb, var(--sl-color-surface) 94%, #e6edfb);
+  .ability-map-route span {
+    position: relative;
+    color: var(--sl-color-gray-2);
+    font-size: 0.65rem;
+    line-height: 1.35;
+    text-align: center;
   }
 
-  .ability-map-link:focus-visible {
-    outline: 2px solid var(--sl-color-accent);
-    outline-offset: 2px;
+  .ability-map-route span::before {
+    position: absolute;
+    top: -1.05rem;
+    left: calc(50% - 0.22rem);
+    width: 0.44rem;
+    height: 0.44rem;
+    border: 2px solid color-mix(in srgb, var(--map-accent) 72%, white);
+    border-radius: 50%;
+    background: var(--sl-color-bg);
+    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--map-wash) 65%, transparent);
+    content: '';
+  }
+
+  .ability-map-stats {
+    display: block;
+    margin-top: 0.95rem;
+    padding-top: 0.72rem;
+    border-top: 1px solid color-mix(in srgb, var(--map-accent) 14%, var(--sl-color-gray-5));
+    color: color-mix(in srgb, var(--map-accent) 78%, var(--sl-color-gray-1));
+    font-family: var(--sl-font-utility);
+    font-size: 0.67rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
   }
 
   .home-sections {
@@ -397,10 +597,19 @@ function formatDate(doc: typeof allDocs[number]) {
 
   @media (prefers-reduced-motion: reduce) {
     .section-card { animation: none; }
-    .ability-map-link { transition: none; }
+    .ability-map-card,
+    .ability-map-arrow { transition: none; }
   }
 
   @media (max-width: 800px) {
+    .ability-map-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ability-map-card {
+      min-height: 11.75rem;
+    }
+
     .section-card {
       grid-template-columns: 0.25rem minmax(8.5rem, 0.72fr) minmax(0, 1.4fr);
       gap: 0.9rem;
@@ -417,20 +626,17 @@ function formatDate(doc: typeof allDocs[number]) {
   }
 
   @media (max-width: 560px) {
-    .directory-toolbar {
-      display: grid;
-      gap: 0.55rem;
-      margin-top: 0.45rem;
+    .ability-map-heading {
+      display: block;
     }
 
-    .ability-map-nav {
-      grid-template-columns: repeat(3, 1fr);
-      width: 100%;
+    .ability-map-heading p {
+      margin-top: 0.35rem;
+      text-align: left;
     }
 
-    .ability-map-link {
-      justify-content: center;
-      padding-inline: 0.35rem;
+    .ability-map-card {
+      min-height: 11.5rem;
     }
 
     .section-card {
