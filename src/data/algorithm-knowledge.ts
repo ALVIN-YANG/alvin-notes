@@ -5,7 +5,7 @@ import {
 } from './create-knowledge-map';
 import { getAlgorithmVisual, interviewProtocolVisual } from './algorithm-visuals';
 
-const CODETOP_UPDATED_AT = '2026-08-31';
+const CODETOP_UPDATED_AT = '2026-09-02';
 
 const codeTopArticle = {
   title: 'CodeTop 高频面试题榜',
@@ -1532,90 +1532,118 @@ const algorithmKnowledge = createKnowledgeMap({
       ],
     },
     {
-      title: '数组、字符串与哈希',
-      short: '线性扫描与边界',
-      summary: '先把一次遍历、原地写入和区间语义写稳。',
+      title: '链表基础',
+      short: '三指针与快慢指针',
+      summary: '看到反转、局部重连、环和交点，先画清节点关系。',
       articles: [codeTopArticle],
       groups: [
-        { title: '前 10 必须秒出', level: 'core', points: [longestPalindrome] },
         {
-          title: '11 到 30 稳定拿下',
+          title: '三指针与虚拟头节点',
+          level: 'core',
+          points: [reverseList, mergeTwoLists],
+        },
+        {
+          title: '区间、环与交点迁移',
           level: 'scenario',
-          points: [twoSum, mergeSortedArray, spiralOrder, mergeIntervals, addStrings],
+          points: [reverseBetween, linkedListCycle, intersectionNode],
         },
       ],
     },
     {
-      title: '双指针、窗口与栈',
-      short: '单调移动状态',
-      summary: '用边界和候选集减少重复扫描。',
+      title: '链表进阶与数据结构设计',
+      short: '分组、归并与缓存',
+      summary: '把指针重连、最小堆和双向链表组合成稳定结构。',
       articles: [codeTopArticle],
       groups: [
-        { title: '前 10 必须秒出', level: 'core', points: [longestSubstring, threeSum] },
-        { title: '11 到 30 稳定拿下', level: 'scenario', points: [validParentheses] },
         {
-          title: '高收益补洞',
+          title: '哈希表与双向链表母题',
+          level: 'core',
+          points: [lruCache],
+        },
+        {
+          title: '分组、重排与多路归并',
+          level: 'scenario',
+          points: [reverseKGroup, reorderList, mergeKLists],
+        },
+      ],
+    },
+    {
+      title: '哈希、滑动窗口、双指针与栈',
+      short: '单调移动状态',
+      summary: '用查询表、窗口边界和候选集消除重复扫描。',
+      articles: [codeTopArticle],
+      groups: [
+        {
+          title: '查找、窗口与栈母题',
+          level: 'core',
+          points: [twoSum, longestSubstring, validParentheses],
+        },
+        {
+          title: '排序双指针与原地写入',
+          level: 'scenario',
+          points: [threeSum, mergeSortedArray],
+        },
+        {
+          title: '窗口与单调结构进阶',
           level: 'advanced',
           points: [trappingRainWater, slidingWindowMaximum, minimumWindowSubstring],
         },
       ],
     },
     {
-      title: '链表与组合结构',
-      short: '指针重连',
-      summary: '围绕反转、快慢指针和多路合并集中训练。',
+      title: '排序、选择、二分、区间与矩阵',
+      short: '分区、有序性与边界',
+      summary: '看到第 K 大、局部有序、重叠区间和矩阵边界时选对骨架。',
       articles: [codeTopArticle],
       groups: [
         {
-          title: '前 10 必须秒出',
+          title: '分区、选择与二分母题',
           level: 'core',
-          points: [lruCache, reverseList, reverseKGroup, mergeTwoLists],
+          points: [quickSort, kthLargest, binarySearch],
         },
         {
-          title: '11 到 30 稳定拿下',
+          title: '旋转数组、区间与矩阵迁移',
           level: 'scenario',
-          points: [reverseBetween, mergeKLists, reorderList, linkedListCycle, intersectionNode],
+          points: [searchRotated, mergeIntervals, spiralOrder],
         },
       ],
     },
     {
-      title: '排序、二分与选择',
-      short: '有序性与分区',
-      summary: '明确搜索区间、pivot 位置和方案的最坏代价。',
-      articles: [codeTopArticle],
-      groups: [
-        { title: '前 10 必须秒出', level: 'core', points: [kthLargest, quickSort] },
-        { title: '11 到 30 稳定拿下', level: 'scenario', points: [searchRotated] },
-        { title: '高收益补洞', level: 'advanced', points: [binarySearch] },
-      ],
-    },
-    {
-      title: '树、图与递归',
-      short: '遍历与返回值',
-      summary: '先定义节点状态和递归返回值，再决定 BFS 或 DFS。',
+      title: '树、图与回溯',
+      short: '遍历、连通与撤销选择',
+      summary: '先定义访问状态和递归返回值，再决定 BFS、DFS 或回溯。',
       articles: [codeTopArticle],
       groups: [
         {
-          title: '11 到 30 稳定拿下',
-          level: 'scenario',
-          points: [numberOfIslands, levelOrder, permutations, zigzagLevelOrder, lowestCommonAncestor],
+          title: '层序、连通块与回溯母题',
+          level: 'core',
+          points: [levelOrder, numberOfIslands, permutations],
         },
-        { title: '高收益补洞', level: 'advanced', points: [buildTree] },
+        {
+          title: '层序变化与递归返回值',
+          level: 'scenario',
+          points: [zigzagLevelOrder, lowestCommonAncestor],
+        },
+        { title: '递归区间进阶', level: 'advanced', points: [buildTree] },
       ],
     },
     {
-      title: '动态规划',
-      short: '状态与转移',
-      summary: '让每个状态都能用一句完整的话解释。',
+      title: '动态规划与字符串模拟',
+      short: '状态、转移与进位',
+      summary: '让每个状态都能用一句话解释，字符串运算额外守住索引和进位。',
       articles: [codeTopArticle],
       groups: [
-        { title: '前 10 必须秒出', level: 'core', points: [maxSubarray] },
         {
-          title: '11 到 30 稳定拿下',
-          level: 'scenario',
-          points: [bestStockProfit, longestIncreasingSubsequence, editDistance],
+          title: '一维状态与字符串母题',
+          level: 'core',
+          points: [maxSubarray, bestStockProfit, longestPalindrome, addStrings],
         },
-        { title: '高收益补洞', level: 'advanced', points: [coinChange] },
+        {
+          title: '序列与二维状态迁移',
+          level: 'scenario',
+          points: [longestIncreasingSubsequence, editDistance],
+        },
+        { title: '完全背包进阶', level: 'advanced', points: [coinChange] },
       ],
     },
   ],
