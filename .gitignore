@@ -22,6 +22,7 @@ pnpm-debug.log*
 
 # temp files
 /tmp/
+.font-sources/
 node-v20.18.0-win-x64/
 node-v20.18.0-win-x64.zip
 dev.log

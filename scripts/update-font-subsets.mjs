@@ -1,5 +1,5 @@
 import { execFile } from 'node:child_process';
-import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { access, mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { promisify } from 'node:util';
@@ -11,6 +11,7 @@ const miSansVersion = '2025-07-14';
 const sarasaVersion = '1.0.41';
 const miSansOutputDirectory = path.join(repositoryRoot, 'public/fonts/misans');
 const sarasaOutputDirectory = path.join(repositoryRoot, 'public/fonts/sarasa');
+const fontSourceCacheDirectory = path.join(repositoryRoot, '.font-sources');
 const manifestPath = path.join(repositoryRoot, 'scripts/font-subset-codepoints.json');
 const sourceRoots = [
   'src/content/docs',
@@ -58,6 +59,23 @@ async function download(url, destination) {
   await writeFile(destination, Buffer.from(await response.arrayBuffer()));
 }
 
+async function fileExists(file) {
+  try {
+    await access(file);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function ensureDownload(url, destination) {
+  if (await fileExists(destination)) {
+    console.log(`Using cached ${path.basename(destination)}...`);
+    return;
+  }
+  await download(url, destination);
+}
+
 async function run(command, args) {
   const { stdout, stderr } = await execFileAsync(command, args, {
     cwd: repositoryRoot,
@@ -76,11 +94,12 @@ try {
   let monoSourceDirectory;
 
   await mkdir(miSansSourceDirectory);
+  await mkdir(fontSourceCacheDirectory, { recursive: true });
   const miSansArchive = suppliedMiSansArchive
     ? path.resolve(suppliedMiSansArchive)
-    : path.join(temporaryDirectory, 'MiSans.zip');
+    : path.join(fontSourceCacheDirectory, 'MiSans.zip');
   if (!suppliedMiSansArchive) {
-    await download('https://hyperos.mi.com/font-download/MiSans.zip', miSansArchive);
+    await ensureDownload('https://hyperos.mi.com/font-download/MiSans.zip', miSansArchive);
   }
   await run('bsdtar', [
     '-xf',
@@ -95,11 +114,14 @@ try {
   if (suppliedSarasaSource) {
     monoSourceDirectory = path.resolve(suppliedSarasaSource);
   } else {
-    const monoArchive = path.join(temporaryDirectory, 'sarasa-mono-sc.7z');
+    const monoArchive = path.join(
+      fontSourceCacheDirectory,
+      `SarasaMonoSC-TTF-Unhinted-${sarasaVersion}.7z`,
+    );
     monoSourceDirectory = path.join(temporaryDirectory, 'mono');
     await mkdir(monoSourceDirectory);
 
-    await download(
+    await ensureDownload(
       `https://github.com/be5invis/Sarasa-Gothic/releases/download/v${sarasaVersion}/SarasaMonoSC-TTF-Unhinted-${sarasaVersion}.7z`,
       monoArchive,
     );
