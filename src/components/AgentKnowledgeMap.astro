@@ -408,6 +408,16 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
         const container = this.querySelector('[data-panel-content]');
         clearVisualTimers();
         container.replaceChildren();
+
+        const createCodeBlock = (block) => {
+          const pre = document.createElement('pre');
+          const code = document.createElement('code');
+          if (block.language) code.dataset.language = block.language;
+          code.textContent = block.text;
+          pre.append(code);
+          return pre;
+        };
+
         (record.point.content ?? []).forEach((block) => {
           if (block.type === 'link') {
             if (!/^https?:\/\//.test(block.href)) return;
@@ -449,12 +459,34 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
             return;
           }
           if (block.type === 'code') {
-            const pre = document.createElement('pre');
-            const code = document.createElement('code');
-            if (block.language) code.dataset.language = block.language;
-            code.textContent = block.text;
-            pre.append(code);
-            container.append(pre);
+            container.append(createCodeBlock(block));
+            return;
+          }
+          if (block.type === 'checkpoint') {
+            const details = document.createElement('details');
+            const summary = document.createElement('summary');
+            const label = document.createElement('span');
+            const prompt = document.createElement('strong');
+            const toggle = document.createElement('span');
+            const answer = document.createElement('div');
+            const answerText = document.createElement('p');
+            details.className = 'knowledge-checkpoint';
+            label.className = 'knowledge-checkpoint-label';
+            label.textContent = block.label ?? '先自己答';
+            prompt.textContent = block.prompt;
+            toggle.className = 'knowledge-checkpoint-toggle';
+            toggle.setAttribute('aria-hidden', 'true');
+            toggle.textContent = '展开';
+            summary.append(label, prompt, toggle);
+            answer.className = 'knowledge-checkpoint-answer';
+            answerText.textContent = block.answer;
+            answer.append(answerText);
+            if (block.code) answer.append(createCodeBlock(block.code));
+            details.addEventListener('toggle', () => {
+              toggle.textContent = details.open ? '收起' : '展开';
+            });
+            details.append(summary, answer);
+            container.append(details);
             return;
           }
           if (block.type === 'visual') {
@@ -669,7 +701,15 @@ const gridPositions = knowledgeData.domains.map((_, index) => {
           return;
         }
         const matches = pointRecords.filter(({ point, group, domain }) => {
-          const explanation = (point.content ?? []).flatMap((block) => block.items ?? block.text ?? block.caption ?? block.label ?? '').join(' ');
+          const explanation = (point.content ?? []).map((block) => [
+            block.items?.join(' '),
+            block.text,
+            block.caption,
+            block.label,
+            block.prompt,
+            block.answer,
+            block.code?.text,
+          ].filter(Boolean).join(' ')).join(' ');
           const aliases = (point.aliases ?? []).join(' ');
           const haystack = `${point.title} ${aliases} ${explanation} ${group.title} ${domain.title}`.toLocaleLowerCase('zh-CN');
           return haystack.includes(query);

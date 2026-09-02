@@ -37,6 +37,13 @@ export type KnowledgeContentBlock =
   | { type: 'code'; language?: string; text: string }
   | { type: 'link'; label: string; detail?: string; href: string }
   | {
+      type: 'checkpoint';
+      label?: string;
+      prompt: string;
+      answer: string;
+      code?: { language?: string; text: string };
+    }
+  | {
       type: 'visual';
       kind:
         | 'flow'

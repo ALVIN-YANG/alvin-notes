@@ -1,9 +1,11 @@
 import {
   createKnowledgeMap,
+  type KnowledgeContentBlock,
   type KnowledgePointSeed,
   type KnowledgeReference,
 } from './create-knowledge-map';
 import { getAlgorithmVisual, interviewProtocolVisual } from './algorithm-visuals';
+import { getAlgorithmTeaching } from './algorithm-teaching';
 
 const CODETOP_UPDATED_AT = '2026-09-02';
 
@@ -42,38 +44,123 @@ interface InterviewCardSpec {
   references?: readonly KnowledgeReference[];
 }
 
-const makeInterviewCard = (spec: InterviewCardSpec): KnowledgePointSeed => ({
-  title: spec.title,
-  content: [
-    {
-      type: 'link',
-      label: '查看力扣原题',
-      detail: `LeetCode ${spec.leetcodeId ?? spec.id} · ${spec.leetcodeTitle ?? spec.title}`,
-      href: `https://leetcode.cn/problems/${spec.slug}/`,
-    },
-    {
-      type: 'paragraph',
-      text: `CodeTop 全站榜第 ${spec.rank} 位，难度 ${spec.difficulty}。${spec.examines}`,
-    },
-    getAlgorithmVisual(spec.id),
-    { type: 'heading', text: '开口先确认' },
-    { type: 'paragraph', text: spec.clarify },
-    { type: 'heading', text: '把方案推出来' },
-    { type: 'paragraph', text: spec.reasoning },
-    { type: 'heading', text: 'Java 实现' },
-    { type: 'code', language: 'java', text: spec.code },
-    { type: 'heading', text: '不变量与复杂度' },
-    { type: 'paragraph', text: `${spec.invariant} ${spec.complexity}` },
-    { type: 'heading', text: '测试与修错' },
-    { type: 'list', items: spec.checks },
-    { type: 'heading', text: '继续追问' },
-    { type: 'paragraph', text: spec.followUp },
-  ],
-  references: [
-    codeTopReference(spec.rank),
-    ...(spec.references ?? []),
-  ],
+const checkpoint = (
+  prompt: string,
+  answer: string,
+  label = '先自己答',
+  code?: { language?: string; text: string },
+): KnowledgeContentBlock => ({
+  type: 'checkpoint',
+  label,
+  prompt,
+  answer,
+  ...(code ? { code } : {}),
 });
+
+const makeInterviewCard = (spec: InterviewCardSpec): KnowledgePointSeed => {
+  const guide = getAlgorithmTeaching(spec.id);
+  const source: KnowledgeContentBlock = {
+    type: 'link',
+    label: '查看力扣原题',
+    detail: `LeetCode ${spec.leetcodeId ?? spec.id} · ${spec.difficulty} · CodeTop 第 ${spec.rank} 位`,
+    href: `https://leetcode.cn/problems/${spec.slug}/`,
+  };
+  const opening: readonly KnowledgeContentBlock[] = [
+    source,
+    { type: 'heading', text: '先用一个输入把题意落下来' },
+    { type: 'paragraph', text: spec.clarify },
+    { type: 'paragraph', text: guide.example },
+    checkpoint(guide.recall.prompt, guide.recall.answer),
+  ];
+  let content: readonly KnowledgeContentBlock[];
+
+  if (guide.mode === 'worked') {
+    content = [
+      ...opening,
+      { type: 'heading', text: guide.ideaHeading },
+      { type: 'paragraph', text: spec.reasoning },
+      getAlgorithmVisual(spec.id),
+      { type: 'heading', text: '写代码前守住这一句' },
+      { type: 'paragraph', text: spec.invariant },
+      { type: 'heading', text: 'Java 实现' },
+      { type: 'code', language: 'java', text: spec.code },
+      { type: 'heading', text: '对照代码只看这些位置' },
+      { type: 'list', items: guide.codeFocus },
+      { type: 'heading', text: '拿这些输入验收' },
+      { type: 'list', items: spec.checks },
+      checkpoint('怎样才算这道题已经会了？', guide.mastery, '闭卷验收'),
+      { type: 'heading', text: '复杂度和下一问' },
+      { type: 'paragraph', text: `${spec.complexity} ${spec.followUp}` },
+    ];
+  } else if (guide.mode === 'transfer') {
+    content = [
+      source,
+      { type: 'heading', text: `先从「${guide.from}」迁移` },
+      { type: 'paragraph', text: `可以沿用的部分。${guide.reuse}` },
+      { type: 'paragraph', text: `这道题新增的变化。${guide.change}` },
+      { type: 'heading', text: guide.ideaHeading },
+      { type: 'paragraph', text: spec.clarify },
+      { type: 'paragraph', text: guide.example },
+      checkpoint(guide.recall.prompt, guide.recall.answer),
+      { type: 'paragraph', text: spec.reasoning },
+      getAlgorithmVisual(spec.id),
+      { type: 'heading', text: '代码只新增这些位置' },
+      { type: 'list', items: guide.codeFocus },
+      { type: 'paragraph', text: `${spec.invariant} ${spec.complexity}` },
+      checkpoint(
+        '先闭卷写一遍，再展开完整 Java 实现。',
+        '对照时先检查迁移过来的骨架，再检查这道题新增的边界。',
+        '展开答案',
+        { language: 'java', text: spec.code },
+      ),
+      { type: 'heading', text: '用例专门打新增边界' },
+      { type: 'list', items: spec.checks },
+      checkpoint('迁移训练怎样过线？', guide.mastery, '闭卷验收'),
+      { type: 'heading', text: '面试官继续改条件时' },
+      { type: 'paragraph', text: spec.followUp },
+    ];
+  } else {
+    content = [
+      source,
+      { type: 'heading', text: '开始前先确认这些基础' },
+      { type: 'list', items: guide.prerequisites },
+      { type: 'heading', text: guide.ideaHeading },
+      { type: 'paragraph', text: spec.clarify },
+      { type: 'paragraph', text: guide.example },
+      checkpoint(guide.recall.prompt, guide.recall.answer),
+      ...guide.hints.map((hint, index) => checkpoint(
+        `独立思考后仍然卡住，再看第 ${index + 1} 个提示。`,
+        hint,
+        `提示 ${index + 1}`,
+      )),
+      checkpoint('两个提示仍不够时，再看完整推导。', spec.reasoning, '提示 3'),
+      getAlgorithmVisual(spec.id),
+      { type: 'heading', text: '实现时重点检查' },
+      { type: 'list', items: guide.codeFocus },
+      { type: 'paragraph', text: `${spec.invariant} ${spec.complexity}` },
+      checkpoint(
+        '完成自己的版本以后，再展开 Java 参考实现。',
+        '先比较状态定义和边界，再比较代码长短。写法不同但不变量相同，也算通过。',
+        '展开答案',
+        { language: 'java', text: spec.code },
+      ),
+      { type: 'heading', text: '用这些输入找反例' },
+      { type: 'list', items: spec.checks },
+      checkpoint('进阶题怎样过线？', guide.mastery, '闭卷验收'),
+      { type: 'heading', text: '继续追问' },
+      { type: 'paragraph', text: spec.followUp },
+    ];
+  }
+
+  return {
+    title: spec.title,
+    content,
+    references: [
+      codeTopReference(spec.rank),
+      ...(spec.references ?? []),
+    ],
+  };
+};
 
 const interviewProtocol: KnowledgePointSeed = {
   title: '一轮算法面试怎样完整作答',
@@ -487,6 +574,10 @@ const longestPalindrome: KnowledgePointSeed = {
       type: 'paragraph',
       text: 'CodeTop 全站榜第 9 位，难度中等。题目要求在字符串中找出最长的连续回文片段。输入 babad 时，bab 和 aba 都符合要求；输入 cbbd 时，答案是 bb。存在多个并列结果时，返回其中任意一个即可。',
     },
+    checkpoint(
+      '字符串长度为 n 时，一共有多少个字符中心和字符间中心？',
+      '字符中心有 n 个，字符间中心有 n - 1 个，总共 2n - 1 个。奇数回文从字符中心扩展，偶数回文从字符间中心扩展。',
+    ),
     { type: 'heading', text: '先把回文和子串分开' },
     {
       type: 'paragraph',
@@ -584,6 +675,11 @@ int expandLength(String s, int left, int right) {
         '若业务输入可能为空，再补空串和 null。力扣原题保证至少有一个字符，防御代码仍可以保留。',
       ],
     },
+    checkpoint(
+      '怎样才算最长回文子串已经掌握？',
+      '合上代码，先用 babad 手算奇偶中心，再闭卷写出 expandLength，并解释退出循环后为什么返回 right - left - 1。',
+      '闭卷验收',
+    ),
     { type: 'heading', text: '面试追问怎样接' },
     {
       type: 'paragraph',

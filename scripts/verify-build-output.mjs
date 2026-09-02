@@ -126,16 +126,58 @@ if (!algorithmDataMatch) {
 } else {
   const algorithmData = JSON.parse(algorithmDataMatch[1]);
   const algorithmPoints = algorithmData.domains.flatMap((domain) => (
-    domain.groups.flatMap((group) => group.points)
+    domain.groups.flatMap((group) => (
+      group.points.map((point) => ({ point, group }))
+    ))
   ));
+  const problemCountsByLevel = { core: 0, scenario: 0, advanced: 0 };
 
-  for (const point of algorithmPoints) {
-    const isProblem = point.content.some((block) => block.type === 'code');
+  for (const { point, group } of algorithmPoints) {
+    const visibleCodeBlocks = point.content.filter((block) => block.type === 'code');
+    const checkpointBlocks = point.content.filter((block) => block.type === 'checkpoint');
+    const hiddenCodeBlocks = checkpointBlocks.filter((block) => block.code);
+    const isProblem = visibleCodeBlocks.length > 0 || hiddenCodeBlocks.length > 0;
     if (!isProblem) continue;
     algorithmProblemCount += 1;
+    problemCountsByLevel[group.level] += 1;
     const source = point.content[0];
     if (source?.type !== 'link' || !/^https:\/\/leetcode\.cn\/problems\/[^/]+\/$/.test(source.href)) {
       problems.push(`Algorithm card must start with a LeetCode problem link: ${point.title}`);
+    }
+    if (!point.content.some((block) => block.type === 'visual')) {
+      problems.push(`Algorithm card has no walkthrough visual: ${point.title}`);
+    }
+    if (checkpointBlocks.length < 2) {
+      problems.push(`Algorithm card needs recall and mastery checkpoints: ${point.title}`);
+    }
+
+    if (group.level === 'core' && visibleCodeBlocks.length === 0) {
+      problems.push(`Core algorithm card must keep the worked Java example visible: ${point.title}`);
+    }
+    if (group.level === 'scenario') {
+      if (visibleCodeBlocks.length > 0 || hiddenCodeBlocks.length !== 1) {
+        problems.push(`Scenario algorithm card must reveal exactly one Java answer on demand: ${point.title}`);
+      }
+      if (checkpointBlocks.length < 3) {
+        problems.push(`Scenario algorithm card needs recall, answer and mastery checkpoints: ${point.title}`);
+      }
+    }
+    if (group.level === 'advanced') {
+      if (visibleCodeBlocks.length > 0 || hiddenCodeBlocks.length !== 1) {
+        problems.push(`Advanced algorithm card must reveal exactly one Java answer on demand: ${point.title}`);
+      }
+      if (checkpointBlocks.length < 5) {
+        problems.push(`Advanced algorithm card needs staged hints and mastery checkpoints: ${point.title}`);
+      }
+    }
+  }
+
+  const expectedProblemCountsByLevel = { core: 16, scenario: 15, advanced: 5 };
+  for (const [level, expectedCount] of Object.entries(expectedProblemCountsByLevel)) {
+    if (problemCountsByLevel[level] !== expectedCount) {
+      problems.push(
+        `Algorithm ${level} card count mismatch: expected=${expectedCount}, actual=${problemCountsByLevel[level]}`,
+      );
     }
   }
 }
@@ -219,6 +261,6 @@ if (problems.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Static build verified: no PWA or Mermaid runtime; ${outputDiagramCount} diagrams are inline SVG; all ${algorithmProblemCount} algorithm cards start with a LeetCode problem link; all ${systemDesignCoverage.length} System Design Primer topics are covered; MiSans ${fontManifest.version.miSans} and Sarasa Mono SC ${fontManifest.version.sarasaMono} subsets are current.`,
+    `Static build verified: no PWA or Mermaid runtime; ${outputDiagramCount} diagrams are inline SVG; all ${algorithmProblemCount} algorithm cards have the required worked, transfer or challenge teaching mode; all ${systemDesignCoverage.length} System Design Primer topics are covered; MiSans ${fontManifest.version.miSans} and Sarasa Mono SC ${fontManifest.version.sarasaMono} subsets are current.`,
   );
 }

@@ -818,6 +818,67 @@
   background: color-mix(in srgb, var(--map-blue) 8%, white);
 }
 
+.agent-map .knowledge-checkpoint {
+  margin: 16px 0 4px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--map-blue) 24%, #dfe4eb);
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--map-blue) 4%, white);
+}
+
+.agent-map .knowledge-checkpoint summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 13px 44px 13px 14px;
+  cursor: pointer;
+  list-style: none;
+  gap: 4px 12px;
+}
+
+.agent-map .knowledge-checkpoint summary::-webkit-details-marker {
+  display: none;
+}
+
+.agent-map .knowledge-checkpoint-label {
+  grid-column: 1;
+  color: var(--map-blue);
+  font-size: 10.5px;
+  font-weight: 720;
+  letter-spacing: .04em;
+}
+
+.agent-map .knowledge-checkpoint summary strong {
+  grid-column: 1;
+  color: #303946;
+  font-size: 13.5px;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.agent-map .knowledge-checkpoint-toggle {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  color: var(--map-muted);
+  font-size: 10.5px;
+  transform: translateY(-50%);
+}
+
+.agent-map .knowledge-checkpoint[open] summary {
+  border-bottom: 1px solid color-mix(in srgb, var(--map-blue) 16%, #e5e8ed);
+  background: color-mix(in srgb, var(--map-blue) 6%, white);
+}
+
+.agent-map .knowledge-checkpoint-answer {
+  padding: 13px 14px 15px;
+}
+
+.agent-map .knowledge-checkpoint-answer pre {
+  margin-top: 12px;
+  background: white;
+}
+
 .agent-map .panel-body p {
   margin: 0;
   color: #39424f;
