@@ -10,7 +10,7 @@
     "fonts:update": "node scripts/update-font-subsets.mjs",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build --force && node scripts/verify-build-output.mjs",
+    "build": "astro build && node scripts/verify-build-output.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "news:daily": "node scripts/fetch-ai-news.mjs --daily",

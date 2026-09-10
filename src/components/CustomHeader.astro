@@ -51,7 +51,26 @@ function isActive(match: string): boolean {
     ))}
   </nav>
   <div class="sl-flex right-group-mobile md:sl-hidden">
+    <button
+      class="mobile-nav-trigger"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-nav-panel"
+      aria-label="打开栏目导航"
+    >
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+        <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+      </svg>
+      <span>栏目</span>
+    </button>
     <ThemeToggle />
+  </div>
+  <div id="mobile-nav-panel" class="mobile-nav-panel" hidden>
+    <nav aria-label="全部栏目">
+      {navLinks.map(link => (
+        <a href={link.href} class:list={[{ active: isActive(link.match) }]}>{link.label}</a>
+      ))}
+    </nav>
   </div>
   <div class="sl-hidden md:sl-flex right-group">
     <Search {...Astro.props} />
@@ -72,6 +91,7 @@ function isActive(match: string): boolean {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    position: relative;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
@@ -153,6 +173,73 @@ function isActive(match: string): boolean {
     align-items: center;
     gap: 0.5rem;
   }
+
+  .mobile-nav-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.35rem 0.55rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 8px;
+    background: var(--sl-color-surface);
+    color: var(--sl-color-gray-1);
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .mobile-nav-trigger[aria-expanded='true'] {
+    border-color: var(--sl-color-accent);
+    color: var(--sl-color-accent-high);
+    background: var(--sl-color-accent-low);
+  }
+
+  .mobile-nav-panel {
+    position: absolute;
+    inset-inline: 0.75rem;
+    top: calc(var(--sl-nav-height) + 0.35rem);
+    z-index: 20;
+    padding: 0.65rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 12px;
+    background: var(--sl-color-bg-nav);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 32px rgba(36, 41, 47, 0.12);
+  }
+
+  .mobile-nav-panel[hidden] {
+    display: none;
+  }
+
+  .mobile-nav-panel nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .mobile-nav-panel a {
+    display: block;
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    color: var(--sl-color-gray-1);
+    font-size: 0.86rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .mobile-nav-panel a:hover,
+  .mobile-nav-panel a.active {
+    color: var(--sl-color-accent-high);
+    background: var(--sl-color-accent-low);
+  }
+
+  @media (min-width: 50rem) {
+    .mobile-nav-trigger,
+    .mobile-nav-panel {
+      display: none !important;
+    }
+  }
 </style>
 
 <script>
@@ -202,4 +289,37 @@ function isActive(match: string): boolean {
   if (!customElements.get('reading-progress')) {
     customElements.define('reading-progress', ReadingProgress);
   }
+
+  const mobileTrigger = document.querySelector<HTMLButtonElement>('.mobile-nav-trigger');
+  const mobilePanel = document.getElementById('mobile-nav-panel');
+
+  function closeMobileNav() {
+    if (!mobileTrigger || !mobilePanel) return;
+    mobileTrigger.setAttribute('aria-expanded', 'false');
+    mobileTrigger.setAttribute('aria-label', '打开栏目导航');
+    mobilePanel.hidden = true;
+  }
+
+  mobileTrigger?.addEventListener('click', () => {
+    if (!mobilePanel) return;
+    const open = mobileTrigger.getAttribute('aria-expanded') === 'true';
+    mobileTrigger.setAttribute('aria-expanded', String(!open));
+    mobileTrigger.setAttribute('aria-label', open ? '打开栏目导航' : '关闭栏目导航');
+    mobilePanel.hidden = open;
+  });
+
+  mobilePanel?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMobileNav();
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!mobilePanel || mobilePanel.hidden) return;
+    const target = event.target as Node;
+    if (mobilePanel.contains(target) || mobileTrigger?.contains(target)) return;
+    closeMobileNav();
+  });
 </script>

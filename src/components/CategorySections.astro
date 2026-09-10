@@ -1,9 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import agentKnowledge from '../data/agent-knowledge.json';
-import algorithmLearningMap from '../data/algorithm-learning-map';
-import { algorithmTemplates, algorithmTop30Problems } from '../data/algorithm-curriculum';
-import systemDesignKnowledge from '../data/system-design-knowledge';
+import { abilityMapMeta } from '../data/ability-map-meta';
 
 const abilityMaps = [
   {
@@ -12,8 +9,8 @@ const abilityMaps = [
     desc: '先学解题模板，再闭卷解决高频题。',
     href: '/algorithm-knowledge/',
     route: ['识别信号', '守住不变量', '闭卷解题'],
-    stats: `${algorithmTemplates.length} 种模板 · ${algorithmTop30Problems.length} 道高频题`,
-    pointCount: algorithmLearningMap.meta.pointCount,
+    stats: `${abilityMapMeta.algorithm.templateCount} 种模板 · ${abilityMapMeta.algorithm.practiceCount} 道高频题`,
+    pointCount: abilityMapMeta.algorithm.templateCount + abilityMapMeta.algorithm.practiceCount,
   },
   {
     id: 'system',
@@ -21,8 +18,8 @@ const abilityMaps = [
     desc: '从需求与容量出发，一路推到故障恢复。',
     href: '/system-design-knowledge/',
     route: ['明确约束', '设计取舍', '故障恢复'],
-    stats: `${systemDesignKnowledge.meta.domainCount} 个领域 · ${systemDesignKnowledge.meta.pointCount} 个知识点`,
-    pointCount: systemDesignKnowledge.meta.pointCount,
+    stats: `${abilityMapMeta.system.domainCount} 个领域 · ${abilityMapMeta.system.pointCount} 个知识点`,
+    pointCount: abilityMapMeta.system.pointCount,
   },
   {
     id: 'agent',
@@ -30,8 +27,8 @@ const abilityMaps = [
     desc: '串起模型、工具、记忆、评测与生产运行。',
     href: '/agent-knowledge/',
     route: ['判断边界', '组织执行', '评测运行'],
-    stats: `${agentKnowledge.meta.domainCount} 个领域 · ${agentKnowledge.meta.pointCount} 个知识点`,
-    pointCount: agentKnowledge.meta.pointCount,
+    stats: `${abilityMapMeta.agent.domainCount} 个领域 · ${abilityMapMeta.agent.pointCount} 个知识点`,
+    pointCount: abilityMapMeta.agent.pointCount,
   },
 ] as const;
 

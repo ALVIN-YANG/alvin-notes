@@ -1,6 +1,7 @@
 ---
 import '../styles/fonts.css';
 import '../styles/agent-knowledge-mintlify.css';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -8,6 +9,9 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const siteUrl = Astro.site?.href ?? 'https://blog.mlxb.cc';
+const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = new URL('/images/brand/og-default.png', siteUrl).href;
 ---
 
 <!doctype html>
@@ -16,8 +20,17 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#edf0f4" />
+    <meta name="theme-color" content="#f5f4ed" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="canonical" href={pageUrl} />
     <link rel="icon" href="/favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="Alvin Yang" href={new URL('/rss.xml', siteUrl).href} />
     <link
       rel="preload"
       href="/fonts/misans/misans-regular-subset.woff2"
@@ -31,6 +44,7 @@ const { title, description } = Astro.props;
     <main class="standalone-knowledge-page">
       <slot />
     </main>
+    <Analytics />
   </body>
 </html>
 
@@ -45,14 +59,14 @@ const { title, description } = Astro.props;
 
   html {
     min-width: 320px;
-    background: #edf0f4;
+    background: #f5f4ed;
   }
 
   body {
     min-width: 320px;
     min-height: 100vh;
     margin: 0;
-    background: #edf0f4;
+    background: #f5f4ed;
   }
 
   button,

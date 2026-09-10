@@ -134,18 +134,11 @@
 <script>
   import { programmerQuips } from '../data/programmer-quips';
 
-  const FIRST_MESSAGE_MIN_MS = 4500;
-  const FIRST_MESSAGE_RANGE_MS = 3000;
-  const REPEAT_MESSAGE_MIN_MS = 18000;
-  const REPEAT_MESSAGE_RANGE_MS = 12000;
-  const VISIBILITY_RETRY_MIN_MS = 6000;
-  const VISIBILITY_RETRY_RANGE_MS = 4000;
   const MESSAGE_VISIBLE_MS = 7600;
 
   class ProgrammerAside extends HTMLElement {
     private quips: readonly string[] = programmerQuips;
     private lastIndex = -1;
-    private autoTimer = 0;
     private hideTimer = 0;
     private button: HTMLButtonElement | null = null;
     private bubble: HTMLElement | null = null;
@@ -160,11 +153,9 @@
       if (!this.button || !this.bubble || !this.output || this.quips.length === 0) return;
 
       this.button.addEventListener('click', this.handleClick);
-      this.scheduleAutoMessage('first');
     }
 
     disconnectedCallback() {
-      window.clearTimeout(this.autoTimer);
       window.clearTimeout(this.hideTimer);
       this.button?.removeEventListener('click', this.handleClick);
       this.button = null;
@@ -173,52 +164,22 @@
     }
 
     private handleClick = () => {
-      window.clearTimeout(this.autoTimer);
       if (this.hasAttribute('data-open')) {
         this.hideMessage();
         return;
       }
-      this.showNextMessage(true);
+      this.showNextMessage();
     };
 
-    private scheduleAutoMessage(timing: 'first' | 'repeat' | 'visibility-retry') {
-      window.clearTimeout(this.autoTimer);
-      const [minimum, range] = timing === 'first'
-        ? [FIRST_MESSAGE_MIN_MS, FIRST_MESSAGE_RANGE_MS]
-        : timing === 'repeat'
-          ? [REPEAT_MESSAGE_MIN_MS, REPEAT_MESSAGE_RANGE_MS]
-          : [VISIBILITY_RETRY_MIN_MS, VISIBILITY_RETRY_RANGE_MS];
-      const delay = minimum + Math.floor(Math.random() * range);
-
-      this.autoTimer = window.setTimeout(() => {
-        if (!this.isReadyToSpeak()) {
-          this.scheduleAutoMessage('visibility-retry');
-          return;
-        }
-
-        this.showNextMessage(false);
-      }, delay);
-    }
-
-    private isReadyToSpeak() {
-      if (document.hidden || this.hasAttribute('data-open')) return false;
-      const rect = this.getBoundingClientRect();
-      return rect.bottom > 0
-        && rect.top < window.innerHeight
-        && rect.right > 0
-        && rect.left < window.innerWidth;
-    }
-
-    private showNextMessage(announce: boolean) {
+    private showNextMessage() {
       if (!this.button || !this.bubble || !this.output) return;
 
-      window.clearTimeout(this.autoTimer);
       let nextIndex = Math.floor(Math.random() * this.quips.length);
       if (this.quips.length > 1 && nextIndex === this.lastIndex) {
         nextIndex = (nextIndex + 1) % this.quips.length;
       }
       this.lastIndex = nextIndex;
-      this.bubble.setAttribute('aria-live', announce ? 'polite' : 'off');
+      this.bubble.setAttribute('aria-live', 'polite');
       this.output.textContent = this.quips[nextIndex];
       this.setAttribute('data-open', '');
       this.button.setAttribute('aria-expanded', 'true');
@@ -233,7 +194,6 @@
       this.button?.setAttribute('aria-expanded', 'false');
       this.bubble?.setAttribute('aria-hidden', 'true');
       window.clearTimeout(this.hideTimer);
-      if (this.isConnected) this.scheduleAutoMessage('repeat');
     }
   }
 

@@ -1,5 +1,7 @@
 ---
-title: '[Git]22 端口被网络代理禁用'
+title: '[Git] 22 端口被网络代理禁用'
+description: Git 走 SSH 时 22 端口被代理拦截的报错原因，以及改用 HTTPS 端口（443）的规避方式
+slug: network/git-ssh-over-https
 date: 2025-11-16
 lastUpdated: 2026-01-06
 ---

@@ -1,6 +1,7 @@
 ---
 title: "DDD 战术设计落地：在 Java 工程中如何划分防腐层与聚合根"
 description: "如果你的 Service 层只有几十行调用 Mapper 的代码，你的 Entity 全是 Getter/Setter。那你写的根本不是面向对象，而是“面向数据库的脚本”。本文带你在 Java 中真正落地 DDD 战术。"
+slug: java/04-architecture/5-ddd-tactical-design
 sidebar:
   order: 5
 date: 2026-01-28

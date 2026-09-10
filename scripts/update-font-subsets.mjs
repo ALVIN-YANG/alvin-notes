@@ -108,7 +108,6 @@ try {
     miSansSourceDirectory,
     'MiSans/woff2/MiSans-Regular.woff2',
     'MiSans/woff2/MiSans-Semibold.woff2',
-    'MiSans/woff2/MiSans-Bold.woff2',
   ]);
 
   if (suppliedSarasaSource) {
@@ -148,10 +147,6 @@ try {
     [
       path.join(miSansSourceDirectory, 'MiSans/woff2/MiSans-Semibold.woff2'),
       path.join(miSansOutputDirectory, 'misans-semibold-subset.woff2'),
-    ],
-    [
-      path.join(miSansSourceDirectory, 'MiSans/woff2/MiSans-Bold.woff2'),
-      path.join(miSansOutputDirectory, 'misans-bold-subset.woff2'),
     ],
     [
       path.join(monoSourceDirectory, 'SarasaMonoSC-Regular.ttf'),

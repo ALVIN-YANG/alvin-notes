@@ -1,0 +1,55 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/ai/1-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/",
+      "destination": "/ai/prompt-engineering/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/2-RAG%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5/",
+      "destination": "/ai/rag-primer/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/3-Function-Call%E4%B8%8EAgent/",
+      "destination": "/ai/function-call-agent/",
+      "permanent": true
+    },
+    {
+      "source": "/network/1-IPv4%E5%9C%B0%E5%9D%80%E8%8C%83%E5%9B%B4%E4%B8%8E%E4%BD%9C%E7%94%A8/",
+      "destination": "/network/ipv4-address-ranges/",
+      "permanent": true
+    },
+    {
+      "source": "/network/2-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/",
+      "destination": "/network/client-real-ip/",
+      "permanent": true
+    },
+    {
+      "source": "/network/3-Git%2022%E7%AB%AF%E5%8F%A3%E8%A2%AB%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86%E7%A6%81%E7%94%A8/",
+      "destination": "/network/git-ssh-over-https/",
+      "permanent": true
+    },
+    {
+      "source": "/java/04-architecture/5-ddd-tactical-design-%E8%90%BD%E5%9C%B0/",
+      "destination": "/java/04-architecture/5-ddd-tactical-design/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}

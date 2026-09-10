@@ -1,5 +1,7 @@
 ---
 title: 获取用户真实 IP
+description: 反向代理与负载均衡下如何正确获取客户端真实 IP，以及 X-Forwarded-For 的信任边界
+slug: network/client-real-ip
 date: 2025-10-12
 lastUpdated: 2025-12-04
 ---

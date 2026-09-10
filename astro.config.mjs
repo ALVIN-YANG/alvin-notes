@@ -11,6 +11,15 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkStaticMermaid],
   },
+  redirects: {
+    '/ai/1-提示词工程': '/ai/prompt-engineering/',
+    '/ai/2-RAG原理与实践': '/ai/rag-primer/',
+    '/ai/3-Function-Call与Agent': '/ai/function-call-agent/',
+    '/network/1-IPv4地址范围与作用': '/network/ipv4-address-ranges/',
+    '/network/2-获取用户真实IP': '/network/client-real-ip/',
+    '/network/3-Git 22端口被网络代理禁用': '/network/git-ssh-over-https/',
+    '/java/04-architecture/5-ddd-tactical-design-落地': '/java/04-architecture/5-ddd-tactical-design/',
+  },
   integrations: [
     sitemap(),
     starlight({

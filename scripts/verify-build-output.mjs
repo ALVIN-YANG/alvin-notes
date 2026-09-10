@@ -22,11 +22,11 @@ const requiredFontFiles = new Set([
   'fonts/misans/NOTICE.txt',
   'fonts/misans/misans-regular-subset.woff2',
   'fonts/misans/misans-semibold-subset.woff2',
-  'fonts/misans/misans-bold-subset.woff2',
   'fonts/sarasa/OFL.txt',
   'fonts/sarasa/sarasa-mono-sc-regular-subset.woff2',
   'fonts/sarasa/sarasa-mono-sc-bold-subset.woff2',
 ]);
+const forbiddenFontFiles = new Set(['fonts/misans/misans-bold-subset.woff2']);
 const forbiddenPwaFiles = new Set(['manifest.webmanifest', 'registerSW.js', 'sw.js']);
 const problems = [];
 const emittedFontFiles = new Set();
@@ -86,6 +86,10 @@ await walk(outputDirectory.pathname, async (file, name) => {
 
   if (requiredFontFiles.has(relativePath)) {
     emittedFontFiles.add(relativePath);
+  }
+
+  if (forbiddenFontFiles.has(relativePath)) {
+    problems.push(`Retired font artifact emitted: ${relativePath}`);
   }
 
   if (forbiddenPwaFiles.has(name) || /^workbox-.*\.js$/.test(name)) {
