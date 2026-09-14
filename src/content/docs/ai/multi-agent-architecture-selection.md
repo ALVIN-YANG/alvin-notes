@@ -1,5 +1,5 @@
 ---
-title: "多智能体架构怎么选"
+title: "多智能体架构选型"
 description: "用同一次数据库迁移评估，讲清 SAS、Independent、Centralized、Decentralized 和 Hybrid 的通信方式、落地取舍与评测方法。"
 date: 2026-09-14
 lastUpdated: 2026-09-14
