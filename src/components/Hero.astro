@@ -3,6 +3,8 @@ import DefaultHero from '@astrojs/starlight/components/Hero.astro';
 import ProgrammerAside from './ProgrammerAside.astro';
 
 const isRootHome = Astro.url.pathname === '/';
+// Official photo: https://clawstage.ai/media/physicalPresence/cs-001_physicalPresence_01.JPG
+// Crop: left 0, top 640, 4300 × 1323; resized to 936 × 288 WebP.
 ---
 
 {
@@ -11,20 +13,24 @@ const isRootHome = Astro.url.pathname === '/';
       <section class="home-avatar-note" aria-label="Alvin 的话">
         <ProgrammerAside />
       </section>
-      <aside class="home-product-promo" aria-label="推广：任职公司的产品">
+      <aside class="home-product-promo" aria-label="ClawStage 产品广告">
         <a
           class="home-product-promo-link"
           href="https://www.kickstarter.com/projects/hoorii/hoorii-stage-your-proactive-smart-personalized-companion-hub"
           target="_blank"
           rel="noopener noreferrer sponsored"
-          aria-label="ClawStage，OpenClaw 桌面 AI 伙伴。推广：我任职于 HooRii。查看 Kickstarter 项目，在新窗口打开。"
+          aria-label="广告：ClawStage。查看 Kickstarter 项目，在新窗口打开。"
         >
-          <span class="home-product-promo-heading">
-            <span class="home-product-promo-title">ClawStage</span>
-            <span class="home-product-promo-arrow" aria-hidden="true">↗</span>
-          </span>
-          <span class="home-product-promo-description">OpenClaw 桌面 AI 伙伴</span>
-          <span class="home-product-promo-disclosure">推广 · 我任职于 HooRii</span>
+          <img
+            class="home-product-promo-image"
+            src="/images/promos/clawstage-desk.webp"
+            alt=""
+            width="936"
+            height="288"
+            decoding="async"
+          />
+          <span class="home-product-promo-label">广告</span>
+          <span class="home-product-promo-title">ClawStage</span>
         </a>
       </aside>
     </div>
