@@ -7,6 +7,7 @@
 
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 import { unzipSync, strFromU8 } from 'fflate';
 import {
   buildRefreshMetadata,
@@ -26,7 +27,7 @@ const ARENA_URLS = [
   'https://chat.lmarena.ai/leaderboard',
 ];
 
-const EPOCH_BOARD_DEFINITIONS = [
+export const EPOCH_BOARD_DEFINITIONS = [
   {
     id: 'epoch-eci',
     short: 'ECI',
@@ -34,12 +35,16 @@ const EPOCH_BOARD_DEFINITIONS = [
     operatorId: 'epoch-ai',
     operator: 'Epoch AI',
     category: 'general',
-    file: 'epoch_capabilities_index.csv',
-    scoreField: 'ECI Score',
-    modelField: 'Model version',
-    displayFields: ['Display name', 'Model name'],
+    file: 'epoch_capabilities_index/eci_scores.csv',
+    fileCandidates: ['epoch_capabilities_index/eci_scores.csv', 'epoch_capabilities_index.csv'],
+    scoreField: 'eci',
+    scoreFields: ['eci', 'ECI Score'],
+    modelField: 'Model',
+    modelFields: ['Model', 'Model version'],
+    displayFields: ['Display name', 'Model name', 'Model'],
     organizationField: 'Organization',
-    releaseDateField: 'Release date',
+    releaseDateField: 'date',
+    releaseDateFields: ['date', 'Release date'],
     sourceUrl: 'https://epoch.ai/eci',
     description: '将多项公开评测拟合到同一能力尺度，适合作为通用能力基准。',
   },
@@ -245,7 +250,7 @@ function canonicalModelKey(value = '') {
     .replace(/^glm-(\d+)-(\d+)(?=-|$)/, 'glm-$1.$2')
     .replace(/^gemini-(\d+)-(\d+)(?=-|$)/, 'gemini-$1.$2')
     .replace(/^claude-(opus|sonnet|haiku)-(\d+)-(\d+)(?=-|$)/, 'claude-$1-$2.$3')
-    .replace(/^qwen(\d+)-(\d+)(?=-|$)/, 'qwen$1.$2')
+    .replace(/^qwen-?(\d+)-(\d+)(?=-|$)/, 'qwen$1.$2')
     .replace(/^kimi-k(\d+)-(\d+)(?=-|$)/, 'kimi-k$1.$2');
 }
 
@@ -288,11 +293,11 @@ function scoreLabel(score, definition) {
   return `${value.toFixed(digits).replace(/\.0+$/, '')}${definition.scoreSuffix || ''}`;
 }
 
-function buildBoardFromRows(rows, definition, remoteUpdatedAt) {
+export function buildBoardFromRows(rows, definition, remoteUpdatedAt) {
   const ranked = rows
     .map(row => {
-      const rawScore = Number(row[definition.scoreField]);
-      const modelVersion = row[definition.modelField] || getFirst(row, definition.displayFields);
+      const rawScore = Number(getFirst(row, definition.scoreFields || [definition.scoreField]));
+      const modelVersion = getFirst(row, definition.modelFields || [definition.modelField]) || getFirst(row, definition.displayFields);
       const modelKey = canonicalModelKey(modelVersion);
       if (!modelKey || !Number.isFinite(rawScore)) return null;
       return {
@@ -300,7 +305,7 @@ function buildBoardFromRows(rows, definition, remoteUpdatedAt) {
         model: cleanDisplayName(getFirst(row, definition.displayFields), modelKey),
         organization: normalizeOrganization(row[definition.organizationField]),
         modelVersion,
-        releaseDate: normalizeReleaseDate(row[definition.releaseDateField]),
+        releaseDate: normalizeReleaseDate(getFirst(row, definition.releaseDateFields || [definition.releaseDateField])),
         rawScore,
         scoreLabel: scoreLabel(rawScore, definition),
       };
@@ -330,6 +335,11 @@ function buildBoardFromRows(rows, definition, remoteUpdatedAt) {
     status: 'live',
     entries,
   });
+}
+
+export function resolveEpochArchiveFile(archive, definition) {
+  const candidates = definition.fileCandidates || [definition.file];
+  return candidates.find(candidate => archive[candidate]) || null;
 }
 
 function stabilizeBoard(board, previousBoard = null) {
@@ -365,8 +375,12 @@ async function fetchEpochBoards(previousBoards) {
   const remoteUpdatedAt = response.headers.get('last-modified') || nowISO();
 
   return EPOCH_BOARD_DEFINITIONS.map(definition => {
-    const bytes = archive[definition.file];
-    if (!bytes) throw new Error(`Epoch 数据包缺少 ${definition.file}`);
+    const archiveFile = resolveEpochArchiveFile(archive, definition);
+    if (!archiveFile) {
+      const candidates = definition.fileCandidates || [definition.file];
+      throw new Error(`Epoch 数据包缺少 ${candidates.join(' 或 ')}`);
+    }
+    const bytes = archive[archiveFile];
     const rows = parseCSV(strFromU8(bytes));
     const board = buildBoardFromRows(rows, definition, remoteUpdatedAt);
     const stabilized = stabilizeBoard(board, previousBoards.get(definition.id));
@@ -736,7 +750,9 @@ async function main() {
   console.log(`   ${output.methodology.operatorCount} 个独立来源 · ${output.methodology.boardCount} 张榜单 · ${output.leaderboards.overall.length} 个总榜模型`);
 }
 
-main().catch(error => {
-  console.error(`\n❌ ${error.message}`);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch(error => {
+    console.error(`\n❌ ${error.message}`);
+    process.exit(1);
+  });
+}
