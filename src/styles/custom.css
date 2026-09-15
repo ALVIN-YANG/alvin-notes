@@ -464,19 +464,6 @@ main {
 	line-height: 1.2;
 }
 
-.home-product-promo-label {
-	position: absolute;
-	top: 0.5rem;
-	left: 0.65rem;
-	z-index: 1;
-	padding: 0.1rem 0.25rem;
-	border: 1px solid rgba(255, 255, 255, 0.32);
-	border-radius: 0.2rem;
-	background: rgba(19, 26, 25, 0.6);
-	font-size: 0.7rem;
-	line-height: 1.25;
-}
-
 @media (max-width: 40rem) {
 	.home-avatar-hero {
 		grid-template-columns: 3.75rem minmax(0, 1fr);
