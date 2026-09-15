@@ -541,27 +541,39 @@ function parseTranslationResponse(content) {
 
 async function translateTextsWithLLM(texts) {
   const output = [...texts];
-  const pending = texts
+  let pending = texts
     .map((text, index) => ({ index, text: String(text || '').trim() }))
     .filter(item => item.text && needsChineseTranslation(item.text));
   if (pending.length === 0) return output;
+  const translationCount = pending.length;
 
-  const content = await callLLM(
-    FALLBACK_TRANSLATION_PROMPT,
-    JSON.stringify({ texts: pending.map(item => item.text) }),
-    { thinking: 'disabled', maxTokens: 6000, timeoutMs: 180000 }
-  );
-  const translations = parseTranslationResponse(content);
-  if (!translations || translations.length !== pending.length || translations.some(item => typeof item !== 'string' || !item.trim())) {
-    console.warn('⚠ 模型翻译返回格式不完整');
-    return null;
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    const content = await callLLM(
+      FALLBACK_TRANSLATION_PROMPT,
+      JSON.stringify({ texts: pending.map(item => item.text) }),
+      { thinking: 'disabled', maxTokens: 6000, timeoutMs: 180000 }
+    );
+    const translations = parseTranslationResponse(content);
+    if (!translations || translations.length !== pending.length || translations.some(item => typeof item !== 'string' || !item.trim())) {
+      console.warn('⚠ 模型翻译返回格式不完整');
+      return null;
+    }
+
+    translations.forEach((translation, index) => {
+      output[pending[index].index] = translation.trim();
+    });
+    pending = output
+      .map((text, index) => ({ index, text: String(text || '').trim() }))
+      .filter(item => item.text && needsChineseTranslation(item.text));
+    if (pending.length === 0) {
+      console.log(`  ✓ 模型翻译 · ${translationCount} 段`);
+      return output;
+    }
+    if (attempt === 1) console.warn(`⚠ 模型翻译仍有 ${pending.length} 段英文，仅重试这些字段`);
   }
 
-  translations.forEach((translation, index) => {
-    output[pending[index].index] = translation.trim();
-  });
-  console.log(`  ✓ 模型翻译 · ${translations.length} 段`);
-  return output;
+  console.warn(`⚠ 模型翻译后仍有 ${pending.length} 段英文`);
+  return null;
 }
 
 const CHINESE_REVIEW_PROMPT = `你是中文技术编辑。请检查用户给出的 Markdown，并把所有面向读者的英文内容改成自然、准确的简体中文。

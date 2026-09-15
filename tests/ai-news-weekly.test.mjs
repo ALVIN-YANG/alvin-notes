@@ -255,10 +255,16 @@ test('Azure 未配置时使用可用的 LLM 翻译并完成规则周报', async 
     raw: readFileSync(`src/data/ai-news-daily/${date}-daily.md`, 'utf8'),
   }));
 
+  let llmCalls = 0;
   globalThis.fetch = async (_url, options) => {
+    llmCalls += 1;
     const request = JSON.parse(options.body);
     const input = JSON.parse(request.messages[1].content);
-    const translations = input.texts.map((_, index) => `中文翻译内容 ${index + 1}，保留具体条件和版本说明。`);
+    const translations = input.texts.map((text, index) => (
+      llmCalls === 1 && index === 0
+        ? text
+        : `中文翻译内容 ${index + 1}，保留具体条件和版本说明。`
+    ));
     return Response.json({
       choices: [{ message: { content: JSON.stringify({ translations }) }, finish_reason: 'stop' }],
     });
@@ -268,6 +274,7 @@ test('Azure 未配置时使用可用的 LLM 翻译并完成规则周报', async 
     const report = await buildTranslatedWeeklyFallback(snapshots);
     assert.deepEqual(findWeeklyStructureIssues(report), []);
     assert.equal(analyzeWeeklyContent(extractWeeklyDocument(report).content).storyCount, 12);
+    assert.equal(llmCalls, 2);
   } finally {
     globalThis.fetch = previous.fetch;
     if (previous.azure === undefined) delete process.env.AZURE_TRANSLATOR_KEY;
