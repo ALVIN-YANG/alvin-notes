@@ -572,8 +572,8 @@ async function translateTextsWithLLM(texts) {
     if (attempt === 1) console.warn(`⚠ 模型翻译仍有 ${pending.length} 段英文，仅重试这些字段`);
   }
 
-  console.warn(`⚠ 模型翻译后仍有 ${pending.length} 段英文`);
-  return null;
+  console.warn(`⚠ 模型翻译后仍有 ${pending.length} 段英文较多，交由最终周报检查判断`);
+  return output;
 }
 
 const CHINESE_REVIEW_PROMPT = `你是中文技术编辑。请检查用户给出的 Markdown，并把所有面向读者的英文内容改成自然、准确的简体中文。
@@ -1289,7 +1289,10 @@ async function buildTranslatedWeeklyFallback(snapshots) {
   const issues = findWeeklyStructureIssues(content);
   if (issues.length > 0) throw new Error(`规则周报未通过结构检查，${issues.join('；')}`);
   const languageIssues = findUntranslatedEnglishBlocks(content);
-  if (languageIssues.length > 0) throw new Error(`规则周报仍有 ${languageIssues.length} 处未翻译正文`);
+  if (languageIssues.length > 0) {
+    languageIssues.slice(0, 5).forEach(issue => console.warn(`  L${issue.line} ${issue.text}`));
+    throw new Error(`规则周报仍有 ${languageIssues.length} 处未翻译正文`);
+  }
   console.log(`  ✓ 无 LLM 周报 · ${translatedCandidates.length} 条信息 · ${selectedGroups.length} 个栏目`);
   return content;
 }
