@@ -582,9 +582,9 @@ const CHINESE_REVIEW_PROMPT = `你是中文技术编辑。请检查用户给出�
 
 function stripMarkdownForLanguageCheck(line) {
   return line
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
     .replace(/https?:\/\/\S+/g, '')
     .replace(/`[^`]*`/g, '')
-    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
     .replace(/<[^>]+>/g, '')
     .replace(/^[#>*+\-\d.\s|]+/, '')
     .replace(/[|*_~]/g, ' ')
@@ -1462,6 +1462,7 @@ export {
   compactWeeklySnapshots,
   extractWeeklyCandidates,
   extractWeeklyDocument,
+  findUntranslatedEnglishBlocks,
   findWeeklyStructureIssues,
   getAzureTranslatorConfig,
   getLLMProviders,

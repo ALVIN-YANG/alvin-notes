@@ -8,6 +8,7 @@ import {
   compactWeeklySnapshots,
   extractWeeklyCandidates,
   extractWeeklyDocument,
+  findUntranslatedEnglishBlocks,
   findWeeklyStructureIssues,
   getLLMProviders,
   translateTextsWithAzure,
@@ -109,6 +110,11 @@ test('结构检查会拒绝旧栏目和数量不足的周报', () => {
   const issues = findWeeklyStructureIssues('# 一篇长度足够的旧周报\n\n## 本周判断\n\n内容\n\n## 值得花时间看\n\n内容');
   assert.ok(issues.some(issue => issue.includes('本期主线')));
   assert.ok(issues.some(issue => issue.includes('主题栏目')));
+});
+
+test('中文检查不会把允许保留的 Markdown 项目链接误判为英文正文', () => {
+  const markdown = '### [OpenAI Codex CLI rust-v0.155.0-alpha.3.9](https://github.com/openai/codex/releases/tag/rust-v0.155.0-alpha.3.9)';
+  assert.deepEqual(findUntranslatedEnglishBlocks(markdown), []);
 });
 
 test('周材料压缩会按链接去重并移除论文条目', () => {
