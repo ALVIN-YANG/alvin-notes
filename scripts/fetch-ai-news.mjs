@@ -519,6 +519,51 @@ async function translateTextsWithAzure(texts, targetLanguage = 'zh-Hans') {
   return output;
 }
 
+const FALLBACK_TRANSLATION_PROMPT = `你是技术资讯翻译器。把输入数组中每一项翻译成自然、准确的简体中文。
+
+项目名、仓库名、模型名、API 名、版本号和行业通用缩写可以保留英文。不要补充原文没有的事实，不要合并、拆分或调整顺序。
+
+只输出 JSON，格式固定为 {"translations":["第一项译文","第二项译文"]}。translations 数量必须与输入 texts 数量完全相同。`;
+
+function parseTranslationResponse(content) {
+  const cleaned = String(content || '').replace(/^```(?:json)?\s*|\s*```$/g, '').trim();
+  const start = cleaned.indexOf('{');
+  const end = cleaned.lastIndexOf('}');
+  if (start === -1 || end < start) return null;
+
+  try {
+    const translations = JSON.parse(cleaned.slice(start, end + 1))?.translations;
+    return Array.isArray(translations) ? translations : null;
+  } catch {
+    return null;
+  }
+}
+
+async function translateTextsWithLLM(texts) {
+  const output = [...texts];
+  const pending = texts
+    .map((text, index) => ({ index, text: String(text || '').trim() }))
+    .filter(item => item.text && needsChineseTranslation(item.text));
+  if (pending.length === 0) return output;
+
+  const content = await callLLM(
+    FALLBACK_TRANSLATION_PROMPT,
+    JSON.stringify({ texts: pending.map(item => item.text) }),
+    { thinking: 'disabled', maxTokens: 6000, timeoutMs: 180000 }
+  );
+  const translations = parseTranslationResponse(content);
+  if (!translations || translations.length !== pending.length || translations.some(item => typeof item !== 'string' || !item.trim())) {
+    console.warn('⚠ 模型翻译返回格式不完整');
+    return null;
+  }
+
+  translations.forEach((translation, index) => {
+    output[pending[index].index] = translation.trim();
+  });
+  console.log(`  ✓ 模型翻译 · ${translations.length} 段`);
+  return output;
+}
+
 const CHINESE_REVIEW_PROMPT = `你是中文技术编辑。请检查用户给出的 Markdown，并把所有面向读者的英文内容改成自然、准确的简体中文。
 
 必须翻译新闻标题、项目描述、Release 摘要、新闻摘要和分析。项目名、仓库名、模型名、API 名、版本号、代码、URL 与行业通用缩写可以保留英文。不要直译项目名；原文被截断时删除不完整句子，不要续写。保留原有 Markdown 结构和全部链接，不添加原文没有的事实，不输出 frontmatter，也不要解释修改过程。`;
@@ -1161,9 +1206,13 @@ async function buildTranslatedWeeklyFallback(snapshots) {
   const translatedFields = [];
   selected.forEach(candidate => translatedFields.push(candidate.title, candidate.summary || candidate.title));
   versionCandidates.forEach(candidate => translatedFields.push(candidate.summary || candidate.title));
-  const translated = await translateTextsWithAzure(translatedFields);
+  let translated = await translateTextsWithAzure(translatedFields);
   if (!translated) {
-    throw new Error('模型通道不可用，且 Azure Translator 未配置或调用失败');
+    console.warn('  ↳ Azure Translator 不可用，改用模型翻译规则周报字段');
+    translated = await translateTextsWithLLM(translatedFields);
+  }
+  if (!translated) {
+    throw new Error('Azure Translator 与模型翻译均不可用');
   }
 
   let cursor = 0;
@@ -1309,7 +1358,7 @@ async function generateWeekly(force = false) {
     if (checkedContent && findWeeklyStructureIssues(checkedContent).length > 0) checkedContent = null;
   }
   if (!checkedContent) {
-    console.warn('  ↳ LLM 编辑稿不可用，改用信源筛选、规则分栏与 Azure 翻译');
+    console.warn('  ↳ LLM 编辑稿不可用，改用信源筛选、规则分栏与字段翻译');
     checkedContent = await buildTranslatedWeeklyFallback(snapshots);
   }
   const { headline, content } = extractWeeklyDocument(checkedContent);
@@ -1382,7 +1431,7 @@ function runCli() {
   OPENAI_API_KEY       — OpenAI 兼容备用通道令牌（可选）
   OPENAI_BASE_URL      — 备用 API 地址（默认 https://api.openai.com/v1）
   OPENAI_MODEL         — 备用模型（默认 gpt-4o-mini）
-  AZURE_TRANSLATOR_KEY      — 无 LLM 时的 Azure Translator Key（建议配置）
+  AZURE_TRANSLATOR_KEY      — 规则周报优先使用的 Azure Translator Key（可选）
   AZURE_TRANSLATOR_REGION   — Translator 资源区域
   AZURE_TRANSLATOR_ENDPOINT — 可选，默认官方全局端点
   GITHUB_TOKEN         — GitHub API 认证（可选，提升速率限制）`);
@@ -1402,4 +1451,5 @@ export {
   getAzureTranslatorConfig,
   getLLMProviders,
   translateTextsWithAzure,
+  translateTextsWithLLM,
 };

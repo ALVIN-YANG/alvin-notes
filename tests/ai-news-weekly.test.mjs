@@ -238,3 +238,43 @@ test('无 LLM 时能从七天快照生成通过校验的翻译周报', async () 
     else process.env.AZURE_TRANSLATOR_KEY = previous.key;
   }
 });
+
+test('Azure 未配置时使用可用的 LLM 翻译并完成规则周报', async () => {
+  const previous = {
+    azure: process.env.AZURE_TRANSLATOR_KEY,
+    deepseek: process.env.DEEPSEEK_API_KEY,
+    openai: process.env.OPENAI_API_KEY,
+    fetch: globalThis.fetch,
+  };
+  delete process.env.AZURE_TRANSLATOR_KEY;
+  delete process.env.OPENAI_API_KEY;
+  process.env.DEEPSEEK_API_KEY = 'deepseek-test';
+  const dates = ['17', '18', '19', '20', '21', '22', '23'].map(day => `2026-08-${day}`);
+  const snapshots = dates.map(date => ({
+    date,
+    raw: readFileSync(`src/data/ai-news-daily/${date}-daily.md`, 'utf8'),
+  }));
+
+  globalThis.fetch = async (_url, options) => {
+    const request = JSON.parse(options.body);
+    const input = JSON.parse(request.messages[1].content);
+    const translations = input.texts.map((_, index) => `中文翻译内容 ${index + 1}，保留具体条件和版本说明。`);
+    return Response.json({
+      choices: [{ message: { content: JSON.stringify({ translations }) }, finish_reason: 'stop' }],
+    });
+  };
+
+  try {
+    const report = await buildTranslatedWeeklyFallback(snapshots);
+    assert.deepEqual(findWeeklyStructureIssues(report), []);
+    assert.equal(analyzeWeeklyContent(extractWeeklyDocument(report).content).storyCount, 12);
+  } finally {
+    globalThis.fetch = previous.fetch;
+    if (previous.azure === undefined) delete process.env.AZURE_TRANSLATOR_KEY;
+    else process.env.AZURE_TRANSLATOR_KEY = previous.azure;
+    if (previous.deepseek === undefined) delete process.env.DEEPSEEK_API_KEY;
+    else process.env.DEEPSEEK_API_KEY = previous.deepseek;
+    if (previous.openai === undefined) delete process.env.OPENAI_API_KEY;
+    else process.env.OPENAI_API_KEY = previous.openai;
+  }
+});
