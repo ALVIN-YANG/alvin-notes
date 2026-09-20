@@ -69,16 +69,25 @@ export default defineConfig({
           autogenerate: { directory: 'projects' },
         },
         {
+          label: '工具箱',
+          autogenerate: { directory: 'tools' },
+        },
+        {
           label: 'AI Agent',
-          autogenerate: { directory: 'ai' },
+          items: [
+            {
+              label: 'AI Agent',
+              autogenerate: { directory: 'ai' },
+            },
+            {
+              label: 'OpenClaw',
+              autogenerate: { directory: 'claw/openclaw' },
+            },
+          ],
         },
         {
           label: 'AI 工作流',
           autogenerate: { directory: 'ai-workflow' }
-        },
-        {
-          label: 'OpenClaw',
-          autogenerate: { directory: 'claw/openclaw' }
         },
         {
           label: 'Architecture',

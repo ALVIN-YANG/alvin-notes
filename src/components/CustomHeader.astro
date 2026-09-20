@@ -6,11 +6,11 @@ import Search from '@astrojs/starlight/components/Search.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
 const navLinks = [
+  { label: '工具箱', href: '/tools/code-image/', match: '/tools/' },
   { label: 'AI Agent', href: '/agent-knowledge/', match: '/agent-knowledge/' },
   { label: 'AI 工作流', href: '/ai-workflow/ai-coding-skills-selection-guide/', match: '/ai-workflow/' },
   { label: 'Skills', href: '/skills/', match: '/skills/' },
   { label: '系统设计', href: '/system-design-knowledge/', match: '/system-design-knowledge/' },
-  { label: 'OpenClaw', href: '/claw/openclaw/', match: '/claw/' },
   { label: 'AI News', href: '/ai-news/', match: '/ai-news/' },
   { label: '算法', href: '/algorithm-knowledge/', match: '/algorithm-knowledge/' },
   { label: '网络', href: '/network/ai-agent-communication-protocols/', match: '/network/' },
@@ -33,7 +33,9 @@ function isActive(match: string): boolean {
     return currentPath.startsWith('/system-design-knowledge/') || currentPath.startsWith('/architecture/');
   }
   if (match === '/agent-knowledge/') {
-    return currentPath.startsWith('/agent-knowledge/') || currentPath.startsWith('/ai/');
+    return currentPath.startsWith('/agent-knowledge/')
+      || currentPath.startsWith('/ai/')
+      || currentPath.startsWith('/claw/');
   }
   if (match === '/ai-workflow/') return currentPath.startsWith('/ai-workflow/');
   return currentPath.startsWith(match);

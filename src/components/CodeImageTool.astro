@@ -1,0 +1,684 @@
+---
+import '@fontsource-variable/jetbrains-mono/wght.css';
+
+const sampleCode = `module.exports = leftpad;
+
+function leftpad(str, len, ch) {
+  str = String(str);
+  var i = -1;
+
+  if (!ch && ch !== 0) ch = ' ';
+
+  len = len - str.length;
+
+  while (i++ < len) {
+    str = ch + str;
+  }
+  return str;
+}`;
+---
+
+<section class="code-image-tool not-content" data-code-image-tool>
+  <div class="tool-controls" aria-label="图片设置">
+    <label class="title-field">
+      <span>窗口标题</span>
+      <input data-title-input type="text" value="" placeholder="Untitled-1" maxlength="80" autocomplete="off" />
+    </label>
+
+    <fieldset class="palette-field">
+      <legend>背景</legend>
+      <div class="palette-options">
+        <button class="palette-option is-active" type="button" data-palette="candy" aria-label="Candy，Ray 默认主题" aria-pressed="true"></button>
+        <button class="palette-option" type="button" data-palette="lagoon" aria-label="蓝绿海湾" aria-pressed="false"></button>
+        <button class="palette-option" type="button" data-palette="sunset" aria-label="日落橙红" aria-pressed="false"></button>
+        <button class="palette-option" type="button" data-palette="paper" aria-label="浅色纸张" aria-pressed="false"></button>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="tool-workspace">
+    <label class="code-editor-panel">
+      <span class="panel-label">代码</span>
+      <textarea data-code-input rows="15" spellcheck="false" autocapitalize="off" autocomplete="off">{sampleCode}</textarea>
+    </label>
+
+    <section class="preview-panel" aria-labelledby="code-preview-label">
+      <div class="panel-heading">
+        <span class="panel-label" id="code-preview-label">预览</span>
+        <span class="image-size" data-image-size>2080 px · 4x PNG</span>
+      </div>
+      <div class="preview-viewport">
+        <div class="code-artboard" data-artboard data-palette="candy">
+          <article class="code-window">
+            <header class="window-bar">
+              <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="window-title" data-preview-title>Untitled-1</span>
+              <span class="window-balance" aria-hidden="true"></span>
+            </header>
+            <pre><code data-code-preview></code></pre>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="tool-footer">
+    <p data-status aria-live="polite">图片在本地生成，代码不会上传。</p>
+    <button class="download-button" type="button" data-download>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 19h14" /></svg>
+      下载 PNG
+    </button>
+  </footer>
+</section>
+
+<style>
+  .code-image-tool {
+    --tool-border: color-mix(in srgb, var(--sl-color-gray-5) 82%, transparent);
+    margin-top: 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--tool-border);
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--sl-color-surface) 88%, var(--sl-color-bg));
+    box-shadow: var(--paper-shadow);
+  }
+
+  .tool-controls,
+  .tool-footer,
+  .panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .tool-controls {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--tool-border);
+  }
+
+  .title-field {
+    display: grid;
+    grid-template-columns: auto minmax(9rem, 16rem);
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .title-field span,
+  .palette-field legend,
+  .panel-label {
+    color: var(--sl-color-gray-2);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .title-field input,
+  .code-editor-panel textarea {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.55rem;
+    background: var(--sl-color-surface);
+    color: var(--sl-color-gray-1);
+    font: inherit;
+  }
+
+  .title-field input {
+    width: 100%;
+    padding: 0.48rem 0.65rem;
+    font-family: var(--sl-font-mono);
+    font-size: 0.78rem;
+  }
+
+  .palette-field {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .palette-options {
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  .palette-option {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 2px solid var(--sl-color-surface);
+    border-radius: 50%;
+    background: linear-gradient(140deg, #a58efb, #e9bff8);
+    box-shadow: 0 0 0 1px var(--sl-color-gray-5);
+    cursor: pointer;
+  }
+
+  .palette-option[data-palette='lagoon'] { background: linear-gradient(135deg, #0e7490, #2fbd87); }
+  .palette-option[data-palette='sunset'] { background: linear-gradient(135deg, #f59e0b, #e5524b); }
+  .palette-option[data-palette='paper'] { background: linear-gradient(135deg, #e7e2d5, #9aa3b0); }
+
+  .palette-option.is-active {
+    box-shadow: 0 0 0 2px var(--sl-color-accent-high);
+  }
+
+  .title-field input:focus-visible,
+  .code-editor-panel textarea:focus-visible,
+  .palette-option:focus-visible,
+  .download-button:focus-visible {
+    outline: 2px solid var(--sl-color-accent-high);
+    outline-offset: 3px;
+  }
+
+  .tool-workspace {
+    display: grid;
+    grid-template-columns: minmax(17rem, 0.8fr) minmax(20rem, 1.2fr);
+    min-height: 37rem;
+  }
+
+  .code-editor-panel,
+  .preview-panel {
+    min-width: 0;
+    padding: 1rem;
+  }
+
+  .code-editor-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    border-right: 1px solid var(--tool-border);
+  }
+
+  .code-editor-panel textarea {
+    width: 100%;
+    min-height: 33rem;
+    flex: 1;
+    resize: vertical;
+    padding: 0.9rem;
+    font-family: 'JetBrains Mono Variable', var(--sl-font-mono);
+    font-size: 0.78rem;
+    font-variant-ligatures: none;
+    line-height: 1.65;
+    tab-size: 2;
+  }
+
+  .preview-panel {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .image-size {
+    color: var(--sl-color-gray-3);
+    font-family: var(--sl-font-mono);
+    font-size: 0.66rem;
+  }
+
+  .preview-viewport {
+    display: grid;
+    min-height: 33rem;
+    flex: 1;
+    place-items: center;
+    overflow: auto;
+    border-radius: 0.7rem;
+    background:
+      linear-gradient(45deg, rgba(36, 41, 47, 0.035) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(36, 41, 47, 0.035) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(36, 41, 47, 0.035) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(36, 41, 47, 0.035) 75%),
+      var(--sl-color-bg);
+    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+    background-size: 12px 12px;
+  }
+
+  .code-artboard {
+    --board-from: #a58efb;
+    --board-to: #e9bff8;
+    --window-bg: rgba(0, 0, 0, 0.75);
+    --window-text: #ffffff;
+    --window-muted: #807796;
+    --window-title: rgba(255, 255, 255, 0.3);
+    --window-control: rgba(255, 255, 255, 0.2);
+    --token-keyword: #ff659c;
+    --token-string: #dfd473;
+    --token-number: #7a7ffd;
+    --token-function: #73dfa5;
+    --token-property: #1ac8ff;
+    --token-punctuation: #ff659c;
+    width: min(100%, 32.5rem);
+    margin: auto;
+    padding: clamp(1.25rem, 12.307%, 4rem);
+    background: linear-gradient(140deg, var(--board-from), var(--board-to));
+  }
+
+  .code-artboard[data-palette='lagoon'] { --board-from: #0e7490; --board-to: #2fbd87; }
+  .code-artboard[data-palette='sunset'] { --board-from: #f59e0b; --board-to: #e5524b; }
+  .code-artboard[data-palette='paper'] {
+    --board-from: #e7e2d5;
+    --board-to: #9aa3b0;
+    --window-bg: #fffdfa;
+    --window-text: #27303a;
+    --window-muted: #969086;
+    --window-title: rgba(39, 48, 58, 0.45);
+    --window-control: rgba(39, 48, 58, 0.2);
+    --token-keyword: #7757a7;
+    --token-string: #397454;
+    --token-number: #a95f29;
+    --token-function: #397454;
+    --token-property: #2286a6;
+    --token-punctuation: #d15a8b;
+  }
+
+  .code-window {
+    overflow: hidden;
+    padding-top: 0.625rem;
+    border: 0;
+    border-radius: 1.125rem;
+    background: var(--window-bg);
+    box-shadow:
+      rgba(255, 255, 255, 0.3) 0 0 0 1px,
+      rgba(0, 0, 0, 0.8) 0 0 0 1.5px,
+      rgba(0, 0, 0, 0.035) 0 2.8px 2.2px,
+      rgba(0, 0, 0, 0.047) 0 6.7px 5.3px,
+      rgba(0, 0, 0, 0.06) 0 12.5px 10px,
+      rgba(0, 0, 0, 0.07) 0 22.3px 17.9px,
+      rgba(0, 0, 0, 0.086) 0 41.8px 33.4px,
+      rgba(0, 0, 0, 0.12) 0 100px 80px;
+  }
+
+  .window-bar {
+    display: grid;
+    grid-template-columns: 3.75rem minmax(0, 1fr) 3.75rem;
+    align-items: center;
+    height: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .window-dots {
+    display: flex;
+    gap: 0.5625rem;
+  }
+
+  .window-dots i {
+    width: 0.875rem;
+    height: 0.875rem;
+    border-radius: 50%;
+    background: var(--window-control);
+  }
+
+  .window-title {
+    overflow: hidden;
+    color: var(--window-title);
+    font-family: Inter, var(--sl-font);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 0.75rem;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .code-window pre {
+    margin: 0;
+    overflow: auto;
+    padding: 1rem;
+    background: transparent;
+  }
+
+  .code-window code {
+    display: block;
+    color: var(--window-text);
+    font-family: 'JetBrains Mono Variable', 'JetBrains Mono', var(--sl-font-mono);
+    font-size: 1rem;
+    font-weight: 500;
+    font-variant-ligatures: none;
+    line-height: 1.40625;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .code-window :global(.token-keyword) { color: var(--token-keyword); }
+  .code-window :global(.token-string) { color: var(--token-string); }
+  .code-window :global(.token-number) { color: var(--token-number); }
+  .code-window :global(.token-function) { color: var(--token-function); }
+  .code-window :global(.token-property) { color: var(--token-property); }
+  .code-window :global(.token-punctuation) { color: var(--token-punctuation); }
+  .code-window :global(.token-comment) { color: var(--window-muted); }
+
+  .tool-footer {
+    padding: 0.85rem 1rem;
+    border-top: 1px solid var(--tool-border);
+  }
+
+  .tool-footer p {
+    margin: 0;
+    color: var(--sl-color-gray-3);
+    font-size: 0.72rem;
+  }
+
+  .download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.58rem 0.9rem;
+    border: 0;
+    border-radius: 0.58rem;
+    background: var(--sl-color-accent-high);
+    color: var(--sl-color-black);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .download-button:hover { background: var(--sl-color-gray-1); }
+  .download-button:disabled { cursor: wait; opacity: 0.65; }
+  .download-button svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+
+  @media (max-width: 52rem) {
+    .tool-workspace { grid-template-columns: 1fr; }
+    .code-editor-panel { border-right: 0; border-bottom: 1px solid var(--tool-border); }
+    .code-editor-panel textarea { min-height: 15rem; }
+  }
+
+  @media (max-width: 34rem) {
+    .tool-controls { align-items: stretch; flex-direction: column; }
+    .title-field { grid-template-columns: 1fr; gap: 0.35rem; }
+    .palette-field { justify-content: space-between; }
+    .code-editor-panel,
+    .preview-panel { padding: 0.8rem; }
+    .preview-viewport { min-height: 19rem; }
+    .code-artboard { width: 100%; }
+    .tool-footer { align-items: stretch; flex-direction: column; }
+    .download-button { justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .download-button,
+    .palette-option { transition: none; }
+  }
+</style>
+
+<script>
+  const palettes = {
+    candy: {
+      from: '#a58efb', to: '#e9bff8', window: 'rgba(0, 0, 0, 0.75)', text: '#ffffff', muted: '#807796',
+      title: 'rgba(255, 255, 255, 0.3)', control: 'rgba(255, 255, 255, 0.2)',
+      keyword: '#ff659c', string: '#dfd473', number: '#7a7ffd', function: '#73dfa5', property: '#1ac8ff', punctuation: '#ff659c',
+    },
+    lagoon: {
+      from: '#0e7490', to: '#2fbd87', window: 'rgba(0, 0, 0, 0.75)', text: '#ffffff', muted: '#807796',
+      title: 'rgba(255, 255, 255, 0.3)', control: 'rgba(255, 255, 255, 0.2)',
+      keyword: '#ff659c', string: '#dfd473', number: '#7a7ffd', function: '#73dfa5', property: '#1ac8ff', punctuation: '#ff659c',
+    },
+    sunset: {
+      from: '#f59e0b', to: '#e5524b', window: 'rgba(0, 0, 0, 0.75)', text: '#ffffff', muted: '#807796',
+      title: 'rgba(255, 255, 255, 0.3)', control: 'rgba(255, 255, 255, 0.2)',
+      keyword: '#ff659c', string: '#dfd473', number: '#7a7ffd', function: '#73dfa5', property: '#1ac8ff', punctuation: '#ff659c',
+    },
+    paper: {
+      from: '#e7e2d5', to: '#9aa3b0', window: '#fffdfa', text: '#27303a', muted: '#969086',
+      title: 'rgba(39, 48, 58, 0.45)', control: 'rgba(39, 48, 58, 0.2)',
+      keyword: '#7757a7', string: '#397454', number: '#a95f29', function: '#397454', property: '#2286a6', punctuation: '#d15a8b',
+    },
+  } as const;
+
+  type TokenType = 'plain' | 'keyword' | 'string' | 'number' | 'comment' | 'function' | 'property' | 'punctuation';
+  type CodeToken = { text: string; type: TokenType };
+
+  const tokenPattern = /(\/\*.*?\*\/|\/\/.*|#.*|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`|\b(?:async|await|break|case|catch|class|const|continue|def|do|else|export|extends|false|finally|for|from|function|if|import|in|interface|let|new|null|package|private|public|return|static|switch|throw|true|try|type|undefined|var|void|while|yield)\b|\b\d+(?:\.\d+)?\b|\b(?:[A-Za-z_$][\w$]*\.)+[A-Za-z_$][\w$]*\b|\b[A-Za-z_$][\w$]*(?=\s*\()|(?:===|!==|==|!=|=>|<=|>=|\+\+|--|&&|\|\||[=+\-*%<>!])|,)/g;
+  const keywordPattern = /^(?:async|await|break|case|catch|class|const|continue|def|do|else|export|extends|false|finally|for|from|function|if|import|in|interface|let|new|null|package|private|public|return|static|switch|throw|true|try|type|undefined|var|void|while|yield)$/;
+
+  function tokenType(value: string): TokenType {
+    if (value.startsWith('//') || value.startsWith('#') || value.startsWith('/*')) return 'comment';
+    if (/^["'`]/.test(value)) return 'string';
+    if (/^\d/.test(value)) return 'number';
+    if (keywordPattern.test(value)) return 'keyword';
+    if (/^(?:[A-Za-z_$][\w$]*\.)+[A-Za-z_$][\w$]*$/.test(value)) return 'property';
+    if (/^[A-Za-z_$][\w$]*$/.test(value)) return 'function';
+    if (/^(?:===|!==|==|!=|=>|<=|>=|\+\+|--|&&|\|\||[=+\-*%<>!]|,)$/.test(value)) return 'punctuation';
+    return 'plain';
+  }
+
+  function tokenize(line: string): CodeToken[] {
+    const tokens: CodeToken[] = [];
+    let cursor = 0;
+    tokenPattern.lastIndex = 0;
+    for (const match of line.matchAll(tokenPattern)) {
+      const index = match.index ?? 0;
+      if (index > cursor) tokens.push({ text: line.slice(cursor, index), type: 'plain' });
+      tokens.push({ text: match[0], type: tokenType(match[0]) });
+      cursor = index + match[0].length;
+    }
+    if (cursor < line.length) tokens.push({ text: line.slice(cursor), type: 'plain' });
+    return tokens;
+  }
+
+  function escapeHtml(value: string): string {
+    return value.replace(/[&<>"']/g, (character) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;',
+    })[character] ?? character);
+  }
+
+  function renderPreview(code: string): string {
+    return code.split('\n').map((line) => tokenize(line).map((token) => (
+      token.type === 'plain'
+        ? escapeHtml(token.text)
+        : `<span class="token-${token.type}">${escapeHtml(token.text)}</span>`
+    )).join('')).join('\n');
+  }
+
+  function roundedRect(context: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, radius: number) {
+    context.beginPath();
+    context.roundRect(x, y, width, height, radius);
+  }
+
+  function splitTokens(tokens: CodeToken[], maxCharacters: number): CodeToken[][] {
+    const rows: CodeToken[][] = [[]];
+    let rowLength = 0;
+    for (const token of tokens.length ? tokens : [{ text: '', type: 'plain' as const }]) {
+      let remaining = token.text;
+      while (remaining.length > 0) {
+        const capacity = Math.max(1, maxCharacters - rowLength);
+        const part = remaining.slice(0, capacity);
+        rows.at(-1)?.push({ text: part, type: token.type });
+        rowLength += part.length;
+        remaining = remaining.slice(part.length);
+        if (remaining.length > 0 || rowLength >= maxCharacters) {
+          rows.push([]);
+          rowLength = 0;
+        }
+      }
+    }
+    return rows;
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-code-image-tool]').forEach((tool) => {
+    const titleInput = tool.querySelector<HTMLInputElement>('[data-title-input]');
+    const codeInput = tool.querySelector<HTMLTextAreaElement>('[data-code-input]');
+    const previewTitle = tool.querySelector<HTMLElement>('[data-preview-title]');
+    const previewCode = tool.querySelector<HTMLElement>('[data-code-preview]');
+    const artboard = tool.querySelector<HTMLElement>('[data-artboard]');
+    const status = tool.querySelector<HTMLElement>('[data-status]');
+    const downloadButton = tool.querySelector<HTMLButtonElement>('[data-download]');
+    const paletteButtons = [...tool.querySelectorAll<HTMLButtonElement>('[data-palette]')];
+    if (!titleInput || !codeInput || !previewTitle || !previewCode || !artboard || !status || !downloadButton) return;
+
+    let selectedPalette: keyof typeof palettes = 'candy';
+
+    const updatePreview = () => {
+      previewTitle.textContent = titleInput.value.trim() || 'Untitled-1';
+      previewCode.innerHTML = renderPreview(codeInput.value);
+    };
+
+    titleInput.addEventListener('input', updatePreview);
+    codeInput.addEventListener('input', updatePreview);
+    codeInput.addEventListener('keydown', (event) => {
+      if (event.key !== 'Tab') return;
+      event.preventDefault();
+      const start = codeInput.selectionStart;
+      codeInput.setRangeText('  ', start, codeInput.selectionEnd, 'end');
+      codeInput.dispatchEvent(new Event('input'));
+    });
+
+    paletteButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const palette = button.dataset.palette as keyof typeof palettes;
+        if (!(palette in palettes)) return;
+        selectedPalette = palette;
+        artboard.dataset.palette = palette;
+        paletteButtons.forEach((option) => {
+          const active = option === button;
+          option.classList.toggle('is-active', active);
+          option.setAttribute('aria-pressed', String(active));
+        });
+      });
+    });
+
+    downloadButton.addEventListener('click', async () => {
+      downloadButton.disabled = true;
+      status.textContent = '正在生成图片…';
+      await document.fonts.load('500 16px "JetBrains Mono Variable"');
+      await document.fonts.ready;
+
+      const logicalWidth = 520;
+      const outerPadding = 64;
+      const windowWidth = logicalWidth - outerPadding * 2;
+      const windowTopPadding = 10;
+      const headerHeight = 24;
+      const codePadding = 16;
+      const fontSize = 16;
+      const lineHeight = 22.5;
+      const pixelRatio = 4;
+      const canvas = document.createElement('canvas');
+      const measureContext = canvas.getContext('2d');
+      if (!measureContext) {
+        downloadButton.disabled = false;
+        return;
+      }
+      measureContext.font = `500 ${fontSize}px "JetBrains Mono Variable", "JetBrains Mono", "Sarasa Mono SC Web", monospace`;
+      const characterWidth = measureContext.measureText('M').width;
+      const maxCharacters = Math.max(20, Math.floor((windowWidth - codePadding * 2) / characterWidth));
+      const rows = codeInput.value.split('\n').flatMap((line) => splitTokens(tokenize(line), maxCharacters));
+      const codeHeight = Math.max(1, rows.length) * lineHeight + codePadding * 2;
+      const windowHeight = windowTopPadding + headerHeight + codeHeight;
+      const logicalHeight = Math.ceil(windowHeight + outerPadding * 2);
+
+      canvas.width = logicalWidth * pixelRatio;
+      canvas.height = logicalHeight * pixelRatio;
+      const context = canvas.getContext('2d');
+      if (!context) {
+        downloadButton.disabled = false;
+        return;
+      }
+      context.scale(pixelRatio, pixelRatio);
+
+      const palette = palettes[selectedPalette];
+      const angle = 140 * Math.PI / 180;
+      const directionX = Math.sin(angle);
+      const directionY = -Math.cos(angle);
+      const halfGradient = (Math.abs(logicalWidth * directionX) + Math.abs(logicalHeight * directionY)) / 2;
+      const centerX = logicalWidth / 2;
+      const centerY = logicalHeight / 2;
+      const gradient = context.createLinearGradient(
+        centerX - directionX * halfGradient,
+        centerY - directionY * halfGradient,
+        centerX + directionX * halfGradient,
+        centerY + directionY * halfGradient,
+      );
+      gradient.addColorStop(0, palette.from);
+      gradient.addColorStop(1, palette.to);
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, logicalWidth, logicalHeight);
+
+      context.save();
+      context.shadowColor = 'rgba(0, 0, 0, 0.34)';
+      context.shadowBlur = 34;
+      context.shadowOffsetY = 24;
+      roundedRect(context, outerPadding, outerPadding, windowWidth, windowHeight, 18);
+      context.fillStyle = '#000000';
+      context.fill();
+      context.restore();
+
+      context.save();
+      roundedRect(context, outerPadding, outerPadding, windowWidth, windowHeight, 18);
+      context.clip();
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, logicalWidth, logicalHeight);
+      context.fillStyle = palette.window;
+      context.fillRect(outerPadding, outerPadding, windowWidth, windowHeight);
+      const dotY = outerPadding + windowTopPadding + headerHeight / 2;
+      [0, 1, 2].forEach((index) => {
+        context.beginPath();
+        context.arc(outerPadding + 23 + index * 23, dotY, 7, 0, Math.PI * 2);
+        context.fillStyle = palette.control;
+        context.fill();
+      });
+
+      const windowTitle = titleInput.value.trim();
+      if (windowTitle) {
+        context.fillStyle = palette.title;
+        context.font = '500 12px Inter, "MiSans Web", sans-serif';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText(windowTitle, logicalWidth / 2, dotY, windowWidth - 176);
+      }
+
+      context.font = `500 ${fontSize}px "JetBrains Mono Variable", "JetBrains Mono", "Sarasa Mono SC Web", monospace`;
+      context.textAlign = 'left';
+      context.textBaseline = 'top';
+      let y = outerPadding + windowTopPadding + headerHeight + codePadding;
+      const colors: Record<TokenType, string> = {
+        plain: palette.text,
+        keyword: palette.keyword,
+        string: palette.string,
+        number: palette.number,
+        comment: palette.muted,
+        function: palette.function,
+        property: palette.property,
+        punctuation: palette.punctuation,
+      };
+      rows.forEach((row) => {
+        let x = outerPadding + codePadding;
+        row.forEach((token) => {
+          context.fillStyle = colors[token.type];
+          const fragments = token.type === 'punctuation' ? [...token.text] : [token.text];
+          fragments.forEach((fragment) => {
+            context.fillText(fragment, x, y);
+            x += context.measureText(fragment).width;
+          });
+        });
+        y += lineHeight;
+      });
+      context.restore();
+
+      context.save();
+      roundedRect(context, outerPadding, outerPadding, windowWidth, windowHeight, 18);
+      context.lineWidth = 1.5;
+      context.strokeStyle = 'rgba(0, 0, 0, 0.8)';
+      context.stroke();
+      context.lineWidth = 1;
+      context.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+      context.stroke();
+      context.restore();
+
+      const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
+      if (!blob) {
+        status.textContent = '图片生成失败，请缩短代码后重试。';
+        downloadButton.disabled = false;
+        return;
+      }
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const baseName = (titleInput.value.trim() || 'code').replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9_-]+/g, '-').replace(/^-+|-+$/g, '') || 'code';
+      link.href = objectUrl;
+      link.download = `${baseName}.png`;
+      link.click();
+      URL.revokeObjectURL(objectUrl);
+      status.textContent = `已下载 ${canvas.width} × ${canvas.height} PNG。`;
+      downloadButton.disabled = false;
+    });
+
+    updatePreview();
+  });
+</script>
