@@ -19,9 +19,32 @@ function leftpad(str, len, ch) {
 ---
 
 <section class="code-image-tool not-content" data-code-image-tool>
+  <div class="preview-viewport">
+    <div class="code-artboard" data-artboard data-palette="candy">
+      <article class="code-window">
+        <header class="window-bar">
+          <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="window-title" data-preview-title>Untitled-1</span>
+          <span class="window-balance" aria-hidden="true"></span>
+        </header>
+        <div class="window-code-editor">
+          <pre aria-hidden="true"><code data-code-preview></code></pre>
+          <textarea
+            data-code-input
+            rows="15"
+            aria-label="代码"
+            spellcheck="false"
+            autocapitalize="off"
+            autocomplete="off"
+          >{sampleCode}</textarea>
+        </div>
+      </article>
+    </div>
+  </div>
+
   <div class="tool-controls" aria-label="图片设置">
     <label class="title-field">
-      <span>窗口标题</span>
+      <span>标题</span>
       <input data-title-input type="text" value="" placeholder="Untitled-1" maxlength="80" autocomplete="off" />
     </label>
 
@@ -34,86 +57,44 @@ function leftpad(str, len, ch) {
         <button class="palette-option" type="button" data-palette="paper" aria-label="浅色纸张" aria-pressed="false"></button>
       </div>
     </fieldset>
-  </div>
 
-  <div class="tool-workspace">
-    <label class="code-editor-panel">
-      <span class="panel-label">代码</span>
-      <textarea data-code-input rows="15" spellcheck="false" autocapitalize="off" autocomplete="off">{sampleCode}</textarea>
-    </label>
-
-    <section class="preview-panel" aria-labelledby="code-preview-label">
-      <div class="panel-heading">
-        <span class="panel-label" id="code-preview-label">预览</span>
-        <span class="image-size" data-image-size>2080 px · 4x PNG</span>
-      </div>
-      <div class="preview-viewport">
-        <div class="code-artboard" data-artboard data-palette="candy">
-          <article class="code-window">
-            <header class="window-bar">
-              <span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <span class="window-title" data-preview-title>Untitled-1</span>
-              <span class="window-balance" aria-hidden="true"></span>
-            </header>
-            <pre><code data-code-preview></code></pre>
-          </article>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <footer class="tool-footer">
-    <p data-status aria-live="polite">图片在本地生成，代码不会上传。</p>
+    <span class="image-size" data-image-size>2080 px · 4x PNG</span>
     <button class="download-button" type="button" data-download>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 19h14" /></svg>
       下载 PNG
     </button>
-  </footer>
+  </div>
+  <p class="tool-status" data-status aria-live="polite">直接在图片中编辑，代码不会上传。</p>
 </section>
 
 <style>
   .code-image-tool {
-    --tool-border: color-mix(in srgb, var(--sl-color-gray-5) 82%, transparent);
     margin-top: 1.5rem;
-    overflow: hidden;
-    border: 1px solid var(--tool-border);
-    border-radius: 1rem;
-    background: color-mix(in srgb, var(--sl-color-surface) 88%, var(--sl-color-bg));
-    box-shadow: var(--paper-shadow);
-  }
-
-  .tool-controls,
-  .tool-footer,
-  .panel-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
   }
 
   .tool-controls {
-    padding: 0.9rem 1rem;
-    border-bottom: 1px solid var(--tool-border);
+    display: grid;
+    grid-template-columns: minmax(11rem, 1fr) auto auto auto;
+    align-items: center;
+    gap: 0.8rem 1rem;
+    padding-top: 0.9rem;
   }
 
   .title-field {
-    display: grid;
-    grid-template-columns: auto minmax(9rem, 16rem);
+    display: flex;
     align-items: center;
     gap: 0.65rem;
   }
 
   .title-field span,
-  .palette-field legend,
-  .panel-label {
+  .palette-field legend {
     color: var(--sl-color-gray-2);
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.02em;
   }
 
-  .title-field input,
-  .code-editor-panel textarea {
+  .title-field input {
     border: 1px solid var(--sl-color-gray-5);
     border-radius: 0.55rem;
     background: var(--sl-color-surface);
@@ -123,6 +104,7 @@ function leftpad(str, len, ch) {
 
   .title-field input {
     width: 100%;
+    max-width: 16rem;
     padding: 0.48rem 0.65rem;
     font-family: var(--sl-font-mono);
     font-size: 0.78rem;
@@ -162,73 +144,21 @@ function leftpad(str, len, ch) {
   }
 
   .title-field input:focus-visible,
-  .code-editor-panel textarea:focus-visible,
   .palette-option:focus-visible,
   .download-button:focus-visible {
     outline: 2px solid var(--sl-color-accent-high);
     outline-offset: 3px;
   }
 
-  .tool-workspace {
-    display: grid;
-    grid-template-columns: minmax(17rem, 0.8fr) minmax(20rem, 1.2fr);
-    min-height: 37rem;
-  }
-
-  .code-editor-panel,
-  .preview-panel {
-    min-width: 0;
-    padding: 1rem;
-  }
-
-  .code-editor-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-    border-right: 1px solid var(--tool-border);
-  }
-
-  .code-editor-panel textarea {
-    width: 100%;
-    min-height: 33rem;
-    flex: 1;
-    resize: vertical;
-    padding: 0.9rem;
-    font-family: 'JetBrains Mono Variable', var(--sl-font-mono);
-    font-size: 0.78rem;
-    font-variant-ligatures: none;
-    line-height: 1.65;
-    tab-size: 2;
-  }
-
-  .preview-panel {
-    display: flex;
-    min-height: 0;
-    flex-direction: column;
-    gap: 0.65rem;
-  }
-
   .image-size {
     color: var(--sl-color-gray-3);
     font-family: var(--sl-font-mono);
     font-size: 0.66rem;
+    white-space: nowrap;
   }
 
   .preview-viewport {
-    display: grid;
-    min-height: 33rem;
-    flex: 1;
-    place-items: center;
-    overflow: auto;
-    border-radius: 0.7rem;
-    background:
-      linear-gradient(45deg, rgba(36, 41, 47, 0.035) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(36, 41, 47, 0.035) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, rgba(36, 41, 47, 0.035) 75%),
-      linear-gradient(-45deg, transparent 75%, rgba(36, 41, 47, 0.035) 75%),
-      var(--sl-color-bg);
-    background-position: 0 0, 0 6px, 6px -6px, -6px 0;
-    background-size: 12px 12px;
+    display: block;
   }
 
   .code-artboard {
@@ -318,23 +248,61 @@ function leftpad(str, len, ch) {
     white-space: nowrap;
   }
 
-  .code-window pre {
-    margin: 0;
-    overflow: auto;
-    padding: 1rem;
-    background: transparent;
+  .window-code-editor {
+    position: relative;
+    min-height: 23.09375rem;
   }
 
-  .code-window code {
-    display: block;
-    color: var(--window-text);
+  .code-window pre,
+  .window-code-editor textarea {
+    margin: 0;
+    padding: 1rem;
     font-family: 'JetBrains Mono Variable', 'JetBrains Mono', var(--sl-font-mono);
     font-size: 1rem;
     font-weight: 500;
     font-variant-ligatures: none;
     line-height: 1.40625;
+    tab-size: 2;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
+  }
+
+  .code-window pre {
+    min-height: inherit;
+    overflow: hidden;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .code-window code {
+    display: block;
+    color: var(--window-text);
+    font: inherit;
+  }
+
+  .window-code-editor textarea {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    overflow: hidden;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: transparent;
+    caret-color: var(--window-text);
+    -webkit-text-fill-color: transparent;
+  }
+
+  .window-code-editor textarea::selection {
+    background: color-mix(in srgb, var(--token-property) 30%, transparent);
+    -webkit-text-fill-color: transparent;
+  }
+
+  .code-window:focus-within .window-title {
+    color: color-mix(in srgb, var(--window-text) 58%, transparent);
   }
 
   .code-window :global(.token-keyword) { color: var(--token-keyword); }
@@ -345,13 +313,8 @@ function leftpad(str, len, ch) {
   .code-window :global(.token-punctuation) { color: var(--token-punctuation); }
   .code-window :global(.token-comment) { color: var(--window-muted); }
 
-  .tool-footer {
-    padding: 0.85rem 1rem;
-    border-top: 1px solid var(--tool-border);
-  }
-
-  .tool-footer p {
-    margin: 0;
+  .tool-status {
+    margin: 0.5rem 0 0;
     color: var(--sl-color-gray-3);
     font-size: 0.72rem;
   }
@@ -376,20 +339,35 @@ function leftpad(str, len, ch) {
   .download-button svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
 
   @media (max-width: 52rem) {
-    .tool-workspace { grid-template-columns: 1fr; }
-    .code-editor-panel { border-right: 0; border-bottom: 1px solid var(--tool-border); }
-    .code-editor-panel textarea { min-height: 15rem; }
+    .tool-controls {
+      grid-template-columns: minmax(0, 1fr) auto auto;
+    }
+
+    .title-field {
+      grid-column: 1 / -1;
+    }
   }
 
   @media (max-width: 34rem) {
-    .tool-controls { align-items: stretch; flex-direction: column; }
-    .title-field { grid-template-columns: 1fr; gap: 0.35rem; }
-    .palette-field { justify-content: space-between; }
-    .code-editor-panel,
-    .preview-panel { padding: 0.8rem; }
-    .preview-viewport { min-height: 19rem; }
+    .tool-controls {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .title-field {
+      align-items: stretch;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .title-field input {
+      max-width: none;
+    }
+
+    .image-size {
+      display: none;
+    }
+
     .code-artboard { width: 100%; }
-    .tool-footer { align-items: stretch; flex-direction: column; }
     .download-button { justify-content: center; }
   }
 
