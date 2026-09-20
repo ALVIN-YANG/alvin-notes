@@ -58,7 +58,7 @@ function leftpad(str, len, ch) {
       </div>
     </fieldset>
 
-    <span class="image-size" data-image-size>2080 px · 4x PNG</span>
+    <span class="image-size" data-image-size>1568 px · 4x PNG</span>
     <button class="download-button" type="button" data-download>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 19h14" /></svg>
       下载 PNG
@@ -175,10 +175,8 @@ function leftpad(str, len, ch) {
     --token-function: #73dfa5;
     --token-property: #1ac8ff;
     --token-punctuation: #ff659c;
-    width: min(100%, 32.5rem);
+    width: min(100%, 24.5rem);
     margin: auto;
-    padding: clamp(1.25rem, 12.307%, 4rem);
-    background: linear-gradient(140deg, var(--board-from), var(--board-to));
   }
 
   .code-artboard[data-palette='lagoon'] { --board-from: #0e7490; --board-to: #2fbd87; }
@@ -204,16 +202,12 @@ function leftpad(str, len, ch) {
     padding-top: 0.625rem;
     border: 0;
     border-radius: 1.125rem;
-    background: var(--window-bg);
+    background:
+      linear-gradient(var(--window-bg), var(--window-bg)),
+      linear-gradient(140deg, var(--board-from), var(--board-to));
     box-shadow:
       rgba(255, 255, 255, 0.3) 0 0 0 1px,
-      rgba(0, 0, 0, 0.8) 0 0 0 1.5px,
-      rgba(0, 0, 0, 0.035) 0 2.8px 2.2px,
-      rgba(0, 0, 0, 0.047) 0 6.7px 5.3px,
-      rgba(0, 0, 0, 0.06) 0 12.5px 10px,
-      rgba(0, 0, 0, 0.07) 0 22.3px 17.9px,
-      rgba(0, 0, 0, 0.086) 0 41.8px 33.4px,
-      rgba(0, 0, 0, 0.12) 0 100px 80px;
+      rgba(0, 0, 0, 0.8) 0 0 0 1.5px;
   }
 
   .window-bar {
@@ -519,9 +513,8 @@ function leftpad(str, len, ch) {
       await document.fonts.load('500 16px "JetBrains Mono Variable"');
       await document.fonts.ready;
 
-      const logicalWidth = 520;
-      const outerPadding = 64;
-      const windowWidth = logicalWidth - outerPadding * 2;
+      const logicalWidth = 392;
+      const windowWidth = logicalWidth;
       const windowTopPadding = 10;
       const headerHeight = 24;
       const codePadding = 16;
@@ -540,7 +533,7 @@ function leftpad(str, len, ch) {
       const rows = codeInput.value.split('\n').flatMap((line) => splitTokens(tokenize(line), maxCharacters));
       const codeHeight = Math.max(1, rows.length) * lineHeight + codePadding * 2;
       const windowHeight = windowTopPadding + headerHeight + codeHeight;
-      const logicalHeight = Math.ceil(windowHeight + outerPadding * 2);
+      const logicalHeight = Math.ceil(windowHeight);
 
       canvas.width = logicalWidth * pixelRatio;
       canvas.height = logicalHeight * pixelRatio;
@@ -566,29 +559,17 @@ function leftpad(str, len, ch) {
       );
       gradient.addColorStop(0, palette.from);
       gradient.addColorStop(1, palette.to);
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, logicalWidth, logicalHeight);
-
       context.save();
-      context.shadowColor = 'rgba(0, 0, 0, 0.34)';
-      context.shadowBlur = 34;
-      context.shadowOffsetY = 24;
-      roundedRect(context, outerPadding, outerPadding, windowWidth, windowHeight, 18);
-      context.fillStyle = '#000000';
-      context.fill();
-      context.restore();
-
-      context.save();
-      roundedRect(context, outerPadding, outerPadding, windowWidth, windowHeight, 18);
+      roundedRect(context, 0, 0, windowWidth, windowHeight, 18);
       context.clip();
       context.fillStyle = gradient;
       context.fillRect(0, 0, logicalWidth, logicalHeight);
       context.fillStyle = palette.window;
-      context.fillRect(outerPadding, outerPadding, windowWidth, windowHeight);
-      const dotY = outerPadding + windowTopPadding + headerHeight / 2;
+      context.fillRect(0, 0, windowWidth, windowHeight);
+      const dotY = windowTopPadding + headerHeight / 2;
       [0, 1, 2].forEach((index) => {
         context.beginPath();
-        context.arc(outerPadding + 23 + index * 23, dotY, 7, 0, Math.PI * 2);
+        context.arc(23 + index * 23, dotY, 7, 0, Math.PI * 2);
         context.fillStyle = palette.control;
         context.fill();
       });
@@ -605,7 +586,7 @@ function leftpad(str, len, ch) {
       context.font = `500 ${fontSize}px "JetBrains Mono Variable", "JetBrains Mono", "Sarasa Mono SC Web", monospace`;
       context.textAlign = 'left';
       context.textBaseline = 'top';
-      let y = outerPadding + windowTopPadding + headerHeight + codePadding;
+      let y = windowTopPadding + headerHeight + codePadding;
       const colors: Record<TokenType, string> = {
         plain: palette.text,
         keyword: palette.keyword,
@@ -617,7 +598,7 @@ function leftpad(str, len, ch) {
         punctuation: palette.punctuation,
       };
       rows.forEach((row) => {
-        let x = outerPadding + codePadding;
+        let x = codePadding;
         row.forEach((token) => {
           context.fillStyle = colors[token.type];
           const fragments = token.type === 'punctuation' ? [...token.text] : [token.text];
@@ -631,7 +612,7 @@ function leftpad(str, len, ch) {
       context.restore();
 
       context.save();
-      roundedRect(context, outerPadding, outerPadding, windowWidth, windowHeight, 18);
+      roundedRect(context, 0, 0, windowWidth, windowHeight, 18);
       context.lineWidth = 1.5;
       context.strokeStyle = 'rgba(0, 0, 0, 0.8)';
       context.stroke();
