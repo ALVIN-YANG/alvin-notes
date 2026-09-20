@@ -159,6 +159,9 @@ function leftpad(str, len, ch) {
 
   .preview-viewport {
     display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-block: 0.125rem 0.35rem;
   }
 
   .code-artboard {
@@ -175,7 +178,8 @@ function leftpad(str, len, ch) {
     --token-function: #73dfa5;
     --token-property: #1ac8ff;
     --token-punctuation: #ff659c;
-    width: min(100%, 24.5rem);
+    width: 24.5rem;
+    min-width: 24.5rem;
     margin: auto;
   }
 
@@ -361,7 +365,6 @@ function leftpad(str, len, ch) {
       display: none;
     }
 
-    .code-artboard { width: 100%; }
     .download-button { justify-content: center; }
   }
 
