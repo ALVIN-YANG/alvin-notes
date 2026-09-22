@@ -19,7 +19,7 @@ const frontmatter = { title: 'AI 人物志', description: '认识大模型背后
     <p class="people-filter-status" aria-live="polite" aria-atomic="true" data-people-status></p>
     <div class="people-grid">
       {people.map(person => (
-        <a class="person-card" href={`/people/${person.id}/`} data-person={person.id} data-category={person.category} data-search={`${person.name} ${person.alias} ${person.tag} ${person.bio.join(' ')}`}>
+        <a class="person-card" href={`/people/${person.id}/`} data-person={person.id} data-category={person.category} data-search={`${person.name} ${person.alias} ${person.tag} ${person.category}`}>
           {person.portrait ? <img class="person-avatar" src={person.portrait.src} alt="" width="48" height="48" loading="lazy" decoding="async" /> : <span class="person-avatar person-initials" aria-hidden="true">{initials(person.name)}</span>}
           <span class="person-card-copy"><span class="person-name">{person.name}</span><span class="person-tag">{person.tag}</span></span>
         </a>
