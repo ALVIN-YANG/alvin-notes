@@ -17,6 +17,15 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "alex-graves": {
+    "src": "/images/people/alex-graves.webp",
+    "source": "https://www.cs.toronto.edu/~graves/",
+    "credit": "Alex Graves 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.toronto.edu/~graves/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "amanda-askell": {
     "src": "/images/people/amanda-askell.webp",
     "source": "https://askell.io/",
@@ -62,12 +71,48 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "barret-zoph": {
+    "src": "/images/people/barret-zoph.webp",
+    "source": "https://barretzoph.github.io/",
+    "credit": "Barret Zoph 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://barretzoph.github.io/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "chelsea-finn": {
+    "src": "/images/people/chelsea-finn.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Chelsea_Finn_and_Vestri_the_robot,_UC_Berkeley.jpg",
+    "credit": "UC Berkeley",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "chenlin-meng": {
+    "src": "/images/people/chenlin-meng.webp",
+    "source": "https://cs.stanford.edu/~chenlin/",
+    "credit": "Chenlin Meng 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://cs.stanford.edu/~chenlin/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "christopher-manning": {
     "src": "/images/people/christopher-manning.webp",
     "source": "https://nlp.stanford.edu/~manning/",
     "credit": "Christopher Manning / Stanford",
     "license": "公开人物介绍配图；版权归原权利人",
     "licenseUrl": "https://nlp.stanford.edu/~manning/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "christopher-re": {
+    "src": "/images/people/christopher-re.webp",
+    "source": "https://cs.stanford.edu/people/chrismre/",
+    "credit": "Christopher Ré 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://cs.stanford.edu/people/chrismre/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -95,6 +140,15 @@
     "credit": "TechCrunch",
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "danqi-chen": {
+    "src": "/images/people/danqi-chen.webp",
+    "source": "https://www.cs.princeton.edu/~danqic/",
+    "credit": "陈丹琦 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.princeton.edu/~danqic/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -170,6 +224,15 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "douwe-kiela": {
+    "src": "/images/people/douwe-kiela.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Douwe_Kiela.jpg",
+    "credit": "Unknown authorUnknown author",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "dylan-hadfield-menell": {
     "src": "/images/people/dylan-hadfield-menell.webp",
     "source": "https://people.csail.mit.edu/dhm/",
@@ -230,6 +293,15 @@
     "credit": "Cmichel67",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "hamish-ivison": {
+    "src": "/images/people/hamish-ivison.webp",
+    "source": "https://ivison.id.au/",
+    "credit": "Hamish Ivison 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://ivison.id.au/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -305,6 +377,15 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "jascha-sohl-dickstein": {
+    "src": "/images/people/jascha-sohl-dickstein.webp",
+    "source": "https://sohldickstein.com/",
+    "credit": "Jascha Sohl-Dickstein 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://sohldickstein.com/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "jason-wei": {
     "src": "/images/people/jason-wei.webp",
     "source": "https://www.jasonwei.net/",
@@ -347,6 +428,42 @@
     "credit": "唐杰 / 清华大学",
     "license": "公开人物介绍配图；版权归原权利人",
     "licenseUrl": "https://keg.cs.tsinghua.edu.cn/jietang/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "jim-fan": {
+    "src": "/images/people/jim-fan.webp",
+    "source": "https://jimfan.me/",
+    "credit": "范林熙 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://jimfan.me/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "jimmy-ba": {
+    "src": "/images/people/jimmy-ba.webp",
+    "source": "https://jimmylba.github.io/",
+    "credit": "Jimmy Ba 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://jimmylba.github.io/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "joelle-pineau": {
+    "src": "/images/people/joelle-pineau.webp",
+    "source": "https://www.cs.mcgill.ca/~jpineau/",
+    "credit": "Joelle Pineau 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.mcgill.ca/~jpineau/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "john-hopfield": {
+    "src": "/images/people/john-hopfield.webp",
+    "source": "https://www.nobelprize.org/prizes/physics/2024/hopfield/facts/",
+    "credit": "© Nobel Prize Outreach / Nanaka Adachi",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.nobelprize.org/prizes/physics/2024/hopfield/facts/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -395,6 +512,15 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "kilian-lieret": {
+    "src": "/images/people/kilian-lieret.webp",
+    "source": "https://www.lieret.net/",
+    "credit": "Kilian Lieret 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.lieret.net/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "kyunghyun-cho": {
     "src": "/images/people/kyunghyun-cho.webp",
     "source": "https://commons.wikimedia.org/wiki/File:SD_2025_-_Kyunghyun_Cho_02_(cropped).jpg",
@@ -413,6 +539,15 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "lianmin-zheng": {
+    "src": "/images/people/lianmin-zheng.webp",
+    "source": "https://lmzheng.net/",
+    "credit": "郑连敏 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://lmzheng.net/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "llion-jones": {
     "src": "/images/people/llion-jones.webp",
     "source": "https://sakana.ai/company-info/",
@@ -422,12 +557,39 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "luca-soldaini": {
+    "src": "/images/people/luca-soldaini.webp",
+    "source": "https://soldaini.net/",
+    "credit": "Luca Soldaini 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://soldaini.net/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "lukasz-kaiser": {
     "src": "/images/people/lukasz-kaiser.webp",
     "source": "https://github.com/lukaszkaiser",
     "credit": "Lukasz Kaiser",
     "license": "公开人物介绍配图；版权归原权利人",
     "licenseUrl": "https://github.com/lukaszkaiser",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "luke-zettlemoyer": {
+    "src": "/images/people/luke-zettlemoyer.webp",
+    "source": "https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/",
+    "credit": "Luke Zettlemoyer 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "luyu-gao": {
+    "src": "/images/people/luyu-gao.webp",
+    "source": "https://luyug.github.io/",
+    "credit": "Luyu Gao 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://luyug.github.io/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -494,6 +656,24 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "ofir-press": {
+    "src": "/images/people/ofir-press.webp",
+    "source": "https://ofir.io/about/",
+    "credit": "Ofir Press 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://ofir.io/about/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "omar-khattab": {
+    "src": "/images/people/omar-khattab.webp",
+    "source": "https://omarkhattab.com/",
+    "credit": "Omar Khattab 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://omarkhattab.com/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "patrick-lewis": {
     "src": "/images/people/patrick-lewis.webp",
     "source": "https://www.patricklewis.io/",
@@ -503,12 +683,48 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "peng-zhang": {
+    "src": "/images/people/peng-zhang.webp",
+    "source": "https://www.tsinghua.edu.cn/info/1178/113278.htm",
+    "credit": "清华大学新闻网：张鹏致辞",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.tsinghua.edu.cn/info/1178/113278.htm",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "percy-liang": {
+    "src": "/images/people/percy-liang.webp",
+    "source": "https://hai.stanford.edu/people/percy-liang",
+    "credit": "Percy Liang / Stanford HAI",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://hai.stanford.edu/people/percy-liang",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "phillip-isola": {
     "src": "/images/people/phillip-isola.webp",
     "source": "https://web.mit.edu/phillipi/",
     "credit": "Phillip Isola / MIT",
     "license": "公开人物介绍配图；版权归原权利人",
     "licenseUrl": "https://web.mit.edu/phillipi/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "pieter-abbeel": {
+    "src": "/images/people/pieter-abbeel.webp",
+    "source": "https://commons.wikimedia.org/wiki/File:Pieter_Abbeel_pictured_at_CovariantHQ_in_November_2017.jpg",
+    "credit": "Pieterabbeel",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "prafulla-dhariwal": {
+    "src": "/images/people/prafulla-dhariwal.webp",
+    "source": "https://prafulladhariwal.com/",
+    "credit": "Prafulla Dhariwal 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://prafulladhariwal.com/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -557,12 +773,48 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "sergey-levine": {
+    "src": "/images/people/sergey-levine.webp",
+    "source": "https://people.eecs.berkeley.edu/~svlevine/",
+    "credit": "Sergey Levine 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://people.eecs.berkeley.edu/~svlevine/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "shane-legg": {
     "src": "/images/people/shane-legg.webp",
     "source": "https://commons.wikimedia.org/wiki/File:Shane_Legg.jpg",
     "credit": "Libor.burian",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "shishir-patil": {
+    "src": "/images/people/shishir-patil.webp",
+    "source": "https://shishirpatil.github.io/",
+    "credit": "Shishir Patil 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://shishirpatil.github.io/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "shunyu-yao": {
+    "src": "/images/people/shunyu-yao.webp",
+    "source": "https://ysymyth.github.io/",
+    "credit": "姚顺雨 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://ysymyth.github.io/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "song-han": {
+    "src": "/images/people/song-han.webp",
+    "source": "https://hanlab.mit.edu/songhan",
+    "credit": "韩松 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://hanlab.mit.edu/songhan",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -581,6 +833,15 @@
     "credit": "Thomas Wolf 个人主页",
     "license": "公开人物介绍配图；版权归原权利人",
     "licenseUrl": "https://thomwolf.io/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "tianqi-chen": {
+    "src": "/images/people/tianqi-chen.webp",
+    "source": "https://tqchen.com/",
+    "credit": "陈天奇 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://tqchen.com/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -629,12 +890,30 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "william-peebles": {
+    "src": "/images/people/william-peebles.webp",
+    "source": "https://www.wpeebles.com/",
+    "credit": "William Peebles 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.wpeebles.com/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "woosuk-kwon": {
     "src": "/images/people/woosuk-kwon.webp",
     "source": "https://github.com/WoosukKwon",
     "credit": "Woosuk Kwon",
     "license": "公开人物介绍配图；版权归原权利人",
     "licenseUrl": "https://github.com/WoosukKwon",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "yang-song": {
+    "src": "/images/people/yang-song.webp",
+    "source": "https://yang-song.net/",
+    "credit": "宋飏 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://yang-song.net/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -647,12 +926,30 @@
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
+  "yoon-kim": {
+    "src": "/images/people/yoon-kim.webp",
+    "source": "https://people.csail.mit.edu/yoonkim/",
+    "credit": "Yoon Kim 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://people.csail.mit.edu/yoonkim/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
   "yoshua-bengio": {
     "src": "/images/people/yoshua-bengio.webp",
     "source": "https://commons.wikimedia.org/wiki/File:ICLR_2025_-_Yoshua_Bengio_02.jpg",
     "credit": "Xuthoria",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "zhihao-jia": {
+    "src": "/images/people/zhihao-jia.webp",
+    "source": "https://www.cs.cmu.edu/~zhihaoj2/",
+    "credit": "贾志浩 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.cmu.edu/~zhihaoj2/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   },
@@ -680,6 +977,15 @@
     "credit": "王仲远个人主页",
     "license": "公开人物介绍配图；版权归原权利人",
     "licenseUrl": "https://www.wangzhongyuan.com/",
+    "modification": "裁切、缩放并转换为 WebP",
+    "checkedAt": "2026-09-22"
+  },
+  "zhuang-liu": {
+    "src": "/images/people/zhuang-liu.webp",
+    "source": "https://liuzhuang13.github.io/",
+    "credit": "刘壮 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://liuzhuang13.github.io/",
     "modification": "裁切、缩放并转换为 WebP",
     "checkedAt": "2026-09-22"
   }

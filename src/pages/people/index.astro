@@ -2,7 +2,7 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import PersonProfile from '../../components/PersonProfile.astro';
 import { people, categories, initials } from '../../data/ai-people';
-const frontmatter = { title: 'AI 人物志', description: '认识大模型背后的研究者、工程师与创办者。100 位人物的代表工作、经历和原始资料。', template: 'splash' as const, hidePageTitle: true };
+const frontmatter = { title: 'AI 人物志', description: `认识大模型背后的研究者、工程师与创办者。${people.length} 位人物的代表工作、经历和原始资料。`, template: 'splash' as const, hidePageTitle: true };
 ---
 <StarlightPage frontmatter={frontmatter} sidebar={[]}>
   <section class="people-page not-content" aria-labelledby="people-title">

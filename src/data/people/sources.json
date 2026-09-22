@@ -862,5 +862,405 @@
   "gu-bio": [
     "卡内基梅隆大学：Albert Gu",
     "https://csd.cmu.edu/people/faculty/albert-gu"
+  ],
+  "bio-john-hopfield": [
+    "诺贝尔奖：John Hopfield",
+    "https://www.nobelprize.org/prizes/physics/2024/hopfield/facts/"
+  ],
+  "bio-alex-graves": [
+    "多伦多大学：Alex Graves（历史资料）",
+    "https://www.cs.toronto.edu/~graves/"
+  ],
+  "ntm": [
+    "Neural Turing Machines",
+    "https://arxiv.org/abs/1410.5401"
+  ],
+  "bio-jimmy-ba": [
+    "Jimmy Ba 研究主页",
+    "https://jimmylba.github.io/"
+  ],
+  "layernorm": [
+    "Layer Normalization",
+    "https://arxiv.org/abs/1607.06450"
+  ],
+  "wavenet": [
+    "WaveNet: A Generative Model for Raw Audio",
+    "https://arxiv.org/abs/1609.03499"
+  ],
+  "vqvae": [
+    "Neural Discrete Representation Learning",
+    "https://arxiv.org/abs/1711.00937"
+  ],
+  "bio-denny-zhou": [
+    "Denny Zhou 研究主页",
+    "https://dennyzhou.github.io/"
+  ],
+  "self-consistency": [
+    "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+    "https://arxiv.org/abs/2203.11171"
+  ],
+  "least-to-most": [
+    "Least-to-Most Prompting Enables Complex Reasoning in Large Language Models",
+    "https://arxiv.org/abs/2205.10625"
+  ],
+  "bio-barret-zoph": [
+    "Barret Zoph 研究主页",
+    "https://barretzoph.github.io/"
+  ],
+  "switch-transformer": [
+    "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+    "https://arxiv.org/abs/2101.03961"
+  ],
+  "scaling-instruction": [
+    "Scaling Instruction-Finetuned Language Models",
+    "https://arxiv.org/abs/2210.11416"
+  ],
+  "palm": [
+    "PaLM: Scaling Language Modeling with Pathways",
+    "https://arxiv.org/abs/2204.02311"
+  ],
+  "bio-ofir-press": [
+    "Ofir Press 研究主页",
+    "https://ofir.io/about/"
+  ],
+  "alibi": [
+    "Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation",
+    "https://arxiv.org/abs/2108.12409"
+  ],
+  "swe-bench": [
+    "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+    "https://arxiv.org/abs/2310.06770"
+  ],
+  "swe-agent": [
+    "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering",
+    "https://arxiv.org/abs/2405.15793"
+  ],
+  "roformer": [
+    "RoFormer: Enhanced Transformer with Rotary Position Embedding",
+    "https://arxiv.org/abs/2104.09864"
+  ],
+  "bio-tianqi-chen": [
+    "陈天奇 研究主页",
+    "https://tqchen.com/"
+  ],
+  "xgboost": [
+    "XGBoost: A Scalable Tree Boosting System",
+    "https://arxiv.org/abs/1603.02754"
+  ],
+  "tvm": [
+    "TVM: An Automated End-to-End Optimizing Compiler for Deep Learning",
+    "https://arxiv.org/abs/1802.04799"
+  ],
+  "sglang": [
+    "SGLang: Efficient Execution of Structured Language Model Programs",
+    "https://arxiv.org/abs/2312.07104"
+  ],
+  "mtbench": [
+    "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+    "https://arxiv.org/abs/2306.05685"
+  ],
+  "bio-song-han": [
+    "MIT Han Lab：韩松",
+    "https://hanlab.mit.edu/songhan"
+  ],
+  "awq": [
+    "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration",
+    "https://arxiv.org/abs/2306.00978"
+  ],
+  "once-for-all": [
+    "Once-for-All: Train One Network and Specialize it for Efficient Deployment",
+    "https://arxiv.org/abs/1908.09791"
+  ],
+  "bio-zhihao-jia": [
+    "卡内基梅隆大学：贾志浩",
+    "https://www.cs.cmu.edu/~zhihaoj2/"
+  ],
+  "flexflow": [
+    "Beyond Data and Model Parallelism for Deep Neural Networks",
+    "https://arxiv.org/abs/1807.05358"
+  ],
+  "bio-zhuang-liu": [
+    "刘壮 研究主页",
+    "https://liuzhuang13.github.io/"
+  ],
+  "network-slimming": [
+    "Learning Efficient Convolutional Networks through Network Slimming",
+    "https://arxiv.org/abs/1708.06519"
+  ],
+  "gopher": [
+    "Scaling Language Models: Methods, Analysis & Insights from Training Gopher",
+    "https://arxiv.org/abs/2112.11446"
+  ],
+  "bio-yoon-kim": [
+    "MIT：Yoon Kim",
+    "https://people.csail.mit.edu/yoonkim/"
+  ],
+  "kim-cnn": [
+    "Convolutional Neural Networks for Sentence Classification",
+    "https://arxiv.org/abs/1408.5882"
+  ],
+  "sequence-distillation": [
+    "Sequence-Level Knowledge Distillation",
+    "https://arxiv.org/abs/1606.07947"
+  ],
+  "bart": [
+    "BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension",
+    "https://arxiv.org/abs/1910.13461"
+  ],
+  "bio-danqi-chen": [
+    "普林斯顿大学：陈丹琦",
+    "https://www.cs.princeton.edu/~danqic/"
+  ],
+  "drqa": [
+    "Reading Wikipedia to Answer Open-Domain Questions",
+    "https://arxiv.org/abs/1704.00051"
+  ],
+  "dpr": [
+    "Dense Passage Retrieval for Open-Domain Question Answering",
+    "https://arxiv.org/abs/2004.04906"
+  ],
+  "alce": [
+    "Enabling Large Language Models to Generate Text with Citations",
+    "https://arxiv.org/abs/2305.14627"
+  ],
+  "bio-luke-zettlemoyer": [
+    "华盛顿大学：Luke Zettlemoyer",
+    "https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/"
+  ],
+  "bio-omar-khattab": [
+    "Omar Khattab 研究主页",
+    "https://omarkhattab.com/"
+  ],
+  "colbert": [
+    "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+    "https://arxiv.org/abs/2004.12832"
+  ],
+  "dspy": [
+    "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines",
+    "https://arxiv.org/abs/2310.03714"
+  ],
+  "bio-christopher-re": [
+    "斯坦福大学：Christopher Ré",
+    "https://cs.stanford.edu/people/chrismre/"
+  ],
+  "data-programming": [
+    "Data Programming: Creating Large Training Sets, Quickly",
+    "https://arxiv.org/abs/1605.07723"
+  ],
+  "snorkel": [
+    "Snorkel: Rapid Training Data Creation with Weak Supervision",
+    "https://arxiv.org/abs/1711.10160"
+  ],
+  "hateful-memes": [
+    "The Hateful Memes Challenge: Detecting Hate Speech in Multimodal Memes",
+    "https://arxiv.org/abs/2005.04790"
+  ],
+  "bio-sebastian-riedel": [
+    "Sebastian Riedel 研究主页",
+    "http://www.riedelcastro.org/"
+  ],
+  "bio-luyu-gao": [
+    "Luyu Gao 研究主页",
+    "https://luyug.github.io/"
+  ],
+  "condenser": [
+    "Condenser: a Pre-training Architecture for Dense Retrieval",
+    "https://arxiv.org/abs/2104.08253"
+  ],
+  "ddpm": [
+    "Denoising Diffusion Probabilistic Models",
+    "https://arxiv.org/abs/2006.11239"
+  ],
+  "classifier-free": [
+    "Classifier-Free Diffusion Guidance",
+    "https://arxiv.org/abs/2207.12598"
+  ],
+  "bio-yang-song": [
+    "宋飏 研究主页",
+    "https://yang-song.net/"
+  ],
+  "score-sde": [
+    "Score-Based Generative Modeling through Stochastic Differential Equations",
+    "https://arxiv.org/abs/2011.13456"
+  ],
+  "consistency-models": [
+    "Consistency Models",
+    "https://arxiv.org/abs/2303.01469"
+  ],
+  "bio-prafulla-dhariwal": [
+    "Prafulla Dhariwal 研究主页",
+    "https://prafulladhariwal.com/"
+  ],
+  "diffusion-beats-gans": [
+    "Diffusion Models Beat GANs on Image Synthesis",
+    "https://arxiv.org/abs/2105.05233"
+  ],
+  "bio-jascha-sohl-dickstein": [
+    "Jascha Sohl-Dickstein 研究主页",
+    "https://sohldickstein.com/"
+  ],
+  "nonequilibrium": [
+    "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+    "https://arxiv.org/abs/1503.03585"
+  ],
+  "improved-gans": [
+    "Improved Techniques for Training GANs",
+    "https://arxiv.org/abs/1606.03498"
+  ],
+  "progressive-distillation": [
+    "Progressive Distillation for Fast Sampling of Diffusion Models",
+    "https://arxiv.org/abs/2202.00512"
+  ],
+  "bio-william-peebles": [
+    "William Peebles 研究主页",
+    "https://www.wpeebles.com/"
+  ],
+  "bio-chenlin-meng": [
+    "斯坦福大学：Chenlin Meng（历史资料）",
+    "https://cs.stanford.edu/~chenlin/"
+  ],
+  "sdedit": [
+    "SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations",
+    "https://arxiv.org/abs/2108.01073"
+  ],
+  "ddim": [
+    "Denoising Diffusion Implicit Models",
+    "https://arxiv.org/abs/2010.02502"
+  ],
+  "bio-jiaming-song": [
+    "Jiaming Song 研究主页",
+    "https://tsong.me/"
+  ],
+  "maml": [
+    "Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks",
+    "https://arxiv.org/abs/1703.03400"
+  ],
+  "visuomotor": [
+    "End-to-End Training of Deep Visuomotor Policies",
+    "https://arxiv.org/abs/1504.00702"
+  ],
+  "rt2": [
+    "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control",
+    "https://arxiv.org/abs/2307.15818"
+  ],
+  "bio-sergey-levine": [
+    "伯克利：Sergey Levine",
+    "https://people.eecs.berkeley.edu/~svlevine/"
+  ],
+  "trpo": [
+    "Trust Region Policy Optimization",
+    "https://arxiv.org/abs/1502.05477"
+  ],
+  "bio-jim-fan": [
+    "范林熙 研究主页",
+    "https://jimfan.me/"
+  ],
+  "voyager": [
+    "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+    "https://arxiv.org/abs/2305.16291"
+  ],
+  "eureka": [
+    "Eureka: Human-Level Reward Design via Coding Large Language Models",
+    "https://arxiv.org/abs/2310.12931"
+  ],
+  "bio-shunyu-yao": [
+    "姚顺雨 研究主页",
+    "https://ysymyth.github.io/"
+  ],
+  "react": [
+    "ReAct: Synergizing Reasoning and Acting in Language Models",
+    "https://arxiv.org/abs/2210.03629"
+  ],
+  "tree-of-thoughts": [
+    "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+    "https://arxiv.org/abs/2305.10601"
+  ],
+  "bio-charles-packer": [
+    "Charles Packer 研究主页",
+    "https://charlespacker.com/"
+  ],
+  "memgpt": [
+    "MemGPT: Towards LLMs as Operating Systems",
+    "https://arxiv.org/abs/2310.08560"
+  ],
+  "bio-shishir-patil": [
+    "Shishir Patil 研究主页",
+    "https://shishirpatil.github.io/"
+  ],
+  "gorilla": [
+    "Gorilla: Large Language Model Connected with Massive APIs",
+    "https://arxiv.org/abs/2305.15334"
+  ],
+  "openhands": [
+    "OpenHands: An Open Platform for AI Software Developers as Generalist Agents",
+    "https://arxiv.org/abs/2407.16741"
+  ],
+  "bio-kilian-lieret": [
+    "Kilian Lieret 研究主页",
+    "https://www.lieret.net/"
+  ],
+  "tulu3": [
+    "Tulu 3: Pushing Frontiers in Open Language Model Post-Training",
+    "https://arxiv.org/abs/2411.15124"
+  ],
+  "bio-hamish-ivison": [
+    "Hamish Ivison 研究主页",
+    "https://ivison.id.au/"
+  ],
+  "olmo": [
+    "OLMo: Accelerating the Science of Language Models",
+    "https://arxiv.org/abs/2402.00838"
+  ],
+  "bio-luca-soldaini": [
+    "Luca Soldaini 研究主页",
+    "https://soldaini.net/"
+  ],
+  "dolma": [
+    "Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research",
+    "https://arxiv.org/abs/2402.00159"
+  ],
+  "pythia": [
+    "Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling",
+    "https://arxiv.org/abs/2304.01373"
+  ],
+  "bio-joelle-pineau": [
+    "麦吉尔大学：Joelle Pineau",
+    "https://www.cs.mcgill.ca/~jpineau/"
+  ],
+  "deep-rl-matters": [
+    "Deep Reinforcement Learning that Matters",
+    "https://arxiv.org/abs/1709.06560"
+  ],
+  "reproducibility-ml": [
+    "Improving Reproducibility in Machine Learning Research (A Report from the NeurIPS 2019 Reproducibility Program)",
+    "https://arxiv.org/abs/2003.12206"
+  ],
+  "su-blog": [
+    "苏剑林：科学空间",
+    "https://kexue.fm/"
+  ],
+  "gorilla-project": [
+    "Gorilla 与 Berkeley Function Calling Leaderboard",
+    "https://github.com/ShishirPatil/gorilla"
+  ],
+  "openhands-project": [
+    "OpenHands 开源项目",
+    "https://github.com/OpenHands/OpenHands"
+  ],
+  "rlhf-book": [
+    "Nathan Lambert：RLHF Book",
+    "https://rlhfbook.com/"
+  ],
+  "eleuther-about": [
+    "EleutherAI 介绍",
+    "https://www.eleuther.ai/about"
+  ],
+  "synthid-blog": [
+    "Google DeepMind：SynthID 文本水印",
+    "https://deepmind.google/blog/watermarking-ai-generated-text-and-video-with-synthid/"
+  ],
+  "synthid-project": [
+    "SynthID Text 开源实现",
+    "https://github.com/google-deepmind/synthid-text"
   ]
 }

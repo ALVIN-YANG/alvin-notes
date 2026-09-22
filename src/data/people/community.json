@@ -118,7 +118,7 @@
     "id": "harrison-chase",
     "name": "Harrison Chase",
     "alias": "哈里森·蔡斯",
-    "category": "开源与教育",
+    "category": "Agent 与工具",
     "tag": "LangChain · LangGraph",
     "bio": [
       "Harrison Chase 是 LangChain 的创建者和公司联合创始人。他关注如何把语言模型与外部数据、工具和应用流程连接起来。",

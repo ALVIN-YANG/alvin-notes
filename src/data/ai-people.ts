@@ -7,10 +7,15 @@ import china from './people/china.json';
 import leaders from './people/leaders.json';
 import evaluation from './people/evaluation.json';
 import community from './people/community.json';
+import training from './people/training.json';
+import retrieval from './people/retrieval.json';
+import generation from './people/generation.json';
+import agents from './people/agents.json';
+import openResearch from './people/open-research.json';
 import sourceCatalog from './people/sources.json';
 import portraitCatalog from './ai-people-portraits.json';
 
-export const categories = ['基础与架构', '训练与推理', '多模态', '对齐与评测', '模型与团队', '开源与教育'];
+export const categories = ['基础与架构', '训练与推理', '多模态', 'Agent 与工具', '对齐与评测', '模型与团队', '开源与教育'];
 export const reviewedAt = '2026-09-22';
 type Portrait = { src: string; source: string; credit: string; license: string; licenseUrl: string; modification: string };
 export type Person = {
@@ -22,6 +27,7 @@ const portraits = portraitCatalog as Record<string, Portrait>;
 export const people: Person[] = [
   ...foundations, ...language, ...alignment, ...vision, ...systems,
   ...china, ...leaders, ...evaluation, ...community,
+  ...training, ...retrieval, ...generation, ...agents, ...openResearch,
 ].map(person => ({
   ...person,
   portrait: portraits[person.id],

@@ -7,6 +7,7 @@ import { JSDOM } from 'jsdom';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 const runFile = promisify(execFile);
+const timeoutMs = Math.min(120000, Math.max(1000, Number(process.argv.find(arg => arg.startsWith('--timeout-ms='))?.split('=')[1]) || 20000));
 
 const root = process.cwd();
 const directory = path.join(root, 'public/images/people');
@@ -20,13 +21,13 @@ await mkdir(directory, { recursive: true });
 const plain = html => new JSDOM(`<body>${html || ''}</body>`).window.document.body.textContent.trim();
 async function get(url, json = true) {
   try {
-    const r = await fetch(url, { headers: { 'User-Agent': 'AlvinNotes-People/1.0 (https://blog.mlxb.cc)' }, signal: AbortSignal.timeout(20000) });
+    const r = await fetch(url, { headers: { 'User-Agent': 'AlvinNotes-People/1.0 (https://blog.mlxb.cc)' }, signal: AbortSignal.timeout(timeoutMs) });
     if (!r.ok) throw new Error(`HTTP ${r.status}: ${url}`);
     return json ? await r.json() : Buffer.from(await r.arrayBuffer());
   } catch (error) {
     if (json) throw error;
     // Some image CDNs work through the system proxy but not Node's fetch transport.
-    const { stdout } = await runFile('curl', ['--fail', '--location', '--max-time', '20', '--silent', '--show-error', url], { encoding: 'buffer', maxBuffer: 20 * 1024 * 1024 });
+    const { stdout } = await runFile('curl', ['--fail', '--location', '--max-time', String(Math.ceil(timeoutMs / 1000)), '--silent', '--show-error', url], { encoding: 'buffer', maxBuffer: 20 * 1024 * 1024 });
     return stdout;
   }
 }
@@ -44,6 +45,7 @@ await Promise.all(Array.from({ length: 4 }, async () => {
       if (entry.imageUrl) {
         image = { url: entry.imageUrl, source: entry.source, credit: entry.credit, license: entry.license || '公开人物介绍配图；版权归原权利人', licenseUrl: entry.licenseUrl || entry.source };
       } else {
+        if (!entry.wikipediaReviewed) throw new Error('请先核对百科中的身份，再设置 wikipediaReviewed；同名不代表同一人');
         const summary = await get(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
         if (summary.type !== 'standard' || !summary.originalimage?.source) throw new Error('No unambiguous portrait');
         const original = new URL(summary.originalimage.source);

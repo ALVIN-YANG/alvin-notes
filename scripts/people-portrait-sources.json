@@ -1,24 +1,29 @@
 [
   {
     "id": "geoffrey-hinton",
-    "title": "Geoffrey Hinton"
+    "title": "Geoffrey Hinton",
+    "wikipediaReviewed": true
   },
   {
     "id": "yoshua-bengio",
-    "title": "Yoshua Bengio"
+    "title": "Yoshua Bengio",
+    "wikipediaReviewed": true
   },
   {
     "id": "yann-lecun",
-    "title": "Yann LeCun"
+    "title": "Yann LeCun",
+    "wikipediaReviewed": true
   },
   {
     "id": "david-rumelhart",
     "title": "David Rumelhart",
-    "position": "north"
+    "position": "north",
+    "wikipediaReviewed": true
   },
   {
     "id": "richard-sutton",
-    "title": "Richard S. Sutton"
+    "title": "Richard S. Sutton",
+    "wikipediaReviewed": true
   },
   {
     "id": "andrew-barto",
@@ -31,11 +36,13 @@
   },
   {
     "id": "jurgen-schmidhuber",
-    "title": "Jürgen Schmidhuber"
+    "title": "Jürgen Schmidhuber",
+    "wikipediaReviewed": true
   },
   {
     "id": "sepp-hochreiter",
-    "title": "Sepp Hochreiter"
+    "title": "Sepp Hochreiter",
+    "wikipediaReviewed": true
   },
   {
     "id": "dzmitry-bahdanau",
@@ -48,7 +55,8 @@
   },
   {
     "id": "kyunghyun-cho",
-    "title": "Kyunghyun Cho"
+    "title": "Kyunghyun Cho",
+    "wikipediaReviewed": true
   },
   {
     "id": "ilya-sutskever",
@@ -59,7 +67,8 @@
       0.11,
       0.5,
       0.34
-    ]
+    ],
+    "wikipediaReviewed": true
   },
   {
     "id": "ashish-vaswani",
@@ -98,7 +107,8 @@
   },
   {
     "id": "aidan-gomez",
-    "title": "Aidan Gomez"
+    "title": "Aidan Gomez",
+    "wikipediaReviewed": true
   },
   {
     "id": "lukasz-kaiser",
@@ -138,7 +148,8 @@
   },
   {
     "id": "tomas-mikolov",
-    "title": "Tomas Mikolov"
+    "title": "Tomas Mikolov",
+    "wikipediaReviewed": true
   },
   {
     "id": "tom-brown",
@@ -163,7 +174,8 @@
   },
   {
     "id": "jared-kaplan",
-    "title": "Jared Kaplan"
+    "title": "Jared Kaplan",
+    "wikipediaReviewed": true
   },
   {
     "id": "jordan-hoffmann",
@@ -245,7 +257,8 @@
   },
   {
     "id": "dan-hendrycks",
-    "title": "Dan Hendrycks"
+    "title": "Dan Hendrycks",
+    "wikipediaReviewed": true
   },
   {
     "id": "dylan-hadfield-menell",
@@ -290,7 +303,8 @@
       0,
       0.52,
       0.35
-    ]
+    ],
+    "wikipediaReviewed": true
   },
   {
     "id": "kaiming-he",
@@ -307,7 +321,8 @@
   },
   {
     "id": "ian-goodfellow",
-    "title": "Ian Goodfellow"
+    "title": "Ian Goodfellow",
+    "wikipediaReviewed": true
   },
   {
     "id": "david-silver",
@@ -350,7 +365,8 @@
   },
   {
     "id": "jeff-dean",
-    "title": "Jeff Dean"
+    "title": "Jeff Dean",
+    "wikipediaReviewed": true
   },
   {
     "id": "sanjay-ghemawat",
@@ -358,7 +374,8 @@
   },
   {
     "id": "matei-zaharia",
-    "title": "Matei Zaharia"
+    "title": "Matei Zaharia",
+    "wikipediaReviewed": true
   },
   {
     "id": "soumith-chintala",
@@ -417,7 +434,8 @@
   },
   {
     "id": "jensen-huang",
-    "title": "Jensen Huang"
+    "title": "Jensen Huang",
+    "wikipediaReviewed": true
   },
   {
     "id": "liang-wenfeng",
@@ -448,7 +466,13 @@
   },
   {
     "id": "peng-zhang",
-    "title": "Peng Zhang (entrepreneur)"
+    "title": "Peng Zhang (entrepreneur)",
+    "imageUrl": "https://www.tsinghua.edu.cn/__local/4/0D/8D/D475F35008390523AFDEB4C566A_D1B7E471_C5B15.png",
+    "source": "https://www.tsinghua.edu.cn/info/1178/113278.htm",
+    "credit": "清华大学新闻网：张鹏致辞",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.tsinghua.edu.cn/info/1178/113278.htm",
+    "position": "north"
   },
   {
     "id": "junyang-lin",
@@ -479,7 +503,8 @@
   },
   {
     "id": "kai-fu-lee",
-    "title": "Kai-Fu Lee"
+    "title": "Kai-Fu Lee",
+    "wikipediaReviewed": true
   },
   {
     "id": "xiaochuan-wang",
@@ -528,31 +553,38 @@
   },
   {
     "id": "sam-altman",
-    "title": "Sam Altman"
+    "title": "Sam Altman",
+    "wikipediaReviewed": true
   },
   {
     "id": "dario-amodei",
-    "title": "Dario Amodei"
+    "title": "Dario Amodei",
+    "wikipediaReviewed": true
   },
   {
     "id": "demis-hassabis",
-    "title": "Demis Hassabis"
+    "title": "Demis Hassabis",
+    "wikipediaReviewed": true
   },
   {
     "id": "shane-legg",
-    "title": "Shane Legg"
+    "title": "Shane Legg",
+    "wikipediaReviewed": true
   },
   {
     "id": "mustafa-suleyman",
-    "title": "Mustafa Suleyman"
+    "title": "Mustafa Suleyman",
+    "wikipediaReviewed": true
   },
   {
     "id": "arthur-mensch",
-    "title": "Arthur Mensch"
+    "title": "Arthur Mensch",
+    "wikipediaReviewed": true
   },
   {
     "id": "mark-zuckerberg",
-    "title": "Mark Zuckerberg"
+    "title": "Mark Zuckerberg",
+    "wikipediaReviewed": true
   },
   {
     "id": "mira-murati",
@@ -563,20 +595,22 @@
       0.03,
       0.58,
       0.4
-    ]
+    ],
+    "wikipediaReviewed": true
   },
   {
     "id": "elon-musk",
-    "title": "Elon Musk"
+    "title": "Elon Musk",
+    "wikipediaReviewed": true
   },
   {
     "id": "percy-liang",
     "title": "Percy Liang",
-    "imageUrl": "https://cs.stanford.edu/~pliang/resources/percy3.jpeg",
-    "source": "https://cs.stanford.edu/~pliang/",
-    "credit": "Percy Liang / Stanford",
+    "imageUrl": "https://hai.stanford.edu/assets/images/avatars/percy--4%20(1).png",
+    "source": "https://hai.stanford.edu/people/percy-liang",
+    "credit": "Percy Liang / Stanford HAI",
     "license": "公开人物介绍配图；版权归原权利人",
-    "licenseUrl": "https://cs.stanford.edu/~pliang/"
+    "licenseUrl": "https://hai.stanford.edu/people/percy-liang"
   },
   {
     "id": "christopher-manning",
@@ -596,23 +630,28 @@
       0.015,
       0.48,
       0.39
-    ]
+    ],
+    "wikipediaReviewed": true
   },
   {
     "id": "timnit-gebru",
-    "title": "Timnit Gebru"
+    "title": "Timnit Gebru",
+    "wikipediaReviewed": true
   },
   {
     "id": "margaret-mitchell",
-    "title": "Margaret Mitchell (scientist)"
+    "title": "Margaret Mitchell (scientist)",
+    "wikipediaReviewed": true
   },
   {
     "id": "deborah-raji",
-    "title": "Inioluwa Deborah Raji"
+    "title": "Inioluwa Deborah Raji",
+    "wikipediaReviewed": true
   },
   {
     "id": "hanna-wallach",
-    "title": "Hanna Wallach"
+    "title": "Hanna Wallach",
+    "wikipediaReviewed": true
   },
   {
     "id": "andrej-karpathy",
@@ -623,11 +662,13 @@
       0.025,
       0.48,
       0.36
-    ]
+    ],
+    "wikipediaReviewed": true
   },
   {
     "id": "andrew-ng",
-    "title": "Andrew Ng"
+    "title": "Andrew Ng",
+    "wikipediaReviewed": true
   },
   {
     "id": "thomas-wolf",
@@ -665,7 +706,8 @@
   },
   {
     "id": "jeremy-howard",
-    "title": "Jeremy Howard (entrepreneur)"
+    "title": "Jeremy Howard (entrepreneur)",
+    "wikipediaReviewed": true
   },
   {
     "id": "sebastian-raschka",
@@ -684,5 +726,375 @@
     "credit": "Harrison Chase",
     "license": "公开人物介绍配图；版权归原权利人",
     "licenseUrl": "https://github.com/hwchase17"
+  },
+  {
+    "id": "john-hopfield",
+    "title": "John Hopfield",
+    "imageUrl": "https://www.nobelprize.org/images/165779-portrait-medium.jpg",
+    "source": "https://www.nobelprize.org/prizes/physics/2024/hopfield/facts/",
+    "credit": "© Nobel Prize Outreach / Nanaka Adachi",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.nobelprize.org/prizes/physics/2024/hopfield/facts/"
+  },
+  {
+    "id": "alex-graves",
+    "title": "Alex Graves",
+    "imageUrl": "https://www.cs.toronto.edu/~graves/pic.jpg",
+    "source": "https://www.cs.toronto.edu/~graves/",
+    "credit": "Alex Graves 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.toronto.edu/~graves/"
+  },
+  {
+    "id": "jimmy-ba",
+    "title": "Jimmy Ba",
+    "imageUrl": "https://jimmylba.github.io/assets/images/jimmy_ba.jpg",
+    "source": "https://jimmylba.github.io/",
+    "credit": "Jimmy Ba 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://jimmylba.github.io/"
+  },
+  {
+    "id": "aaron-van-den-oord",
+    "title": "Aaron Van Den Oord"
+  },
+  {
+    "id": "denny-zhou",
+    "title": "Denny Zhou"
+  },
+  {
+    "id": "barret-zoph",
+    "title": "Barret Zoph",
+    "imageUrl": "https://barretzoph.github.io/images/headshot.jpg",
+    "source": "https://barretzoph.github.io/",
+    "credit": "Barret Zoph 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://barretzoph.github.io/",
+    "crop": [
+      0.24,
+      0.065,
+      0.4,
+      0.49
+    ]
+  },
+  {
+    "id": "william-fedus",
+    "title": "William Fedus"
+  },
+  {
+    "id": "hyung-won-chung",
+    "title": "Hyung Won Chung"
+  },
+  {
+    "id": "ofir-press",
+    "title": "Ofir Press",
+    "imageUrl": "https://ofir.io/images/me.jpeg",
+    "source": "https://ofir.io/about/",
+    "credit": "Ofir Press 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://ofir.io/about/"
+  },
+  {
+    "id": "jianlin-su",
+    "title": "Jianlin Su"
+  },
+  {
+    "id": "tianqi-chen",
+    "title": "Tianqi Chen",
+    "imageUrl": "https://tqchen.com/data/img/tqchen-new.jpg",
+    "source": "https://tqchen.com/",
+    "credit": "陈天奇 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://tqchen.com/"
+  },
+  {
+    "id": "lianmin-zheng",
+    "title": "Lianmin Zheng",
+    "imageUrl": "https://lmzheng.net/images/profile.jpg",
+    "source": "https://lmzheng.net/",
+    "credit": "郑连敏 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://lmzheng.net/"
+  },
+  {
+    "id": "song-han",
+    "title": "Song Han",
+    "imageUrl": "https://cdn.prod.website-files.com/64f4d663be17b6544a586bac/6514db3bc943fa1c599d89d5_songhan.jpeg",
+    "source": "https://hanlab.mit.edu/songhan",
+    "credit": "韩松 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://hanlab.mit.edu/songhan"
+  },
+  {
+    "id": "zhihao-jia",
+    "title": "Zhihao Jia",
+    "imageUrl": "https://www.cs.cmu.edu/~zhihaoj2/photo.jpg",
+    "source": "https://www.cs.cmu.edu/~zhihaoj2/",
+    "credit": "贾志浩 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.cmu.edu/~zhihaoj2/"
+  },
+  {
+    "id": "zhuang-liu",
+    "title": "Zhuang Liu",
+    "imageUrl": "https://liuzhuang13.github.io/images/zhuangliuc.png",
+    "source": "https://liuzhuang13.github.io/",
+    "credit": "刘壮 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://liuzhuang13.github.io/"
+  },
+  {
+    "id": "sharan-narang",
+    "title": "Sharan Narang"
+  },
+  {
+    "id": "jack-rae",
+    "title": "Jack Rae",
+    "skipReason": "百科同名人物并非本页 AI 研究者；只接受核实后的机构或本人肖像"
+  },
+  {
+    "id": "yoon-kim",
+    "title": "Yoon Kim",
+    "imageUrl": "https://people.csail.mit.edu/yoonkim/data/profile.jpg",
+    "source": "https://people.csail.mit.edu/yoonkim/",
+    "credit": "Yoon Kim 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://people.csail.mit.edu/yoonkim/"
+  },
+  {
+    "id": "mike-lewis",
+    "title": "Mike Lewis"
+  },
+  {
+    "id": "danqi-chen",
+    "title": "Danqi Chen",
+    "imageUrl": "https://www.cs.princeton.edu/~danqic/images/danqi_2025.jpg",
+    "source": "https://www.cs.princeton.edu/~danqic/",
+    "credit": "陈丹琦 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.princeton.edu/~danqic/"
+  },
+  {
+    "id": "luke-zettlemoyer",
+    "title": "Luke Zettlemoyer",
+    "imageUrl": "https://www.cs.washington.edu/wp-content/uploads/elementor/thumbs/portrait-luke-zettlemoyer-qtmqwckar2362d155qo3hyllm9pjbk2m8lco99qm5c.jpg",
+    "source": "https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/",
+    "credit": "Luke Zettlemoyer 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/"
+  },
+  {
+    "id": "omar-khattab",
+    "title": "Omar Khattab",
+    "imageUrl": "https://omarkhattab.com/aZQB6U4b_400x400.jpg",
+    "source": "https://omarkhattab.com/",
+    "credit": "Omar Khattab 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://omarkhattab.com/"
+  },
+  {
+    "id": "christopher-re",
+    "title": "Christopher Re",
+    "imageUrl": "https://cs.stanford.edu/people/chrismre/img/chrismre_headshot_lowres.jpg",
+    "source": "https://cs.stanford.edu/people/chrismre/",
+    "credit": "Christopher Ré 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://cs.stanford.edu/people/chrismre/"
+  },
+  {
+    "id": "douwe-kiela",
+    "title": "Douwe Kiela",
+    "wikipediaReviewed": true
+  },
+  {
+    "id": "sebastian-riedel",
+    "title": "Sebastian Riedel"
+  },
+  {
+    "id": "luyu-gao",
+    "title": "Luyu Gao",
+    "imageUrl": "https://luyug.github.io/images/portrait-2021-3.jpg",
+    "source": "https://luyug.github.io/",
+    "credit": "Luyu Gao 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://luyug.github.io/"
+  },
+  {
+    "id": "jonathan-ho",
+    "title": "Jonathan Ho"
+  },
+  {
+    "id": "yang-song",
+    "title": "Yang Song",
+    "imageUrl": "https://yang-song.net/assets/img/profile.jpg?v=856cfb22b634ecdbd6b32a574b80e3ad",
+    "source": "https://yang-song.net/",
+    "credit": "宋飏 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://yang-song.net/"
+  },
+  {
+    "id": "prafulla-dhariwal",
+    "title": "Prafulla Dhariwal",
+    "imageUrl": "https://prafulladhariwal.com/assets/imgs/profile.jpg",
+    "source": "https://prafulladhariwal.com/",
+    "credit": "Prafulla Dhariwal 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://prafulladhariwal.com/"
+  },
+  {
+    "id": "jascha-sohl-dickstein",
+    "title": "Jascha Sohl Dickstein",
+    "imageUrl": "https://images.squarespace-cdn.com/content/v1/53d19eeae4b0d2c0c0eb410e/1414361996432-837PS73PS2YIG69T0A9Q/Jascha_profile.png",
+    "source": "https://sohldickstein.com/",
+    "credit": "Jascha Sohl-Dickstein 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://sohldickstein.com/"
+  },
+  {
+    "id": "tim-salimans",
+    "title": "Tim Salimans"
+  },
+  {
+    "id": "william-peebles",
+    "title": "William Peebles",
+    "imageUrl": "https://www.wpeebles.com/images/me2025.jpg",
+    "source": "https://www.wpeebles.com/",
+    "credit": "William Peebles 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.wpeebles.com/"
+  },
+  {
+    "id": "chenlin-meng",
+    "title": "Chenlin Meng",
+    "imageUrl": "https://cs.stanford.edu/~chenlin/public/chenlin.png",
+    "source": "https://cs.stanford.edu/~chenlin/",
+    "credit": "Chenlin Meng 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://cs.stanford.edu/~chenlin/"
+  },
+  {
+    "id": "jiaming-song",
+    "title": "Jiaming Song"
+  },
+  {
+    "id": "chelsea-finn",
+    "title": "Chelsea Finn",
+    "wikipediaReviewed": true
+  },
+  {
+    "id": "sergey-levine",
+    "title": "Sergey Levine",
+    "imageUrl": "https://people.eecs.berkeley.edu/~svlevine/images/portrait_lab_small.png",
+    "source": "https://people.eecs.berkeley.edu/~svlevine/",
+    "credit": "Sergey Levine 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://people.eecs.berkeley.edu/~svlevine/",
+    "crop": [
+      0.2,
+      0.08,
+      0.45,
+      0.45
+    ]
+  },
+  {
+    "id": "pieter-abbeel",
+    "title": "Pieter Abbeel",
+    "wikipediaReviewed": true,
+    "crop": [
+      0.48,
+      0.15,
+      0.36,
+      0.49
+    ]
+  },
+  {
+    "id": "jim-fan",
+    "title": "Jim Fan",
+    "imageUrl": "https://jimfan.me/authors/admin/avatar_hu861f70d497ce05786be4b5adffabb358_3515583_1000x1000_fill_q75_lanczos_center.jpg",
+    "source": "https://jimfan.me/",
+    "credit": "范林熙 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://jimfan.me/"
+  },
+  {
+    "id": "shunyu-yao",
+    "title": "Shunyu Yao",
+    "imageUrl": "https://ysymyth.github.io/images/self.jpeg",
+    "source": "https://ysymyth.github.io/",
+    "credit": "姚顺雨 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://ysymyth.github.io/"
+  },
+  {
+    "id": "charles-packer",
+    "title": "Charles Packer",
+    "skipReason": "百科同名人物并非本页 AI 研究者；只接受核实后的机构或本人肖像"
+  },
+  {
+    "id": "shishir-patil",
+    "title": "Shishir Patil",
+    "imageUrl": "https://shishirpatil.github.io/img.jpg",
+    "source": "https://shishirpatil.github.io/",
+    "credit": "Shishir Patil 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://shishirpatil.github.io/"
+  },
+  {
+    "id": "graham-neubig",
+    "title": "Graham Neubig"
+  },
+  {
+    "id": "kilian-lieret",
+    "title": "Kilian Lieret",
+    "imageUrl": "https://www.lieret.net/images/avatar_big_hu_fdd6a2a8b6f19931.png",
+    "source": "https://www.lieret.net/",
+    "credit": "Kilian Lieret 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.lieret.net/"
+  },
+  {
+    "id": "carlos-jimenez",
+    "title": "Carlos Jimenez",
+    "skipReason": "百科同名人物并非本页 AI 研究者；只接受核实后的机构或本人肖像"
+  },
+  {
+    "id": "nathan-lambert",
+    "title": "Nathan Lambert",
+    "skipReason": "百科同名人物并非本页 AI 研究者；只接受核实后的机构或本人肖像"
+  },
+  {
+    "id": "hamish-ivison",
+    "title": "Hamish Ivison",
+    "imageUrl": "https://ivison.id.au/assets/static/me-400.jpg",
+    "source": "https://ivison.id.au/",
+    "credit": "Hamish Ivison 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://ivison.id.au/"
+  },
+  {
+    "id": "luca-soldaini",
+    "title": "Luca Soldaini",
+    "imageUrl": "https://soldaini.net/pfp/me@512.webp",
+    "source": "https://soldaini.net/",
+    "credit": "Luca Soldaini 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://soldaini.net/"
+  },
+  {
+    "id": "stella-biderman",
+    "title": "Stella Biderman"
+  },
+  {
+    "id": "joelle-pineau",
+    "title": "Joelle Pineau",
+    "imageUrl": "https://www.cs.mcgill.ca/~jpineau/jpineau.jpg",
+    "source": "https://www.cs.mcgill.ca/~jpineau/",
+    "credit": "Joelle Pineau 机构或本人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cs.mcgill.ca/~jpineau/"
+  },
+  {
+    "id": "sumanth-dathathri",
+    "title": "Sumanth Dathathri"
   }
 ]
