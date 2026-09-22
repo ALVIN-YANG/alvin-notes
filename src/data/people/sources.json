@@ -1,0 +1,866 @@
+{
+  "turing2018": [
+    "ACM：2018 年图灵奖",
+    "https://awards.acm.org/about/2018-turing"
+  ],
+  "backprop": [
+    "Learning representations by back-propagating errors",
+    "https://www.nature.com/articles/323533a0"
+  ],
+  "alexnet": [
+    "AlexNet 原论文",
+    "https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks"
+  ],
+  "nobel-hinton": [
+    "诺贝尔奖：Geoffrey Hinton",
+    "https://www.nobelprize.org/prizes/physics/2024/hinton/facts/"
+  ],
+  "bengio-bio": [
+    "Yoshua Bengio 个人主页",
+    "https://yoshuabengio.org/"
+  ],
+  "neural-lm": [
+    "A Neural Probabilistic Language Model",
+    "https://www.jmlr.org/papers/v3/bengio03a.html"
+  ],
+  "bahdanau": [
+    "注意力机器翻译原论文",
+    "https://arxiv.org/abs/1409.0473"
+  ],
+  "lecun-bio": [
+    "Yann LeCun 个人主页",
+    "https://yann.lecun.com/"
+  ],
+  "lenet": [
+    "Gradient-Based Learning Applied to Document Recognition",
+    "http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf"
+  ],
+  "rumelhart-bio": [
+    "斯坦福：David Rumelhart",
+    "https://news.stanford.edu/stories/2011/03/rumelhart-obit-032511"
+  ],
+  "pdp": [
+    "Parallel Distributed Processing",
+    "https://mitpress.mit.edu/9780262680530/parallel-distributed-processing-volume-1/"
+  ],
+  "turing2024": [
+    "ACM：2024 年图灵奖",
+    "https://awards.acm.org/award_winners/barto_9471663"
+  ],
+  "rl-book": [
+    "Reinforcement Learning: An Introduction",
+    "http://incompleteideas.net/book/the-book-2nd.html"
+  ],
+  "bitter-lesson": [
+    "The Bitter Lesson",
+    "http://www.incompleteideas.net/IncIdeas/BitterLesson.html"
+  ],
+  "schmidhuber-bio": [
+    "Jürgen Schmidhuber 个人主页",
+    "https://people.idsia.ch/~juergen/"
+  ],
+  "lstm": [
+    "Long Short-Term Memory",
+    "https://doi.org/10.1162/neco.1997.9.8.1735"
+  ],
+  "curiosity": [
+    "Formal Theory of Creativity, Fun, and Intrinsic Motivation",
+    "https://arxiv.org/abs/0812.4360"
+  ],
+  "hochreiter-bio": [
+    "Sepp Hochreiter 研究机构主页",
+    "https://www.jku.at/en/institute-for-machine-learning/"
+  ],
+  "cho-bio": [
+    "Kyunghyun Cho 个人主页",
+    "https://kyunghyuncho.me/"
+  ],
+  "gru": [
+    "RNN Encoder–Decoder 原论文",
+    "https://arxiv.org/abs/1406.1078"
+  ],
+  "ilya-stanford": [
+    "斯坦福：Ilya Sutskever 简介（2023）",
+    "https://events.stanford.edu/event/ilya_sutskever_openai_entrepreneurial_thought_leader_speaker_series_etl"
+  ],
+  "seq2seq": [
+    "Sequence to Sequence Learning",
+    "https://arxiv.org/abs/1409.3215"
+  ],
+  "gpt3": [
+    "Language Models are Few-Shot Learners",
+    "https://arxiv.org/abs/2005.14165"
+  ],
+  "ssi": [
+    "Safe Superintelligence 官方说明",
+    "https://ssi.inc/"
+  ],
+  "transformer": [
+    "Attention Is All You Need",
+    "https://arxiv.org/abs/1706.03762"
+  ],
+  "essential": [
+    "Essential AI 官方介绍",
+    "https://www.essential.ai/about"
+  ],
+  "moe": [
+    "Sparsely-Gated Mixture-of-Experts",
+    "https://arxiv.org/abs/1701.06538"
+  ],
+  "mqa": [
+    "Fast Transformer Decoding: One Write-Head is All You Need",
+    "https://arxiv.org/abs/1911.02150"
+  ],
+  "image-transformer": [
+    "Image Transformer",
+    "https://arxiv.org/abs/1802.05751"
+  ],
+  "inceptive": [
+    "Inceptive 官方介绍",
+    "https://www.inceptive.life/"
+  ],
+  "sakana": [
+    "Sakana AI 官方介绍",
+    "https://sakana.ai/company-info/"
+  ],
+  "cohere": [
+    "Cohere 团队介绍",
+    "https://cohere.com/about"
+  ],
+  "tensor2tensor": [
+    "Tensor2Tensor 原论文",
+    "https://arxiv.org/abs/1803.07416"
+  ],
+  "multimodel": [
+    "One Model To Learn Them All",
+    "https://arxiv.org/abs/1706.05137"
+  ],
+  "rag": [
+    "Retrieval-Augmented Generation",
+    "https://arxiv.org/abs/2005.11401"
+  ],
+  "question-overlap": [
+    "Question and Answer Test-Train Overlap in Open-Domain Question Answering Datasets",
+    "https://arxiv.org/abs/2008.02637"
+  ],
+  "gpt1": [
+    "生成式预训练研究",
+    "https://openai.com/index/language-unsupervised/"
+  ],
+  "clip": [
+    "CLIP 原论文",
+    "https://arxiv.org/abs/2103.00020"
+  ],
+  "whisper": [
+    "Whisper 原论文",
+    "https://arxiv.org/abs/2212.04356"
+  ],
+  "bert": [
+    "BERT 原论文",
+    "https://arxiv.org/abs/1810.04805"
+  ],
+  "word2vec": [
+    "Efficient Estimation of Word Representations",
+    "https://arxiv.org/abs/1301.3781"
+  ],
+  "word2vec-distributed": [
+    "Distributed Representations of Words and Phrases",
+    "https://arxiv.org/abs/1310.4546"
+  ],
+  "constitutional-ai": [
+    "Constitutional AI",
+    "https://arxiv.org/abs/2212.08073"
+  ],
+  "vae": [
+    "Auto-Encoding Variational Bayes",
+    "https://arxiv.org/abs/1312.6114"
+  ],
+  "adam": [
+    "Adam: A Method for Stochastic Optimization",
+    "https://arxiv.org/abs/1412.6980"
+  ],
+  "kingma-bio": [
+    "Diederik Kingma 个人主页",
+    "https://dpkingma.com/"
+  ],
+  "matching-networks": [
+    "Matching Networks for One Shot Learning",
+    "https://arxiv.org/abs/1606.04080"
+  ],
+  "alphastar": [
+    "AlphaStar 原论文",
+    "https://www.nature.com/articles/s41586-019-1724-z"
+  ],
+  "paragraph-vector": [
+    "Distributed Representations of Sentences and Documents",
+    "https://arxiv.org/abs/1405.4053"
+  ],
+  "nas": [
+    "Neural Architecture Search with Reinforcement Learning",
+    "https://arxiv.org/abs/1611.01578"
+  ],
+  "scaling": [
+    "Scaling Laws for Neural Language Models",
+    "https://arxiv.org/abs/2001.08361"
+  ],
+  "chinchilla": [
+    "Training Compute-Optimal Large Language Models",
+    "https://arxiv.org/abs/2203.15556"
+  ],
+  "t5": [
+    "T5 原论文",
+    "https://arxiv.org/abs/1910.10683"
+  ],
+  "raffel-bio": [
+    "Colin Raffel 个人主页",
+    "https://colinraffel.com/"
+  ],
+  "ppo": [
+    "Proximal Policy Optimization Algorithms",
+    "https://arxiv.org/abs/1707.06347"
+  ],
+  "instructgpt": [
+    "InstructGPT 原论文",
+    "https://arxiv.org/abs/2203.02155"
+  ],
+  "openai-founding": [
+    "OpenAI 成立公告（2015）",
+    "https://openai.com/index/introducing-openai/"
+  ],
+  "human-preferences": [
+    "Deep Reinforcement Learning from Human Preferences",
+    "https://arxiv.org/abs/1706.03741"
+  ],
+  "christiano-bio": [
+    "Paul Christiano 的研究文章",
+    "https://www.alignmentforum.org/users/paulfchristiano"
+  ],
+  "superalignment": [
+    "Superalignment 项目公告（2023）",
+    "https://openai.com/index/introducing-superalignment/"
+  ],
+  "reward-modeling": [
+    "Scalable agent alignment via reward modeling",
+    "https://arxiv.org/abs/1811.07871"
+  ],
+  "ouyang-bio": [
+    "InstructGPT 官方研究介绍",
+    "https://openai.com/index/instruction-following/"
+  ],
+  "helpful-harmless": [
+    "Training a Helpful and Harmless Assistant",
+    "https://arxiv.org/abs/2204.05862"
+  ],
+  "askell-bio": [
+    "Amanda Askell 个人主页",
+    "https://www.amandaaskell.com/"
+  ],
+  "olah-bio": [
+    "Chris Olah 个人介绍",
+    "https://colah.github.io/about.html"
+  ],
+  "circuits": [
+    "Distill：Circuits",
+    "https://distill.pub/2020/circuits/"
+  ],
+  "toy-superposition": [
+    "Toy Models of Superposition",
+    "https://transformer-circuits.pub/2022/toy_model/index.html"
+  ],
+  "song-bio": [
+    "伯克利：Dawn Song",
+    "https://www2.eecs.berkeley.edu/Faculty/Homepages/song.html"
+  ],
+  "hendrycks-bio": [
+    "Dan Hendrycks 个人主页",
+    "https://www.danhendrycks.com/"
+  ],
+  "mmlu": [
+    "Measuring Massive Multitask Language Understanding",
+    "https://arxiv.org/abs/2009.03300"
+  ],
+  "ood": [
+    "A Baseline for Detecting Misclassified and Out-of-Distribution Examples",
+    "https://arxiv.org/abs/1610.02136"
+  ],
+  "dhm-bio": [
+    "MIT：Dylan Hadfield-Menell",
+    "https://people.csail.mit.edu/dhm/"
+  ],
+  "cirl": [
+    "Cooperative Inverse Reinforcement Learning",
+    "https://arxiv.org/abs/1606.03137"
+  ],
+  "dpo": [
+    "Direct Preference Optimization",
+    "https://arxiv.org/abs/2305.18290"
+  ],
+  "rafailov-bio": [
+    "Rafael Rafailov 研究与代码",
+    "https://github.com/rmrafailov"
+  ],
+  "wei-bio": [
+    "Jason Wei 个人主页",
+    "https://www.jasonwei.net/"
+  ],
+  "cot": [
+    "Chain-of-Thought Prompting",
+    "https://arxiv.org/abs/2201.11903"
+  ],
+  "flan": [
+    "Finetuned Language Models Are Zero-Shot Learners",
+    "https://arxiv.org/abs/2109.01652"
+  ],
+  "feifei-bio": [
+    "斯坦福：李飞飞",
+    "https://www.cs.stanford.edu/people/fei-fei-li"
+  ],
+  "imagenet": [
+    "ImageNet 官方网站",
+    "https://www.image-net.org/"
+  ],
+  "worldlabs": [
+    "World Labs 官方介绍",
+    "https://www.worldlabs.ai/about"
+  ],
+  "kaiming-bio": [
+    "MIT：何恺明",
+    "https://people.csail.mit.edu/kaiming/"
+  ],
+  "resnet": [
+    "Deep Residual Learning",
+    "https://arxiv.org/abs/1512.03385"
+  ],
+  "mask-rcnn": [
+    "Mask R-CNN",
+    "https://arxiv.org/abs/1703.06870"
+  ],
+  "mae": [
+    "Masked Autoencoders",
+    "https://arxiv.org/abs/2111.06377"
+  ],
+  "kriz-bio": [
+    "Alex Krizhevsky 个人主页",
+    "https://www.cs.toronto.edu/~kriz/"
+  ],
+  "cifar": [
+    "CIFAR 数据集",
+    "https://www.cs.toronto.edu/~kriz/cifar.html"
+  ],
+  "gan": [
+    "Generative Adversarial Networks",
+    "https://arxiv.org/abs/1406.2661"
+  ],
+  "adversarial-examples": [
+    "Explaining and Harnessing Adversarial Examples",
+    "https://arxiv.org/abs/1412.6572"
+  ],
+  "deep-learning-book": [
+    "Deep Learning 教材",
+    "https://www.deeplearningbook.org/"
+  ],
+  "silver-bio": [
+    "David Silver 个人主页",
+    "https://www.davidsilver.uk/"
+  ],
+  "alphago": [
+    "AlphaGo 原论文",
+    "https://www.nature.com/articles/nature16961"
+  ],
+  "alphazero": [
+    "AlphaZero 原论文",
+    "https://arxiv.org/abs/1712.01815"
+  ],
+  "world-models": [
+    "World Models",
+    "https://worldmodels.github.io/"
+  ],
+  "ha-bio": [
+    "David Ha 的研究与项目",
+    "https://otoro.net/"
+  ],
+  "isola-bio": [
+    "MIT：Phillip Isola",
+    "https://web.mit.edu/phillipi/"
+  ],
+  "pix2pix": [
+    "Image-to-Image Translation with Conditional Adversarial Networks",
+    "https://arxiv.org/abs/1611.07004"
+  ],
+  "cyclegan": [
+    "CycleGAN",
+    "https://arxiv.org/abs/1703.10593"
+  ],
+  "dalle": [
+    "Zero-Shot Text-to-Image Generation",
+    "https://arxiv.org/abs/2102.12092"
+  ],
+  "dalle2": [
+    "Hierarchical Text-Conditional Image Generation with CLIP Latents",
+    "https://arxiv.org/abs/2204.06125"
+  ],
+  "ramesh-bio": [
+    "Aditya Ramesh 个人主页",
+    "https://adityaramesh.com/"
+  ],
+  "latent-diffusion": [
+    "High-Resolution Image Synthesis with Latent Diffusion Models",
+    "https://arxiv.org/abs/2112.10752"
+  ],
+  "rombach-bio": [
+    "潜空间扩散项目主页",
+    "https://ommer-lab.com/research/latent-diffusion-models/"
+  ],
+  "blackforest": [
+    "Black Forest Labs 官方介绍",
+    "https://bfl.ai/"
+  ],
+  "xie-bio": [
+    "谢赛宁个人主页",
+    "https://www.sainingxie.com/"
+  ],
+  "convnext": [
+    "A ConvNet for the 2020s",
+    "https://arxiv.org/abs/2201.03545"
+  ],
+  "dit": [
+    "Scalable Diffusion Models with Transformers",
+    "https://arxiv.org/abs/2212.09748"
+  ],
+  "tensorflow": [
+    "TensorFlow 开源公告",
+    "https://research.google/blog/tensorflow-googles-latest-machine-learning-system-open-sourced-for-everyone/"
+  ],
+  "mapreduce": [
+    "MapReduce 论文",
+    "https://research.google/pubs/mapreduce-simplified-data-processing-on-large-clusters/"
+  ],
+  "gfs": [
+    "The Google File System",
+    "https://research.google/pubs/the-google-file-system/"
+  ],
+  "tensorflow-paper": [
+    "TensorFlow 系统论文",
+    "https://arxiv.org/abs/1605.08695"
+  ],
+  "zaharia-bio": [
+    "伯克利：Matei Zaharia",
+    "https://people.eecs.berkeley.edu/~matei/"
+  ],
+  "spark": [
+    "Spark 原论文",
+    "https://www.usenix.org/conference/hotcloud-10/spark-cluster-computing-working-sets"
+  ],
+  "mlflow": [
+    "MLflow 官方文档",
+    "https://mlflow.org/docs/latest/"
+  ],
+  "pytorch": [
+    "PyTorch 原论文",
+    "https://arxiv.org/abs/1912.01703"
+  ],
+  "dcgan": [
+    "DCGAN 原论文",
+    "https://arxiv.org/abs/1511.06434"
+  ],
+  "soumith-bio": [
+    "Soumith Chintala 个人主页",
+    "https://soumith.ch/"
+  ],
+  "tri-bio": [
+    "普林斯顿：Tri Dao",
+    "https://www.cs.princeton.edu/node/76"
+  ],
+  "flashattention": [
+    "FlashAttention",
+    "https://arxiv.org/abs/2205.14135"
+  ],
+  "mamba": [
+    "Mamba 原论文",
+    "https://arxiv.org/abs/2312.00752"
+  ],
+  "s4": [
+    "Efficiently Modeling Long Sequences with Structured State Spaces",
+    "https://arxiv.org/abs/2111.00396"
+  ],
+  "dettmers-bio": [
+    "Tim Dettmers 个人主页",
+    "https://timdettmers.com/"
+  ],
+  "qlora": [
+    "QLoRA 原论文",
+    "https://arxiv.org/abs/2305.14314"
+  ],
+  "bitsandbytes": [
+    "bitsandbytes 项目",
+    "https://github.com/bitsandbytes-foundation/bitsandbytes"
+  ],
+  "hu-bio": [
+    "Edward Hu 个人主页",
+    "https://www.edwardjhu.com/"
+  ],
+  "lora": [
+    "LoRA 原论文",
+    "https://arxiv.org/abs/2106.09685"
+  ],
+  "pagedattention": [
+    "PagedAttention 原论文",
+    "https://arxiv.org/abs/2309.06180"
+  ],
+  "vllm": [
+    "vLLM 项目",
+    "https://github.com/vllm-project/vllm"
+  ],
+  "kwon-bio": [
+    "Woosuk Kwon 个人主页",
+    "https://woosukkwon.com/"
+  ],
+  "huang-bio": [
+    "NVIDIA：黄仁勋",
+    "https://nvidianews.nvidia.com/bios/jensen-huang"
+  ],
+  "cuda": [
+    "CUDA 官方文档",
+    "https://docs.nvidia.com/cuda/"
+  ],
+  "liang-time": [
+    "TIME：梁文锋（2025）",
+    "https://time.com/collections/time100-ai-2025/7305843/liang-wenfeng-ai/"
+  ],
+  "deepseek-v3": [
+    "DeepSeek-V3 技术报告",
+    "https://arxiv.org/abs/2412.19437"
+  ],
+  "deepseek-r1": [
+    "DeepSeek-R1 技术报告",
+    "https://arxiv.org/abs/2501.12948"
+  ],
+  "yang-bio": [
+    "杨植麟个人主页",
+    "https://kimiyoung.github.io/"
+  ],
+  "xlnet": [
+    "XLNet 原论文",
+    "https://arxiv.org/abs/1906.08237"
+  ],
+  "transformer-xl": [
+    "Transformer-XL",
+    "https://arxiv.org/abs/1901.02860"
+  ],
+  "moonshot": [
+    "Moonshot AI 官方项目",
+    "https://github.com/MoonshotAI"
+  ],
+  "tang-bio": [
+    "清华：唐杰",
+    "https://keg.cs.tsinghua.edu.cn/jietang/"
+  ],
+  "glm": [
+    "GLM 原论文",
+    "https://arxiv.org/abs/2103.10360"
+  ],
+  "glm130b": [
+    "GLM-130B 项目介绍",
+    "https://keg.cs.tsinghua.edu.cn/glm-130b/zh/posts/glm-130b/"
+  ],
+  "zhang-tsinghua": [
+    "清华：智谱与张鹏（2024）",
+    "https://www.tsinghua.edu.cn/info/1178/113278.htm"
+  ],
+  "codegeex": [
+    "CodeGeeX 项目",
+    "https://keg.cs.tsinghua.edu.cn/codegeex/index_zh.html"
+  ],
+  "qwen": [
+    "Qwen 技术报告",
+    "https://arxiv.org/abs/2309.16609"
+  ],
+  "qwen-vl": [
+    "Qwen-VL 技术报告",
+    "https://arxiv.org/abs/2308.12966"
+  ],
+  "qwen-site": [
+    "Qwen 官方项目",
+    "https://github.com/QwenLM"
+  ],
+  "hongxia-bio": [
+    "香港理工大学：杨红霞",
+    "https://www.polyu.edu.hk/comp/people/academic-staff/prof-yang-hongxia/"
+  ],
+  "kaifu-bio": [
+    "创新工场：李开复",
+    "https://www.sinovationventures.com/"
+  ],
+  "yi": [
+    "Yi 开放模型",
+    "https://github.com/01-ai/Yi"
+  ],
+  "baichuan": [
+    "Baichuan 2 技术报告",
+    "https://arxiv.org/abs/2309.10305"
+  ],
+  "wang-bio": [
+    "百川智能",
+    "https://www.baichuan-ai.com/"
+  ],
+  "liu-bio": [
+    "清华：刘知远",
+    "https://nlp.csai.tsinghua.edu.cn/~lzy/"
+  ],
+  "cpm": [
+    "CPM 原论文",
+    "https://arxiv.org/abs/2012.00413"
+  ],
+  "minicpm": [
+    "MiniCPM 技术报告",
+    "https://arxiv.org/abs/2404.06395"
+  ],
+  "sun-bio": [
+    "清华自然语言处理实验室",
+    "https://nlp.csai.tsinghua.edu.cn/"
+  ],
+  "zhongyuan-bio": [
+    "王仲远研究主页（历史资料）",
+    "https://www.wangzhongyuan.com/"
+  ],
+  "baai": [
+    "北京智源人工智能研究院",
+    "https://www.baai.ac.cn/"
+  ],
+  "fu-bio": [
+    "傅尧研究主页",
+    "https://yaofu.notion.site/About-Yao-Fu-b5efd2e00ea94bd3a18ca1ae78e655f8"
+  ],
+  "fu-scholar": [
+    "傅尧的公开研究",
+    "https://github.com/FranxYao"
+  ],
+  "gao-bio": [
+    "高天宇个人主页",
+    "https://gaotianyu1350.github.io/"
+  ],
+  "simcse": [
+    "SimCSE 原论文",
+    "https://arxiv.org/abs/2104.08821"
+  ],
+  "lmbff": [
+    "Making Pre-trained Language Models Better Few-shot Learners",
+    "https://arxiv.org/abs/2012.15723"
+  ],
+  "sam-bio": [
+    "Sam Altman 个人文章",
+    "https://blog.samaltman.com/"
+  ],
+  "chatgpt": [
+    "ChatGPT 发布介绍",
+    "https://openai.com/index/chatgpt/"
+  ],
+  "dario-bio": [
+    "Dario Amodei 个人文章",
+    "https://www.darioamodei.com/"
+  ],
+  "hassabis-nobel": [
+    "诺贝尔奖：Demis Hassabis",
+    "https://www.nobelprize.org/prizes/chemistry/2024/hassabis/facts/"
+  ],
+  "deepmind": [
+    "Google DeepMind 介绍",
+    "https://deepmind.google/about/"
+  ],
+  "alphafold": [
+    "AlphaFold2 原论文",
+    "https://www.nature.com/articles/s41586-021-03819-2"
+  ],
+  "legg-bio": [
+    "Shane Legg 个人主页",
+    "https://www.vetta.org/"
+  ],
+  "universal-intelligence": [
+    "Universal Intelligence",
+    "https://arxiv.org/abs/0712.3329"
+  ],
+  "suleyman-bio": [
+    "微软：Mustafa Suleyman",
+    "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot/"
+  ],
+  "coming-wave": [
+    "The Coming Wave 官方网站",
+    "https://www.the-coming-wave.com/"
+  ],
+  "mistral": [
+    "Mistral 创始团队",
+    "https://mistral.ai/about/"
+  ],
+  "mistral7b": [
+    "Mistral 7B",
+    "https://arxiv.org/abs/2310.06825"
+  ],
+  "zuckerberg-ai": [
+    "Meta：开放 AI 路线",
+    "https://about.fb.com/news/2024/07/open-source-ai-is-the-path-forward/"
+  ],
+  "llama3": [
+    "Llama 3 技术报告",
+    "https://arxiv.org/abs/2407.21783"
+  ],
+  "thinking-machines": [
+    "Thinking Machines Lab",
+    "https://thinkingmachines.ai/"
+  ],
+  "murati-openai": [
+    "OpenAI：Mira Murati（历史公告）",
+    "https://openai.com/index/openai-announces-leadership-transition/"
+  ],
+  "xai": [
+    "xAI 官方网站",
+    "https://x.ai/"
+  ],
+  "percy-bio": [
+    "斯坦福：Percy Liang",
+    "https://cs.stanford.edu/~pliang/"
+  ],
+  "helm": [
+    "Holistic Evaluation of Language Models",
+    "https://arxiv.org/abs/2211.09110"
+  ],
+  "foundation-models": [
+    "On the Opportunities and Risks of Foundation Models",
+    "https://arxiv.org/abs/2108.07258"
+  ],
+  "manning-bio": [
+    "斯坦福：Christopher Manning",
+    "https://nlp.stanford.edu/~manning/"
+  ],
+  "glove": [
+    "GloVe 项目",
+    "https://nlp.stanford.edu/projects/glove/"
+  ],
+  "stanford-nlp": [
+    "Stanford NLP",
+    "https://nlp.stanford.edu/"
+  ],
+  "bender-bio": [
+    "华盛顿大学：Emily Bender",
+    "https://faculty.washington.edu/ebender/"
+  ],
+  "data-statements": [
+    "Data Statements for Natural Language Processing",
+    "https://aclanthology.org/Q18-1041/"
+  ],
+  "stochastic-parrots": [
+    "On the Dangers of Stochastic Parrots",
+    "https://doi.org/10.1145/3442188.3445922"
+  ],
+  "gebru-bio": [
+    "DAIR 官方介绍",
+    "https://www.dair-institute.org/"
+  ],
+  "datasheets": [
+    "Datasheets for Datasets",
+    "https://arxiv.org/abs/1803.09010"
+  ],
+  "gender-shades": [
+    "Gender Shades",
+    "https://proceedings.mlr.press/v81/buolamwini18a.html"
+  ],
+  "mitchell-bio": [
+    "Margaret Mitchell 个人主页",
+    "https://m-mitchell.com/"
+  ],
+  "model-cards": [
+    "Model Cards for Model Reporting",
+    "https://arxiv.org/abs/1810.03993"
+  ],
+  "raji-bio": [
+    "Inioluwa Deborah Raji 研究主页",
+    "https://rajiinio.github.io/"
+  ],
+  "accountability-gap": [
+    "Closing the AI Accountability Gap",
+    "https://arxiv.org/abs/2001.00973"
+  ],
+  "wallach-bio": [
+    "Hanna Wallach 个人主页",
+    "https://dirichlet.net/"
+  ],
+  "fairness-abstraction": [
+    "Fairness and Abstraction in Sociotechnical Systems",
+    "https://arxiv.org/abs/1808.00023"
+  ],
+  "karpathy-bio": [
+    "Andrej Karpathy 个人主页",
+    "https://karpathy.ai/"
+  ],
+  "nanogpt": [
+    "nanoGPT",
+    "https://github.com/karpathy/nanoGPT"
+  ],
+  "micrograd": [
+    "micrograd",
+    "https://github.com/karpathy/micrograd"
+  ],
+  "ng-bio": [
+    "吴恩达个人主页",
+    "https://www.andrewng.org/"
+  ],
+  "deeplearning-ai": [
+    "DeepLearning.AI 介绍",
+    "https://www.deeplearning.ai/about"
+  ],
+  "wolf-bio": [
+    "Thomas Wolf 个人主页",
+    "https://thomwolf.io/"
+  ],
+  "transformers": [
+    "Transformers 工具论文",
+    "https://arxiv.org/abs/1910.03771"
+  ],
+  "huggingface-about": [
+    "Hugging Face 官方介绍",
+    "https://huggingface.co/"
+  ],
+  "huggingface-hub": [
+    "Hugging Face Hub 文档",
+    "https://huggingface.co/docs/hub/index"
+  ],
+  "huggingface-founders": [
+    "Hugging Face：创始团队与开放生态",
+    "https://huggingface.co/blog/hugging-face-pollen-robotics-acquisition"
+  ],
+  "fastai": [
+    "fast.ai 官方课程",
+    "https://www.fast.ai/"
+  ],
+  "ulmfit": [
+    "Universal Language Model Fine-tuning for Text Classification",
+    "https://arxiv.org/abs/1801.06146"
+  ],
+  "howard-bio": [
+    "Jeremy Howard 个人主页",
+    "https://jeremy.fast.ai/"
+  ],
+  "raschka-bio": [
+    "Sebastian Raschka 个人主页",
+    "https://sebastianraschka.com/"
+  ],
+  "llm-from-scratch": [
+    "LLMs from Scratch 配套项目",
+    "https://github.com/rasbt/LLMs-from-scratch"
+  ],
+  "langchain-about": [
+    "LangChain 团队介绍",
+    "https://www.langchain.com/about"
+  ],
+  "langgraph": [
+    "LangGraph 官方项目",
+    "https://github.com/langchain-ai/langgraph"
+  ],
+  "fu-long-context": [
+    "Data Engineering for Scaling Language Models to 128K Context",
+    "https://arxiv.org/abs/2402.10171"
+  ],
+  "gu-bio": [
+    "卡内基梅隆大学：Albert Gu",
+    "https://csd.cmu.edu/people/faculty/albert-gu"
+  ]
+}

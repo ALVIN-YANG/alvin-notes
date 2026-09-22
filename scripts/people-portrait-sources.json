@@ -1,0 +1,688 @@
+[
+  {
+    "id": "geoffrey-hinton",
+    "title": "Geoffrey Hinton"
+  },
+  {
+    "id": "yoshua-bengio",
+    "title": "Yoshua Bengio"
+  },
+  {
+    "id": "yann-lecun",
+    "title": "Yann LeCun"
+  },
+  {
+    "id": "david-rumelhart",
+    "title": "David Rumelhart",
+    "position": "north"
+  },
+  {
+    "id": "richard-sutton",
+    "title": "Richard S. Sutton"
+  },
+  {
+    "id": "andrew-barto",
+    "title": "Andrew Barto",
+    "imageUrl": "https://www.cics.umass.edu/sites/g/files/ijdqth246/files/styles/1_1_l/public/2022-06/barto_andrew_square.jpeg?h=8a0e61cf&itok=eQK4U_MM",
+    "source": "https://www.cics.umass.edu/about/directory/andrew-barto",
+    "credit": "Andrew Barto / UMass Amherst",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.cics.umass.edu/about/directory/andrew-barto"
+  },
+  {
+    "id": "jurgen-schmidhuber",
+    "title": "Jürgen Schmidhuber"
+  },
+  {
+    "id": "sepp-hochreiter",
+    "title": "Sepp Hochreiter"
+  },
+  {
+    "id": "dzmitry-bahdanau",
+    "title": "Dzmitry Bahdanau",
+    "imageUrl": "https://rizar.github.io/downloads/headshot.jpg",
+    "source": "https://rizar.github.io/",
+    "credit": "Dzmitry Bahdanau 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://rizar.github.io/"
+  },
+  {
+    "id": "kyunghyun-cho",
+    "title": "Kyunghyun Cho"
+  },
+  {
+    "id": "ilya-sutskever",
+    "title": "Ilya Sutskever",
+    "position": "north",
+    "crop": [
+      0.22,
+      0.11,
+      0.5,
+      0.34
+    ]
+  },
+  {
+    "id": "ashish-vaswani",
+    "title": "Ashish Vaswani"
+  },
+  {
+    "id": "noam-shazeer",
+    "title": "Noam Shazeer",
+    "imageUrl": "https://avatars.githubusercontent.com/u/246614399?s=256&v=4",
+    "source": "https://github.com/NoamShazeer",
+    "credit": "Noam Shazeer",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/NoamShazeer"
+  },
+  {
+    "id": "niki-parmar",
+    "title": "Niki Parmar",
+    "imageUrl": "https://avatars.githubusercontent.com/u/5770434?s=256&v=4",
+    "source": "https://github.com/nikiparmar",
+    "credit": "Niki Parmar",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/nikiparmar"
+  },
+  {
+    "id": "jakob-uszkoreit",
+    "title": "Jakob Uszkoreit"
+  },
+  {
+    "id": "llion-jones",
+    "title": "Llion Jones",
+    "imageUrl": "https://sakana.ai/company-info/Llion.jpg",
+    "source": "https://sakana.ai/company-info/",
+    "credit": "Llion Jones / Sakana AI",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://sakana.ai/company-info/"
+  },
+  {
+    "id": "aidan-gomez",
+    "title": "Aidan Gomez"
+  },
+  {
+    "id": "lukasz-kaiser",
+    "title": "Łukasz Kaiser",
+    "imageUrl": "https://avatars.githubusercontent.com/u/684901?s=256&v=4",
+    "source": "https://github.com/lukaszkaiser",
+    "credit": "Lukasz Kaiser",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/lukaszkaiser"
+  },
+  {
+    "id": "patrick-lewis",
+    "title": "Patrick Lewis (computer scientist)",
+    "imageUrl": "https://www.patricklewis.io/img/portrait.jpg",
+    "source": "https://www.patricklewis.io/",
+    "credit": "Patrick Lewis 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.patricklewis.io/"
+  },
+  {
+    "id": "alec-radford",
+    "title": "Alec Radford",
+    "imageUrl": "https://avatars.githubusercontent.com/u/2515289?v=4",
+    "source": "https://github.com/newmu",
+    "credit": "Alec Radford GitHub 主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/newmu"
+  },
+  {
+    "id": "jacob-devlin",
+    "title": "Jacob Devlin",
+    "imageUrl": "https://avatars.githubusercontent.com/u/44483550?v=4",
+    "source": "https://github.com/jacobdevlin-google",
+    "credit": "Jacob Devlin GitHub 主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/jacobdevlin-google"
+  },
+  {
+    "id": "tomas-mikolov",
+    "title": "Tomas Mikolov"
+  },
+  {
+    "id": "tom-brown",
+    "title": "Tom Brown (computer scientist)"
+  },
+  {
+    "id": "diederik-kingma",
+    "title": "Diederik P. Kingma",
+    "imageUrl": "https://dpkingma.com/files/portrait.jpg",
+    "source": "https://dpkingma.com/",
+    "credit": "Diederik Kingma 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://dpkingma.com/"
+  },
+  {
+    "id": "oriol-vinyals",
+    "title": "Oriol Vinyals"
+  },
+  {
+    "id": "quoc-le",
+    "title": "Quoc Le"
+  },
+  {
+    "id": "jared-kaplan",
+    "title": "Jared Kaplan"
+  },
+  {
+    "id": "jordan-hoffmann",
+    "title": "Jordan Hoffmann (computer scientist)"
+  },
+  {
+    "id": "colin-raffel",
+    "title": "Colin Raffel",
+    "imageUrl": "https://colinraffel.com/images/me.gif",
+    "source": "https://colinraffel.com/",
+    "credit": "Colin Raffel 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://colinraffel.com/"
+  },
+  {
+    "id": "john-schulman",
+    "title": "John Schulman",
+    "imageUrl": "https://avatars.githubusercontent.com/u/144178?s=256&v=4",
+    "source": "https://github.com/joschu",
+    "credit": "John Schulman",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/joschu"
+  },
+  {
+    "id": "paul-christiano",
+    "title": "Paul Christiano (researcher)"
+  },
+  {
+    "id": "jan-leike",
+    "title": "Jan Leike",
+    "imageUrl": "https://avatars.githubusercontent.com/u/7199668?s=256&v=4",
+    "source": "https://github.com/janleike",
+    "credit": "Jan Leike",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/janleike"
+  },
+  {
+    "id": "long-ouyang",
+    "title": "Long Ouyang",
+    "imageUrl": "https://avatars.githubusercontent.com/u/14802?s=256&v=4",
+    "source": "https://github.com/longouyang",
+    "credit": "Long Ouyang",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/longouyang",
+    "position": "south",
+    "skipReason": "公开账号头像不是清晰的本人肖像；暂用姓名缩写"
+  },
+  {
+    "id": "yuntao-bai",
+    "title": "Yuntao Bai"
+  },
+  {
+    "id": "amanda-askell",
+    "title": "Amanda Askell",
+    "imageUrl": "https://askell.io/images/amanda1.jpeg",
+    "source": "https://askell.io/",
+    "credit": "Amanda Askell 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://askell.io/"
+  },
+  {
+    "id": "chris-olah",
+    "title": "Chris Olah",
+    "imageUrl": "https://avatars.githubusercontent.com/u/61658?s=256&v=4",
+    "source": "https://github.com/colah",
+    "credit": "Christopher Olah",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/colah",
+    "skipReason": "公开账号头像不是清晰的本人肖像；暂用姓名缩写"
+  },
+  {
+    "id": "dawn-song",
+    "title": "Dawn Song",
+    "imageUrl": "https://www2.eecs.berkeley.edu/Faculty/Photos/Homepages/song.jpg",
+    "source": "https://www2.eecs.berkeley.edu/Faculty/Homepages/song.html",
+    "credit": "Dawn Song / UC Berkeley",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www2.eecs.berkeley.edu/Faculty/Homepages/song.html"
+  },
+  {
+    "id": "dan-hendrycks",
+    "title": "Dan Hendrycks"
+  },
+  {
+    "id": "dylan-hadfield-menell",
+    "title": "Dylan Hadfield-Menell",
+    "imageUrl": "https://people.csail.mit.edu/dhm/main.png",
+    "source": "https://people.csail.mit.edu/dhm/",
+    "credit": "Dylan Hadfield-Menell / MIT",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://people.csail.mit.edu/dhm/"
+  },
+  {
+    "id": "rafael-rafailov",
+    "title": "Rafael Rafailov",
+    "imageUrl": "https://cs224r.stanford.edu/spring_2023/images/rafael.png",
+    "source": "https://cs224r.stanford.edu/spring_2023/index.html",
+    "credit": "Rafael Rafailov / Stanford CS224R",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://cs224r.stanford.edu/spring_2023/index.html"
+  },
+  {
+    "id": "jason-wei",
+    "title": "Jason Wei (computer scientist)",
+    "imageUrl": "https://images.squarespace-cdn.com/content/v1/633a6c0dd119b45af0d898c2/5e21a5f2-1a88-4afe-9df3-ab4395a48d2c/presidio.png",
+    "source": "https://www.jasonwei.net/",
+    "credit": "Jason Wei 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.jasonwei.net/",
+    "position": "north",
+    "crop": [
+      0.36,
+      0.14,
+      0.35,
+      0.35
+    ]
+  },
+  {
+    "id": "fei-fei-li",
+    "title": "Fei-Fei Li",
+    "position": "north",
+    "crop": [
+      0.27,
+      0,
+      0.52,
+      0.35
+    ]
+  },
+  {
+    "id": "kaiming-he",
+    "title": "Kaiming He",
+    "imageUrl": "https://people.csail.mit.edu/kaiming/img/kmh2024fall.jpg",
+    "source": "https://people.csail.mit.edu/kaiming/",
+    "credit": "何恺明 / MIT",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://people.csail.mit.edu/kaiming/"
+  },
+  {
+    "id": "alex-krizhevsky",
+    "title": "Alex Krizhevsky"
+  },
+  {
+    "id": "ian-goodfellow",
+    "title": "Ian Goodfellow"
+  },
+  {
+    "id": "david-silver",
+    "title": "David Silver (computer scientist)",
+    "imageUrl": "https://davidstarsilver.wordpress.com/wp-content/uploads/2026/04/0399.jpg?w=1024",
+    "source": "https://www.davidsilver.uk/",
+    "credit": "David Silver 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.davidsilver.uk/"
+  },
+  {
+    "id": "david-ha",
+    "title": "David Ha (computer scientist)",
+    "imageUrl": "https://sakana.ai/company-info/david.jpg",
+    "source": "https://sakana.ai/company-info/",
+    "credit": "David Ha / Sakana AI",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://sakana.ai/company-info/"
+  },
+  {
+    "id": "phillip-isola",
+    "title": "Phillip Isola",
+    "imageUrl": "https://web.mit.edu/phillipi/www/images/photo_of_me_korea.jpeg",
+    "source": "https://web.mit.edu/phillipi/",
+    "credit": "Phillip Isola / MIT",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://web.mit.edu/phillipi/"
+  },
+  {
+    "id": "aditya-ramesh",
+    "title": "Aditya Ramesh"
+  },
+  {
+    "id": "robin-rombach",
+    "title": "Robin Rombach"
+  },
+  {
+    "id": "saining-xie",
+    "title": "Saining Xie"
+  },
+  {
+    "id": "jeff-dean",
+    "title": "Jeff Dean"
+  },
+  {
+    "id": "sanjay-ghemawat",
+    "title": "Sanjay Ghemawat"
+  },
+  {
+    "id": "matei-zaharia",
+    "title": "Matei Zaharia"
+  },
+  {
+    "id": "soumith-chintala",
+    "title": "Soumith Chintala",
+    "imageUrl": "https://avatars.githubusercontent.com/u/1310570?s=256&v=4",
+    "source": "https://github.com/soumith",
+    "credit": "Soumith Chintala",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/soumith"
+  },
+  {
+    "id": "tri-dao",
+    "title": "Tri Dao",
+    "imageUrl": "https://tridao.me/assets/img/tri_photo_2021_04.jpeg",
+    "source": "https://tridao.me/",
+    "credit": "Tri Dao 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://tridao.me/"
+  },
+  {
+    "id": "albert-gu",
+    "title": "Albert Gu",
+    "imageUrl": "https://avatars.githubusercontent.com/u/8164679?v=4",
+    "source": "https://github.com/albertfgu",
+    "credit": "Albert Gu",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/albertfgu",
+    "skipReason": "公开账号头像不是清晰的本人肖像；暂用姓名缩写"
+  },
+  {
+    "id": "tim-dettmers",
+    "title": "Tim Dettmers",
+    "imageUrl": "https://avatars.githubusercontent.com/u/5260050?s=256&v=4",
+    "source": "https://github.com/TimDettmers",
+    "credit": "Tim Dettmers",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/TimDettmers"
+  },
+  {
+    "id": "edward-hu",
+    "title": "Edward Hu",
+    "imageUrl": "https://edwardjhu.com/assets/images/profile_422.jpg",
+    "source": "https://edwardjhu.com/",
+    "credit": "Edward J. Hu 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://edwardjhu.com/"
+  },
+  {
+    "id": "woosuk-kwon",
+    "title": "Woosuk Kwon",
+    "imageUrl": "https://avatars.githubusercontent.com/u/46394894?s=256&v=4",
+    "source": "https://github.com/WoosukKwon",
+    "credit": "Woosuk Kwon",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/WoosukKwon"
+  },
+  {
+    "id": "jensen-huang",
+    "title": "Jensen Huang"
+  },
+  {
+    "id": "liang-wenfeng",
+    "title": "Liang Wenfeng",
+    "imageUrl": "https://static.time.com/v3/assets/bltea6093859af6183b/bltdfc06ab1b164355f/6998c95583ec374f7ac7ae21/Liang-Wenfeng.jpg?branch=production&width=600&quality=75&auto=webp&crop=3:2",
+    "source": "https://time.com/collections/time100-ai-2025/7305843/liang-wenfeng-ai/",
+    "credit": "TIME 人物报道配图",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://time.com/collections/time100-ai-2025/7305843/liang-wenfeng-ai/"
+  },
+  {
+    "id": "zhilin-yang",
+    "title": "Yang Zhilin",
+    "imageUrl": "https://kimiyoung.github.io/img/profilepic4.jpg",
+    "source": "https://kimiyoung.github.io/",
+    "credit": "杨植麟个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://kimiyoung.github.io/"
+  },
+  {
+    "id": "jie-tang",
+    "title": "Jie Tang",
+    "imageUrl": "https://keg.cs.tsinghua.edu.cn/jietang/pics/Jie-0.jpg",
+    "source": "https://keg.cs.tsinghua.edu.cn/jietang/",
+    "credit": "唐杰 / 清华大学",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://keg.cs.tsinghua.edu.cn/jietang/"
+  },
+  {
+    "id": "peng-zhang",
+    "title": "Peng Zhang (entrepreneur)"
+  },
+  {
+    "id": "junyang-lin",
+    "title": "Junyang Lin",
+    "imageUrl": "https://avatars.githubusercontent.com/u/27664428?v=4",
+    "source": "https://github.com/JustinLin610",
+    "credit": "林俊旸",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/JustinLin610",
+    "skipReason": "公开账号头像不是清晰的本人肖像；暂用姓名缩写"
+  },
+  {
+    "id": "jingren-zhou",
+    "title": "Jingren Zhou"
+  },
+  {
+    "id": "jinze-bai",
+    "title": "Jinze Bai"
+  },
+  {
+    "id": "hongxia-yang",
+    "title": "Hongxia Yang",
+    "imageUrl": "https://www.polyu.edu.hk/comp/-/media/department/comp/people/2024/yang-hongxia.jpg?bc=ffffff&h=430&w=280&rev=de9a7719badd4f3788883d6ae81da383&hash=2A323FF9AB1D21D4883F5020186DA036",
+    "source": "https://www.polyu.edu.hk/comp/people/academic-staff/prof-yang-hongxia/",
+    "credit": "香港理工大学",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.polyu.edu.hk/comp/people/academic-staff/prof-yang-hongxia/"
+  },
+  {
+    "id": "kai-fu-lee",
+    "title": "Kai-Fu Lee"
+  },
+  {
+    "id": "xiaochuan-wang",
+    "title": "Wang Xiaochuan"
+  },
+  {
+    "id": "zhiyuan-liu",
+    "title": "Zhiyuan Liu",
+    "imageUrl": "https://thunlp.oss-cn-qingdao.aliyuncs.com/HomePage/profile_c.jpg",
+    "source": "https://nlp.csai.tsinghua.edu.cn/~lzy/",
+    "credit": "刘知远 / 清华大学",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://nlp.csai.tsinghua.edu.cn/~lzy/"
+  },
+  {
+    "id": "maosong-sun",
+    "title": "Maosong Sun"
+  },
+  {
+    "id": "zhongyuan-wang",
+    "title": "Zhongyuan Wang",
+    "imageUrl": "https://www.wangzhongyuan.com/images/zhongyuan_wang_seattle_small.jpg",
+    "source": "https://www.wangzhongyuan.com/",
+    "credit": "王仲远个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://www.wangzhongyuan.com/"
+  },
+  {
+    "id": "yao-fu",
+    "title": "Yao Fu (computer scientist)",
+    "imageUrl": "https://avatars.githubusercontent.com/u/17723677?s=256&v=4",
+    "source": "https://github.com/FranxYao",
+    "credit": "Yao Fu",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/FranxYao",
+    "skipReason": "公开账号头像不是清晰的本人肖像；暂用姓名缩写"
+  },
+  {
+    "id": "tianyu-gao",
+    "title": "Tianyu Gao",
+    "imageUrl": "https://avatars.githubusercontent.com/u/6129506?s=256&v=4",
+    "source": "https://github.com/gaotianyu1350",
+    "credit": "Tianyu Gao",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/gaotianyu1350"
+  },
+  {
+    "id": "sam-altman",
+    "title": "Sam Altman"
+  },
+  {
+    "id": "dario-amodei",
+    "title": "Dario Amodei"
+  },
+  {
+    "id": "demis-hassabis",
+    "title": "Demis Hassabis"
+  },
+  {
+    "id": "shane-legg",
+    "title": "Shane Legg"
+  },
+  {
+    "id": "mustafa-suleyman",
+    "title": "Mustafa Suleyman"
+  },
+  {
+    "id": "arthur-mensch",
+    "title": "Arthur Mensch"
+  },
+  {
+    "id": "mark-zuckerberg",
+    "title": "Mark Zuckerberg"
+  },
+  {
+    "id": "mira-murati",
+    "title": "Mira Murati",
+    "position": "north",
+    "crop": [
+      0.18,
+      0.03,
+      0.58,
+      0.4
+    ]
+  },
+  {
+    "id": "elon-musk",
+    "title": "Elon Musk"
+  },
+  {
+    "id": "percy-liang",
+    "title": "Percy Liang",
+    "imageUrl": "https://cs.stanford.edu/~pliang/resources/percy3.jpeg",
+    "source": "https://cs.stanford.edu/~pliang/",
+    "credit": "Percy Liang / Stanford",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://cs.stanford.edu/~pliang/"
+  },
+  {
+    "id": "christopher-manning",
+    "title": "Christopher Manning (computer scientist)",
+    "imageUrl": "https://nlp.stanford.edu/~manning/images/Christopher_Manning_027_132x132.jpg",
+    "source": "https://nlp.stanford.edu/~manning/",
+    "credit": "Christopher Manning / Stanford",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://nlp.stanford.edu/~manning/"
+  },
+  {
+    "id": "emily-bender",
+    "title": "Emily M. Bender",
+    "position": "north",
+    "crop": [
+      0.12,
+      0.015,
+      0.48,
+      0.39
+    ]
+  },
+  {
+    "id": "timnit-gebru",
+    "title": "Timnit Gebru"
+  },
+  {
+    "id": "margaret-mitchell",
+    "title": "Margaret Mitchell (scientist)"
+  },
+  {
+    "id": "deborah-raji",
+    "title": "Inioluwa Deborah Raji"
+  },
+  {
+    "id": "hanna-wallach",
+    "title": "Hanna Wallach"
+  },
+  {
+    "id": "andrej-karpathy",
+    "title": "Andrej Karpathy",
+    "position": "north",
+    "crop": [
+      0.23,
+      0.025,
+      0.48,
+      0.36
+    ]
+  },
+  {
+    "id": "andrew-ng",
+    "title": "Andrew Ng"
+  },
+  {
+    "id": "thomas-wolf",
+    "title": "Thomas Wolf (computer scientist)",
+    "imageUrl": "https://thomwolf.io/images/thom_circle_larger.png",
+    "source": "https://thomwolf.io/",
+    "credit": "Thomas Wolf 个人主页",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://thomwolf.io/",
+    "position": "north",
+    "crop": [
+      0.32,
+      0.15,
+      0.3,
+      0.3
+    ]
+  },
+  {
+    "id": "clement-delangue",
+    "title": "Clément Delangue",
+    "imageUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1583857146757-5e67bdd61009063689407479.jpeg",
+    "source": "https://huggingface.co/clem",
+    "credit": "Clément Delangue",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://huggingface.co/clem"
+  },
+  {
+    "id": "julien-chaumond",
+    "title": "Julien Chaumond",
+    "imageUrl": "https://avatars.githubusercontent.com/u/326577?s=256&v=4",
+    "source": "https://github.com/julien-c",
+    "credit": "Julien Chaumond",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/julien-c"
+  },
+  {
+    "id": "jeremy-howard",
+    "title": "Jeremy Howard (entrepreneur)"
+  },
+  {
+    "id": "sebastian-raschka",
+    "title": "Sebastian Raschka",
+    "imageUrl": "https://avatars.githubusercontent.com/u/5618407?s=256&v=4",
+    "source": "https://github.com/rasbt",
+    "credit": "Sebastian Raschka",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/rasbt"
+  },
+  {
+    "id": "harrison-chase",
+    "title": "Harrison Chase",
+    "imageUrl": "https://avatars.githubusercontent.com/u/11986836?s=256&v=4",
+    "source": "https://github.com/hwchase17",
+    "credit": "Harrison Chase",
+    "license": "公开人物介绍配图；版权归原权利人",
+    "licenseUrl": "https://github.com/hwchase17"
+  }
+]

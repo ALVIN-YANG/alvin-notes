@@ -1,0 +1,31 @@
+---
+import { initials, reviewedAt, type Person } from '../data/ai-people';
+interface Props { person: Person; modal?: boolean }
+const { person, modal = false } = Astro.props;
+const Heading = modal ? 'h2' : 'h1';
+---
+<article class="person-profile">
+  <header class="person-profile-header">
+    {person.portrait ? (
+      <img class="person-avatar person-avatar-large" src={person.portrait.src} alt="" width="80" height="80" />
+    ) : <span class="person-avatar person-avatar-large person-initials" aria-hidden="true">{initials(person.name)}</span>}
+    <div>
+      <span class="person-category">{person.category}</span>
+      <Heading id={modal ? 'person-dialog-title' : 'person-title'}>{person.name}</Heading>
+      {person.alias && <p class="person-alias">{person.alias}</p>}
+    </div>
+  </header>
+  <p class="person-contribution">{person.tag}</p>
+  <div class="person-biography">{person.bio.map(paragraph => <p>{paragraph}</p>)}</div>
+  <footer class="person-references">
+    <h3>继续了解</h3>
+    <ul>{person.sources.map(source => <li><a href={source.url} target="_blank" rel="noreferrer">{source.label}<span aria-hidden="true"> ↗</span></a></li>)}</ul>
+    <div class="person-colophon">
+      <span>资料核对 <time datetime={reviewedAt}>{reviewedAt.replaceAll('-', '.')}</time></span>
+      {person.portrait ? <details class="person-photo-credit">
+        <summary>头像来源</summary>
+        <p><a href={person.portrait.source} target="_blank" rel="noreferrer">{person.portrait.credit || '查看原图来源'}</a> · <a href={person.portrait.licenseUrl} target="_blank" rel="noreferrer">{person.portrait.license}</a> · {person.portrait.modification}</p>
+      </details> : <span>暂无已核实的肖像，使用姓名缩写</span>}
+    </div>
+  </footer>
+</article>

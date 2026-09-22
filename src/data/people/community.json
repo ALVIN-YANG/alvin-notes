@@ -1,0 +1,133 @@
+[
+  {
+    "id": "andrej-karpathy",
+    "name": "Andrej Karpathy",
+    "alias": "安德烈·卡帕西",
+    "category": "开源与教育",
+    "tag": "nanoGPT · 神经网络教学",
+    "bio": [
+      "Andrej Karpathy 是深度学习研究者和教育者，曾参与 OpenAI 的早期研究，也曾在 Tesla 负责计算机视觉相关工作。他在斯坦福获得博士学位，并参与神经网络课程教学。",
+      "他公开的 micrograd、minGPT、nanoGPT 等项目，把自动求导和语言模型训练拆成相对容易阅读的代码。Neural Networks: Zero to Hero 系列课程通过逐步实现，让学习者理解模型从数据到损失、梯度和参数更新的过程。",
+      "他也通过文章和演讲讨论 AI 编程与模型使用方式。其教育项目的价值在于降低理解实现的门槛；教学代码与生产系统的吞吐、分布式训练和可靠性要求仍有不同，应按照项目目标使用。"
+    ],
+    "sources": [
+      "karpathy-bio",
+      "nanogpt",
+      "micrograd"
+    ]
+  },
+  {
+    "id": "andrew-ng",
+    "name": "吴恩达",
+    "alias": "Andrew Ng",
+    "category": "开源与教育",
+    "tag": "机器学习教育 · AI 应用",
+    "bio": [
+      "吴恩达是机器学习研究者、教育者和企业家，参与过大规模深度学习研究，也通过在线课程推动 AI 知识传播。他是 Coursera 的联合创始人，以及 DeepLearning.AI 的创办者。",
+      "他的机器学习与深度学习课程将模型、优化和工程实践组织成可学习的路径，帮助大量开发者进入这一领域。2017 年成立的 DeepLearning.AI 继续围绕课程、实践训练和社区开展工作。",
+      "他的产业经历也涉及将 AI 用于具体业务。阅读其文章和课程时，可以把通用学习方法与特定工具的使用方式区分开：工具会更新，而明确任务、理解数据、建立评测和迭代模型等工程习惯仍具有持续价值。"
+    ],
+    "sources": [
+      "ng-bio",
+      "deeplearning-ai"
+    ]
+  },
+  {
+    "id": "thomas-wolf",
+    "name": "Thomas Wolf",
+    "alias": "托马斯·沃尔夫",
+    "category": "开源与教育",
+    "tag": "Transformers · Hugging Face",
+    "bio": [
+      "Thomas Wolf 是 Hugging Face 的联合创始人，也是 Transformers 工具论文的第一作者。他的工作连接开放模型、研究工具与开发者社区。",
+      "Transformers 将多种预训练模型放到相近的接口和工具体系中，使用户更容易加载模型、处理输入、训练和进行推理。与只公开论文相比，可复用的实现让研究结果更容易进入实际项目，也方便跨模型比较。",
+      "他参与推动模型与数据资源的开放协作，并通过技术文章解释研究进展。统一接口并不意味着所有模型具有相同能力、许可证或运行条件，开发者仍需要阅读各自的模型说明。工具生态的价值正是帮助这些差异更容易被使用者理解和管理。"
+    ],
+    "sources": [
+      "wolf-bio",
+      "transformers"
+    ]
+  },
+  {
+    "id": "clement-delangue",
+    "name": "Clément Delangue",
+    "alias": "克莱芒·德朗格",
+    "category": "开源与教育",
+    "tag": "Hugging Face · 开放社区",
+    "bio": [
+      "Clément Delangue 是 Hugging Face 的联合创始人。他在 AI 领域的重要作用，主要体现在建设模型、数据集和开发者之间的协作平台。",
+      "Hugging Face Hub 为模型与数据提供托管、版本、说明和讨论入口，配合 Transformers 等工具，使研究者与开发者能够分享及复用成果。平台上的模型来自许多不同团队，而不是都由 Hugging Face 自行训练。",
+      "他与 Thomas Wolf、Julien Chaumond 共同创办的平台，把工具开发和社区协作放在一起：模型作者可以公开权重与说明，使用者可以复现、讨论并发布改进。不同团队的模型因此有了共同的发现入口，也更容易被应用开发者采用。"
+    ],
+    "sources": [
+      "huggingface-about",
+      "huggingface-hub",
+      "huggingface-founders"
+    ]
+  },
+  {
+    "id": "julien-chaumond",
+    "name": "Julien Chaumond",
+    "alias": "朱利安·肖蒙",
+    "category": "开源与教育",
+    "tag": "Hugging Face · 模型平台",
+    "bio": [
+      "Julien Chaumond 是 Hugging Face 的联合创始人，参与建设面向机器学习开发者的平台与工具。他的工作更多体现于产品和工程基础设施。",
+      "一个模型平台需要处理的不只是文件上传，还包括版本、访问、说明、演示和与开发工具之间的连接。Hugging Face Hub 与相关服务把这些环节组织起来，让团队可以共享模型、数据集和可运行的示例。",
+      "他与 Clément Delangue、Thomas Wolf 共同建设的 Hugging Face，把开源代码、模型文件和在线演示连接起来。研究者可以发布成果，开发者可以从一个模型页面找到使用说明、相关数据与演示，减少寻找和拼接资料的工作。"
+    ],
+    "sources": [
+      "huggingface-founders",
+      "huggingface-hub"
+    ]
+  },
+  {
+    "id": "jeremy-howard",
+    "name": "Jeremy Howard",
+    "alias": "杰里米·霍华德",
+    "category": "开源与教育",
+    "tag": "fast.ai · 实践教学",
+    "bio": [
+      "Jeremy Howard 是机器学习实践者和教育者，也是 fast.ai 的共同创办者。他关注如何让有编程经验的人更快开始使用深度学习，并通过实践逐步理解原理。",
+      "fast.ai 的课程通常先让学习者运行有意义的模型，再逐层解释训练、数据和实现细节。配套的 fastai 工具库封装常见训练流程，同时保留进一步定制的能力。这种由具体任务进入理论的方式影响了许多开发者的学习路径。",
+      "他也参与 ULMFiT 等迁移学习研究，将预训练语言模型适配到文本分类任务。教育和研究在这里相互连接：通用模型降低从零训练的成本，而清晰的工具与课程帮助更多人把这些方法用于实际问题。"
+    ],
+    "sources": [
+      "fastai",
+      "ulmfit",
+      "howard-bio"
+    ]
+  },
+  {
+    "id": "sebastian-raschka",
+    "name": "Sebastian Raschka",
+    "alias": "塞巴斯蒂安·拉施卡",
+    "category": "开源与教育",
+    "tag": "从零实现 LLM · 技术写作",
+    "bio": [
+      "Sebastian Raschka 是机器学习研究者、工程师和技术作者，职业经历覆盖学术教学与产业研发。他以把模型原理连接到可运行代码的书籍和文章受到关注。",
+      "《Build a Large Language Model (From Scratch)》通过逐步实现文本处理、注意力、模型训练与微调，帮助读者理解语言模型的组成。配套代码也使学习者能够检查具体实现，而不是只阅读抽象架构图。",
+      "他的技术写作持续讨论训练方法、评测和模型研究。对于开发者，这类材料适合作为从工具调用走向理解实现的桥梁。学习用实现会有意简化工程细节，实际项目仍需要根据数据、计算资源和运行要求补齐相应能力。"
+    ],
+    "sources": [
+      "raschka-bio",
+      "llm-from-scratch"
+    ]
+  },
+  {
+    "id": "harrison-chase",
+    "name": "Harrison Chase",
+    "alias": "哈里森·蔡斯",
+    "category": "开源与教育",
+    "tag": "LangChain · LangGraph",
+    "bio": [
+      "Harrison Chase 是 LangChain 的创建者和公司联合创始人。他关注如何把语言模型与外部数据、工具和应用流程连接起来。",
+      "LangChain 提供模型、检索和工具等组件的集成方式；LangGraph 更强调带有状态与分支的执行流程，帮助开发者组织循环、人工介入和可恢复的任务。相关工具使 Agent 应用的流程能够被表达、检查和调试。",
+      "框架提供的是开发结构，不会自动保证检索正确、工具调用安全或任务成功。模型能力、数据、权限和评测仍需要应用团队负责。认识 Chase 的工作，适合从开发者实际要组织哪些组件、管理哪些状态的问题出发。"
+    ],
+    "sources": [
+      "langchain-about",
+      "langgraph"
+    ]
+  }
+]

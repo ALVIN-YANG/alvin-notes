@@ -1,0 +1,152 @@
+[
+  {
+    "id": "sam-altman",
+    "name": "Sam Altman",
+    "alias": "山姆·奥特曼",
+    "category": "模型与团队",
+    "tag": "OpenAI · AI 产品化",
+    "bio": [
+      "Sam Altman 是 OpenAI 的联合创始人之一，职业经历包括创业、Y Combinator 和 AI 研究机构建设。他的重要角色主要在于组织、资金、战略和产品方向。",
+      "2015 年 OpenAI 成立时，他担任联合主席。后来，团队的研究与产品从模型实验逐步扩展到 API、ChatGPT 和企业应用，使大模型进入更广泛的开发与使用场景。这一过程需要持续协调研究目标、计算资源和产品部署。",
+      "他参与的主要工作是组织建设、资源投入和产品方向，而不是某一项模型算法。OpenAI 从研究组织发展到提供 ChatGPT 和 API 的公司，也带来了算力供给、研究开放程度、产品安全和商业化之间的长期取舍。"
+    ],
+    "sources": [
+      "openai-founding",
+      "sam-bio",
+      "chatgpt"
+    ]
+  },
+  {
+    "id": "dario-amodei",
+    "name": "Dario Amodei",
+    "alias": "达里奥·阿莫代伊",
+    "category": "模型与团队",
+    "tag": "Anthropic · 模型能力与安全",
+    "bio": [
+      "Dario Amodei 是研究者、Anthropic 的联合创始人。他的公开工作连接了大规模模型能力、AI 安全研究和面向用户的模型产品。",
+      "他参与了语言模型 Scaling Laws、GPT-3 和 Constitutional AI 等研究。前两项考察规模与能力的关系，后一项探索通过明确原则和 AI 反馈改善助手行为。这些方向说明，提升模型能力与定义期望行为需要不同的研究和训练安排。",
+      "在 Anthropic，Claude 产品与对齐研究一起发展。其团队的 Constitutional AI 使用明确的原则指导回答修改和偏好训练，试图减少对逐条人工反馈的依赖。Amodei 的研究与组织经历，因而同时涉及模型规模和模型行为。"
+    ],
+    "sources": [
+      "dario-bio",
+      "scaling",
+      "constitutional-ai"
+    ]
+  },
+  {
+    "id": "demis-hassabis",
+    "name": "Demis Hassabis",
+    "alias": "德米斯·哈萨比斯",
+    "category": "模型与团队",
+    "tag": "DeepMind · AlphaFold",
+    "bio": [
+      "Demis Hassabis 是 DeepMind 的联合创始人，研究与职业经历连接了计算机科学、游戏开发和神经科学。他关注如何建设能够处理复杂问题的学习系统。",
+      "DeepMind 团队开展了 AlphaGo、AlphaFold 等研究。AlphaFold2 根据蛋白质的氨基酸序列预测三维结构，为生物研究提供了重要工具。Hassabis 与 John Jumper 因蛋白质结构预测方面的贡献，共同分享了 2024 年诺贝尔化学奖的一部分。",
+      "2024 年，他与 John Jumper 因蛋白质结构预测研究获得诺贝尔化学奖的一半，另一半授予 David Baker。AlphaGo 与 AlphaFold 分别面向游戏决策和科学问题，体现了他领导研究团队将 AI 用于不同任务的路径。"
+    ],
+    "sources": [
+      "hassabis-nobel",
+      "deepmind",
+      "alphafold"
+    ]
+  },
+  {
+    "id": "shane-legg",
+    "name": "Shane Legg",
+    "alias": "谢恩·莱格",
+    "category": "模型与团队",
+    "tag": "通用智能 · DeepMind",
+    "bio": [
+      "Shane Legg 是通用人工智能研究者，也是 DeepMind 的联合创始人。他早期研究智能的形式化定义，尝试讨论一个系统在多种环境中实现目标的能力。",
+      "他与 Marcus Hutter 的相关工作将智能评价与环境、目标和行动联系起来。理论定义帮助研究者明确讨论对象，但实际计算、数据和环境假设，也限制了这些定义如何用于真实系统。",
+      "2010 年，他与 Demis Hassabis、Mustafa Suleyman 共同创办 DeepMind。认识 Legg 的工作，可以把对通用能力的理论讨论与研究机构的长期目标联系起来，同时区分理论度量、具体基准结果和商业产品中的能力描述。"
+    ],
+    "sources": [
+      "legg-bio",
+      "universal-intelligence",
+      "deepmind"
+    ]
+  },
+  {
+    "id": "mustafa-suleyman",
+    "name": "Mustafa Suleyman",
+    "alias": "穆斯塔法·苏莱曼",
+    "category": "模型与团队",
+    "tag": "AI 产品 · 研究组织",
+    "bio": [
+      "Mustafa Suleyman 是 DeepMind 和 Inflection AI 的联合创始人。他的职业经历主要涉及 AI 组织建设、产品化和技术的社会影响。",
+      "DeepMind 早期把强化学习和神经网络研究组织为长期项目；Inflection AI 则探索面向用户的对话助手。此后，他也参与微软的消费者 AI 产品工作。这些经历体现了从研究能力走向交互产品时，对团队、使用体验和部署方式的不同要求。",
+      "他与 Michael Bhaskar 合著 The Coming Wave，讨论 AI 等技术快速扩散后，社会如何保留有效的控制能力。这本书延续了其产品工作中的关注点：技术怎样进入真实生活，以及组织需要承担什么责任。"
+    ],
+    "sources": [
+      "suleyman-bio",
+      "deepmind",
+      "coming-wave"
+    ]
+  },
+  {
+    "id": "arthur-mensch",
+    "name": "Arthur Mensch",
+    "alias": "阿瑟·门施",
+    "category": "模型与团队",
+    "tag": "Mistral · 模型效率",
+    "bio": [
+      "Arthur Mensch 是机器学习研究者，也是 Mistral AI 的联合创始人。他的经历涉及大型研究团队中的语言模型训练，以及面向部署与开放生态的模型公司建设。",
+      "他参与了 Chinchilla 等计算最优训练研究，考察固定预算下模型参数和训练数据怎样配合。2023 年成立的 Mistral 团队随后发布多个语言模型，探索开放权重、推理效率和商业服务之间的组合。",
+      "Mensch 的研究与创业路径把训练资源配置和产品部署联系起来。开放权重不一定意味着训练数据、全部代码或所有产品都开放；评估具体模型时，仍要查看对应版本的许可证和技术说明，而不能仅依据公司的整体定位。"
+    ],
+    "sources": [
+      "mistral",
+      "chinchilla",
+      "mistral7b"
+    ]
+  },
+  {
+    "id": "mark-zuckerberg",
+    "name": "Mark Zuckerberg",
+    "alias": "马克·扎克伯格",
+    "category": "模型与团队",
+    "tag": "Meta · Llama 开放路线",
+    "bio": [
+      "Mark Zuckerberg 是 Meta 的创办者。他与大模型发展的关系，主要体现在公司层面的研究投入、计算资源和模型分发策略，而非作为某一算法的研究作者。",
+      "Meta 团队发布了 Llama 系列，并提供部分模型权重与配套资源，使开发者能够在不同环境中运行和适配模型。这样的发布方式推动了围绕基础模型的工具、微调与部署生态，也引发了对开放程度和许可证边界的讨论。",
+      "Zuckerberg 的公开文章解释了 Meta 对开放 AI 的战略判断。读者需要同时查看具体版本的授权条款：模型可下载、可商用或可修改，分别可能附带不同条件。公司策略与研究团队的技术成果应分开表述。"
+    ],
+    "sources": [
+      "zuckerberg-ai",
+      "llama3"
+    ]
+  },
+  {
+    "id": "mira-murati",
+    "name": "Mira Murati",
+    "alias": "米拉·穆拉蒂",
+    "category": "模型与团队",
+    "tag": "模型研发 · Thinking Machines",
+    "bio": [
+      "Mira Murati 是 AI 技术与产品组织负责人，曾担任 OpenAI 首席技术官，后来创办 Thinking Machines Lab。她的职业重点是连接模型研究、工程开发和实际产品。",
+      "大模型研发需要把训练实验、基础设施、安全评价和用户需求组织在一起。她在 OpenAI 的公开角色涉及这些工作之间的协调；相关产品的研究与实现仍由多个团队共同完成。",
+      "Thinking Machines Lab 的公开方向是让 AI 更容易被理解、定制和使用。与单个模型的研究不同，这类研发需要把研究人员、系统工程师和产品团队组织在一起；Murati 的职业经历主要围绕这样的跨团队协作展开。"
+    ],
+    "sources": [
+      "thinking-machines",
+      "murati-openai"
+    ]
+  },
+  {
+    "id": "elon-musk",
+    "name": "Elon Musk",
+    "alias": "埃隆·马斯克",
+    "category": "模型与团队",
+    "tag": "xAI · Grok",
+    "bio": [
+      "Elon Musk 是企业家，也是 xAI 的创办者。他曾参与 OpenAI 的早期成立与资金支持，后来通过 xAI 组织模型研发及相关计算基础设施。",
+      "xAI 团队开发 Grok 模型和产品，并建设用于训练的算力系统。对这一研究组织而言，模型、数据、计算集群和产品分发相互关联，不能只凭单一模型演示理解整个技术能力。",
+      "他在 AI 领域主要通过创办公司、投入计算资源和确定产品方向产生影响。Grok 是 xAI 团队的模型与产品，Tesla 的自动驾驶研究则面对物理环境中的感知与决策，两类系统的任务、数据和验证方式并不相同。"
+    ],
+    "sources": [
+      "xai",
+      "openai-founding"
+    ]
+  }
+]

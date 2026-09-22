@@ -1,0 +1,41 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import PersonProfile from '../../components/PersonProfile.astro';
+import { people, categories, initials } from '../../data/ai-people';
+const frontmatter = { title: 'AI 人物志', description: '认识大模型背后的研究者、工程师与创办者。100 位人物的代表工作、经历和原始资料。', template: 'splash' as const, hidePageTitle: true };
+---
+<StarlightPage frontmatter={frontmatter} sidebar={[]}>
+  <section class="people-page not-content" aria-labelledby="people-title">
+    <header class="people-intro">
+      <div><h1 id="people-title">AI 人物志</h1><p>从代表工作，认识大模型背后的人。</p></div>
+      <span class="people-total">{people.length} 位人物</span>
+    </header>
+    <div class="people-controls" data-people-controls hidden>
+      <label class="people-search"><span class="people-sr-only">搜索姓名、模型或研究方向</span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 5 5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><input id="people-search" type="search" placeholder="搜索姓名、模型或研究方向" autocomplete="off" /></label>
+      <div class="people-filters" role="group" aria-label="按研究方向筛选">
+        {['全部', ...categories].map(category => <button type="button" data-category={category} aria-pressed={category === '全部'}>{category}</button>)}
+      </div>
+    </div>
+    <p class="people-filter-status" aria-live="polite" aria-atomic="true" data-people-status></p>
+    <div class="people-grid">
+      {people.map(person => (
+        <a class="person-card" href={`/people/${person.id}/`} data-person={person.id} data-category={person.category} data-search={`${person.name} ${person.alias} ${person.tag} ${person.bio.join(' ')}`}>
+          {person.portrait ? <img class="person-avatar" src={person.portrait.src} alt="" width="48" height="48" loading="lazy" decoding="async" /> : <span class="person-avatar person-initials" aria-hidden="true">{initials(person.name)}</span>}
+          <span class="person-card-copy"><span class="person-name">{person.name}</span><span class="person-tag">{person.tag}</span></span>
+        </a>
+      ))}
+    </div>
+    <div class="people-empty" data-people-empty hidden><p>没有找到匹配的人物。</p><button type="button" data-people-reset>清除搜索与筛选</button></div>
+    <p class="people-footnote">按代表工作分组，不是排名。简介依据机构、本人及原始研究资料整理。</p>
+  </section>
+  <dialog class="person-dialog not-content" aria-labelledby="person-dialog-title">
+    <div class="person-dialog-toolbar"><a data-person-permalink href="/people/">单独打开 ↗</a><button type="button" data-person-close aria-label="关闭人物详情"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></button></div>
+    <div data-person-content></div>
+  </dialog>
+  {people.map(person => <template id={`person-template-${person.id}`}><PersonProfile person={person} modal /></template>)}
+</StarlightPage>
+
+<script>
+  import { setupPeopleDirectory } from '../../scripts/people-directory';
+  setupPeopleDirectory();
+</script>

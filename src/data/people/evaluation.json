@@ -1,0 +1,119 @@
+[
+  {
+    "id": "percy-liang",
+    "name": "Percy Liang",
+    "alias": "梁鹏",
+    "category": "对齐与评测",
+    "tag": "HELM · 模型透明评测",
+    "bio": [
+      "Percy Liang 是斯坦福大学计算机科学研究者，工作涉及机器学习、语言理解与基础模型。他是 HELM 论文的第一作者，也参与建设可公开检查的模型评价资源。",
+      "HELM 尝试从多个场景和指标评价语言模型，包括准确性、校准、鲁棒性、公平性及效率。它强调在统一条件下保留足够多的结果，使人能够看到模型之间的取舍，而不只比较一个总分。",
+      "他的研究还涉及数据效率、可靠性与开放研究。对于开发者，HELM 的价值不仅是看榜单，更是理解自己的应用究竟需要哪些指标、公开基准漏掉了什么，以及模型表现是否能够被他人复核。"
+    ],
+    "sources": [
+      "percy-bio",
+      "helm",
+      "foundation-models"
+    ]
+  },
+  {
+    "id": "christopher-manning",
+    "name": "Christopher Manning",
+    "alias": "克里斯托弗·曼宁",
+    "category": "基础与架构",
+    "tag": "自然语言理解 · Stanford NLP",
+    "bio": [
+      "Christopher Manning 是语言学与计算机科学研究者，长期研究自然语言处理、语言表示及语言理解。他的工作横跨统计 NLP、句法分析、神经表示和大模型时代的语言研究。",
+      "他与合作者建设了 Stanford NLP 的多个工具和模型，也参与 GloVe 等词表示研究。GloVe 将全局词共现统计用于学习向量，让词语之间的关系能够被后续模型利用。",
+      "他也通过教材、课程与研究团队培养推动 NLP 方法的传播。认识 Manning 的工作，有助于理解语言模型的发展并非只是一串更大的参数规模：语言结构、数据、学习目标和任务评价一直影响着模型能够学到什么。"
+    ],
+    "sources": [
+      "manning-bio",
+      "glove",
+      "stanford-nlp"
+    ]
+  },
+  {
+    "id": "emily-bender",
+    "name": "Emily M. Bender",
+    "alias": "埃米莉·本德",
+    "category": "对齐与评测",
+    "tag": "语言数据 · 模型能力边界",
+    "bio": [
+      "Emily M. Bender 是计算语言学研究者，关注语言技术的数据、评价和社会影响。她强调在讨论模型能力时，需要区分文本形式的规律与语言在实际使用中的意义。",
+      "她与合作者提出 Data Statements 等方法，要求更清楚地记录语言数据来自谁、覆盖什么群体和适用于什么用途。她也是 Stochastic Parrots 论文的共同作者，讨论大规模语言模型训练中的数据、环境与社会风险。",
+      "她的工作为模型研发提供了一种语言学和社会技术视角。相关观点可以帮助读者审视“理解”“通用”等表述，但具体系统的能力仍需要具体任务中的证据，不能仅凭一种总体立场作结论。"
+    ],
+    "sources": [
+      "bender-bio",
+      "data-statements",
+      "stochastic-parrots"
+    ]
+  },
+  {
+    "id": "timnit-gebru",
+    "name": "Timnit Gebru",
+    "alias": "蒂姆尼特·格布鲁",
+    "category": "对齐与评测",
+    "tag": "数据文档 · 算法偏差",
+    "bio": [
+      "Timnit Gebru 是 AI 研究者，关注数据集、算法偏差和研究问责，也是 Distributed AI Research 的创办者。她的工作强调技术系统背后的数据与社会条件。",
+      "Datasheets for Datasets 建议像记录硬件规格一样，为数据集说明收集过程、组成、预期用途和限制。她与 Joy Buolamwini 的 Gender Shades 研究，则展示了部分商业性别分类系统对不同人群表现不均衡的问题。",
+      "Gender Shades 把不同群体的错误率分别列出来，使“总体准确率很高”背后的差异变得可见；Datasheets 则要求说明数据从哪里来、怎样收集以及适合什么用途。两项工作把数据记录与分组评测带入了模型研发流程。"
+    ],
+    "sources": [
+      "gebru-bio",
+      "datasheets",
+      "gender-shades"
+    ]
+  },
+  {
+    "id": "margaret-mitchell",
+    "name": "Margaret Mitchell",
+    "alias": "玛格丽特·米切尔",
+    "category": "对齐与评测",
+    "tag": "Model Cards · 模型透明度",
+    "bio": [
+      "Margaret Mitchell 是 AI 研究者，研究涉及语言生成、模型评价与负责任的机器学习。她是 Model Cards for Model Reporting 论文的第一作者。",
+      "Model Cards 建议随模型发布结构化说明，记录用途、训练与评测条件、不同群体的表现及已知限制。这样，使用者能够判断模型是否适合自己的场景，而不必只依赖一个演示或排行榜分数。",
+      "她也参与关于语言模型数据和社会风险的研究。模型卡不能自动保证模型安全，但能让原本隐含的信息更容易被检查。对于实际开发，它将模型选择从“能否调用”扩展到“在什么条件下适用、有哪些已知问题”。"
+    ],
+    "sources": [
+      "mitchell-bio",
+      "model-cards",
+      "stochastic-parrots"
+    ]
+  },
+  {
+    "id": "deborah-raji",
+    "name": "Inioluwa Deborah Raji",
+    "alias": "德博拉·拉吉",
+    "category": "对齐与评测",
+    "tag": "算法审计 · 部署问责",
+    "bio": [
+      "Inioluwa Deborah Raji 是 AI 问责与算法审计研究者，关注模型在真实组织中怎样被检查，以及发现问题之后谁负责采取行动。",
+      "她参与的研究讨论从开发到部署的审计流程，强调记录系统目标、数据、评价结果、风险和组织决策。审计不仅是在发布前跑一次测试，还需要把证据与实际使用条件联系起来。",
+      "她也研究商业 AI 系统的偏差与外部审查。对大模型应用而言，这些工作提醒团队：公开基准不能覆盖所有部署风险，评测结论还需要与版本、用户、业务流程和责任分工绑定，才能支持持续改进。"
+    ],
+    "sources": [
+      "raji-bio",
+      "accountability-gap"
+    ]
+  },
+  {
+    "id": "hanna-wallach",
+    "name": "Hanna Wallach",
+    "alias": "汉娜·沃拉赫",
+    "category": "对齐与评测",
+    "tag": "社会技术评测 · 公平性",
+    "bio": [
+      "Hanna Wallach 是机器学习研究者，研究经历包括主题模型、计算社会科学和 AI 公平性。她关注模型评价中的技术指标与社会情境如何相互影响。",
+      "公平性并不是选择一个指标就能完全解决的问题。同样的错误在不同群体、用途和组织流程中可能产生不同后果。她参与的研究强调，应根据具体使用场景识别潜在伤害，并明确评测指标能够覆盖什么、遗漏什么。",
+      "这种视角同样适用于大模型：平均得分、拒答率或偏见测试都只是部分证据，还需要结合用户任务和部署条件。她的工作推动团队把社会影响纳入系统设计与评测过程，而不是等到出现问题后再补充说明。"
+    ],
+    "sources": [
+      "wallach-bio",
+      "fairness-abstraction"
+    ]
+  }
+]

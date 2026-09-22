@@ -1,0 +1,15 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import PersonProfile from '../../components/PersonProfile.astro';
+import { people, type Person } from '../../data/ai-people';
+export function getStaticPaths() { return people.map(person => ({ params: { id: person.id }, props: { person } })); }
+interface Props { person: Person }
+const { person } = Astro.props;
+const frontmatter = { title: `${person.name} · AI 人物志`, description: person.bio[0], template: 'splash' as const, hidePageTitle: true };
+---
+<StarlightPage frontmatter={frontmatter} sidebar={[]}>
+  <div class="person-page not-content">
+    <a class="people-back" href="/people/">← AI 人物志</a>
+    <PersonProfile person={person} />
+  </div>
+</StarlightPage>
