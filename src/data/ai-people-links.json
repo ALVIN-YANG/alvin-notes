@@ -1,0 +1,1846 @@
+{
+  "albert-gu": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/_albertgu",
+      "verifiedFrom": "https://github.com/albertfgu",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/albertfgu",
+      "verifiedFrom": "https://github.com/albertfgu",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "alec-radford": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/newmu",
+      "verifiedFrom": "https://github.com/newmu",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "alex-graves": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.cs.toronto.edu/~graves/",
+      "verifiedFrom": "https://www.cs.toronto.edu/~graves/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "amanda-askell": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://askell.io/",
+      "verifiedFrom": "https://askell.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/AmandaAskell",
+      "verifiedFrom": "https://askell.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/aaskell",
+      "verifiedFrom": "https://askell.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/amanda-askell",
+      "verifiedFrom": "https://askell.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "andrej-karpathy": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://karpathy.ai/",
+      "verifiedFrom": "https://karpathy.ai/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/karpathy",
+      "verifiedFrom": "https://karpathy.ai/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://youtube.com/@AndrejKarpathy",
+      "verifiedFrom": "https://karpathy.ai/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/karpathy",
+      "verifiedFrom": "https://karpathy.ai/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "andrew-barto": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://people.cs.umass.edu/~barto/",
+      "verifiedFrom": "https://people.cs.umass.edu/~barto/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "andrew-ng": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.andrewng.org/",
+      "verifiedFrom": "https://www.andrewng.org/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/AndrewYNg",
+      "verifiedFrom": "https://www.andrewng.org/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/andrewyng",
+      "verifiedFrom": "https://www.andrewng.org/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "barret-zoph": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://barretzoph.github.io/",
+      "verifiedFrom": "https://barretzoph.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/barret_zoph",
+      "verifiedFrom": "https://barretzoph.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/barret-zoph-65990543",
+      "verifiedFrom": "https://barretzoph.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "charles-packer": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://charlespacker.com/",
+      "verifiedFrom": "https://charlespacker.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/charlespacker",
+      "verifiedFrom": "https://charlespacker.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/cpacker",
+      "verifiedFrom": "https://charlespacker.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/charles-packer",
+      "verifiedFrom": "https://charlespacker.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "chelsea-finn": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://ai.stanford.edu/~cbfinn/",
+      "verifiedFrom": "https://ai.stanford.edu/~cbfinn/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/chelseabfinn",
+      "verifiedFrom": "https://ai.stanford.edu/~cbfinn/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "chenlin-meng": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://cs.stanford.edu/~chenlin/",
+      "verifiedFrom": "https://cs.stanford.edu/~chenlin/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/chenlin_meng",
+      "verifiedFrom": "https://cs.stanford.edu/~chenlin/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "chris-olah": [
+    {
+      "platform": "blog",
+      "label": "个人博客",
+      "url": "https://colah.github.io/about.html",
+      "verifiedFrom": "https://colah.github.io/about.html",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/ch402",
+      "verifiedFrom": "https://colah.github.io/about.html",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/colah",
+      "verifiedFrom": "https://github.com/colah",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/colah.bsky.social",
+      "verifiedFrom": "https://github.com/colah",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "christopher-manning": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://nlp.stanford.edu/~manning/",
+      "verifiedFrom": "https://nlp.stanford.edu/~manning/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/chrmanning",
+      "verifiedFrom": "https://nlp.stanford.edu/~manning/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "christopher-re": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://cs.stanford.edu/people/chrismre/",
+      "verifiedFrom": "https://cs.stanford.edu/people/chrismre/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "clement-delangue": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/clementdelangue",
+      "verifiedFrom": "https://huggingface.co/clem",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/clementdelangue",
+      "verifiedFrom": "https://huggingface.co/clem",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "huggingface",
+      "label": "Hugging Face",
+      "url": "https://huggingface.co/clem",
+      "verifiedFrom": "https://huggingface.co/clem",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/clem.hf.co",
+      "verifiedFrom": "https://huggingface.co/clem",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "dan-hendrycks": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://danhendrycks.com/",
+      "verifiedFrom": "https://danhendrycks.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/hendrycks",
+      "verifiedFrom": "https://danhendrycks.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "danqi-chen": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.cs.princeton.edu/~danqic/",
+      "verifiedFrom": "https://www.cs.princeton.edu/~danqic/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/danqi_chen",
+      "verifiedFrom": "https://www.cs.princeton.edu/~danqic/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/danqi",
+      "verifiedFrom": "https://www.cs.princeton.edu/~danqic/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "dario-amodei": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://darioamodei.com/",
+      "verifiedFrom": "https://darioamodei.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "david-ha": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://otoro.net/",
+      "verifiedFrom": "https://otoro.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/hardmaru",
+      "verifiedFrom": "https://otoro.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/hardmaru",
+      "verifiedFrom": "https://otoro.net/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "deborah-raji": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://rajiinio.github.io/",
+      "verifiedFrom": "https://rajiinio.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/rajiinio",
+      "verifiedFrom": "https://rajiinio.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/rajiinio",
+      "verifiedFrom": "https://rajiinio.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/rajiinio.bsky.social",
+      "verifiedFrom": "https://rajiinio.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "demis-hassabis": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/demishassabis",
+      "verifiedFrom": "https://lexfridman.com/demis-hassabis/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "denny-zhou": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://dennyzhou.github.io/",
+      "verifiedFrom": "https://dennyzhou.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "diederik-kingma": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://dpkingma.com/",
+      "verifiedFrom": "https://dpkingma.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/dpkingma",
+      "verifiedFrom": "https://dpkingma.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://youtube.com/channel/UCBWS9Ym5IG8mDllhrnY6qqA",
+      "verifiedFrom": "https://dpkingma.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/durk-kingma-58b3564",
+      "verifiedFrom": "https://dpkingma.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "mastodon",
+      "label": "Mastodon",
+      "url": "https://sigmoid.social/@dpkingma",
+      "verifiedFrom": "https://dpkingma.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "dylan-hadfield-menell": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://people.csail.mit.edu/dhm/",
+      "verifiedFrom": "https://people.csail.mit.edu/dhm/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/dhadfieldmenell",
+      "verifiedFrom": "https://people.csail.mit.edu/dhm/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/dylan-hadfield-menell-a5055019",
+      "verifiedFrom": "https://people.csail.mit.edu/dhm/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "dzmitry-bahdanau": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://rizar.github.io/",
+      "verifiedFrom": "https://rizar.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/rizar",
+      "verifiedFrom": "https://rizar.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "edward-hu": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://edwardjhu.com/",
+      "verifiedFrom": "https://edwardjhu.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/edwardjhu",
+      "verifiedFrom": "https://edwardjhu.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://youtube.com/@edwardjhu",
+      "verifiedFrom": "https://edwardjhu.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/edwardjhu",
+      "verifiedFrom": "https://edwardjhu.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/edwardjhu",
+      "verifiedFrom": "https://edwardjhu.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "elon-musk": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/elonmusk",
+      "verifiedFrom": "https://lexfridman.com/elon-musk-4/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "emily-bender": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://faculty.washington.edu/ebender/",
+      "verifiedFrom": "https://faculty.washington.edu/ebender/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/emilymbender",
+      "verifiedFrom": "https://faculty.washington.edu/ebender/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "geoffrey-hinton": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.cs.toronto.edu/~hinton/",
+      "verifiedFrom": "https://www.cs.toronto.edu/~hinton/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/geoffreyhinton",
+      "verifiedFrom": "https://web.cs.toronto.edu/news-events/news/congratulations-pour-in-for-geoffrey-hinton-after-nobel-win",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "graham-neubig": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.phontron.com/",
+      "verifiedFrom": "https://www.phontron.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "hamish-ivison": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://ivison.id.au/",
+      "verifiedFrom": "https://ivison.id.au/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/hamishivi",
+      "verifiedFrom": "https://ivison.id.au/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/hamishivi",
+      "verifiedFrom": "https://ivison.id.au/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/hamish-ivison-6a17a1118",
+      "verifiedFrom": "https://ivison.id.au/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "harrison-chase": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/hwchase17",
+      "verifiedFrom": "https://github.com/hwchase17",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "ian-goodfellow": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.iangoodfellow.com/",
+      "verifiedFrom": "https://www.iangoodfellow.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "ilya-sutskever": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/ilyasut",
+      "verifiedFrom": "https://lexfridman.com/ilya-sutskever/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jacob-devlin": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/jacobdevlin-google",
+      "verifiedFrom": "https://github.com/jacobdevlin-google",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jan-leike": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/janleike",
+      "verifiedFrom": "https://github.com/janleike",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jascha-sohl-dickstein": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://sohldickstein.com/",
+      "verifiedFrom": "https://sohldickstein.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/jaschasd",
+      "verifiedFrom": "https://sohldickstein.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/jascha.sohldickstein.com",
+      "verifiedFrom": "https://sohldickstein.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jason-wei": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.jasonwei.net/",
+      "verifiedFrom": "https://www.jasonwei.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/_jasonwei",
+      "verifiedFrom": "https://www.jasonwei.net/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jeremy-howard": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://jeremy.fast.ai/",
+      "verifiedFrom": "https://jeremy.fast.ai/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "mastodon",
+      "label": "Mastodon",
+      "url": "https://sigmoid.social/@jh",
+      "verifiedFrom": "https://jeremy.fast.ai/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jiaming-song": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://tsong.me/",
+      "verifiedFrom": "https://tsong.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/baaadas",
+      "verifiedFrom": "https://tsong.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/jiamings",
+      "verifiedFrom": "https://tsong.me/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jie-tang": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://keg.cs.tsinghua.edu.cn/jietang/",
+      "verifiedFrom": "https://keg.cs.tsinghua.edu.cn/jietang/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jim-fan": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://jimfan.me/",
+      "verifiedFrom": "https://jimfan.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/DrJimFan",
+      "verifiedFrom": "https://jimfan.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/DrJimFan",
+      "verifiedFrom": "https://jimfan.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/drjimfan",
+      "verifiedFrom": "https://jimfan.me/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jimmy-ba": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://jimmylba.github.io/",
+      "verifiedFrom": "https://jimmylba.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "joelle-pineau": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.cs.mcgill.ca/~jpineau/",
+      "verifiedFrom": "https://www.cs.mcgill.ca/~jpineau/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "john-schulman": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/joschu",
+      "verifiedFrom": "https://github.com/joschu",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "julien-chaumond": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/julien_c",
+      "verifiedFrom": "https://github.com/julien-c",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/julien-c",
+      "verifiedFrom": "https://github.com/julien-c",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "huggingface",
+      "label": "Hugging Face",
+      "url": "https://huggingface.co/julien-c",
+      "verifiedFrom": "https://github.com/julien-c",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "junyang-lin": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/JustinLin610",
+      "verifiedFrom": "https://github.com/JustinLin610",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/JustinLin610",
+      "verifiedFrom": "https://github.com/JustinLin610",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "jurgen-schmidhuber": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://people.idsia.ch/~juergen/",
+      "verifiedFrom": "https://people.idsia.ch/~juergen/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/SchmidhuberAI",
+      "verifiedFrom": "https://people.idsia.ch/~juergen/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "kaiming-he": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://people.csail.mit.edu/kaiming/",
+      "verifiedFrom": "https://people.csail.mit.edu/kaiming/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "kilian-lieret": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.lieret.net/",
+      "verifiedFrom": "https://www.lieret.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/klieret",
+      "verifiedFrom": "https://www.lieret.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/klieret",
+      "verifiedFrom": "https://www.lieret.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/klieret",
+      "verifiedFrom": "https://www.lieret.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/klieret.bsky.social",
+      "verifiedFrom": "https://www.lieret.net/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "kyunghyun-cho": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://kyunghyuncho.me/",
+      "verifiedFrom": "https://kyunghyuncho.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/kchonyc",
+      "verifiedFrom": "https://kyunghyuncho.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/kyunghyuncho.bsky.social",
+      "verifiedFrom": "https://kyunghyuncho.me/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "lianmin-zheng": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://lmzheng.net/",
+      "verifiedFrom": "https://lmzheng.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/lm_zheng",
+      "verifiedFrom": "https://lmzheng.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://youtube.com/channel/UC5t6vMKPy05qFzEVCynBdVA",
+      "verifiedFrom": "https://lmzheng.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/merrymercy",
+      "verifiedFrom": "https://lmzheng.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/lianmin-zheng-6266a8114",
+      "verifiedFrom": "https://lmzheng.net/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "long-ouyang": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/longouyang",
+      "verifiedFrom": "https://github.com/longouyang",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "luca-soldaini": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://soldaini.net/",
+      "verifiedFrom": "https://soldaini.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/soldni",
+      "verifiedFrom": "https://soldaini.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/soldni",
+      "verifiedFrom": "https://soldaini.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/soldni",
+      "verifiedFrom": "https://soldaini.net/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "lukasz-kaiser": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/lukaszkaiser",
+      "verifiedFrom": "https://github.com/lukaszkaiser",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "luyu-gao": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://luyug.github.io/",
+      "verifiedFrom": "https://luyug.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/luyu_gao",
+      "verifiedFrom": "https://luyug.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/luyug",
+      "verifiedFrom": "https://luyug.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "mark-zuckerberg": [
+    {
+      "platform": "facebook",
+      "label": "Facebook",
+      "url": "https://facebook.com/zuck",
+      "verifiedFrom": "https://lexfridman.com/mark-zuckerberg-3/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "instagram",
+      "label": "Instagram",
+      "url": "https://instagram.com/zuck",
+      "verifiedFrom": "https://lexfridman.com/mark-zuckerberg-3/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "threads",
+      "label": "Threads",
+      "url": "https://threads.net/@zuck",
+      "verifiedFrom": "https://lexfridman.com/mark-zuckerberg-3/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "mustafa-suleyman": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://mustafa-suleyman.ai/",
+      "verifiedFrom": "https://mustafa-suleyman.ai/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/mustafasuleyman",
+      "verifiedFrom": "https://x.com/mustafasuleyman/with_replies",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "nathan-lambert": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://natolambert.com/",
+      "verifiedFrom": "https://natolambert.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "blog",
+      "label": "Interconnects",
+      "url": "https://www.interconnects.ai/",
+      "verifiedFrom": "https://www.interconnects.ai/about",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/natolambert",
+      "verifiedFrom": "https://natolambert.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://youtube.com/@natolambert",
+      "verifiedFrom": "https://natolambert.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/natolambert",
+      "verifiedFrom": "https://natolambert.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/natolambert",
+      "verifiedFrom": "https://natolambert.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/natolambert.bsky.social",
+      "verifiedFrom": "https://natolambert.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "niki-parmar": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/nikiparmar",
+      "verifiedFrom": "https://github.com/nikiparmar",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "noam-shazeer": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.noamshazeer.com/",
+      "verifiedFrom": "https://www.noamshazeer.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/NoamShazeer",
+      "verifiedFrom": "https://www.noamshazeer.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/NoamShazeer",
+      "verifiedFrom": "https://github.com/NoamShazeer",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/noam-shazeer-3b27288",
+      "verifiedFrom": "https://www.noamshazeer.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "ofir-press": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://ofir.io/about/",
+      "verifiedFrom": "https://ofir.io/about/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/OfirPress",
+      "verifiedFrom": "https://ofir.io/about/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/ofirp",
+      "verifiedFrom": "https://ofir.io/about/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "omar-khattab": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://omarkhattab.com/",
+      "verifiedFrom": "https://omarkhattab.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/lateinteraction",
+      "verifiedFrom": "https://omarkhattab.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/okhat",
+      "verifiedFrom": "https://omarkhattab.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "patrick-lewis": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.patricklewis.io/",
+      "verifiedFrom": "https://www.patricklewis.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/PSH_Lewis",
+      "verifiedFrom": "https://www.patricklewis.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/patrick-s-h-lewis",
+      "verifiedFrom": "https://www.patricklewis.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "mastodon",
+      "label": "Mastodon",
+      "url": "https://sigmoid.social/@patrick_lewis",
+      "verifiedFrom": "https://www.patricklewis.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "paul-christiano": [
+    {
+      "platform": "forum",
+      "label": "Alignment Forum",
+      "url": "https://www.alignmentforum.org/users/paulfchristiano",
+      "verifiedFrom": "https://www.alignmentforum.org/users/paulfchristiano",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "percy-liang": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://cs.stanford.edu/~pliang/",
+      "verifiedFrom": "https://cs.stanford.edu/~pliang/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "prafulla-dhariwal": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://prafulladhariwal.com/",
+      "verifiedFrom": "https://prafulladhariwal.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/prafdhar",
+      "verifiedFrom": "https://prafulladhariwal.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/prafulladhariwal",
+      "verifiedFrom": "https://prafulladhariwal.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "rafael-rafailov": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/rmrafailov",
+      "verifiedFrom": "https://github.com/rmrafailov",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "richard-sutton": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "http://www.incompleteideas.net/",
+      "verifiedFrom": "http://www.incompleteideas.net/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "saining-xie": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.sainingxie.com/",
+      "verifiedFrom": "https://www.sainingxie.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/sainingxie",
+      "verifiedFrom": "https://www.sainingxie.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "sam-altman": [
+    {
+      "platform": "blog",
+      "label": "个人博客",
+      "url": "https://blog.samaltman.com/",
+      "verifiedFrom": "https://blog.samaltman.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/sama",
+      "verifiedFrom": "https://blog.samaltman.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "sebastian-raschka": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/rasbt",
+      "verifiedFrom": "https://github.com/rasbt",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "youtube",
+      "label": "YouTube",
+      "url": "https://youtube.com/@SebastianRaschka",
+      "verifiedFrom": "https://github.com/rasbt",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/rasbt",
+      "verifiedFrom": "https://github.com/rasbt",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/sebastianraschka",
+      "verifiedFrom": "https://github.com/rasbt",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "sebastian-riedel": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "http://www.riedelcastro.org/",
+      "verifiedFrom": "http://www.riedelcastro.org/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/riedelcastro",
+      "verifiedFrom": "http://www.riedelcastro.org/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "shishir-patil": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://shishirpatil.github.io/",
+      "verifiedFrom": "https://shishirpatil.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/shishirpatil_",
+      "verifiedFrom": "https://shishirpatil.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/ShishirPatil",
+      "verifiedFrom": "https://shishirpatil.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/shishir-patil",
+      "verifiedFrom": "https://shishirpatil.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "shunyu-yao": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://ysymyth.github.io/",
+      "verifiedFrom": "https://ysymyth.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/ShunyuYao12",
+      "verifiedFrom": "https://ysymyth.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/ysymyth",
+      "verifiedFrom": "https://ysymyth.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "song-han": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://hanlab.mit.edu/songhan",
+      "verifiedFrom": "https://hanlab.mit.edu/songhan",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/songhan_mit",
+      "verifiedFrom": "https://hanlab.mit.edu/songhan",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/songhanmit",
+      "verifiedFrom": "https://hanlab.mit.edu/songhan",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "soumith-chintala": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://soumith.ch/",
+      "verifiedFrom": "https://soumith.ch/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/soumithchintala",
+      "verifiedFrom": "https://soumith.ch/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/soumith",
+      "verifiedFrom": "https://soumith.ch/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/soumith",
+      "verifiedFrom": "https://soumith.ch/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "sumanth-dathathri": [
+    {
+      "platform": "huggingface",
+      "label": "Hugging Face",
+      "url": "https://huggingface.co/sdathath",
+      "verifiedFrom": "https://huggingface.co/sdathath",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "thomas-wolf": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://thomwolf.io/",
+      "verifiedFrom": "https://thomwolf.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/Thom_Wolf",
+      "verifiedFrom": "https://thomwolf.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/thomwolf",
+      "verifiedFrom": "https://thomwolf.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/thomas-wolf-a056857",
+      "verifiedFrom": "https://thomwolf.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/thomwolf.bsky.social",
+      "verifiedFrom": "https://thomwolf.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "tianqi-chen": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://tqchen.com/",
+      "verifiedFrom": "https://tqchen.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/tqchenml",
+      "verifiedFrom": "https://tqchen.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/tqchen",
+      "verifiedFrom": "https://tqchen.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "tianyu-gao": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/gaotianyu1350",
+      "verifiedFrom": "https://github.com/gaotianyu1350",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/gaotianyu1350",
+      "verifiedFrom": "https://github.com/gaotianyu1350",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "tim-dettmers": [
+    {
+      "platform": "blog",
+      "label": "个人博客",
+      "url": "https://timdettmers.com/",
+      "verifiedFrom": "https://timdettmers.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/tim_dettmers",
+      "verifiedFrom": "https://github.com/TimDettmers",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/TimDettmers",
+      "verifiedFrom": "https://github.com/TimDettmers",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "tim-salimans": [
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/TimSalimans",
+      "verifiedFrom": "https://github.com/TimSalimans",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "tri-dao": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://tridao.me/",
+      "verifiedFrom": "https://tridao.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/tri_dao",
+      "verifiedFrom": "https://tridao.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/tridao",
+      "verifiedFrom": "https://tridao.me/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "william-peebles": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.wpeebles.com/",
+      "verifiedFrom": "https://www.wpeebles.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/billpeeb",
+      "verifiedFrom": "https://www.wpeebles.com/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/wpeebles",
+      "verifiedFrom": "https://www.wpeebles.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "woosuk-kwon": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://woosuk.me/",
+      "verifiedFrom": "https://woosuk.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/woosuk_k",
+      "verifiedFrom": "https://woosuk.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/WoosukKwon",
+      "verifiedFrom": "https://woosuk.me/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/woosuk-kwon-986551262",
+      "verifiedFrom": "https://woosuk.me/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "yang-song": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://yang-song.net/",
+      "verifiedFrom": "https://yang-song.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/DrYangSong",
+      "verifiedFrom": "https://yang-song.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/yang-song",
+      "verifiedFrom": "https://yang-song.net/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/yang-song-machine-learning",
+      "verifiedFrom": "https://yang-song.net/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "yann-lecun": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/ylecun",
+      "verifiedFrom": "https://lexfridman.com/yann-lecun-3/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "facebook",
+      "label": "Facebook",
+      "url": "https://facebook.com/yann.lecun",
+      "verifiedFrom": "https://lexfridman.com/yann-lecun-3/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "yao-fu": [
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/Francis_YAO_",
+      "verifiedFrom": "https://github.com/FranxYao",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/FranxYao",
+      "verifiedFrom": "https://github.com/FranxYao",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "yoon-kim": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://people.csail.mit.edu/yoonkim/",
+      "verifiedFrom": "https://people.csail.mit.edu/yoonkim/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "yoshua-bengio": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://yoshuabengio.org/en",
+      "verifiedFrom": "https://yoshuabengio.org/en",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/Yoshua_Bengio",
+      "verifiedFrom": "https://yoshuabengio.org/en",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/yoshuabengio",
+      "verifiedFrom": "https://yoshuabengio.org/en",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "bluesky",
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/yoshuabengio.bsky.social",
+      "verifiedFrom": "https://yoshuabengio.org/en",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "zhihao-jia": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.cs.cmu.edu/~zhihaoj2/",
+      "verifiedFrom": "https://www.cs.cmu.edu/~zhihaoj2/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "zhilin-yang": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://kimiyoung.github.io/",
+      "verifiedFrom": "https://kimiyoung.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/kimiyoung",
+      "verifiedFrom": "https://kimiyoung.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "zhiyuan-liu": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://nlp.csai.tsinghua.edu.cn/~lzy/",
+      "verifiedFrom": "https://nlp.csai.tsinghua.edu.cn/~lzy/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "zhongyuan-wang": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://www.wangzhongyuan.com/",
+      "verifiedFrom": "https://www.wangzhongyuan.com/",
+      "verifiedAt": "2026-09-22"
+    }
+  ],
+  "zhuang-liu": [
+    {
+      "platform": "website",
+      "label": "个人主页",
+      "url": "https://liuzhuang13.github.io/",
+      "verifiedFrom": "https://liuzhuang13.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "x",
+      "label": "X",
+      "url": "https://x.com/liuzhuang1234",
+      "verifiedFrom": "https://liuzhuang13.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "github",
+      "label": "GitHub",
+      "url": "https://github.com/liuzhuang13",
+      "verifiedFrom": "https://liuzhuang13.github.io/",
+      "verifiedAt": "2026-09-22"
+    },
+    {
+      "platform": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/zhuang-liu-19306b1b1",
+      "verifiedFrom": "https://liuzhuang13.github.io/",
+      "verifiedAt": "2026-09-22"
+    }
+  ]
+}

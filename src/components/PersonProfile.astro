@@ -16,6 +16,9 @@ const Heading = modal ? 'h2' : 'h1';
     </div>
   </header>
   <p class="person-contribution">{person.tag}</p>
+  {person.links.length > 0 && <nav class="person-public-links" aria-label={`${person.name} 的公开主页与账号`}>
+    {person.links.map(link => <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`${person.name} 的${link.label}（新窗口）`}>{link.label}<span aria-hidden="true"> ↗</span></a>)}
+  </nav>}
   <div class="person-biography">{person.bio.map(paragraph => <p>{paragraph}</p>)}</div>
   <footer class="person-references">
     <h3>继续了解</h3>

@@ -799,6 +799,9 @@ pre {
 .person-profile-header :is(h1, h2) { margin: 0; font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 650; letter-spacing: -.035em; line-height: 1.25; overflow-wrap: anywhere; }
 .person-alias { margin: .4rem 0 0; color: var(--people-muted); font-size: .85rem; line-height: 1.4; }
 .person-contribution { padding-bottom: 1rem; border-bottom: 1px solid var(--people-line); margin: 0 0 1.25rem; color: var(--people-muted); font-size: .87rem; }
+.person-public-links { display: flex; flex-wrap: wrap; gap: .15rem 1rem; margin: -.5rem 0 1rem; }
+.person-public-links a { display: inline-flex; align-items: center; min-height: 2rem; gap: .15rem; color: var(--sl-color-text-accent); font-size: .85rem; line-height: 1.5; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+.person-public-links a:hover { color: var(--sl-color-text); }
 .person-biography { font-size: 1rem; line-height: 1.9; overflow-wrap: anywhere; }
 .person-biography p { margin: 0 0 1rem; }
 .person-references { margin-top: 1.5rem; padding-top: 1.1rem; border-top: 1px solid var(--people-line); }
