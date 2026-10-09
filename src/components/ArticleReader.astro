@@ -1,0 +1,38 @@
+---
+interface Props {
+  contentSelector?: string;
+}
+const { contentSelector } = Astro.props;
+---
+
+<article-reader class="article-reader" data-reader-content={contentSelector} role="group" aria-label="文章朗读" hidden>
+  <button type="button" data-reader-toggle aria-label="朗读文章" title="使用浏览器默认语音朗读">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+      <path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14" />
+    </svg>
+    <span data-reader-label>朗读</span>
+  </button>
+  <button type="button" data-reader-stop aria-label="停止朗读" hidden>停止</button>
+  <span class="sr-only" data-reader-status role="status" aria-live="polite" aria-atomic="true"></span>
+</article-reader>
+
+<script>
+  import { mountArticleReader } from '../lib/article-speech.mjs';
+
+  class ArticleReader extends HTMLElement {
+    cleanup?: () => void;
+
+    connectedCallback() {
+      this.cleanup = mountArticleReader(this);
+    }
+
+    disconnectedCallback() {
+      this.cleanup?.();
+    }
+  }
+
+  if (!customElements.get('article-reader')) {
+    customElements.define('article-reader', ArticleReader);
+  }
+</script>

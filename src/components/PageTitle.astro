@@ -1,5 +1,6 @@
 ---
 import PageViewCount from './PageViewCount.astro';
+import ArticleReader from './ArticleReader.astro';
 
 const { entry, slug } = Astro.locals.starlightRoute;
 const hidePageTitle = (entry.data as typeof entry.data & { hidePageTitle?: boolean }).hidePageTitle === true;
@@ -16,6 +17,8 @@ const toPlainText = (value: string) => value
   .trim();
 
 const plainText = toPlainText(body);
+const showReader = slug !== '' && entry.data.template !== 'splash'
+  && !slug.startsWith('tools/') && Boolean(plainText);
 const fallbackDescription = body
   .split(/\n\s*\n/)
   .map((paragraph) => paragraph.trim())
@@ -70,6 +73,7 @@ const updatedLabel = updatedDate
           </p>
         )
       }
+      {showReader && <ArticleReader />}
     </header>
   )
 }

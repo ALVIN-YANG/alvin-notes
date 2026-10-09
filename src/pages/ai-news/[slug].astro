@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import ArticleReader from '../../components/ArticleReader.astro';
 import { marked } from 'marked';
 import {
   getISOWeek,
@@ -93,6 +94,7 @@ function compactDate(value = '') {
           {report.sourceCount > 0 && <span>{report.sourceCount} 个来源</span>}
           <span>约 {report.readMinutes} 分钟</span>
         </div>
+        <ArticleReader contentSelector=".report-sections" />
       </header>
 
       {tocSections.length > 0 && (
@@ -117,7 +119,7 @@ function compactDate(value = '') {
             id={section.slug}
           >
             <header class="section-heading">
-              <span>{section.number || String(sectionIndex + 1).padStart(2, '0')}</span>
+              <span data-reader-ignore>{section.number || String(sectionIndex + 1).padStart(2, '0')}</span>
               <h2>{section.title}</h2>
             </header>
 
