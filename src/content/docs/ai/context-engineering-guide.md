@@ -258,4 +258,5 @@ Context Engineering 的目标不是把所有信息都交给模型，而是在每
 
 延伸阅读：
 
+- [长上下文失效：减少约束遗漏的实用笔记](/ai/long-context-reliability-notes/)
 - [Anthropic：Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
