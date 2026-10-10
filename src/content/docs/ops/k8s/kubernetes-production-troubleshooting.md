@@ -2,20 +2,23 @@
 title: "Kubernetes 生产排障：从 Pending 到 Service 5xx"
 description: "按事件、状态、日志和网络证据逐层定位 Pending、CrashLoopBackOff、OOMKilled、镜像拉取失败和 Service 无流量。"
 date: 2026-03-05
-lastUpdated: 2026-06-20
+lastUpdated: 2026-10-11
 verifiedAgainst: "Kubernetes 官方排障文档，2026-06-20"
 sidebar:
   order: 2
 ---
 
-Kubernetes 排障最浪费时间的方式，是一看到 Pod 不正常就开始猜 YAML。更稳定的做法是先判断问题发生在哪一层：调度、镜像、进程、健康检查、Service 选择，还是节点和网络。
+**Kubernetes 排障先保存状态、事件和上一轮日志，再按失败层定位。** 先查调度与镜像，再查进程和探针，最后查 Service、网络和入口。直接重启可能丢掉现场；Pod `Running` 也不能证明请求可达。
 
-## 先说结论
+例如 Pod 已经 Running，访问 Service 仍然失败。先看它是否 Ready、EndpointSlice 是否选中它，再查端口和网络策略；此时反复改镜像通常没有帮助。
 
-- 先保存现场，再重启；重启可能让最有价值的事件和上一轮日志消失。
-- `get` 看全局状态，`describe` 看条件与事件，`logs --previous` 看上一次崩溃。
-- Pod 是 `Running` 不代表能接流量，`Ready` 和 EndpointSlice 才更接近 Service 的真实后端。
-- 只有标准镜像没有调试工具时，用 Ephemeral Container，不要为了排障永久扩充业务镜像。
+| 现象 | 第一份证据 | 继续检查 |
+| --- | --- | --- |
+| Pending | `PodScheduled`、`FailedScheduling` 事件 | 未调度查资源与约束；已调度查镜像、卷和启动 |
+| ImagePullBackOff | 拉取失败事件 | 镜像身份、凭证、节点到仓库的连接 |
+| CrashLoopBackOff | `Last State`、`logs --previous` | 应用退出还是探针触发重启 |
+| OOMKilled | 终止原因与历史内存指标 | 容器上限、节点压力、运行时与泄漏 |
+| Running 无流量 | Ready、EndpointSlice | selector、targetPort、监听地址与网络 |
 
 ## 先保存一份最小现场
 
@@ -36,9 +39,9 @@ kubectl -n demo logs <pod-name> --all-containers --previous --tail=200
 - 问题开始时间；
 - 是否只影响部分节点或可用区。
 
-## Pending：Pod 还没有被调度
+## Pending：先确认是否已经调度
 
-重点看 `PodScheduled=False` 和 `FailedScheduling` 事件。
+Pending 包括等待调度，也可能包括镜像下载等启动准备。`PodScheduled=False` 和 `FailedScheduling` 才指向调度阶段；已经分配节点时，继续看镜像、卷挂载和容器事件。[Pod 生命周期](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
 
 常见原因：
 
@@ -133,7 +136,7 @@ kubectl -n demo get endpointslice \
 - NetworkPolicy 拒绝流量；
 - Ingress 指向错误 Service 或端口。
 
-从集群内创建一次临时请求，比直接猜 Ingress 更快：
+从集群内发起临时请求，先区分 Service 路径与 Ingress 路径。下面假设服务端口为 8080、健康路径为 `/health`；接入上一篇 Nginx 示例时改为 80 和 `/`：
 
 ```bash
 kubectl -n demo run curl-debug --rm -it \
@@ -143,7 +146,7 @@ kubectl -n demo run curl-debug --rm -it \
 
 ## Distroless 镜像怎么排
 
-业务容器里没有 shell 时，可以添加临时调试容器：
+业务容器里没有 shell 时，可用 Ephemeral Container（临时调试容器），无需永久扩充业务镜像：
 
 ```bash
 kubectl debug -n demo -it <pod-name> \

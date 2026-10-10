@@ -1,10 +1,10 @@
 ---
 title: "支付级接口幂等性设计：防重放与防抖"
-description: "如果用户因为网络卡顿连点了三次“确认支付”，你的系统会扣他三次钱吗？本文为你提供一套在海量并发下保证接口绝对幂等的组合拳。"
+description: "接口被重试是常态：用户连点、网关自动重试都会让同一请求到达多次。用 Redis Token 防抖、状态机条件更新、数据库唯一索引三层手段保证幂等，Stripe 的幂等设计作延伸阅读。"
 sidebar:
   order: 3
 date: 2026-01-14
-lastUpdated: 2026-02-28
+lastUpdated: 2026-10-11
 ---
 
 在微服务环境中，有一个墨菲定律：**只要你的接口允许重试，它就一定会被重试。**
@@ -25,7 +25,7 @@ lastUpdated: 2026-02-28
   - **相对值更新（极度危险）**：`UPDATE user SET balance = balance - 100 WHERE id = 1`。重试多少次就扣多少钱！
 - `INSERT`（增）：**极度危险**。每次执行都会多出一条数据。
 
-## 2. 方案一：数据库唯一索引（兜底神器）
+## 2. 方案一：数据库唯一索引（最后兜底）
 
 这是最简单、最粗暴、但也是最可靠的一道物理防线。
 特别适合用于防范 `INSERT` 导致的重复数据。
@@ -66,7 +66,7 @@ ALTER TABLE orders ADD UNIQUE INDEX udx_serial_no (order_serial_no);
 
 业务场景：我们要把订单状态从 `UNPAID`（未支付）改为 `PAID`（已支付）。
 
-**愚蠢的写法：**
+**不安全的写法：**
 ```sql
 -- 没有任何防备，谁来都能改
 UPDATE orders SET status = 'PAID' WHERE order_id = 123;
@@ -88,8 +88,10 @@ WHERE order_id = 123 AND status = 'UNPAID';
 
 ## 总结
 
-一个 2026 年的高可用交易系统，幂等性绝对不是靠前端写一句 `button.disabled = true` 就能糊弄过去的。
+一个高可用交易系统，幂等性不是靠前端写一句 `button.disabled = true` 就能解决的。
 
 - 对于前端的页面重复提交：用 **Token（Redis 删除防抖）** 在 Controller 层拦住。
 - 对于底层的数据并发更新：用 **状态机/乐观锁（带条件 UPDATE）** 做并发控制。
 - 最终数据的物理落盘兜底：用 **MySQL 唯一索引** 守住最后的底线。
+
+延伸阅读：[Stripe 的幂等 API 设计](https://docs.stripe.com/idempotency)是业界有代表性的幂等实践参考。

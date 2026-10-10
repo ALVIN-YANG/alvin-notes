@@ -1,17 +1,15 @@
 ---
 title: "[协议与排障] Gemini 双端点与 thought_signature：一次工具调用 400 的完整排障"
-description: "OpenClaw 接入 Gemini 3 后，一旦触发工具调用就静默失败。根因藏在 Vertex AI OpenAI 兼容端点与原生端点对 thought_signature 的不同处理里。本文从协议面讲起，完整复盘排查过程，并给出一套经过生产验证的中转修复方案。"
+description: "OpenClaw 接入 Gemini 3 后，一旦触发工具调用就静默失败。根因藏在 Vertex AI OpenAI 兼容端点对 thought_signature 的校验里。本文从协议差异讲起，复盘排查过程，并给出经过生产验证的中转修复方案。"
 sidebar:
   order: 6
 date: 2026-03-01
-lastUpdated: 2026-04-18
+lastUpdated: 2026-10-11
 ---
 
-这是 OpenClaw 深度实践系列里最"硬核"的一篇，也是我们踩坑踩得最值的一篇。
+问题现象很简单：把 OpenClaw 的模型切到 Gemini 3 之后，普通聊天完全正常，但只要问题触发工具调用（比如问一句“天气怎么样”，Agent 需要调 web_search），回复就永远等不来了。没有报错弹窗，没有崩溃日志，就是安静地断掉。
 
-故事很简单：把 OpenClaw 的模型切到 Gemini 3 之后，普通聊天完全正常，但只要问题触发工具调用（比如问一句"天气怎么样"，Agent 需要调 web_search），回复就永远等不来了。没有报错弹窗，没有崩溃日志，就是安静地断掉。
-
-最后查下来，根因不在 OpenClaw，也不在网络，而在 **Vertex AI 的 OpenAI 兼容端点对 thought_signature 的校验逻辑**里。要理解它，得先把"Gemini 到底有几种调用协议"这件事讲清楚。
+最后查下来，根因不在 OpenClaw，也不在网络，而在 **Vertex AI 的 OpenAI 兼容端点对 thought_signature 的校验逻辑**里。要理解它，得先把“Gemini 到底有几种调用协议”这件事讲清楚。
 
 ## 1. 先对齐认知：Vertex AI 不止一种协议入口
 

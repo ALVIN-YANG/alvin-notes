@@ -1,39 +1,20 @@
 ---
-title: AI 能力体系：从 Function Call 到 Agent
-description: 全面解析 LLM 与外部世界交互的核心机制：Function Call 工具调用、Agent 智能体、MCP 协议、Skill 技能系统的原理与协作关系
+title: Function Call、Agent、MCP 与 Skill：各自负责什么
+description: 用查天气的一次工具调用，分清调用格式、任务循环、接入协议和可复用说明，并说明权限与业务结果的边界
 slug: ai/function-call-agent
 date: 2026-01-11
-lastUpdated: 2026-02-16
+lastUpdated: 2026-10-11
 ---
 
-大语言模型（LLM）本质是「读入文本、续写文本」。它不知道实时天气、你库里的表结构、磁盘上的文件——除非你把结果塞进上下文，或让它通过**工具**去拉数据。
+**Function Call 声明一次调用，Agent 组织多步任务，MCP 统一工具接入，Skill 提供可复用说明。** 四者可以按需组合，不是依次升级的必选层级。模型提出调用，宿主代码（Host）校验并执行，结果再交回模型。
 
-下面这张栈图和表格是同一套东西：越往下越靠近「一次调用」，越往上越靠近「流程与知识封装」。
+调用格式合法，不代表选对工具、填对 ID 或有权操作资源。权限、幂等和实际结果仍由执行代码检查。查天气可以只用一次工具调用；需要根据天气继续规划行程时，再由 Agent 推进下一步。
 
-![从 Function Call 到 Skill 的分层](/images/ai/function-call-agent-stack.svg)
-
-| 层级 | 概念 | 解决的问题 |
-|------|------|-----------|
-| 基础能力 | **Function Call** | LLM 如何声明并参数化外部函数 |
-| 推理框架 | **Agent** | 多步规划、观察、纠错与预算控制 |
-| 连接协议 | **MCP** | 工具与数据源如何统一暴露给 Host |
-| 领域封装 | **Skill** | 把领域步骤与话术固化成可复用说明 |
-
-栈图从上往下读是「离业务更近 → 离执行更近」；真正跑起来时，往往是 Agent 反复发起 Function Call，经 MCP 连到具体 Server。
+![Function Call、Agent、MCP、Skill 各自的职责](/images/ai/function-call-agent-stack.svg)
 
 ## Function Call（工具调用）
 
-### 核心问题
-
-LLM 的训练数据有截止日期，它不知道今天的天气、你的数据库里有什么、你的文件系统长什么样。**Function Call** 让模型能够声明「我需要调用某个函数来获取信息」，而不是凭空编造。
-
-### 工作原理
-
-Function Call 的流程分为 4 步：
-
-```
-用户提问 → 模型判断需要调用工具 → 外部系统执行 → 模型基于结果生成回答
-```
+以“上海天气怎么样？”为例，一次调用分四步。下面沿用 Chat Completions 风格，只展示必要字段，省略完整请求与响应封装；天气数值是示例。实际接入按所用 API 和 SDK 的字段定义。
 
 **第 1 步：定义工具（Tool Definition）**
 
@@ -58,7 +39,7 @@ Function Call 的流程分为 4 步：
 
 **第 2 步：模型决策调用（Tool Call）**
 
-用户问「上海天气怎么样？」，模型不会直接回答，而是返回一个结构化的调用请求：
+模型不直接回答，而是返回一个结构化的调用请求：
 
 ```json
 {
@@ -74,9 +55,9 @@ Function Call 的流程分为 4 步：
 
 关键点：**模型自己不执行函数**，它只负责决定调用哪个函数、传什么参数。
 
-**第 3 步：外部执行（Tool Output）**
+**第 3 步：Host 校验并执行（Tool Output）**
 
-你的代码收到调用请求后，实际执行 `get_weather("上海")`，拿到结果后返回给模型：
+你的代码（Host）收到调用请求后，先校验参数和权限，再实际执行 `get_weather("上海")`，把结果返回给模型：
 
 ```json
 {
@@ -88,7 +69,7 @@ Function Call 的流程分为 4 步：
 
 **第 4 步：生成最终回答**
 
-模型将工具结果结合上下文，生成自然语言回答：「上海目前 26°C，多云，湿度 72%。」
+模型将工具结果结合上下文，生成自然语言回答：“上海目前 26°C，多云，湿度 72%。”如果这是一个多步任务（比如“根据天气决定要不要调整户外活动方案”），Agent 会拿着这个结果继续下一轮推理，而不是直接收尾。
 
 ### 完整数据流
 
@@ -96,26 +77,24 @@ Function Call 的流程分为 4 步：
 
 ### 要点
 
-- 模型只做「决策」（调用什么、传什么参数），**不做执行**
+- 模型只做“决策”（调用什么、传什么参数），**不做执行**
 - 一次对话中可以调用多个工具，也可以多轮调用
-- `strict: true` 模式下（OpenAI Structured Outputs），模型生成的参数严格遵循 JSON Schema，不会出现格式错误
-- Function Call 是所有后续概念（Agent、MCP）的底层基础
+- `strict: true`（OpenAI Structured Outputs）只保证模型输出在其支持的 Schema 子集范围内形状合法。它不保证业务参数正确、不代表有操作权限，也不能承诺所有拒绝或中断场景下输出仍然格式合法
+- 业务接口的权限、幂等与结果核对，见[生产级 Agent Tool 设计](/ai/production-agent-tool-design/)
 
 ## Agent（智能体）
 
-### 核心问题
-
-Function Call 只解决了「一步调用」的问题。但真实任务通常需要多步推理：先搜索文件、再读取内容、分析问题、修改代码、最后运行测试。**Agent** 就是让 LLM 能自主规划和多步执行的推理框架。
+Function Call 只解决了“一步调用”的问题。真实任务通常需要多步推理：先搜索文件、再读取内容、分析问题、修改代码、最后运行测试。**Agent** 就是让 LLM 能自主规划和多步执行的推理框架。
 
 ### ReAct 模式
 
-主流 Agent 实现基于 **ReAct**（Reasoning + Acting）模式，核心是一个循环：
+**ReAct**（Reasoning + Acting）是一种常见的组织方式，核心是行动与观察循环。下表的 Thought 是帮助理解的决策说明，不要求产品展示完整内部推理：
 
-```
+```text
 思考(Thought) → 行动(Action) → 观察(Observation) → 思考 → ... → 最终回答
 ```
 
-以「帮我修复这个 bug」为例：
+以“帮我修复这个 bug”为例：
 
 | 步骤 | 阶段 | 内容 |
 |------|------|------|
@@ -130,13 +109,13 @@ Function Call 只解决了「一步调用」的问题。但真实任务通常需
 | 9 | Observation | 所有测试通过 |
 | 10 | Answer | Bug 已修复，在第 42 行添加了数组边界检查 |
 
-### Agent 与 Function Call 的关系
-
 ![Agent 内部：规划循环、多次工具调用、记忆与上下文预算](/images/ai/fc-agent-react-loop.svg)
 
-- **Function Call** 是单次工具调用的能力
-- **Agent** 是在此基础上增加了 **推理循环 + 记忆 + 上下文管理**
-- Agent 的每一个 Action 步骤底层都是 Function Call
+### Agent 与 Function Call 的关系
+
+- **Function Call** 是单次工具调用的声明格式
+- **Agent** 在多步任务上增加了**推理循环 + 记忆 + 上下文管理**
+- Agent 的 Action 常用 Function Call 格式发起，但这不是唯一选择——Agent 也可以通过其他输出协议执行动作；反过来，只用 Function Call 的单步场景不必引入 Agent 循环
 
 ### 典型 Agent 实现
 
@@ -202,7 +181,7 @@ MCP Server 通过三种**原语（Primitives）**向 Client 暴露能力：
 
 向 AI 提供上下文数据，如文件内容、数据库 Schema、配置信息：
 
-```
+```text
 resources/list → 列出所有可用资源
 resources/read → 读取某个资源的内容
 ```
@@ -211,7 +190,7 @@ resources/read → 读取某个资源的内容
 
 预定义的交互模板，如 few-shot 示例、系统提示词：
 
-```
+```text
 prompts/list → 列出可用模板
 prompts/get  → 获取模板内容
 ```
@@ -259,7 +238,7 @@ MCP 基于 **JSON-RPC 2.0** 通信，支持两种传输方式：
 
 ### 核心问题
 
-Agent 有了工具，但面对特定领域任务时仍需要「专业知识」。比如：创建 React 组件时应该遵循什么规范？部署到 AWS 时具体步骤是什么？**Skill** 就是将领域专业知识打包成可复用的指令集，让 Agent 在特定场景下表现得像专家。
+Agent 有了工具，但面对特定领域任务时仍需要“专业知识”。比如：创建 React 组件时应该遵循什么规范？部署到 AWS 时具体步骤是什么？**Skill** 就是将领域专业知识打包成可复用的指令集，让 Agent 在特定场景下表现得像专家。
 
 ### 与 Function Call 的区别
 
@@ -306,28 +285,13 @@ description: 创建符合团队规范的 React 组件。当用户要求创建新
 
 ### Cursor Rule 系统
 
-与 Skill 类似，Cursor 还有 **Rule** 系统（`.cursor/rules/` 下的 `.mdc` 文件），用于为 Agent 提供持久化的编码规范和项目约定。Rule 更偏向于「始终遵守的规则」，Skill 更偏向于「特定任务的操作指南」。
+与 Skill 类似，Cursor 还有 **Rule** 系统（`.cursor/rules/` 下的 `.mdc` 文件），用于为 Agent 提供持久化的编码规范和项目约定。Rule 更偏向于“始终遵守的规则”，Skill 更偏向于“特定任务的操作指南”。
 
-## 四者的协作关系
+## 四者如何组合
 
-把这些概念放在一起，看一个完整的交互流程——以 Cursor Agent 帮你改代码为例：先加载 Rule / 命中 Skill，再在 ReAct 里通过 MCP 工具读文件、改文件、跑命令；**每一步 Action 底层都是一次（或一组）工具调用**。
+把这些概念放在一起，看一次完整交互——以 Cursor Agent 帮你改代码为例：Agent 先加载 Rule、命中 Skill 获得领域写法，再在 ReAct 循环里通过 MCP Server 暴露的工具读文件、改文件、跑命令。四个机制各管一段：缺了 Skill 只是少了领域指导，缺了 MCP 也可以用别的方式把工具接到 Host 上，没有哪个是另一个的前提。
 
 ![IDE Agent：规则、技能、ReAct 与 MCP 工具链（示意）](/images/ai/fc-cursor-agent-flow.svg)
-
-## 总结
-
-| 概念 | 一句话 | 类比 |
-|------|--------|------|
-| **Function Call** | LLM 声明「我要调这个函数」的能力 | 手——能拿工具 |
-| **Agent** | 让 LLM 自主推理、多步执行的框架 | 大脑——规划用什么工具、按什么顺序 |
-| **MCP** | 工具接入的标准化协议 | USB 接口——统一连接标准 |
-| **Skill** | 特定领域的专家知识包 | 操作手册——告诉大脑具体怎么做 |
-
-**从下到上的依赖关系：**
-
-![Skill → Agent → MCP → 单次 Function Call → 外部系统](/images/ai/fc-stack-dependencies.svg)
-
-更细的文字版：**外部工具 / API** 由 **Function Call** 触发；多步任务由 **Agent** 组织；工具如何接到 Host 上常靠 **MCP**；**Skill** 给模型领域步骤与写法，不替代执行层。
 
 ## 延伸阅读
 

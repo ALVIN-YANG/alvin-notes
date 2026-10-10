@@ -20,11 +20,11 @@ const domainMeta = [
 const articleIndex = {
   foundations: [
     { title: '什么时候不该用 AI Agent', href: '/ai/when-not-to-use-ai-agent/' },
-    { title: '生产级 AI Agent 工程', href: '/ai/production-ai-agent-engineering/' },
+    { title: 'Function Call、Agent、MCP 与 Skill', href: '/ai/function-call-agent/' },
   ],
   'model-context': [
     { title: 'Context Engineering 怎么做', href: '/ai/context-engineering-guide/' },
-    { title: '提示词工程', href: '/ai/prompt-engineering/' },
+    { title: 'Prompt 怎样写成可执行任务', href: '/ai-workflow/16-prompt-task-contract-practice/' },
   ],
   'knowledge-state': [
     { title: 'RAG 技术全景与选型', href: '/ai/rag-primer/' },
@@ -32,15 +32,15 @@ const articleIndex = {
   ],
   'tools-environment': [
     { title: '生产级 Agent Tool 怎么设计', href: '/ai/production-agent-tool-design/' },
-    { title: '从 Function Call 到 Agent', href: '/ai/function-call-agent/' },
+    { title: 'Function Call、Agent、MCP 与 Skill', href: '/ai/function-call-agent/' },
   ],
   'runtime-orchestration': [
-    { title: '长任务 Agent 怎么跑稳', href: '/ai/durable-agent-task-runtime/' },
+    { title: 'Agent 状态保存与恢复', href: '/ai/agent-context-persistence-recovery/' },
     { title: '虚拟角色任务系统', href: '/architecture/virtual-character-workflow-task-system/' },
   ],
   'evaluation-evolution': [
     { title: 'AI Agent 怎么做评测', href: '/ai/agent-evaluation-observability/' },
-    { title: '生产级 AI Agent 工程', href: '/ai/production-ai-agent-engineering/' },
+    { title: 'RAG 元数据过滤与验证', href: '/ai/rag-metadata-filtering/' },
   ],
   'safety-governance': [
     { title: 'AI Agent 安全工程', href: '/ai/agent-security-engineering/' },
@@ -48,11 +48,11 @@ const articleIndex = {
   ],
   'production-platform': [
     { title: '事件驱动架构怎么落地', href: '/architecture/event-driven-architecture-outbox-idempotency/' },
-    { title: '长任务 Agent 怎么跑稳', href: '/ai/durable-agent-task-runtime/' },
+    { title: 'Agent 状态保存与恢复', href: '/ai/agent-context-persistence-recovery/' },
   ],
   'interaction-collaboration': [
     { title: '实时语音 Agent 怎么做', href: '/ai/realtime-voice-agent-engineering/' },
-    { title: '生产级 AI Agent 工程', href: '/ai/production-ai-agent-engineering/' },
+    { title: '多智能体架构选型', href: '/ai/multi-agent-architecture-selection/' },
   ],
 };
 

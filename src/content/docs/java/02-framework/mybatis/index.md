@@ -4,46 +4,39 @@ description: MyBatis 持久层框架全面指南：SpringBoot 集成、XML Mappe
 sidebar:
   label: MyBatis
 date: 2025-09-20
-lastUpdated: 2025-10-18
+lastUpdated: 2026-10-11
 ---
 
-官方文档：[https://mybatis.org/mybatis-3/zh_CN/index.html](https://mybatis.org/mybatis-3/zh_CN/index.html)
+**MyBatis 让开发者写 SQL，再把参数和结果映射成 Java 对象。** 复杂联查、统计和动态条件较多时，SQL 控制权很有用；代价是自己维护语句与映射。下面保留 Spring Boot 接入、XML、缓存和 TypeHandler 的完整实操参考。[MyBatis 官方文档](https://mybatis.org/mybatis-3/zh_CN/index.html)
 
-MyBatis 是国内使用最多的 Java 持久层框架。
+MyBatis 与 JPA 按项目需求选，不能用地区、年份或框架流行度代替判断。JPA 也能写 JPQL 和原生 SQL，MyBatis 也能承载复杂业务；先看主要维护成本在哪里。
 
-易理解、稳定、高性能，用户自己定义 SQL，心智负担低，会写 Java 的都会用 MyBatis。
+## MyBatis 与 JPA 按什么条件选
 
-结合 MyBatis Plus 和 MyBatis Plus Join 可以少写 SQL。
+| 主要需求 | 可考虑的起点 | 要承担什么 |
+| --- | --- | --- |
+| SQL、报表、复杂联查由团队直接控制 | MyBatis | SQL 与 ResultMap 维护，单表 CRUD 可用扩展简化 |
+| 实体关系与持久化生命周期占主导 | JPA / Hibernate | 抓取计划、生成 SQL、事务与 N+1 查询控制 |
+| 简单 CRUD | 已有持久化方案 | Spring Data、MyBatis-Plus 等都可减少样板，不必另换框架 |
+| 写模型与复杂读模型差异明显 | 先分清职责，再评估是否混用 | 两套框架增加事务、缓存和维护边界，并非默认最优 |
 
-缺点：相对其他全自动 ORM 开发量较大。
+JPA 的关联抓取并不自动免除查询优化。一次查出 N 个对象、随后逐个加载关联，可能增加 N 次查询；按需要使用 join fetch、EntityGraph 或 DTO。复杂 SQL 并非“不可控”，可以显式编写和验证。[Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/)、[Hibernate 抓取策略](https://docs.jboss.org/hibernate/orm/6.5/userguide/html_single/Hibernate_User_Guide.html#fetching)
 
-- 其他流派：
-  - JPA
-  - JPA + QueryDSL
-  - Jimmer
-  - Spring Data JDBC
-
-Mybatis 的映射关系：
-
-| Java | 数据库  |
-| ---- | ------- |
-| 类   | 表      |
-| 属性 | 字段    |
-| 对象 | 记录/行 |
+SQL 需求明确时，MyBatis 的扁平 DTO 可以直接承载列表和报表。简单单表映射中，类、属性、对象常分别对应表、字段、记录；复杂查询不必强行维持一表一对象。
 
 ## SpringBoot 使用 MyBatis
 
 - 与 Spring 一起使用 MyBatis，你至少需要一个 SqlSessionFactory 和一个 mapper 接口
 - 在 SpringBoot 中可以直接引用 mybatis-spring-boot-starter 简化使用
 
-引入依赖
+引入依赖，版本需匹配当前 Spring Boot；占位变量由项目管理。MySQL 驱动坐标见[Connector/J Maven 安装](https://dev.mysql.com/doc/connector-j/en/connector-j-installing-maven.html)。
 
 ```xml
 <dependencies>
   <!-- MySQL 驱动 -->
   <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
       <version>${mysql-connector.version}</version>
   </dependency>
   <!-- 引入 starter 更快使用 MyBatis -->
@@ -62,13 +55,35 @@ Mybatis 的映射关系：
   - 将创建并注册一个从 SqlSessionFactory 中得到的 SqlSessionTemplate 的实例
   - 自动扫描你的 mapper，将它们与 SqlSessionTemplate 相关联，并将它们注册到 Spring 的环境（context）中去，这样它们就可以被注入到你的 bean 中
 
-```xml
+```properties
 # 数据库连接配置
 spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name?useUnicode=true&characterEncoding=utf-8&useSSL=false
 spring.datasource.username=your_username
 spring.datasource.password=your_password
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
+
+### 环境变量与配置映射速查
+
+Spring Boot 的松散绑定（Relaxed Binding）允许环境变量、命令行参数、配置文件使用不同命名风格，框架统一映射到同一个属性。环境变量优先级高于 `application.properties`/`application.yml` 中的同名配置，适合在容器和 CI 环境里覆盖配置。
+
+规范配置名 → 环境变量的转换规则（[Spring Boot 官方文档：Externalized Configuration](https://docs.spring.io/spring-boot/reference/features/external-config.html)）：
+
+1. 把点 `.` 替换为下划线 `_`；
+2. **删除**所有中划线 `-`；
+3. 全部转为大写。
+
+以数据源为例：
+
+| 规范配置名 | 环境变量 |
+| ---- | ---- |
+| `spring.datasource.url` | `SPRING_DATASOURCE_URL` |
+| `spring.datasource.username` | `SPRING_DATASOURCE_USERNAME` |
+| `spring.datasource.driver-class-name` | `SPRING_DATASOURCE_DRIVERCLASSNAME` |
+
+注意第三条：`driver-class-name` 的中划线是**删除**而不是转成下划线，所以是 `DRIVERCLASSNAME` 而不是 `DRIVER_CLASS_NAME`。
+
+反方向也成立：同一个环境变量 `SPRING_DATASOURCE_URL` 可以覆盖 properties/yml 里的 `spring.datasource.url`，也能绑定到 `@ConfigurationProperties` 里的驼峰字段。另外命令行参数、properties 文件、yml 中的 `spring.datasource.url`、`spring.datasource.driver-class-name` 等不同写法，最终也都会被松散绑定到同一个属性。
 
 创建 Mapper 接口
 
@@ -88,7 +103,7 @@ public interface CityMapper {
 
 2、xml 方式
 
-在 `resourse/mapper` 目录下创建与 Mapper 接口同名的 xml 文件
+在 `resources/mapper` 目录下创建与 Mapper 接口同名的 xml 文件
 
 - `<mapper namespace="io.apache.dao.CityMapper">` 指向绑定的 Mapper 接口位置
 - `<insert id="insertBatch">` 这里的 id 与 Mapper 中定义的接口要一致
@@ -749,7 +764,7 @@ public class YourApplication {
 
 方式二：在 application.yml 文件中注册
 
-```java
+```yaml
 mybatis:
   type-handlers-package: com.example.typehandler
 ```

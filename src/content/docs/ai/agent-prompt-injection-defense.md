@@ -2,13 +2,13 @@
 title: "Agent 怎样防 Prompt Injection"
 description: "从直接注入、网页与邮件中的间接注入，一直讲到任务意图、权限、数据流、工具审批、记忆隔离和对抗测试。"
 date: 2026-08-16
-lastUpdated: 2026-08-16
+lastUpdated: 2026-10-11
 verifiedAgainst: "NIST AI 100-2e2025、AgentDojo、CaMeL 与主流 Agent 平台公开资料，2026-08-16"
 sidebar:
   order: 12.5
 ---
 
-我把 NIST 的对抗性机器学习报告、AgentDojo、CaMeL，以及 OpenAI、Anthropic、Microsoft 公布的防护资料对着看了一遍。几份材料讲法不同，交集却很稳定。Prompt Injection 还没有一次性解决方案。只在 system prompt 里补一句“忽略外部指令”，拦不住一个能读邮件、开网页、调用工具和保存记忆的 Agent。
+Prompt Injection 还没有一次性解决方案。NIST 的对抗性机器学习报告、AgentDojo、CaMeL 以及 OpenAI、Anthropic、Microsoft 公布的防护资料讲法不同，交集却很稳定：只在 system prompt 里补一句“忽略外部指令”，拦不住一个能读邮件、开网页、调用工具和保存记忆的 Agent。
 
 工程上更可靠的做法，是先承认模型偶尔会被误导，再限制这次误导能碰到什么数据、能调用什么工具、能把数据送到哪里。模型负责理解和提出动作，身份、权限、审批与执行条件交给确定性代码。
 

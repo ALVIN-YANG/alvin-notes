@@ -2,7 +2,7 @@
 title: "Hindsight：给 Agent 接上长期记忆"
 description: "用家庭助手的偏好变化走通 retain、recall、reflect，讲清 Hindsight 的记忆提取、检索、来源追溯，以及中文配置、权限隔离和效果评测。"
 date: 2026-10-08
-lastUpdated: 2026-10-08
+lastUpdated: 2026-10-11
 verifiedAgainst: "Hindsight v0.10.2（5fc4ce2）、官方 API 与部署文档，2026-10-08"
 sidebar:
   order: 36
@@ -58,8 +58,7 @@ sidebar:
 
 本文按 [v0.10.2](https://github.com/vectorize-io/hindsight/releases/tag/v0.10.2) 的 SDK 与源码组织示例。需要 Docker、Python 3.10 以上，以及一个适合结构化输出和工具调用的 LLM 服务。下面使用项目安装文档中的 DeepSeek 配置；实际调用会消耗你的模型额度。
 
-<details>
-<summary>本地 Docker 配置与启动命令</summary>
+### 本地 Docker 配置与启动命令
 
 在本机创建 `.env.hindsight.local`，填写自己的 key，并把文件加入项目的忽略规则。这个 key 用于 Hindsight 调用模型，不是访问 Hindsight API 的服务凭据。
 
@@ -91,8 +90,6 @@ API 在 `8888`，管理界面在 `9999`。命名卷保存内置数据库，重�
 第一次启动可能下载 embedding 和重排模型，不能把下载耗时当成正常请求延迟。这两个多语言模型也有内存和计算开销，资源紧张时应按官方配置选择更轻的模型或外部服务，而不是直接认为一个容器就没有成本。
 
 这里只绑定本机地址，适合演练。默认部署没有 API 鉴权，开放到其他机器前需要配置认证。自托管数据库也不代表数据完全留在本机：采用远端 LLM 时，提取和归纳用到的内容仍会发给供应商。[安装说明](https://hindsight.vectorize.io/developer/installation)
-
-</details>
 
 下载[完整 Python 演练脚本](/examples/ai/hindsight_memory_demo.py)，保存为 `hindsight_memory_demo.py`，在独立虚拟环境中运行：
 

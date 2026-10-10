@@ -1,57 +1,36 @@
 ---
-title: "Elasticsearch 在海量日志与全文检索中的架构演进"
-description: "为什么曾经一统天下的 ELK 架构在 2026 年被频频诟病太重？本文探讨 ES 的存储原理，以及在纯日志场景下它与 ClickHouse/Loki 的差异，给出全文检索的最优实践。"
+title: "日志与全文搜索怎么选：Elasticsearch、Loki、ClickHouse"
+description: "按查询需求选日志存储，再用 Mapping、Filter、生命周期和查询限制控制 Elasticsearch 成本。"
 sidebar:
   order: 4
 date: 2025-12-17
-lastUpdated: 2026-01-28
+lastUpdated: 2026-10-11
 ---
 
-在微服务刚兴起的那些年，只要提到“日志收集”或者“搜索”，所有人的脑子里都会蹦出一个金光闪闪的词汇：**ELK (Elasticsearch + Logstash + Kibana)**。
+需要任意关键词检索、相关性排序或高亮，可以评估 Elasticsearch；主要按服务、时间查日志，可以评估 Loki；结构化日志的统计聚合，可以评估 ClickHouse。选择依据是查询需求、保留周期和运维成本，不能直接认定换一种引擎就更便宜。
 
-我们把成百上千个微服务节点的日志，如同洪水般灌入 Elasticsearch 集群中。大家用着 Kibana 愉快地敲击着查询语句，看着花花绿绿的图表。
+例如这条日志，要先决定以后怎么查它：
 
-然而到了 2026 年，随着云原生集群的急剧膨胀，每天产生的日志量从 GB 级飙升到了 TB 甚至 PB 级。很多公司绝望地发现：**这套曾经引以为傲的 ELK 架构，正在把公司搞破产。**
-
-## 1. 为什么用 ES 存日志越来越吃力？
-
-Elasticsearch 并不是一个单纯的数据库，它是一个为了**极速全文检索**而生的倒排索引（Inverted Index）引擎。
-
-当你把一行 JSON 日志存入 ES 时：
 ```json
 { "timestamp": "2026-03-11", "level": "ERROR", "message": "User 9527 login failed due to timeout." }
 ```
-ES 不仅仅是把它存进磁盘。为了让你日后能在零点几秒内搜到 `timeout` 这个词，ES 的分词器（Analyzer）会把 `message` 切割成无数个单词，建立庞大的倒排索引。
 
-**这就带来了灾难性的代价：**
-1. **磁盘膨胀**：100GB 的原始日志，在建立完所有字段的倒排索引后，可能在磁盘上膨胀成 300GB 到 400GB。
-2. **CPU 榨汁机**：高并发写入（索引化）极度消耗 CPU 资源和堆外内存。
-3. **写多读少**：99% 的日志写进去了之后，永远不会被人搜索。我们为了那 1% 排错时的检索需求，付出了 100% 的昂贵建索引成本。
+只查“某服务 10 分钟内的错误”，与搜索所有日志里的任意词，需要的索引不同。给不参与查询的字段少建索引，往往比先换数据库更直接。
 
-## 2. 2026 年的日志架构大分化
+## 先选查询能力
 
-因此，在现代企业架构中，**“纯粹的日志存储”**和**“核心业务的全文检索”**正在被彻底解耦。
+| 方案 | 适合优先评估的需求 | 要付出的代价 |
+| --- | --- | --- |
+| Elasticsearch | 全文搜索、排序、高亮、多字段查询 | Mapping、索引与副本影响存储和写入成本；容量规划和集群维护 |
+| Loki | 先按低基数标签缩小范围，再查日志正文 | 正文查询可能扫描大量数据；避免把 userId 等高基数字段随意做标签 |
+| ClickHouse | 结构化日志过滤、统计聚合 | 表设计、导入、保留策略和集群维护；按实际版本核对所需搜索能力 |
 
-### 赛道 A：纯日志收集栈 —— 投奔 Loki 或 ClickHouse
-如果我们只是为了存应用报错日志，用来做偶尔的问题溯源。
-我们果断抛弃 ES，转向：
-- **Grafana Loki**：它的设计哲学非常暴力——**只对元数据（如 Label、时间、应用名）建索引，不对日志正文建索引！** 日志正文直接以高压缩比扔进廉价的对象存储（S3 / OSS）。这让它的存储成本只有 ES 的十分之一。
-- **ClickHouse**：这款神级列式数据库在处理海量结构化日志时，写入吞吐量和查询速度降维碾压了 ES，并且自带极高的磁盘压缩率。
+[Loki](https://grafana.com/docs/loki/latest/) 主要索引标签，正文可保存在对象存储中。它仍能搜索正文，但查询成本受标签范围和扫描量影响。ClickHouse 的日志用法见 [官方可观测性指南](https://clickhouse.com/docs/use-cases/observability/introduction)。
 
-### 赛道 B：核心业务搜索 —— ES 依然是不可替代的王者
-虽然 ES 在存垃圾日志上吃力不讨好，但在**商品搜索、订单高亮匹配、复杂多字段聚合**的业务场景中，基于 Lucene 底层的 ES 依然是独孤求败。
+## Elasticsearch 的三个常用调整
 
-## 3. 把 ES 榨干：2026 生产级检索优化指南
+### 1. 不算相关性分数的条件放 filter
 
-如果你仍在使用 ES 作为核心搜索中台，以下这些深水区优化是架构师的必修课：
-
-### 优化 1：彻底区分 Filter 与 Query Context
-在搜索商品时，我们通常有两个维度的条件：
-- **必须匹配但不需要算分的条件**：比如 `status = 上架`，`category_id = 5`。
-- **需要计算相关性得分的条件**：比如用户输入的关键字 `title 包含 '最新款 手机'`。
-
-**架构准则：**
-绝对不要把不需要算分的条件写在 `must`（Query）里，必须写在 **`filter`** 里！
 ```json
 {
   "query": {
@@ -62,22 +41,23 @@ ES 不仅仅是把它存进磁盘。为了让你日后能在零点几秒内搜�
   }
 }
 ```
-**原因**：`filter` 上下文会跳过昂贵的 TF-IDF 算分阶段，并且 ES 会自动将 `filter` 的结果以 Bitset 的形式**缓存进内存（Node Query Cache）**。下次同样的过滤条件查询时，速度提升数倍。
 
-### 优化 2：写入降本：ILM 与 Force Merge
-针对时序型数据（如按天产生的订单明细或轨迹），在配置 **Index Lifecycle Management (ILM，索引生命周期管理)** 时：
-- **冷热分离（Hot-Warm-Cold）**：把今天的热点索引放在配置了 SSD 固态硬盘的热节点上；把 7 天前的索引移动到挂载机械硬盘的冷节点上。
-- **Force Merge（强制合并）**：当昨天的索引不再有数据写入（变成 Read-Only）时，一定要在后台执行 `_forcemerge?max_num_segments=1`。把底层的无数个零散 Lucene Segment 合并成一个大段。这不仅能释放大量文件句柄，还能让只读查询的速度产生质的飞跃。
+示例中 `title` 是 text，`status` 是 keyword。`must` 中的全文条件参与相关性评分，`filter` 只判断匹配。不能承诺每个 filter 都缓存或“速度翻数倍”；例如 term query 不进入 node query cache，缓存还受使用频率、segment 等条件影响。[查询上下文](https://www.elastic.co/docs/reference/query-languages/query-dsl/query-filter-context)、[缓存条件](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/node-query-cache-settings)
 
-### 优化 3：警惕前缀通配符 (Wildcard)
-这是把集群拉崩的最快方式。
-如果你允许前端传入 `*phone*` 进行检索，ES 会被迫去字典树（FST）里遍历数以万计的分支。
-**解法**：在建立 Mapping 时，使用 N-gram 分词器（把单词按字符切分），用空间换时间，将恶劣的前缀模糊查询转化为高效的精确匹配查询。
+### 2. 先定保留策略，再考虑 force merge
 
-## 总结
+| 动作 | 何时考虑 | 边界 |
+| --- | --- | --- |
+| 生命周期策略 | 定期 rollover、迁移或删除时序数据 | 热温冷层按查询需求配置；云与 Serverless 产品支持方式不同 |
+| Force merge | 索引已经停止写入，并有明确收益 | 消耗 I/O 与额外磁盘；不要给仍在写入的索引无条件执行 |
+| 合并为一个 segment | 只读索引的特定优化场景 | 可需要约三倍分片磁盘空间，也可能造成过大的 segment，先小规模验证 |
 
-到了 2026 年，架构设计讲究的是“专器专用”。
+`_forcemerge?max_num_segments=1` 是有成本的操作，不是每天必须跑的维护命令。[Force merge 官方限制](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge)
 
-让 **Loki / ClickHouse** 去承担海量无关紧要日志的倾泻；把昂贵而强大的 **Elasticsearch** 保护起来，让它专注于商品检索、复杂的聚合分析以及高亮的全文匹配。
+### 3. 给宽泛的通配符查询加边界
 
-理解了存储引擎底层的数据结构（倒排索引 vs 列存），你就不会再迷信“一套 ELK 打天下”的谎言了。
+`*phone*` 这类前导通配符可能很贵。先限制时间、租户、索引范围和输入长度，再按需求比较合适的 wildcard 字段或 n-gram 方案。n-gram 会增加索引体积，不能一概作为更快的替代。[Wildcard query 文档](https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-wildcard-query)
+
+## 上线前比较什么
+
+用相同日志量、保留时间和代表性查询，对比写入吞吐、查询 P95/P99、存储与副本体积、故障恢复和运维费用。日志检索和业务搜索可以分别选型，也可以继续共用；先有测试结果，再决定拆分。

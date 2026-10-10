@@ -1,17 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300">
-  <rect width="560" height="300" fill="#f8fafc"/>
-  <text x="280" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#0f172a">From one tool call to reusable expertise</text>
-  <rect x="80" y="44" width="400" height="44" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
-  <text x="280" y="62" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#92400e">Skill</text>
-  <text x="280" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#b45309">domain playbooks, prompts, procedures</text>
-  <rect x="100" y="96" width="360" height="44" rx="6" fill="#dbeafe" stroke="#3b82f6"/>
-  <text x="280" y="114" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#1e40af">Agent</text>
-  <text x="280" y="130" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#1d4ed8">plan / act loop, memory, budgets</text>
-  <rect x="120" y="148" width="320" height="44" rx="6" fill="#e0e7ff" stroke="#6366f1"/>
-  <text x="280" y="166" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#3730a3">MCP</text>
-  <text x="280" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#4f46e5">standard tool and resource wiring</text>
-  <rect x="140" y="200" width="280" height="44" rx="6" fill="#ecfdf5" stroke="#22c55e"/>
-  <text x="280" y="218" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#166534">Function Call</text>
-  <text x="280" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#15803d">schema-defined tools; host executes</text>
-  <text x="280" y="276" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#64748b">Higher layers depend on lower layers</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 440" role="img" aria-labelledby="title desc">
+  <title id="title">Function Call、Agent、MCP 与 Skill 的职责</title>
+  <desc id="desc">四种机制可以按需组合。Function Call 声明调用，Agent 组织多步执行，MCP 提供统一接入，Skill 保存可复用说明；它们不是依次升级的必选层级。</desc>
+  <rect width="380" height="440" rx="12" fill="#f8fafc"/>
+  <g font-family="'MiSans Web', 'PingFang SC', sans-serif" text-anchor="middle">
+    <text x="190" y="31" font-size="19" font-weight="600" fill="#0f172a">四种机制，按需组合</text>
+    <rect x="24" y="52" width="332" height="76" rx="10" fill="#ecfdf5" stroke="#22c55e"/>
+    <text x="190" y="81" font-size="18" font-weight="600" fill="#166534">Function Call · 声明调用</text>
+    <text x="190" y="107" font-size="15" fill="#334155">模型提出工具名和参数，代码执行</text>
+    <rect x="24" y="143" width="332" height="76" rx="10" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="190" y="172" font-size="18" font-weight="600" fill="#1e40af">Agent · 组织任务</text>
+    <text x="190" y="198" font-size="15" fill="#334155">观察结果、选择下一步、判断何时结束</text>
+    <rect x="24" y="234" width="332" height="76" rx="10" fill="#eef2ff" stroke="#6366f1"/>
+    <text x="190" y="263" font-size="18" font-weight="600" fill="#3730a3">MCP · 统一接入</text>
+    <text x="190" y="289" font-size="15" fill="#334155">让 Host 按协议访问工具和资源</text>
+    <rect x="24" y="325" width="332" height="76" rx="10" fill="#fffbeb" stroke="#f59e0b"/>
+    <text x="190" y="354" font-size="18" font-weight="600" fill="#92400e">Skill · 复用说明</text>
+    <text x="190" y="380" font-size="15" fill="#334155">按需加载领域步骤、示例与辅助脚本</text>
+    <text x="190" y="427" font-size="14" fill="#475569">格式合法、接入成功，都不等于业务完成</text>
+  </g>
 </svg>

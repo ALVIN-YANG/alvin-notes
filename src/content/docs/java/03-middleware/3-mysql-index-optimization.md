@@ -1,93 +1,87 @@
 ---
-title: "MySQL 千万级大表深分页与索引调优实战"
-description: "LIMIT 1000000, 10 为什么会让 MySQL 瞬间瘫痪？本文以千万级订单表为例，拆解深分页的灾难原理，并给出 2026 年真实业务场景下的两种终极解法及索引优化思路。"
+title: "MySQL 深分页怎么优化：延迟关联与游标分页"
+description: "大 offset 仍要跳过前面的记录。用覆盖索引减少回表，用复合游标避开 offset，并用执行计划验证收益。"
 sidebar:
   order: 3
 date: 2025-12-11
-lastUpdated: 2026-01-20
+lastUpdated: 2026-10-11
 ---
 
-在你的系统刚上线时，页面点哪里都是秒开。随着业务的发展，订单表（`orders`）的数据量不知不觉突破了千万。
+`LIMIT 1000000, 10` 需要找到并跳过前面的记录，不能直接按页码跳到第 100 万行。必须跳页时，可以先用覆盖索引找 ID，再取完整数据；连续翻页时，优先用游标。
 
-某天，一个运营小姐姐在后台管理系统中，将订单列表翻到了第 10 万页，然后系统卡死了，紧接着监控面板上 MySQL 的 CPU 使用率飙升到了 100%。
+延迟关联减少回表，**仍然要扫描 offset**；游标避开 offset，却不能直接跳到任意页。实际收益取决于索引和执行计划，没有通用的“秒变毫秒”保证。
 
-DBA 发来了一张愤怒的截图，上面赫然写着你代码里生成的 SQL：
+## 同一份订单列表，怎么改 SQL
+
+假设按创建时间倒序展示订单，`id` 用于打破时间相同的并列顺序。候选索引是 `(status, create_time, id)`，是否采用要通过执行计划确认。
+
+原查询：
+
 ```sql
-SELECT * FROM orders WHERE status = 1 ORDER BY create_time DESC LIMIT 1000000, 10;
+SELECT * FROM orders
+WHERE status = 1
+ORDER BY create_time DESC, id DESC
+LIMIT 1000000, 10;
 ```
 
-这就是臭名昭著的 **“深分页（Deep Paging）灾难”**。
+### 必须跳页：延迟关联
 
-## 1. 为什么 LIMIT 大了会慢得离谱？
-
-很多人以为 `LIMIT 1000000, 10` 的意思是：MySQL 直接跳到第 100 万行，然后往后读 10 行。
-**这是完全错误的。**
-
-在 InnoDB 引擎中，由于数据是基于 B+ 树存储的，MySQL 并没有一个神奇的指针能直接指向第 100 万行。它的真实执行逻辑是：
-1. 根据二级索引（如 `status, create_time`）的 B+ 树，扫描并取出 1,000,010 条记录的主键 ID。
-2. 拿着这 1,000,010 个主键 ID，回到聚簇索引（主键索引树）中进行**回表（回表查询）**，查出这 100 多万条记录的完整数据（也就是 `SELECT *`）。
-3. 终于拿到了 100 多万条完整数据，MySQL 将前 100 万条**直接丢弃**，只把最后 10 条返回给你。
-
-**大量的无用回表**，产生了海量的随机磁盘 I/O 和内存开销，直接压垮了数据库。
-
-## 2. 终极解法：如何干掉深分页？
-
-在 2026 年的架构设计中，面对千万级的大表分页，我们绝不使用 `LIMIT offset, size`。主要有以下两种标准解法：
-
-### 方案一：子查询（延迟关联）—— 适合必须跳页的管理后台
-既然慢在“前 100 万条数据无用的回表”，那我们就不让它回表！
-我们先通过子查询，在**纯索引（覆盖索引）**的层面上，极快地定位到那 10 条需要的数据的主键 ID，然后再拿这 10 个 ID 去回表。
-
-**优化后的 SQL：**
 ```sql
-SELECT t1.* 
+SELECT t1.*
 FROM orders t1
 INNER JOIN (
-    -- 这一步因为只查 ID，且用到了 (status, create_time) 的联合索引，触发了索引覆盖（Using index），没有任何回表，速度极快！
-    SELECT id FROM orders WHERE status = 1 ORDER BY create_time DESC LIMIT 1000000, 10
-) t2 ON t1.id = t2.id;
+    SELECT id, create_time FROM orders
+    WHERE status = 1
+    ORDER BY create_time DESC, id DESC
+    LIMIT 1000000, 10
+) t2 ON t1.id = t2.id
+ORDER BY t2.create_time DESC, t2.id DESC;
 ```
-这种写法叫做 **延迟关联（Deferred Join）**，可以将深分页的耗时从几十秒瞬间降到几百毫秒级别。
 
-### 方案二：游标分页（Cursor Paging）—— 适合移动端/瀑布流滚动
-如果你的场景是类似抖音、小红书的下拉刷新（瀑布流），用户是不需要输入“跳转到第 10 万页”这种脑残操作的。他们只能一页一页往下刷。
+内层只取索引中已有的列，再为这 10 条取完整行。外层仍要显式排序；子查询的顺序不能自动保证最终输出顺序。若内层没走覆盖索引，收益可能很有限。
 
-既然如此，我们每次查询时，把上一页最后一条记录的标志（如 `id` 或 `create_time`）传给后端。
+### 连续翻页：复合游标
 
-**游标 SQL：**
+把上一页最后一条的时间和 ID 传回来：
+
 ```sql
--- 假设上一页最后一条记录的 id 是 9527000
-SELECT * FROM orders 
-WHERE status = 1 AND id < 9527000 
-ORDER BY id DESC 
+-- 示例游标；实际使用绑定参数
+SELECT * FROM orders
+WHERE status = 1
+  AND (create_time < '2026-01-01 10:00:00'
+       OR (create_time = '2026-01-01 10:00:00' AND id < 9527000))
+ORDER BY create_time DESC, id DESC
 LIMIT 10;
 ```
-由于条件是 `id < 9527000`，MySQL 可以利用主键索引直接精准定位到底层叶子节点的位置，无论你往下滑了多少页，查询耗时永远是稳定的 **O(1)**，不到 10 毫秒！
 
-*(注意：如果用 `create_time` 做游标，由于时间可能重复，通常需要用 `create_time + id` 作为联合游标)*
+若业务本来就按 ID 排序，也可以用原来的简化形式，但它与时间排序不是同一份结果：
 
-## 3. 大表索引调优的两把尖刀
+```sql
+SELECT * FROM orders
+WHERE status = 1 AND id < 9527000
+ORDER BY id DESC
+LIMIT 10;
+```
 
-除了深分页，我们在建索引时还经常踩坑。在 2026 年的 MySQL 8.x 环境下，你必须深刻理解两个核心概念：
+游标必须对应排序字段。列表查询期间数据仍可能新增或修改；需要固定快照的导出，另行定义快照和一致性边界。[MySQL LIMIT 与排序说明](https://dev.mysql.com/doc/refman/8.0/en/limit-optimization.html)
 
-### 尖刀一：最左前缀法则与联合索引
-如果你建了一个联合索引 `INDEX (a, b, c)`，它就相当于一个以 a 为首字母，b 为中字母，c 为尾字母的字典。
-- `WHERE a=1 AND b=2 AND c=3`：完美走索引。
-- `WHERE a=1 AND c=3`：a 能走索引，但因为跳过了 b，c 走不了索引（会退化为范围过滤）。
-- `WHERE b=2`：**完全不走索引**，因为你没有给 a。
+## 索引规则，别记成绝对结论
 
-**架构准则**：在设计表结构时，把区分度最高（唯一值最多）、最常作为等值查询条件的列，放在联合索引的最左边。
+| 常见说法 | 更准确的用法 |
+| --- | --- |
+| `(a,b,c)` 遵循最左前缀 | 常规索引定位先用连续前缀；跳过 b 后，c 仍可能参与索引过滤 |
+| 没有 a 就完全不走索引 | 仍可能有索引扫描或满足条件的 Skip Scan，以执行计划为准 |
+| 区分度最高的列永远放第一 | 结合等值过滤、范围、排序和其他查询的前缀复用来设计 |
+| 索引下推能减少回表 | 仅在适用条件下，把能由索引判断的部分提前过滤，不是所有条件都支持 |
 
-### 尖刀二：索引下推 (Index Condition Pushdown, ICP)
-在以前的 MySQL 版本中，如果执行 `WHERE name = '张' AND age LIKE '%18%'`，即使有 `(name, age)` 联合索引。引擎也会先通过 `name` 把所有姓张的 ID 找出来，然后老老实实回表查出整行数据，然后在 Server 层再用 `LIKE` 过滤 `age`。
+ICP 的典型例子是 `(zipcode, lastname, firstname)`：先按 `zipcode` 缩小范围，再在索引中判断 `lastname LIKE '%etrunia%'`，减少完整行读取。见 [联合索引](https://dev.mysql.com/doc/refman/8.0/en/multiple-column-indexes.html)、[ICP 官方示例](https://dev.mysql.com/doc/refman/8.0/en/index-condition-pushdown-optimization.html)；总览保留在 [索引优化文档](https://dev.mysql.com/doc/refman/8.0/en/optimization-indexes.html)。
 
-而在现代 MySQL 中，默认开启了 ICP（Using index condition）。存储引擎在扫描索引树时，如果发现索引里本来就包含了 `age` 字段，它会**直接在索引层面把不符合 LIKE 的记录过滤掉**，大幅减少无用的回表操作。
+## 验证只看三件事
 
-## 总结
+| 检查 | 判断依据 |
+| --- | --- |
+| 执行计划 | 有没有排序、覆盖索引、扫描了多少行；支持的版本可用 `EXPLAIN ANALYZE`，它会实际执行查询 |
+| 同条件耗时 | 比较浅页和深页、冷缓存和热缓存，记录数据库资源消耗 |
+| 结果正确性 | 并列时间、翻页期间新增或修改、末页，检查重复与遗漏 |
 
-千万级大表并不可怕，可怕的是我们用对付百条数据的思维去写 SQL。
-
-1. **废弃大 Offset**：在 C 端禁用跨页跳转，强制使用游标（Cursor）模式。在 B 端管理后台，使用延迟关联（覆盖索引查 ID + Join 回表）优化深分页。
-2. **消灭无用回表**：合理建立联合索引，利用最左前缀和覆盖索引，把所有的过滤动作全部逼停在索引树上。
-
-做到了这些，你的 MySQL 依然能在一堆 NoSQL 的围剿中，稳稳地充当着业务系统的绝对核心定海神针。
+先明确要不要跳页，再选 SQL；索引是否起效由执行计划回答。

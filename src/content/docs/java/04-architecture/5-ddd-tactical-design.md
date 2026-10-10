@@ -1,19 +1,18 @@
 ---
 title: "DDD 战术设计落地：在 Java 工程中如何划分防腐层与聚合根"
-description: "如果你的 Service 层只有几十行调用 Mapper 的代码，你的 Entity 全是 Getter/Setter。那你写的根本不是面向对象，而是“面向数据库的脚本”。本文带你在 Java 中真正落地 DDD 战术。"
+description: "DDD 战术设计在 Java 工程里的两个核心动作：充血模型与聚合根把状态校验收进实体内部；防腐层（ACL）用适配器隔离第三方接口。附推荐包结构与采用边界。"
 slug: java/04-architecture/5-ddd-tactical-design
 sidebar:
   order: 5
 date: 2026-01-28
-lastUpdated: 2026-03-16
+lastUpdated: 2026-10-11
 ---
 
-在技术圈，**领域驱动设计（Domain-Driven Design, DDD）** 是一个让人又爱又恨的词。
-听架构师讲 PPT 时，满屏的“限界上下文”、“聚合根”、“防腐层”，觉得高大上得不行。但到了自己写代码时，默默地建了包名：`controller`、`service`、`entity`、`mapper`，然后继续在 Service 里写着 1000 行面条一样的 CRUD。
+DDD（领域驱动设计）的战术设计在 Java 工程里落地，核心是两个动作：**让业务行为回归实体（充血模型 + 聚合根），让外部系统依赖被防腐层（ACL）隔离**。前者把状态校验规则收进实体内部、杜绝绕过校验的直接赋值；后者把第三方接口的数据结构拦在适配器里，外部 API 变更不会波及核心业务代码。
 
-在 2026 年，如果微服务的代码依然保持着这种**贫血模型（Anemic Domain Model）**，微服务拆分将毫无意义。今天我们不讲抽象的理论，只讲怎么在 Java 工程里把 DDD 战术落到实处。
+采用边界：这套结构的价值随业务规则复杂度增长。纯 CRUD、字段即规则的项目，充血模型和分层包结构带来的收益有限，不必为形式引入。
 
-## 1. 痛点：贫血模型的恶果
+## 1. 痛点：贫血模型的后果
 
 什么是贫血模型？看看你写的 Entity 就知道了：
 ```java
@@ -78,9 +77,9 @@ public void payOrder(Long orderId) {
     orderRepository.save(order);
 }
 ```
-这种代码，哪怕给实习生看，他也绝对不可能把订单状态改乱。
+这种状态流转路径唯一的写法，新人接手时也很难把订单状态改乱。
 
-## 3. 防腐层 (ACL) 的落地：隔离肮脏的外部世界
+## 3. 防腐层 (ACL) 的落地：隔离外部系统
 
 微服务开发中，我们经常要调用其他部门的接口（比如调用微信支付接口，或者调用物流系统）。
 最糟糕的做法是，直接把微信的 `WechatPayResponseDTO` 在你的 `OrderService` 里传来传去，甚至直接塞进数据库。一旦微信 API 升级字段名变了，你的整个核心代码库都要被扒一层皮。
@@ -88,7 +87,7 @@ public void payOrder(Long orderId) {
 **防腐层（Anti-Corruption Layer, ACL）**的出现就是为了解决这个。
 
 **包结构设计：**
-1. **领域层 (domain)**：定义我们自己绝对纯洁的接口 `PaymentGateway`。
+1. **领域层 (domain)**：定义我们自己的接口 `PaymentGateway`。
 ```java
 // 在 domain 层，只定义接口，不依赖任何 Spring 或第三方库
 public interface PaymentGateway {
@@ -96,31 +95,31 @@ public interface PaymentGateway {
 }
 ```
 
-2. **基础设施层 (infrastructure)**：这是用来放脏东西的隔离区。
+2. **基础设施层 (infrastructure)**：这是对接外部实现的隔离区。
 我们在这里写一个实现类 `WechatPaymentAdapter`。
 ```java
 @Component
 public class WechatPaymentAdapter implements PaymentGateway {
     
     @Autowired
-    private WechatSdk wechatSdk; // 脏脏的第三方依赖
+    private WechatSdk wechatSdk; // 第三方依赖
 
     @Override
     public boolean processPayment(Order order) {
-        // 1. 将我们纯洁的 Order 翻译成微信认识的肮脏 DTO
+        // 1. 将我们领域内的 Order 翻译成微信接口需要的 DTO
         WechatRequest req = new WechatRequest(order.getId(), order.getTotalAmount().intValue());
         
         // 2. 调用第三方
         WechatResponse resp = wechatSdk.doPay(req);
         
-        // 3. 将肮脏的返回结果，翻译成我们领域认识的布尔值
+        // 3. 将外部返回结果，翻译成我们领域认识的布尔值
         return resp.getReturnCode().equals("SUCCESS");
     }
 }
 ```
-外界（基础设施）再怎么脏、怎么变，都被死死地拦在了这个 `Adapter` 适配器里。我们核心的业务层永远只和自己定义的纯洁接口打交道。
+外部接口再怎么变化，影响都被拦在这个 `Adapter` 适配器里。核心的业务层永远只和自己定义的接口打交道。
 
-## 4. 2026 推荐工程目录包结构
+## 4. 推荐工程目录包结构
 
 最后，给大家一份符合 DDD 战术设计的标准 Java 工程骨架目录：
 

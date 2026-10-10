@@ -2,7 +2,7 @@
 title: "Agent 感知环境变化，怎样用好 LLM 缓存"
 description: "直接看三次模型请求，弄清环境变化放在哪里、哪些消息保持不动，以及缓存究竟省了什么。"
 date: 2026-09-08
-lastUpdated: 2026-09-09
+lastUpdated: 2026-10-11
 verifiedAgainst: "Home Assistant WebSocket、Claude Prompt Caching 与工具消息、DeepSeek Context Caching，2026-09-08"
 sidebar:
   order: 32
@@ -120,8 +120,7 @@ Home Assistant 可以通过 WebSocket 推送 `state_changed` 事件。监听程�
 
 ## 接入时再看这些细节
 
-<details>
-<summary>Claude 和 DeepSeek 怎样启用缓存，工具结果怎样传</summary>
+### Claude 和 DeepSeek 怎样启用缓存，工具结果怎样传
 
 前面的消息框是阅读示意。Claude 的真实请求由 `tools`、`system` 和 `messages` 组成。
 
@@ -150,10 +149,7 @@ DeepSeek 的 Context Caching 默认开启，命中要匹配已经保存的完整
 
 多角色场景可以把公共工具和规则放在角色资料前面。角色真的更新就使用新版本，安全规则和权限收回不能为了缓存延后。不同用户的数据仍要分别鉴权，缓存不是权限系统。
 
-</details>
-
-<details>
-<summary>监听、控制和长对话，怎样避免用到过期信息</summary>
+### 监听、控制和长对话，怎样避免用到过期信息
 
 监听程序首次连接时要取得当前状态，再持续接收更新。可以复用 Home Assistant 官方客户端的 `subscribeEntities`；自己实现时，要处理初始快照读取期间到达的事件，避免旧事件覆盖较新的快照。[实体订阅实现](https://github.com/home-assistant/home-assistant-js-websocket/blob/master/lib/entities.ts)
 
@@ -169,10 +165,7 @@ Home Assistant 的状态可能来自物理反馈，也可能是集成的乐观�
 
 服务重启后要恢复消息并重新同步设备，不能依赖供应商缓存保存业务进度。存储部分见[服务重启后的 Agent 恢复](/ai/agent-context-persistence-recovery/)。
 
-</details>
-
-<details>
-<summary>运行演练，并确认缓存是否真的省钱</summary>
+### 运行演练，并确认缓存是否真的省钱
 
 [配套脚本](/examples/agent-environment-cache.mjs)使用模拟设备和模型响应，需要 Node.js 22 或更新版本，不调用付费 API。
 
@@ -196,5 +189,3 @@ Claude 的输入总量是表中三项之和，不能只看 `input_tokens`。费�
 用同一批任务和事件，对比“每轮重写上下文”与“原样保留、追加消息”，模型与输出限制保持一致。先只改消息组织，再单独测减少模型调用的收益，避免把两笔节省混算。
 
 看每个成功任务的总费用，包括失败、重试和摘要生成。缓存读取也收费，长时间没有请求时，不要仅为保温而持续调用模型。费用下降后还要检查旧状态误操作和重复执行有没有增加。
-
-</details>

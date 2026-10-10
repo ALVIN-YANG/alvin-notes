@@ -335,14 +335,23 @@ code {
 
 /* Keep the action names readable in the long-context note's narrow table. */
 .context-note-actions th:first-child,
-.context-note-actions td:first-child {
+.context-note-actions td:first-child,
+.article-action-table th:first-child,
+.article-action-table td:first-child {
 	width: 1%;
 	white-space: nowrap;
 }
 
-.context-note-visual .mermaid-static__canvas {
+.context-note-visual .mermaid-static__canvas,
+.article-note-diagram .mermaid-static__canvas {
 	min-width: 0;
 }
+
+/* Complex diagrams keep readable text and scroll inside their own frame. */
+.article-scroll-diagram .mermaid-static__canvas {
+	min-width: 40rem;
+}
+
 
 /* ─── Horizontal Rules ─── */
 

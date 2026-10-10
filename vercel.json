@@ -3,7 +3,7 @@
   "redirects": [
     {
       "source": "/ai/1-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/",
-      "destination": "/ai/prompt-engineering/",
+      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
       "permanent": true
     },
     {
@@ -35,6 +35,126 @@
       "source": "/java/04-architecture/5-ddd-tactical-design-%E8%90%BD%E5%9C%B0/",
       "destination": "/java/04-architecture/5-ddd-tactical-design/",
       "permanent": true
+    },
+    {
+      "source": "/ai/prompt-engineering/",
+      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai/prompt-engineering",
+      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai/1-prompt-engineering/",
+      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai/1-prompt-engineering",
+      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-workflow/10-vibe-coding-prompt-engineering/",
+      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-workflow/10-vibe-coding-prompt-engineering",
+      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai/production-ai-agent-engineering/",
+      "destination": "/agent-knowledge/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai/production-ai-agent-engineering",
+      "destination": "/agent-knowledge/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai/durable-agent-task-runtime/",
+      "destination": "/ai/agent-context-persistence-recovery/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai/durable-agent-task-runtime",
+      "destination": "/ai/agent-context-persistence-recovery/",
+      "statusCode": 301
+    },
+    {
+      "source": "/java/01-core/2-concurrent-programming-guide/",
+      "destination": "/java/01-core/1-java21-virtual-threads/",
+      "statusCode": 301
+    },
+    {
+      "source": "/java/01-core/2-concurrent-programming-guide",
+      "destination": "/java/01-core/1-java21-virtual-threads/",
+      "statusCode": 301
+    },
+    {
+      "source": "/java/02-framework/spring-boot/2-mybatis-vs-jpa-2026/",
+      "destination": "/java/02-framework/mybatis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/java/02-framework/spring-boot/2-mybatis-vs-jpa-2026",
+      "destination": "/java/02-framework/mybatis/",
+      "statusCode": 301
+    },
+    {
+      "source": "/java/04-architecture/2-distributed-transaction-seata/",
+      "destination": "/architecture/distributed-transaction/",
+      "statusCode": 301
+    },
+    {
+      "source": "/java/04-architecture/2-distributed-transaction-seata",
+      "destination": "/architecture/distributed-transaction/",
+      "statusCode": 301
+    },
+    {
+      "source": "/java/02-framework/spring-boot/relaxed-binding/",
+      "destination": "/java/02-framework/mybatis/#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8E%E9%85%8D%E7%BD%AE%E6%98%A0%E5%B0%84%E9%80%9F%E6%9F%A5",
+      "statusCode": 301
+    },
+    {
+      "source": "/java/02-framework/spring-boot/relaxed-binding",
+      "destination": "/java/02-framework/mybatis/#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8E%E9%85%8D%E7%BD%AE%E6%98%A0%E5%B0%84%E9%80%9F%E6%9F%A5",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-workflow/7-terminal-token-compression-tools/",
+      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-workflow/7-terminal-token-compression-tools",
+      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-workflow/8-kiro-spec-driven-development/",
+      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-workflow/8-kiro-spec-driven-development",
+      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-workflow/9-cc-switch-unified-manager/",
+      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ai-workflow/9-cc-switch-unified-manager",
+      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "statusCode": 301
     }
   ],
   "headers": [

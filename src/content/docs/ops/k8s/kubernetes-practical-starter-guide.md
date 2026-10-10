@@ -2,31 +2,29 @@
 title: "Kubernetes 怎么入门：从一个 Pod 到可验证部署"
 description: "先用一个最小 Web 应用跑通主线，再理解 Deployment、Service、配置、探针、资源限制和排障。"
 date: 2025-12-06
-lastUpdated: 2026-02-17
+lastUpdated: 2026-10-11
 verifiedAgainst: "Kubernetes 官方文档，2026-02-17"
 sidebar:
   order: 1
 ---
 
-第一次看 Kubernetes 文档，很容易在 Pod、Deployment、Service、Ingress 和一堆 YAML 字段之间迷路。每个词都能查到解释，合在一起却不知道一次部署究竟发生了什么。
+**部署 Kubernetes 应用，先创建 Deployment 管理 Pod，再用 Service 提供稳定入口。** 提交的是期望状态，控制器持续创建、替换 Pod，让实际状态接近期望。`kubectl apply` 成功只代表对象被接受，还要验证副本 Ready、Service 后端和真实请求。
 
-入门阶段不用先背完整对象表，先抓住一条主线：你提交期望状态，控制器负责让实际状态不断向它靠近。
+下面使用已有集群里的两副本 Nginx，镜像标签沿用示例基线。操作前确认 `kubectl` 的当前集群和 Namespace；生产镜像另选已验证的版本或 digest。配置、资源限制、探针和回滚也要一起验收。
 
-## 先说结论
+<div class="article-note-diagram">
 
-- Pod 是运行单元，但日常部署通常从 Deployment 开始，不要手工维护孤立 Pod。
-- Service 解决稳定访问，ConfigMap 和 Secret 解决配置分离，它们各自只负责一件事。
-- 排障先看 `get`、`describe`、事件和日志，再考虑直接登录节点。
-- 能启动不等于能上线；探针、资源、滚动发布和回滚验证要一起补齐。
-
-```text
-你提交期望状态
-  → API Server 保存对象
-  → Controller 发现实际状态不一致
-  → Scheduler 选择节点
-  → Kubelet 启动 Pod
-  → Service 为 Pod 提供稳定访问入口
+```mermaid
+%%{init: {"flowchart": {"padding": 28, "rankSpacing": 18}}}%%
+flowchart TB
+  A["提交 Deployment"] --> B["控制器创建 Pod"]
+  B --> C["调度器选择节点"]
+  C --> D["节点运行容器"]
+  D --> E["探针确认 Ready"]
+  E --> F["Service 转发请求"]
 ```
+
+</div>
 
 ## 集群由什么组成
 
@@ -59,7 +57,7 @@ Kubernetes 对象是“期望状态的记录”：
 - `status`：系统当前实际上是什么样；
 - Controller：持续比较两者并执行修正。
 
-一个对象通常包含四个必填部分：
+下面的 Deployment 示例包含四个主要部分：
 
 ```yaml
 apiVersion: apps/v1
@@ -221,29 +219,17 @@ spec:
 
 ## 为什么 requests、limits 和探针不能省
 
-### requests
-
-Scheduler 使用 requests 判断节点是否容得下 Pod。没有 requests，调度和容量规划都会失真。
-
-### limits
-
-- CPU limit 会产生节流；
-- 超出 memory limit 通常会触发 OOMKill；
-- limit 不是性能目标，只是资源上界。
-
-### readinessProbe
-
-readiness 失败时，Pod 暂时从 Service 端点中移除，但容器不一定重启。
-
-### livenessProbe
-
-liveness 失败会触发容器重启。不要把依赖服务偶发不可用直接当成 liveness 失败，否则容易形成重启风暴。
-
-如果应用启动很慢，再增加 `startupProbe`，避免 liveness 过早介入。
+| 配置 | 作用 | 注意什么 |
+| --- | --- | --- |
+| `requests` | 调度器据此分配节点资源 | 按真实用量设置，影响容量规划 |
+| `limits` | 限制资源上界 | CPU 可能被节流；内存超限可能 OOMKilled，不是性能目标 |
+| `readinessProbe` | 判断能否接 Service 流量 | 失败后不作为就绪后端，不等于重启容器 |
+| `livenessProbe` | 判断容器是否需要重启 | 不把下游偶发故障当成本进程失活 |
+| `startupProbe` | 给慢启动留初始化时间 | 成功前不让 liveness/readiness 提前介入 |
 
 ## 应用和验证
 
-假设三个对象保存在 `k8s/`：
+把上述需要使用的对象分别保存到 `k8s/`，确认当前 context 指向演示集群后执行：
 
 ```bash
 kubectl apply -f k8s/
@@ -271,7 +257,7 @@ kubectl -n demo describe pod <pod-name>
 kubectl get events -A --sort-by=.lastTimestamp
 ```
 
-重点看资源不足、节点选择器、污点和 PVC。
+先看 `PodScheduled`。未调度时查资源、节点选择器、污点和 PVC；已调度时继续查镜像拉取、挂载和容器启动。
 
 ### ImagePullBackOff
 
@@ -314,8 +300,4 @@ kubectl -n demo get pod -l app=demo-api --show-labels
 - 不依赖手工修改线上对象；
 - manifest 能通过 CI 校验和测试。
 
-Kubernetes 的核心不是记字段，而是理解控制循环：**声明期望状态，观察实际状态，用可重复的配置让系统自动收敛。**
-
-下一步：
-
-- [Kubernetes 生产排障：从 Pending 到 Service 5xx](/ops/k8s/kubernetes-production-troubleshooting/)
+遇到 Pending、崩溃或请求失败，继续看 [Kubernetes 生产排障](/ops/k8s/kubernetes-production-troubleshooting/)。

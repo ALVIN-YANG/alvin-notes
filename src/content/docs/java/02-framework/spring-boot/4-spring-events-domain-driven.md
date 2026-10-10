@@ -1,49 +1,27 @@
 ---
 title: "用 Spring Event 解耦业务：从贫血模型到 DDD 的第一步"
-description: "还在把发送邮件、扣减库存的代码直接塞进下单逻辑里？本文教你如何使用 Spring 提供的事件发布订阅机制，写出高内聚低耦合的业务代码，为未来的微服务拆分打下地基。"
+description: "用订单事件解耦单体模块，分清同步、异步、提交后监听与可靠交付的边界。"
 sidebar:
   order: 4
 date: 2025-10-17
-lastUpdated: 2025-11-19
+lastUpdated: 2026-10-11
 ---
 
-在我们审查很多初中级开发者的代码时，经常会看到一个巨大的 `OrderService.createOrder()` 方法，里面塞满了各种乱七八糟的逻辑。
+**Spring Event 把“订单已创建”发布给关心它的模块，减少订单服务对通知等模块的直接依赖。** 默认监听同步执行，并不自动变成后台消息。需要提交后触发时，用 `@TransactionalEventListener`；不能丢的交付要另加持久化与重试。
 
-```java
-@Transactional
-public void createOrder(OrderDTO dto) {
-    // 1. 业务主干：落库保存订单
-    orderRepository.save(order);
-    
-    // 2. 旁支逻辑开始发散...
-    inventoryService.deduct(order.getItems()); // 扣库存
-    couponService.useCoupon(dto.getCouponId()); // 标记优惠券已使用
-    emailService.sendOrderSuccessEmail(order.getUserId()); // 发送邮件
-    loyaltyService.addPoints(order.getUserId(), order.getAmount()); // 增加积分
-}
-```
+先区分业务主干与通知。订单、库存、优惠券若必须一起成功，就不能仅为解耦把后两者改成异步事件；邮件等提交后动作可以独立处理。以下是模块结构片段，实体、DTO、依赖注入和异步配置由项目提供。
 
-这就是最典型的**大泥球架构（Big Ball of Mud）**。
-当公司的积分系统崩溃，或者邮件网关超时时，**因为它们写在同一个事务方法里，整个下单接口会被直接阻塞甚至回滚！** 顾客无法付钱，公司造成实质性损失。
+## 一个订单事件的最小链路
 
-作为架构师，如果要推行 DDD（领域驱动设计）或者准备未来将这些模块拆分为微服务，你必须在单体应用内部就切断这种硬编码的耦合。
+定义事实：
 
-**杀手锏就是：Spring 内部事件机制（Spring ApplicationEvent）。**
-
-## 1. 核心理念：领域事件（Domain Event）
-
-在 DDD 中，当核心业务（下单）完成时，我们不应该去主动指挥别人（发邮件、加积分），而是应该**向全系统广播一个事实：“嘿！我刚刚创建了一个订单！”**。
-
-至于谁对这个事实感兴趣，谁自己去订阅。下订单的模块不需要知道邮件模块的存在。
-
-### Step 1: 定义一个事件
-继承或直接定义一个普通的 POJO。
 ```java
 public record OrderCreatedEvent(String orderId, Long userId, BigDecimal amount) {
 }
 ```
 
-### Step 2: 核心业务只负责发布事件
+订单服务保存后发布：
+
 ```java
 @Service
 @RequiredArgsConstructor
@@ -63,38 +41,18 @@ public class OrderService {
 }
 ```
 
-### Step 3: 各个模块自己订阅并处理
-在积分模块的 Service 里，写一个监听器：
-```java
-@Service
-@Slf4j
-public class LoyaltyService {
+事件发布发生在事务方法内，不能将它理解成“数据库已经提交”。监听器采用哪种方式决定了执行时机。[Spring 事件机制](https://docs.spring.io/spring-framework/reference/core/beans/context-introduction.html#context-functionality-events)
 
-    @Async // 可以选择异步执行，不阻塞主线程
-    @EventListener
-    public void handleOrderCreated(OrderCreatedEvent event) {
-        log.info("监听到订单创建：{}, 给用户 {} 增加积分", event.orderId(), event.userId());
-        // 执行增加积分逻辑...
-    }
-}
-```
+## 同步、异步和提交后有什么差别
 
-代码的耦合被瞬间切断。未来如果业务要求“下单还要给用户发短信”，你只需要在短信模块加一个监听器即可，**订单服务的核心代码一行都不用改！** 完美符合“开闭原则（OCP）”。
+| 监听方式 | 时机与影响 | 注意什么 |
+| --- | --- | --- |
+| `@EventListener` 默认 | 同步调用，通常在发布者线程与事务内 | 阻塞会拖慢主流程；同一事务通常可读自己的未提交写入 |
+| `@Async + @EventListener` | 交给执行器，新线程可能早于提交运行 | 不继承发布者线程事务，查库可能看不到订单 |
+| `@TransactionalEventListener(AFTER_COMMIT)` | 成功提交后触发 | 主事务不能被后来异常回滚；没有自动持久化重发 |
+| 提交后监听再加 `@Async` | 提交后交给后台线程 | 配置 `@EnableAsync` 和执行器，定义失败记录与处理 |
 
-## 2. 高级避坑：警惕事务未提交导致的数据不一致
-
-仔细看上面的代码，隐藏着一个企业级开发中最容易踩的坑。
-
-当 `OrderService` 调用 `publishEvent` 时，此时 `createOrder` 方法的 `@Transactional` 事务**还没有提交**（因为方法还没结束，或者发生异常要回滚）。
-但 Spring 的 `@EventListener` 默认是**同步立即执行的**！
-
-如果 `LoyaltyService` 收到了事件，并且它在一个新线程里去数据库查这个订单，**它会查不到！**因为数据还在 MySQL 的隔离缓存区里，没有 commit。
-
-如果 `LoyaltyService` 给用户发了成功的短信，但随后 `createOrder` 发生了异常导致订单回滚，用户收到了短信却没有订单，引发严重的客诉。
-
-### 终极解法：@TransactionalEventListener
-
-Spring 为这种需要严格绑定数据库事务的场景，提供了一个专门的注解。
+需要邮件不早于提交时：
 
 ```java
 @Service
@@ -110,13 +68,22 @@ public class NotificationService {
     }
 }
 ```
-通过使用 `@TransactionalEventListener`，我们保证了旁路逻辑永远不会跑在主业务落盘之前，也绝不会在主业务失败回滚时引发不可逆的外部调用（如发短信、发邮件）。
 
-## 3. 为什么这是走向微服务的第一步？
+发布时没有事务，事务事件监听默认不执行；只有明确启用 `fallbackExecution` 才处理该情况。[Spring 事务事件](https://docs.spring.io/spring-framework/reference/data-access/transaction/event.html)
 
-当你的单体应用中，所有的跨模块通信都变成了 `ApplicationEventPublisher` 时。系统就已经在逻辑上完成了微服务化。
+## AFTER_COMMIT 不能代替可靠交付
 
-当有一天你们的单体应用扛不住了，需要把“积分服务”独立部署到另一台机器上。
-你不需要去修改那些散落在各处的调用链路。你只需要引入类似 **Kafka 或者 RabbitMQ**，把单体内的 `ApplicationEventPublisher.publishEvent()` 替换为 `KafkaTemplate.send()`。把内部的 `@EventListener` 替换为 `@KafkaListener`。
+| 故障 | 结果与处理 |
+| --- | --- |
+| 数据库提交后，进程在监听前退出 | 内存事件可能丢失；重要交付用同事务 Outbox |
+| 监听器发信失败 | 订单已提交，另行记录失败并重试或人工补发 |
+| 同步提交后监听继续写库 | 原资源可能仍可访问，但新修改不再随原事务提交；需要独立事务，例如单独 Bean 的 `REQUIRES_NEW` |
+| 异步监听写库 | 新线程自己建立所需事务，不能假定继承原事务 |
 
-整个系统架构的重构如丝般顺滑，这就是高内聚、低耦合带来的终极架构红利。
+提交后的数据访问限制见 [TransactionalEventListener Javadoc](https://docs.spring.io/spring-framework/docs/6.2.0/javadoc-api/org/springframework/transaction/event/TransactionalEventListener.html)。
+
+## 从单体到跨服务
+
+单体内用 ApplicationEvent 组织模块依赖；跨服务时把事件合同、持久化、投递、消费者幂等与恢复一起设计。Spring 事件不会自动变成 Kafka 或 RabbitMQ，也不保证发送与业务提交原子完成。
+
+完整 SQL 与恢复链路见[Outbox、幂等与重放](/architecture/event-driven-architecture-outbox-idempotency/)和[分布式事务选型](/architecture/distributed-transaction/)。验收时分别测试提交、回滚、监听失败、重复消费和进程中断，而不只检查收到日志。

@@ -1,44 +1,78 @@
 ---
-title: "Java 21 虚拟线程生产避坑指南：别把它当银弹"
-description: "虽然 Java 21 的虚拟线程（Virtual Threads）彻底终结了响应式编程的噩梦，但在 2026 年的生产环境中，如果不了解 Pinning 和 ThreadLocal 陷阱，它依然会压垮你的服务器。"
+title: "Java 虚拟线程落地指南：适用边界与 Pinning 避坑"
+description: "按 I/O 等待、下游容量和 JDK 版本选择虚拟线程，保留创建 API、Pinning 排查与 ScopedValue 示例。"
 sidebar:
   order: 1
 date: 2025-08-10
-lastUpdated: 2025-09-02
+lastUpdated: 2026-10-11
 ---
 
-时间来到 2026 年，如果你还在新项目里手写 `ThreadPoolExecutor` 或者被 WebFlux 的 `Mono/Flux` 各种回调折磨，那说明你们的技术栈已经严重脱节了。
+**虚拟线程适合大量等待 I/O 的并发任务，让同步写法不必长期占住操作系统线程。** 它不增加 CPU 算力，也不保证单个请求更快；数据库连接、供应商限流和内存仍需单独限制。[JEP 444](https://openjdk.org/jeps/444)
 
-从 Java 21 开始，**虚拟线程（Virtual Threads）** 已经成为了处理高并发 I/O 的绝对主力。百万级并发只需一台普通机器，代码写起来就像同步阻塞一样极其丝滑。
+采用前先看 JDK 版本。Java 21 的 `synchronized` 与本地调用会影响载体释放；JDK 24 的 JEP 491 消除了几乎全部监视器相关 Pinning。无需为短小、无阻塞的临界区统一换锁。[Oracle Java 21 指南](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)、[JDK 24 说明](https://www.oracle.com/java/technologies/javase/24-relnote-issues.html)
 
-但世界上没有银弹。很多团队在将 Spring Boot 升级到 3.2+ 并开启 `spring.threads.virtual.enabled=true` 后，不仅没有感受到性能提升，反而遇到了离奇的系统卡死。
+## 创建与使用
 
-今天我们就从架构师视角，拆解在生产环境落地虚拟线程时，你一定会踩到的三大坑。
+一个线程的创建片段：
 
-## 1. 致命的 Pinning（线程固定）问题
+```java
+// 创建并启动一个虚拟线程
+Thread vThread = Thread.ofVirtual().start(() -> {
+    System.out.println("虚拟线程执行中: " + Thread.currentThread());
+});
+vThread.join();
+```
 
-这是虚拟线程早期最臭名昭著的问题。虚拟线程之所以轻量，是因为它们在遇到 I/O 阻塞时，会自动从底层的操作系统线程（Carrier Thread，载体线程）上“卸载”下来，把 CPU 让给别的虚拟线程。
+每任务一个虚拟线程的执行器：
 
-**但是，有两种情况会导致卸载失败，虚拟线程会被“死死地钉（Pin）”在载体线程上：**
+```java
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    for (int i = 0; i < 100_000; i++) {
+        final int taskId = i;
+        executor.submit(() -> {
+            // 模拟阻塞 I/O，虚拟线程阻塞时会让出底层平台线程
+            Thread.sleep(1000);
+            return taskId;
+        });
+    }
+} // try-with-resources 会等待所有虚拟线程执行完毕
+```
 
-1. **在 `synchronized` 代码块或方法内执行阻塞操作。**
-2. **在执行本地方法（JNI，如 C/C++ 调用的库）时发生阻塞。**
+这是 API 演示，不是 10 万并发的容量证明。不要为了限制下游并发而池化虚拟线程；用连接池、Semaphore 等限制稀缺资源，超额任务也要有队列、超时或拒绝策略。
 
-### 灾难现场
-假设你们有一个老旧的支付回调接口，里面用了 `synchronized` 来防并发，同时在里面调了外部 API：
+Spring Boot 3.2+ 可开启支持的虚拟线程集成，先核对 Java、Boot 与 Web 容器版本：
+
+```yaml
+spring:
+  threads:
+    virtual:
+      enabled: true
+```
+
+## Pinning：按版本处理
+
+载体线程（Carrier）是真正运行虚拟线程的平台线程。虚拟线程无法卸载时，阻塞会同时占住载体。
+
+| 阻塞路径 | Java 21 | JDK 24+ |
+| --- | --- | --- |
+| 支持卸载的普通 I/O | 可释放载体 | 可释放载体 |
+| 持有或竞争 `synchronized` 监视器 | 存在占住载体的风险 | JEP 491 消除几乎全部监视器相关 Pinning |
+| JNI / Foreign Function 路径 | 仍需检查 | 仍需检查，不能只因升级就排除 |
+| 等待 `ReentrantLock` | 可卸载 | 可卸载 |
+
+只有一个锁持有者，不等于只有一个载体可能被阻塞；竞争监视器也要考虑。不要从请求数直接推导“几百个载体全部耗尽”，应看实际调用与等待路径。[JEP 491 实现说明](https://mail.openjdk.org/pipermail/nio-dev/2024-November/018122.html)、[JEP 491](https://openjdk.org/jeps/491)
+
+下面是说明性业务片段，`httpClient` 和 `updateDB` 是项目封装：
 
 ```java
 public synchronized void processPayment() {
-    // 致命错误：在 synchronized 内部发起网络 HTTP 请求
+    // Java 21 上：synchronized 内阻塞，虚拟线程被钉在载体线程上
     String response = httpClient.send("http://api.payment.com");
     updateDB(response);
 }
 ```
-当 1000 个请求涌入，1000 个虚拟线程被创建。前几个线程拿到了锁进入方法，发起 HTTP 请求开始等待。此时，它们本该让出 CPU。但是由于处于 `synchronized` 块中，**JVM 无法卸载它们**。
-底层的几百个载体线程瞬间被耗尽，整个应用的 I/O 彻底瘫痪，出现假死。
 
-### 2026 年的解决标准
-将所有的 `synchronized` 替换为 `ReentrantLock`。虚拟线程在 `ReentrantLock.lock()` 阻塞时，是可以被完美卸载的。
+Java 21 上，频繁且长时间的阻塞临界区可以改成：
 
 ```java
 private final ReentrantLock lock = new ReentrantLock();
@@ -53,45 +87,44 @@ public void processPayment() {
     }
 }
 ```
-*注：在 Java 24/25 的后续迭代中，JVM 层面已经极大地缓解了 synchronized Pinning 的问题，但在维护低版本或遗留代码时，改用 Lock 依然是最稳妥的架构底线。*
 
-## 2. ThreadLocal 带来的内存灾难
+换锁有助于释放载体，却不会让同一临界区内的操作并行。更先检查能否缩短持锁时间；JDK 24+ 不再仅为监视器 Pinning 强制改锁。
 
-在传统的平台线程池中，线程数量是固定的（比如 200 个）。因此，使用 `ThreadLocal` 存储用户 Session 或数据库连接是非常安全的。
+## 用诊断工具找实际阻塞
 
-但在虚拟线程时代，线程数量是**按请求创建的（Per-Request）**。如果你有 100 万个并发请求，内存里就会有 100 万个虚拟线程。
+Java 21 可用 `-Djdk.tracePinnedThreads=full` 或 JFR 的 `jdk.VirtualThreadPinned` 事件。线程快照可包含平台与虚拟线程：
 
-如果你在一些拦截器或中间件里，往 `ThreadLocal` 里塞了一个巨大的上下文对象（比如 1MB 的权限树）：
-`1MB * 1,000,000 = 1TB`
-你的 JVM 会在几秒钟内直接爆出 `OutOfMemoryError: Java heap space`。
+```bash
+jcmd <PID> Thread.dump_to_file -format=json <file>
+```
 
-### 替代方案：Scoped Values（作用域值）
-对于需要在请求链路中传递不可变数据的场景，使用 Java 21 引入的 `ScopedValue`。它不拷贝数据，内存开销极低。
+这些入口在 Java 21 已提供，并非从 23 才有；诊断行为按所用 JDK 核对。[Oracle 排查说明](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html)
+
+## ThreadLocal 与 ScopedValue
+
+内存看“同时存活的请求数 × 每个请求独占的数据”。假设每个请求各新增 1MB，上限同时 10 万个，仅这一项约需 100GB；共享同一个对象引用不能按此重复计数。线程池复用时要清理请求数据，虚拟线程结束时关联数据可释放，仍不要给每个请求挂大对象。
+
+向下游传递只读绑定，可考虑 `ScopedValue`：
 
 ```java
 // 声明一个作用域值
 public final static ScopedValue<User> CURRENT_USER = ScopedValue.newInstance();
 
-// 在网关层绑定
+// 在入口层绑定
 ScopedValue.where(CURRENT_USER, user).run(() -> {
-    // 在这个闭包里调用的所有深层方法，都能安全获取到 user
-    orderService.createOrder();
+    orderService.createOrder(); // 闭包内所有深层调用都能取到 user
 });
 
 // 在深层业务中获取
 User user = CURRENT_USER.get();
 ```
 
-## 3. 把 CPU 密集型任务交给虚拟线程
+这是项目类型与方法的片段。绑定不可重新赋值，不代表 `User` 对象本身不可变，也不自动复制它。Java 21 是预览 API，需要 `--enable-preview`；JDK 25 才正式化。[JEP 446](https://openjdk.org/jeps/446)、[JEP 506](https://openjdk.org/jeps/506)
 
-这也是很多新手的误区。虚拟线程**不能提高计算速度**。
-如果你的任务是加密/解密、图片压缩、复杂的大数据遍历计算，把它们丢进虚拟线程毫无意义，反而会因为虚拟线程的调度开销拖慢速度。
+| 工作负载 | 起点 |
+| --- | --- |
+| 网络、数据库等长 I/O 等待 | 评估虚拟线程，保留下游并发上限 |
+| 长时间 CPU 计算 | 有界平台线程池或 ForkJoinPool，按 CPU 和压测调整 |
+| 现有响应式链路 | 不必为了虚拟线程重写；先证明收益与兼容性 |
 
-**架构准则：**
-- **I/O 密集型**（网络请求、数据库读写、文件读写）：坚决使用虚拟线程。
-- **CPU 密集型**（大量数学运算、正则处理）：依然老老实实放进传统配置好的 `ForkJoinPool` 或固定大小的平台线程池里。
-
-## 总结
-
-虚拟线程是一把屠龙刀，它大幅度简化了 Java 的高并发模型。但在生产架构设计中，你需要建立一套新的认知：
-不要池化虚拟线程（用完即弃）、警惕 `synchronized` 内部的网络调用、用 `ScopedValue` 替代 `ThreadLocal`。掌握这三点，你的系统就能真正在 2026 年起飞。
+配置依据：[Spring Boot 虚拟线程](https://docs.spring.io/spring-boot/reference/features/spring-application.html#features.spring-application.virtual-threads)。

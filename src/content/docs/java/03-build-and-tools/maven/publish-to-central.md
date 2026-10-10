@@ -4,31 +4,25 @@ description: 通过 Central Portal 发布开源库到 Maven 中心仓的完整�
 sidebar:
   label: 发布到中心仓
 date: 2025-11-20
-lastUpdated: 2025-12-28
+lastUpdated: 2026-10-11
 ---
 
-## Central Portal
+现在把开源库发布到 Maven 中心仓，走 Sonatype 的 Central Portal（[https://central.sonatype.com](https://central.sonatype.com)）。完整链路只有五步，本文按顺序展开：
 
-中央门户融合了之前 OSSRH 和 Maven Search 的功能，可以简单理解它就是 Maven 公共仓。
+1. 注册 Portal 账号并验证 namespace（命名空间，如 `io.github.你的账户名`）
+2. 生成 User Token 配进 `settings.xml`
+3. 准备 GPG 密钥并发布公钥
+4. pom.xml 配置 source/javadoc/gpg 插件与 `central-publishing-maven-plugin`
+5. 执行 `mvn deploy` 上传
 
-## OSSRH
+> 旧的 Legacy OSSRH 服务（`oss.sonatype.org` / `s01.sonatype.org`）已于 2025 年 6 月 30 日停止接收发布（[官方公告：OSSRH Sunset](https://central.sonatype.org/news/20250326_ossrh_sunset/)）。已有 OSSRH 账号的发布者可按官方迁移指引在 Portal 中认领（claim）原有 namespace，通常不需要从零重建；具体流程见 [Sonatype 迁移文档](https://central.sonatype.org/register/legacy/)。
 
-**OSSRH**：这是一个旧概念，全称是 Sonatype Open Source Software Repository Hosting，是上传 Maven 公共仓的前哨中转站。
+## Maven 中心仓与 Central Portal
 
-- 提供暂存和审核机制：开发者将构件发布到 OSSRH 进行暂存，OSSRH 会对构件进行一系列的校验，如验证项目的元数据、检查构件的完整性、确保遵守 Maven 中心仓的发布规则等。只有通过这些校验的构件才能被提升到 Maven 中心仓。
-- 管理发布流程：OSSRH 使用 Sonatype Nexus 仓库管理器来管理构件的发布过程，包括部署开发版本的二进制文件（快照版本）、暂存发布版本的二进制文件，以及将经过审核的发布版本的二进制文件同步到 Maven 中心仓。
-- 如果你使用 [https://oss.sonatype.org](https://oss.sonatype.org) 或 [https://s01.sonatype.org](https://s01.sonatype.org) 来发布，你正在通过 Legacy OSSRH 服务发布。
-- OSSRH 迁移到 Central Portal 中央门户要建立新的 namespace
+- Maven 中心仓是 Java 开源构件的公共检索与下载仓库，搜索地址是 [https://central.sonatype.com/](https://central.sonatype.com/)（2023 年 2 月起 `search.maven.org` 自动重定向至此，[官方解释](https://central.sonatype.org/faq/what-happened-to-search-maven-org/)）。
+- Central Portal 是发布的入口：融合了原 OSSRH 的发布中转与 Maven Search 的检索功能。中心仓没有独立账号体系，发布成功后约 10 分钟即可被搜索到。
 
-## Maven 中心仓
-
-用于 Java 开发者在 Maven 项目中查找开源库和构件，相当于提供 release 版本搜索、下载的地方。
-
-- Maven 中心仓的搜索地址是：[https://central.sonatype.com/](https://central.sonatype.com/)
-  - 从 2023 年 2 月 23 日起，`https://search.maven.org/`会自动重定向到`https://central.sonatype.com/`，[官方解释](https://central.sonatype.org/faq/what-happened-to-search-maven-org/)
-- Maven 中心仓没有账号体系，发布正式版本 10 分钟左右就会在 Maven 中心仓搜索到
-
-# Central Portal 中央门户上传步骤
+## Central Portal 上传步骤
 
 ### 注册账号
 
@@ -152,6 +146,8 @@ gpg:              未改变：1
 </settings>
 ```
 
+（这里的 profile `id` 只是本地配置块的名字，与已停用的 OSSRH 服务无关，改成任意名字都可以。）
+
 ## 使用 Maven 插件发布
 
 官方文档：[https://central.sonatype.org/publish/publish-maven/](https://central.sonatype.org/publish/publish-maven/)
@@ -221,9 +217,9 @@ gpg:              未改变：1
 - 确保安装了 gpg 命令
 - 确保 settings.xml 配置了 gpg 密钥
 
-### Nexus Staging Maven 插件用于部署和发布
+### 使用 central-publishing-maven-plugin 部署和发布
 
-- pom.xml 配置 中央门户部署插件
+- pom.xml 配置中央门户部署插件（这是 Sonatype 为 Central Portal 提供的官方插件，与已随 OSSRH 停用的旧 Nexus Staging 插件不是一回事）
   - 注意这里的 publishingServerId 和 settings.xml 里的 server id 配置一致
 - 配置好后执行 `mvn deploy`，输入密码即可自动上传，如果有错误会在网页的 Deployments 显示
 

@@ -2,7 +2,7 @@
 title: "Agent 的目标模式，到底多做了什么"
 description: "从提前结束的例子讲起，看懂自动续跑、完成检查和费用上限。"
 date: 2026-09-07
-lastUpdated: 2026-09-07
+lastUpdated: 2026-10-11
 verifiedAgainst: "Codex rust-v0.135.0 源码，Claude Code Goal、OpenCode 与 LangGraph 官方文档，2026-09-07"
 sidebar:
   order: 30
@@ -81,8 +81,7 @@ Claude Code 还有两个细节。后台任务未完成时会暂缓评估；连�
 
 Ralph 使用的 Stop hook，可以理解为退出前执行的一段检查程序。它根据状态文件决定是否阻止本次退出。[Ralph 的实现](https://github.com/anthropics/claude-plugins-official/blob/85cce0381e7860082641b59d961a2b8c368b8b79/plugins/ralph-loop/hooks/stop-hook.sh)
 
-<details>
-<summary>对照 Codex 源码，续跑最终仍然调用普通任务</summary>
+### 对照 Codex 源码，续跑最终仍然调用普通任务
 
 这里固定到 `rust-v0.135.0`，提交为 `4daceea869704f9f35e0a3949fc34711ef978a4e`，不把它泛化成所有桌面版本的行为。
 
@@ -96,8 +95,6 @@ self.start_task(turn_context, Vec::new(), RegularTask::new())
 ```
 
 续跑模板要求主 Agent 自查，`update_goal` 处理器接收它报告的完成或阻塞状态。这个处理器没有自行运行项目测试。[续跑提示](https://github.com/openai/codex/blob/4daceea869704f9f35e0a3949fc34711ef978a4e/codex-rs/core/templates/goals/continuation.md)、[状态更新处理器](https://github.com/openai/codex/blob/4daceea869704f9f35e0a3949fc34711ef978a4e/codex-rs/core/src/tools/handlers/goal/update_goal.rs)
-
-</details>
 
 ## 跑一遍，就能看到提前结束怎样被拦住
 
@@ -123,8 +120,7 @@ node harness-goal-loop.mjs status "$goal_demo_dir/goal.sqlite"
 
 这证明控制程序能拒绝一个过早的完成声明。由于模拟 Agent 的行为固定，实验不能证明真实模型两轮就能完成任务，也没有验证多台机器并发执行的安全性。
 
-<details>
-<summary>继续验证重复事件、暂停和执行上限</summary>
+### 继续验证重复事件、暂停和执行上限
 
 在新的演示数据库中执行。重复发送 `event-1` 不会多算一轮；暂停后，`run` 不会继续工作。
 
@@ -147,8 +143,6 @@ node harness-goal-loop.mjs run "$goal_demo_dir/limited.sqlite"
 
 这里限制的是轮数，没有计算真实模型费用。SQLite 保存了页面数据、状态和事件回执，所以这些独立进程能接着同一个目标工作。
 
-</details>
-
 ## 放进实际项目，最容易漏掉什么
 
 前面的控制逻辑可以作为起点。下面这些问题出现时，再补对应机制，不必把所有设施一次搭齐。
@@ -167,10 +161,9 @@ node harness-goal-loop.mjs run "$goal_demo_dir/limited.sqlite"
 
 常见做法是发放有期限的执行权，也就是租约。旧 Worker 卡住后租约过期，新 Worker 可以接管；如果旧 Worker 又恢复，提交结果时就需要用接管序号拒绝它的过期写入，这个序号叫 `fencing_token`。
 
-只检查数据库还不够。旧 Worker 如果能继续改共享文件，仍会影响结果。代码任务可以在各自独立的工作目录执行，验收后再接纳指定版本。更完整的领取、消息去重和恢复实现放在[长任务运行机制](/ai/durable-agent-task-runtime/)中。
+只检查数据库还不够。旧 Worker 如果能继续改共享文件，仍会影响结果。代码任务可以在各自独立的工作目录执行，验收后再接纳指定版本。更完整的领取、消息去重和恢复实现见[服务重启后，Agent 怎么记得前文并接着做](/ai/agent-context-persistence-recovery/)中的租约与状态机部分。
 
-<details>
-<summary>接入模型后，数据库事务怎样划分</summary>
+### 接入模型后，数据库事务怎样划分
 
 不要锁着数据库等待几分钟的模型响应。用短事务领取任务，在事务外执行，再用短事务检查执行权并保存结果。
 
@@ -183,8 +176,6 @@ node harness-goal-loop.mjs run "$goal_demo_dir/limited.sqlite"
 旧进程已经失去执行权，即使后来交回结果，也不能再修改任务状态。但它调用模型花的钱仍然要记录。保存费用可以用独立的事务处理，避免拒绝旧进程的结果时，把费用记录也撤销了。
 
 需要发队列消息时，可以把待发送事件与目标状态放进同一事务，再异步发送。这种待发送事件表叫 Outbox，能处理“状态保存了，消息还没发就重启”的情况。发送仍可能重复，所以接收端还要按事件 ID 去重。
-
-</details>
 
 ### 程序一直在跑，却没有进展
 

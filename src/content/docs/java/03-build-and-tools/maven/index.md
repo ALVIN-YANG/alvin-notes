@@ -4,8 +4,10 @@ description: Maven 环境配置、pom.xml 标签详解、依赖范围与传递�
 sidebar:
   label: Maven 依赖管理
 date: 2025-11-13
-lastUpdated: 2025-12-20
+lastUpdated: 2026-10-11
 ---
+
+本页是 Maven 的速查参考：环境安装与 settings.xml、pom.xml 常用标签、依赖范围与传递规则、版本冲突的解决思路、多模块管理、私服 Nexus 配置。
 
 ## 环境准备
 
@@ -15,16 +17,14 @@ lastUpdated: 2025-12-20
 
 ### 安装 Maven
 
-- Maven 下载：[https://maven.apache.org/docs/history.html](https://maven.apache.org/docs/history.html)
-- 解压到指定目录后，配置环境变量
+- Maven 下载：[https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi)
+- 解压到指定目录后，把 `bin` 目录加入 `PATH`（新版 Maven 不再需要配置 `M2_HOME`/`M3_HOME`）
 
 ```shell
-# maven
-M3_HOME=/your path/apache-maven-your version/bin
-export PATH=${PATH}:${M3_HOME}
+export PATH=/your/path/apache-maven-x.y.z/bin:$PATH
 ```
 
-- `source` 后，执行 `mvn -v` 检查
+- 执行 `mvn -v` 检查
 
 ### settings.xml 配置
 
@@ -34,7 +34,7 @@ export PATH=${PATH}:${M3_HOME}
 
 - 本地仓库：依赖缓存位置， mac os 默认 `~/.m2/repository`
 
-```shell
+```xml
 <settings>
   <localRepository>/path/to/custom/local/repo</localRepository>
 </settings>
@@ -109,8 +109,8 @@ export PATH=${PATH}:${M3_HOME}
 
 组成：
 
-- groupld：组织名称(通常是域名反写，如：`org.mybatis`)。
-- artifactld：资源的名称(通常是项目或模块名称)
+- groupId：组织名称(通常是域名反写，如：`org.mybatis`)。
+- artifactId：资源的名称(通常是项目或模块名称)
 - version：版本号
 - packaging：打包方式，取值有如下三种
   - jar：jar 包，默认是 jar，java 工程
@@ -123,14 +123,16 @@ export PATH=${PATH}:${M3_HOME}
 
 #### 依赖范围 `<scope>`
 
-限制其引用范围：编译、测试、运行
+限制依赖的引用范围（编译、测试、运行）：
 
-- compile：默认，全引用。
-- provided：运行环境已经有了，不在运行中再次导入
-- runtime：仅在运行和测试，不在编译路径中。
-- test：仅测试
-- system：被系统提供，用于添加本地依赖，移植性差不推荐。
-- import：仅在 `<dependencyManagement>` 中使用，用于在一个 pom 中导入另外一个 pom 定义的依赖列表
+| scope | 编译期 | 测试期 | 运行期 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| `compile` | ✓ | ✓ | ✓ | 默认值，全程可用 |
+| `provided` | ✓ | ✓ | ✗ | 运行环境已提供（如 servlet-api），不打入产物 |
+| `runtime` | ✗ | ✓ | ✓ | 运行需要、编译不需要（如 JDBC 驱动） |
+| `test` | ✗ | ✓ | ✗ | 仅测试（如 JUnit） |
+| `system` | ✓ | ✓ | ✗ | 本地磁盘路径引用，移植性差，不推荐 |
+| `import` | - | - | - | 仅在 `<dependencyManagement>` 中导入另一个 pom 的依赖清单 |
 
 #### 可选依赖 `<optional>`
 
@@ -224,7 +226,7 @@ parent-project/
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>.53.8</version>
+            <version>5.3.8</version>
         </dependency>
     </dependencies>
 </dependencyManagement>
@@ -315,7 +317,7 @@ parent-project/
 A 依赖 B，B 依赖 C，C 能否传递到 A 取决于依赖范围
 
 - B 依赖 C ，只有使用 compile 范围时可以传递
-- 设置了 `<optional>true</optinal>`，不能传递
+- 设置了 `<optional>true</optional>`，不能传递
 - 依赖冲突时，依赖已经存在，也会终止传递
 
 ### Maven 自动选择原则
@@ -324,7 +326,7 @@ A 依赖 B，B 依赖 C，C 能否传递到 A 取决于依赖范围
   - A -> B -> C -> D v1
   - A -> B -> D v2
   - 则 A -> D v2
-- 路径长度相同时，在 `<dependences>` 标签中，先声明的优先
+- 路径长度相同时，在 `<dependencies>` 标签中，先声明的优先
   - A -> B -> C v1
   - A -> B -> C v2
   - 则 A -> C v1

@@ -4,8 +4,10 @@ description: IntelliJ IDEA 调试全指南：断点、条件断点、变量查�
 sidebar:
   label: IDEA 调试
 date: 2025-11-06
-lastUpdated: 2025-12-12
+lastUpdated: 2026-10-11
 ---
+
+本页是 IntelliJ IDEA 调试功能的速查：断点与条件断点、变量查看、多线程调试、远程调试配置。适用于排查本地与测试环境问题的日常场景。
 
 ## 调试前的准备
 
@@ -13,7 +15,7 @@ lastUpdated: 2025-12-12
 
 ## 设置断点
 
-断点是调试过程中最常用的工具之一，它可以让程序在特定的代码行暂停执行，以便开发者可以检查程序的状态和变量的值。
+断点可以让程序在指定的代码行暂停执行，以便检查程序状态和变量值。
 
 1. 打开要调试的 Java 源文件。
 2. 在代码行号左侧的空白处单击鼠标左键，或者按键盘快捷键 `Ctrl + F8`（Windows/Linux）或 `Cmd + F8`（Mac），即可在该行设置一个断点。
@@ -30,16 +32,19 @@ lastUpdated: 2025-12-12
 
 ### 调试工具栏
 
-调试工具栏提供了常用的调试操作按钮，包括：
+调试工具栏提供了常用的调试操作按钮：
 
-- **Resume Program (F9)**：继续执行程序，直到遇到下一个断点或程序结束。
-- **Step Over (F8)**：逐行执行代码，不进入方法内部。
-- **Step Into (F7)**：进入当前行调用的方法内部。
-- **Step Out (Ctrl + F8)**：退出当前方法，返回到调用该方法的位置。
-- **Force Step**：强制进入方法，即使该方法没有调试信息。
-- **Evaluate Expression (Alt + F8)**：评估表达式，可以在调试过程中计算任意表达式的值。
-- **Pause Program (Ctrl + Alt + Pause)**：暂停正在运行的程序。
-- **Stop (Ctrl + F2)**：停止调试会话。
+| 操作 | 快捷键 (Win/Linux) | 作用 |
+| ---- | ---- | ---- |
+| Resume Program | F9 | 继续执行到下一个断点或程序结束 |
+| Step Over | F8 | 逐行执行，不进入方法内部 |
+| Step Into | F7 | 进入当前行调用的方法内部 |
+| Step Out | Shift + F8 | 跳出当前方法，返回调用处 |
+| Evaluate Expression | Alt + F8 | 调试中计算任意表达式的值 |
+| Pause Program | Ctrl + Alt + Pause | 暂停正在运行的程序 |
+| Stop | Ctrl + F2 | 停止调试会话 |
+
+另有 Force Step Into（Alt + Shift + F7）：强制进入没有调试信息的方法内部。
 
 ### 变量视图
 

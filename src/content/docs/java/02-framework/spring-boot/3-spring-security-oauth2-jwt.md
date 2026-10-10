@@ -1,47 +1,31 @@
 ---
-title: "无状态微服务鉴权：Spring Security OAuth2 + JWT 最佳实践"
-description: "传统的 Session 鉴权在微服务时代已经彻底死亡。本文带你拆解如何在 2026 年利用 Spring Security 结合 RSA 非对称加密构建极其安全的 JWT 资源服务器。"
+title: "Spring Security + JWT：验签、授权与注销边界"
+description: "配置 JWT 资源服务器，区分签名与授权，处理 issuer、audience、角色映射、密钥轮换和撤销需求。"
 sidebar:
   order: 3
 date: 2025-10-10
-lastUpdated: 2025-11-11
+lastUpdated: 2026-10-11
 ---
 
-在单体应用时代，用户的登录状态全部存在 Tomcat 的 Session 里（本质是服务器内存）。
-但当架构演进为微服务集群时，如果还用 Session，你就必须把 Session 集中存放到 Redis 里（共享 Session）。对于一个拥有上千个微服务节点的大型系统来说，这种**“每次请求都要去 Redis 里查一下用户状态”**的集中式架构，不仅带来了极高的网络开销，也成为了潜在的系统单点瓶颈。
+JWT 可以让资源服务器在本地验证签名，减少对集中登录状态的查询。它不会自动解决注销、封禁或权限变更：如果每次只验签，已签发的 Token 通常会有效到过期；需要即时撤销，就要加入状态检查或其他撤销机制。
 
-在 2026 年，微服务间流转的绝对标准凭证，毫无疑问是 **JWT (JSON Web Token)**。
-而配合它的终极防线，则是大名鼎鼎（且配置极其复杂的）**Spring Security**。
+例如，用户被封禁后，旧 Token 仍能访问接口。缩短有效期只能缩短风险窗口；要求立即失效时，还要检查撤销记录，并阻止继续刷新。
 
-## 1. 为什么是无状态（Stateless）？
+## 一次请求要检查什么
 
-JWT 的核心理念是：**把鉴权信息全部写在 Token 本身里。**
+| 检查 | 作用 |
+| --- | --- |
+| 允许的签名算法与可信公钥 | 防止伪造；不能信任 Token 自己指定的任意密钥来源 |
+| `iss`、`aud`、`exp`、`nbf` | 确认签发者、目标服务和有效时间 |
+| scope、角色与业务对象权限 | 已认证不等于有权读取任意订单 |
+| 撤销或账号状态 | 按业务要求处理注销、封禁和权限变更 |
 
-当你登录成功后，认证中心（Authorization Server）颁发给你一个 JWT。这个 Token 内部包含了你的 `UserId`、你的角色 `ROLE_ADMIN`，并且在末尾打上了一个无法被篡改的**密码学数字签名**。
+签名 JWT 的 payload 通常可以直接读，**签名不是加密**，不要放秘密。多服务部署常用非对称签名，让资源服务持有公钥却无法签发 Token；RSA 是一种选择，也可以按体系使用合适的 EC 等算法。HMAC 的验签方同时持有签发能力，需要更严格的信任边界。
 
-当你拿着这个 Token 去请求订单服务（Order Service）时：
-订单服务**不需要去问数据库**，也**不需要去查 Redis**。它只需要用事先约定好的公钥（Public Key），本地校验一下这个 Token 的签名是否合法、有没有过期。如果合法，它直接从 Token 内部把 `UserId` 取出来执行业务即可。
+## Spring Boot 3 资源服务器示例
 
-这就是**无状态**——微服务节点可以随时被拉起、随时被销毁，它们不保存任何登录状态，性能极高。
+引入依赖：
 
-## 2. RSA 非对称加密：生产环境的安全底线
-
-很多新手教程教你用一段字符串（比如 `my-secret-key-123456`）作为对称加密（HMAC）的密钥来签发 JWT。
-
-**这是生产环境的绝对大忌！**
-
-如果在微服务集群中，你把这串密钥写在每个微服务的配置文件里。只要有一个边缘的边缘服务（比如短信服务）的代码被黑客拿到，密钥就会泄露。黑客可以自己签发一个包含 `ROLE_SUPER_ADMIN` 的 JWT，畅通无阻地黑掉整个系统。
-
-**2026 架构标准：使用 RSA 非对称加密。**
-
-- **认证中心 (Auth Server)**：手里死死捏着**私钥 (Private Key)**，只有它有资格签发和颁发 JWT。
-- **其他微服务 (Resource Server)**：手里只有**公钥 (Public Key)**。公钥是公开的，即使泄露了也无所谓。微服务只能用公钥来**验证** JWT 是不是认证中心签发的，绝无能力伪造 JWT。
-
-## 3. Spring Security 资源服务器极简配置
-
-在 Spring Boot 3 中，配置一个只认公钥的 OAuth2 资源服务器变得极其简单。
-
-### 引入依赖
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -49,66 +33,53 @@ JWT 的核心理念是：**把鉴权信息全部写在 Token 本身里。**
 </dependency>
 ```
 
-### application.yml 配置
-你只需要在配置里指定公钥的获取地址（JWK Set URI），Spring Boot 会在启动时自动去认证中心拉取公钥并缓存下来：
+以下是配置示例，域名和 audience 换成自己的认证体系：
+
 ```yaml
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          # 认证中心暴露的公钥获取端点
-          jwk-set-uri: http://auth-server/oauth2/jwks
+          issuer-uri: https://auth.example.com
+          jwk-set-uri: https://auth.example.com/oauth2/jwks
+          audiences: https://api.example.com
 ```
 
-### SecurityFilterChain 配置
-在配置类中，彻底抛弃旧时代的 `WebSecurityConfigurerAdapter`，采用现代化的函数式配置：
+同时指定 issuer 和 JWK Set URI，既能验证 `iss`，又不必通过发现端点获取 JWK 地址。公钥的获取、缓存和轮换按框架配置处理，不等于每次请求都查认证中心。较早的 Boot 版本若不支持 `audiences` 属性，用自定义 validator 校验 `aud`。[Spring Security 官方文档](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html)
 
 ```java
 @Configuration
 @EnableWebSecurity
 public class ResourceServerConfig {
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            // 1. 关闭 CSRF（因为我们不使用 Cookie，防跨站伪造无需开启）
+            // 仅适用于凭证由客户端主动放入 Authorization 头的 API
             .csrf(csrf -> csrf.disable())
-            
-            // 2. 声明这是一个完全无状态的会话，禁止 Spring 生成 HttpSession
-            .sessionManagement(session -> 
+            .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            
-            // 3. 路由权限拦截规则
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/public/**").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
-            )
-            
-            // 4. 开启 JWT 资源服务器模式
+                .anyRequest().authenticated())
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
-
         return http.build();
     }
 }
 ```
 
-## 4. 终极挑战：Token 无法撤销怎么办？
+这是过滤链片段，省略 imports。默认 scope 映射为 `SCOPE_` 权限；示例中的 `hasRole("ADMIN")` 要有明确的 `ROLE_ADMIN` 映射，不能以为 Token 带了 roles 字段就自动生效。
 
-JWT 无状态带来的最大代价是：**签发出去的 Token 就像泼出去的水，在过期之前无法被服务器主动收回。**
-如果用户点击了“注销登录”，或者系统发现某个用户的账号被盗了，你需要立刻踢他下线，怎么办？
+若浏览器会自动附带 Cookie 等认证凭证，仍需评估 CSRF；把 Refresh Token 放在 HttpOnly Cookie 中，只能减少脚本读取风险，刷新端点仍需保护。[CSRF 官方说明](https://docs.spring.io/spring-security/reference/servlet/exploits/csrf.html)
 
-**解决方案：JWT 黑名单机制 (Redis Blacklist + 短过期时间)**
+## 注销与封禁怎么选
 
-1. **缩短过期时间**：将 Access Token 的有效期设置得很短（例如 15 分钟），即使被盗，风险期也很短。配合长有效期的 Refresh Token（存放在 HttpOnly Cookie 中）来无感刷新。
-2. **引入 Redis 拦截黑名单**：当用户注销或被封禁时，将他当前的 JWT 的唯一标识（`jti` 字段）或者 `UserId` 存入 Redis，设置存活时间等于该 Token 的剩余过期时间。
-3. **在网关层 (Gateway) 增加拦截器**：每次请求经过网关时，网关不仅校验 JWT 签名，还去 Redis 里 `EXISTS` 一下这个 Token 是否在黑名单中。
+| 要求 | 做法 | 代价 |
+| --- | --- | --- |
+| 允许短暂风险窗口 | 短期 Access Token，刷新时检查账号状态 | 注销后旧 Token 可能仍有效；15 分钟只是示例 |
+| 撤销单个 Token | 用 `jti` 记录撤销，保留到其过期 | 请求需查询撤销状态，所有可达入口都要执行 |
+| 封禁整个账号 | 校验账号状态或 Token 版本，并撤销刷新凭证 | 不能仅把 userId 按某一个 Token 的剩余寿命过期 |
+| 使用本地缓存减少查询 | 明确最大缓存延迟与更新方式 | 缓存会扩大撤销生效窗口，故障时放行还是拒绝也要定义 |
 
-有人会问：“既然还是要查 Redis，那和以前的集中式 Session 有什么区别？”
-
-区别大了！**由于黑名单里只有被注销的那极少部分 Token（可能只有几十条记录）**，而不是几百万在线用户的全量 Session，这次查询可以被网关的极小本地缓存（Caffeine）挡住大半，对 Redis 的压力可以忽略不计。
-
-## 总结
-
-微服务安全不是儿戏。在 2026 年，摒弃 Session，拥抱 **“RSA 私钥签发 + 公钥本地校验 + 网关 Redis 黑名单兜底”** 的三段式防御体系，才是一名合格架构师应有的系统安全观。
+黑名单重新引入集中状态，其体积取决于实际撤销量，不能保证“小几个数量级”。共享 Session、Token introspection 和 JWT 都是可选方案；先确定失效时效与可用性要求，再选状态放在哪里。

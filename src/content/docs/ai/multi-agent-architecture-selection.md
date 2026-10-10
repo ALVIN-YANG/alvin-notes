@@ -2,7 +2,7 @@
 title: "多智能体架构选型"
 description: "对比 SAS、Independent、Centralized、Decentralized、Hybrid 五种 Agent 架构的工作方式与适用场景，结合《Towards a Science of Scaling Agent Systems》v3 的实验数据，说明怎么按任务结构选型。"
 date: 2026-09-14
-lastUpdated: 2026-09-18
+lastUpdated: 2026-10-11
 verifiedAgainst: "Towards a Science of Scaling Agent Systems（arXiv v3）、Google Research 与 Anthropic 工程资料，2026-09-14"
 sidebar:
   order: 35
@@ -148,8 +148,7 @@ flowchart TB
 
 在这个例子里，每条调查结果至少保留**结论、证据位置、测试前提、未确认事项**。只回一句“建议迁移”，总管没法判断它漏没漏关键限制。Anthropic 的多 Agent 研究实践同样强调把委派边界说清楚，用可回查的产物减少多次转述造成的信息丢失。[工程实践](https://www.anthropic.com/engineering/multi-agent-research-system)
 
-<details>
-<summary>任务、消息和状态，最少要约定什么</summary>
+## 任务、消息和状态，最少要约定什么
 
 一次子任务要说清目标、已有资料、可用工具、不能做的事、完成条件，以及时间和费用上限。只给一句“你是性能专家”不够用。
 
@@ -160,8 +159,6 @@ flowchart TB
 Agent 会改文件或操作外部系统时，还要指定谁有写权限，没有权限就不要动对应的资源。同一个资源别让多个 Agent 无约束地同时改；一次调用超时了，先核对结果有没有生效，再决定要不要重试。独立上下文不会自动带来权限隔离，消息传得再勤也代替不了授权检查。
 
 任务需要跨进程重启恢复时，再把消息和进度存到外部存储，具体做法见[服务重启后，Agent 怎么记得前文并接着做](/ai/agent-context-persistence-recovery/)。
-
-</details>
 
 对比时固定问题、资料版本、模型配置、可用工具和验收标准，给两种方案相同的总费用上限，并把总管、子 Agent、汇总和重试全部算进费用。结果有波动就重复运行，别拿一次成功的截图下结论。
 

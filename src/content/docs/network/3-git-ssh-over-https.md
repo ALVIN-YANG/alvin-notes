@@ -3,8 +3,10 @@ title: '[Git] 22 端口被网络代理禁用'
 description: Git 走 SSH 时 22 端口被代理拦截的报错原因，以及改用 HTTPS 端口（443）的规避方式
 slug: network/git-ssh-over-https
 date: 2025-11-16
-lastUpdated: 2026-01-06
+lastUpdated: 2026-10-11
 ---
+
+Git over SSH 默认走 22 端口，被公司网络代理禁用时，可以改走 443 端口：GitHub 官方在 `ssh.github.com:443` 上提供 SSH 服务，改一下 `~/.ssh/config` 即可。
 
 ## 报错信息
 
@@ -19,7 +21,7 @@ kex exchange identification: Connection closed by remote host
 
 ## 报错原因
 
-22 端口被网络代理服务器禁用，导致 SSH 方式与 Github 交互报错，可以改为在 HTTPS 端口使用 SSH 来规避。
+22 端口被网络代理服务器禁用，导致 SSH 方式与 GitHub 交互报错，可以改为在 HTTPS 端口使用 SSH 来规避。
 
 ## 解决方法
 

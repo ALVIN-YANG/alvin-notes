@@ -4,7 +4,7 @@ description: "基于 v1.2.3 拆解 Matt Pocock Skills：从 grilling、spec、TD
 sidebar:
   order: 11
 date: 2026-02-10
-lastUpdated: 2026-08-06
+lastUpdated: 2026-10-11
 ---
 
 > - 仓库地址：[mattpocock/skills](https://github.com/mattpocock/skills)
@@ -332,7 +332,7 @@ sequenceDiagram
 | 5. 修复 + 回归测试 | 先写回归测试，再修 | 没有 correct seam 是架构发现 |
 | 6. 清理 + 复盘 | 删除所有 `[DEBUG-...]` 标记 | 追问：什么能预防这个 bug？ |
 
-最被低估的是 Phase 1：**构造反馈环**。`/diagnosing-bugs` 列出了 10 种构造 loop 的方式，从 failing test 到 HITL bash script。有了 2 秒内给出 pass/fail 的确定性 loop，bug 已经解决了 90%。
+最被低估的是 Phase 1：**构造反馈环**。`/diagnosing-bugs` 列出了 10 种构造 loop 的方式，从 failing test 到 HITL bash script。有了一个能在几秒内给出确定 pass/fail 的 loop，bug 往往已经解决了一大半。
 
 `v1.2.3` 还加了一条必须前置的安全纪律：命令、日志、HAR 和其他捕获产物在展示前先把 secret 替换为 `<REDACTED>`；反馈循环通过环境变量读取凭证，只引用能承载诊断信号的行。需要原始凭证才能继续时，应停下来向用户说明，而不是把敏感信息贴进上下文。
 
@@ -526,7 +526,7 @@ Matt 的设计哲学是：**小、可组合、可 hack。** 你不需要用全�
 3. /implement（编码时）
 ```
 
-这三步就能解决 80% 的"AI 写的东西没法用"问题。
+这三步已经能覆盖大部分“AI 写的东西没法用”的场景，剩下的再按需加 `/to-spec`、`/diagnosing-bugs` 等技能。
 
 ---
 

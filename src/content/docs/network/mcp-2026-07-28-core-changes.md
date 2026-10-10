@@ -2,17 +2,19 @@
 title: "MCP 2026-07-28：从‘有状态会话’走向可横向扩展的 Agent 协议"
 description: "解读 MCP 2026-07-28 的无状态核心、server/discover、MRTR、订阅流、Tasks 扩展、缓存与弃用策略，并给出客户端和服务端迁移清单。"
 date: 2026-07-29
-lastUpdated: 2026-07-30
+lastUpdated: 2026-10-11
 verifiedAgainst: "MCP 2026-07-28 stable specification、官方 changelog 与 TypeScript SDK v2 migration guide，2026-07-30"
 sidebar:
   order: 5
 ---
 
-如果只把 MCP 理解成“用 JSON-RPC 暴露 `tools/list` 和 `tools/call`”，`2026-07-28` 看起来像一次字段调整。但从生产架构看，这其实是 MCP 发布以来最重要的一次重构：协议核心不再依赖握手、会话和固定连接，远程 MCP Server 终于能更自然地放到普通 HTTP 基础设施后面。
+MCP `2026-07-28` 把核心协议改为无状态，让远程请求更容易分发到不同 Server 实例，并重新安排发现、通知和任务扩展。升级需要同时检查客户端和 Server 支持，不能只替换版本字符串。
+
+例如服务有三个实例：协议不再要求每个请求绑定先前的握手会话，但业务任务和授权仍然可能需要共享状态。无状态协议不等于应用没有状态。
 
 官方在 2026 年 7 月 28 日发布了稳定版。MCP 版本号使用 `YYYY-MM-DD`，表示最近一次发生不兼容变更的日期；因此这里的准确版本是 `2026-07-28`，不是 `2026-07-08`。版本发布状态可在 [MCP 官方 Release](https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28)和[版本机制说明](https://modelcontextprotocol.io/docs/learn/versioning)中核对。
 
-## 先说结论
+## 变化速查
 
 - 最大变化不是新增某个 Tool 能力，而是 MCP 核心变成了 **stateless、sessionless**：`initialize`、`initialized` 和 `Mcp-Session-Id` 退出新版本。
 - 服务器能力发现改由 `server/discover` 完成；协议版本、客户端身份和能力随请求携带，任何实例都可以处理请求。

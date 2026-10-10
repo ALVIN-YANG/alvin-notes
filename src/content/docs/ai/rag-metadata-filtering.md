@@ -2,7 +2,7 @@
 title: "RAG 元数据过滤，先排除不适用的资料"
 description: "用技术文档问答说明产品、版本、语言和权限怎样限制检索范围，减少错误资料，同时避免把正确答案一起过滤掉。"
 date: 2026-09-09
-lastUpdated: 2026-09-09
+lastUpdated: 2026-10-11
 verifiedAgainst: "Introduction to Information Retrieval、pgvector 与 Azure AI Search 官方资料，2026-09-09"
 sidebar:
   order: 33
@@ -82,8 +82,7 @@ sidebar:
 
 采用关键词与向量混合检索时，两路都要带上相同的权限约束。不能一条路过滤，另一条路把越权资料重新带回来。重新排序、补读上下文和获取引用原文，也不能绕开授权。[混合检索的过滤规则](https://learn.microsoft.com/en-us/azure/search/hybrid-search-how-to-query#example-hybrid-search-with-filters-targeting-vector-subqueries-preview)
 
-<details>
-<summary>用 PostgreSQL 和 pgvector 表达这些条件</summary>
+### 用 PostgreSQL 和 pgvector 表达这些条件
 
 下面是查询示意，假设片段表已有对应字段，并以知识库为授权单位。有文档级权限时，还要加入那一层约束。
 
@@ -108,8 +107,6 @@ LIMIT $7;
 
 过滤后资料很少时，可以先评估普通过滤索引加精确检索。需要近似索引时，再评估扩大搜索范围或使用迭代扫描。迭代扫描会继续寻找候选，但有扫描上限；返回结果按距离排序，也不代表找全了最相关资料。[pgvector 过滤与迭代扫描](https://github.com/pgvector/pgvector#filtering)
 
-</details>
-
 ## 结果变少以后，怎么判断有没有变好
 
 不能只数删掉了几段。假设这个问题确实需要④的操作说明和⑤的通用规则，过滤后只剩④，虽然每段都相关，依据仍然少了一半。
@@ -124,8 +121,7 @@ LIMIT $7;
 
 如果过滤后仍给模型同样数量、同样长度的片段，token 费用未必下降；向量索引带过滤也未必更快。先验证错误资料确实减少，再用实际请求测费用和延迟。
 
-<details>
-<summary>入库和更新时还要守住什么</summary>
+## 入库和更新时还要守住什么
 
 产品、版本和发布状态优先来自文档管理系统或经确认的配置。模型可以辅助提取，但不能把未经核实的猜测直接当成访问权限或适用事实。
 
@@ -134,5 +130,3 @@ LIMIT $7;
 权限调整、文档撤回和新旧版本切换，要同步影响所有片段。检索结果缓存也必须考虑授权范围、过滤条件和资料版本，不能在条件变化后继续复用旧候选。拿到候选后如果还要补读父文档，补读也要检查适用范围与权限。
 
 更完整的入库过程见[企业内部知识库的 RAG 落地记录](/ai/rag-knowledge-base-component/)。这篇的范围只到用元数据减少不适用资料，不要求为此更换整个 RAG 框架。
-
-</details>
