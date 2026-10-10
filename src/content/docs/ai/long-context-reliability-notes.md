@@ -76,15 +76,19 @@ C2 → 给出数据库相关改动的 diff 检查结果。
 
 复查时提供的是**原始约束 + 实际结果**。只问“你检查过了吗”，模型的一句“检查过了”不能作为证据。
 
-<details>
-<summary>研究依据与适用边界</summary>
+## 研究结论与权威依据
 
-- **位置有影响，但不是唯一因素。** Lost in the Middle 在受测模型的问答与检索任务中发现，中间的信息更容易被忽略；Chroma 的实验也观察到输入变长、干扰内容改变时的性能下降。[Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/)、[Context Rot](https://www.trychroma.com/research/context-rot)
-- **末尾放任务，是可以测试的起点。** Anthropic 对 Claude 的长文档输入推荐“材料在前，问题在后”，并建议先提取相关原文。不能由此认定所有模型总是最关注末尾。[官方建议](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#long-context-prompting)
-- **压缩后仍要检查约束。** 按需读取、外部笔记和历史压缩可以控制输入，但摘要可能遗漏信息。强约束保留原文，重要事实保留可回查的来源。[上下文工程](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
-- **自检不保证有效。** ICLR 2024 的研究发现，当时受测模型在缺少外部反馈的推理自纠错中可能变差。它不证明所有复查无效，但提醒我们提供可核对的证据。[自纠错研究](https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html)
+<div class="context-note-actions">
 
-</details>
+| 结论 | 依据与适用边界 |
+| --- | --- |
+| **长度影响** | Chroma 在任务复杂度不变时，也观察到输入变长后的性能下降；干扰内容同样会影响表现。[Context Rot](https://www.trychroma.com/research/context-rot) |
+| **位置影响** | 受测模型的问答与检索任务中，开头或结尾的信息通常比中间更容易被利用，不能说遗漏与位置无关。[Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/) |
+| **末尾提问** | Anthropic 对 Claude 的长文档输入推荐“材料在前，问题在后”，并建议先提取相关原文；不代表所有模型始终最关注末尾。[官方建议](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices#long-context-prompting) |
+| **压缩有损** | 摘要可能遗漏关键细节。强约束保留原文，重要事实保留可回查的来源。[Anthropic 上下文工程](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) |
+| **自检限制** | ICLR 2024 发现，当时受测模型在缺少外部反馈的推理自纠错中可能变差；不证明所有复查无效，但自检不能代替证据。[自纠错研究](https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html) |
+
+</div>
 
 验证效果：固定模型与任务，多跑几次，比较**约束遗漏率、任务通过率、Token 和耗时**。
 
