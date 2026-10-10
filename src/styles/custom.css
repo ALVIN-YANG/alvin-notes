@@ -333,6 +333,17 @@ code {
 	background: var(--sl-color-surface);
 }
 
+/* Keep the action names readable in the long-context note's narrow table. */
+.context-note-actions th:first-child,
+.context-note-actions td:first-child {
+	width: 1%;
+	white-space: nowrap;
+}
+
+.context-note-visual .mermaid-static__canvas {
+	min-width: 0;
+}
+
 /* ─── Horizontal Rules ─── */
 
 .sl-markdown-content hr {
