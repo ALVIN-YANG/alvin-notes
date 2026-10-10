@@ -1,5 +1,65 @@
 @import './fonts.css';
 
+/* Personal projects: compact, server-rendered cards, outside the prose rhythm. */
+.portfolio-page {
+	width: min(100%, 66rem);
+	margin-inline: auto;
+	padding-block: 1.25rem 2rem;
+}
+
+.portfolio-page :is(h1, h2, p) { margin: 0; }
+.portfolio-intro { margin-bottom: 1.5rem; }
+.portfolio-intro h1 {
+	font-size: clamp(2rem, 4vw, 2.7rem);
+	font-weight: 650;
+	letter-spacing: -.04em;
+	line-height: 1.2;
+}
+.portfolio-intro p { margin-top: .6rem; color: var(--sl-color-gray-2); font-size: .95rem; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.portfolio-card {
+	display: flex;
+	min-width: 0;
+	flex-direction: column;
+	padding: 1.3rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: .7rem;
+	background: var(--sl-color-surface);
+	scroll-margin-top: calc(var(--sl-nav-height) + 1rem);
+}
+.portfolio-card-head { display: flex; gap: .8rem; align-items: center; }
+.portfolio-card-head > div { min-width: 0; }
+.portfolio-card-head h2 { font-size: 1.25rem; font-weight: 650; letter-spacing: -.02em; line-height: 1.3; }
+.portfolio-page .portfolio-category { margin-top: .2rem; color: var(--sl-color-gray-2); font-size: .78rem; line-height: 1.45; }
+.portfolio-icon, .portfolio-mark { flex: none; width: 3rem; height: 3rem; border-radius: .7rem; }
+.portfolio-icon { display: block; object-fit: contain; }
+.portfolio-mark {
+	display: grid;
+	place-items: center;
+	border: 1px solid var(--sl-color-gray-5);
+	background: var(--sl-color-accent-low);
+	color: var(--sl-color-accent-high);
+	font-family: var(--sl-font-mono);
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+.portfolio-status { margin-left: auto; align-self: start; color: var(--sl-color-gray-2); font-size: .75rem; line-height: 1.6; white-space: nowrap; }
+.portfolio-page .portfolio-summary { margin-top: 1rem; color: var(--sl-color-white); font-size: 1rem; font-weight: 550; line-height: 1.65; }
+.portfolio-page .portfolio-detail { margin-block: .5rem 1rem; color: var(--sl-color-gray-2); font-size: .9rem; line-height: 1.75; }
+.portfolio-card-footer { margin-top: auto; padding-top: .8rem; border-top: 1px solid var(--sl-color-gray-6); }
+.portfolio-stack { color: var(--sl-color-gray-2); font-family: var(--sl-font-mono); font-size: .75rem; line-height: 1.7; }
+.portfolio-links { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; margin-top: .45rem; }
+.portfolio-page a { color: var(--sl-color-accent-high); font-size: .86rem; font-weight: 600; }
+.portfolio-links a { display: inline-flex; align-items: center; min-height: 2rem; gap: .3rem; }
+.portfolio-page a:hover { color: var(--sl-color-white); }
+.portfolio-page .portfolio-contact { margin-top: 1.4rem; color: var(--sl-color-gray-2); }
+@media (max-width: 42rem) {
+	.portfolio-page { padding-top: .5rem; }
+	.portfolio-grid { grid-template-columns: 1fr; gap: .8rem; }
+	.portfolio-card { padding: 1.1rem; }
+	.portfolio-card-head { gap: .6rem; }
+}
+
 /*
  * Warm paper theme
  * Inspired by the quiet, editorial palette of tw93.fun.

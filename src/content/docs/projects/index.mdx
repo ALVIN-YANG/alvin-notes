@@ -1,58 +1,16 @@
 ---
-title: "Agent 开发成果展"
-description: "展示我的 AI Agent 开发实践、工具链探索与架构思考"
+title: "作品"
+description: "Alvin Yang 的个人作品集：丢这儿、SecondClick、NetOcto、Chrome 翻译扩展、AY Skills 与 Senix。"
 date: 2025-10-05
-lastUpdated: 2026-01-15
+lastUpdated: false
+template: splash
+hidePageTitle: true
+comments: false
+editUrl: false
+prev: false
+next: false
 ---
 
-这里记录我在 AI Agent 领域的探索与实践——从工具链搭建到架构设计，从日常自动化到复杂工作流编排。
+import Portfolio from '../../../components/Portfolio.astro';
 
-## 🛠️ 我的 Agent 工具栈
-
-| 工具 | 用途 | 状态 |
-|------|------|------|
-| **OpenClaw** | 本地 AI 助手框架，支持多模型、多技能、定时任务 | 深度使用 |
-| **ZeroClaw** | 轻量级 Agent 运行时，快速脚本自动化 | 探索中 |
-| **Opencode** | 代码优先的 AI 开发环境 | 日常使用 |
-| **OMO (Oh My OpenAgent)** | 跨平台 Agent 管理工具 | 实践验证 |
-
-## 🚀 核心项目
-
-### 1. 个人知识管理系统
-基于 OpenClaw 搭建的自动化知识工作流：
-- **自动资讯收集**: 定时抓取 AI 领域新闻，生成结构化笔记
-- **智能标签系统**: 自动分类、关联知识点
-- **记忆持久化**: 跨会话保持上下文，形成个人知识图谱
-
-### 2. AI 辅助编程工作流
-探索 AI 时代的高效开发模式：
-- **Vibe Coding**: 用自然语言驱动代码生成
-- **远程开发环境**: macOS + Tailscale + SSH + Termux 的全终端方案
-- **Token 优化**: 终端压缩工具链，降低 API 成本
-
-### 3. 实时模型榜
-汇总可自动更新、可回溯原始结果的公开评测：
-- 按通用、代码和 Agent 场景查看当前排名
-- 展示来源覆盖、原始成绩和模型版本
-- 对同一运营方去重，避免重复榜单放大权重
-
-## 💡 架构思考
-
-### Agent 设计哲学
-> "好的 Agent 不是功能越多越好，而是**在正确的时间做正确的事**——像一位靠谱的同事，而不是一个万能的黑箱。"
-
-### 关键实践原则
-1. **可观测性优先**: 每个 Agent 决策都应有迹可循
-2. **渐进式自动化**: 从辅助到自主，逐步释放人力
-3. **人机协作边界**: 明确 Agent 能做什么、不能做什么
-4. **成本意识**: Token 就是钱，每次调用都要有价值
-
-## 📊 持续追踪
-
-- **AI News 自动化**: 每日/每周定时生成 AI 领域资讯摘要
-- **模型评测**: 持续对比新模型能力与性价比
-- **工具链迭代**: 根据实际使用体验不断优化工作流
-
----
-
-> 💬 **互动**: 如果你也对 Agent 开发感兴趣，欢迎通过 GitHub 交流讨论！
+<Portfolio />

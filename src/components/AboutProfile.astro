@@ -1,4 +1,6 @@
 ---
+import { portfolio } from '../data/portfolio';
+
 const path = [
   { year: '2016', label: 'CLIENT', value: 'iOS 客户端' },
   { year: '2019', label: 'SERVICE', value: 'Java 后端' },
@@ -6,35 +8,7 @@ const path = [
   { year: '2023', label: 'AGENT', value: 'AI Agent 与智能硬件' },
 ];
 
-const works = [
-  {
-    label: 'HOME / AGENT',
-    title: '让 Agent 控制真实设备',
-    description:
-      '给 Home Assistant 做专用 Skill，用固定脚本封装鉴权、调用和日志。人格、家庭状态与关系状态分别管理。',
-    href: '/ai-workflow/13-context-engineering-effect-cost-notes/',
-    status: 'IN PRACTICE',
-    trace: 'home',
-  },
-  {
-    label: 'MODEL / DATA',
-    title: '持续更新的模型榜',
-    description:
-      '汇总公开评测，保留来源、原始成绩和覆盖情况。数据由自动任务更新，可以继续追溯。',
-    href: '/model-arena/',
-    status: 'LIVE',
-    trace: 'model',
-  },
-  {
-    label: 'WORKFLOW / CURATION',
-    title: '我愿意装进工作流的 Skills',
-    description:
-      '记录值得研究或实际使用的 Skills，说明它们解决什么问题、怎么安装，以及为什么留下。',
-    href: '/skills/',
-    status: 'CURATED',
-    trace: 'skill',
-  },
-];
+const works = portfolio.filter((project) => project.featured);
 ---
 
 <div class="about-profile not-content">
@@ -51,12 +25,12 @@ const works = [
           <span>杨卢青</span>
         </div>
         <h1>Alvin Yang</h1>
-        <p class="positioning">关注 AI Agent、系统设计，以及软件如何长期可靠地运行。</p>
+        <p class="positioning">AI Agent 开发工程师，做智能硬件的软件系统，也做自己的产品。</p>
         <p class="intro">
           2016 年开始做软件，从 iOS 到后端，再到云端 DevOps 和 AI Agent。现在主要处理 Agent、智能硬件与长期运行系统之间的工程问题。
         </p>
         <nav class="profile-links" aria-label="个人链接">
-          <a href="#selected-work">代表作品 <span aria-hidden="true">↓</span></a>
+          <a href="/projects/">作品集 <span aria-hidden="true">↗</span></a>
           <a href="https://github.com/ALVIN-YANG" target="_blank" rel="noreferrer">
             GitHub <span aria-hidden="true">↗</span>
           </a>
@@ -93,53 +67,25 @@ const works = [
   <section class="selected-work" id="selected-work" aria-labelledby="selected-work-title">
     <div class="section-head">
       <p>SELECTED WORK</p>
-      <h2 id="selected-work-title">正在做的系统</h2>
+      <h2 id="selected-work-title">代表作品</h2>
     </div>
 
     <div class="work-list">
       {works.map((work) => (
-        <a class={`work-row trace-${work.trace}`} href={work.href}>
-          <span class="work-label">{work.label}</span>
+        <a class="work-row" href={`/projects/#${work.id}`}>
+          <span class="work-label">{work.category}</span>
           <span class="work-copy">
-            <span class="work-title">{work.title}</span>
-            <span class="work-description">{work.description}</span>
+            <span class="work-title">{work.name}</span>
+            <span class="work-description">{work.summary}</span>
           </span>
           <span class="work-status">{work.status}</span>
           <span class="work-arrow" aria-hidden="true">↗</span>
-
-          <svg class="system-trace trace-home" viewBox="0 0 300 112" aria-hidden="true">
-            <path d="M18 56H72L96 26H160L188 56H278" />
-            <path d="M96 86H160L188 56" />
-            <circle cx="18" cy="56" r="4" />
-            <circle cx="96" cy="26" r="4" />
-            <circle cx="96" cy="86" r="4" />
-            <circle cx="188" cy="56" r="4" />
-            <circle cx="278" cy="56" r="4" />
-          </svg>
-
-          <svg class="system-trace trace-model" viewBox="0 0 300 112" aria-hidden="true">
-            <path d="M22 82L76 64L126 74L180 38L230 50L278 22" />
-            <path d="M22 92H278" />
-            <circle cx="22" cy="82" r="4" />
-            <circle cx="76" cy="64" r="4" />
-            <circle cx="126" cy="74" r="4" />
-            <circle cx="180" cy="38" r="4" />
-            <circle cx="230" cy="50" r="4" />
-            <circle cx="278" cy="22" r="4" />
-          </svg>
-
-          <svg class="system-trace trace-skill" viewBox="0 0 300 112" aria-hidden="true">
-            <path d="M20 56H88M88 56L132 24H194M88 56L132 88H194M194 24L232 56H280M194 88L232 56" />
-            <circle cx="20" cy="56" r="4" />
-            <circle cx="88" cy="56" r="4" />
-            <circle cx="132" cy="24" r="4" />
-            <circle cx="132" cy="88" r="4" />
-            <circle cx="232" cy="56" r="4" />
-            <circle cx="280" cy="56" r="4" />
-          </svg>
         </a>
       ))}
     </div>
+    <nav class="profile-links" aria-label="更多作品">
+      <a href="/projects/">全部作品 <span aria-hidden="true">→</span></a>
+    </nav>
   </section>
 
   <footer class="profile-contact">
@@ -430,37 +376,6 @@ const works = [
     transition: transform 160ms ease;
   }
 
-  .system-trace {
-    position: absolute;
-    top: 50%;
-    right: 1.5rem;
-    width: min(28vw, 18rem);
-    height: auto;
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(1rem, -50%);
-    transition: opacity 180ms ease, transform 180ms ease;
-  }
-
-  .system-trace path,
-  .system-trace circle {
-    fill: none;
-    stroke: var(--profile-accent);
-    stroke-width: 1.2;
-    vector-effect: non-scaling-stroke;
-  }
-
-  .system-trace circle {
-    fill: var(--profile-accent);
-    stroke-width: 0;
-  }
-
-  .trace-home:not(.system-trace) .system-trace:not(.trace-home),
-  .trace-model:not(.system-trace) .system-trace:not(.trace-model),
-  .trace-skill:not(.system-trace) .system-trace:not(.trace-skill) {
-    display: none;
-  }
-
   .work-row:hover .work-title,
   .work-row:focus-visible .work-title {
     color: var(--profile-accent);
@@ -470,12 +385,6 @@ const works = [
   .work-row:hover .work-arrow,
   .work-row:focus-visible .work-arrow {
     transform: translate(0.18rem, -0.18rem);
-  }
-
-  .work-row:hover .system-trace,
-  .work-row:focus-visible .system-trace {
-    opacity: 0.24;
-    transform: translate(0, -50%);
   }
 
   .profile-contact {
@@ -607,8 +516,7 @@ const works = [
 
   @media (prefers-reduced-motion: reduce) {
     .work-title,
-    .work-arrow,
-    .system-trace {
+    .work-arrow {
       transition: none;
     }
   }

@@ -1,0 +1,45 @@
+---
+import { portfolio } from '../data/portfolio';
+---
+
+<section class="portfolio-page not-content" aria-labelledby="_top">
+  <header class="portfolio-intro">
+    <h1 id="_top">作品</h1>
+    <p>我设计、开发并维护的应用与开发工具。</p>
+  </header>
+
+  <div class="portfolio-grid">
+    {portfolio.map((project) => (
+      <article class="portfolio-card" id={project.id} aria-labelledby={`${project.id}-title`}>
+        <header class="portfolio-card-head">
+          {project.icon ? (
+            <img class="portfolio-icon" src={project.icon} width="48" height="48" alt="" loading="lazy" />
+          ) : (
+            <span class="portfolio-mark" aria-hidden="true">{project.mark}</span>
+          )}
+          <div>
+            <h2 id={`${project.id}-title`}>{project.name}</h2>
+            <p class="portfolio-category">{project.category}</p>
+          </div>
+          <span class="portfolio-status">{project.status}</span>
+        </header>
+
+        <p class="portfolio-summary">{project.summary}</p>
+        <p class="portfolio-detail">{project.implementation}</p>
+
+        <footer class="portfolio-card-footer">
+          <p class="portfolio-stack" aria-label="技术与实现方向">{project.stack.join(' · ')}</p>
+          <div class="portfolio-links">
+            {project.links.map((link) => (
+              <a href={link.href} target="_blank" rel="noreferrer" aria-label={`${link.label}：${project.name}`}>
+                {link.label}<span aria-hidden="true"> ↗</span>
+              </a>
+            ))}
+          </div>
+        </footer>
+      </article>
+    ))}
+  </div>
+
+  <p class="portfolio-contact"><a href="/about/">关于我</a><span aria-hidden="true"> · </span><a href="https://github.com/ALVIN-YANG" target="_blank" rel="noreferrer">GitHub</a></p>
+</section>

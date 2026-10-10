@@ -65,7 +65,7 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: 'Projects',
+          label: '作品',
           autogenerate: { directory: 'projects' },
         },
         {
