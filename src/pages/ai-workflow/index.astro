@@ -1,0 +1,13 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DevelopmentWorkflow from '../../components/DevelopmentWorkflow.astro';
+const frontmatter = {
+  title: 'AI 开发工作流',
+  description: '按任务选择流程，复制提示词，用业务结果验收。Codex 为主，其他 Agent 按需参与。',
+  template: 'splash' as const,
+  hidePageTitle: true,
+};
+---
+<StarlightPage frontmatter={frontmatter} sidebar={[]}>
+  <DevelopmentWorkflow />
+</StarlightPage>

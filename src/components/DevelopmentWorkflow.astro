@@ -1,0 +1,201 @@
+---
+import { workflowMeta, workflowScenarios, workflowSteps, thinkingPrompts, testEnvironment } from '../data/development-workflow';
+const initialScenario = workflowScenarios[0];
+const initialStep = workflowSteps.find(step => step.id === initialScenario.steps[0])!;
+---
+<development-workflow class="workflow-page not-content" aria-labelledby="workflow-title">
+  <header class="workflow-intro">
+    <div>
+      <h1 id="workflow-title">AI 开发工作流</h1>
+      <p>{workflowMeta.summary}</p>
+    </div>
+    <p class="workflow-date">更新于 <time datetime={workflowMeta.updatedAt}>{workflowMeta.updatedAt}</time></p>
+  </header>
+
+  <section class="workflow-chooser" aria-labelledby="workflow-task-title">
+    <div class="workflow-section-heading">
+      <h2 id="workflow-task-title">先选任务</h2>
+      <button class="workflow-copy-route" type="button" data-copy-route>复制整条流程</button>
+    </div>
+    <div class="workflow-scenarios" aria-label="任务类型">
+      {workflowScenarios.map((scenario, index) => (
+        <button type="button" data-scenario={scenario.id} data-step-order={scenario.steps.join(',')} aria-pressed={index === 0}>
+          <strong>{scenario.title}</strong>
+          <span>{scenario.description}</span>
+        </button>
+      ))}
+    </div>
+    <div class="workflow-review-choice">
+      <label><input type="checkbox" data-review-toggle />加入独立审查</label>
+      <span>关键方案、高风险改动或复杂问题时，交给其他 Agent 检查。</span>
+    </div>
+    <nav aria-label="当前任务的步骤">
+      <ol class="workflow-route" data-route>
+        {initialScenario.steps.map((id, index) => {
+          const step = workflowSteps.find(item => item.id === id)!;
+          return <li><button type="button" data-open-step={id} aria-current={index === 0 ? 'step' : undefined}>
+            <span class="workflow-step-number">{index + 1}</span><span><strong>{step.title}</strong><small>{step.actor}</small></span>
+          </button></li>;
+        })}
+      </ol>
+    </nav>
+  </section>
+
+  <section class="workflow-current" aria-label="当前步骤">
+    {workflowSteps.map(step => (
+      <article data-step-panel={step.id} data-title={step.title} data-actor={step.actor} hidden={step.id !== initialStep.id}>
+        <header class="workflow-panel-heading">
+          <div><p class="workflow-actor">{step.actor}</p><h2 tabindex="-1">{step.title}</h2></div>
+          <button type="button" data-copy-step>复制这一步</button>
+        </header>
+        <p class="workflow-action">{step.action}</p>
+        <pre class="workflow-prompt" tabindex="0"><code data-prompt-text>{step.prompt}</code></pre>
+        <div class="workflow-evidence">
+          <section><h3>给它这些材料</h3><ul>{step.inputs.map(input => <li>{input}</li>)}</ul></section>
+          <section><h3>做到这里再往下走</h3><ul>{step.outputs.map(output => <li>{output}</li>)}</ul></section>
+        </div>
+        <footer class="workflow-panel-note"><p>{step.note}</p><a href={step.reference.href}>{step.reference.title} <span aria-hidden="true">↗</span></a></footer>
+      </article>
+    ))}
+    <label class="workflow-task-input" for="workflow-task-input">本次任务 <span>可选，复制时附在提示词前</span></label>
+    <textarea id="workflow-task-input" data-task-input rows="2" placeholder="例如：清空搜索词后，订单列表应恢复完整数据。" maxlength="5000"></textarea>
+    <p class="workflow-copy-status" data-copy-status role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="workflow-thinking" aria-labelledby="workflow-thinking-title">
+    <div class="workflow-section-heading"><h2 id="workflow-thinking-title">卡住时，换一种思考方法</h2><p>按问题选一句，再补当前材料。</p></div>
+    <div class="workflow-thinking-list">
+      {thinkingPrompts.map(item => (
+        <article data-thinking={item.id}>
+          <div class="workflow-thinking-label"><p>{item.signal}</p><h3>{item.name}</h3></div>
+          <div><p class="workflow-thinking-prompt" data-thinking-prompt>{item.prompt}</p><p class="workflow-thinking-result">要拿到：{item.result}</p></div>
+          <button type="button" data-copy-thinking={item.id} aria-label={`复制${item.name}提示词`}>复制</button>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="workflow-test-environment" aria-labelledby="workflow-test-title">
+    <div class="workflow-section-heading"><h2 id="workflow-test-title">让 Agent 能自己跑通业务</h2><p>先接通一条常用自测路径，再把稳定步骤做成工具。</p></div>
+    <div class="workflow-environment-grid">
+      {testEnvironment.map(item => <article><h3>{item.title}</h3><p>{item.body}</p></article>)}
+    </div>
+    <p class="workflow-environment-note">同一操作反复出现时，再整理为 CLI、脚本或 Skill。产品本身是 Agent 时，还要检查答案质量。</p>
+  </section>
+
+  <footer class="workflow-sources">
+    <section><h2>参考与深入阅读</h2><ul>
+      <li><a href={workflowMeta.source.href} target="_blank" rel="noreferrer">{workflowMeta.source.title}</a></li>
+      <li><a href="/ai/long-context-reliability-notes/">长上下文失效的处理方法</a></li>
+      <li><a href="/ai/agent-evaluation-observability/">Agent 评测与结果验证</a></li>
+      <li><a href="/ai-workflow/ai-coding-toolbox/">工具与安装速查</a></li>
+      <li><a href="/skills/">可按需选用的 Skills</a></li>
+    </ul></section>
+    <section><h2>这次更新</h2><p><time datetime={workflowMeta.updatedAt}>{workflowMeta.updatedAt}</time></p><ul>{workflowMeta.changes.map(change => <li>{change}</li>)}</ul></section>
+  </footer>
+</development-workflow>
+
+<script>
+  class DevelopmentWorkflow extends HTMLElement {
+    private activeScenario = 'small';
+    private activeStep = 'implement';
+    private route: string[] = [];
+    private abort?: AbortController;
+    private clearStatus?: ReturnType<typeof setTimeout>;
+    private copyFeedback = new Map<HTMLButtonElement, { label: string; timer: ReturnType<typeof setTimeout> }>();
+
+    connectedCallback() {
+      this.abort?.abort();
+      this.abort = new AbortController();
+      this.renderRoute();
+      this.addEventListener('click', this.handleClick, { signal: this.abort.signal });
+      this.querySelector('[data-review-toggle]')?.addEventListener('change', () => this.renderRoute(), { signal: this.abort.signal });
+    }
+    disconnectedCallback() {
+      this.abort?.abort();
+      if (this.clearStatus) clearTimeout(this.clearStatus);
+      this.copyFeedback.forEach(({ label, timer }, button) => { clearTimeout(timer); button.textContent = label; });
+      this.copyFeedback.clear();
+    }
+    private getPanel(id: string) {
+      return this.querySelector<HTMLElement>(`[data-step-panel="${id}"]`);
+    }
+    private renderRoute() {
+      const selected = this.querySelector<HTMLButtonElement>(`[data-scenario="${this.activeScenario}"]`);
+      this.route = selected?.dataset.stepOrder?.split(',') ?? [];
+      const review = this.querySelector<HTMLInputElement>('[data-review-toggle]');
+      if (review) {
+        review.disabled = this.activeScenario === 'handoff';
+        if (review.checked && this.route.includes('deliver')) this.route.splice(this.route.indexOf('deliver'), 0, 'review');
+      }
+      if (!this.route.includes(this.activeStep)) this.activeStep = this.route[0];
+      this.querySelectorAll<HTMLButtonElement>('[data-scenario]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.scenario === this.activeScenario)));
+      const list = this.querySelector<HTMLOListElement>('[data-route]');
+      const items = this.route.map((id, index) => {
+        const panel = this.getPanel(id)!;
+        const li = document.createElement('li');
+        const button = document.createElement('button');
+        button.type = 'button'; button.dataset.openStep = id;
+        const number = document.createElement('span'); number.className = 'workflow-step-number'; number.textContent = String(index + 1);
+        const text = document.createElement('span');
+        const title = document.createElement('strong'); title.textContent = panel.dataset.title ?? '';
+        const actor = document.createElement('small'); actor.textContent = panel.dataset.actor ?? '';
+        text.append(title, actor); button.append(number, text); li.append(button); return li;
+      });
+      list?.replaceChildren(...items);
+      if (list) list.dataset.stepCount = String(items.length);
+      this.showStep(this.activeStep);
+    }
+    private showStep(id: string) {
+      this.activeStep = id;
+      this.querySelectorAll<HTMLElement>('[data-step-panel]').forEach(panel => panel.hidden = panel.dataset.stepPanel !== id);
+      this.querySelectorAll<HTMLButtonElement>('[data-open-step]').forEach(button => {
+        if (button.dataset.openStep === id) button.setAttribute('aria-current', 'step');
+        else button.removeAttribute('aria-current');
+      });
+    }
+    private withTask(text: string) {
+      const task = this.querySelector<HTMLTextAreaElement>('[data-task-input]')?.value.trim();
+      return task ? `本次任务：\n${task}\n\n${text}` : text;
+    }
+    private async copy(text: string, success: string, button: HTMLButtonElement) {
+      const status = this.querySelector<HTMLElement>('[data-copy-status]');
+      if (!status) return;
+      if (this.clearStatus) clearTimeout(this.clearStatus);
+      const previous = this.copyFeedback.get(button);
+      if (previous) clearTimeout(previous.timer);
+      const label = previous?.label ?? button.textContent ?? '复制';
+      try { await navigator.clipboard.writeText(this.withTask(text)); status.textContent = success; button.textContent = '已复制'; }
+      catch { status.textContent = '复制未成功，请手动选取提示词。'; button.textContent = '请手动复制'; }
+      const timer = setTimeout(() => { button.textContent = label; this.copyFeedback.delete(button); }, 3000);
+      this.copyFeedback.set(button, { label, timer });
+      this.clearStatus = setTimeout(() => status.textContent = '', 4000);
+    }
+    private handleClick = (event: Event) => {
+      if (!(event.target instanceof Element)) return;
+      const button = event.target.closest<HTMLButtonElement>('button');
+      if (!button || !this.contains(button)) return;
+      if (button.dataset.scenario) {
+        this.activeScenario = button.dataset.scenario;
+        this.activeStep = button.dataset.stepOrder?.split(',')[0] ?? 'implement';
+        this.renderRoute();
+      } else if (button.dataset.openStep) this.showStep(button.dataset.openStep);
+      else if (button.hasAttribute('data-copy-step')) {
+        const text = this.getPanel(this.activeStep)?.querySelector('[data-prompt-text]')?.textContent ?? '';
+        void this.copy(text, '已复制当前步骤', button);
+      } else if (button.hasAttribute('data-copy-route')) {
+        const scenario = this.querySelector(`[data-scenario="${this.activeScenario}"] strong`)?.textContent;
+        const steps = this.route.map((id, index) => {
+          const panel = this.getPanel(id)!;
+          const prompt = panel.querySelector('[data-prompt-text]')?.textContent ?? '';
+          return `${index + 1}. ${panel.dataset.title}\n${prompt}`;
+        });
+        void this.copy(`任务类型：${scenario}\n按实际需要推进以下路径：\n\n${steps.join('\n\n')}`, '已复制当前任务流程', button);
+      } else if (button.dataset.copyThinking) {
+        const prompt = button.closest('[data-thinking]')?.querySelector('[data-thinking-prompt]')?.textContent ?? '';
+        void this.copy(prompt, '已复制方法论提示词', button);
+      }
+    };
+  }
+  if (!customElements.get('development-workflow')) customElements.define('development-workflow', DevelopmentWorkflow);
+</script>
