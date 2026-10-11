@@ -600,6 +600,7 @@ main {
 		gap: 0.75rem;
 		width: 100%;
 		margin-top: 0.55rem;
+		padding-bottom: 4.75rem;
 	}
 
 	.home-product-promo {
@@ -618,7 +619,7 @@ main {
 	.home-avatar-note .programmer-bubble {
 		top: calc(100% + 0.75rem);
 		left: 0;
-		max-width: min(25rem, calc(100vw - 1.5rem));
+		max-width: min(25rem, calc(100vw - 2rem));
 	}
 
 	.home-avatar-note .programmer-bubble::after {

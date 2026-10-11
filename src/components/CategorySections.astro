@@ -248,10 +248,10 @@ function formatDate(doc: typeof allDocs[number]) {
     position: relative;
     display: flex;
     min-width: 0;
-    min-height: 13.25rem;
+    min-height: 9rem;
     overflow: hidden;
     flex-direction: column;
-    padding: 1.15rem;
+    padding: 0.85rem 1rem;
     border: 1px solid color-mix(in srgb, var(--map-accent) 18%, var(--sl-color-gray-5));
     border-radius: 0.9rem;
     background:
@@ -317,7 +317,6 @@ function formatDate(doc: typeof allDocs[number]) {
 
   .ability-map-desc {
     display: block;
-    min-height: 2.7em;
     margin-top: 0.48rem;
     color: var(--sl-color-gray-2);
     font-size: 0.75rem;
@@ -329,13 +328,13 @@ function formatDate(doc: typeof allDocs[number]) {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.35rem;
-    margin-top: auto;
-    padding-top: 1.35rem;
+    margin-top: 0.65rem;
+    padding-top: 1.15rem;
   }
 
   .ability-map-route::before {
     position: absolute;
-    top: 0.52rem;
+    top: 0.32rem;
     right: calc(16.666% - 0.18rem);
     left: calc(16.666% - 0.18rem);
     height: 1px;
@@ -366,8 +365,8 @@ function formatDate(doc: typeof allDocs[number]) {
 
   .ability-map-stats {
     display: block;
-    margin-top: 0.95rem;
-    padding-top: 0.72rem;
+    margin-top: 0.6rem;
+    padding-top: 0.5rem;
     border-top: 1px solid color-mix(in srgb, var(--map-accent) 14%, var(--sl-color-gray-5));
     color: color-mix(in srgb, var(--map-accent) 78%, var(--sl-color-gray-1));
     font-family: var(--sl-font-utility);
@@ -554,10 +553,6 @@ function formatDate(doc: typeof allDocs[number]) {
       grid-template-columns: 1fr;
     }
 
-    .ability-map-card {
-      min-height: 11.75rem;
-    }
-
     .section-card {
       grid-template-columns: 0.25rem minmax(8.5rem, 0.72fr) minmax(0, 1.4fr);
       gap: 0.9rem;
@@ -575,7 +570,12 @@ function formatDate(doc: typeof allDocs[number]) {
 
   @media (max-width: 560px) {
     .ability-map-card {
-      min-height: 11.5rem;
+      min-height: 0;
+      padding: 0.75rem 0.85rem;
+    }
+
+    .ability-map-route {
+      display: none;
     }
 
     .section-card {

@@ -134,11 +134,13 @@
 <script>
   import { programmerQuips } from '../data/programmer-quips';
 
+  const INITIAL_MESSAGE_DELAY_MS = 1200;
   const MESSAGE_VISIBLE_MS = 7600;
 
   class ProgrammerAside extends HTMLElement {
     private quips: readonly string[] = programmerQuips;
     private lastIndex = -1;
+    private initialTimer = 0;
     private hideTimer = 0;
     private button: HTMLButtonElement | null = null;
     private bubble: HTMLElement | null = null;
@@ -153,9 +155,11 @@
       if (!this.button || !this.bubble || !this.output || this.quips.length === 0) return;
 
       this.button.addEventListener('click', this.handleClick);
+      this.initialTimer = window.setTimeout(() => this.showNextMessage(false), INITIAL_MESSAGE_DELAY_MS);
     }
 
     disconnectedCallback() {
+      window.clearTimeout(this.initialTimer);
       window.clearTimeout(this.hideTimer);
       this.button?.removeEventListener('click', this.handleClick);
       this.button = null;
@@ -164,6 +168,7 @@
     }
 
     private handleClick = () => {
+      window.clearTimeout(this.initialTimer);
       if (this.hasAttribute('data-open')) {
         this.hideMessage();
         return;
@@ -171,7 +176,7 @@
       this.showNextMessage();
     };
 
-    private showNextMessage() {
+    private showNextMessage(announce = true) {
       if (!this.button || !this.bubble || !this.output) return;
 
       let nextIndex = Math.floor(Math.random() * this.quips.length);
@@ -179,7 +184,7 @@
         nextIndex = (nextIndex + 1) % this.quips.length;
       }
       this.lastIndex = nextIndex;
-      this.bubble.setAttribute('aria-live', 'polite');
+      this.bubble.setAttribute('aria-live', announce ? 'polite' : 'off');
       this.output.textContent = this.quips[nextIndex];
       this.setAttribute('data-open', '');
       this.button.setAttribute('aria-expanded', 'true');
