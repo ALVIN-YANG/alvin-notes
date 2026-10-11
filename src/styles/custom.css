@@ -1,5 +1,102 @@
 @import './fonts.css';
 
+/* RAG: a readable practice sheet, with the main steps visible without clicks. */
+.rag-practice {
+	width: min(100%, 65rem);
+	margin-inline: auto;
+	padding-block: .3rem 2rem;
+	color: var(--sl-color-white);
+	font-size: .96rem;
+	line-height: 1.75;
+	overflow-wrap: anywhere;
+}
+.rag-practice :is(h1, h2, p, ol, ul, dl, dd) { margin: 0; }
+.rag-title-row, .rag-meta-row { display: flex; align-items: center; justify-content: space-between; gap: .6rem 1rem; flex-wrap: wrap; }
+.rag-practice h1 { font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 600; line-height: 1.35; letter-spacing: -.025em; }
+.rag-practice #_top { font-size: clamp(1.5rem, 3vw, 1.9rem) !important; }
+.rag-practice h2 { font-size: 1.13rem; font-weight: 600; line-height: 1.5; }
+.rag-practice a { color: var(--sl-color-accent-high); text-underline-offset: .2em; }
+.rag-reader-actions { display: flex; align-items: center; gap: 1rem; font-size: .83rem; }
+.rag-reader-actions button { padding: .3rem .65rem; border: 1px solid var(--sl-color-gray-5); border-radius: .3rem; background: transparent; color: var(--sl-color-accent-high); font: inherit; cursor: pointer; }
+.rag-reader-actions button:hover { background: var(--sl-color-accent-low); }
+.rag-practice .rag-summary { margin-top: .7rem; max-width: 55rem; }
+.rag-practice .rag-limit { margin-top: .25rem; color: var(--sl-color-gray-2); font-size: .88rem; }
+.rag-meta-row { margin-top: .8rem; }
+.rag-jump-links { display: flex; gap: .4rem 1.2rem; flex-wrap: wrap; font-size: .85rem; }
+.rag-updated { color: var(--sl-color-gray-2); font-size: .78rem; }
+.rag-practice .rag-copy-status { margin-top: .5rem; font-size: .83rem; color: var(--sl-color-accent-high); }
+.rag-copy-status[hidden] { display: none; }
+.rag-section { margin-top: 1.8rem; scroll-margin-top: calc(var(--sl-nav-height) + 1rem); }
+.rag-section > h2 { margin-bottom: .7rem; }
+.rag-example { padding: .8rem 1rem; border: 1px solid var(--sl-color-gray-5); border-radius: .35rem; background: var(--sl-color-surface); }
+.rag-practice .rag-example-note { margin-bottom: .45rem; color: var(--sl-color-gray-2); font-size: .8rem; }
+.rag-example dl > div { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: .5rem; padding-block: .2rem; }
+.rag-example dt { color: var(--sl-color-accent-high); font-weight: 600; }
+.rag-example dd { min-width: 0; }
+.rag-example small { display: block; color: var(--sl-color-gray-2); font-size: .78rem; }
+.rag-practice .rag-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; list-style: none; padding: 0; margin-top: .8rem; counter-reset: rag-flow; }
+.rag-practice .rag-flow li { position: relative; min-width: 0; margin: 0; padding: .6rem .65rem; background: var(--sl-color-accent-low); border-radius: .3rem; counter-increment: rag-flow; }
+.rag-flow li::after { content: '→'; position: absolute; right: -.64rem; top: .55rem; color: var(--sl-color-gray-2); font-size: .85rem; }
+.rag-flow li:last-child::after { display: none; }
+.rag-flow strong { display: block; font-size: .87rem; font-weight: 600; }
+.rag-flow strong::before { content: counter(rag-flow) '. '; font-family: var(--sl-font-mono); font-size: .78rem; }
+.rag-flow span { display: block; margin-top: .15rem; font-size: .8rem; color: var(--sl-color-gray-2); }
+.rag-practice .rag-section-note { margin-top: .7rem; color: var(--sl-color-gray-2); font-size: .88rem; }
+.rag-section-note + .rag-table { margin-top: .5rem; }
+.rag-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: .9rem; line-height: 1.75; }
+.rag-practice .rag-table th, .rag-practice .rag-table td { text-align: left; vertical-align: top; padding: .75rem .85rem .75rem 0; border-bottom: 1px solid var(--sl-color-gray-5); background: transparent; }
+.rag-practice .rag-table tr { background: transparent; }
+.rag-table thead th { padding-block: .3rem .5rem; color: var(--sl-color-gray-2); font-size: .78rem; font-weight: 400; }
+.rag-table tbody th { font-weight: 600; color: var(--sl-color-accent-high); }
+.rag-table th:last-child, .rag-table td:last-child { padding-right: 0; }
+.rag-build-table thead th:nth-child(1) { width: 19%; }
+.rag-build-table thead th:nth-child(2) { width: 48%; }
+.rag-build-table thead th:nth-child(3) { width: 33%; }
+.rag-failure-table thead th:nth-child(1) { width: 24%; }
+.rag-failure-table thead th:nth-child(2) { width: 34%; }
+.rag-failure-table thead th:nth-child(3) { width: 42%; }
+.rag-check-table thead th:first-child { width: 36%; }
+.rag-step-number { display: inline-block; margin-right: .4rem; font-family: var(--sl-font-mono); font-size: .8rem; color: var(--sl-color-gray-2); }
+.rag-mobile-label { display: none; }
+.rag-detail { margin-top: .75rem; padding-top: .65rem; border-top: 1px solid var(--sl-color-gray-5); font-size: .88rem; }
+.rag-detail summary { width: fit-content; max-width: 100%; color: var(--sl-color-accent-high); cursor: pointer; }
+.rag-detail[open] summary { margin-bottom: .6rem; }
+.rag-detail p { margin-top: .55rem; color: var(--sl-color-gray-2); }
+.rag-detail pre { padding: .85rem 1rem; margin: .6rem 0 0; background: var(--sl-color-accent-low); border-radius: .35rem; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .8rem; line-height: 1.8; }
+.rag-detail code { font-size: inherit; background: none; }
+.rag-definitions > div { margin-top: .7rem; }
+.rag-definitions dt { margin-bottom: .2rem; font-weight: 600; }
+.rag-definitions dd { color: var(--sl-color-gray-2); }
+.rag-recap { margin-top: 1.5rem; padding: .8rem 1rem; background: var(--sl-color-accent-low); border-radius: .35rem; }
+.rag-recap h2 { font-size: 1rem; }
+.rag-practice .rag-recap ol { margin-top: .4rem; padding-left: 1.3rem; font-size: .9rem; }
+.rag-footer { margin-top: .75rem; }
+.rag-practice .rag-source-list { padding-left: 1.2rem; }
+.rag-source-list li { margin-top: .65rem; scroll-margin-top: calc(var(--sl-nav-height) + 1rem); }
+.rag-source-list p { margin-top: .2rem; }
+.rag-related { display: flex; flex-wrap: wrap; gap: .4rem 1rem; padding-top: 1rem; color: var(--sl-color-gray-2); font-size: .83rem; }
+.rag-practice :is(a, button, summary):focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 4px; }
+@media (max-width: 42rem) {
+	.rag-practice { font-size: .94rem; padding-top: 0; }
+	.rag-title-row { align-items: baseline; }
+	.rag-reader-actions button { min-height: 2.75rem; }
+	.rag-jump-links a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+	.rag-meta-row { gap: .2rem; }
+	.rag-section { margin-top: 1.4rem; }
+	.rag-practice .rag-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+	.rag-flow li::after { display: none; }
+	.rag-table thead { display: none; }
+	.rag-practice .rag-table, .rag-practice .rag-table tbody, .rag-practice .rag-table tr, .rag-practice .rag-table th, .rag-practice .rag-table td { display: block; width: 100%; }
+	.rag-practice .rag-table tr { padding-block: .75rem; border-bottom: 1px solid var(--sl-color-gray-5); }
+	.rag-practice .rag-table tbody th, .rag-practice .rag-table td { border: 0; padding: 0; }
+	.rag-practice .rag-table tbody th { margin-bottom: .3rem; }
+	.rag-practice .rag-table td + td { margin-top: .35rem; }
+	.rag-build-table td:last-child { color: var(--sl-color-gray-2); }
+	.rag-mobile-label { display: inline; color: var(--sl-color-gray-2); }
+	.rag-detail summary { min-height: 2.75rem; padding-block: .3rem; }
+	.rag-detail pre { padding: .75rem; }
+}
+
 /* Personal projects: compact, server-rendered cards, outside the prose rhythm. */
 .portfolio-page {
 	width: min(100%, 66rem);

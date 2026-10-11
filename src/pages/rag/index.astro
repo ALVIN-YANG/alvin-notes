@@ -1,0 +1,165 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { ragPractice as guide, ragPracticeMarkdown } from '../../data/rag-practice';
+
+const frontmatter = {
+  title: guide.title,
+  description: guide.summary,
+  template: 'splash' as const,
+  hidePageTitle: true,
+};
+const serializedMarkdown = JSON.stringify(ragPracticeMarkdown()).replace(/</g, '\\u003c');
+const demoCommands = [
+  'curl -fsSLO https://blog.mlxb.cc/examples/rag-retrieval-demo.py',
+  'python3 rag-retrieval-demo.py --self-test',
+  'python3 rag-retrieval-demo.py',
+].join('\n');
+---
+
+<StarlightPage frontmatter={frontmatter} sidebar={[]}>
+  <article class="rag-practice not-content" aria-labelledby="_top">
+    <header class="rag-intro">
+      <div class="rag-title-row">
+        <h1 id="_top">{guide.title}</h1>
+        <div class="rag-reader-actions">
+          <a href="/rag/实战速查.md">文字版</a>
+          <button type="button" data-rag-copy>复制全文</button>
+        </div>
+      </div>
+      <p class="rag-summary">{guide.summary}</p>
+      <p class="rag-limit">{guide.limit}</p>
+      <div class="rag-meta-row">
+        <nav class="rag-jump-links" aria-label="RAG 模块目录">
+          <a href="#understand">看懂原理</a>
+          <a href="#start">开始做</a>
+          <a href="#troubleshoot">查问题</a>
+          <a href="#verify">验证效果</a>
+        </nav>
+        <span class="rag-updated">更新于 <time datetime={guide.updatedAt}>{guide.updatedAt}</time></span>
+      </div>
+      <p class="rag-copy-status" data-rag-copy-status role="status" hidden></p>
+    </header>
+
+    <section class="rag-section" id="understand" aria-labelledby="understand-title">
+      <h2 id="understand-title">用一个例子看懂</h2>
+      <div class="rag-example">
+        <p class="rag-example-note">{guide.example.note}</p>
+        <dl>
+          <div><dt>资料</dt><dd>{guide.example.text}<small>{guide.example.document}</small></dd></div>
+          <div><dt>用户问</dt><dd>{guide.example.question}</dd></div>
+          <div><dt>应回答</dt><dd>{guide.example.answer}</dd></div>
+        </dl>
+      </div>
+      <ol class="rag-flow" aria-label="从资料到回答的四个步骤">
+        {guide.flow.map((step) => <li><strong>{step.title}</strong><span>{step.text}</span></li>)}
+      </ol>
+      <p class="rag-section-note">{guide.fit} <a href="#source-retrieval">方法来源</a></p>
+    </section>
+
+    <section class="rag-section" id="start" aria-labelledby="start-title">
+      <h2 id="start-title">第一版按这五步做</h2>
+      <table class="rag-table rag-build-table">
+        <thead><tr><th scope="col">做什么</th><th scope="col">具体做法</th><th scope="col">检查结果</th></tr></thead>
+        <tbody>{guide.steps.map((step, index) => (
+          <tr><th scope="row"><span class="rag-step-number">{index + 1}</span>{step.title}</th><td>{step.action}</td><td><span class="rag-mobile-label">检查结果：</span>{step.check}</td></tr>
+        ))}</tbody>
+      </table>
+      <details class="rag-detail">
+        <summary>给模型的回答要求，直接复制再替换资料</summary>
+        <pre><code>{guide.prompt}</code></pre>
+        <p>Prompt 只能约束回答方式。用户身份、资料权限和生效版本仍由服务端检查。</p>
+      </details>
+      <details class="rag-detail">
+        <summary>本地演练：只找到当前有权查看的资料</summary>
+        <p>示例里有旧制度、新制度和财务专用文件。脚本用关键词查找，演练怎样过滤旧版、无权资料和其他公司的文件。</p>
+        <pre><code>{demoCommands}</code></pre>
+        <p>需要 Python 3.10 或更新版本，无需安装依赖。<a href="/examples/rag-retrieval-demo.py">查看脚本</a>。这只验证资料筛选，不调用模型或向量库，不能证明真实问答质量。</p>
+      </details>
+    </section>
+
+    <section class="rag-section" id="troubleshoot" aria-labelledby="troubleshoot-title">
+      <h2 id="troubleshoot-title">回答错了，按看到的情况查</h2>
+      <p class="rag-section-note">例如制度写 500 元，AI 却答 800 元。先看资料，再看这次找到了什么、交给 AI 什么，最后检查回答。</p>
+      <table class="rag-table rag-failure-table">
+        <thead><tr><th scope="col">看到什么</th><th scope="col">先检查</th><th scope="col">怎样处理</th></tr></thead>
+        <tbody>{guide.failures.map((failure) => (
+          <tr><th scope="row">{failure.symptom}</th><td><span class="rag-mobile-label">先检查：</span>{failure.inspect}</td><td><span class="rag-mobile-label">怎样处理：</span>{failure.fix}</td></tr>
+        ))}</tbody>
+      </table>
+    </section>
+
+    <section class="rag-section" id="verify" aria-labelledby="verify-title">
+      <h2 id="verify-title">改完，用这五类问题验证</h2>
+      <table class="rag-table rag-check-table">
+        <thead><tr><th scope="col">测试什么</th><th scope="col">应该看到的结果</th></tr></thead>
+        <tbody>{guide.checks.map((check) => <tr><th scope="row">{check.question}</th><td>{check.expected}</td></tr>)}</tbody>
+      </table>
+      <p class="rag-section-note">{guide.comparison} <a href="#source-evaluation">方法来源</a></p>
+      <details class="rag-detail">
+        <summary>需要量化比较时，看这三个指标</summary>
+        <dl class="rag-definitions">{guide.metrics.map((metric) => <div><dt>{metric.name}</dt><dd>{metric.meaning}</dd></div>)}</dl>
+      </details>
+      <details class="rag-detail">
+        <summary>交给 AI 实现的任务清单</summary>
+        <pre><code>{guide.implementation}</code></pre>
+      </details>
+    </section>
+
+    <aside class="rag-recap" aria-label="RAG 回顾">
+      <h2>回顾时，记住这四句</h2>
+      <ol>{guide.recap.map((item) => <li>{item}</li>)}</ol>
+    </aside>
+
+    <details class="rag-detail" id="terms">
+      <summary>遇到术语，再看这里</summary>
+      <dl class="rag-definitions">{guide.glossary.map((item) => <div><dt>{item.term}</dt><dd>{item.meaning}</dd></div>)}</dl>
+    </details>
+    <footer class="rag-footer">
+      <details class="rag-detail" id="sources">
+        <summary>方法来源与适用范围</summary>
+        <ul class="rag-source-list">{guide.sources.map((source) => (
+          <li id={`source-${source.id}`}><a href={source.href} target="_blank" rel="noreferrer">{source.title}</a><p>{source.supports}</p></li>
+        ))}</ul>
+        <p>权限、版本和更新策略是本页的工程建议，需要在项目中验证。例子用于说明，没有声称已通过生产验收。</p>
+      </details>
+      <div class="rag-related"><span>需要深入时：</span><a href="/ai/rag-primer/">RAG 技术选型</a><a href="/ai/rag-knowledge-base-component/">知识库落地</a><a href="/ai/rag-metadata-filtering/">资料过滤</a><a href="/agent-knowledge/">Agent 知识地图</a></div>
+    </footer>
+    <script type="application/json" data-rag-markdown set:html={serializedMarkdown}></script>
+  </article>
+</StarlightPage>
+
+<script>
+  const page = document.querySelector('.rag-practice');
+  const copy = page?.querySelector<HTMLButtonElement>('[data-rag-copy]');
+  const status = page?.querySelector<HTMLElement>('[data-rag-copy-status]');
+  const markdown = page?.querySelector('[data-rag-markdown]')?.textContent;
+  copy?.addEventListener('click', async () => {
+    if (!status || !markdown) return;
+    try {
+      await navigator.clipboard.writeText(JSON.parse(markdown));
+      status.textContent = '已复制，可用于回顾或交给 AI。';
+    } catch {
+      status.textContent = '复制失败，请打开文字版选中复制。';
+    }
+    status.hidden = false;
+  });
+  // Source links may target content inside a closed native disclosure.
+  const revealHash = () => {
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (!target) return;
+    let parent = target.parentElement;
+    while (parent) {
+      if (parent instanceof HTMLDetailsElement) parent.open = true;
+      parent = parent.parentElement;
+    }
+    target.scrollIntoView({ block: 'start' });
+  };
+  page?.querySelectorAll<HTMLAnchorElement>('a[href^="#source-"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const details = page.querySelector<HTMLDetailsElement>('#sources');
+      if (details) details.open = true;
+    });
+  });
+  window.addEventListener('hashchange', revealHash);
+  if (location.hash) revealHash();
+</script>

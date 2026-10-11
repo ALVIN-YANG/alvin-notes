@@ -36,6 +36,7 @@ function isActive(match: string): boolean {
   }
   if (match === '/agent-knowledge/') {
     return currentPath.startsWith('/agent-knowledge/')
+      || currentPath.startsWith('/rag/')
       || currentPath.startsWith('/ai/')
       || currentPath.startsWith('/claw/');
   }

@@ -87,6 +87,7 @@ export default defineConfig({
         {
           label: 'AI Agent',
           items: [
+            { label: 'RAG 实战速查', link: '/rag/' },
             {
               label: 'AI Agent',
               autogenerate: { directory: 'ai' },
