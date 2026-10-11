@@ -136,11 +136,12 @@
 
   const INITIAL_MESSAGE_DELAY_MS = 1200;
   const MESSAGE_VISIBLE_MS = 7600;
+  const MESSAGE_TRANSITION_MS = 220;
 
   class ProgrammerAside extends HTMLElement {
     private quips: readonly string[] = programmerQuips;
     private lastIndex = -1;
-    private initialTimer = 0;
+    private showTimer = 0;
     private hideTimer = 0;
     private button: HTMLButtonElement | null = null;
     private bubble: HTMLElement | null = null;
@@ -155,11 +156,11 @@
       if (!this.button || !this.bubble || !this.output || this.quips.length === 0) return;
 
       this.button.addEventListener('click', this.handleClick);
-      this.initialTimer = window.setTimeout(() => this.showNextMessage(false), INITIAL_MESSAGE_DELAY_MS);
+      this.showTimer = window.setTimeout(() => this.showNextMessage(false), INITIAL_MESSAGE_DELAY_MS);
     }
 
     disconnectedCallback() {
-      window.clearTimeout(this.initialTimer);
+      window.clearTimeout(this.showTimer);
       window.clearTimeout(this.hideTimer);
       this.button?.removeEventListener('click', this.handleClick);
       this.button = null;
@@ -168,7 +169,7 @@
     }
 
     private handleClick = () => {
-      window.clearTimeout(this.initialTimer);
+      window.clearTimeout(this.showTimer);
       if (this.hasAttribute('data-open')) {
         this.hideMessage();
         return;
@@ -199,6 +200,9 @@
       this.button?.setAttribute('aria-expanded', 'false');
       this.bubble?.setAttribute('aria-hidden', 'true');
       window.clearTimeout(this.hideTimer);
+      window.clearTimeout(this.showTimer);
+      const delay = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : MESSAGE_TRANSITION_MS;
+      this.showTimer = window.setTimeout(() => this.showNextMessage(false), delay);
     }
   }
 
