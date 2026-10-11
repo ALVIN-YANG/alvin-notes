@@ -4,6 +4,7 @@
   </button>
   <div class="programmer-bubble" role="status" aria-live="off" aria-atomic="true" aria-hidden="true">
     <span class="programmer-quip"></span>
+    <a class="programmer-source" hidden target="_blank" rel="noopener noreferrer"></a>
   </div>
 </programmer-aside>
 
@@ -50,6 +51,33 @@
     background: var(--sl-color-surface);
     content: '';
     transform: rotate(45deg);
+  }
+
+  .programmer-source {
+    display: block;
+    width: fit-content;
+    margin-top: 0.35rem;
+    color: var(--sl-color-gray-2);
+    font-family: var(--sl-font-utility);
+    font-size: 0.68rem;
+    line-height: 1.4;
+    text-decoration: none;
+    pointer-events: auto;
+  }
+
+  .programmer-source[hidden] {
+    display: none;
+  }
+
+  .programmer-source:hover {
+    color: var(--sl-color-accent);
+    text-decoration: underline;
+  }
+
+  .programmer-source:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 
   .programmer-aside[data-open] .programmer-bubble {
@@ -132,20 +160,21 @@
 </style>
 
 <script>
-  import { programmerQuips } from '../data/programmer-quips';
+  import { programmerQuips, type ProgrammerQuip } from '../data/programmer-quips';
 
   const INITIAL_MESSAGE_DELAY_MS = 1200;
   const MESSAGE_VISIBLE_MS = 7600;
   const MESSAGE_TRANSITION_MS = 220;
 
   class ProgrammerAside extends HTMLElement {
-    private quips: readonly string[] = programmerQuips;
+    private quips: readonly ProgrammerQuip[] = programmerQuips;
     private lastIndex = -1;
     private showTimer = 0;
     private hideTimer = 0;
     private button: HTMLButtonElement | null = null;
     private bubble: HTMLElement | null = null;
     private output: HTMLElement | null = null;
+    private sourceLink: HTMLAnchorElement | null = null;
 
     connectedCallback() {
       if (this.button) return;
@@ -153,7 +182,8 @@
       this.button = this.querySelector('.programmer-avatar');
       this.bubble = this.querySelector('.programmer-bubble');
       this.output = this.querySelector('.programmer-quip');
-      if (!this.button || !this.bubble || !this.output || this.quips.length === 0) return;
+      this.sourceLink = this.querySelector('.programmer-source');
+      if (!this.button || !this.bubble || !this.output || !this.sourceLink || this.quips.length === 0) return;
 
       this.button.addEventListener('click', this.handleClick);
       this.showTimer = window.setTimeout(() => this.showNextMessage(false), INITIAL_MESSAGE_DELAY_MS);
@@ -166,6 +196,7 @@
       this.button = null;
       this.bubble = null;
       this.output = null;
+      this.sourceLink = null;
     }
 
     private handleClick = () => {
@@ -178,15 +209,24 @@
     };
 
     private showNextMessage(announce = true) {
-      if (!this.button || !this.bubble || !this.output) return;
+      if (!this.button || !this.bubble || !this.output || !this.sourceLink) return;
 
       let nextIndex = Math.floor(Math.random() * this.quips.length);
       if (this.quips.length > 1 && nextIndex === this.lastIndex) {
         nextIndex = (nextIndex + 1) % this.quips.length;
       }
       this.lastIndex = nextIndex;
+      const quip = this.quips[nextIndex];
       this.bubble.setAttribute('aria-live', announce ? 'polite' : 'off');
-      this.output.textContent = this.quips[nextIndex];
+      this.output.textContent = quip.text;
+      this.sourceLink.hidden = !quip.source;
+      if (quip.source) {
+        this.sourceLink.href = quip.source.url;
+        this.sourceLink.textContent = `${quip.source.author} · 译句 ↗`;
+      } else {
+        this.sourceLink.removeAttribute('href');
+        this.sourceLink.textContent = '';
+      }
       this.setAttribute('data-open', '');
       this.button.setAttribute('aria-expanded', 'true');
       this.bubble.setAttribute('aria-hidden', 'false');
