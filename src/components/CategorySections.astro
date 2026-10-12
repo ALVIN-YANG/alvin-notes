@@ -1,17 +1,17 @@
 ---
 import { getCollection } from 'astro:content';
 import { abilityMapMeta } from '../data/ability-map-meta';
-import aiInfraKnowledge from '../data/ai-infra-knowledge';
+import aiInfraKnowledge, { aiInfraLessons } from '../data/ai-infra-knowledge';
 import concepts from '../data/ai-concepts.json';
 
 const abilityMaps = [
   {
     id: 'infra',
     title: 'AI Infra 学习地图',
-    desc: '从 Agent 开发走到模型服务、GPU 与性能实验。',
+    desc: '模型执行、KV cache、批处理与性能分析。',
     href: '/ai-infra-knowledge/',
     route: ['模型执行', '性能测量', '部署运行'],
-    stats: `${aiInfraKnowledge.meta.domainCount} 个领域 · ${aiInfraKnowledge.meta.pointCount} 个知识点`,
+    stats: `${aiInfraKnowledge.meta.domainCount} 个领域 · ${Object.keys(aiInfraLessons).length} 节完整课程`,
     pointCount: aiInfraKnowledge.meta.pointCount,
   },
   {

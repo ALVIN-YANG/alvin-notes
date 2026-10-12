@@ -2,6 +2,7 @@ import { createKnowledgeMap, type KnowledgeContentBlock, type KnowledgeReference
 
 const sources = {
   torch: { title: 'PyTorch · CUDA semantics', href: 'https://docs.pytorch.org/docs/main/notes/cuda.html' },
+  profiler: { title: 'PyTorch · Profiler recipe', href: 'https://docs.pytorch.org/tutorials/recipes/recipes/profiler_recipe.html' },
   cache: { title: 'Transformers · How caching works', href: 'https://huggingface.co/docs/transformers/cache_explanation' },
   serving: { title: 'vLLM · Quickstart', href: 'https://docs.vllm.ai/en/latest/getting_started/quickstart/' },
   metrics: { title: 'vLLM · Production Metrics', href: 'https://docs.vllm.ai/en/latest/usage/metrics/' },
@@ -12,6 +13,13 @@ const sources = {
   mlops: { title: 'Google Cloud · MLOps', href: 'https://docs.cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning' },
 };
 
+export const aiInfraLessons = {
+  execution: { title: '模型执行：从 token 到 Prefill 与 Decode', href: '/ai-infra/model-execution/', detail: '张量形状、Attention 手算、完整 Decoder 与缓存等价性' },
+  cache: { title: 'KV cache：容量推导、分页与回收', href: '/ai-infra/kv-cache/', detail: '512 MiB 算例、块表、引用计数与写时复制' },
+  scheduling: { title: '批处理调度：从静态批到分块 Prefill', href: '/ai-infra/batching-scheduling/', detail: '四条请求逐轮模拟，比较排队与输出间隔' },
+  performance: { title: '推理性能分析：从延迟指标到 GPU 瓶颈', href: '/ai-infra/performance-analysis/', detail: '指标手算、Roofline、压测和 Profiler 结果解读' },
+} as const;
+
 interface LearningPoint {
   title: string;
   explain: string;
@@ -20,10 +28,12 @@ interface LearningPoint {
   check: [question: string, answer: string];
   source: keyof typeof sources;
   blocks?: KnowledgeContentBlock[];
+  lesson?: keyof typeof aiInfraLessons;
 }
 
 function learningPoint(point: LearningPoint) {
   const source = sources[point.source];
+  const lesson = point.lesson ? aiInfraLessons[point.lesson] : undefined;
   return {
     title: point.title,
     content: [
@@ -33,7 +43,8 @@ function learningPoint(point: LearningPoint) {
       { type: 'heading', text: '动手验证' },
       { type: 'list', items: point.exercise },
       { type: 'checkpoint', label: '先回答，再展开', prompt: point.check[0], answer: point.check[1] },
-      { type: 'link', label: '学习路线与实验记录', href: '/ai-infra/learning-path/', detail: '查看学习顺序与 vLLM 实验' },
+      ...(lesson ? [{ type: 'link', label: `完整课程：${lesson.title}`, href: lesson.href, detail: lesson.detail }] : []),
+      { type: 'link', label: '四节技术课程与实验', href: '/ai-infra/learning-path/', detail: '模型执行、KV cache、批处理调度与性能分析' },
     ] as KnowledgeContentBlock[],
     references: [{ ...source, location: '官方文档；实验参数以所用版本为准' }] as KnowledgeReference[],
   };
@@ -50,7 +61,7 @@ export default createKnowledgeMap({
       articles: [{ title: '学习路线与实验记录', href: '/ai-infra/learning-path/' }],
       groups: [
         { title: '从 Agent 走到推理服务', level: 'core', points: [
-          learningPoint({ title: '一次请求经过哪些程序', source: 'serving',
+          learningPoint({ title: '一次请求经过哪些程序', source: 'serving', lesson: 'execution',
             explain: 'Agent 决定下一步做什么；推理服务把输入转换成 token，再在计算设备上执行模型并生成输出。网关、调度器、模型执行与客户端各有等待时间，排障先定位耗时在哪一段。',
             example: '假设 Agent 调用模型耗时两秒：可能是网关排队，也可能是长输入的计算，不能只看 HTTP 总耗时就判断 GPU 慢。',
             exercise: ['画出客户端、网关、推理引擎、GPU 的请求路径，标出每处的队列与超时。', '先用模拟后端分别制造排队和生成延迟；确认日志能区分两者。模拟结果不能当成 GPU 性能。'],
@@ -62,12 +73,12 @@ export default createKnowledgeMap({
             check: ['把并发从 4 改为 40，一定提高吞吐吗？', '不一定。后端算力不变时，更多请求可能只增加排队时间和显存压力。需要同时比较成功吞吐、尾延迟和错误率。'] }),
         ] },
         { title: '最小计算基础', level: 'scenario', points: [
-          learningPoint({ title: '张量形状、精度与推理模式', source: 'torch',
+          learningPoint({ title: '张量形状、精度与推理模式', source: 'torch', lesson: 'execution',
             explain: '张量是带形状和数据类型的数组。先掌握矩阵乘法、batch 维度、设备搬运和自动求导。推理时 model.eval() 改变部分层的行为，inference_mode() 关闭求导相关开销，两者用途不同。',
             example: '形状为 [B, S, H] 的张量中，B 表示批量，S 表示序列长度，H 表示隐藏维度。只知道“用了 PyTorch”，还不足以解释批量和上下文为什么消耗显存。',
             exercise: ['在 CPU 上建立两个小矩阵，验证乘法形状、dtype 与元素数量。', '在可用设备上运行同一小模型，记录输入输出形状及推理模式；保存环境版本。'],
             check: ['FP16 权重能否与任意类型的输入直接相乘？', '不能据此保证兼容。算子、设备和混合精度规则都会影响类型要求；先检查输入与权重类型，以及所用算子的支持情况。'] }),
-          learningPoint({ title: '区分 CPU、GPU 与网络瓶颈', source: 'tuning',
+          learningPoint({ title: '区分 CPU、GPU 与网络瓶颈', source: 'tuning', lesson: 'performance',
             explain: '模型服务还需要 CPU 做分词、序列化和请求处理。GPU 利用率低可能是输入没及时到达，也可能是小批量或同步等待；高利用率也不能直接证明用户延迟达标。',
             example: '长文本分词占满一个 CPU 核时，GPU 可能在等待。此时增加 GPU 副本未必改善端到端体验。',
             exercise: ['同时记录 CPU、GPU、网络、队列和请求时间，保留同一时间窗口的数据。', '分别改变输入长度与到达速率，提出一个瓶颈假设，再用时间线验证。'],
@@ -80,24 +91,24 @@ export default createKnowledgeMap({
       summary: '理解 Prefill、Decode、KV cache，估算容量并正确测量 CUDA。',
       groups: [
         { title: '生成时发生什么', level: 'core', points: [
-          learningPoint({ title: 'Prefill 与 Decode', source: 'tuning',
+          learningPoint({ title: 'Prefill 与 Decode', source: 'tuning', lesson: 'execution',
             explain: 'Prefill 处理已有输入，建立生成所需的状态；Decode 继续逐步产生 token。长输入会增加首段处理的工作量，长输出会占用更多生成步骤。两类负载应分开观察。',
             example: '假设两个请求都输出 128 个 token，一个输入 256 个 token，另一个输入 4096 个 token；它们的首 token 延迟可能不同，不能只比较输出长度。',
             exercise: ['固定输出长度，只改变输入长度，比较首 token 延迟。', '固定输入长度，只改变输出长度，比较完成时间；保留实际生成长度。'],
             check: ['首 token 很慢，但后续输出流畅，先检查什么？', '先检查排队、输入预处理和 Prefill 时间。后续 Decode 快不能排除这些阶段的等待。'] }),
-          learningPoint({ title: 'KV cache 为什么随上下文增长', source: 'cache',
+          learningPoint({ title: 'KV cache 为什么随上下文增长', source: 'cache', lesson: 'cache',
             explain: '自回归模型生成下一 token 时，需要关注此前的 token。KV cache 保存各注意力层已经算出的 key 和 value，避免重复计算；它占用内存，通常随保存的 token 数与并发请求数增长。',
             example: '传统全注意力、同一 KV 精度下，单请求缓存可粗估为 2 × 层数 × KV heads × head dimension × token 数 × 每元素字节数。滑动窗口、混合架构、压缩及分片会改变实际占用。',
             exercise: ['从一个模型的配置读取层数、KV heads 和 head dimension，估算两个上下文长度的缓存。', '在 GPU 上观察并发与实际 token 数变化后的缓存指标，解释估算与实际值的差别。'],
             check: ['KV heads 与 attention heads 可以总写成同一个数吗？', '不能。使用 GQA 或 MQA 的模型可能有更少的 KV heads；照搬 attention heads 会高估缓存。'] }),
         ] },
         { title: '容量与测量', level: 'scenario', points: [
-          learningPoint({ title: '权重能放下，服务为何仍 OOM', source: 'torch',
+          learningPoint({ title: '权重能放下，服务为何仍 OOM', source: 'torch', lesson: 'cache',
             explain: '显存不仅存权重，还存 KV cache、激活、临时工作区及运行时资源。PyTorch 的 allocated 是张量占用，reserved 是缓存分配器管理的内存；它们不等于整个进程的 GPU 占用。',
             example: '示例：7B 参数按每参数两字节估算，权重约 14 GB，约 13 GiB。这只是权重下界；16 GiB 显卡能否运行指定并发和上下文，需要实测。量化还可能有缩放信息等额外开销。',
             exercise: ['分别记录加载前、加载后与处理长输入时的显存，标明 GB 与 GiB。', '在受控实验中逐步增加上下文或并发，保存 OOM 条件并验证限制是否生效。'],
             check: ['调用 empty_cache() 能释放仍被张量引用的显存吗？', '不能。它处理未使用的缓存块；仍在使用的张量和服务保留的 KV cache 需要各自的生命周期管理。'] }),
-          learningPoint({ title: 'CUDA 异步与计时', source: 'torch',
+          learningPoint({ title: 'CUDA 异步与计时', source: 'torch', lesson: 'performance',
             explain: 'CUDA 操作通常异步提交。CPU 计时只包住提交动作，可能没等 GPU 执行完。测量设备耗时可使用 CUDA Events，测量完成耗时需要在合适的位置等待设备完成。',
             example: '示例代码第一次运行还可能含初始化和编译开销。先预热，再重复采样；不要用一次计时给优化下结论。',
             exercise: ['用 CPU 时钟和 CUDA Events 测量同一矩阵乘法，解释边界为何不同。', '记录形状、精度、预热和重复次数；同步只放在测量边界，避免改变正常调度。'],
@@ -141,24 +152,24 @@ export default createKnowledgeMap({
       summary: '先建立可重复的指标基线，再解释调度、缓存和计算瓶颈。',
       groups: [
         { title: '建立基线', level: 'core', points: [
-          learningPoint({ title: 'TTFT、ITL、TPOT 与成功吞吐', source: 'metrics',
+          learningPoint({ title: 'TTFT、ITL、TPOT 与成功吞吐', source: 'metrics', lesson: 'performance',
             explain: 'TTFT 是请求开始到首 token 的时间；ITL 描述相邻输出 token 的间隔。TPOT 常用于表示请求内平均后续 token 时间，聚合规则须说明。端到端时间、错误率和成功吞吐补足整体体验。',
             example: '示例：请求在 1 秒后开始输出，之后平稳生成；TTFT 较大，后续间隔却可能较小。不能用一个平均 token/s 覆盖这两种体验。',
             exercise: ['分别记录客户端和服务端的时间边界，保留 P50、P95、失败与实际输出长度。', '定义“成功”：响应结束、状态正确且满足输出要求；失败请求单列，不能从报表静默删除。'],
             check: ['输出 token/s 更高，但 P95 TTFT 变差，算优化成功吗？', '需按目标判断。交互业务若要求首 token 快，这可能不达标；离线任务可能更关注总完成时间。先定义目标和失败口径。'] }),
-          learningPoint({ title: '并发与到达速率是两个变量', source: 'bench',
+          learningPoint({ title: '并发与到达速率是两个变量', source: 'bench', lesson: 'performance',
             explain: '固定并发通常在一个请求完成后再补一个请求；固定到达速率则按计划继续发请求。服务变慢时，前者会降低实际到达量，后者更容易暴露队列积压。两种负载回答不同问题。',
             example: '示例：固定并发 8 测稳态处理能力；固定每秒到达量逐档增加，测过载开始的位置。比较时必须写清负载模型。',
             exercise: ['固定模型、硬件、输入输出分布、缓存条件和引擎版本，按多个负载档位重复采样。', '保存原始结果、实际到达量与未完成请求，画出成功吞吐及尾延迟随负载的变化。'],
             check: ['两个配置分别用短输入和长输入测出吞吐，可以直接排名吗？', '不可以。输入、输出、到达方式、硬件和缓存条件都改变工作量；需要同一负载基线。'] }),
         ] },
         { title: '按瓶颈优化', level: 'scenario', points: [
-          learningPoint({ title: '连续批处理、分块 Prefill 与前缀缓存', source: 'tuning',
+          learningPoint({ title: '连续批处理、分块 Prefill 与前缀缓存', source: 'tuning', lesson: 'scheduling',
             explain: '连续批处理让运行中的请求结束后有机会接入新请求；分块 Prefill 将长输入拆开，调节它与 Decode 的资源竞争。前缀缓存复用相同输入前缀的已有计算，需要分别测冷缓存与可复用场景。',
             example: '共享系统提示词的短问答可能受益于前缀复用；每次前缀都不同的长文请求未必受益。优化结论需保留负载条件。',
             exercise: ['先只改变一个批处理参数，比较成功吞吐、首 token 与后续间隔。', '对缓存分别测冷启动、重复前缀和不同前缀；保留输出质量及实际命中指标。'],
             check: ['缓存热身后的成绩可以当成所有请求的表现吗？', '不能。它只支持对应命中条件下的结论；还要展示冷缓存与不命中的表现。'] }),
-          learningPoint({ title: 'Profiler、CUDA 与 Triton 的学习顺序', source: 'torch',
+          learningPoint({ title: 'Profiler、CUDA 与 Triton 的学习顺序', source: 'profiler', lesson: 'performance',
             explain: 'Profiler 用时间线寻找 CPU、设备计算、搬运和同步等待。先能解释一个热点，再学习 CUDA 的线程、内存访问和同步，最后按需要用 Triton 或 CUDA 实现小算子。',
             example: '若时间花在网络等待，改写 GPU kernel 无法解决问题。若确实是计算热点，算子优化还要验证数值误差、不同形状和端到端收益。',
             exercise: ['在 GPU 上保存一次预热后的时间线，圈出一个瓶颈并说明判断依据。', '选小型矩阵或归约算子，先验证结果与误差，再比较设备耗时；不要直接替换整套模型算子。'],
