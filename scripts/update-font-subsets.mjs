@@ -18,6 +18,7 @@ const sourceRoots = [
   'src/components',
   'src/pages',
   'src/data',
+  'src/lib',
 ];
 const sourceFiles = ['astro.config.mjs', 'src/content.config.ts'];
 const sourceExtensions = new Set(['.astro', '.css', '.json', '.md', '.mdx', '.mjs', '.ts']);

@@ -1,0 +1,78 @@
+name: AI 概念周更
+
+on:
+  schedule:
+    # 周一 08:17（北京时间）
+    - cron: '17 0 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: ai-concepts-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/cache@v4
+        with:
+          path: .font-sources
+          key: font-sources-v1-misans-2025-07-14-sarasa-1.0.41
+      - name: 安装依赖与验证
+        run: npm ci && npm test
+      - name: 同步词表与发现新词
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_BASE_URL: https://api.deepseek.com
+          DEEPSEEK_MODEL: deepseek-v4-flash
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+        run: npm run concepts:sync && npm run concepts:check
+      - name: 检查词库变化
+        id: changes
+        run: |
+          if git diff --quiet -- src/data/ai-concepts.json src/data/ai-concepts-hf-translations.json; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+      - name: 安装字体工具
+        if: steps.changes.outputs.changed == 'true'
+        run: sudo apt-get update && sudo apt-get install --yes libarchive-tools python3-venv
+      - name: 构建并发布词库
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          cp src/data/ai-concepts.json "$RUNNER_TEMP/ai-concepts.json"
+          cp src/data/ai-concepts-hf-translations.json "$RUNNER_TEMP/ai-concepts-hf-translations.json"
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            # 仅重置 Actions 的临时检出，重放数据并重新生成最新主分支的字体。
+            # 避免新闻、模型榜等自动提交同时发生时覆盖主分支或产生字体冲突。
+            git reset --hard origin/main
+            cp "$RUNNER_TEMP/ai-concepts.json" src/data/ai-concepts.json
+            cp "$RUNNER_TEMP/ai-concepts-hf-translations.json" src/data/ai-concepts-hf-translations.json
+            npm run concepts:check
+            npm run fonts:update
+            npm run build
+            git add src/data/ai-concepts.json src/data/ai-concepts-hf-translations.json public/fonts/misans/ public/fonts/sarasa/ scripts/font-subset-codepoints.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "更新 AI 概念词库 $(date -u +%Y-%m-%d)"
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          echo '发布失败：主分支持续变化。已发布词库未受影响，请手动重跑。' >&2
+          exit 1

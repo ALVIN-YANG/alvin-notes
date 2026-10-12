@@ -87,6 +87,7 @@ export default defineConfig({
         {
           label: 'AI Agent',
           items: [
+            { label: 'AI 概念卡片', link: '/ai-concepts/' },
             { label: 'RAG 实战速查', link: '/rag/' },
             {
               label: 'AI Agent',

@@ -6,6 +6,8 @@
     "node": ">=22.12.0"
   },
   "scripts": {
+    "concepts:sync": "node scripts/sync-ai-concepts.mjs",
+    "concepts:check": "node scripts/sync-ai-concepts.mjs --check",
     "test": "node --test",
     "fonts:update": "node scripts/update-font-subsets.mjs",
     "dev": "astro dev",

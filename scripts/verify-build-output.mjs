@@ -12,6 +12,7 @@ const fontSourceDirectories = [
   new URL('../src/components/', import.meta.url),
   new URL('../src/pages/', import.meta.url),
   new URL('../src/data/', import.meta.url),
+  new URL('../src/lib/', import.meta.url),
 ];
 const fontSourceFiles = [
   new URL('../astro.config.mjs', import.meta.url),

@@ -1,0 +1,608 @@
+[
+  {
+    "id": "llm",
+    "googleId": "large-language-model",
+    "term": "LLM",
+    "zh": "大语言模型",
+    "aliases": [],
+    "category": "model",
+    "summary": "根据上下文生成回答的大语言模型",
+    "definition": "从上下文预测并生成 Token 的模型。训练让它学到语言及部分知识模式。",
+    "example": "输入制度片段和问题，模型根据输入生成一段回答。",
+    "contrast": "模型会生成听起来合理却缺少依据的内容。",
+    "related": [],
+    "priority": 0,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/rag-primer/"
+      }
+    ]
+  },
+  {
+    "id": "token",
+    "googleId": "token",
+    "term": "Token",
+    "zh": "词元",
+    "aliases": [],
+    "category": "model",
+    "summary": "模型处理文本的基本单位",
+    "definition": "模型处理文本的基本单位。一个 Token 可能是一个字、一个词或词的一部分。",
+    "example": "同一句中文，用不同模型的分词器，得到的 Token 数可能不同。",
+    "contrast": "字符数不能直接当成 Token 数。",
+    "related": [],
+    "priority": 1,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/rag-primer/"
+      }
+    ]
+  },
+  {
+    "id": "rag",
+    "googleId": "retrieval-augmented-generation-rag",
+    "term": "RAG",
+    "zh": "检索增强生成",
+    "aliases": [],
+    "category": "retrieval",
+    "summary": "先检索资料，再依据资料回答",
+    "definition": "先找相关资料，再把资料交给模型，用它们生成有依据的回答。",
+    "example": "问“公司年假有几天？” → 查员工制度 → 将条款放入上下文 → 生成带来源的回答。",
+    "contrast": "和微调的区别：RAG 在回答时提供资料；微调在训练时更新模型或适配器参数。两者可以组合使用。",
+    "related": [],
+    "priority": 2,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/rag-primer/"
+      }
+    ]
+  },
+  {
+    "id": "embedding",
+    "googleId": "embedding-vector",
+    "term": "Embedding",
+    "zh": "向量表示",
+    "aliases": [],
+    "category": "retrieval",
+    "summary": "把内容编码成向量，用于查找和比较",
+    "definition": "把文本、图片等内容编码成向量，让系统可以按相似度查找或比较。",
+    "example": "把问题与文档片段编码为向量，寻找语义相近的片段。",
+    "contrast": "和 RAG 的区别：Embedding 提供向量表示；RAG 负责检索并生成。Embedding 可以是其中一环，也可以改用关键词检索。",
+    "related": [],
+    "priority": 3,
+    "sources": [
+      {
+        "title": "官方资料",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/embeddings"
+      }
+    ]
+  },
+  {
+    "id": "finetuning",
+    "googleId": "fine-tuning",
+    "term": "Fine-tuning",
+    "zh": "微调",
+    "aliases": [],
+    "category": "training",
+    "summary": "通过继续训练，调整模型行为与能力",
+    "definition": "在已有模型上继续训练，更新模型或适配器参数，调整行为与能力。",
+    "example": "用高质量示例训练一个更符合业务表达要求的模型。",
+    "contrast": "和 RAG 的区别：微调改变模型或适配器参数；RAG 在回答时检索资料。经常变化的制度和事实更适合通过外部资料提供。",
+    "related": [],
+    "priority": 4,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/rag-primer/"
+      }
+    ]
+  },
+  {
+    "id": "agent",
+    "googleId": "agent",
+    "term": "Agent",
+    "zh": "智能体",
+    "aliases": [
+      "AI Agent",
+      "AI 智能体"
+    ],
+    "category": "agent",
+    "summary": "观察结果、使用工具、决定下一步行动的系统",
+    "definition": "结合模型、工具和运行控制，观察结果并决定下一步行动的系统。",
+    "example": "先查制度，发现条件不全后再查询员工工龄。",
+    "contrast": "自主决策仍需受权限、停止条件和结果验证约束。",
+    "related": [],
+    "priority": 5,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/function-call-agent/"
+      }
+    ]
+  },
+  {
+    "id": "mcp",
+    "googleId": null,
+    "term": "MCP",
+    "zh": "模型上下文协议",
+    "aliases": [],
+    "category": "agent",
+    "summary": "连接 AI 应用与外部工具、资源的协议",
+    "definition": "连接 AI 应用与外部工具、资源和提示模板的开放协议。",
+    "example": "通过 MCP 服务向应用提供数据库查询工具。",
+    "contrast": "和 Tool Calling 的区别：MCP 定义怎样连接工具与资源；Tool Calling 表达调用哪个工具、传什么参数。",
+    "related": [],
+    "priority": 6,
+    "sources": [
+      {
+        "title": "官方资料",
+        "url": "https://modelcontextprotocol.io/docs/getting-started/intro"
+      }
+    ]
+  },
+  {
+    "id": "toolcalling",
+    "googleId": null,
+    "term": "Tool Calling",
+    "zh": "工具调用",
+    "aliases": [
+      "Function Calling",
+      "函数调用"
+    ],
+    "category": "agent",
+    "summary": "模型提出工具请求，应用验证并执行",
+    "definition": "模型输出工具名与参数，由应用验证、执行工具并返回结果。",
+    "example": "模型请求查询工龄；后端执行查询，再把结果交还模型。",
+    "contrast": "和 MCP 的区别：Tool Calling 是工具请求能力；MCP 是连接协议。工具可以来自 MCP，也可以直接定义在应用里。",
+    "related": [],
+    "priority": 7,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/function-call-agent/"
+      }
+    ]
+  },
+  {
+    "id": "transformer",
+    "googleId": "transformer",
+    "term": "Transformer",
+    "zh": "Transformer 架构",
+    "aliases": [],
+    "category": "model",
+    "summary": "使用注意力等机制处理序列的神经网络架构",
+    "definition": "使用注意力等机制处理序列的神经网络架构。很多 LLM 基于它。",
+    "example": "注意力让序列中的位置可以利用其他位置的信息。",
+    "contrast": "Transformer 是架构名称，LLM 是一类模型。",
+    "related": [],
+    "priority": 38,
+    "sources": [
+      {
+        "title": "Google 机器学习术语表",
+        "url": "https://developers.google.com/machine-learning/glossary?hl=zh-cn#transformer"
+      }
+    ]
+  },
+  {
+    "id": "window",
+    "googleId": "context-window",
+    "term": "Context Window",
+    "zh": "上下文窗口",
+    "aliases": [],
+    "category": "model",
+    "summary": "一次模型请求可容纳的 Token 预算",
+    "definition": "一次模型请求可容纳的 Token 预算。具体限制取决于模型与接口。",
+    "example": "输入、对话记录、工具结果和生成内容都需要考虑预算。",
+    "contrast": "能放进去，不能证明模型会可靠利用全部内容。",
+    "related": [],
+    "priority": 39,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/context-engineering-guide/"
+      }
+    ]
+  },
+  {
+    "id": "inference",
+    "googleId": "inference",
+    "term": "Inference",
+    "zh": "推理 / 模型运行",
+    "aliases": [],
+    "category": "model",
+    "summary": "让已训练的模型处理新输入、产生输出的运行过程",
+    "definition": "让已训练的模型处理新输入、产生输出的运行过程。",
+    "example": "调用一个模型接口生成回答，就是一次 inference。",
+    "contrast": "这里的推理不等于模型一定做出了正确的逻辑推断。",
+    "related": [],
+    "priority": 40,
+    "sources": [
+      {
+        "title": "Google 机器学习术语表",
+        "url": "https://developers.google.com/machine-learning/glossary?hl=zh-cn#inference"
+      }
+    ]
+  },
+  {
+    "id": "pretraining",
+    "googleId": "pre-training",
+    "term": "Pretraining",
+    "zh": "预训练",
+    "aliases": [],
+    "category": "training",
+    "summary": "先用大量数据训练模型，形成基础表示与生成能力",
+    "definition": "先用大量数据训练模型，形成基础表示与生成能力。",
+    "example": "语言模型可以通过预测文本中的后续 Token 来学习。",
+    "contrast": "预训练形成基础能力，不能直接保证特定产品行为。",
+    "related": [],
+    "priority": 41,
+    "sources": [
+      {
+        "title": "Google 机器学习术语表",
+        "url": "https://developers.google.com/machine-learning/glossary?hl=zh-cn#pre-training"
+      }
+    ]
+  },
+  {
+    "id": "sft",
+    "googleId": null,
+    "term": "SFT",
+    "zh": "监督微调",
+    "aliases": [],
+    "category": "training",
+    "summary": "用输入与目标输出的示例继续训练模型，学习期望的回答方式",
+    "definition": "用输入与目标输出的示例继续训练模型，学习期望的回答方式。",
+    "example": "提供问题与合格答案，让模型学习领域表达或输出格式。",
+    "contrast": "效果依赖示例质量，不能保证每次输出都满足格式。",
+    "related": [],
+    "priority": 42,
+    "sources": [
+      {
+        "title": "Google 机器学习术语表",
+        "url": "https://developers.google.com/machine-learning/glossary?hl=zh-cn"
+      }
+    ]
+  },
+  {
+    "id": "lora",
+    "googleId": "lora",
+    "term": "LoRA",
+    "zh": "低秩适配",
+    "aliases": [],
+    "category": "training",
+    "summary": "冻结基础模型权重，训练低秩适配参数的一种参数高效微调方法",
+    "definition": "冻结基础模型权重，训练低秩适配参数的一种参数高效微调方法。",
+    "example": "训练少量适配参数，用于特定任务。",
+    "contrast": "LoRA 仍然需要训练；它不是检索或提示词技巧。",
+    "related": [],
+    "priority": 10,
+    "sources": [
+      {
+        "title": "官方资料",
+        "url": "https://huggingface.co/docs/peft/package_reference/lora"
+      }
+    ]
+  },
+  {
+    "id": "rlhf",
+    "googleId": "reinforcement-learning-from-human-feedback-rlhf",
+    "term": "RLHF",
+    "zh": "人类反馈强化学习",
+    "aliases": [],
+    "category": "training",
+    "summary": "使用人的反馈构建奖励信号，并通过强化学习等训练步骤调整模型行为",
+    "definition": "使用人的反馈构建奖励信号，并通过强化学习等训练步骤调整模型行为。",
+    "example": "用对多个回答的偏好反馈来训练奖励模型。",
+    "contrast": "人的偏好反馈与事实正确性并不完全相同。",
+    "related": [],
+    "priority": 44,
+    "sources": [
+      {
+        "title": "Google 机器学习术语表",
+        "url": "https://developers.google.com/machine-learning/glossary?hl=zh-cn#reinforcement-learning-from-human-feedback-rlhf"
+      }
+    ]
+  },
+  {
+    "id": "chunk",
+    "googleId": null,
+    "term": "Chunk",
+    "zh": "文档片段",
+    "aliases": [],
+    "category": "retrieval",
+    "summary": "从资料拆出的索引或检索单元，通常保留来源与位置",
+    "definition": "从资料拆出的索引或检索单元，通常保留来源与位置。",
+    "example": "将员工手册按章节或段落拆分，再建立索引。",
+    "contrast": "切得太碎会丢上下文，太长又可能带入无关内容。",
+    "related": [],
+    "priority": 45,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/rag-primer/"
+      }
+    ]
+  },
+  {
+    "id": "vectordb",
+    "googleId": null,
+    "term": "Vector Database",
+    "zh": "向量数据库",
+    "aliases": [],
+    "category": "retrieval",
+    "summary": "存储向量，并支持相似度搜索、过滤等操作的数据设施",
+    "definition": "存储向量，并支持相似度搜索、过滤等操作的数据设施。",
+    "example": "从大量文档向量中，寻找和当前问题相近的候选片段。",
+    "contrast": "向量数据库只承担部分存储与检索职责，不等于 RAG。",
+    "related": [],
+    "priority": 46,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/rag-primer/"
+      }
+    ]
+  },
+  {
+    "id": "reranker",
+    "googleId": null,
+    "term": "Reranker",
+    "zh": "重排器",
+    "aliases": [],
+    "category": "retrieval",
+    "summary": "对初次检索的候选内容重新排序，让更相关的内容靠前",
+    "definition": "对初次检索的候选内容重新排序，让更相关的内容靠前。",
+    "example": "先召回 50 个候选片段，再挑出最有用的几个。",
+    "contrast": "重排不能恢复初次检索完全没有召回的证据。",
+    "related": [],
+    "priority": 47,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/rag-primer/"
+      }
+    ]
+  },
+  {
+    "id": "prompt",
+    "googleId": "prompt",
+    "term": "Prompt",
+    "zh": "提示 / 指令",
+    "aliases": [],
+    "category": "context",
+    "summary": "交给模型的任务描述、约束、示例等输入内容",
+    "definition": "交给模型的任务描述、约束、示例等输入内容。",
+    "example": "说明“依据给定制度回答，缺少证据时说明无法确认”。",
+    "contrast": "提示词中的权限约束仍需由执行系统落实。",
+    "related": [],
+    "priority": 48,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/context-engineering-guide/"
+      }
+    ]
+  },
+  {
+    "id": "prompteng",
+    "googleId": "prompt-engineering",
+    "term": "Prompt Engineering",
+    "zh": "提示词工程",
+    "aliases": [],
+    "category": "context",
+    "summary": "设计任务指令、约束和示例，让模型更清楚该完成什么",
+    "definition": "设计任务指令、约束和示例，让模型更清楚该完成什么。",
+    "example": "明确回答格式、来源要求，以及缺少信息时的处理方式。",
+    "contrast": "提示写得好，不能弥补未提供的关键证据。",
+    "related": [],
+    "priority": 49,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/context-engineering-guide/"
+      }
+    ]
+  },
+  {
+    "id": "contexteng",
+    "googleId": null,
+    "term": "Context Engineering",
+    "zh": "上下文工程",
+    "aliases": [],
+    "category": "context",
+    "summary": "决定模型每一步应该看到哪些指令、资料、状态与工具结果",
+    "definition": "决定模型每一步应该看到哪些指令、资料、状态与工具结果。",
+    "example": "保留当前任务状态，只加载这一步需要的制度和工具结果。",
+    "contrast": "重点是输入材料的选择与组织，而不只是改指令的措辞。",
+    "related": [],
+    "priority": 8,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/context-engineering-guide/"
+      }
+    ]
+  },
+  {
+    "id": "context",
+    "googleId": null,
+    "term": "Context",
+    "zh": "上下文",
+    "aliases": [],
+    "category": "context",
+    "summary": "模型当前这次请求可以使用的输入内容，包括指令、对话、资料和工具结果",
+    "definition": "模型当前这次请求可以使用的输入内容，包括指令、对话、资料和工具结果。",
+    "example": "同一个问题，加上对应制度条款后，模型才有当前规则的依据。",
+    "contrast": "当前上下文不会自动变成跨会话的持久记忆。",
+    "related": [],
+    "priority": 51,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/context-engineering-guide/"
+      }
+    ]
+  },
+  {
+    "id": "memory",
+    "googleId": null,
+    "term": "Memory",
+    "zh": "持久记忆",
+    "aliases": [],
+    "category": "context",
+    "summary": "保存未来可能有用的信息，并在需要时检索或加载的机制",
+    "definition": "保存未来可能有用的信息，并在需要时检索或加载的机制。",
+    "example": "保存已确认的报表格式偏好，在下次相关任务中读取。",
+    "contrast": "记忆可能过时；读取范围、更新和删除都需要设计。",
+    "related": [],
+    "priority": 9,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/context-engineering-guide/"
+      }
+    ]
+  },
+  {
+    "id": "skill",
+    "googleId": null,
+    "term": "Skill",
+    "zh": "技能包",
+    "aliases": [],
+    "category": "agent",
+    "summary": "可按需加载的任务说明、参考资料及可选脚本",
+    "definition": "可按需加载的任务说明、参考资料及可选脚本。具体格式取决于产品。",
+    "example": "写接口文档时，加载相关写作规则与参考模板。",
+    "contrast": "Skill 通常不会训练模型参数，也不等于连接服务的协议。",
+    "related": [],
+    "priority": 53,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/skills/"
+      }
+    ]
+  },
+  {
+    "id": "harness",
+    "googleId": null,
+    "term": "Harness",
+    "zh": "Agent 运行框架",
+    "aliases": [],
+    "category": "agent",
+    "summary": "管理模型请求、工具执行、状态、权限与停止条件的运行层",
+    "definition": "管理模型请求、工具执行、状态、权限与停止条件的运行层。",
+    "example": "工具失败后记录结果，决定重试、调整步骤或停止。",
+    "contrast": "能力边界取决于实际运行控制，不能只看模型名称。",
+    "related": [],
+    "priority": 54,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/agent-runtime-environments/"
+      }
+    ]
+  },
+  {
+    "id": "eval",
+    "googleId": "evaluation",
+    "term": "Eval",
+    "zh": "评测",
+    "aliases": [],
+    "category": "quality",
+    "summary": "用任务、指标和判定规则检验系统是否达到目标",
+    "definition": "用任务、指标和判定规则检验系统是否达到目标。",
+    "example": "检查制度问答是否答对、引用是否支持结论、权限是否正确。",
+    "contrast": "一组测试通过，只能证明对应条件下的表现。",
+    "related": [],
+    "priority": 55,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/agent-evaluation-observability/"
+      }
+    ]
+  },
+  {
+    "id": "hallucination",
+    "googleId": "hallucination",
+    "term": "Hallucination",
+    "zh": "幻觉",
+    "aliases": [],
+    "category": "quality",
+    "summary": "模型生成缺少事实或证据支持的内容",
+    "definition": "模型生成缺少事实或证据支持的内容。具体定义需按评测任务明确。",
+    "example": "制度中没有额外假期，回答却编出一项新福利。",
+    "contrast": "流畅和自信的表述不是正确性的证据。",
+    "related": [],
+    "priority": 56,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/rag-primer/"
+      }
+    ]
+  },
+  {
+    "id": "grounding",
+    "googleId": "grounding",
+    "term": "Grounding",
+    "zh": "依据证据回答",
+    "aliases": [],
+    "category": "quality",
+    "summary": "让回答以给定来源或可核验的数据为依据",
+    "definition": "让回答以给定来源或可核验的数据为依据。",
+    "example": "回答中每个假期天数，都能回到制度条款核对。",
+    "contrast": "有引用不等于引用支持结论，仍需检验。",
+    "related": [],
+    "priority": 57,
+    "sources": [
+      {
+        "title": "Alvin Yang：相关解释",
+        "url": "https://blog.mlxb.cc/ai/rag-primer/"
+      }
+    ]
+  },
+  {
+    "id": "latency",
+    "googleId": "latency",
+    "term": "Latency",
+    "zh": "延迟",
+    "aliases": [],
+    "category": "quality",
+    "summary": "从请求到指定响应事件的时间",
+    "definition": "从请求到指定响应事件的时间。首字延迟与完整响应时间需要分开量。",
+    "example": "用户 0.8 秒看到首字，3 秒收到完整回答，是两个指标。",
+    "contrast": "不同任务、输入长度与计时起止点不能直接比较。",
+    "related": [],
+    "priority": 58,
+    "sources": [
+      {
+        "title": "Google 机器学习术语表",
+        "url": "https://developers.google.com/machine-learning/glossary?hl=zh-cn#latency"
+      }
+    ]
+  },
+  {
+    "id": "kvcache",
+    "googleId": null,
+    "term": "KV Cache",
+    "zh": "键值缓存",
+    "aliases": [],
+    "category": "model",
+    "summary": "缓存注意力计算中的 Key 与 Value，减少生成过程中的重复计算",
+    "definition": "缓存注意力计算中的 Key 与 Value，减少生成过程中的重复计算。",
+    "example": "生成下一个 Token 时，复用之前位置的相关计算结果。",
+    "contrast": "这是推理计算缓存，不能当成用户偏好的持久记忆。",
+    "related": [],
+    "priority": 11,
+    "sources": [
+      {
+        "title": "官方资料",
+        "url": "https://huggingface.co/docs/transformers/kv_cache"
+      }
+    ]
+  }
+]
