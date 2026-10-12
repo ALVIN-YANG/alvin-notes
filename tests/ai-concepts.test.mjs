@@ -72,9 +72,13 @@ test('new term discovery requires literal source evidence and keeps paper scope 
 test('generation falls back to the existing compatible provider and fails closed for invalid JSON', async () => {
   const env = { DEEPSEEK_API_KEY: 'test-only', OPENAI_API_KEY: 'test-only', OPENAI_BASE_URL: 'https://example.com/v1', OPENAI_MODEL: 'test-model' };
   const urls = [];
-  const result = await generateJson('整理资料', [], { env, fetcher: async url => {
+  const result = await generateJson('整理资料', [], { env, fetcher: async (url, options) => {
     urls.push(url);
-    return urls.length === 1 ? { ok: false, status: 402 } : { ok: true, json: async () => ({ choices: [{ message: { content: '{"terms":[]}' } }] }) };
+    const request = JSON.parse(options.body);
+    if (urls.length === 1) { assert.equal(request.thinking.type, 'disabled'); return { ok: false, status: 402, json: async () => ({ error: { message: 'test-only payment failure' } }) }; }
+    // Some configured compatible providers support chat completions but reject JSON mode.
+    if (request.response_format) return { ok: false, status: 400, json: async () => ({ error: { message: 'unsupported parameter' } }) };
+    return { ok: true, json: async () => ({ choices: [{ message: { content: '{"terms":[]}' } }] }) };
   } });
   assert.deepEqual(result, { terms: [] });
   assert.equal(urls.length, 2);
