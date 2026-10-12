@@ -466,13 +466,17 @@ const gridPositions = knowledgeData.domains.map((domain) => {
 
         const appendContentBlock = (block, target = container) => {
           if (block.type === 'link') {
-            if (!/^https?:\/\//.test(block.href)) return;
+            const isExternal = /^https?:\/\//.test(block.href);
+            const isInternal = /^\/(?![\\/])/.test(block.href);
+            if (!isExternal && !isInternal) return;
             const link = document.createElement('a');
             const label = document.createElement('strong');
             link.className = 'panel-primary-link';
             link.href = block.href;
-            link.target = '_blank';
-            link.rel = 'noreferrer';
+            if (isExternal) {
+              link.target = '_blank';
+              link.rel = 'noreferrer';
+            }
             label.textContent = block.label;
             link.append(label);
             if (block.detail) {
@@ -483,7 +487,7 @@ const gridPositions = knowledgeData.domains.map((domain) => {
             const arrow = document.createElement('span');
             arrow.className = 'panel-primary-link-arrow';
             arrow.setAttribute('aria-hidden', 'true');
-            arrow.textContent = '↗';
+            arrow.textContent = isExternal ? '↗' : '→';
             link.append(arrow);
             target.append(link);
             return;

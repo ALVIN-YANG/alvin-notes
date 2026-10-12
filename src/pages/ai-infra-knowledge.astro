@@ -1,0 +1,19 @@
+---
+import AgentKnowledgeMap from '../components/AgentKnowledgeMap.astro';
+import KnowledgeMapPage from '../layouts/KnowledgeMapPage.astro';
+import aiInfraKnowledge from '../data/ai-infra-knowledge';
+---
+
+<KnowledgeMapPage
+  title="AI Infra 学习地图"
+  description="从 AI Agent 开发走向 LLM 推理服务：系统基础、模型显存、vLLM、性能实验、GPU 部署与求职证据。"
+>
+  <AgentKnowledgeMap
+    data={aiInfraKnowledge}
+    title="AI Infra 学习地图"
+    mapId="ai-infra"
+    panelSourceTitle="官方资料"
+    sourceLink={{ label: '学习路线与实验', href: '/ai-infra/learning-path/' }}
+    levelLabels={{ core: '基础', scenario: '实验', advanced: '进阶' }}
+  />
+</KnowledgeMapPage>

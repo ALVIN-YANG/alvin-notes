@@ -99,6 +99,13 @@ export default defineConfig({
           ],
         },
         {
+          label: 'AI Infra',
+          items: [
+            { label: 'AI Infra 学习地图', link: '/ai-infra-knowledge/' },
+            { label: '学习与实践', autogenerate: { directory: 'ai-infra' } },
+          ],
+        },
+        {
           label: 'AI 工作流',
           autogenerate: { directory: 'ai-workflow' }
         },

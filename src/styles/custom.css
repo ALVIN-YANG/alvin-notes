@@ -1223,3 +1223,25 @@ pre {
   .workflow-sources { grid-template-columns: 1fr; gap: 1rem; }
   .workflow-task-input span { display: block; margin: .2rem 0 0; }
 }
+
+/* Four learning maps share the existing homepage card layout. */
+.ability-map-showcase nav.ability-map-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.ability-map-showcase .ability-map-card.infra {
+  --map-accent: #27848d;
+  --map-wash: #dceced;
+}
+
+@media (max-width: 1200px) {
+  .ability-map-showcase nav.ability-map-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .ability-map-showcase nav.ability-map-grid {
+    grid-template-columns: 1fr;
+  }
+}
