@@ -14,6 +14,8 @@ const demoCommands = [
   'python3 rag-retrieval-demo.py --self-test',
   'python3 rag-retrieval-demo.py',
 ].join('\n');
+const sample = guide.tokenizer.example;
+const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsWith(' ') ? `空格＋${token.slice(1)}` : token;
 ---
 
 <StarlightPage frontmatter={frontmatter} sidebar={[]}>
@@ -31,6 +33,7 @@ const demoCommands = [
       <div class="rag-meta-row">
         <nav class="rag-jump-links" aria-label="RAG 模块目录">
           <a href="#understand">看懂原理</a>
+          <a href="#tokenizer">Tokenizer 与切块</a>
           <a href="#start">开始做</a>
           <a href="#troubleshoot">查问题</a>
           <a href="#verify">验证效果</a>
@@ -86,6 +89,85 @@ const demoCommands = [
       <p class="rag-section-note">{guide.fit} <a href="#source-retrieval">方法来源</a></p>
     </section>
 
+    <section class="rag-section" id="tokenizer" aria-labelledby="tokenizer-title">
+      <h2 id="tokenizer-title">{guide.tokenizer.title}</h2>
+      <div class="rag-principle-text">
+        <p>{guide.tokenizer.definition}</p>
+        <p>{guide.tokenizer.role} <a href="#source-tokenization">编码原理来源</a></p>
+      </div>
+      <figure class="rag-diagram">
+        <a href={guide.diagrams.tokenizer.src} target="_blank" rel="noreferrer" aria-label={`${guide.diagrams.tokenizer.title}，打开大图（新标签页）`}>
+          <img src={guide.diagrams.tokenizer.src} alt={guide.diagrams.tokenizer.alt} width={guide.diagrams.tokenizer.width} height={guide.diagrams.tokenizer.height} loading="lazy" decoding="async" />
+        </a>
+        <figcaption>{guide.diagrams.tokenizer.caption} 点击图片查看大图。</figcaption>
+      </figure>
+      <h3 class="rag-principle-heading">同一句话，实际会编码成什么</h3>
+      <p class="rag-token-example">“{sample.text}” <span>{sample.characters} 个字符，包含空格和标点。</span></p>
+      <p class="rag-section-note">{guide.tokenizer.sampleNote}</p>
+      <div class="rag-token-panel">
+        <h4>BGE tokenizer：{sample.embedding.contentTokens} 个正文 token + 2 个特殊 token = {sample.embedding.totalTokens}</h4>
+        <ul class="rag-token-strip" aria-label="BGE token 及对应词表编号">
+          {sample.embedding.tokens.map((token, index) => <li class:list={['rag-token-chip', { 'rag-special-token': sample.embedding.specialMask[index] === 1 }]}><span>{visibleToken(token)}</span><small>{sample.embedding.ids[index]}</small></li>)}
+        </ul>
+      </div>
+      <div class="rag-token-panel">
+        <h4>o200k_base：{sample.generation.totalTokens} 个纯文本 token</h4>
+        <ul class="rag-token-strip" aria-label="o200k_base token 及对应词表编号">
+          {sample.generation.tokens.map((token, index) => <li class="rag-token-chip"><span>{visibleToken(token)}</span><small>{sample.generation.ids[index]}</small></li>)}
+        </ul>
+      </div>
+      <p class="rag-section-note">每个小块上面是 token 表示，下面是词表编号。“空格＋元”表示同一个 token 包含前置空格和“元”。{guide.tokenizer.sampleMeaning}</p>
+      <details class="rag-detail">
+        <summary>编码细节：BPE、WordPiece、特殊 token 与 padding</summary>
+        <dl class="rag-definitions">{guide.tokenizer.pipeline.map((item) => <div><dt>{item.title}</dt><dd>{item.text}</dd></div>)}</dl>
+        <dl class="rag-definitions">{guide.tokenizer.algorithms.map((item) => <div><dt>{item.title}</dt><dd>{item.text}</dd></div>)}</dl>
+        <p><a href="#source-bpe-wordpiece">BPE 来源</a> · <a href="https://huggingface.co/learn/llm-course/chapter6/6" target="_blank" rel="noreferrer">WordPiece 原理</a></p>
+      </details>
+
+      <h3 class="rag-principle-heading">从 token ID 到 Embedding，中间还有模型计算</h3>
+      <dl class="rag-definitions">{guide.tokenizer.concepts.map((item) => <div><dt>{item.name}</dt><dd>{item.meaning}</dd></div>)}</dl>
+      <p class="rag-section-note">{guide.tokenizer.dimensionNote}</p>
+      <p class="rag-section-note">{guide.tokenizer.modelPairing} <a href="#source-bge">模型与聚合方式来源</a></p>
+      <p class="rag-section-note">{guide.tokenizer.generation}</p>
+
+      <h3 class="rag-principle-heading" id="chunking">{guide.tokenizer.chunking.title}</h3>
+      <p>{guide.tokenizer.chunking.rule}</p>
+      <p class="rag-section-note">{guide.tokenizer.chunking.limit}</p>
+      <div class="rag-token-case">
+        <p><strong>实测截断：{sample.truncation.fullTokens} → {sample.truncation.sentTokens} token，末尾的 500 元规定丢失。</strong></p>
+        <p>{guide.tokenizer.chunking.truncation}</p>
+        <p>{guide.tokenizer.chunking.repair}</p>
+      </div>
+      <details class="rag-detail">
+        <summary>Overlap 为什么增加成本，按 token 硬切为什么可能乱码</summary>
+        <p>{guide.tokenizer.chunking.overlap}</p>
+        <p>{guide.tokenizer.chunking.unicode} <a href="#source-tiktoken">tiktoken 来源</a></p>
+      </details>
+      <table class="rag-table rag-failure-table">
+        <thead><tr><th scope="col">哪个阶段</th><th scope="col">用什么计数</th><th scope="col">检查什么</th></tr></thead>
+        <tbody>{guide.tokenizer.limits.map((item) => <tr><th scope="row">{item.stage}</th><td><span class="rag-mobile-label">用什么计数：</span>{item.count}</td><td><span class="rag-mobile-label">检查什么：</span>{item.action}</td></tr>)}</tbody>
+      </table>
+
+      <h3 class="rag-principle-heading" id="token-budget">{guide.tokenizer.budget.title}</h3>
+      <p class="rag-token-formula">{guide.tokenizer.budget.formula}</p>
+      <p class="rag-section-note">{guide.tokenizer.budget.example}</p>
+      <p class="rag-section-note">{guide.tokenizer.budget.packing}</p>
+      <details class="rag-detail">
+        <summary>聊天模板怎样计数，实际费用怎样核对</summary>
+        <p>{guide.tokenizer.budget.template} <a href="#source-chat-template">聊天模板来源</a></p>
+        <p>{guide.tokenizer.budget.cost}</p>
+      </details>
+      <details class="rag-detail">
+        <summary>运行演练：看到真实编号、截断结果、分块与预算</summary>
+        <p>{guide.tokenizer.demoNote}</p>
+        <pre><code>{guide.tokenizer.demoCommands}</code></pre>
+        <p>本页输出使用 Python {sample.versions.python}、tokenizers {sample.versions.tokenizers}、tiktoken {sample.versions.tiktoken}。BGE tokenizer 固定为 <a href={`https://huggingface.co/${sample.versions.model}/blob/${sample.versions.revision}/tokenizer.json`} target="_blank" rel="noreferrer">{sample.versions.model} · {sample.versions.revision.slice(0, 7)}</a>。</p>
+        <p>按 128 token 上限切分后的各段长度：{sample.truncation.chunkTokenCounts.join('、')}。末尾规定保留。脚本还用 256 的教学窗口、64 输出预留、16 余量演示：选入 {sample.packing.selectedSources.join('、')}，跳过装不下的 {sample.packing.skippedSources.join('、')}，完整纯文本输入为 {sample.packing.inputTokens} token。该选择只演示容量检查，必要依据被跳过时仍需重新取较小片段或说明不足。</p>
+        <pre><code>{guide.tokenizer.code}</code></pre>
+        <p><a href="/examples/rag-tokenizer-demo.py">查看完整脚本：按句切块与完整输入预算的实现</a>。首次运行后可用本地缓存复现；示例没有加 overlap，也不解析表格，真实资料须保留条款结构。<a href="#source-input-length">长度与截断参数来源</a></p>
+      </details>
+    </section>
+
     <section class="rag-section" id="start" aria-labelledby="start-title">
       <h2 id="start-title">第一版按这五步做</h2>
       <table class="rag-table rag-build-table">
@@ -119,7 +201,7 @@ const demoCommands = [
     </section>
 
     <section class="rag-section" id="verify" aria-labelledby="verify-title">
-      <h2 id="verify-title">改完，用这五类问题验证</h2>
+      <h2 id="verify-title">改完，用这些问题验证</h2>
       <table class="rag-table rag-check-table">
         <thead><tr><th scope="col">测试什么</th><th scope="col">应该看到的结果</th></tr></thead>
         <tbody>{guide.checks.map((check) => <tr><th scope="row">{check.question}</th><td>{check.expected}</td></tr>)}</tbody>

@@ -1,0 +1,141 @@
+{
+  "text": "员工出差住宿，每晚最多报销 500 元。",
+  "characters": 20,
+  "versions": {
+    "python": "3.14.6",
+    "tokenizers": "0.22.2",
+    "tiktoken": "0.12.0",
+    "model": "BAAI/bge-small-zh-v1.5",
+    "revision": "7999e1d3359715c523056ef9478215996d62a620",
+    "tokenizerSha256": "48cea5d44424912a6fd1ea647bf4fe50b55ab8b1e5879c3275f80e339e8fae26"
+  },
+  "embedding": {
+    "contentTokens": 16,
+    "totalTokens": 18,
+    "tokens": [
+      "[CLS]",
+      "员",
+      "工",
+      "出",
+      "差",
+      "住",
+      "宿",
+      "，",
+      "每",
+      "晚",
+      "最",
+      "多",
+      "报",
+      "销",
+      "500",
+      "元",
+      "。",
+      "[SEP]"
+    ],
+    "ids": [
+      101,
+      1447,
+      2339,
+      1139,
+      2345,
+      857,
+      2162,
+      8024,
+      3680,
+      3241,
+      3297,
+      1914,
+      2845,
+      7218,
+      8195,
+      1039,
+      511,
+      102
+    ],
+    "specialMask": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "modelInputLimit": 512,
+    "vectorDimension": 512
+  },
+  "generation": {
+    "encoding": "o200k_base",
+    "totalTokens": 13,
+    "tokens": [
+      "员工",
+      "出",
+      "差",
+      "住宿",
+      "，每",
+      "晚",
+      "最多",
+      "报",
+      "销",
+      " ",
+      "500",
+      " 元",
+      "。"
+    ],
+    "ids": [
+      160511,
+      6390,
+      35142,
+      186427,
+      83802,
+      30393,
+      80254,
+      9432,
+      26103,
+      220,
+      3234,
+      86868,
+      788
+    ]
+  },
+  "truncation": {
+    "fullTokens": 648,
+    "sentTokens": 512,
+    "lostRule": true,
+    "visibleTail": "。这是背景资料。这是背景资料。这是背景资料。这是背景资料。这是背景资料",
+    "chunkLimit": 128,
+    "chunkTokenCounts": [
+      128,
+      128,
+      128,
+      128,
+      128,
+      18
+    ],
+    "rulePreserved": true
+  },
+  "packing": {
+    "window": 256,
+    "outputReserve": 64,
+    "margin": 16,
+    "inputTokens": 75,
+    "selectedSources": [
+      "[S1]",
+      "[S3]"
+    ],
+    "skippedSources": [
+      "[S2]"
+    ]
+  }
+}

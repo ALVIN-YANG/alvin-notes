@@ -33,6 +33,18 @@
 .rag-diagram > a { display: block; border-radius: .4rem; cursor: zoom-in; }
 .rag-diagram img { display: block; width: 100%; height: auto; border: 1px solid var(--sl-color-gray-5); border-radius: .4rem; }
 .rag-diagram figcaption { margin-top: .45rem; color: var(--sl-color-gray-2); font-size: .8rem; line-height: 1.65; }
+.rag-token-example { font-weight: 600; }
+.rag-token-example span { display: block; font-weight: 400; color: var(--sl-color-gray-2); font-size: .82rem; }
+.rag-token-panel { margin-top: .75rem; padding: .8rem 1rem; border: 1px solid var(--sl-color-gray-5); border-radius: .35rem; }
+.rag-token-panel h4 { margin: 0 0 .6rem; font-size: .88rem; font-weight: 600; }
+.rag-practice .rag-token-strip { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; }
+.rag-practice .rag-token-chip { display: flex; flex-direction: column; align-items: center; min-width: 2.7rem; margin: 0; padding: .3rem .5rem; border: 1px solid var(--sl-color-gray-5); border-radius: .25rem; background: var(--sl-color-surface); }
+.rag-token-chip span { font-size: .83rem; line-height: 1.5; }
+.rag-token-chip small { color: var(--sl-color-gray-2); font-family: var(--sl-font-mono); font-size: .68rem; line-height: 1.5; }
+.rag-practice .rag-special-token { border-color: var(--sl-color-accent); background: var(--sl-color-accent-low); }
+.rag-token-case { margin-top: .75rem; padding: .8rem 1rem; border-left: 3px solid var(--sl-color-accent); background: var(--sl-color-accent-low); }
+.rag-token-case p + p { margin-top: .5rem; }
+.rag-token-formula { padding: .65rem .85rem; background: var(--sl-color-accent-low); font-size: .9rem; font-weight: 600; }
 .rag-practice .rag-principle-heading { margin: 1.1rem 0 .5rem; font-size: .98rem; font-weight: 600; line-height: 1.5; }
 .rag-model-input { margin: 0; padding: .8rem 1rem; background: var(--sl-color-accent-low); border-radius: .35rem; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .86rem; line-height: 1.8; }
 .rag-model-input code { font-family: var(--sl-font); font-size: inherit; }

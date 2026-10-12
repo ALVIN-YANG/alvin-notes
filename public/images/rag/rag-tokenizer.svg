@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">检索和回答，各用配套的 tokenizer</title>
+  <desc id="desc">检索时，原文经配套 tokenizer 编码成整数 token ID，Embedding 模型再计算向量。向量匹配后取回原文。回答时，问题、原文和要求通过回答模型的 tokenizer 编码，由回答模型生成并解码答案。词表编号与语义向量是不同的表示。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#66715f"/></marker>
+  </defs>
+  <rect width="1280" height="640" rx="12" fill="#fafbf8"/>
+  <g font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#24292f" text-anchor="middle">
+    <text x="640" y="57" font-size="36" font-weight="650">检索和回答，各用配套的 tokenizer</text>
+    <text x="40" y="111" font-size="26" font-weight="600" text-anchor="start" fill="#385b78">检索时：把资料和问题分别编码</text>
+    <g fill="#eef3f6" stroke="#bacbd6" stroke-width="1.5">
+      <rect x="40" y="134" width="210" height="120" rx="8"/>
+      <rect x="284" y="134" width="216" height="120" rx="8"/>
+      <rect x="534" y="134" width="180" height="120" rx="8"/>
+      <rect x="748" y="134" width="216" height="120" rx="8"/>
+      <rect x="998" y="134" width="242" height="120" rx="8"/>
+    </g>
+    <g font-size="25" font-weight="600">
+      <text x="145" y="184">资料 / 问题原文</text>
+      <text x="392" y="173">Embedding</text><text x="392" y="203">tokenizer</text>
+      <text x="624" y="184">整数 token ID</text>
+      <text x="856" y="184">Embedding 模型</text>
+      <text x="1119" y="184">片段 / 问题向量</text>
+    </g>
+    <g font-size="20" fill="#505862">
+      <text x="145" y="225">两段原文，分别输入</text>
+      <text x="392" y="235">按配套词表编码</text>
+      <text x="624" y="225">如 [101, 1447, …]</text>
+      <text x="856" y="225">上下文计算，再聚合</text>
+      <text x="1119" y="225">本例为 512 维浮点向量</text>
+    </g>
+    <text x="640" y="299" font-size="25" fill="#526647">用向量匹配相关资料，然后取回原文</text>
+    <text x="40" y="349" font-size="26" font-weight="600" text-anchor="start" fill="#526647">回答时：把找回的原文放进本次输入</text>
+    <g fill="#eef2ea" stroke="#c0cbbb" stroke-width="1.5">
+      <rect x="40" y="372" width="210" height="120" rx="8"/>
+      <rect x="284" y="372" width="216" height="120" rx="8"/>
+      <rect x="534" y="372" width="180" height="120" rx="8"/>
+      <rect x="748" y="372" width="216" height="120" rx="8"/>
+      <rect x="998" y="372" width="242" height="120" rx="8"/>
+    </g>
+    <g font-size="25" font-weight="600">
+      <text x="145" y="417">问题 + 原文</text><text x="145" y="451">+ 回答要求</text>
+      <text x="392" y="411">回答模型的</text><text x="392" y="442">tokenizer</text>
+      <text x="624" y="422">整数 token ID</text>
+      <text x="856" y="422">回答模型</text>
+      <text x="1119" y="422">答案文本</text>
+    </g>
+    <g font-size="20" fill="#505862">
+      <text x="392" y="473">按自己的词表重新编码</text>
+      <text x="624" y="463">按对应词表编码</text>
+      <text x="856" y="463">根据本次输入生成</text>
+      <text x="1119" y="463">逐 token 生成，再解码</text>
+    </g>
+    <text x="640" y="552" font-size="28" font-weight="600">Token ID 是词表编号；Embedding 是模型计算的向量。</text>
+    <text x="640" y="597" font-size="24" fill="#505862">两套 tokenizer 可能不同：入库长度和生成预算分别计算。</text>
+  </g>
+  <g stroke="#66715f" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M254 194H276"/><path d="M504 194H526"/><path d="M718 194H740"/><path d="M968 194H990"/>
+    <path d="M254 432H276"/><path d="M504 432H526"/><path d="M718 432H740"/><path d="M968 432H990"/>
+  </g>
+</svg>
