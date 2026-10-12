@@ -1,10 +1,11 @@
 import tokenizerExample from './rag-tokenizer-example.json';
+import { ragRetrieval, ragRetrievalMarkdown } from './rag-retrieval';
 
 export const ragPractice = {
   title: 'RAG 实战速查',
   updatedAt: '2026-10-12',
-  summary: 'RAG 把资料检索和大模型回答接在一起：程序先找到相关原文，再把原文和问题一起交给模型。适合制度、产品手册、内部知识库等问题。',
-  limit: '资料找错了，或 AI 没按资料回答，答案仍然会错。找不到依据时，要说明缺少资料。',
+  summary: 'RAG 让大模型根据外部资料回答：先整理资料并建立搜索索引，再找到用户有权查看的生效条款，按输入容量选取原文，交给模型组织答案和来源。适合制度、产品手册、内部知识库等问题。',
+  limit: '近邻分数不是正确概率。缺少必要条款时说明缺口，不能用模型常识补出公司规定。',
   diagrams: {
     tokenizer: {
       src: '/images/rag/rag-tokenizer-cel.webp',
@@ -145,6 +146,16 @@ export const ragPractice = {
   ],
   failures: [
     {
+      symptom: '设了 Top-K=10，却只返回两条资料',
+      inspect: '先确认范围内是否有足够资料，再看 ANN 候选预算、过滤条件和实际执行计划。',
+      fix: '扩大搜索候选或使用引擎支持的迭代扫描，再对照精确搜索；权限和版本限制继续保留。',
+    },
+    {
+      symptom: '金额能搜到，超额承担条款却没进入回答',
+      inspect: '分别看候选、重排和实际上下文里是否有两条必要依据，是否被分数阈值或去重删掉。',
+      fix: '固定问题对照候选 K 与重排配置；必要时取同版本相邻条款，按预算保留完整条件再生成。',
+    },
+    {
       symptom: '原文有 500 元，片段末尾却没参与向量计算',
       inspect: '对比完整 token 数、Embedding 输入上限和实际截断后的原文范围。',
       fix: '修入库切块，超限时按句子或条款拆分并重新向量化；不能只打开 truncation 丢弃尾部。',
@@ -191,6 +202,8 @@ export const ragPractice = {
     },
   ],
   checks: [
+    { question: 'ANN 叠加权限和版本过滤', expected: '结果全部可用，检查是否足量及是否漏掉精确搜索能找到的近邻；随后核对业务必要条款。' },
+    { question: '两条依据才能完整回答的问题', expected: '必要条款都进入上下文，答案答全，引用分别支持金额与适用条件。' },
     { question: '关键条款在长文末尾', expected: '分块后这条规定能进入 Embedding 输入，检索和最终回答仍使用它；没有靠截断丢掉尾部。' },
     { question: '长历史加多个检索片段', expected: '最终输入与输出预留满足模型限制，必要条件和来源没有被截掉。' },
     { question: '制度明确规定的问题', expected: '金额与条件正确，引用能定位到对应条款。' },
@@ -227,11 +240,11 @@ export const ragPractice = {
 先沿用项目现有语言、认证、数据库和模型接口，不另建一套平台。
 
 入库：保存原文件和不可变版本，读出文字，按条款分段；每段保存文件版本、章节、页码、权限和处理状态。
-查询：身份来自服务端认证；先限定可访问资料和生效版本，再检索。将相关条款、条件和来源编号交给模型。
+查询：身份来自服务端认证；限定可访问资料、生效版本和向量空间。明确距离指标、候选 Top-K 和索引搜索预算，记录实际返回数；需要时比较混合检索与重排。按输入预算将完整条款、条件和来源编号交给模型。
 回答：返回答案及可定位的来源；没有资料则说明不足，资料冲突则显示冲突。相似度不能当作正确概率。
 更新：新版本全部处理成功后再切换；处理任务可重试且不会重复写片段；删除和撤权同步处理索引与缓存。
 记录：同一次请求保存资料版本、过滤条件、搜索结果 ID、实际交给模型的片段 ID、回答、引用、耗时和用量；敏感内容按需要脱敏。
-验收：覆盖正常问答、同义问法、无答案、新旧版本和无权限账号；固定环境比较新旧版本，检查真实资料与结果。
+验收：覆盖正常与多轮问答、同义问法、无答案、新旧版本和无权限账号；固定环境分别检查 ANN 对照精确近邻、人工标注的必要条款、实际上下文和回答引用。
 停止条件：资料缺失、权限来源不明或关键来源冲突时，说明具体缺口，不编造规则。`,
   recap: [
     '按条款分段，token 超限先拆分，再检查能不能搜到。',
@@ -240,6 +253,7 @@ export const ragPractice = {
     '每次改动，都用相同问题重新验证。',
   ],
   sources: [
+    ...ragRetrieval.sources,
     { id: 'bpe-wordpiece', title: 'Hugging Face 课程：BPE 与 WordPiece 的训练和编码', href: 'https://huggingface.co/learn/llm-course/chapter6/5', supports: 'BPE 合并规则与优先级的教学说明；相邻的第 6 节说明 WordPiece 的最长子词匹配。本页 abab 为自定义玩具例子，真实词表用脚本输出核对。' },
     { id: 'tokenization', title: 'Hugging Face：tokenization pipeline', href: 'https://huggingface.co/docs/tokenizers/pipeline', supports: '说明规范化、预切分、子词与编号、特殊 token 等处理。具体规则以模型配套 tokenizer 配置为准。' },
     { id: 'tiktoken', title: 'OpenAI tiktoken：BPE 与字节编码', href: 'https://github.com/openai/tiktoken', supports: '本例使用 o200k_base 编码，token 数不通用于所有模型；单 token 的字节不一定是完整字符，详见仓库 core.py。' },
@@ -331,6 +345,7 @@ export function ragPracticeMarkdown(): string {
     `\`\`\`python\n${guide.tokenizer.code}\n\`\`\``,
     `完整脚本：https://blog.mlxb.cc/examples/rag-tokenizer-demo.py。使用 Python ${guide.tokenizer.example.versions.python}、tokenizers ${guide.tokenizer.example.versions.tokenizers}、tiktoken ${guide.tokenizer.example.versions.tiktoken}，BGE 修订 ${guide.tokenizer.example.versions.revision}。`,
     `按 ${guide.tokenizer.example.truncation.chunkLimit} token 上限切块后的长度：${guide.tokenizer.example.truncation.chunkTokenCounts.join('、')}；末尾规定保留。纯文本预算演练使用 ${guide.tokenizer.example.packing.window} 窗口、${guide.tokenizer.example.packing.outputReserve} 输出预留和 ${guide.tokenizer.example.packing.margin} 余量，选入 ${guide.tokenizer.example.packing.selectedSources.join('、')}，跳过 ${guide.tokenizer.example.packing.skippedSources.join('、')}，输入 ${guide.tokenizer.example.packing.inputTokens} token。选入结果只演示容量检查，未证明依据充分。`,
+    ragRetrievalMarkdown(),
     '## 第一版怎么做',
     table(['做什么', '具体做法', '检查结果'], guide.steps.map((step) => [step.title, step.action, step.check])),
     '### 给模型的回答要求',

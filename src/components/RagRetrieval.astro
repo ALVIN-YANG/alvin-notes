@@ -1,0 +1,131 @@
+---
+import { ragRetrieval as guide } from '../data/rag-retrieval';
+const records = [...guide.example.records].sort((a, b) => b.cosine - a.cosine);
+---
+
+<section class="rag-section" id="vector-search" aria-labelledby="vector-search-title">
+  <h2 id="vector-search-title">{guide.vector.title}</h2>
+  <p>{guide.vector.definition} <a href="#source-vector-records">记录结构来源</a></p>
+  <figure class="rag-diagram">
+    <a href={guide.diagrams.vector.src} target="_blank" rel="noreferrer" aria-label="向量库与 Top-K，打开大图（新标签页）"><img src={guide.diagrams.vector.src} alt={guide.diagrams.vector.alt} width="1536" height="1024" loading="lazy" decoding="async" /></a>
+    <figcaption>{guide.diagrams.vector.caption} 点击图片查看大图。</figcaption>
+  </figure>
+  <details class="rag-detail">
+    <summary>向量库保存什么，一次查询经过哪几步</summary>
+    <dl class="rag-definitions">{guide.vector.storage.map((item) => <div><dt>{item.name}</dt><dd>{item.text}</dd></div>)}</dl>
+    <p>{guide.vector.boundary} <a href="#source-faiss-library">FAISS 定位</a> · <a href="#source-pgvector">pgvector 查询</a></p>
+    <dl class="rag-definitions">{guide.vector.steps.map((step, index) => <div><dt>{index + 1}. {step.title}</dt><dd>{step.text}</dd></div>)}</dl>
+  </details>
+  <h3 class="rag-principle-heading">把 Top-2 算一遍：旧版和无权记录不能胜出</h3>
+  <p><strong>问题：{guide.example.question}</strong></p>
+  <p class="rag-section-note">{guide.example.note}</p>
+  <p class="rag-token-formula">{guide.vector.formula}</p>
+  <table class="rag-table rag-vector-table">
+    <thead><tr><th scope="col">ID</th><th scope="col">条款</th><th scope="col">人工向量</th><th scope="col">余弦相似度</th><th scope="col">查询范围</th></tr></thead>
+    <tbody>{records.map((row) => <tr class:list={{ 'rag-record-unavailable': !row.eligible }}>
+      <th scope="row">{row.id}</th>
+      <td>{row.text}</td>
+      <td><span class="rag-mobile-label">向量：</span>[{row.vector.join(', ')}]</td>
+      <td><span class="rag-mobile-label">余弦相似度：</span>{row.cosine.toFixed(2)}</td>
+      <td>{row.eligible ? guide.example.filteredResult.includes(row.id) ? '可用，进入 Top-2' : '可用，排在 Top-2 外' : row.current ? '财务专用，无权限' : '旧版，排除'}</td>
+    </tr>)}</tbody>
+  </table>
+  <p class="rag-section-note">{guide.vector.math}</p>
+  <p class="rag-section-note">{guide.vector.limit}</p>
+  <details class="rag-detail">
+    <summary>余弦、点积、L2 怎样影响排序</summary>
+    <dl class="rag-definitions">{guide.vector.measures.map((item) => <div><dt>{item.name}</dt><dd>{item.text}</dd></div>)}</dl>
+    <p>{guide.vector.normalization} <a href="#source-vector-metrics">距离指标来源</a></p>
+  </details>
+  <details class="rag-detail">
+    <summary>运行 SQL 精确检索演练，查看 pgvector 查询写法</summary>
+    <p>{guide.vector.demoNote}</p>
+    <pre><code>{guide.vector.demoCommands}</code></pre>
+    <p>输出 Top-{guide.example.topK} 为 {guide.example.filteredResult.join('、')}；若先从全库取前 {guide.example.topK} 条，拿到 {guide.example.unfilteredTopK.join('、')}，再过滤后为空。演练中 SQLite 实际为 A、D、E 计算距离；它没有近似索引。</p>
+    <p><a href="/examples/rag-vector-search-demo.py">查看完整脚本</a>，包含范围隔离、错误过滤顺序、距离换算、RRF、指标与重复写入检查。</p>
+    <pre><code>{guide.vector.sql}</code></pre>
+    <p>{guide.vector.sqlNote} <a href="#source-pgvector">pgvector 来源</a></p>
+  </details>
+</section>
+
+<section class="rag-section" id="vector-index" aria-labelledby="vector-index-title">
+  <h2 id="vector-index-title">{guide.index.title}</h2>
+  <p>{guide.index.definition}</p>
+  <figure class="rag-diagram">
+    <a href={guide.diagrams.index.src} target="_blank" rel="noreferrer" aria-label="精确搜索、HNSW 与 IVF，打开大图（新标签页）"><img src={guide.diagrams.index.src} alt={guide.diagrams.index.alt} width="1536" height="1024" loading="lazy" decoding="async" /></a>
+    <figcaption>{guide.diagrams.index.caption} 点击图片查看大图。</figcaption>
+  </figure>
+  <details class="rag-detail">
+    <summary>精确搜索、分层图和分簇搜索的具体过程</summary>
+    <table class="rag-table rag-failure-table">
+      <thead><tr><th scope="col">方法</th><th scope="col">怎样搜索</th><th scope="col">取舍与检查</th></tr></thead>
+      <tbody>{guide.index.methods.map((item) => <tr><th scope="row">{item.name}</th><td>{item.how}</td><td>{item.check}</td></tr>)}</tbody>
+    </table>
+    <p><a href="#source-ann-hnsw">HNSW 原始论文</a> · <a href="#source-ann-ivf">IVFFlat 与 nprobe</a></p>
+  </details>
+  <h3 class="rag-principle-heading">这几个数量要分开设置</h3>
+  <dl class="rag-definitions">{guide.index.parameters.map((item) => <div><dt>{item.name}</dt><dd>{item.meaning}</dd></div>)}</dl>
+  <h3 class="rag-principle-heading">为什么有资料，过滤后仍不足 K 条</h3>
+  <p>{guide.index.filtering}</p>
+  <p class="rag-section-note">{guide.index.fixes} <a href="#source-pgvector">引擎行为来源</a></p>
+  <details class="rag-detail">
+    <summary>索引怎样验证，向量容量怎样估算</summary>
+    <p>{guide.index.baseline}</p>
+    <p>{guide.index.capacity}</p>
+  </details>
+</section>
+
+<section class="rag-section" id="retrieval-ranking" aria-labelledby="retrieval-ranking-title">
+  <h2 id="retrieval-ranking-title">{guide.ranking.title}</h2>
+  <p>{guide.ranking.definition}</p>
+  <figure class="rag-diagram">
+    <a href={guide.diagrams.ranking.src} target="_blank" rel="noreferrer" aria-label="混合检索、融合、重排与上下文，打开大图（新标签页）"><img src={guide.diagrams.ranking.src} alt={guide.diagrams.ranking.alt} width="1536" height="1024" loading="lazy" decoding="async" /></a>
+    <figcaption>{guide.diagrams.ranking.caption} 点击图片查看大图。</figcaption>
+  </figure>
+  <dl class="rag-definitions">{guide.ranking.methods.map((item) => <div><dt>{item.name}</dt><dd>{item.text}</dd></div>)}</dl>
+  <p class="rag-section-note"><a href="#source-ranking">排序方法来源</a> · <a href="#source-cross-encoder">Cross-Encoder</a> · <a href="#source-text-analysis">全文检索分析器</a></p>
+  <details class="rag-detail">
+    <summary>把 RRF 分数算出来</summary>
+    <p class="rag-token-formula">{guide.ranking.rrfFormula}</p>
+    <p>{guide.ranking.rrfNote}</p>
+    <p>脚本计算结果：{guide.example.rrf.result.map((row) => `${row.id}=${row.score.toFixed(6)}`).join('；')}。关键词排名是教学设定，没有运行 BM25。<a href="#source-rrf">RRF 来源</a></p>
+  </details>
+  <details class="rag-detail">
+    <summary>多轮问题、父段与相邻条款、K 与上下文预算</summary>
+    <p>{guide.ranking.query}</p>
+    <p>{guide.ranking.context}</p>
+    <p>{guide.ranking.k} <a href="#token-budget">查看完整输入预算</a></p>
+  </details>
+  <h3 class="rag-principle-heading">最终回答要有足够依据</h3>
+  <p>{guide.ranking.answer}</p>
+  <details class="rag-detail">
+    <summary>资料里夹着指令，程序怎样守住边界</summary>
+    <p>{guide.ranking.injection} <a href="#source-rag-security">资料内指令来源</a></p>
+  </details>
+</section>
+
+<section class="rag-section" id="knowledge-lifecycle" aria-labelledby="knowledge-lifecycle-title">
+  <h2 id="knowledge-lifecycle-title">{guide.operations.title}</h2>
+  <p>{guide.operations.definition}</p>
+  <figure class="rag-diagram">
+    <a href={guide.diagrams.lifecycle.src} target="_blank" rel="noreferrer" aria-label="资料更新、留痕与评测，打开大图（新标签页）"><img src={guide.diagrams.lifecycle.src} alt={guide.diagrams.lifecycle.alt} width="1536" height="1024" loading="lazy" decoding="async" /></a>
+    <figcaption>{guide.diagrams.lifecycle.caption} 点击图片查看大图。</figcaption>
+  </figure>
+  <dl class="rag-definitions">{guide.operations.updates.map((item) => <div><dt>{item.name}</dt><dd>{item.text}</dd></div>)}</dl>
+  <details class="rag-detail">
+    <summary>同一次请求要记录哪些信息</summary>
+    <p>{guide.operations.trace}</p>
+  </details>
+  <h3 class="rag-principle-heading">分别检查索引、证据与回答</h3>
+  <dl class="rag-definitions">{guide.operations.metrics.map((item) => <div><dt>{item.name}</dt><dd>{item.text}</dd></div>)}</dl>
+  <details class="rag-detail">
+    <summary>对照 A、D、E，理解两个指标的分母</summary>
+    <p>本问题的必要证据为 {guide.example.requiredEvidence.join('、')}，E 为餐费条款，不属于所需依据。下表由脚本计算。</p>
+    <table class="rag-table rag-check-table">
+      <thead><tr><th scope="col">返回结果</th><th scope="col">必要证据 Recall / 候选 Precision</th></tr></thead>
+      <tbody>{guide.example.metrics.map((row) => <tr><th scope="row">{row.retrieved.join('、')}</th><td>{(row.recall * 100).toFixed(0)}% / {(row.precision * 100).toFixed(1)}%</td></tr>)}</tbody>
+    </table>
+    <p>找到必要条款不等于模型一定正确使用。<a href="#source-ir-metrics">Precision / Recall 定义</a></p>
+  </details>
+  <p class="rag-section-note">{guide.operations.cases}</p>
+</section>

@@ -1,0 +1,161 @@
+{
+  "question": "住酒店每晚最多报销多少，超出的部分谁承担？",
+  "queryVector": [
+    1.0,
+    0.0
+  ],
+  "note": "人工二维单位向量；实跑 SQLite 全量比较，不是 Embedding、HNSW 或模型质量测试。",
+  "records": [
+    {
+      "id": "A",
+      "source": "差旅制度第8条",
+      "version": "v2",
+      "group": "employee",
+      "current": true,
+      "text": "员工出差住宿，每晚最多报销500元。",
+      "vector": [
+        0.8,
+        0.6
+      ],
+      "cosine": 0.8,
+      "cosineDistance": 0.2,
+      "l2": 0.632456,
+      "eligible": true
+    },
+    {
+      "id": "B",
+      "source": "旧版差旅制度第8条",
+      "version": "v1",
+      "group": "employee",
+      "current": false,
+      "text": "员工出差住宿，每晚最多报销800元。",
+      "vector": [
+        1.0,
+        0.0
+      ],
+      "cosine": 1.0,
+      "cosineDistance": 0.0,
+      "l2": 0.0,
+      "eligible": false
+    },
+    {
+      "id": "C",
+      "source": "财务专用预算",
+      "version": "v2",
+      "group": "finance",
+      "current": true,
+      "text": "财务专用预算：某专项住宿预算900元。",
+      "vector": [
+        0.96,
+        0.28
+      ],
+      "cosine": 0.96,
+      "cosineDistance": 0.04,
+      "l2": 0.282843,
+      "eligible": false
+    },
+    {
+      "id": "D",
+      "source": "差旅制度第9条",
+      "version": "v2",
+      "group": "employee",
+      "current": true,
+      "text": "住宿超过报销上限的部分，由员工个人承担。",
+      "vector": [
+        0.6,
+        0.8
+      ],
+      "cosine": 0.6,
+      "cosineDistance": 0.4,
+      "l2": 0.894427,
+      "eligible": true
+    },
+    {
+      "id": "E",
+      "source": "差旅制度第10条",
+      "version": "v2",
+      "group": "employee",
+      "current": true,
+      "text": "餐费按另行规定的标准报销。",
+      "vector": [
+        0.0,
+        1.0
+      ],
+      "cosine": 0.0,
+      "cosineDistance": 1.0,
+      "l2": 1.414214,
+      "eligible": true
+    }
+  ],
+  "topK": 2,
+  "filteredResult": [
+    "A",
+    "D"
+  ],
+  "filteredScanIds": [
+    "A",
+    "D",
+    "E"
+  ],
+  "unfilteredTopK": [
+    "B",
+    "C"
+  ],
+  "filterAfterTopK": [],
+  "rrf": {
+    "constant": 60,
+    "keywordRanking": [
+      "A",
+      "D"
+    ],
+    "vectorRanking": [
+      "A",
+      "D",
+      "E"
+    ],
+    "result": [
+      {
+        "id": "A",
+        "score": 0.032787
+      },
+      {
+        "id": "D",
+        "score": 0.032258
+      },
+      {
+        "id": "E",
+        "score": 0.015873
+      }
+    ]
+  },
+  "requiredEvidence": [
+    "A",
+    "D"
+  ],
+  "metrics": [
+    {
+      "retrieved": [
+        "A"
+      ],
+      "recall": 0.5,
+      "precision": 1.0
+    },
+    {
+      "retrieved": [
+        "A",
+        "D"
+      ],
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    {
+      "retrieved": [
+        "A",
+        "D",
+        "E"
+      ],
+      "recall": 1.0,
+      "precision": 0.6666666666666666
+    }
+  ]
+}

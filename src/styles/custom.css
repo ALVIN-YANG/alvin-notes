@@ -70,6 +70,12 @@
 .rag-failure-table thead th:nth-child(2) { width: 34%; }
 .rag-failure-table thead th:nth-child(3) { width: 42%; }
 .rag-check-table thead th:first-child { width: 36%; }
+.rag-vector-table thead th:nth-child(1) { width: 6%; }
+.rag-vector-table thead th:nth-child(2) { width: 34%; }
+.rag-vector-table thead th:nth-child(3) { width: 20%; }
+.rag-vector-table thead th:nth-child(4) { width: 14%; }
+.rag-vector-table thead th:nth-child(5) { width: 26%; }
+.rag-practice .rag-record-unavailable th, .rag-record-unavailable td { color: var(--sl-color-gray-2); }
 .rag-step-number { display: inline-block; margin-right: .4rem; font-family: var(--sl-font-mono); font-size: .8rem; color: var(--sl-color-gray-2); }
 .rag-mobile-label { display: none; }
 .rag-detail { margin-top: .75rem; padding-top: .65rem; border-top: 1px solid var(--sl-color-gray-5); font-size: .88rem; }

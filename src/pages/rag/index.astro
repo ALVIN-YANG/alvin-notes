@@ -1,5 +1,6 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import RagRetrieval from '../../components/RagRetrieval.astro';
 import { ragPractice as guide, ragPracticeMarkdown } from '../../data/rag-practice';
 
 const frontmatter = {
@@ -34,6 +35,10 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
         <nav class="rag-jump-links" aria-label="RAG 模块目录">
           <a href="#understand">看懂原理</a>
           <a href="#tokenizer">Tokenizer 与切块</a>
+          <a href="#vector-search">向量库 / Top-K</a>
+          <a href="#vector-index">向量索引</a>
+          <a href="#retrieval-ranking">混合检索 / 重排</a>
+          <a href="#knowledge-lifecycle">更新 / 评测</a>
           <a href="#start">开始做</a>
           <a href="#troubleshoot">查问题</a>
           <a href="#verify">验证效果</a>
@@ -167,6 +172,8 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
         <p><a href="/examples/rag-tokenizer-demo.py">查看完整脚本：按句切块与完整输入预算的实现</a>。首次运行后可用本地缓存复现；示例没有加 overlap，也不解析表格，真实资料须保留条款结构。<a href="#source-input-length">长度与截断参数来源</a></p>
       </details>
     </section>
+
+    <RagRetrieval />
 
     <section class="rag-section" id="start" aria-labelledby="start-title">
       <h2 id="start-title">第一版按这五步做</h2>
