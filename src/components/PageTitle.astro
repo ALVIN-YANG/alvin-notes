@@ -19,16 +19,6 @@ const toPlainText = (value: string) => value
 const plainText = toPlainText(body);
 const showReader = slug !== '' && entry.data.template !== 'splash'
   && !slug.startsWith('tools/') && Boolean(plainText);
-const fallbackDescription = body
-  .split(/\n\s*\n/)
-  .map((paragraph) => paragraph.trim())
-  .filter((paragraph) => !/^(?:#{1,6}\s|```|~~~|<\w|https?:\/\/|!?\[[^\]]*\]\([^)]*\)$|import\s|export\s|[-*+]\s|\d+\.\s)/.test(paragraph))
-  .map((paragraph) => toPlainText(paragraph))
-  .find((paragraph) => paragraph.length >= 20);
-const description = entry.data.description || fallbackDescription;
-const articleDescription = description && description.length > 120
-  ? `${description.slice(0, 120).trimEnd()}…`
-  : description;
 
 const chineseCharacters = (plainText.match(/[\u3400-\u9fff]/g) || []).length;
 const latinWords = (plainText.match(/[A-Za-z][A-Za-z'-]*/g) || []).length;
@@ -52,7 +42,6 @@ const updatedLabel = updatedDate
   ) : (
     <header class="article-heading">
       <h1 id="_top">{entry.data.title}</h1>
-      {articleDescription && <p class="article-description">{articleDescription}</p>}
       {
         (updatedDate || showReadingTime || showViewCount) && (
           <p class="article-meta">
@@ -107,15 +96,6 @@ const updatedLabel = updatedDate
     text-wrap: balance;
   }
 
-  .article-description {
-    max-width: 42rem;
-    margin: 0.85rem 0 0;
-    color: var(--sl-color-gray-2);
-    font-size: 0.98rem;
-    line-height: 1.75;
-    text-wrap: pretty;
-  }
-
   .article-meta {
     display: flex;
     flex-wrap: wrap;
@@ -140,10 +120,6 @@ const updatedLabel = updatedDate
 
     h1 {
       font-size: 1.75rem;
-    }
-
-    .article-description {
-      font-size: 0.94rem;
     }
   }
 </style>

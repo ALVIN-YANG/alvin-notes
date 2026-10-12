@@ -16,6 +16,11 @@ Personal tech site of Alvin Yang, built with Astro 5 + Starlight, deployed on Ve
 - 概要写实质内容，不写“本文将介绍”等目录预告。不用背景铺陈、专家介绍、术语分类或代码参数开场。
 - 概要之后再用具体场景展开。优先展示实际输入、处理过程与前后差别；较长的配置和次要例外放到后面或折叠区，不重复扩写同一个结论。
 
+## 文章表达与页面
+
+- 博客内容必须简洁、直白、高知识密度。删除套话、目录预告、重复结论和不增加事实或解释的文字。
+- 所有文章页不显示标题下的 description 摘要，也不自动摘取正文生成摘要；正文直接进入定义、核心结论或必要事实。
+
 ## Project
 
 - **Framework**: Astro 5.x (`astro`, ESM, `type: "module"`).

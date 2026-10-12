@@ -87,7 +87,6 @@ function compactDate(value = '') {
           <span>VOL. {issue}</span>
         </div>
         <h1 id="_top">{report.headline}</h1>
-        <p>{entry.data.description}</p>
         <div class="report-meta">
           <time datetime={dateRange.end}>{dateRange.start ? `${dateRange.start} — ${dateRange.end}` : dateRange.end}</time>
           {report.storyCount > 0 && <span>{report.storyCount} 条信息</span>}
@@ -203,7 +202,6 @@ function compactDate(value = '') {
   .report-masthead::after { content: ''; position: absolute; inset: auto -3.5rem -4.5rem auto; width: 11rem; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(71,118,197,.13), transparent 68%); pointer-events: none; }
   .issue-line { display: flex; flex-wrap: wrap; gap: .65rem 1.1rem; }
   .report-masthead h1 { max-width: 35rem; margin: .85rem 0 .7rem; color: var(--report-ink); font-family: var(--sl-font-heading); font-size: clamp(1.85rem, 4vw, 2.65rem); font-weight: 650; letter-spacing: -.025em; line-height: 1.22; text-wrap: balance; }
-  .report-masthead > p { max-width: 38rem; margin: 0; color: var(--report-muted); font-size: .92rem; line-height: 1.7; }
   .report-meta { display: flex; flex-wrap: wrap; gap: .45rem 1rem; margin-top: 1.25rem; color: var(--report-muted); font-family: var(--sl-font-mono); font-size: .68rem; font-variant-numeric: tabular-nums; }
   .report-meta span { position: relative; }
   .report-meta span::before { content: '·'; margin-right: 1rem; color: #a5aaa5; }
