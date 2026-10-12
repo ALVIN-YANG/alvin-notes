@@ -1,0 +1,98 @@
+---
+import { JSDOM } from 'jsdom';
+
+// Build the outline from the rendered headings so edits need no second title list.
+const dom = new JSDOM(await Astro.slots.render('default'));
+const document = dom.window.document;
+const usedIds = new Set([...document.querySelectorAll('[id]')].map((element) => element.id));
+const groups: { id: string; text: string; children: { id: string; text: string }[] }[] = [];
+for (const heading of document.querySelectorAll('.rag-practice h2, .rag-practice h3')) {
+  const text = heading.textContent?.trim() || '';
+  if (!heading.id) {
+    const base = `rag-${text.toLowerCase().replace(/\s+/g, '-').replace(/[^\p{L}\p{N}-]/gu, '')}`;
+    let id = base;
+    for (let suffix = 2; usedIds.has(id); suffix++) id = `${base}-${suffix}`;
+    heading.id = id;
+    usedIds.add(id);
+  }
+  if (heading.tagName === 'H2' || heading.closest('footer') || !groups.length) {
+    groups.push({ id: heading.id, text, children: [] });
+  } else {
+    groups.at(-1)!.children.push({ id: heading.id, text });
+  }
+}
+const content = document.body.innerHTML;
+dom.window.close();
+---
+
+<div class="rag-layout">
+  <aside class="rag-outline not-content" data-pagefind-ignore>
+    <nav class="rag-outline-desktop" aria-labelledby="rag-outline-title">
+      <p id="rag-outline-title" class="rag-outline-title">大纲目录</p>
+      <ol class="rag-outline-list">
+        {groups.map((group) => <li>
+          <a href={`#${encodeURIComponent(group.id)}`}>{group.text}</a>
+          {group.children.length > 0 && <ol>{group.children.map((child) => <li><a href={`#${encodeURIComponent(child.id)}`}>{child.text}</a></li>)}</ol>}
+        </li>)}
+      </ol>
+    </nav>
+    <div class="rag-outline-mobile">
+      <label for="rag-outline-select">目录</label>
+      <select id="rag-outline-select" aria-label="大纲目录，选择章节跳转">
+        <option value="_top">选择章节</option>
+        {groups.map((group) => <optgroup label={group.text}>
+          <option value={group.id}>{group.text}</option>
+          {group.children.map((child) => <option value={child.id}>{child.text}</option>)}
+        </optgroup>)}
+      </select>
+    </div>
+  </aside>
+  <div class="rag-outline-content" set:html={content} />
+</div>
+
+<script>
+  const outline = document.querySelector<HTMLElement>('.rag-outline');
+  const article = document.querySelector('.rag-practice');
+  const select = outline?.querySelector<HTMLSelectElement>('select');
+  const links = [...(outline?.querySelectorAll<HTMLAnchorElement>('a') || [])];
+  const headings = [...(article?.querySelectorAll<HTMLElement>('h2[id], h3[id]') || [])];
+  const list = outline?.querySelector<HTMLElement>('.rag-outline-list');
+  let currentId = '';
+  let scheduled = false;
+
+  const update = () => {
+    scheduled = false;
+    const offset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    let id = '_top';
+    for (const heading of headings) {
+      if (heading.getBoundingClientRect().top > offset + 1) break;
+      id = heading.id;
+    }
+    if (id === currentId) return;
+    currentId = id;
+    if (select) select.value = id;
+    for (const link of links) {
+      if (decodeURIComponent(link.hash.slice(1)) === id) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+    const active = outline?.querySelector<HTMLElement>('[aria-current="location"]');
+    if (active && list && list.clientHeight) {
+      const item = active.getBoundingClientRect();
+      const bounds = list.getBoundingClientRect();
+      if (item.top < bounds.top) list.scrollTop += item.top - bounds.top;
+      else if (item.bottom > bounds.bottom) list.scrollTop += item.bottom - bounds.bottom;
+    }
+  };
+  const scheduleUpdate = () => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(update);
+  };
+  select?.addEventListener('change', () => {
+    location.hash = encodeURIComponent(select.value);
+  });
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  window.addEventListener('hashchange', scheduleUpdate);
+  update();
+</script>

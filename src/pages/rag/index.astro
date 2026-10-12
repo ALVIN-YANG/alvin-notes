@@ -1,6 +1,7 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import RagRetrieval from '../../components/RagRetrieval.astro';
+import RagOutline from '../../components/RagOutline.astro';
 import { ragPractice as guide, ragPracticeMarkdown } from '../../data/rag-practice';
 
 const frontmatter = {
@@ -15,6 +16,7 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
 ---
 
 <StarlightPage frontmatter={frontmatter} sidebar={[]}>
+  <RagOutline>
   <article class="rag-practice not-content" aria-labelledby="_top">
     <header class="rag-intro">
       <div class="rag-title-row">
@@ -225,6 +227,7 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
     </footer>
     <script type="application/json" data-rag-markdown set:html={serializedMarkdown}></script>
   </article>
+  </RagOutline>
 </StarlightPage>
 
 <script>

@@ -1,5 +1,33 @@
 @import './fonts.css';
 
+.sl-container:has(.rag-layout) { max-width: 85rem; }
+.rag-layout { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 2rem; }
+.rag-outline-content { min-width: 0; grid-column: 1; grid-row: 1; }
+.rag-outline { grid-column: 2; grid-row: 1; position: sticky; top: calc(var(--sl-nav-height) + 1rem); align-self: start; }
+.rag-outline-title { margin: 0 0 .65rem; font-size: .9rem; font-weight: 600; }
+.rag-outline-list { margin: 0; padding: 0; list-style: none; max-height: calc(100dvh - var(--sl-nav-height) - 4rem); overflow-y: auto; scrollbar-width: thin; }
+.rag-outline-list ol { margin: .15rem 0 .5rem; padding: 0 0 0 .85rem; list-style: none; border-left: 1px solid var(--sl-color-gray-5); }
+.rag-outline-list li { margin: 0; }
+nav.rag-outline-desktop .rag-outline-list a { display: block; padding: .3rem .5rem; color: var(--sl-color-gray-2); font-size: .8rem; line-height: 1.5; text-decoration: none; overflow-wrap: anywhere; }
+.rag-outline-list > li > a { font-weight: 600; }
+.rag-outline-desktop .rag-outline-list a:hover, .rag-outline-desktop .rag-outline-list a[aria-current] { color: var(--sl-color-accent-high); background: var(--sl-color-accent-low); }
+.rag-outline a:focus-visible, .rag-outline select:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 2px; }
+.rag-outline-mobile { display: none; }
+.rag-layout .rag-section, .rag-layout .rag-practice :is(h2, h3)[id] { scroll-margin-top: 0; }
+@media (max-width: 71.99rem) {
+	html:has(.rag-layout) { scroll-padding-top: calc(var(--sl-nav-height) + 3.25rem + 1.5rem); }
+	.rag-layout { display: block; }
+	.rag-outline { top: var(--sl-nav-height); z-index: 5; margin-bottom: .8rem; background: var(--sl-color-bg); }
+	.rag-outline-desktop { display: none; }
+	.rag-outline-mobile { display: flex; align-items: center; gap: .7rem; height: 3.25rem; border-bottom: 1px solid var(--sl-color-gray-5); }
+	.rag-outline-mobile label { flex-shrink: 0; font-size: .85rem; }
+	.rag-outline-mobile select { min-width: 0; width: 100%; height: 2.5rem; padding: .4rem .6rem; border: 1px solid var(--sl-color-gray-5); border-radius: .25rem; color: var(--sl-color-white); background: var(--sl-color-bg); font: inherit; font-size: .85rem; }
+}
+@media print {
+	.rag-layout { display: block; }
+	.rag-outline { display: none; }
+}
+
 /* RAG: a readable practice sheet, with the main steps visible without clicks. */
 .rag-practice {
 	width: min(100%, 65rem);
