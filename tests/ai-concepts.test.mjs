@@ -190,13 +190,14 @@ test('known non-English or novelty-only voice lists do not silently use the wron
 function uiFixture(t, entry, blocked = false) {
   const dom = new JSDOM('<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button><section data-browse><input data-search><select data-category><option value=""></option></select><select data-sort><option value="common"></option></select><span data-count></span><div data-grid></div><nav data-pagination><button data-prev></button><span data-page-label></span><button data-next></button></nav></section><dialog data-detail aria-labelledby="ac-detail-title"></dialog><section data-review hidden></section><span data-progress></span><p data-status class="ac-sr-only"></p></div>', { url: 'https://blog.mlxb.cc/ai-concepts/' });
   dom.window.scrollTo = () => {};
+  dom.window.HTMLElement.prototype.scrollIntoView = () => {};
   if (blocked) Object.defineProperty(dom.window, 'localStorage', { get() { throw new Error('storage blocked'); } });
   const root = dom.window.document.querySelector('[data-concepts-root]');
   // JSDOM does not implement the browser's dialog lifecycle.
   const dialog = root.querySelector('[data-detail]');
   dialog.showModal = () => { dialog.open = true; };
   dialog.close = () => { dialog.open = false; dialog.dispatchEvent(new dom.window.Event('close')); };
-  const dispose = mountConcepts(root, { terms: [{ ...entry, firstSeenAt: '2026-10-12T00:00:00Z' }] });
+  const dispose = mountConcepts(root, { terms: (Array.isArray(entry) ? entry : [entry]).map(item => ({ ...item, firstSeenAt: '2026-10-12T00:00:00Z' })) });
   t.after(() => { dispose(); dom.window.close(); });
   return root;
 }
@@ -231,9 +232,36 @@ test('imported source prose renders as text instead of executable HTML', t => {
 test('blocked browser storage leaves practice usable and keeps the save warning visible', t => {
   const root = uiFixture(t, term, true);
   root.querySelector('[data-mode="review"]').click();
-  root.querySelector('[data-reveal]').click();
   root.querySelector('[data-rate="recalled"]').click();
   assert(root.querySelector('[data-status]').textContent.includes('无法保存'));
   assert.equal(root.querySelector('[data-status]').classList.contains('ac-sr-only'), false);
   assert(root.querySelector('[data-progress]').textContent.includes('已练 1 个'));
+});
+
+test('quick review shows the answer and rates one card per deliberate shortcut', t => {
+  const entries = [term, { ...term, id: 'token', term: 'Token' }, { ...term, id: 'llm', term: 'LLM' }];
+  const root = uiFixture(t, entries), view = root.ownerDocument.defaultView;
+  const records = () => JSON.parse(view.localStorage.getItem('alvin-ai-concepts-progress-v1')).records;
+  const press = (key, options = {}) => root.querySelector('[data-review] h2').dispatchEvent(new view.KeyboardEvent('keydown', { key, bubbles: true, cancelable: true, ...options }));
+  root.querySelector('[data-mode="review"]').click();
+  assert.equal(root.querySelector('[data-reveal]'), null);
+  assert(root.querySelector('.ac-answer').textContent.includes(term.definition));
+  press('1');
+  assert.equal(records().rag.level, 0);
+  assert.equal(records().rag.nextDue - records().rag.lastReviewed, 600000);
+  press('2', { repeat: true });
+  press('ArrowRight', { ctrlKey: true });
+  press('2', { isComposing: true });
+  const input = root.ownerDocument.createElement('input');
+  root.querySelector('[data-review]').append(input);
+  input.dispatchEvent(new view.KeyboardEvent('keydown', { key: '2', bubbles: true }));
+  assert.deepEqual(Object.keys(records()), ['rag']);
+  input.remove();
+  press('ArrowRight');
+  assert.equal(records().token.level, 1);
+  assert.equal(records().token.nextDue - records().token.lastReviewed, 86400000);
+  press('Escape');
+  assert.equal(root.querySelector('[data-review]').hidden, true);
+  root.querySelector('[data-search]').dispatchEvent(new view.KeyboardEvent('keydown', { key: '1', bubbles: true }));
+  assert.deepEqual(Object.keys(records()), ['rag', 'token']);
 });
