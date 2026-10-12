@@ -9,7 +9,7 @@ const abilityMaps = [
     title: 'AI Infra 学习地图',
     desc: '从 Agent 开发走到模型服务、GPU 与性能实验。',
     href: '/ai-infra-knowledge/',
-    route: ['模型执行', '性能测量', '部署验收'],
+    route: ['模型执行', '性能测量', '部署运行'],
     stats: `${aiInfraKnowledge.meta.domainCount} 个领域 · ${aiInfraKnowledge.meta.pointCount} 个知识点`,
     pointCount: aiInfraKnowledge.meta.pointCount,
   },
@@ -184,7 +184,7 @@ function formatDate(doc: typeof allDocs[number]) {
 ---
 
 <section class="ability-map-showcase" aria-label="能力地图">
-  <nav class="ability-map-grid" aria-label="面试能力地图">
+  <nav class="ability-map-grid" aria-label="学习地图">
     {
       abilityMaps.map((map) => (
         <a class={`ability-map-card ${map.id}`} href={map.href}>

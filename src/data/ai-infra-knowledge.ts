@@ -10,7 +10,6 @@ const sources = {
   k8s: { title: 'Kubernetes · Schedule GPUs', href: 'https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/' },
   registry: { title: 'MLflow · Model Registry Workflows', href: 'https://mlflow.org/docs/latest/ml/model-registry/workflow/' },
   mlops: { title: 'Google Cloud · MLOps', href: 'https://docs.cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning' },
-  jobs: { title: 'Anthropic · Engineering jobs', href: 'https://www.anthropic.com/careers/jobs' },
 };
 
 interface LearningPoint {
@@ -34,7 +33,7 @@ function learningPoint(point: LearningPoint) {
       { type: 'heading', text: '动手验证' },
       { type: 'list', items: point.exercise },
       { type: 'checkpoint', label: '先回答，再展开', prompt: point.check[0], answer: point.check[1] },
-      { type: 'link', label: '学习路线与实验记录', href: '/ai-infra/learning-path/', detail: '查看学习顺序、vLLM 实验与验收标准' },
+      { type: 'link', label: '学习路线与实验记录', href: '/ai-infra/learning-path/', detail: '查看学习顺序与 vLLM 实验' },
     ] as KnowledgeContentBlock[],
     references: [{ ...source, location: '官方文档；实验参数以所用版本为准' }] as KnowledgeReference[],
   };
@@ -55,7 +54,7 @@ export default createKnowledgeMap({
             explain: 'Agent 决定下一步做什么；推理服务把输入转换成 token，再在计算设备上执行模型并生成输出。网关、调度器、模型执行与客户端各有等待时间，排障先定位耗时在哪一段。',
             example: '假设 Agent 调用模型耗时两秒：可能是网关排队，也可能是长输入的计算，不能只看 HTTP 总耗时就判断 GPU 慢。',
             exercise: ['画出客户端、网关、推理引擎、GPU 的请求路径，标出每处的队列与超时。', '先用模拟后端分别制造排队和生成延迟；确认日志能区分两者。模拟结果不能当成 GPU 性能。'],
-            check: ['Agent Infra、推理 Infra 和 MLOps 分别负责什么？', 'Agent Infra 管任务执行、状态、工具与权限；推理 Infra 管模型服务、计算资源、调度与性能；MLOps 管数据、实验、模型验证与发布。三者有交集，学习范围由具体岗位决定。'] }),
+            check: ['Agent Infra、推理 Infra 和 MLOps 分别负责什么？', 'Agent Infra 管任务执行、状态、工具与权限；推理 Infra 管模型服务、计算资源、调度与性能；MLOps 管数据、实验、模型验证与发布。三者有交集，推理服务是这条学习路线的主线。'] }),
           learningPoint({ title: 'Python 异步、并发与背压', source: 'serving',
             explain: '异步 I/O 让程序在等待网络时处理别的请求；它不让 CPU 密集任务自动变快。背压指处理能力不足时限制接入或排队，防止请求、内存和超时不断堆积。',
             example: '假设后端最多处理四个请求，网关可以限制同时执行的请求数，并给等待队列设长度和截止时间。无限创建协程只会把拥堵藏进内存。',
@@ -198,8 +197,8 @@ export default createKnowledgeMap({
       ],
     },
     {
-      title: '可复现交付与求职', short: '留下可核对的成果',
-      summary: '用版本、回归、压测和故障记录展示能力；按岗位补 MLOps。',
+      title: '模型版本与运行监控', short: '管理版本与运行状态',
+      summary: '学习模型版本、质量回归、请求追踪和服务成本。',
       groups: [
         { title: '版本与回归', level: 'core', points: [
           learningPoint({ title: '模型、环境与数据版本', source: 'registry',
@@ -208,22 +207,22 @@ export default createKnowledgeMap({
             exercise: ['为每次实验保存版本清单、启动参数、数据摘要和原始结果。', '从清单重建同一环境，验证服务与结果；把未固定的项目列为复现限制。'],
             check: ['记录 production 别名足以复现半年后的实验吗？', '不够。别名可能移到新版本；需要保存当时解析到的模型版本与相关配置。'] }),
           learningPoint({ title: '质量回归与 MLOps 分支', source: 'mlops',
-            explain: '推理优化可能改变数值与输出，发布需同时验证质量、性能和服务行为。MLOps 进一步覆盖数据验证、训练与实验、模型登记、部署和持续监测；是否补训练平台能力取决于岗位。',
+            explain: '推理优化可能改变数值与输出，发布需同时验证质量、性能和服务行为。MLOps 进一步覆盖数据验证、训练与实验、模型登记、部署和持续监测；模型版本与质量回归是连接推理服务和 MLOps 的起点。',
             example: '量化后吞吐提升，但固定业务样本的正确率下降，不能只拿压测结果验收。服务错误监控也不能代替输出质量评估。',
             exercise: ['建立固定、可授权使用的业务样本，记录期望行为与质量标准。', '比较两个版本的质量和性能，写明发布门槛、回退条件及未覆盖场景。'],
             check: ['服务全是 HTTP 200，能证明模型升级无回归吗？', '不能。还要验证生成结果、业务质量、延迟和成本，必要时检查实际副作用。'] }),
         ] },
-        { title: '项目与面试证据', level: 'scenario', points: [
-          learningPoint({ title: '把现有 Agent 接到自托管推理服务', source: 'serving',
-            explain: '实践项目从一个可控模型服务开始，再接入现有 Agent。先验证协议、chat template、流式响应、工具调用及取消行为；兼容接口格式不代表不同模型的能力与语义完全相同。',
-            example: '先测普通生成，再测一轮工具调用，最后用固定任务样本检查整条 Agent 链路。不要把换一个 base URL 当成集成验收。',
-            exercise: ['交付单模型服务、受限网关、压测脚本和观测面板，复用成熟引擎。', '保存服务重启、请求取消、超载与模型回退四类实验；实际执行前另行确定环境和预算。'],
-            check: ['接口兼容，为何 Agent 仍可能退化？', '模型对工具、结构化输出、长上下文与指令的支持不同，分词器和模板也会改变行为；需要任务级回归验证。'] }),
-          learningPoint({ title: '岗位校准与作品集', source: 'jobs',
-            explain: '推理服务、GPU 性能、训练平台和 MLOps 岗位的要求不同。先按目标地区收集具体职位描述，再将要求映射到项目证据。能部署 vLLM 是起点，性能岗位还需要计算、通信与源码层面的能力。',
-            example: '作品集写清问题、基线、负载、一次改动、结果和代价。收益必须来自同条件实测；模拟服务和未完成的多卡实验要明确标注。',
-            exercise: ['选三到五个目标岗位，把重复要求映射到已有能力、缺口与计划实验。', '形成可运行仓库、实验清单、原始数据、性能报告和故障记录；区分 Agent 执行的工作与本人能解释的判断。'],
-            check: ['面试前怎样确认自己掌握了项目？', '闭卷解释请求路径与瓶颈，手算显存下界，读一份时间线，说明为何选择当前方案，以及条件改变后怎样调整。仅有代码和测试通过还不足以证明掌握。'] }),
+        { title: '监控与成本', level: 'scenario', points: [
+          learningPoint({ title: '日志、指标与请求追踪', source: 'metrics',
+            explain: '指标汇总请求数、延迟分布、队列和显存；日志记录具体事件；Trace 串起一次请求跨网关、预处理和推理服务的时间。三者配合，才能从“服务变慢”定位到哪一段在等待。',
+            example: '总体 P95 延迟上升时，先看队列是否积压，再用请求追踪区分排队、输入处理与模型计算。请求 ID 适合关联日志和 Trace，不适合直接做每个请求一条的指标标签。',
+            exercise: ['给一次请求关联统一 ID，串起网关与服务端日志，并标出各段开始和结束时间。', '分别制造排队与生成变慢，比较延迟直方图、队列指标和请求时间线。'],
+            check: ['为什么不把每个请求 ID 都放进 Prometheus 标签？', '请求 ID 持续增长，会产生大量时间序列，增加采集与存储成本。指标按有限的模型、状态等维度聚合，具体请求用日志和 Trace 关联。'] }),
+          learningPoint({ title: '单请求成本与有效吞吐', source: 'metrics',
+            explain: '服务成本取决于资源费用与实际完成的工作量。比较配置时，先固定输入输出分布和质量、延迟要求，再计算满足要求的吞吐；只统计总 token 数，会掩盖失败、空转和超时。',
+            example: '假设同一小时算力费用为 C，完成 N 个满足质量和延迟要求的请求，平均算力费用是 C/N。这个数还未包含网关、存储、网络和冗余资源费用。',
+            exercise: ['在同一负载下记录资源运行时长、成功请求和实际 token 数，分别计算单请求与单位 token 的算力成本。', '比较两个并发配置，检查吞吐变化是否伴随超时或质量下降；将这些请求单列。'],
+            check: ['总 token/s 更高，单请求成本一定更低吗？', '不一定。资源费用、实际输出长度、失败重试和延迟要求都可能改变有效产出，需要在相同工作量和服务目标下比较。'] }),
         ] },
       ],
     },
