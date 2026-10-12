@@ -1271,7 +1271,8 @@ pre {
 .ac-search { display: flex; flex: 1; min-width: 0; align-items: center; gap: 10px; padding: 0 14px; border: 1px solid var(--ac-line); border-radius: 7px; background: var(--ac-card); }
 .ac-search svg { flex: none; width: 18px; height: 18px; color: var(--ac-muted); }
 .ac-search input { width: 100%; min-width: 0; min-height: 48px; padding: 10px 0; border: 0; outline: none; background: transparent; }
-.ac-search:focus-within { border-color: var(--ac-accent); }
+.ai-concepts .ac-search input:focus-visible { outline: none; }
+.ac-search:focus-within { border-color: var(--ac-accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--ac-accent) 12%, transparent); }
 .ac-search input::placeholder { color: var(--ac-muted); opacity: 1; }
 .ac-select select { min-height: 48px; max-width: 160px; padding: 0 12px; border: 1px solid var(--ac-line); border-radius: 7px; background: var(--ac-card); color: var(--ac-muted); }
 .ac-results { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 12px 0; color: var(--ac-muted); font-size: 12px; }

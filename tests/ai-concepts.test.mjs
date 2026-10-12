@@ -7,7 +7,7 @@ import path from 'node:path';
 import { JSDOM } from 'jsdom';
 import { buildConcepts, parseGoogleGlossary, validateConcepts } from '../scripts/ai-concepts-core.mjs';
 import { atomicJsonWrite, fetchSource, generateJson, parseArxivFeed, refreshTranslations, validateDiscoveredTerms } from '../scripts/sync-ai-concepts.mjs';
-import { createConceptSpeech, mountConcepts, rateTerm, readProgress, reviewQueue, revision, searchKey } from '../src/lib/ai-concepts.mjs';
+import { chooseEnglishVoice, createConceptSpeech, mountConcepts, rateTerm, readProgress, reviewQueue, revision, searchKey } from '../src/lib/ai-concepts.mjs';
 
 const term = { id: 'rag', term: 'RAG', zh: '检索增强生成', aliases: ['Retrieval-augmented generation'], definition: '先找资料，再把资料交给模型生成回答。', contrast: 'RAG 提供资料，微调更新参数。', summary: '先检索资料，再依据资料回答', category: 'retrieval', priority: 0, sources: [{ title: '来源', url: 'https://example.com/terms' }] };
 
@@ -128,18 +128,23 @@ test('progress imports keep only valid known IDs and retain records across datas
   assert.throws(() => readProgress({ version: 2, records: {} }, [term]));
 });
 
-test('default TTS is click-triggered and stale callbacks cannot resume a cancelled term', () => {
+test('term audio reads the English name only and cancelled callbacks cannot continue playback', () => {
   const calls = [], states = [];
-  const view = { SpeechSynthesisUtterance: class { constructor(text) { this.text = text; this.voice = null; } }, speechSynthesis: { cancel() {}, resume() {}, speak(utterance) { calls.push(utterance); } } };
+  const voice = { name: 'Samantha', lang: 'en-US' };
+  const view = { SpeechSynthesisUtterance: class { constructor(text) { this.text = text; this.voice = null; } }, speechSynthesis: { getVoices: () => [{ name: 'Albert', lang: 'en-US' }, voice], cancel() {}, resume() {}, speak(utterance) { calls.push(utterance); } } };
   const speech = createConceptSpeech(view, (...state) => states.push(state));
   assert.equal(calls.length, 0);
   speech.toggle(term);
-  assert.equal(calls[0].voice, null);
+  assert.equal(calls[0].voice, voice);
+  assert.equal(calls[0].text, term.term);
   assert.equal(calls[0].lang, 'en-US');
   calls[0].onend();
-  assert.equal(calls[1].lang, 'zh-CN');
+  assert.equal(calls.length, 1, 'finishing the name must not start its introduction');
+  assert.equal(states.at(-1)[1], '朗读结束');
   speech.toggle(term);
-  calls[1].onend();
+  const cancelled = calls[1];
+  speech.toggle(term);
+  cancelled.onend();
   assert.equal(calls.length, 2);
   speech.toggle(term);
   const old = calls[2];
@@ -150,6 +155,34 @@ test('default TTS is click-triggered and stale callbacks cannot resume a cancell
   speech.stop();
   const unsupported = createConceptSpeech({}, (...state) => states.push(state));
   unsupported.toggle(term);
+  assert.equal(states.at(-1)[2], true);
+});
+
+test('English speech avoids Chinese defaults and novelty voices, and prefers natural voices when available', () => {
+  const chinese = { name: 'Tingting', lang: 'zh-CN', default: true };
+  const novelty = { name: 'Zarvox', lang: 'en-US', default: true };
+  const standard = { name: 'Samantha', lang: 'en-US' };
+  const neural = { name: 'Microsoft Jenny Online (Natural)', lang: 'en-US' };
+  assert.equal(chooseEnglishVoice([chinese, novelty, standard]), standard);
+  assert.equal(chooseEnglishVoice([standard, neural]), neural);
+  const british = { name: 'Daniel', lang: 'en-GB' };
+  assert.equal(chooseEnglishVoice([novelty, british]), british);
+  assert.equal(chooseEnglishVoice([chinese]), null);
+});
+
+test('an initially empty browser voice list still reads the name in English', () => {
+  const calls = [];
+  const view = { SpeechSynthesisUtterance: class { constructor(text) { this.text = text; } }, speechSynthesis: { getVoices: () => [], cancel() {}, resume() {}, speak: utterance => calls.push(utterance) } };
+  createConceptSpeech(view, () => {}).toggle(term);
+  assert.equal(calls[0].text, term.term);
+  assert.equal(calls[0].lang, 'en-US');
+});
+
+test('known non-English or novelty-only voice lists do not silently use the wrong voice', () => {
+  const calls = [], states = [];
+  const view = { SpeechSynthesisUtterance: class {}, speechSynthesis: { getVoices: () => [{ name: 'Tingting', lang: 'zh-CN' }, { name: 'Zarvox', lang: 'en-US' }], cancel() {}, resume() {}, speak: utterance => calls.push(utterance) } };
+  createConceptSpeech(view, (...state) => states.push(state)).toggle(term);
+  assert.equal(calls.length, 0);
   assert.equal(states.at(-1)[2], true);
 });
 

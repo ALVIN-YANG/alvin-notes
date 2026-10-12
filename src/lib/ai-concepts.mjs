@@ -45,10 +45,23 @@ export function reviewQueue(terms, records, now = Date.now(), limit = 10) {
 const speaker = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg>';
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/gu, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const safeUrl = value => { try { const url = new URL(value); return url.protocol === 'https:' ? escapeHtml(url.href) : ''; } catch { return ''; } };
-const speechButton = term => `<button type="button" class="ac-speak" data-speak="${escapeHtml(term.id)}" aria-label="朗读 ${escapeHtml(term.term)}" aria-pressed="false" title="朗读英文名与中文释义">${speaker}</button>`;
+const speechButton = term => `<button type="button" class="ac-speak" data-speak="${escapeHtml(term.id)}" aria-label="朗读 ${escapeHtml(term.term)}" aria-pressed="false" title="播放英文名词发音">${speaker}</button>`;
+
+export function chooseEnglishVoice(voices = []) {
+  // macOS also exposes novelty voices; never use them to teach pronunciation.
+  const novelty = /^(Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Fred|Good News|Jester|Junior|Organ|Ralph|Superstar|Trinoids|Whisper|Wobble|Zarvox)$/iu;
+  const english = voices.filter(voice => /^en(?:[-_]|$)/iu.test(voice.lang) && !novelty.test(voice.name));
+  const us = voice => /^en[-_]US$/iu.test(voice.lang);
+  const natural = voice => /Natural|Neural|Premium|Enhanced|Siri|^Google.*English/iu.test(voice.name);
+  const standard = voice => /\b(Samantha|Alex|Daniel|Karen|Moira|Tessa|Rishi)\b/iu.test(voice.name);
+  return english.find(voice => us(voice) && natural(voice)) || english.find(natural)
+    || english.find(voice => voice.default) || english.find(voice => us(voice) && standard(voice))
+    || english.find(standard) || english.find(us) || english[0] || null;
+}
 
 export function createConceptSpeech(view, onState) {
   const synth = view?.speechSynthesis;
+  synth?.getVoices?.();
   let generation = 0, current = null, active = null;
   function stop(message = '') {
     generation++;
@@ -64,7 +77,14 @@ export function createConceptSpeech(view, onState) {
     stop();
     active = term.id;
     const run = generation;
-    const chunks = [...splitSpeechText(term.term).map(text => [text, 'en-US']), ...splitSpeechText(`${term.zh}。${term.summary}`).map(text => [text, 'zh-CN'])];
+    const chunks = splitSpeechText(term.term);
+    const voices = synth.getVoices?.() || [];
+    const voice = chooseEnglishVoice(voices);
+    if (voices.length && !voice) {
+      stop();
+      onState(null, '此设备没有可用的常规英语语音，请安装英语声音或使用其他浏览器。', true);
+      return;
+    }
     let index = 0;
     onState(active, `正在朗读 ${term.term}`, false);
     synth.cancel();
@@ -72,9 +92,9 @@ export function createConceptSpeech(view, onState) {
     function next() {
       if (run !== generation) return;
       if (index >= chunks.length) { stop('朗读结束'); return; }
-      const utterance = new view.SpeechSynthesisUtterance(chunks[index][0]);
-      utterance.lang = chunks[index][1];
-      // voice, rate and pitch stay unset: the browser chooses its default voice.
+      const utterance = new view.SpeechSynthesisUtterance(chunks[index]);
+      utterance.lang = voice?.lang || 'en-US';
+      if (voice) utterance.voice = voice;
       current = utterance;
       utterance.onend = () => { if (run !== generation || current !== utterance) return; index++; next(); };
       utterance.onerror = event => {
@@ -120,7 +140,7 @@ export function mountConcepts(root, data) {
       const playing = button.dataset.speak === id;
       button.setAttribute('aria-pressed', String(playing));
       button.setAttribute('aria-label', `${playing ? '停止朗读' : '朗读'} ${byId.get(button.dataset.speak)?.term || ''}`);
-      button.title = playing ? '停止朗读' : '朗读英文名与中文释义';
+      button.title = playing ? '停止朗读' : '播放英文名词发音';
     });
     announce(message, error);
   });
