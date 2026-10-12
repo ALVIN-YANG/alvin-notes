@@ -46,7 +46,7 @@ export function reviewQueue(terms, records, now = Date.now(), limit = 10) {
 const speaker = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg>';
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/gu, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const safeUrl = value => { try { const url = new URL(value); return url.protocol === 'https:' ? escapeHtml(url.href) : ''; } catch { return ''; } };
-const speechButton = term => `<button type="button" class="ac-speak" data-speak="${escapeHtml(term.id)}" aria-label="朗读 ${escapeHtml(term.term)}" aria-pressed="false" title="播放英文名词发音">${speaker}</button>`;
+const speechButton = (term, shortcut = '') => `<button type="button" class="ac-speak" data-speak="${escapeHtml(term.id)}" aria-label="朗读 ${escapeHtml(term.term)}" aria-pressed="false"${shortcut ? ` aria-keyshortcuts="${escapeHtml(shortcut)}"` : ''} title="播放英文名词发音">${speaker}</button>`;
 
 export function createConceptSpeech(view, onState) {
   const synth = view?.speechSynthesis;
@@ -106,6 +106,7 @@ export function mountConcepts(root, data) {
   const grid = find('[data-grid]'), search = find('[data-search]'), category = find('[data-category]'), sort = find('[data-sort]');
   const status = find('[data-status]'), count = find('[data-count]'), pageLabel = find('[data-page-label]');
   let progress = { version: 1, records: {} }, page = 0, mode = 'browse', queue = [], reviewIndex = 0, returnId = null;
+  let reviewOriginals = new Map();
   const searchIndex = new Map(terms.map(term => [term.id, searchKey([term.term, term.zh, ...term.aliases, term.summary].join(' '))]));
   const events = new view.AbortController();
   const listen = (element, event, handler) => element.addEventListener(event, handler, { signal: events.signal });
@@ -196,20 +197,21 @@ export function mountConcepts(root, data) {
   function renderReview() {
     const term = queue[reviewIndex];
     if (!term) {
-      review.innerHTML = `<div class="ac-review-complete"><p class="ac-eyebrow">${queue.length ? '这一组完成了' : '暂时没有待复习项'}</p><h2 tabindex="-1">${queue.length ? `过了 ${queue.length} 个概念` : '可以继续查概念'}</h2><p>${queue.length ? '已按自评安排下次复习。下一组优先复习到期词条，再补入新词。' : '已练过的词条会在到期后出现，也可以从详情中单独复习。'}</p><button class="ac-primary" type="button" data-restart aria-label="继续下一组">继续下一组 <kbd>Enter</kbd></button><button class="ac-back" type="button" data-back>返回卡片</button></div>`;
+      review.innerHTML = `<div class="ac-review-complete"><p class="ac-eyebrow">${queue.length ? '这一组完成了' : '暂时没有待复习项'}</p><h2 tabindex="-1">${queue.length ? `过了 ${queue.length} 个概念` : '可以继续查概念'}</h2><p>${queue.length ? '已按自评安排下次复习。下一组优先复习到期词条，再补入新词。' : '已练过的词条会在到期后出现，也可以从详情中单独复习。'}</p><button class="ac-primary" type="button" data-restart aria-label="继续下一组">继续下一组 <kbd>Enter</kbd></button>${reviewIndex ? '<button type="button" class="ac-back" data-review-prev aria-keyshortcuts="ArrowLeft">← 上一张</button>' : ''}<button class="ac-back" type="button" data-back>返回卡片</button></div>`;
     } else {
-      const now = Date.now(), old = progress.records[term.id];
+      const now = Date.now(), old = reviewOriginals.get(term.id);
       const days = Math.round((rateTerm(term, old, true, now).nextDue - now) / DAY);
-      review.innerHTML = `<div class="ac-review-top"><span>${reviewIndex + 1} / ${queue.length} · 到期优先</span><button type="button" class="ac-back" data-back aria-label="退出复习">退出复习 <kbd>Esc</kbd></button></div><article class="ac-flashcard">
-        <div class="ac-review-term"><div><h2 tabindex="-1">${escapeHtml(term.term)}</h2><p class="ac-zh">${escapeHtml(term.zh)}</p></div>${speechButton(term)}</div>
+      review.innerHTML = `<div class="ac-review-top"><div class="ac-review-position"><button type="button" class="ac-back" data-review-prev aria-label="上一张" aria-keyshortcuts="ArrowLeft"${reviewIndex ? '' : ' disabled'}>← 上一张</button><span>${reviewIndex + 1} / ${queue.length}</span></div><button type="button" class="ac-back" data-back aria-label="退出复习">退出复习 <kbd>Esc</kbd></button></div><article class="ac-flashcard">
+        <div class="ac-review-term"><div><h2 tabindex="-1">${escapeHtml(term.term)}</h2><p class="ac-zh">${escapeHtml(term.zh)}</p></div><div class="ac-review-voice">${speechButton(term, 'ArrowUp')}<kbd>↑ 发音</kbd></div></div>
         <div class="ac-answer"><p>${escapeHtml(term.definition)}</p>${term.contrast ? `<p class="ac-answer-contrast">${escapeHtml(term.contrast)}</p>` : ''}</div>
-        <div class="ac-rating"><button type="button" data-rate="again" aria-label="不知道" aria-keyshortcuts="ArrowLeft 1"><span>不知道 <kbd>← / 1</kbd></span><small>10 分钟后复习</small></button><button type="button" class="ac-primary" data-rate="recalled" aria-label="知道" aria-keyshortcuts="ArrowRight 2"><span>知道 <kbd>→ / 2</kbd></span><small>${days} 天后复习</small></button></div>
+        <div class="ac-rating"><button type="button" data-rate="again" aria-label="不知道" aria-keyshortcuts="ArrowDown 1"><span>不知道 <kbd>↓ / 1</kbd></span><small>10 分钟后复习</small></button><button type="button" class="ac-primary" data-rate="recalled" aria-label="知道" aria-keyshortcuts="ArrowRight 2"><span>知道 <kbd>→ / 2</kbd></span><small>${days} 天后复习</small></button></div>
       </article>`;
     }
     (review.querySelector('[data-restart]') || review.querySelector('h2')).focus({ preventScroll: true });
   }
   function startReview(id) {
     show('review'); queue = id ? [byId.get(id)] : reviewQueue(terms.filter(term => !category.value || term.category === category.value), progress.records);
+    reviewOriginals = new Map(queue.map(term => [term.id, progress.records[term.id]]));
     reviewIndex = 0; renderReview();
     review.scrollIntoView({ block: 'start', behavior: 'instant' });
   }
@@ -217,8 +219,13 @@ export function mountConcepts(root, data) {
     const term = queue[reviewIndex];
     if (mode !== 'review' || !term) return;
     speech.stop();
-    progress.records[term.id] = rateTerm(term, progress.records[term.id], recalled);
+    // Correcting a rating starts from the state before this group.
+    progress.records[term.id] = rateTerm(term, reviewOriginals.get(term.id), recalled);
     persist(); reviewIndex++; renderReview();
+  }
+  function previousReview() {
+    if (mode !== 'review' || reviewIndex === 0) return;
+    speech.stop(); reviewIndex--; renderReview();
   }
   listen(root, 'click', event => {
     const button = event.target.closest('button'); if (!button) return;
@@ -228,6 +235,7 @@ export function mountConcepts(root, data) {
     if (button.hasAttribute('data-back') || button.dataset.mode === 'browse') { returnBrowse(); return; }
     if (button.dataset.mode === 'review' || button.hasAttribute('data-restart')) { startReview(); return; }
     if (button.dataset.practice) { startReview(button.dataset.practice); return; }
+    if (button.hasAttribute('data-review-prev')) { previousReview(); return; }
     if (button.dataset.rate) { rateCurrent(button.dataset.rate === 'recalled'); return; }
     if (button.hasAttribute('data-prev') || button.hasAttribute('data-next')) {
       speech.stop(); page += button.hasAttribute('data-prev') ? -1 : 1; renderBrowse();
@@ -255,11 +263,14 @@ export function mountConcepts(root, data) {
     if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey
       || event.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')) return;
     if (event.key === 'Escape' && mode === 'review') { event.preventDefault(); returnBrowse(); return; }
-    if (mode !== 'review' || detail.open || !queue[reviewIndex]) return;
-    const ratings = { ArrowLeft: false, '1': false, ArrowRight: true, '2': true };
-    if (!Object.hasOwn(ratings, event.key)) return;
+    if (mode !== 'review' || detail.open) return;
+    if (!['ArrowLeft', 'ArrowRight', 'ArrowDown', 'ArrowUp', '1', '2'].includes(event.key)) return;
     event.preventDefault();
-    if (!event.repeat) rateCurrent(ratings[event.key]);
+    if (event.repeat) return;
+    if (event.key === 'ArrowLeft') { previousReview(); return; }
+    const term = queue[reviewIndex]; if (!term) return;
+    if (event.key === 'ArrowUp') { speech.stop(); speech.toggle(term); return; }
+    rateCurrent(event.key === 'ArrowRight' || event.key === '2');
   });
   listen(view, 'pagehide', () => speech.stop());
   root.querySelectorAll('[data-enhanced]').forEach(element => { element.hidden = false; });

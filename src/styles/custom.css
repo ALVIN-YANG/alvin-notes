@@ -1324,6 +1324,8 @@ pre {
 .ac-term-sources > div { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 12px; }
 .ac-upstream { margin-top: 14px !important; white-space: pre-line; overflow-wrap: anywhere; }
 .ac-review-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; color: var(--ac-muted); font-size: 12px; }
+.ac-review-position { display: flex; align-items: center; gap: 12px; }
+.ac-review-voice { display: flex; flex: none; flex-direction: column; align-items: center; gap: 2px; }
 .ac-flashcard { display: flex; flex-direction: column; max-height: calc(100dvh - var(--sl-nav-height) - 7rem); padding: 28px 32px 0; border: 1px solid var(--ac-line); border-radius: 10px; background: var(--ac-card); }
 .ac-review-term { display: flex; flex: none; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .ac-review-term > div { min-width: 0; }

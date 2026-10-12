@@ -33,7 +33,7 @@ const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'A
         <ul>{data.sources.map(source => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a> · <a href={source.licenseUrl} target="_blank" rel="noopener noreferrer">{source.license}</a><br/>{source.attribution}</li>)}</ul>
         <p><a href="/licenses/ai-concepts-huggingface.txt" target="_blank" rel="noopener noreferrer">Hugging Face 许可与版权说明</a>。每条概念的具体来源可在详情中查看。</p>
         <p>点击小喇叭只播放英文名词，不朗读介绍。优先使用设备上可用的自然英语音色；音色和是否需要联网取决于浏览器及系统设置。</p>
-        <p data-enhanced hidden>快速复习直接显示释义：← 或 1 选“不知道”，→ 或 2 选“知道”，Esc 退出。一组结束后按 Enter 继续。根据自评逐步延长复习间隔至 1、3、7、14、30、60 天；不知道的词条 10 分钟后再出现，到期词条优先。记录仅保存在此浏览器，清除网站数据会丢失。</p>
+        <p data-enhanced hidden>快速复习直接显示释义：← 返回上一张，→ 或 2 选“知道”并进入下一张，↓ 或 1 选“不知道”，↑ 播放名词发音，Esc 退出。一组结束后按 Enter 继续。根据自评逐步延长复习间隔至 1、3、7、14、30、60 天；不知道的词条 10 分钟后再出现，到期词条优先。记录仅保存在此浏览器，清除网站数据会丢失。</p>
       </div></details>
     </footer>
   </div>

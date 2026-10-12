@@ -187,11 +187,16 @@ test('known non-English or novelty-only voice lists do not silently use the wron
   assert.equal(states.at(-1)[2], true);
 });
 
-function uiFixture(t, entry, blocked = false) {
+function uiFixture(t, entry, blocked = false, { records, speech } = {}) {
   const dom = new JSDOM('<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button><section data-browse><input data-search><select data-category><option value=""></option></select><select data-sort><option value="common"></option></select><span data-count></span><div data-grid></div><nav data-pagination><button data-prev></button><span data-page-label></span><button data-next></button></nav></section><dialog data-detail aria-labelledby="ac-detail-title"></dialog><section data-review hidden></section><span data-progress></span><p data-status class="ac-sr-only"></p></div>', { url: 'https://blog.mlxb.cc/ai-concepts/' });
   dom.window.scrollTo = () => {};
   dom.window.HTMLElement.prototype.scrollIntoView = () => {};
   if (blocked) Object.defineProperty(dom.window, 'localStorage', { get() { throw new Error('storage blocked'); } });
+  if (records) dom.window.localStorage.setItem('alvin-ai-concepts-progress-v1', JSON.stringify({ version: 1, records }));
+  if (speech) {
+    dom.window.speechSynthesis = speech;
+    dom.window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
+  }
   const root = dom.window.document.querySelector('[data-concepts-root]');
   // JSDOM does not implement the browser's dialog lifecycle.
   const dialog = root.querySelector('[data-detail]');
@@ -264,4 +269,46 @@ test('quick review shows the answer and rates one card per deliberate shortcut',
   assert.equal(root.querySelector('[data-review]').hidden, true);
   root.querySelector('[data-search]').dispatchEvent(new view.KeyboardEvent('keydown', { key: '1', bubbles: true }));
   assert.deepEqual(Object.keys(records()), ['rag', 'token']);
+});
+
+test('review arrows navigate, pronounce and correct ratings without accumulating levels', t => {
+  const now = Date.now(), calls = [];
+  const old = { level: 2, lastReviewed: now - 4 * 86400000, nextDue: now - 86400000, revision: revision(term) };
+  const root = uiFixture(t, [term, { ...term, id: 'token', term: 'Token' }], false, {
+    records: { rag: old },
+    speech: { getVoices: () => [{ name: 'Samantha', lang: 'en-US' }], speak: utterance => calls.push(utterance), cancel() {}, resume() {} },
+  });
+  const view = root.ownerDocument.defaultView;
+  const records = () => JSON.parse(view.localStorage.getItem('alvin-ai-concepts-progress-v1')).records;
+  const press = (key, options = {}) => root.querySelector('[data-review] h2').dispatchEvent(new view.KeyboardEvent('keydown', { key, bubbles: true, cancelable: true, ...options }));
+  root.querySelector('[data-mode="review"]').click();
+  press('ArrowLeft');
+  assert.deepEqual(records().rag, old, 'first-card navigation must not rate anything');
+  press('ArrowUp');
+  press('ArrowUp', { repeat: true });
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].text, 'RAG');
+  assert.equal(calls[0].lang, 'en-US');
+  press('ArrowUp');
+  assert.equal(calls.length, 2, 'another deliberate press replays the term');
+  press('ArrowRight');
+  assert.equal(records().rag.level, 3);
+  press('ArrowDown');
+  assert.equal(records().token.level, 0);
+  assert.equal(records().token.nextDue - records().token.lastReviewed, 600000);
+  const completed = records();
+  press('ArrowLeft');
+  assert.equal(root.querySelector('[data-review] h2').textContent, 'Token');
+  assert.deepEqual(records(), completed, 'returning from completion must not rewrite ratings');
+  root.querySelector('[data-review-prev]').click();
+  assert.equal(root.querySelector('[data-review] h2').textContent, 'RAG');
+  press('ArrowDown');
+  assert.equal(records().rag.level, 0);
+  press('ArrowLeft');
+  press('ArrowRight');
+  assert.equal(records().rag.level, 3, 'correcting an answer uses the pre-group state');
+  assert.equal(records().rag.nextDue - records().rag.lastReviewed, 7 * 86400000);
+  press('ArrowLeft');
+  press('ArrowRight');
+  assert.equal(records().rag.level, 3, 'going back and forward cannot advance another level');
 });
