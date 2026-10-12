@@ -47,31 +47,42 @@ const demoCommands = [
         <p>{guide.principle.purpose}</p>
         <p>{guide.principle.boundary}</p>
       </div>
-      <div class="rag-example">
-        <p class="rag-example-note">{guide.example.note}</p>
-        <dl>
-          <div><dt>资料</dt><dd>{guide.example.text}<small>{guide.example.document}</small></dd></div>
-          <div><dt>用户问</dt><dd>{guide.example.question}</dd></div>
-          <div><dt>应回答</dt><dd>{guide.example.answer}</dd></div>
-        </dl>
-      </div>
-      <h3 class="rag-principle-heading">导入资料时：准备可搜索的资料库</h3>
-      <ol class="rag-flow" aria-label="资料导入和索引构建的三个步骤">
-        {guide.principle.preparation.map((step) => <li><strong>{step.title}</strong><span>{step.text}</span></li>)}
-      </ol>
-      <h3 class="rag-principle-heading">用户提问时：检索，再生成回答</h3>
-      <ol class="rag-flow" aria-label="用户提问后的检索与生成三个步骤">
-        {guide.principle.answering.map((step) => <li><strong>{step.title}</strong><span>{step.text}</span></li>)}
-      </ol>
-      <h3 class="rag-principle-heading">程序怎样找到相关资料</h3>
-      <table class="rag-table rag-check-table">
-        <thead><tr><th scope="col">检索方式</th><th scope="col">工作原理</th></tr></thead>
-        <tbody>{guide.principle.searchMethods.map((method) => <tr><th scope="row">{method.name}</th><td>{method.how}</td></tr>)}</tbody>
-      </table>
-      <p class="rag-section-note">{guide.principle.searchNote}</p>
-      <h3 class="rag-principle-heading">模型实际收到的内容</h3>
-      <pre class="rag-model-input"><code>{guide.principle.modelInput}</code></pre>
-      <p class="rag-section-note">{guide.principle.inputNote}</p>
+      <figure class="rag-diagram">
+        <a href={guide.diagrams.overview.src} target="_blank" rel="noreferrer" aria-label={`${guide.diagrams.overview.title}，打开大图（新标签页）`}>
+          <img src={guide.diagrams.overview.src} alt={guide.diagrams.overview.alt} width={guide.diagrams.overview.width} height={guide.diagrams.overview.height} decoding="async" />
+        </a>
+        <figcaption>{guide.diagrams.overview.caption} 点击图片查看大图。</figcaption>
+      </figure>
+      <h3 class="rag-principle-heading">RAG 实现分两步</h3>
+      <figure class="rag-diagram">
+        <a href={guide.diagrams.implementation.src} target="_blank" rel="noreferrer" aria-label={`${guide.diagrams.implementation.title}，打开大图（新标签页）`}>
+          <img src={guide.diagrams.implementation.src} alt={guide.diagrams.implementation.alt} width={guide.diagrams.implementation.width} height={guide.diagrams.implementation.height} loading="lazy" decoding="async" />
+        </a>
+        <figcaption>{guide.diagrams.implementation.caption} 点击图片查看大图。</figcaption>
+      </figure>
+      <details class="rag-detail">
+        <summary>展开每一步的具体做法</summary>
+        <h3 class="rag-principle-heading">导入资料时：准备可搜索的资料库</h3>
+        <ol class="rag-flow" aria-label="资料导入和索引构建的三个步骤">
+          {guide.principle.preparation.map((step) => <li><strong>{step.title}</strong><span>{step.text}</span></li>)}
+        </ol>
+        <h3 class="rag-principle-heading">用户提问时：检索，再生成回答</h3>
+        <ol class="rag-flow" aria-label="用户提问后的检索与生成三个步骤">
+          {guide.principle.answering.map((step) => <li><strong>{step.title}</strong><span>{step.text}</span></li>)}
+        </ol>
+      </details>
+      <details class="rag-detail">
+        <summary>程序怎样检索，模型实际收到什么</summary>
+        <h3 class="rag-principle-heading">程序怎样找到相关资料</h3>
+        <table class="rag-table rag-check-table">
+          <thead><tr><th scope="col">检索方式</th><th scope="col">工作原理</th></tr></thead>
+          <tbody>{guide.principle.searchMethods.map((method) => <tr><th scope="row">{method.name}</th><td>{method.how}</td></tr>)}</tbody>
+        </table>
+        <p class="rag-section-note">{guide.principle.searchNote}</p>
+        <h3 class="rag-principle-heading">模型实际收到的内容</h3>
+        <pre class="rag-model-input"><code>{guide.principle.modelInput}</code></pre>
+        <p class="rag-section-note">{guide.principle.inputNote}</p>
+      </details>
       <p class="rag-section-note">{guide.fit} <a href="#source-retrieval">方法来源</a></p>
     </section>
 
