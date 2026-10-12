@@ -6,6 +6,7 @@ import { buildConcepts, cleanText, fingerprint, nameKeys, normalizedName, parseG
 const dataPath = new URL('../src/data/ai-concepts.json', import.meta.url);
 const curatedPath = new URL('../src/data/ai-concepts-curated.json', import.meta.url);
 const translationsPath = new URL('../src/data/ai-concepts-hf-translations.json', import.meta.url);
+const excludedPath = new URL('../src/data/ai-concepts-excluded.json', import.meta.url);
 
 async function readJson(path, fallback) {
   try { return JSON.parse(await readFile(path, 'utf8')); }
@@ -105,8 +106,9 @@ export function parseArxivFeed(xml, now = Date.now()) {
   return entries;
 }
 
-export function validateDiscoveredTerms(generated, materials, knownTerms, now) {
+export function validateDiscoveredTerms(generated, materials, knownTerms, now, excluded = []) {
   const known = new Set(knownTerms.flatMap(term => [term.term, term.zh, ...term.aliases]).flatMap(nameKeys));
+  excluded.flatMap(entry => nameKeys(entry.term)).forEach(name => known.add(name));
   const terms = [];
   for (const entry of (generated?.terms || []).slice(0, 12)) {
     const material = materials[entry.sourceIndex];
@@ -121,7 +123,7 @@ export function validateDiscoveredTerms(generated, materials, knownTerms, now) {
   return terms;
 }
 
-async function discoverTerms(base, now) {
+async function discoverTerms(base, now, excluded) {
   if (!generationConfigs().length) { console.log('未配置现有生成服务：本轮仅同步官方词表，跳过新词发现'); return []; }
   const arxivUrl = 'https://export.arxiv.org/api/query?search_query=cat%3Acs.AI+OR+cat%3Acs.CL+OR+cat%3Acs.LG&sortBy=submittedDate&sortOrder=descending&max_results=25';
   const feed = await fetchSource(arxivUrl);
@@ -142,9 +144,9 @@ async function discoverTerms(base, now) {
   }
   const materials = [...official, ...papers];
   if (!materials.length) throw new Error('新词发现的来源正文为空，保留旧词库');
-  const generated = await generateJson('发现有来源的 AI 技术新词，最多12条。只选在资料原文中实际出现、且能根据该资料解释其技术含义的名字。论文标题、作者名、产品版本、营销口号不能当技术概念。已知词不重复收录。研究中的方法必须写清“该论文提出”，不能包装成行业共识。返回 {"terms":[{"term":"原文英文术语，需逐字存在","zh":"中文名","summary":"中文短释义，最多120字","definition":"限定资料语境的中文解释，最多500字","category":"分类id","sourceIndex":0}]}。没有可靠新词时返回空数组。分类id：'+Object.keys(CONCEPT_CATEGORIES).join('、'), { knownTerms: base.terms.map(term => term.term), materials });
+  const generated = await generateJson('发现有来源的 AI 技术新词，最多12条。只收录直接描述 AI 模型、训练、推理、检索、Agent、安全或运行基础设施的技术概念和方法。应用对象的医学、睡眠、金融、物理或业务指标不属于 AI 技术概念，不收录；论文使用机器学习预测一个指标，不代表该指标就是 AI 技术。只选在资料原文中实际出现、且能根据该资料解释其技术含义的名字。论文标题、作者名、产品版本、营销口号不能当技术概念。已知词和排除词不重复收录。研究中的方法必须写清“该论文提出”，不能包装成行业共识。返回 {"terms":[{"term":"原文英文术语，需逐字存在","zh":"中文名","summary":"中文短释义，最多120字","definition":"限定资料语境的中文解释，最多500字","category":"分类id","sourceIndex":0}]}。没有可靠新词时返回空数组。分类id：'+Object.keys(CONCEPT_CATEGORIES).join('、'), { knownTerms: base.terms.map(term => term.term), excludedTerms: excluded, materials });
   if (!Array.isArray(generated?.terms)) throw new Error('新词发现结果结构无效');
-  return validateDiscoveredTerms(generated, materials, base.terms, now);
+  return validateDiscoveredTerms(generated, materials, base.terms, now, excluded);
 }
 
 async function main() {
@@ -155,6 +157,7 @@ async function main() {
   const now = new Date().toISOString();
   const previous = await readJson(dataPath, null);
   const curated = await readJson(curatedPath);
+  const excluded = await readJson(excludedPath);
   let translations = await readJson(translationsPath);
   const bodies = await Promise.all([
     fetchSource('https://developers.google.com/machine-learning/glossary?hl=en'),
@@ -165,12 +168,13 @@ async function main() {
   const chinese = parseGoogleGlossary(bodies[1], { language: 'zh' });
   const huggingface = parseHuggingFaceGlossary(bodies[2]);
   if (huggingface.length < 20) throw new Error('Hugging Face 词表数量异常，保留旧词库');
-  let data = buildConcepts({ english, chinese, curated, previous, now });
+  let data = buildConcepts({ english, chinese, curated, excluded, previous, now });
   translations = await refreshTranslations(huggingface, translations, data.terms);
-  data = buildConcepts({ english, chinese, huggingface, hfTranslations: translations, curated, previous, now });
+  data = buildConcepts({ english, chinese, huggingface, hfTranslations: translations, curated, excluded, previous, now });
   if (previous && data.terms.length < previous.terms.length * 0.85) throw new Error('词条数量异常下降，保留旧词库');
-  const discovered = process.argv.includes('--skip-discovery') ? [] : await discoverTerms(data, now);
+  const discovered = process.argv.includes('--skip-discovery') ? [] : await discoverTerms(data, now, excluded);
   if (discovered.length) { data.terms.push(...discovered); data.updatedAt = now; }
+  data.terms.sort((a, b) => a.priority - b.priority || a.term.localeCompare(b.term, 'en'));
   validateConcepts(data);
   const changed = JSON.stringify(previous) !== JSON.stringify(data);
   // Write only after every fetch, generation and schema check has completed.

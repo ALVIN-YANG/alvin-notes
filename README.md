@@ -40,4 +40,6 @@ npm run build
 
 核心概念的短释义、例子和区别维护在 `src/data/ai-concepts-curated.json`；`ai-concepts.json` 由同步脚本生成。不要手改生成文件。同步失败不会覆盖已发布词库；词表移除条目时暂时保留原 ID 和内容，以免丢失学习记录。更新词条定义后，该词条会重新进入复习队列。
 
+人工发现的不相关或误收录词条写入 `src/data/ai-concepts-excluded.json`，附排除原因；同步时从历史词库中移除，并阻止再次收录。
+
 复习是用户自评，记录保存在 localStorage，可以导入和导出 JSON。朗读使用 Web Speech API 的默认语音，不需要本站的 TTS 服务。每个词条附具体来源，页面底部保留 Google CC BY 4.0 和 Hugging Face Apache 2.0 的署名与许可。

@@ -112,7 +112,7 @@ function resolveAlias(entry, records, seen = new Set()) {
   return resolveAlias(target, records, seen);
 }
 
-export function buildConcepts({ english, chinese, huggingface = [], curated, hfTranslations = {}, previous, now = new Date().toISOString() }) {
+export function buildConcepts({ english, chinese, huggingface = [], curated, hfTranslations = {}, excluded = [], previous, now = new Date().toISOString() }) {
   if (english.entries.length < 300 || chinese.entries.length < 300) throw new Error('Google 抓取数量异常，保留旧词库');
   const enMap = new Map(english.entries.map(entry => [entry.id, entry]));
   const zhMap = new Map(chinese.entries.map(entry => [entry.id, entry]));
@@ -157,6 +157,10 @@ export function buildConcepts({ english, chinese, huggingface = [], curated, hfT
   }
   for (const previousTerm of previous?.terms || []) {
     if (!terms.some(term => term.id === previousTerm.id)) terms.push(previousTerm);
+  }
+  const excludedNames = new Set(excluded.flatMap(entry => nameKeys(entry.term)));
+  for (let index = terms.length - 1; index >= 0; index--) {
+    if ([terms[index].term, ...terms[index].aliases].flatMap(nameKeys).some(name => excludedNames.has(name))) terms.splice(index, 1);
   }
   for (const term of terms) {
     term.aliases = [...new Set(term.aliases)].filter(alias => alias && normalizedName(alias) !== normalizedName(term.term));

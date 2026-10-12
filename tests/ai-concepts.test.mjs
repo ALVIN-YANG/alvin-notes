@@ -34,6 +34,8 @@ test('Google parser isolates definitions, preserves stable anchors and detects l
   const merged = buildConcepts({ english, chinese, curated, previous: adopted, now: '2026-10-19T00:00:00Z' });
   assert.equal(merged.terms.filter(entry => entry.term === 'fill 0').length, 1);
   assert(merged.terms.some(entry => entry.id === 'huggingface:fill-0'), 'a concept adopted by another source keeps its prior learning ID');
+  const excluded = buildConcepts({ english, chinese, curated, previous: data, excluded: [{ term: 'fill 0', reason: 'unrelated domain metric' }] });
+  assert(!excluded.terms.some(entry => entry.term === 'fill 0'), 'an excluded concept must not reappear through previous-entry retention');
   assert.throws(() => buildConcepts({ english: { entries: [] }, chinese, curated }), /数量异常/u);
 });
 
@@ -63,6 +65,7 @@ test('new term discovery requires literal source evidence and keeps paper scope 
   assert.equal(found.length, 1);
   assert.equal(found[0].category, 'research');
   assert.equal(found[0].sources[0].url, materials[0].url);
+  assert.equal(validateDiscoveredTerms({ terms: [entry] }, materials, [term], '2026-10-12T00:00:00Z', [{ term: entry.term }]).length, 0);
   const feed = published => `<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>http://arxiv.org/abs/2610.00001</id><published>${published}</published><title>Paper</title><summary>Abstract</summary></entry></feed>`;
   const now = Date.parse('2026-10-12T00:00:00Z');
   assert.equal(parseArxivFeed(feed('2026-10-10T00:00:00Z'), now).length, 1);

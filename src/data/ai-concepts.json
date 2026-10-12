@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-12T08:06:42.763Z",
+  "updatedAt": "2026-10-12T08:11:47.496Z",
   "sources": [
     {
       "id": "google",
@@ -17105,23 +17105,23 @@
       "updatedAt": "2026-10-12T07:32:50.762Z"
     },
     {
-      "id": "discovered:blastradius",
-      "term": "blast radius",
-      "zh": "爆炸半径",
+      "id": "discovered:acceptingpathdecoding",
+      "term": "accepting-path decoding",
+      "zh": "可接受路径解码",
       "aliases": [],
-      "category": "agent",
-      "scope": "官方文档",
-      "summary": "自主智能体部署风险中,一次失败或恶意行为可能造成的最大损害范围。",
-      "definition": "在资料中,Anthropic 将自主智能体部署风险拆为两部分:失败发生的可能性,以及一次失败可能造成的损害。后者即“理论爆炸半径”,随能力与访问权限扩大而增长。工程问题因此变成如何限制爆炸半径,例如通过控制智能体运行环境、沙箱、虚拟机与出口控制来设定硬边界。资料称 Claude Mythos Preview 因爆炸半径过高而在 2026 年 4 月被判定不宜发布。",
+      "category": "research",
+      "scope": "论文术语",
+      "summary": "在剩余长度限制内维持一个已验证可完成路径的约束解码方法。",
+      "definition": "该论文提出 APD,用于 DRS 解析的解码阶段:它在剩余输出长度限制内维持一个已验证的完成路径,只要模型偏好的 token 仍可被完成就跟随该 token,从而保证输出被接受且不撤回 token。资料称在严格长度限制下,APD 在 DRS 上比局部掩码提升 Smatch++ 5.1 与 2.4 分,在 AMR 上提升 6.4 与 3.2 分,效果与同样限制下会撤回 token 的 rollback 相当。",
       "example": "",
       "contrast": "",
       "related": [],
       "priority": 2000,
       "sources": [
         {
-          "sourceId": "official",
-          "title": "How we contain Claude across products",
-          "url": "https://www.anthropic.com/engineering/how-we-contain-claude"
+          "sourceId": "arxiv",
+          "title": "Structural Automata for Neural Semantic Parsing",
+          "url": "https://arxiv.org/abs/2610.13896v1"
         }
       ],
       "firstSeenAt": "2026-10-12T08:06:42.763Z",
@@ -17151,14 +17151,14 @@
       "updatedAt": "2026-10-12T08:06:42.763Z"
     },
     {
-      "id": "discovered:egresscontrols",
-      "term": "egress controls",
-      "zh": "出口控制",
+      "id": "discovered:blastradius",
+      "term": "blast radius",
+      "zh": "爆炸半径",
       "aliases": [],
       "category": "agent",
       "scope": "官方文档",
-      "summary": "限制智能体或沙箱向外发起网络连接的安全边界手段。",
-      "definition": "在资料中,出口控制属于环境层防御,用于约束智能体能够到达的范围。例如若凭据从不进入沙箱,就无法被外泄,无论原因是用户、模型找到“创造性”路径还是攻击者。资料还提到,当用户本身成为注入向量时,唯一有效的防御是环境,特别是阻止外发 POST 的出口控制,以及让 ~/.aws 无法被访问的文件系统边界。",
+      "summary": "自主智能体部署风险中,一次失败或恶意行为可能造成的最大损害范围。",
+      "definition": "在资料中,Anthropic 将自主智能体部署风险拆为两部分:失败发生的可能性,以及一次失败可能造成的损害。后者即“理论爆炸半径”,随能力与访问权限扩大而增长。工程问题因此变成如何限制爆炸半径,例如通过控制智能体运行环境、沙箱、虚拟机与出口控制来设定硬边界。资料称 Claude Mythos Preview 因爆炸半径过高而在 2026 年 4 月被判定不宜发布。",
       "example": "",
       "contrast": "",
       "related": [],
@@ -17197,14 +17197,14 @@
       "updatedAt": "2026-10-12T08:06:42.763Z"
     },
     {
-      "id": "discovered:metaharness",
-      "term": "meta-harness",
-      "zh": "元 harness",
+      "id": "discovered:contextresets",
+      "term": "context resets",
+      "zh": "上下文重置",
       "aliases": [],
-      "category": "agent",
+      "category": "context",
       "scope": "官方文档",
-      "summary": "对具体 harness 不做预设、只定义通用接口以容纳多种 harness 的系统。",
-      "definition": "资料将 Managed Agents 描述为 meta-harness:它不规定 Claude 未来需要哪种具体 harness,而是提供通用接口以容纳多种 harness,例如 Claude Code 以及面向特定任务的窄域 harness。其设计对 Claude 周围的接口有明确主张,预期 Claude 需要操作状态(session)与执行计算(sandbox)的能力,并能扩展到多 brain 与多 hand,但不假设 brain 或 hand 的数量与位置。",
+      "summary": "harness 中用于应对模型接近上下文上限时提前收尾的机制。",
+      "definition": "资料称 Anthropic 在先前工作中发现 Claude Sonnet 4.5 会在感知上下文限制临近时过早结束任务,即“上下文焦虑”,并通过在 harness 中加入上下文重置来应对。但同一 harness 用于 Claude Opus 4.5 时该行为已消失,重置成为无用负担。资料以此说明 harness 编码的关于模型不能做什么的假设会随模型改进而过时,需要经常质疑。",
       "example": "",
       "contrast": "",
       "related": [],
@@ -17220,14 +17220,60 @@
       "updatedAt": "2026-10-12T08:06:42.763Z"
     },
     {
-      "id": "discovered:timetofirsttoken",
-      "term": "time-to-first-token",
-      "zh": "首 token 时间",
+      "id": "discovered:egresscontrols",
+      "term": "egress controls",
+      "zh": "出口控制",
       "aliases": [],
       "category": "agent",
       "scope": "官方文档",
-      "summary": "会话从接受工作到产出第一个响应 token 之间的等待时长。",
-      "definition": "资料用 TTFT 衡量会话在接受工作与产生首个响应 token 之间的等待时间,并称这是用户感受最强烈的延迟。在把 brain 放入容器的旧架构中,每个会话都要先完成容器配置、克隆仓库、启动进程、拉取待处理事件,才能开始推理。将 brain 与 hand 解耦后,容器仅在需要时由 brain 通过工具调用配置,资料称 p50 TTFT 下降约 60%,p95 下降超过 90%。",
+      "summary": "限制智能体或沙箱向外发起网络连接的安全边界手段。",
+      "definition": "在资料中,出口控制属于环境层防御,用于约束智能体能够到达的范围。例如若凭据从不进入沙箱,就无法被外泄,无论原因是用户、模型找到“创造性”路径还是攻击者。资料还提到,当用户本身成为注入向量时,唯一有效的防御是环境,特别是阻止外发 POST 的出口控制,以及让 ~/.aws 无法被访问的文件系统边界。",
+      "example": "",
+      "contrast": "",
+      "related": [],
+      "priority": 2000,
+      "sources": [
+        {
+          "sourceId": "official",
+          "title": "How we contain Claude across products",
+          "url": "https://www.anthropic.com/engineering/how-we-contain-claude"
+        }
+      ],
+      "firstSeenAt": "2026-10-12T08:06:42.763Z",
+      "updatedAt": "2026-10-12T08:06:42.763Z"
+    },
+    {
+      "id": "discovered:eics",
+      "term": "EICS",
+      "zh": "评估不变概念稳定性",
+      "aliases": [],
+      "category": "research",
+      "scope": "论文术语",
+      "summary": "测试表示在受控单概念干预下是否一致编码概念的指标。",
+      "definition": "该论文提出 EICS(Evaluation-Invariant Concept Stability),用于测试表示在受控的单概念干预下是否一致地编码概念。论文同时提出 CASP-VL,一个由 Visual Genome 场景图导出的因果受控空间扰动基准。结果显示在多种 VLM 架构中,空间关系的表示忠实度显著低于词汇信息,即使这些模型在组合基准上得分远高于随机水平。",
+      "example": "",
+      "contrast": "",
+      "related": [],
+      "priority": 2000,
+      "sources": [
+        {
+          "sourceId": "arxiv",
+          "title": "When VLMs Destroy What They Know: Spatial Representations Fall Below Lexical Priors",
+          "url": "https://arxiv.org/abs/2610.13910v1"
+        }
+      ],
+      "firstSeenAt": "2026-10-12T08:06:42.763Z",
+      "updatedAt": "2026-10-12T08:06:42.763Z"
+    },
+    {
+      "id": "discovered:metaharness",
+      "term": "meta-harness",
+      "zh": "元 harness",
+      "aliases": [],
+      "category": "agent",
+      "scope": "官方文档",
+      "summary": "对具体 harness 不做预设、只定义通用接口以容纳多种 harness 的系统。",
+      "definition": "资料将 Managed Agents 描述为 meta-harness:它不规定 Claude 未来需要哪种具体 harness,而是提供通用接口以容纳多种 harness,例如 Claude Code 以及面向特定任务的窄域 harness。其设计对 Claude 周围的接口有明确主张,预期 Claude 需要操作状态(session)与执行计算(sandbox)的能力,并能扩展到多 brain 与多 hand,但不假设 brain 或 hand 的数量与位置。",
       "example": "",
       "contrast": "",
       "related": [],
@@ -17266,14 +17312,14 @@
       "updatedAt": "2026-10-12T08:06:42.763Z"
     },
     {
-      "id": "discovered:contextresets",
-      "term": "context resets",
-      "zh": "上下文重置",
+      "id": "discovered:timetofirsttoken",
+      "term": "time-to-first-token",
+      "zh": "首 token 时间",
       "aliases": [],
-      "category": "context",
+      "category": "agent",
       "scope": "官方文档",
-      "summary": "harness 中用于应对模型接近上下文上限时提前收尾的机制。",
-      "definition": "资料称 Anthropic 在先前工作中发现 Claude Sonnet 4.5 会在感知上下文限制临近时过早结束任务,即“上下文焦虑”,并通过在 harness 中加入上下文重置来应对。但同一 harness 用于 Claude Opus 4.5 时该行为已消失,重置成为无用负担。资料以此说明 harness 编码的关于模型不能做什么的假设会随模型改进而过时,需要经常质疑。",
+      "summary": "会话从接受工作到产出第一个响应 token 之间的等待时长。",
+      "definition": "资料用 TTFT 衡量会话在接受工作与产生首个响应 token 之间的等待时间,并称这是用户感受最强烈的延迟。在把 brain 放入容器的旧架构中,每个会话都要先完成容器配置、克隆仓库、启动进程、拉取待处理事件,才能开始推理。将 brain 与 hand 解耦后,容器仅在需要时由 brain 通过工具调用配置,资料称 p50 TTFT 下降约 60%,p95 下降超过 90%。",
       "example": "",
       "contrast": "",
       "related": [],
@@ -17283,75 +17329,6 @@
           "sourceId": "official",
           "title": "Scaling Managed Agents: Decoupling the brain from the hands",
           "url": "https://www.anthropic.com/engineering/managed-agents"
-        }
-      ],
-      "firstSeenAt": "2026-10-12T08:06:42.763Z",
-      "updatedAt": "2026-10-12T08:06:42.763Z"
-    },
-    {
-      "id": "discovered:acceptingpathdecoding",
-      "term": "accepting-path decoding",
-      "zh": "可接受路径解码",
-      "aliases": [],
-      "category": "research",
-      "scope": "论文术语",
-      "summary": "在剩余长度限制内维持一个已验证可完成路径的约束解码方法。",
-      "definition": "该论文提出 APD,用于 DRS 解析的解码阶段:它在剩余输出长度限制内维持一个已验证的完成路径,只要模型偏好的 token 仍可被完成就跟随该 token,从而保证输出被接受且不撤回 token。资料称在严格长度限制下,APD 在 DRS 上比局部掩码提升 Smatch++ 5.1 与 2.4 分,在 AMR 上提升 6.4 与 3.2 分,效果与同样限制下会撤回 token 的 rollback 相当。",
-      "example": "",
-      "contrast": "",
-      "related": [],
-      "priority": 2000,
-      "sources": [
-        {
-          "sourceId": "arxiv",
-          "title": "Structural Automata for Neural Semantic Parsing",
-          "url": "https://arxiv.org/abs/2610.13896v1"
-        }
-      ],
-      "firstSeenAt": "2026-10-12T08:06:42.763Z",
-      "updatedAt": "2026-10-12T08:06:42.763Z"
-    },
-    {
-      "id": "discovered:eics",
-      "term": "EICS",
-      "zh": "评估不变概念稳定性",
-      "aliases": [],
-      "category": "research",
-      "scope": "论文术语",
-      "summary": "测试表示在受控单概念干预下是否一致编码概念的指标。",
-      "definition": "该论文提出 EICS(Evaluation-Invariant Concept Stability),用于测试表示在受控的单概念干预下是否一致地编码概念。论文同时提出 CASP-VL,一个由 Visual Genome 场景图导出的因果受控空间扰动基准。结果显示在多种 VLM 架构中,空间关系的表示忠实度显著低于词汇信息,即使这些模型在组合基准上得分远高于随机水平。",
-      "example": "",
-      "contrast": "",
-      "related": [],
-      "priority": 2000,
-      "sources": [
-        {
-          "sourceId": "arxiv",
-          "title": "When VLMs Destroy What They Know: Spatial Representations Fall Below Lexical Priors",
-          "url": "https://arxiv.org/abs/2610.13910v1"
-        }
-      ],
-      "firstSeenAt": "2026-10-12T08:06:42.763Z",
-      "updatedAt": "2026-10-12T08:06:42.763Z"
-    },
-    {
-      "id": "discovered:wellrestedindex",
-      "term": "Well-Rested Index",
-      "zh": "充分休息指数",
-      "aliases": [],
-      "category": "research",
-      "scope": "论文术语",
-      "summary": "该论文提出用于量化睡眠恢复效能的指标。",
-      "definition": "该论文在 DyssomniaNN 框架中引入 Well-Rested Index,用于量化恢复性效能。模拟显示睡眠时长无法预测恢复性恢复:矛盾性失眠达到正常总睡眠时间 21.15 小时,但因未受抑制的皮层 beta 频段侵入,恢复度仅 37.6%;而发作性睡病中的下丘脑分泌素缺乏导致严重夜间碎片化与 35 次睡眠起始快速眼动期。",
-      "example": "",
-      "contrast": "",
-      "related": [],
-      "priority": 2000,
-      "sources": [
-        {
-          "sourceId": "arxiv",
-          "title": "DyssomniaNN: Multi-Scale Spiking Neural Modeling of Human Sleep Disorders and Perceived Restedness",
-          "url": "https://arxiv.org/abs/2610.13918v1"
         }
       ],
       "firstSeenAt": "2026-10-12T08:06:42.763Z",
