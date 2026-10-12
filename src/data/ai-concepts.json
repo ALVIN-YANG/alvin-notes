@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-12T08:11:47.496Z",
+  "updatedAt": "2026-10-12T08:18:26.420Z",
   "sources": [
     {
       "id": "google",
@@ -489,13 +489,13 @@
       "priority": 42,
       "sources": [
         {
-          "title": "Google 机器学习术语表",
-          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-cn"
+          "title": "Hugging Face：SFT Trainer",
+          "url": "https://huggingface.co/docs/trl/sft_trainer#looking-deeper-into-the-sft-method"
         }
       ],
       "scope": "通用概念",
       "firstSeenAt": "2026-10-12T07:32:50.762Z",
-      "updatedAt": "2026-10-12T07:32:50.762Z"
+      "updatedAt": "2026-10-12T08:18:26.420Z"
     },
     {
       "id": "rlhf",
