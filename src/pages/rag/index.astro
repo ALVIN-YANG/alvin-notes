@@ -41,7 +41,12 @@ const demoCommands = [
     </header>
 
     <section class="rag-section" id="understand" aria-labelledby="understand-title">
-      <h2 id="understand-title">用一个例子看懂</h2>
+      <h2 id="understand-title">RAG 是什么</h2>
+      <div class="rag-principle-text">
+        <p>{guide.principle.definition} <a href="#source-definition">定义来源</a></p>
+        <p>{guide.principle.purpose}</p>
+        <p>{guide.principle.boundary}</p>
+      </div>
       <div class="rag-example">
         <p class="rag-example-note">{guide.example.note}</p>
         <dl>
@@ -50,9 +55,23 @@ const demoCommands = [
           <div><dt>应回答</dt><dd>{guide.example.answer}</dd></div>
         </dl>
       </div>
-      <ol class="rag-flow" aria-label="从资料到回答的四个步骤">
-        {guide.flow.map((step) => <li><strong>{step.title}</strong><span>{step.text}</span></li>)}
+      <h3 class="rag-principle-heading">导入资料时：准备可搜索的资料库</h3>
+      <ol class="rag-flow" aria-label="资料导入和索引构建的三个步骤">
+        {guide.principle.preparation.map((step) => <li><strong>{step.title}</strong><span>{step.text}</span></li>)}
       </ol>
+      <h3 class="rag-principle-heading">用户提问时：检索，再生成回答</h3>
+      <ol class="rag-flow" aria-label="用户提问后的检索与生成三个步骤">
+        {guide.principle.answering.map((step) => <li><strong>{step.title}</strong><span>{step.text}</span></li>)}
+      </ol>
+      <h3 class="rag-principle-heading">程序怎样找到相关资料</h3>
+      <table class="rag-table rag-check-table">
+        <thead><tr><th scope="col">检索方式</th><th scope="col">工作原理</th></tr></thead>
+        <tbody>{guide.principle.searchMethods.map((method) => <tr><th scope="row">{method.name}</th><td>{method.how}</td></tr>)}</tbody>
+      </table>
+      <p class="rag-section-note">{guide.principle.searchNote}</p>
+      <h3 class="rag-principle-heading">模型实际收到的内容</h3>
+      <pre class="rag-model-input"><code>{guide.principle.modelInput}</code></pre>
+      <p class="rag-section-note">{guide.principle.inputNote}</p>
       <p class="rag-section-note">{guide.fit} <a href="#source-retrieval">方法来源</a></p>
     </section>
 
@@ -121,6 +140,12 @@ const demoCommands = [
           <li id={`source-${source.id}`}><a href={source.href} target="_blank" rel="noreferrer">{source.title}</a><p>{source.supports}</p></li>
         ))}</ul>
         <p>权限、版本和更新策略是本页的工程建议，需要在项目中验证。例子用于说明，没有声称已通过生产验收。</p>
+      </details>
+      <details class="rag-detail">
+        <summary>完整教学入口：中文课程、原理拆解与进阶实战</summary>
+        <ul class="rag-source-list">{guide.tutorials.map((tutorial) => (
+          <li><a href={tutorial.href} target="_blank" rel="noreferrer">{tutorial.title}</a><p>{tutorial.description} <a href={tutorial.start} target="_blank" rel="noreferrer">从这里开始</a></p></li>
+        ))}</ul>
       </details>
       <div class="rag-related"><span>需要深入时：</span><a href="/ai/rag-primer/">RAG 技术选型</a><a href="/ai/rag-knowledge-base-component/">知识库落地</a><a href="/ai/rag-metadata-filtering/">资料过滤</a><a href="/agent-knowledge/">Agent 知识地图</a></div>
     </footer>

@@ -28,13 +28,18 @@
 .rag-copy-status[hidden] { display: none; }
 .rag-section { margin-top: 1.8rem; scroll-margin-top: calc(var(--sl-nav-height) + 1rem); }
 .rag-section > h2 { margin-bottom: .7rem; }
+.rag-principle-text p + p { margin-top: .55rem; }
+.rag-principle-text + .rag-example { margin-top: .8rem; }
+.rag-practice .rag-principle-heading { margin: 1.1rem 0 .5rem; font-size: .98rem; font-weight: 600; line-height: 1.5; }
+.rag-model-input { margin: 0; padding: .8rem 1rem; background: var(--sl-color-accent-low); border-radius: .35rem; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .86rem; line-height: 1.8; }
+.rag-model-input code { font-family: var(--sl-font); font-size: inherit; }
 .rag-example { padding: .8rem 1rem; border: 1px solid var(--sl-color-gray-5); border-radius: .35rem; background: var(--sl-color-surface); }
 .rag-practice .rag-example-note { margin-bottom: .45rem; color: var(--sl-color-gray-2); font-size: .8rem; }
 .rag-example dl > div { display: grid; grid-template-columns: 4rem minmax(0, 1fr); gap: .5rem; padding-block: .2rem; }
 .rag-example dt { color: var(--sl-color-accent-high); font-weight: 600; }
 .rag-example dd { min-width: 0; }
 .rag-example small { display: block; color: var(--sl-color-gray-2); font-size: .78rem; }
-.rag-practice .rag-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; list-style: none; padding: 0; margin-top: .8rem; counter-reset: rag-flow; }
+.rag-practice .rag-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; list-style: none; padding: 0; margin-top: .5rem; counter-reset: rag-flow; }
 .rag-practice .rag-flow li { position: relative; min-width: 0; margin: 0; padding: .6rem .65rem; background: var(--sl-color-accent-low); border-radius: .3rem; counter-increment: rag-flow; }
 .rag-flow li::after { content: '→'; position: absolute; right: -.64rem; top: .55rem; color: var(--sl-color-gray-2); font-size: .85rem; }
 .rag-flow li:last-child::after { display: none; }
@@ -83,7 +88,7 @@
 	.rag-jump-links a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 	.rag-meta-row { gap: .2rem; }
 	.rag-section { margin-top: 1.4rem; }
-	.rag-practice .rag-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+	.rag-practice .rag-flow { grid-template-columns: 1fr; gap: .5rem; }
 	.rag-flow li::after { display: none; }
 	.rag-table thead { display: none; }
 	.rag-practice .rag-table, .rag-practice .rag-table tbody, .rag-practice .rag-table tr, .rag-practice .rag-table th, .rag-practice .rag-table td { display: block; width: 100%; }

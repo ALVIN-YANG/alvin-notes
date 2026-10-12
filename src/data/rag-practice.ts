@@ -1,8 +1,33 @@
 export const ragPractice = {
   title: 'RAG 实战速查',
-  updatedAt: '2026-10-11',
-  summary: '系统先查你的资料，再把相关内容交给 AI 回答。适合制度、产品手册、内部知识库等有明确资料来源的问题。',
+  updatedAt: '2026-10-12',
+  summary: 'RAG 把资料检索和大模型回答接在一起：程序先找到相关原文，再把原文和问题一起交给模型。适合制度、产品手册、内部知识库等问题。',
   limit: '资料找错了，或 AI 没按资料回答，答案仍然会错。找不到依据时，要说明缺少资料。',
+  principle: {
+    definition: 'RAG 是 Retrieval-Augmented Generation 的缩写，中文叫“检索增强生成”。它是一种让大模型利用外部资料回答问题的方法：先查资料，把查到的内容补进模型的输入，再生成回答。',
+    purpose: '例如，你问公司住宿能报销多少。大模型未必知道公司的最新制度，程序就先去制度库找住宿条款，把条款交给模型，让它据此回答。',
+    boundary: '资料保存在外部知识库中。单纯导入文件不会重新训练大模型；更新资料库以后，下次检索可以使用新资料。',
+    preparation: [
+      { title: '把文件读成文字并分段', text: '读出制度，按条款保存。住宿上限和适用条件放在同一段，保留文件、版本和章节。' },
+      { title: '建立查找资料的索引', text: '记录关键词；按意思搜索时，再用 Embedding 模型把每段文字编码成数字列表，也就是向量。' },
+      { title: '保存索引与原文的对应关系', text: '搜索命中一条记录后，要能取回原文和出处。文件新增或修改时，更新对应的搜索记录。' },
+    ],
+    answering: [
+      { title: '程序根据问题找资料', text: '在用户有权查看的生效资料里搜索，取回与“住酒店”有关的住宿条款。' },
+      { title: '把问题和原文发给模型', text: '把用户问题、住宿条款和回答要求拼成一次模型请求。向量用于搜索，发给模型的是取回的原文。' },
+      { title: '模型生成回答，程序检查结果', text: '模型根据条款回答 500 元并引用来源；程序与评测继续检查金额、条件和引用是否正确。' },
+    ],
+    searchMethods: [
+      { name: '关键词检索', how: '按词语或编号匹配资料。“住宿”可以查到包含这个词的条款；“住酒店”这种不同问法，可以用同义词规则补充匹配。' },
+      { name: '向量检索', how: '用配套的 Embedding 模型把资料片段和问题编码成向量，比较向量的接近程度，再取回对应原文。因此，“住酒店”有机会找到写着“住宿”的条款。效果仍需测试。' },
+    ],
+    searchNote: 'RAG 可以使用关键词检索、向量检索，或把两者结合。向量库负责存储和查找向量；根据原文组织答案的是大模型。',
+    modelInput: `用户问题：出差住酒店，每晚最多能报销多少？
+参考资料 [S1]：员工出差住宿，每晚最多报销 500 元。
+来源：差旅制度，第 8 条，当前生效版本。
+回答要求：根据资料回答，注明来源；资料不足时说明缺口。`,
+    inputNote: '这就是“增强”：把刚找到的资料补进模型本次输入。模型本轮能看到这条规定，才有依据生成 500 元的回答；仍要检查它有没有读错条件或编造内容。',
+  },
   example: {
     note: '假设公司制度有下面这条规定',
     document: '差旅制度 · 第 8 条 · 当前生效版本',
@@ -10,12 +35,6 @@ export const ragPractice = {
     question: '出差住酒店，每晚最多能报销多少？',
     answer: '每晚最多报销 500 元。来源：差旅制度第 8 条。',
   },
-  flow: [
-    { title: '读入资料', text: '读出制度中的完整文字' },
-    { title: '分段保存', text: '保存住宿条款和出处' },
-    { title: '按问题查找', text: '找到“住宿上限”这条规定' },
-    { title: '根据资料回答', text: '把规定交给 AI，回答并引用' },
-  ],
   fit: '只有几页固定资料时，可以先直接交给 AI。资料多、经常更新，或不同用户能看的资料不同，再做检索。',
   steps: [
     {
@@ -123,10 +142,16 @@ export const ragPractice = {
     '每次改动，都用相同问题重新验证。',
   ],
   sources: [
+    { id: 'definition', title: 'RAG 原始论文：检索资料与语言生成结合', href: 'https://arxiv.org/abs/2005.11401', supports: '说明模型自身知识与外部检索资料结合的思路。本页讲常见应用层流程，不复述论文中的联合训练实现。' },
     { id: 'retrieval', title: 'Anthropic：资料分段、关键词与向量检索、重新排序', href: 'https://www.anthropic.com/engineering/contextual-retrieval', supports: '支持资料进入模型前的处理流程；文中的实验参数和收益不能直接套用到其他项目。' },
     { id: 'pgvector', title: 'pgvector：PostgreSQL 的向量搜索与过滤', href: 'https://github.com/pgvector/pgvector', supports: '说明向量搜索和过滤的实现方式。近似搜索叠加过滤可能减少结果，需要检查是否漏掉资料。' },
     { id: 'hybrid', title: 'Elastic：混合检索', href: 'https://www.elastic.co/docs/solutions/search/hybrid-search', supports: '说明怎样结合关键词与语义搜索。' },
     { id: 'evaluation', title: 'RAGAS 论文：分别评估检索和回答', href: 'https://aclanthology.org/2024.eacl-demo.16/', supports: '支持分别检查资料相关性、回答是否忠实使用资料和回答质量。' },
+  ],
+  tutorials: [
+    { title: 'Datawhale All-in-RAG', href: 'https://github.com/datawhalechina/all-in-rag', start: 'https://github.com/datawhalechina/all-in-rag/blob/main/docs/chapter1/03_get_start_rag.md', description: '中文学习主线：先读第一章，再看“四步构建 RAG”的文档与代码。' },
+    { title: 'LangChain RAG From Scratch', href: 'https://github.com/langchain-ai/rag-from-scratch', start: 'https://github.com/langchain-ai/rag-from-scratch/blob/main/rag_from_scratch_1_to_4.ipynb', description: '用前 4 课拆开看：建索引、检索、生成。有图、视频和 Notebook；示例 API 较旧，运行前需要核对依赖版本。' },
+    { title: 'Hugging Face RAG Cookbook', href: 'https://github.com/huggingface/cookbook/blob/main/notebooks/en/advanced_rag.ipynb', start: 'https://huggingface.co/learn/cookbook/en/advanced_rag', description: '基础流程懂了以后，再看切块、向量搜索、重新排序，以及完整输入和回答示例。' },
   ],
 };
 
@@ -142,11 +167,24 @@ export function ragPracticeMarkdown(): string {
     `更新：${guide.updatedAt}。示例用于解释，不代表真实模型运行结果。`,
     guide.summary,
     guide.limit,
+    '## RAG 是什么',
+    guide.principle.definition,
+    guide.principle.purpose,
+    guide.principle.boundary,
     '## 用一个例子看懂',
     `${guide.example.note}：${guide.example.text}`,
     `问题：${guide.example.question}`,
     `期望回答：${guide.example.answer}`,
-    guide.flow.map((step, index) => `${index + 1}. ${step.title}：${step.text}`).join('\n'),
+    '### 导入资料时：准备可搜索的资料库',
+    guide.principle.preparation.map((step, index) => `${index + 1}. ${step.title}：${step.text}`).join('\n'),
+    '### 用户提问时：检索，再生成回答',
+    guide.principle.answering.map((step, index) => `${index + 1}. ${step.title}：${step.text}`).join('\n'),
+    '### 程序怎样找到相关资料',
+    table(['检索方式', '工作原理'], guide.principle.searchMethods.map((method) => [method.name, method.how])),
+    guide.principle.searchNote,
+    '### 模型实际收到的内容',
+    `\`\`\`text\n${guide.principle.modelInput}\n\`\`\``,
+    guide.principle.inputNote,
     guide.fit,
     '## 第一版怎么做',
     table(['做什么', '具体做法', '检查结果'], guide.steps.map((step) => [step.title, step.action, step.check])),
@@ -168,6 +206,8 @@ export function ragPracticeMarkdown(): string {
     ...guide.recap.map((item) => `- ${item}`),
     '## 方法来源',
     ...guide.sources.map((source) => `- [${source.title}](${source.href})：${source.supports}`),
+    '## 完整教学入口',
+    ...guide.tutorials.map((tutorial) => `- [${tutorial.title}](${tutorial.href})：${tutorial.description} [建议从这里开始](${tutorial.start})`),
     '本页给出起步做法和排错顺序。权限、版本和更新策略属于工程建议，需结合项目验证；没有声称已通过生产验收。',
     '',
   ].join('\n\n');
