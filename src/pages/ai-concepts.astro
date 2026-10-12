@@ -1,27 +1,13 @@
 ---
-import '../styles/custom.css';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import AIConcepts from '../components/AIConcepts.astro';
-import Analytics from '@vercel/analytics/astro';
-const title = 'AI 概念 · Alvin Yang';
-const description = '用卡片查阅 AI 术语，通过浏览器朗读与间隔复习记住容易混淆的概念。官方词表与近期论文每周同步。';
+const frontmatter = {
+  title: 'AI 概念',
+  description: '用卡片查阅 AI 术语，通过浏览器朗读与间隔复习记住容易混淆的概念。官方词表与近期论文每周同步。',
+  template: 'splash' as const,
+  hidePageTitle: true,
+};
 ---
-<!doctype html>
-<html lang="zh-CN" class="ai-concepts-page" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} />
-    <meta name="theme-color" content="#f6f8fb" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://blog.mlxb.cc/ai-concepts/" />
-    <meta property="og:image" content="https://blog.mlxb.cc/images/brand/og-default.png" />
-    <link rel="canonical" href="https://blog.mlxb.cc/ai-concepts/" />
-    <link rel="icon" href="/favicon.png" />
-    <link rel="preload" href="/fonts/misans/misans-regular-subset.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
-    <title>{title}</title>
-    <script is:inline>document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';</script>
-  </head>
-  <body><AIConcepts /><Analytics /></body>
-</html>
+<StarlightPage frontmatter={frontmatter} sidebar={[]}>
+  <AIConcepts />
+</StarlightPage>

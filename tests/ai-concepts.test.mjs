@@ -188,7 +188,7 @@ test('known non-English or novelty-only voice lists do not silently use the wron
 });
 
 function uiFixture(t, entry, blocked = false) {
-  const dom = new JSDOM('<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button><section data-browse><input data-search><select data-category><option value=""></option></select><select data-sort><option value="common"></option></select><span data-count></span><div data-grid></div><nav data-pagination><button data-prev></button><span data-page-label></span><button data-next></button></nav></section><dialog data-detail aria-labelledby="ac-detail-title"></dialog><section data-review hidden></section><span data-progress></span><p data-status class="ac-sr-only"></p><button data-export></button><input type="file" data-import></div>', { url: 'https://blog.mlxb.cc/ai-concepts/' });
+  const dom = new JSDOM('<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button><section data-browse><input data-search><select data-category><option value=""></option></select><select data-sort><option value="common"></option></select><span data-count></span><div data-grid></div><nav data-pagination><button data-prev></button><span data-page-label></span><button data-next></button></nav></section><dialog data-detail aria-labelledby="ac-detail-title"></dialog><section data-review hidden></section><span data-progress></span><p data-status class="ac-sr-only"></p></div>', { url: 'https://blog.mlxb.cc/ai-concepts/' });
   dom.window.scrollTo = () => {};
   if (blocked) Object.defineProperty(dom.window, 'localStorage', { get() { throw new Error('storage blocked'); } });
   const root = dom.window.document.querySelector('[data-concepts-root]');
@@ -228,7 +228,7 @@ test('imported source prose renders as text instead of executable HTML', t => {
   assert(root.querySelector('.ac-definition').textContent.includes('<img'));
 });
 
-test('blocked browser storage leaves practice usable and keeps the backup warning visible', t => {
+test('blocked browser storage leaves practice usable and keeps the save warning visible', t => {
   const root = uiFixture(t, term, true);
   root.querySelector('[data-mode="review"]').click();
   root.querySelector('[data-reveal]').click();

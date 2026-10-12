@@ -5,14 +5,13 @@ const serialized = JSON.stringify(data).replace(/</g, '\\u003c');
 const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' });
 ---
 
-<div class="ai-concepts" data-concepts-root>
+<div class="ai-concepts not-content" data-concepts-root>
+  <div class="ac-main">
   <header class="ac-header">
-    <a class="ac-home" href="/" aria-label="返回 Alvin Yang 首页"><span aria-hidden="true">←</span> Alvin Yang</a>
+    <h1 id="_top">AI 概念</h1>
     <nav aria-label="AI 概念"><button type="button" data-mode="browse" aria-current="page">查概念</button><button type="button" data-mode="review" data-enhanced hidden>复习</button></nav>
   </header>
-  <main class="ac-main">
-    <section data-browse aria-labelledby="ac-title">
-      <h1 id="ac-title">AI 概念</h1>
+    <section data-browse aria-labelledby="_top">
       <div class="ac-filters" data-enhanced hidden>
         <label class="ac-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><span class="ac-sr-only">搜索概念</span><input type="search" data-search placeholder="搜索术语、缩写或中文" autocomplete="off" /></label>
         <label class="ac-select"><span class="ac-sr-only">按分类筛选</span><select data-category><option value="">全部分类</option>{Object.entries(categories).map(([key, label]) => <option value={key}>{label}</option>)}</select></label>
@@ -34,10 +33,10 @@ const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'A
         <ul>{data.sources.map(source => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a> · <a href={source.licenseUrl} target="_blank" rel="noopener noreferrer">{source.license}</a><br/>{source.attribution}</li>)}</ul>
         <p><a href="/licenses/ai-concepts-huggingface.txt" target="_blank" rel="noopener noreferrer">Hugging Face 许可与版权说明</a>。每条概念的具体来源可在详情中查看。</p>
         <p>点击小喇叭只播放英文名词，不朗读介绍。优先使用设备上可用的自然英语音色；音色和是否需要联网取决于浏览器及系统设置。</p>
-        <div data-enhanced hidden><p>复习采用自评间隔：1、3、7、14、30、60 天；没想起来的词条 10 分钟后再出现。记录仅保存在此浏览器，清除网站数据会丢失。建议定期导出备份。</p><div class="ac-record-actions"><button type="button" data-export>导出记录</button><label class="ac-import">导入记录<input type="file" accept="application/json,.json" data-import /></label></div></div>
+        <p data-enhanced hidden>复习采用自评间隔：1、3、7、14、30、60 天；没想起来的词条 10 分钟后再出现。记录仅保存在此浏览器，清除网站数据会丢失。</p>
       </div></details>
     </footer>
-  </main>
+  </div>
   <script type="application/json" data-concepts-data set:html={serialized} />
 </div>
 

@@ -117,11 +117,11 @@ export function mountConcepts(root, data) {
     }
   }
   try { const saved = view.localStorage.getItem(PROGRESS_KEY); if (saved) progress = readProgress(saved, terms); }
-  catch { announce('无法读取已保存的复习记录。本次仍可学习，也可导入备份。', true); }
+  catch { announce('无法读取已保存的复习记录。本次仍可学习。', true); }
   function persist() {
     let saved = true;
     try { view.localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); }
-    catch { saved = false; announce('浏览器无法保存记录。本次进度仍在，离开前可以导出备份。', true); }
+    catch { saved = false; announce('浏览器无法保存记录。本次进度仍在，离开后可能丢失。', true); }
     updateProgress();
     return saved;
   }
@@ -247,23 +247,6 @@ export function mountConcepts(root, data) {
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
   });
   listen(root, 'keydown', event => { if (event.key === 'Escape' && mode !== 'browse') returnBrowse(); });
-  listen(find('[data-export]'), 'click', () => {
-    const blob = new view.Blob([JSON.stringify({ ...progress, exportedAt: new Date().toISOString() }, null, 2)], { type: 'application/json' });
-    const url = view.URL.createObjectURL(blob), link = document.createElement('a');
-    link.href = url; link.download = 'AI概念-复习记录.json'; link.click();
-    view.setTimeout(() => view.URL.revokeObjectURL(url), 1000);
-    announce('复习记录已导出');
-  });
-  listen(find('[data-import]'), 'change', async event => {
-    const input = event.target, file = input.files?.[0]; if (!file) return;
-    try {
-      if (file.size > 1000000) throw new Error('记录文件过大');
-      const imported = readProgress(await file.text(), terms);
-      for (const [id, record] of Object.entries(imported.records)) if (!progress.records[id] || record.lastReviewed > progress.records[id].lastReviewed) progress.records[id] = record;
-      if (persist()) announce(`已导入 ${Object.keys(imported.records).length} 个词条的记录`, true);
-    } catch { announce('导入失败，请选择本站导出的复习记录 JSON 文件。', true); }
-    input.value = '';
-  });
   listen(view, 'pagehide', () => speech.stop());
   root.querySelectorAll('[data-enhanced]').forEach(element => { element.hidden = false; });
   renderBrowse();
