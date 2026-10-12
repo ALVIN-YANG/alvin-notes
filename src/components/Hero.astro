@@ -9,29 +9,32 @@ const isRootHome = Astro.url.pathname === '/';
 
 {
   isRootHome ? (
-    <div class="home-avatar-hero">
-      <section class="home-avatar-note" aria-label="Alvin 的话">
-        <ProgrammerAside />
-      </section>
-      <aside class="home-product-promo" aria-label="ClawStage 产品">
-        <a
-          class="home-product-promo-link"
-          href="https://www.kickstarter.com/projects/hoorii/hoorii-stage-your-proactive-smart-personalized-companion-hub"
-          target="_blank"
-          rel="noopener noreferrer sponsored"
-          aria-label="ClawStage。查看 Kickstarter 项目，在新窗口打开。"
-        >
-          <img
-            class="home-product-promo-image"
-            src="/images/promos/clawstage-desk.webp"
-            alt=""
-            width="936"
-            height="288"
-            decoding="async"
-          />
-          <span class="home-product-promo-title">ClawStage</span>
-        </a>
-      </aside>
+    <div class="home-intro">
+      <h1 class="home-title">AI Agent 与工程实践</h1>
+      <div class="home-avatar-hero">
+        <section class="home-avatar-note" aria-label="Alvin 的话">
+          <ProgrammerAside />
+        </section>
+        <aside class="home-product-promo" aria-label="ClawStage 产品">
+          <a
+            class="home-product-promo-link"
+            href="https://www.kickstarter.com/projects/hoorii/hoorii-stage-your-proactive-smart-personalized-companion-hub"
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            aria-label="ClawStage。查看 Kickstarter 项目，在新窗口打开。"
+          >
+            <img
+              class="home-product-promo-image"
+              src="/images/promos/clawstage-desk.webp"
+              alt=""
+              width="936"
+              height="288"
+              decoding="async"
+            />
+            <span class="home-product-promo-title">ClawStage</span>
+          </a>
+        </aside>
+      </div>
     </div>
   ) : (
     <DefaultHero {...Astro.props} />

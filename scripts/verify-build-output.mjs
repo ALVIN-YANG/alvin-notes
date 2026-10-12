@@ -302,6 +302,35 @@ if (!systemDesignDataMatch) {
   }
 }
 
+const homepageHtml = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+if ((homepageHtml.match(/<h1\b/g) ?? []).length !== 1) {
+  problems.push('Homepage must contain one main heading');
+}
+
+const seoArticlePaths = [
+  'ai/agent-context-persistence-recovery/',
+  'ai/agent-memory-system-design/',
+  'ai/agent-evaluation-observability/',
+];
+for (const articlePath of seoArticlePaths) {
+  const html = await readFile(new URL(`${articlePath}index.html`, outputDirectory), 'utf8');
+  const jsonScripts = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
+  try {
+    const articles = jsonScripts.map((match) => JSON.parse(match[1])).filter((schema) => schema['@type'] === 'BlogPosting');
+    const canonical = html.match(/<link\b[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1];
+    if (articles.length !== 1 || articles[0].mainEntityOfPage !== canonical || !articles[0].datePublished || !articles[0].author?.url) {
+      problems.push(`Article metadata is missing or inconsistent: ${articlePath}`);
+    }
+  } catch {
+    problems.push(`Article JSON-LD is invalid: ${articlePath}`);
+  }
+}
+
+const toolHtml = await readFile(new URL('tools/code-image/index.html', outputDirectory), 'utf8');
+if (/<script\b[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?"@type":"BlogPosting"/.test(toolHtml)) {
+  problems.push('Code image tool must not be marked as a blog article');
+}
+
 if (problems.length > 0) {
   console.error(`Static build verification failed:\n${problems.map((problem) => `- ${problem}`).join('\n')}`);
   process.exitCode = 1;

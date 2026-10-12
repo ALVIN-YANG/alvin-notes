@@ -1,14 +1,18 @@
 ---
 import StarlightHead from '@astrojs/starlight/components/Head.astro';
 import Analytics from '@vercel/analytics/astro';
+import { createArticleJsonLd } from '../lib/article-schema.mjs';
 
 const siteUrl = Astro.site?.href ?? 'https://blog.mlxb.cc';
 const canonicalPath = Astro.url.pathname;
+const canonicalUrl = new URL(canonicalPath, siteUrl).href;
 const ogImage = new URL('/images/brand/og-default.png', siteUrl).href;
+const articleJsonLd = createArticleJsonLd(Astro.locals.starlightRoute, canonicalUrl);
 ---
 
 <StarlightHead />
 <Analytics />
+{articleJsonLd && <script is:inline type="application/ld+json" set:html={articleJsonLd} />}
 <link
   rel="preload"
   href="/fonts/misans/misans-regular-subset.woff2"

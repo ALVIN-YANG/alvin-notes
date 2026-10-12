@@ -2,7 +2,7 @@
 title: "AI Agent 怎么做评测：别只看最后一句回答"
 description: "一次任务成功，不代表系统可靠。从结果、轨迹、副作用和线上回放出发，建立真正能阻止回归的 Agent 评测。"
 date: 2026-01-27
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-12
 verifiedAgainst: "OpenAI 与 Anthropic Agent eval 官方资料，2026-03-03"
 sidebar:
   order: 10
@@ -92,6 +92,8 @@ expect(trace.totalCostUsd).toBeLessThan(0.05);
 ```
 
 Trace 是一次执行记录。上面的数值是字段示例；实际记录需脱敏、限权并设置保留期限，不默认保存完整敏感输入和工具结果。
+
+验证中断恢复时，可以在工具结果保存后结束进程，检查新进程是否从下一步继续；再在工具执行后、结果保存前制造故障，检查业务动作是否被重复执行。故障位置和保存记录的分工见 [Agent 状态持久化与恢复](/ai/agent-context-persistence-recovery/)，跨会话偏好、过期与删除的测试范围见 [Agent 记忆系统设计](/ai/agent-memory-system-design/)。
 
 ## 评测怎样进入发布流程
 

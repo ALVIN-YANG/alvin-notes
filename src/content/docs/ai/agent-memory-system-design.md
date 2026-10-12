@@ -2,7 +2,7 @@
 title: AI Agent 记忆系统设计：工作上下文、跨会话记忆与执行事实
 description: 分清当前任务的工作上下文、跨会话保存的情景记录与长期偏好，以及“工具做过什么”的执行事实，分别设计存储、检索、注入与过期策略
 date: 2026-02-11
-lastUpdated: 2026-10-11
+lastUpdated: 2026-10-12
 ---
 
 **Agent 记忆要分别保存当前任务状态、跨会话可复用的信息和实际执行记录。** 当前任务靠状态继续，偏好与经验按需检索；工具是否执行成功，要按操作 ID 查业务记录，不能靠相似度猜。
@@ -68,7 +68,7 @@ lastUpdated: 2026-10-11
 }
 ```
 
-LangGraph 等框架把会话状态放在 thread 的检查点中，跨会话记忆放在 namespace 的存储中。业务执行事实则独立落库，具体恢复见[Agent 状态保存与恢复](/ai/agent-context-persistence-recovery/)。
+LangGraph 等框架把会话状态放在 thread 的检查点中，跨会话记忆放在 namespace 的存储中。业务执行事实则独立落库。需要处理服务重启时，可以按 [Agent 状态持久化与恢复](/ai/agent-context-persistence-recovery/)中的 LangGraph 与 PostgreSQL 示例，验证新进程能否复用工具结果并继续任务。
 
 ## 写入、检索与注入
 

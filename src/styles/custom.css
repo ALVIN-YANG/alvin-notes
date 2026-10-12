@@ -617,6 +617,17 @@ main {
 
 /* ─── Hero Refinements (splash page) ─── */
 
+.home-title {
+	width: min(100%, 72rem);
+	margin: 0 auto 1rem;
+	font-family: var(--sl-font-heading);
+	font-size: clamp(1.4rem, 3vw, 1.8rem);
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--sl-color-white);
+	text-wrap: balance;
+}
+
 .home-avatar-hero {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 19.5rem);
