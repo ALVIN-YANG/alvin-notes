@@ -7,15 +7,15 @@ export const ragPractice = {
   limit: '资料找错了，或 AI 没按资料回答，答案仍然会错。找不到依据时，要说明缺少资料。',
   diagrams: {
     tokenizer: {
-      src: '/images/rag/rag-tokenizer.svg',
+      src: '/images/rag/rag-tokenizer-cel.webp',
       title: '检索和回答，各用配套的 tokenizer',
       alt: '检索时，资料和问题分别通过 Embedding 模型配套的 tokenizer 变成整数 token ID，再由 Embedding 模型计算向量，用向量找回原文。回答时，将问题、找回的原文和要求组成输入，使用回答模型配套的 tokenizer 编码，再由回答模型生成答案。两套 tokenizer 可能不同；token ID 是词表编号，Embedding 是模型计算的浮点向量。',
       caption: '模型内部读的是 token ID。向量检索之后，程序取回原文，交给回答模型重新编码。',
-      width: 1280,
-      height: 640,
+      width: 1536,
+      height: 768,
     },
     overview: {
-      src: '/images/rag/rag-overview.webp',
+      src: '/images/rag/rag-overview-cel.webp',
       title: 'RAG：先找资料，再回答',
       alt: '用户问住酒店每晚最多报销多少。程序查到差旅制度第 8 条：住宿每晚最多报销 500 元。程序把问题、原文和回答要求交给大模型，模型回答每晚最多报销 500 元，并注明来源。',
       caption: '用假设的差旅制度说明：先找到 500 元的条款，再把条款交给模型。',
@@ -23,7 +23,7 @@ export const ragPractice = {
       height: 1024,
     },
     implementation: {
-      src: '/images/rag/rag-two-stages.webp',
+      src: '/images/rag/rag-two-stages-cel.webp',
       title: 'RAG 实现分两步',
       alt: '资料导入或更新时：读文件并分段，建立关键词或向量搜索索引，保存原文、出处与索引。每次用户提问时：按权限和生效版本搜索这个资料库，取出相关原文，把问题、原文和回答要求交给大模型，检查答案和引用。向量用于查找，交给大模型的是原文。',
       caption: '上面准备资料库，下面处理每次提问。向量用于查找，交给大模型的是原文。',
