@@ -12,7 +12,7 @@ import schedulerSource from '../../../../public/ai-infra-labs/scheduler.py?raw';
 
 推理调度器决定一轮 GPU 执行包含哪些请求、多少新 token。**连续批处理允许在生成轮次之间接入新请求；分块 Prefill 把长输入拆开，限制它一次占用的工作量。** 两者可以减少等待或输出停顿，但也会改变其他请求的首 token 时间，不能仅凭批处理形式判断性能优劣。
 
-下面用四条请求逐轮计算。模拟器将一个 Prefill token 的成本设为 1、一个 Decode token 的成本设为 2，时间由本轮成本相加得到。这是公开的教学假设，不是 GPU 毫秒数；它刻意不模拟并行加速，让请求选择和延迟取舍可以单独核对。
+下面用四条请求逐轮计算。模拟器将一个 Prefill token 的成本设为 1、一个 Decode token 的成本设为 2，时间由本轮成本相加得到。这是模拟器的成本假设，不是 GPU 毫秒数；它刻意不模拟并行加速，让请求选择和延迟取舍可以单独核对。
 
 ## 调度一轮要先看哪些状态
 
@@ -31,7 +31,7 @@ flowchart LR
 
 请求数预算限制活跃请求数量，token 预算限制本轮新计算的位置数。Decode 请求本轮通常需要一个新位置；一次完整 Prefill 可能需要几千个。两条请求不一定是相同工作量。
 
-教学模拟最多同时接纳 4 条请求，每轮 token 预算为 16。优先给可 Decode 的请求各分配一个 token，再按到达顺序安排 Prefill。分块模式额外规定每条请求本轮最多 Prefill 4 个 token。这项单请求上限是模拟规则，不能当成 vLLM 的同名配置。
+模拟器最多同时接纳 4 条请求，每轮 token 预算为 16。优先给可 Decode 的请求各分配一个 token，再按到达顺序安排 Prefill。分块模式额外规定每条请求本轮最多 Prefill 4 个 token。这项单请求上限是模拟规则，不能当成 vLLM 的同名配置。
 
 ## 四条请求与三个调度规则
 
@@ -125,7 +125,7 @@ python3 scheduler.py --mode all --token-budget 16 --chunk-size 4
 
 ## 对照 vLLM 的实际调度
 
-vLLM V1 的分块 Prefill 策略在可用时优先调度 Decode，再用剩余 `max_num_batched_tokens` 预算处理 Prefill；放不下的输入可以被分块。预算如何影响延迟和吞吐需按负载测量，不能套用教学模拟中的成本或单请求块上限。[vLLM 分块 Prefill 与调优](https://docs.vllm.ai/en/latest/configuration/optimization/#chunked-prefill)
+vLLM V1 的分块 Prefill 策略在可用时优先调度 Decode，再用剩余 `max_num_batched_tokens` 预算处理 Prefill；放不下的输入可以被分块。预算如何影响延迟和吞吐需按负载测量，不能套用模拟器中的成本或单请求块上限。[vLLM 分块 Prefill 与调优](https://docs.vllm.ai/en/latest/configuration/optimization/#chunked-prefill)
 
 实际调度还受 `max_num_seqs`、KV 块容量、模型长度、抢占和其他功能约束。待处理 token 没超过预算，也可能因缓存空间不足而不能接入。请求已接入，也不代表本轮一定生成一个输出。
 

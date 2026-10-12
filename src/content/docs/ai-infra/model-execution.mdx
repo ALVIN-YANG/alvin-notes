@@ -31,7 +31,7 @@ flowchart LR
 
 真实文本先由 tokenizer 编码；聊天消息还会经过 chat template。模型输出的是对词表各项的分数 `logits`。贪心解码取最大项；采样解码按温度等规则选择。分词、模板、模型执行、选择 token 和文本解码是不同步骤。
 
-教学模型的配置是：`D=8`，两个 Query heads，一个 KV head，每头 `d=4`，两层，前馈宽度 `F=16`。以下省略批量维度，处理 `S=4` 个位置。
+示例模型的配置是：`D=8`，两个 Query heads，一个 KV head，每头 `d=4`，两层，前馈宽度 `F=16`。以下省略批量维度，处理 `S=4` 个位置。
 
 | 步骤 | 权重或操作 | 输出形状 |
 | --- | --- | --- |
@@ -123,7 +123,7 @@ Prefill 已经知道所有输入 token，可以在每层一起投影多个位置
 
 FlashAttention 通过分块和在线归一化避免把完整的分数矩阵反复写入高带宽显存；它没有把 Attention 的计算关系变成线性算法，也不同于保存跨生成步骤状态的 KV cache。[FlashAttention 论文](https://arxiv.org/abs/2205.14135)
 
-Prefill 的大矩阵更容易复用权重，Decode 的小批量更容易受权重和缓存读取限制。这个倾向会随批量、上下文、模型和硬件改变；具体瓶颈在[性能分析课程](/ai-infra/performance-analysis/)中用算术强度和时间线判断。
+Prefill 的大矩阵更容易复用权重，Decode 的小批量更容易受权重和缓存读取限制。这个倾向会随批量、上下文、模型和硬件改变；具体瓶颈在[性能分析笔记](/ai-infra/performance-analysis/)中用算术强度和时间线判断。
 
 ## 第一枚输出来自 Prefill
 

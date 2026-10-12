@@ -43,8 +43,8 @@ function learningPoint(point: LearningPoint) {
       { type: 'heading', text: '动手验证' },
       { type: 'list', items: point.exercise },
       { type: 'checkpoint', label: '先回答，再展开', prompt: point.check[0], answer: point.check[1] },
-      ...(lesson ? [{ type: 'link', label: `完整课程：${lesson.title}`, href: lesson.href, detail: lesson.detail }] : []),
-      { type: 'link', label: '四节技术课程与实验', href: '/ai-infra/learning-path/', detail: '模型执行、KV cache、批处理调度与性能分析' },
+      ...(lesson ? [{ type: 'link', label: `技术笔记：${lesson.title}`, href: lesson.href, detail: lesson.detail }] : []),
+      { type: 'link', label: '技术笔记与实验', href: '/ai-infra/learning-path/', detail: '模型执行、KV cache、批处理调度与性能分析' },
     ] as KnowledgeContentBlock[],
     references: [{ ...source, location: '官方文档；实验参数以所用版本为准' }] as KnowledgeReference[],
   };
