@@ -24,7 +24,7 @@ const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'A
       <noscript><p>启用 JavaScript 后可搜索全部词条、查看详情、朗读和复习。也可以直接阅读下方的官方词表。</p></noscript>
       <nav class="ac-pagination" data-pagination data-enhanced hidden aria-label="卡片分页"><button type="button" data-prev aria-label="上一页">←</button><span data-page-label>1</span><button type="button" data-next aria-label="下一页">→</button></nav>
     </section>
-    <section class="ac-detail" data-detail hidden aria-label="概念详情"></section>
+    <dialog class="ac-detail" data-detail aria-labelledby="ac-detail-title"></dialog>
     <section class="ac-review" data-review hidden aria-label="概念复习"></section>
     <p class="ac-status ac-sr-only" data-status role="status" aria-live="polite"></p>
     <footer class="ac-footer">

@@ -188,14 +188,37 @@ test('known non-English or novelty-only voice lists do not silently use the wron
 });
 
 function uiFixture(t, entry, blocked = false) {
-  const dom = new JSDOM('<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button><section data-browse><input data-search><select data-category><option value=""></option></select><select data-sort><option value="common"></option></select><span data-count></span><div data-grid></div><nav data-pagination><button data-prev></button><span data-page-label></span><button data-next></button></nav></section><section data-detail hidden></section><section data-review hidden></section><span data-progress></span><p data-status class="ac-sr-only"></p><button data-export></button><input type="file" data-import></div>', { url: 'https://blog.mlxb.cc/ai-concepts/' });
+  const dom = new JSDOM('<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button><section data-browse><input data-search><select data-category><option value=""></option></select><select data-sort><option value="common"></option></select><span data-count></span><div data-grid></div><nav data-pagination><button data-prev></button><span data-page-label></span><button data-next></button></nav></section><dialog data-detail aria-labelledby="ac-detail-title"></dialog><section data-review hidden></section><span data-progress></span><p data-status class="ac-sr-only"></p><button data-export></button><input type="file" data-import></div>', { url: 'https://blog.mlxb.cc/ai-concepts/' });
   dom.window.scrollTo = () => {};
   if (blocked) Object.defineProperty(dom.window, 'localStorage', { get() { throw new Error('storage blocked'); } });
   const root = dom.window.document.querySelector('[data-concepts-root]');
+  // JSDOM does not implement the browser's dialog lifecycle.
+  const dialog = root.querySelector('[data-detail]');
+  dialog.showModal = () => { dialog.open = true; };
+  dialog.close = () => { dialog.open = false; dialog.dispatchEvent(new dom.window.Event('close')); };
   const dispose = mountConcepts(root, { terms: [{ ...entry, firstSeenAt: '2026-10-12T00:00:00Z' }] });
   t.after(() => { dispose(); dom.window.close(); });
   return root;
 }
+
+test('concept details preserve the browsing context and close before practice starts', t => {
+  const root = uiFixture(t, term), search = root.querySelector('[data-search]');
+  search.value = 'RAG';
+  search.dispatchEvent(new root.ownerDocument.defaultView.Event('input'));
+  const card = root.querySelector('[data-open]'), dialog = root.querySelector('[data-detail]');
+  card.click();
+  assert.equal(dialog.open, true);
+  assert.equal(root.querySelector('[data-browse]').hidden, false);
+  root.querySelector('[data-close-detail]').click();
+  assert.equal(dialog.open, false);
+  assert.equal(root.querySelector('[data-open]'), card);
+  assert.equal(search.value, 'RAG');
+  card.click();
+  root.querySelector('[data-practice]').click();
+  assert.equal(dialog.open, false);
+  assert.equal(root.querySelector('[data-review]').hidden, false);
+  assert.equal(root.ownerDocument.documentElement.classList.contains('ac-dialog-open'), false);
+});
 
 test('imported source prose renders as text instead of executable HTML', t => {
   const root = uiFixture(t, { ...term, definition: '中文定义 <img src=x onerror=alert(1)>', summary: '词条 <svg onload=alert(1)>' });

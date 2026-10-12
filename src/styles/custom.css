@@ -1307,10 +1307,18 @@ pre {
 .ac-import { position: relative; }
 .ac-import input { position: absolute; inset: 0; width: 100%; opacity: 0; cursor: pointer; }
 .ac-import:focus-within { outline: 2px solid var(--ac-accent); outline-offset: 3px; }
-.ac-detail, .ac-review { max-width: 740px; margin-inline: auto; }
+.ac-review { max-width: 740px; margin-inline: auto; }
+.ac-detail { width: min(740px, calc(100% - 48px)); max-width: none; max-height: 88dvh; margin: auto; padding: 0; border: 1px solid var(--ac-line); border-radius: 12px; background: var(--ac-card); color: var(--ac-text); box-shadow: 0 20px 80px #0004; overscroll-behavior: contain; }
+.ac-detail::backdrop { background: rgb(10 15 24 / 55%); }
+.ac-dialog-open { overflow: hidden; }
 .ac-back { padding: 8px 0; min-height: 44px; background: transparent; border: 0; color: var(--ac-muted) !important; }
-.ac-detail-card { margin-top: 18px; padding: 32px; border: 1px solid var(--ac-line); border-radius: 10px; background: var(--ac-card); }
+.ac-detail-card { padding: 32px; }
 .ac-detail-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.ac-detail-head > div:first-child { min-width: 0; }
+.ac-detail-actions { display: flex; flex: none; gap: 2px; margin: -8px -8px 0 0; }
+.ac-close { display: grid; place-items: center; width: 44px; height: 44px; padding: 12px; border: 0; border-radius: 50%; background: transparent; color: var(--ac-muted) !important; }
+.ac-close:hover { background: var(--ac-wash); color: var(--ac-accent) !important; }
+.ac-close svg { width: 20px; height: 20px; }
 .ac-eyebrow { margin-bottom: 10px !important; color: var(--ac-muted); font-size: 12px; }
 .ac-detail h2, .ac-review h2 { font-size: 30px; font-weight: 600; line-height: 1.4; letter-spacing: -.035em; overflow-wrap: anywhere; }
 .ac-detail-head .ac-zh { font-size: 14px; }
@@ -1346,5 +1354,6 @@ pre {
 .ai-concepts-home-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px; margin-top: 12px; border: 1px solid var(--sl-color-gray-5); border-radius: 8px; color: var(--sl-color-white) !important; text-decoration: none; font-size: 14px; }
 .ai-concepts-home-link small { color: var(--sl-color-gray-2); }
 @media (max-width: 800px) { .ac-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .ac-main { padding: 28px 24px; } }
+@media (max-width: 480px) { .ac-detail { width: calc(100% - 24px); max-height: calc(100dvh - 32px); } }
 @media (max-width: 480px) { .ac-header { padding: 8px 16px; min-height: 64px; gap: 8px; } .ac-header .ac-home { font-size: 15px; gap: 8px; } .ac-header nav { gap: 0; } .ac-header button { padding: 8px; } .ac-main { padding: 24px 16px; } .ai-concepts h1 { font-size: 25px; margin-bottom: 20px; } .ac-filters { flex-direction: column; gap: 10px; } .ac-select select { width: 100%; max-width: none; min-height: 42px; } .ac-grid { grid-template-columns: minmax(0,1fr); gap: 12px; } .ac-card-open { min-height: 180px; } .ac-detail-card { padding: 22px; } .ac-flashcard { padding: 30px 22px; } .ac-detail h2, .ac-review h2 { font-size: 26px; } .ac-footer-meta { flex-direction: column; } .ai-concepts-home-link { align-items: flex-start; flex-direction: column; gap: 3px; } }
 @media (prefers-reduced-motion: reduce) { .ac-card { transition: none; } }

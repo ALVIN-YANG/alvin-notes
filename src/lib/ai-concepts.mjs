@@ -109,7 +109,13 @@ export function mountConcepts(root, data) {
   const searchIndex = new Map(terms.map(term => [term.id, searchKey([term.term, term.zh, ...term.aliases, term.summary].join(' '))]));
   const events = new view.AbortController();
   const listen = (element, event, handler) => element.addEventListener(event, handler, { signal: events.signal });
-  function announce(message, error = false) { status.textContent = message; status.classList.toggle('ac-sr-only', !error); }
+  function announce(message, error = false) {
+    for (const element of [status, detail.querySelector('[data-detail-status]')]) {
+      if (!element) continue;
+      element.textContent = message;
+      element.classList.toggle('ac-sr-only', !error);
+    }
+  }
   try { const saved = view.localStorage.getItem(PROGRESS_KEY); if (saved) progress = readProgress(saved, terms); }
   catch { announce('无法读取已保存的复习记录。本次仍可学习，也可导入备份。', true); }
   function persist() {
@@ -155,24 +161,32 @@ export function mountConcepts(root, data) {
     updateProgress();
   }
   function show(next) {
-    speech.stop(); mode = next;
-    browse.hidden = next !== 'browse'; detail.hidden = next !== 'detail'; review.hidden = next !== 'review';
-    root.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-current', button.dataset.mode === (next === 'detail' ? 'browse' : next) ? 'page' : 'false'));
+    closeTerm(); mode = next;
+    browse.hidden = next !== 'browse'; review.hidden = next !== 'review';
+    root.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-current', button.dataset.mode === next ? 'page' : 'false'));
+  }
+  function closeTerm() {
+    speech.stop();
+    if (detail.open) detail.close();
+    document.documentElement.classList.remove('ac-dialog-open');
   }
   function openTerm(id) {
     const term = byId.get(id); if (!term) return;
-    returnId = id; show('detail');
+    returnId = id; speech.stop();
     const sources = term.sources.map(source => `<a href="${safeUrl(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.title)} ↗</a>`).join('');
-    detail.innerHTML = `<button type="button" class="ac-back" data-back>← 返回卡片</button><article class="ac-detail-card">
-      <div class="ac-detail-head"><div><p class="ac-eyebrow">${escapeHtml(categories[term.category])} · ${escapeHtml(term.scope)}</p><h2 tabindex="-1">${escapeHtml(term.term)}</h2><p class="ac-zh">${escapeHtml(term.zh)}</p></div>${speechButton(term)}</div>
+    detail.innerHTML = `<article class="ac-detail-card">
+      <div class="ac-detail-head"><div><p class="ac-eyebrow">${escapeHtml(categories[term.category])} · ${escapeHtml(term.scope)}</p><h2 id="ac-detail-title" tabindex="-1">${escapeHtml(term.term)}</h2><p class="ac-zh">${escapeHtml(term.zh)}</p></div><div class="ac-detail-actions">${speechButton(term)}<button type="button" class="ac-close" data-close-detail aria-label="关闭概念详情" title="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div></div>
       <div class="ac-definition">${term.definition.split('\n\n').map(text => `<p>${escapeHtml(text)}</p>`).join('')}</div>
       ${term.example ? `<section class="ac-note"><h3>一个例子</h3><p>${escapeHtml(term.example)}</p></section>` : ''}
       ${term.contrast ? `<section class="ac-note"><h3>别混淆</h3><p>${escapeHtml(term.contrast)}</p></section>` : ''}
       <button type="button" class="ac-primary" data-practice="${escapeHtml(term.id)}">练习这个概念</button>
+      <p class="ac-status ac-sr-only" data-detail-status role="status" aria-live="polite"></p>
       <details class="ac-term-sources"><summary>来源与原文</summary><div>${sources}</div>${term.upstreamDefinition ? `<p class="ac-upstream">Google 中文原文节选：${escapeHtml(term.upstreamDefinition)}</p>` : ''}</details>
     </article>`;
-    detail.querySelector('h2').focus();
-    view.scrollTo({ top: 0, behavior: 'instant' });
+    if (!detail.open) detail.showModal();
+    document.documentElement.classList.add('ac-dialog-open');
+    detail.scrollTop = 0;
+    detail.querySelector('h2').focus({ preventScroll: true });
   }
   function returnBrowse() {
     show('browse'); renderBrowse();
@@ -182,7 +196,7 @@ export function mountConcepts(root, data) {
   function renderReview() {
     const term = queue[reviewIndex];
     if (!term) {
-      review.innerHTML = `<div class="ac-review-complete"><p class="ac-eyebrow">${queue.length ? '这一组完成了' : '暂时没有待复习项'}</p><h2 tabindex="-1">${queue.length ? `练了 ${queue.length} 个概念` : '可以继续查概念'}</h2><p>${queue.length ? '根据你的自评安排下次复习。记得先回想，再看答案。' : '已练过的词条会按计划再次出现，也可以从详情页单独练习。'}</p><button class="ac-primary" type="button" data-restart>再练一组</button><button class="ac-back" type="button" data-back>返回卡片</button></div>`;
+      review.innerHTML = `<div class="ac-review-complete"><p class="ac-eyebrow">${queue.length ? '这一组完成了' : '暂时没有待复习项'}</p><h2 tabindex="-1">${queue.length ? `练了 ${queue.length} 个概念` : '可以继续查概念'}</h2><p>${queue.length ? '根据你的自评安排下次复习。记得先回想，再看答案。' : '已练过的词条会按计划再次出现，也可以从详情中单独练习。'}</p><button class="ac-primary" type="button" data-restart>再练一组</button><button class="ac-back" type="button" data-back>返回卡片</button></div>`;
     } else {
       review.innerHTML = `<div class="ac-review-top"><span>${reviewIndex + 1} / ${queue.length}</span><button type="button" class="ac-back" data-back>退出复习</button></div><article class="ac-flashcard">
         <p class="ac-eyebrow">先回想，再翻看</p><h2 tabindex="-1">${escapeHtml(term.term)}</h2><p class="ac-zh">${escapeHtml(term.zh)}</p><p class="ac-question">用一句话解释它。${term.contrast ? '它与相近概念有什么区别？' : ''}</p>
@@ -199,6 +213,7 @@ export function mountConcepts(root, data) {
     const button = event.target.closest('button'); if (!button) return;
     if (button.dataset.speak) { speech.toggle(byId.get(button.dataset.speak)); return; }
     if (button.dataset.open) { openTerm(button.dataset.open); return; }
+    if (button.hasAttribute('data-close-detail')) { closeTerm(); return; }
     if (button.hasAttribute('data-back') || button.dataset.mode === 'browse') { returnBrowse(); return; }
     if (button.dataset.mode === 'review' || button.hasAttribute('data-restart')) { startReview(); return; }
     if (button.dataset.practice) { startReview(button.dataset.practice); return; }
@@ -215,6 +230,22 @@ export function mountConcepts(root, data) {
     }
   });
   for (const [element, event] of [[search, 'input'], [category, 'change'], [sort, 'change']]) listen(element, event, () => { speech.stop(); page = 0; renderBrowse(); });
+  // A drag that starts inside the content must not dismiss the dialog.
+  let backdropDown = false;
+  const onBackdrop = event => {
+    const rect = detail.getBoundingClientRect();
+    return event.target === detail && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom);
+  };
+  listen(detail, 'pointerdown', event => { backdropDown = onBackdrop(event); });
+  listen(detail, 'click', event => { if (backdropDown && onBackdrop(event)) closeTerm(); backdropDown = false; });
+  listen(detail, 'close', () => { speech.stop(); document.documentElement.classList.remove('ac-dialog-open'); });
+  listen(detail, 'keydown', event => {
+    if (event.key !== 'Tab') return;
+    const targets = [...detail.querySelectorAll('button, a[href], summary')].filter(element => element.getClientRects().length && (!element.closest('details:not([open])') || element.tagName === 'SUMMARY'));
+    const first = targets[0], last = targets.at(-1);
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  });
   listen(root, 'keydown', event => { if (event.key === 'Escape' && mode !== 'browse') returnBrowse(); });
   listen(find('[data-export]'), 'click', () => {
     const blob = new view.Blob([JSON.stringify({ ...progress, exportedAt: new Date().toISOString() }, null, 2)], { type: 'application/json' });
@@ -236,5 +267,5 @@ export function mountConcepts(root, data) {
   listen(view, 'pagehide', () => speech.stop());
   root.querySelectorAll('[data-enhanced]').forEach(element => { element.hidden = false; });
   renderBrowse();
-  return () => { events.abort(); speech.stop(); };
+  return () => { events.abort(); closeTerm(); };
 }
