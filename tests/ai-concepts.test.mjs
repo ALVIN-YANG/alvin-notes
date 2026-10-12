@@ -7,7 +7,8 @@ import path from 'node:path';
 import { JSDOM } from 'jsdom';
 import { buildConcepts, parseGoogleGlossary, validateConcepts } from '../scripts/ai-concepts-core.mjs';
 import { atomicJsonWrite, fetchSource, generateJson, parseArxivFeed, refreshTranslations, validateDiscoveredTerms } from '../scripts/sync-ai-concepts.mjs';
-import { chooseEnglishVoice, createConceptSpeech, mountConcepts, rateTerm, readProgress, reviewQueue, revision, searchKey } from '../src/lib/ai-concepts.mjs';
+import { chooseSpeechVoice as chooseEnglishVoice } from '../src/lib/speech-voices.mjs';
+import { createConceptSpeech, mountConcepts, rateTerm, readProgress, reviewQueue, revision, searchKey } from '../src/lib/ai-concepts.mjs';
 
 const term = { id: 'rag', term: 'RAG', zh: '检索增强生成', aliases: ['Retrieval-augmented generation'], definition: '先找资料，再把资料交给模型生成回答。', contrast: 'RAG 提供资料，微调更新参数。', summary: '先检索资料，再依据资料回答', category: 'retrieval', priority: 0, sources: [{ title: '来源', url: 'https://example.com/terms' }] };
 

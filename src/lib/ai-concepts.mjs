@@ -1,4 +1,5 @@
 import { splitSpeechText } from './article-speech.mjs';
+import { chooseSpeechVoice } from './speech-voices.mjs';
 
 export const PROGRESS_KEY = 'alvin-ai-concepts-progress-v1';
 const DAY = 86400000;
@@ -47,18 +48,6 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>"']/gu, character =
 const safeUrl = value => { try { const url = new URL(value); return url.protocol === 'https:' ? escapeHtml(url.href) : ''; } catch { return ''; } };
 const speechButton = term => `<button type="button" class="ac-speak" data-speak="${escapeHtml(term.id)}" aria-label="朗读 ${escapeHtml(term.term)}" aria-pressed="false" title="播放英文名词发音">${speaker}</button>`;
 
-export function chooseEnglishVoice(voices = []) {
-  // macOS also exposes novelty voices; never use them to teach pronunciation.
-  const novelty = /^(Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Fred|Good News|Jester|Junior|Organ|Ralph|Superstar|Trinoids|Whisper|Wobble|Zarvox)$/iu;
-  const english = voices.filter(voice => /^en(?:[-_]|$)/iu.test(voice.lang) && !novelty.test(voice.name));
-  const us = voice => /^en[-_]US$/iu.test(voice.lang);
-  const natural = voice => /Natural|Neural|Premium|Enhanced|Siri|^Google.*English/iu.test(voice.name);
-  const standard = voice => /\b(Samantha|Alex|Daniel|Karen|Moira|Tessa|Rishi)\b/iu.test(voice.name);
-  return english.find(voice => us(voice) && natural(voice)) || english.find(natural)
-    || english.find(voice => voice.default) || english.find(voice => us(voice) && standard(voice))
-    || english.find(standard) || english.find(us) || english[0] || null;
-}
-
 export function createConceptSpeech(view, onState) {
   const synth = view?.speechSynthesis;
   synth?.getVoices?.();
@@ -79,7 +68,7 @@ export function createConceptSpeech(view, onState) {
     const run = generation;
     const chunks = splitSpeechText(term.term);
     const voices = synth.getVoices?.() || [];
-    const voice = chooseEnglishVoice(voices);
+    const voice = chooseSpeechVoice(voices, 'en-US');
     if (voices.length && !voice) {
       stop();
       onState(null, '此设备没有可用的常规英语语音，请安装英语声音或使用其他浏览器。', true);
@@ -93,7 +82,7 @@ export function createConceptSpeech(view, onState) {
       if (run !== generation) return;
       if (index >= chunks.length) { stop('朗读结束'); return; }
       const utterance = new view.SpeechSynthesisUtterance(chunks[index]);
-      utterance.lang = voice?.lang || 'en-US';
+      utterance.lang = (voice?.lang || 'en-US').replace(/_/gu, '-');
       if (voice) utterance.voice = voice;
       current = utterance;
       utterance.onend = () => { if (run !== generation || current !== utterance) return; index++; next(); };

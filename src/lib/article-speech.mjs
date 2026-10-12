@@ -1,3 +1,5 @@
+import { chooseSpeechVoice } from './speech-voices.mjs';
+
 const excludedContent = [
   'pre', 'figure', 'svg', 'script', 'style', 'nav', 'button', 'input', 'select', 'textarea',
   'sup', '.sl-anchor-link', '.sr-only', '.not-content', '.comments',
@@ -64,6 +66,7 @@ export function mountArticleReader(root) {
     || !getArticleSpeechChunks(article).length) return () => {};
 
   const synth = view.speechSynthesis;
+  synth.getVoices?.();
   const controller = new view.AbortController();
   const signal = controller.signal;
   let state = 'idle';
@@ -106,8 +109,22 @@ export function mountArticleReader(root) {
 
     const run = generation;
     const utterance = new view.SpeechSynthesisUtterance(chunks[index]);
-    // Leave voice/rate/pitch unset: use the browser's defaults for the page language.
-    utterance.lang = document.documentElement.lang || 'zh-CN';
+    const documentLanguage = article.closest('[lang]')?.getAttribute('lang') || document.documentElement.lang || 'zh-CN';
+    const englishOnly = /^zh(?:[-_]|$)/iu.test(documentLanguage) && !/\p{Script=Han}/u.test(chunks[index]) && /[a-z]/iu.test(chunks[index]);
+    let language = englishOnly ? 'en-US' : documentLanguage;
+    const voices = synth.getVoices?.() || [];
+    let voice = chooseSpeechVoice(voices, language);
+    if (!voice && englishOnly) {
+      language = documentLanguage;
+      voice = chooseSpeechVoice(voices, language);
+    }
+    if (voices.length && !voice) {
+      stop();
+      announce('此设备没有相应语言的常规语音，请安装语音包或使用其他浏览器。', true);
+      return;
+    }
+    utterance.lang = (voice?.lang || language).replace(/_/gu, '-');
+    if (voice) utterance.voice = voice;
     currentUtterance = utterance;
     utterance.onend = () => {
       if (run !== generation || currentUtterance !== utterance) return;

@@ -3,9 +3,9 @@ import test from 'node:test';
 import { JSDOM } from 'jsdom';
 import { getArticleSpeechChunks, mountArticleReader, splitSpeechText } from '../src/lib/article-speech.mjs';
 
-function fixture(t, { supported = true, body = '<p>这是正文。</p>', contentSelector } = {}) {
-  const dom = new JSDOM(`<html lang="zh-CN"><body><main>
-    <h1 id="_top">文章标题</h1>
+function fixture(t, { supported = true, body = '<p>这是正文。</p>', contentSelector, voices = [], language = 'zh-CN', title = '文章标题' } = {}) {
+  const dom = new JSDOM(`<html lang="${language}"><body><main>
+    <h1 id="_top">${title}</h1>
     <article-reader hidden>
       <button data-reader-toggle><span data-reader-label>朗读</span></button>
       <button data-reader-stop hidden>停止</button>
@@ -20,6 +20,7 @@ function fixture(t, { supported = true, body = '<p>这是正文。</p>', content
       constructor(text) { this.text = text; this.voice = null; }
     };
     dom.window.speechSynthesis = {
+      getVoices: () => typeof voices === 'function' ? voices() : voices,
       speak: utterance => calls.push(utterance),
       cancel: () => counts.cancel++,
       pause: () => counts.pause++,
@@ -67,7 +68,7 @@ test('splits long text into bounded chunks without splitting Unicode characters'
   assert.deepEqual(splitSpeechText('   '), []);
 });
 
-test('starts only on click, uses the default voice, pauses, resumes and finishes', t => {
+test('starts only on click, falls back when the voice list is empty, pauses, resumes and finishes', t => {
   const { root, calls, counts, toggle, stop } = fixture(t);
   assert.equal(root.hidden, false);
   assert.equal(calls.length, 0);
@@ -101,6 +102,66 @@ test('handles pausing at a chunk boundary without skipping the next chunk', t =>
   toggle.click();
   assert.equal(calls.length, 2);
   assert.equal(calls[1].text, '这是正文。');
+});
+
+test('Mac Chinese articles use Mandarin and English paragraphs use the same English policy as term cards', t => {
+  const chinese = { name: '婷婷', lang: 'zh-CN', default: true };
+  const english = { name: 'Samantha', lang: 'en-US' };
+  const { calls, toggle } = fixture(t, { body: '<p>中文正文。</p><p>Retrieval augmented generation.</p>', voices: [{ name: 'Albert', lang: 'en-US' }, chinese, english] });
+  toggle.click();
+  assert.equal(calls[0].voice, chinese);
+  calls[0].onend();
+  assert.equal(calls[1].voice, chinese);
+  calls[1].onend();
+  assert.equal(calls[2].voice, english);
+  assert.equal(calls[2].lang, 'en-US');
+});
+
+test('Windows voice profiles prefer Chinese natural voices over an English system default', t => {
+  const natural = { name: 'Microsoft Xiaoxiao Online (Natural)', lang: 'zh-CN' };
+  const { calls, toggle } = fixture(t, { voices: [{ name: 'Microsoft Zira', lang: 'en-US', default: true }, { name: 'Microsoft Huihui', lang: 'zh-CN' }, natural] });
+  toggle.click();
+  assert.equal(calls[0].voice, natural);
+  assert.equal(calls[0].lang, 'zh-CN');
+});
+
+test('English articles select Windows English voices without depending on Samantha', t => {
+  const english = { name: 'Microsoft Zira', lang: 'en-US' };
+  const { calls, toggle } = fixture(t, { language: 'en-US', title: 'Article title', body: '<p>English prose.</p>', voices: [{ name: 'Microsoft Huihui', lang: 'zh-CN', default: true }, english] });
+  toggle.click();
+  assert.equal(calls[0].voice, english);
+  calls[0].onend();
+  assert.equal(calls[1].voice, english);
+});
+
+test('Chinese-only devices keep reading English headings with the article voice', t => {
+  const chinese = { name: 'Microsoft Huihui', lang: 'zh-CN' };
+  const { calls, toggle } = fixture(t, { title: 'RAG', voices: [chinese] });
+  toggle.click();
+  assert.equal(calls[0].voice, chinese);
+  assert.equal(calls[0].lang, 'zh-CN');
+  calls[0].onend();
+  assert.equal(calls[1].voice, chinese);
+});
+
+test('a late-loaded voice list is used on subsequent chunks', t => {
+  const chinese = { name: '婷婷', lang: 'zh-CN' };
+  let voices = [];
+  const { calls, toggle } = fixture(t, { voices: () => voices });
+  toggle.click();
+  assert.equal(calls[0].voice, null);
+  voices = [chinese];
+  calls[0].onend();
+  assert.equal(calls[1].voice, chinese);
+});
+
+test('a missing article language does not silently use a foreign-language voice', t => {
+  const { calls, toggle, root, status } = fixture(t, { voices: [{ name: 'Microsoft Zira', lang: 'en-US', default: true }] });
+  toggle.click();
+  assert.equal(calls.length, 0);
+  assert.equal(root.dataset.state, 'idle');
+  assert.match(status.textContent, /相应语言/);
+  assert.equal(status.classList.contains('sr-only'), false);
 });
 
 test('stop invalidates delayed callbacks; restarting begins with the title', t => {

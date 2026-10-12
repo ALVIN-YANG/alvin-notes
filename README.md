@@ -24,6 +24,8 @@ npm run dev
 
 基于 [Astro](https://astro.build) + [Starlight](https://starlight.astro.build) 构建，部署于 Vercel。
 
+文章朗读与概念卡片共用 `src/lib/speech-voices.mjs` 的选声规则：按语言匹配当前浏览器 `getVoices()` 提供的音色，优先自然或增强音色，排除特殊音效和角色声音。中文文章使用普通话，纯英文段落使用英语。Samantha 只是 Mac 上的一种声音，Windows 会从其可用声音中匹配，音色和音质取决于浏览器及已安装的声库。
+
 ## AI 概念词库
 
 `.github/workflows/ai-concepts.yml` 每周一北京时间 08:17 同步，也可在 Actions 中手动运行。调度可能延迟；公开仓库连续 60 天没有活动时，GitHub 会停用定时工作流，需要手动重新启用。
