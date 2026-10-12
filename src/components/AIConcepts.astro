@@ -9,31 +9,46 @@ const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'A
   <div class="ac-main">
   <header class="ac-header">
     <h1 id="_top">AI 概念</h1>
-    <nav aria-label="AI 概念"><button type="button" data-mode="browse" aria-current="page">查概念</button><button type="button" data-mode="review" data-enhanced hidden>复习</button></nav>
+    <nav aria-label="AI 概念"><button type="button" data-mode="browse" aria-current="page">查概念</button><button type="button" data-mode="review" data-enhanced hidden>记概念</button></nav>
   </header>
     <section data-browse aria-labelledby="_top">
+      <section class="ac-learn-entry" data-enhanced hidden aria-labelledby="ac-learn-title">
+        <div><h2 id="ac-learn-title">快速记概念</h2><p data-learning-summary>每组 10 个 · 到期词条优先</p></div>
+        <button type="button" class="ac-primary" data-start-learning>开始学习 <span aria-hidden="true">→</span></button>
+      </section>
       <div class="ac-filters" data-enhanced hidden>
         <label class="ac-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><span class="ac-sr-only">搜索概念</span><input type="search" data-search placeholder="搜索术语、缩写或中文" autocomplete="off" /></label>
-        <label class="ac-select"><span class="ac-sr-only">按分类筛选</span><select data-category><option value="">全部分类</option>{Object.entries(categories).map(([key, label]) => <option value={key}>{label}</option>)}</select></label>
+        <details class="ac-dropdown" data-filter="category">
+          <summary><span class="ac-sr-only">按分类筛选：</span><span data-filter-label>全部分类</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></summary>
+          <input type="hidden" data-category value="" />
+          <div class="ac-dropdown-options" role="group" aria-label="分类选项">
+            <button type="button" data-choice="" aria-pressed="true">全部分类</button>
+            {Object.entries(categories).map(([key, label]) => <button type="button" data-choice={key} aria-pressed="false">{label}</button>)}
+          </div>
+        </details>
       </div>
-      <div class="ac-results" data-enhanced hidden><span data-count aria-live="polite">{data.terms.length} 个概念</span><label><span class="ac-sr-only">排序方式</span><select data-sort><option value="common">常用优先</option><option value="latest">最新收录</option><option value="name">英文排序</option></select></label></div>
+      <div class="ac-results" data-enhanced hidden><span data-count aria-live="polite">{data.terms.length} 个概念</span><details class="ac-dropdown ac-dropdown-sort" data-filter="sort">
+        <summary><span class="ac-sr-only">排序方式：</span><span data-filter-label>常用优先</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></summary>
+        <input type="hidden" data-sort value="common" />
+        <div class="ac-dropdown-options" role="group" aria-label="排序选项"><button type="button" data-choice="common" aria-pressed="true">常用优先</button><button type="button" data-choice="latest" aria-pressed="false">最新收录</button><button type="button" data-choice="name" aria-pressed="false">英文排序</button></div>
+      </details></div>
       <div class="ac-grid" data-grid>
         {data.terms.slice(0, 12).map(term => <article class="ac-card"><button type="button" class="ac-speak" data-speak={term.id} data-enhanced hidden aria-label={`朗读 ${term.term}`} aria-pressed="false" title="播放英文名词发音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg></button><button type="button" class="ac-card-open" data-open={term.id}><span class="ac-term">{term.term}</span><span class="ac-zh">{term.zh}</span><span class="ac-summary">{term.summary}</span><span class="ac-card-foot">{categories[term.category]}<span aria-hidden="true">↗</span></span></button></article>)}
       </div>
-      <noscript><p>启用 JavaScript 后可搜索全部词条、查看详情、朗读和复习。也可以直接阅读下方的官方词表。</p></noscript>
+      <noscript><p>启用 JavaScript 后可搜索全部词条、查看详情、朗读和学习。也可以直接阅读下方的官方词表。</p></noscript>
       <nav class="ac-pagination" data-pagination data-enhanced hidden aria-label="卡片分页"><button type="button" data-prev aria-label="上一页">←</button><span data-page-label>1</span><button type="button" data-next aria-label="下一页">→</button></nav>
     </section>
     <dialog class="ac-detail" data-detail aria-labelledby="ac-detail-title"></dialog>
-    <section class="ac-review" data-review hidden aria-label="概念复习"></section>
+    <section class="ac-review" data-review hidden aria-label="记概念"></section>
     <p class="ac-status ac-sr-only" data-status role="status" aria-live="polite"></p>
     <footer class="ac-footer">
-      <div class="ac-footer-meta"><span>{data.terms.length} 个词条 · 更新于 <time datetime={data.updatedAt}>{date}</time></span><span data-progress data-enhanced hidden>复习记录保存在此浏览器</span></div>
+      <div class="ac-footer-meta"><span>{data.terms.length} 个词条 · 更新于 <time datetime={data.updatedAt}>{date}</time></span><span data-progress data-enhanced hidden>学习记录保存在此浏览器</span></div>
       <details class="ac-about"><summary>数据来源与学习记录</summary><div>
         <p>每周一北京时间 08:17 同步。官方词表构成基础库，近期官方文章与 arXiv 论文补充新词；论文术语会单独标注。新增释义由模型整理，需结合原文判断，词库无法覆盖所有新造词。</p>
         <ul>{data.sources.map(source => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.name}</a> · <a href={source.licenseUrl} target="_blank" rel="noopener noreferrer">{source.license}</a><br/>{source.attribution}</li>)}</ul>
         <p><a href="/licenses/ai-concepts-huggingface.txt" target="_blank" rel="noopener noreferrer">Hugging Face 许可与版权说明</a>。每条概念的具体来源可在详情中查看。</p>
         <p>点击小喇叭只播放英文名词，不朗读介绍。优先使用设备上可用的自然英语音色；音色和是否需要联网取决于浏览器及系统设置。</p>
-        <p data-enhanced hidden>快速复习直接显示释义：← 返回上一张，→ 或 2 选“知道”并进入下一张，↓ 或 1 选“不知道”，↑ 播放名词发音，Esc 退出。一组结束后按 Enter 继续。根据自评逐步延长复习间隔至 1、3、7、14、30、60 天；不知道的词条 10 分钟后再出现，到期词条优先。记录仅保存在此浏览器，清除网站数据会丢失。</p>
+        <p data-enhanced hidden>学习卡片直接显示释义：← 返回上一张，→ 或 2 选“知道”并进入下一张，↓ 或 1 选“不知道”，↑ 播放名词发音，Esc 退出。一组结束后按 Enter 继续。根据自评逐步延长再次出现的间隔至 1、3、7、14、30、60 天；不知道的词条 10 分钟后再出现，到期词条优先。记录仅保存在此浏览器，清除网站数据会丢失。</p>
       </div></details>
     </footer>
   </div>

@@ -18,7 +18,7 @@ export function revision(term) {
 
 export function readProgress(value, terms) {
   const data = typeof value === 'string' ? JSON.parse(value) : value;
-  if (data?.version !== 1 || !data.records || typeof data.records !== 'object' || Array.isArray(data.records)) throw new Error('复习记录格式不正确');
+  if (data?.version !== 1 || !data.records || typeof data.records !== 'object' || Array.isArray(data.records)) throw new Error('学习记录格式不正确');
   const known = new Set(terms.map(term => term.id));
   const records = {};
   for (const [id, record] of Object.entries(data.records)) {
@@ -105,6 +105,7 @@ export function mountConcepts(root, data) {
   const browse = find('[data-browse]'), detail = find('[data-detail]'), review = find('[data-review]');
   const grid = find('[data-grid]'), search = find('[data-search]'), category = find('[data-category]'), sort = find('[data-sort]');
   const status = find('[data-status]'), count = find('[data-count]'), pageLabel = find('[data-page-label]');
+  const dropdowns = [...root.querySelectorAll('[data-filter]')];
   let progress = { version: 1, records: {} }, page = 0, mode = 'browse', queue = [], reviewIndex = 0, returnId = null;
   let reviewOriginals = new Map();
   const searchIndex = new Map(terms.map(term => [term.id, searchKey([term.term, term.zh, ...term.aliases, term.summary].join(' '))]));
@@ -118,7 +119,7 @@ export function mountConcepts(root, data) {
     }
   }
   try { const saved = view.localStorage.getItem(PROGRESS_KEY); if (saved) progress = readProgress(saved, terms); }
-  catch { announce('无法读取已保存的复习记录。本次仍可学习。', true); }
+  catch { announce('无法读取已保存的学习记录。本次仍可学习。', true); }
   function persist() {
     let saved = true;
     try { view.localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress)); }
@@ -129,7 +130,13 @@ export function mountConcepts(root, data) {
   function updateProgress() {
     const reviewed = Object.keys(progress.records).length;
     const due = terms.filter(term => progress.records[term.id] && (progress.records[term.id].nextDue <= Date.now() || progress.records[term.id].revision !== revision(term))).length;
-    find('[data-progress]').textContent = reviewed ? `已练 ${reviewed} 个 · 待复习 ${due} 个` : '复习记录保存在此浏览器';
+    find('[data-progress]').textContent = reviewed ? `已学 ${reviewed} 个 · 待巩固 ${due} 个` : '学习记录保存在此浏览器';
+    const summary = find('[data-learning-summary]');
+    if (summary) {
+      const available = terms.filter(term => !category.value || term.category === category.value);
+      const dueInCategory = available.filter(term => progress.records[term.id] && (progress.records[term.id].nextDue <= Date.now() || progress.records[term.id].revision !== revision(term))).length;
+      summary.textContent = dueInCategory ? `每组 10 个 · ${dueInCategory} 个待巩固` : available.some(term => !progress.records[term.id]) ? '每组 10 个 · 从常用概念开始' : '暂时没有到期词条 · 可以继续查概念';
+    }
   }
   const speech = createConceptSpeech(view, (id, message, error) => {
     root.querySelectorAll('[data-speak]').forEach(button => {
@@ -162,7 +169,7 @@ export function mountConcepts(root, data) {
     updateProgress();
   }
   function show(next) {
-    closeTerm(); mode = next;
+    closeTerm(); closeDropdowns(); mode = next;
     browse.hidden = next !== 'browse'; review.hidden = next !== 'review';
     root.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-current', button.dataset.mode === next ? 'page' : 'false'));
   }
@@ -180,7 +187,7 @@ export function mountConcepts(root, data) {
       <div class="ac-definition">${term.definition.split('\n\n').map(text => `<p>${escapeHtml(text)}</p>`).join('')}</div>
       ${term.example ? `<section class="ac-note"><h3>一个例子</h3><p>${escapeHtml(term.example)}</p></section>` : ''}
       ${term.contrast ? `<section class="ac-note"><h3>别混淆</h3><p>${escapeHtml(term.contrast)}</p></section>` : ''}
-      <button type="button" class="ac-primary" data-practice="${escapeHtml(term.id)}">练习这个概念</button>
+      <button type="button" class="ac-primary" data-practice="${escapeHtml(term.id)}">学习这个概念</button>
       <p class="ac-status ac-sr-only" data-detail-status role="status" aria-live="polite"></p>
       <details class="ac-term-sources"><summary>来源与原文</summary><div>${sources}</div>${term.upstreamDefinition ? `<p class="ac-upstream">Google 中文原文节选：${escapeHtml(term.upstreamDefinition)}</p>` : ''}</details>
     </article>`;
@@ -197,14 +204,14 @@ export function mountConcepts(root, data) {
   function renderReview() {
     const term = queue[reviewIndex];
     if (!term) {
-      review.innerHTML = `<div class="ac-review-complete"><p class="ac-eyebrow">${queue.length ? '这一组完成了' : '暂时没有待复习项'}</p><h2 tabindex="-1">${queue.length ? `过了 ${queue.length} 个概念` : '可以继续查概念'}</h2><p>${queue.length ? '已按自评安排下次复习。下一组优先复习到期词条，再补入新词。' : '已练过的词条会在到期后出现，也可以从详情中单独复习。'}</p><button class="ac-primary" type="button" data-restart aria-label="继续下一组">继续下一组 <kbd>Enter</kbd></button>${reviewIndex ? '<button type="button" class="ac-back" data-review-prev aria-keyshortcuts="ArrowLeft">← 上一张</button>' : ''}<button class="ac-back" type="button" data-back>返回卡片</button></div>`;
+      review.innerHTML = `<div class="ac-review-complete"><p class="ac-eyebrow">${queue.length ? '这一组完成了' : '暂时没有待学词条'}</p><h2 tabindex="-1">${queue.length ? `过了 ${queue.length} 个概念` : '可以继续查概念'}</h2><p>${queue.length ? '已按自评安排下次出现的时间。下一组优先巩固到期词条，再补入新词。' : '已学过的词条会在到期后出现，也可以从详情中单独学习。'}</p><button class="ac-primary" type="button" data-restart aria-label="继续下一组">继续下一组 <kbd>Enter</kbd></button>${reviewIndex ? '<button type="button" class="ac-back" data-review-prev aria-keyshortcuts="ArrowLeft">← 上一张</button>' : ''}<button class="ac-back" type="button" data-back>返回卡片</button></div>`;
     } else {
       const now = Date.now(), old = reviewOriginals.get(term.id);
       const days = Math.round((rateTerm(term, old, true, now).nextDue - now) / DAY);
-      review.innerHTML = `<div class="ac-review-top"><div class="ac-review-position"><button type="button" class="ac-back" data-review-prev aria-label="上一张" aria-keyshortcuts="ArrowLeft"${reviewIndex ? '' : ' disabled'}>← 上一张</button><span>${reviewIndex + 1} / ${queue.length}</span></div><button type="button" class="ac-back" data-back aria-label="退出复习">退出复习 <kbd>Esc</kbd></button></div><article class="ac-flashcard">
+      review.innerHTML = `<div class="ac-review-top"><div class="ac-review-position"><button type="button" class="ac-back" data-review-prev aria-label="上一张" aria-keyshortcuts="ArrowLeft"${reviewIndex ? '' : ' disabled'}>← 上一张</button><span>${reviewIndex + 1} / ${queue.length}</span></div><button type="button" class="ac-back" data-back aria-label="退出学习">退出学习 <kbd>Esc</kbd></button></div><article class="ac-flashcard">
         <div class="ac-review-term"><div><h2 tabindex="-1">${escapeHtml(term.term)}</h2><p class="ac-zh">${escapeHtml(term.zh)}</p></div><div class="ac-review-voice">${speechButton(term, 'ArrowUp')}<kbd>↑ 发音</kbd></div></div>
         <div class="ac-answer"><p>${escapeHtml(term.definition)}</p>${term.contrast ? `<p class="ac-answer-contrast">${escapeHtml(term.contrast)}</p>` : ''}</div>
-        <div class="ac-rating"><button type="button" data-rate="again" aria-label="不知道" aria-keyshortcuts="ArrowDown 1"><span>不知道 <kbd>↓ / 1</kbd></span><small>10 分钟后复习</small></button><button type="button" class="ac-primary" data-rate="recalled" aria-label="知道" aria-keyshortcuts="ArrowRight 2"><span>知道 <kbd>→ / 2</kbd></span><small>${days} 天后复习</small></button></div>
+        <div class="ac-rating"><button type="button" data-rate="again" aria-label="不知道" aria-keyshortcuts="ArrowDown 1"><span>不知道 <kbd>↓ / 1</kbd></span><small>10 分钟后再看</small></button><button type="button" class="ac-primary" data-rate="recalled" aria-label="知道" aria-keyshortcuts="ArrowRight 2"><span>知道 <kbd>→ / 2</kbd></span><small>${days} 天后再看</small></button></div>
       </article>`;
     }
     (review.querySelector('[data-restart]') || review.querySelector('h2')).focus({ preventScroll: true });
@@ -227,13 +234,54 @@ export function mountConcepts(root, data) {
     if (mode !== 'review' || reviewIndex === 0) return;
     speech.stop(); reviewIndex--; renderReview();
   }
+  function closeDropdowns(except) {
+    dropdowns.forEach(dropdown => { if (dropdown !== except) dropdown.open = false; });
+  }
+  function fitDropdown(dropdown) {
+    const rect = dropdown.getBoundingClientRect();
+    const below = view.innerHeight - rect.bottom - 12;
+    const above = rect.top - 12;
+    const upward = below < 160 && above > below;
+    dropdown.classList.toggle('ac-dropdown-up', upward);
+    dropdown.style.setProperty('--ac-menu-space', `${Math.max(80, upward ? above : below)}px`);
+  }
+  for (const dropdown of dropdowns) {
+    const summary = dropdown.querySelector('summary');
+    listen(summary, 'click', () => fitDropdown(dropdown));
+    listen(dropdown, 'toggle', () => { if (dropdown.open) { closeDropdowns(dropdown); fitDropdown(dropdown); } });
+    listen(dropdown, 'focusout', event => { if (!dropdown.contains(event.relatedTarget)) dropdown.open = false; });
+    listen(dropdown, 'keydown', event => {
+      if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+      if (event.key === 'Escape') { event.preventDefault(); dropdown.open = false; summary.focus(); return; }
+      if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const choices = [...dropdown.querySelectorAll('[data-choice]')];
+      const index = choices.indexOf(document.activeElement);
+      dropdown.open = true;
+      fitDropdown(dropdown);
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? choices.length - 1 : index < 0 ? (event.key === 'ArrowUp' ? choices.length - 1 : 0) : (index + (event.key === 'ArrowUp' ? -1 : 1) + choices.length) % choices.length;
+      choices[next]?.focus();
+    });
+  }
+  listen(view, 'resize', () => dropdowns.filter(dropdown => dropdown.open).forEach(fitDropdown));
+  listen(document, 'click', event => closeDropdowns(event.target.closest('[data-filter]')));
   listen(root, 'click', event => {
     const button = event.target.closest('button'); if (!button) return;
+    if (button.hasAttribute('data-choice')) {
+      const dropdown = button.closest('[data-filter]');
+      const field = dropdown.dataset.filter === 'category' ? category : sort;
+      field.value = button.dataset.choice;
+      dropdown.querySelector('[data-filter-label]').textContent = button.textContent;
+      dropdown.querySelectorAll('[data-choice]').forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
+      field.dispatchEvent(new view.Event('change', { bubbles: true }));
+      dropdown.open = false; dropdown.querySelector('summary').focus();
+      return;
+    }
     if (button.dataset.speak) { speech.toggle(byId.get(button.dataset.speak)); return; }
     if (button.dataset.open) { openTerm(button.dataset.open); return; }
     if (button.hasAttribute('data-close-detail')) { closeTerm(); return; }
     if (button.hasAttribute('data-back') || button.dataset.mode === 'browse') { returnBrowse(); return; }
-    if (button.dataset.mode === 'review' || button.hasAttribute('data-restart')) { startReview(); return; }
+    if (button.dataset.mode === 'review' || button.hasAttribute('data-start-learning') || button.hasAttribute('data-restart')) { startReview(); return; }
     if (button.dataset.practice) { startReview(button.dataset.practice); return; }
     if (button.hasAttribute('data-review-prev')) { previousReview(); return; }
     if (button.dataset.rate) { rateCurrent(button.dataset.rate === 'recalled'); return; }

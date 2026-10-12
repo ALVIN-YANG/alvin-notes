@@ -188,7 +188,16 @@ test('known non-English or novelty-only voice lists do not silently use the wron
 });
 
 function uiFixture(t, entry, blocked = false, { records, speech } = {}) {
-  const dom = new JSDOM('<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button><section data-browse><input data-search><select data-category><option value=""></option></select><select data-sort><option value="common"></option></select><span data-count></span><div data-grid></div><nav data-pagination><button data-prev></button><span data-page-label></span><button data-next></button></nav></section><dialog data-detail aria-labelledby="ac-detail-title"></dialog><section data-review hidden></section><span data-progress></span><p data-status class="ac-sr-only"></p></div>', { url: 'https://blog.mlxb.cc/ai-concepts/' });
+  const dom = new JSDOM(`<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button>
+    <section data-browse><p data-learning-summary></p><button data-start-learning>开始学习</button><input data-search>
+      <details data-filter="category"><summary><span data-filter-label>全部分类</span></summary><input type="hidden" data-category value="">
+        <div><button data-choice="" aria-pressed="true">全部分类</button><button data-choice="model" aria-pressed="false">模型与生成</button><button data-choice="retrieval" aria-pressed="false">知识与检索</button></div>
+      </details>
+      <details data-filter="sort"><summary><span data-filter-label>常用优先</span></summary><input type="hidden" data-sort value="common">
+        <div><button data-choice="common" aria-pressed="true">常用优先</button><button data-choice="name" aria-pressed="false">英文排序</button></div>
+      </details>
+      <span data-count></span><div data-grid></div><nav data-pagination><button data-prev></button><span data-page-label></span><button data-next></button></nav>
+    </section><dialog data-detail aria-labelledby="ac-detail-title"></dialog><section data-review hidden></section><span data-progress></span><p data-status class="ac-sr-only"></p></div>`, { url: 'https://blog.mlxb.cc/ai-concepts/' });
   dom.window.scrollTo = () => {};
   dom.window.HTMLElement.prototype.scrollIntoView = () => {};
   if (blocked) Object.defineProperty(dom.window, 'localStorage', { get() { throw new Error('storage blocked'); } });
@@ -206,6 +215,50 @@ function uiFixture(t, entry, blocked = false, { records, speech } = {}) {
   t.after(() => { dispose(); dom.window.close(); });
   return root;
 }
+
+test('learning entry starts the selected category and shows due terms in its summary', t => {
+  const token = { ...term, id: 'token', term: 'Token', category: 'model' };
+  const root = uiFixture(t, [token, term], false, { records: { rag: { level: 1, lastReviewed: 1, nextDue: 1, revision: revision(term) } } });
+  assert(root.querySelector('[data-learning-summary]').textContent.includes('1 个待巩固'));
+  const dropdown = root.querySelector('[data-filter="category"]');
+  dropdown.open = true;
+  dropdown.querySelector('[data-choice="retrieval"]').click();
+  assert.equal(root.querySelector('[data-count]').textContent, '1 个概念');
+  assert.equal(dropdown.querySelector('[data-filter-label]').textContent, '知识与检索');
+  assert.equal(dropdown.querySelector('[data-choice="retrieval"]').getAttribute('aria-pressed'), 'true');
+  assert.equal(dropdown.open, false);
+  root.querySelector('[data-start-learning]').click();
+  assert.equal(root.querySelector('[data-browse]').hidden, true);
+  assert.equal(root.querySelector('[data-review] h2').textContent, 'RAG');
+  assert(root.querySelector('.ac-review-position').textContent.includes('1 / 1'));
+});
+
+test('filter menus support keyboard focus, dismissal and sorting without changing progress', t => {
+  const token = { ...term, id: 'token', term: 'Token', category: 'model' };
+  const root = uiFixture(t, [token, term]), view = root.ownerDocument.defaultView;
+  const dropdown = root.querySelector('[data-filter="category"]'), summary = dropdown.querySelector('summary');
+  const press = key => root.ownerDocument.activeElement.dispatchEvent(new view.KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }));
+  summary.focus(); press('ArrowDown');
+  assert.equal(dropdown.open, true);
+  assert.equal(root.ownerDocument.activeElement.dataset.choice, '');
+  press('End');
+  assert.equal(root.ownerDocument.activeElement.dataset.choice, 'retrieval');
+  press('Escape');
+  assert.equal(dropdown.open, false);
+  assert.equal(root.ownerDocument.activeElement, summary);
+  dropdown.open = true;
+  root.querySelector('[data-search]').click();
+  assert.equal(dropdown.open, false);
+  dropdown.open = true;
+  root.querySelector('[data-search]').focus();
+  assert.equal(dropdown.open, false, 'tabbing out closes the menu');
+  const sort = root.querySelector('[data-filter="sort"]');
+  sort.open = true;
+  sort.querySelector('[data-choice="name"]').click();
+  assert.deepEqual([...root.querySelectorAll('[data-open]')].map(button => button.dataset.open), ['rag', 'token']);
+  assert.equal(sort.querySelector('[data-filter-label]').textContent, '英文排序');
+  assert.equal(view.localStorage.getItem('alvin-ai-concepts-progress-v1'), null);
+});
 
 test('concept details preserve the browsing context and close before practice starts', t => {
   const root = uiFixture(t, term), search = root.querySelector('[data-search]');
@@ -240,7 +293,7 @@ test('blocked browser storage leaves practice usable and keeps the save warning 
   root.querySelector('[data-rate="recalled"]').click();
   assert(root.querySelector('[data-status]').textContent.includes('无法保存'));
   assert.equal(root.querySelector('[data-status]').classList.contains('ac-sr-only'), false);
-  assert(root.querySelector('[data-progress]').textContent.includes('已练 1 个'));
+  assert(root.querySelector('[data-progress]').textContent.includes('已学 1 个'));
 });
 
 test('quick review shows the answer and rates one card per deliberate shortcut', t => {
