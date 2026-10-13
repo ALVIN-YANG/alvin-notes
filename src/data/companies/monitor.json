@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "lastRun": {
-    "at": "2026-10-13T08:16:46.511Z",
+    "at": "2026-10-13T08:30:02.533Z",
     "week": "2026-W42",
     "status": "ok",
     "successCount": 25,
@@ -109,15 +109,15 @@
     "glean:updates": {
       "title": "Work AI blog - AI agents, assistant, and search resources",
       "hash": "67f79a87702c361e48d4ec5022d779ac27c3602c0d806fe215ee374d3fd650a6",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "harvey:updates": {
       "title": "Harvey AI Blog: Learn about legal AI, Harvey, and more",
       "hash": "052698d1dc20bbe6b6a2c9ffb00de02958913f8b1bf5c4c12e4f63d1bc0d0a98",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "elevenlabs:product": {
@@ -137,162 +137,162 @@
     "interaction:updates": {
       "title": "Release Notes – Poke Docs",
       "hash": "68c7fadf1b46a6517ac146f26430120133314251305f3d1259ddeca2ec38c5c4",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "interaction:pricing": {
       "title": "Pricing – Poke",
       "hash": "b7d51f248a4829607204b81d589c37a89b7b183a68ba973a19bdb575eb326a0d",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "instinct:terms": {
       "title": "Terms of Service | Instinct",
       "hash": "36857b0eade958a95b0b2f4535882b6f81168f9fb3203cd141ae5aa5a4e30a22",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "instinct:privacy": {
       "title": "Privacy Policy | Instinct",
       "hash": "ae1267a262ff223532d2b26fe26489a8da7fd313e306eb9ac4e3c90bf79ca660",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "instinct:funding": {
       "title": "AI agent firm Instinct raises $1 billion in latest funding round - The Economic Times",
       "hash": "b42cce9f7b8424c2b95596ff1d30a2900e191093529f365b93e310738670c47e",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "instinct:interview": {
       "title": "Noah Shinn - Building Instinct… - Invest Like the Best with Patrick O'Shaughnessy - Apple Podcasts",
       "hash": "f8a3a8b194e4b0a2c5819b20dc5d0cdbf0f379f0a53a20a8d9ffabfe0413604d",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "instinct:investor": {
       "title": "Partnering with Instinct",
       "hash": "de02ab41bad64651923b6b601f29026f0885f2173f40aa037757fa74dc52d1ab",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "instinct:product": {
       "title": "Instinct",
       "hash": "3dff21c5f7798e5243f7b44385e2e42f315a605e489a5a9bcd553eb747dcbcc3",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "instinct:sequoia": {
       "title": "Instinct | Sequoia Capital",
       "hash": "a30de93aba0caf47ae8f752cf05d717050314b8fbc8fd98cecbf6749e2f73b0e",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "glean:company": {
       "title": "Glean Raises $150M Series F at $7.2B Valuation to Accelerate Enterprise AI Agent Innovation Globally  | Glean Press",
       "hash": "2d664de72326032c0fb2edba5f83d4890799014bd69efdfb6bb1c7364c54d226",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "glean:news-78d7f2d5b31d": {
       "title": "How Glean ensures skills stay secure and permissions aware",
       "hash": "b6c9cb31bedaab66532f3d2b246ef36efff47f6930d96e94894b2ecb46a0a2df",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "glean:product": {
       "title": "Glean – Enterprise AI that Works | Agents, Assistant & Search",
       "hash": "b35648e9843e9da795802093be41a6bc401a1a8c964212cce03d50a838b0b9e1",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "harvey:company": {
       "title": "Harvey Raises $550M at a $15.5B Valuation to Help Legal Teams Own Their Intelligence",
       "hash": "9a99f0c1e43f2e8009c82fe7a4626c5b882ef38d1882761b1cb268cee02d61c2",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "harvey:news-26470d6bd8e2": {
       "title": "Harvey Product Releases: October 2026",
       "hash": "dcc6de308183d13f0c960cda3fcdd9d0d036a9f4d071a2699449d4d45cfc98cf",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "harvey:news-76c704e8b4dd": {
       "title": "Vendor Contract Management for In-House Legal | Harvey",
       "hash": "fc8b9dba290460d82be976b7a0e5edb69411f74ba44d5c3a7f4a93c47c3cae84",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "harvey:news-c9dfd463f873": {
       "title": "AI Contract Obligation Management After Signing | Harvey",
       "hash": "0a7891ca7b80acf20cddb73a621f190be610bf9f969b5fd9f47c14e89c085edf",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "harvey:product": {
       "title": "Harvey | AI software for legal and professional services",
       "hash": "61b8b0701a4a9c4b87bc6bb2cd7bd9adc7a7a7ee0b8e864d8e39be26b232904e",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "interaction:company": {
       "title": "Welcoming The Interaction Company | Cognition",
       "hash": "66641f4b70b1c1c1b0d339a02d051d1fb84ad18f18f92fe9e8f1a5b4f20dcdf7",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "interaction:faq": {
       "title": "FAQs – Poke",
       "hash": "2ecac003fa71ddb319baed67a66c27a05f3d3142fb54066453c97fd5de868036",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "interaction:integrations": {
       "title": "Managing Integrations – Poke Docs",
       "hash": "39d902f274ba1e4eae5ca849c4f8e349e56f3b2a445caa4b0fd46aa532a75515",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "interaction:investor": {
       "title": "Seeding the Future with The Interaction Company of California",
       "hash": "75a91169d6114339840e3735fb06284a909be2b87dde0ecb915277c700a7e01c",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "interaction:launch": {
       "title": "Introducing Poke.com: Reimagining How Artificial Intelligence Integrates Into Our Lives  |  WebWire",
       "hash": "157f362d643b96a6e73af20b8d15632d8b454f898bdd272b780dff0700bbef81",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     },
     "interaction:product": {
       "title": "Welcome – Poke Docs",
       "hash": "7f284257491627608a05bd6dae2df18fb1b8c58a50d0c03f6487a04f3b44e68b",
-      "checkedAt": "2026-10-13T08:16:46.511Z",
-      "attemptedAt": "2026-10-13T08:16:46.511Z",
+      "checkedAt": "2026-10-13T08:30:02.533Z",
+      "attemptedAt": "2026-10-13T08:30:02.533Z",
       "error": null
     }
   },
@@ -320,7 +320,7 @@
     }
   ],
   "lastReview": {
-    "at": "2026-10-13T08:16:46.511Z",
+    "at": "2026-10-13T08:30:02.533Z",
     "week": "2026-W42",
     "roster": "glean,harvey,instinct,interaction",
     "status": "partial",
@@ -332,28 +332,28 @@
         "status": "failed",
         "changes": 0,
         "events": 0,
-        "error": "引用与原文证据不匹配"
+        "error": "独立证据核对未通过：多处证据不足或与原文不符：产品行0称“无需先学习独立手机App”无原文支持；产品行1把官网“doctor's appointments/周末出行”改写为“预约和旅行安排”尚可但“投资方介绍持续处理多步骤任务”对应句未含“持续”；workflow行1“授权相应服务与支付资料”超出所引条款句；pricing行1“当前收入未披露”与访谈“超10亿美元年交易额”口径"
       },
       {
         "companyId": "glean",
         "status": "failed",
         "changes": 0,
         "events": 0,
-        "error": "引用原文不存在或长度无效：product，长度 312"
+        "error": "引用原文不存在或长度无效：product，长度 10"
       },
       {
         "companyId": "harvey",
         "status": "failed",
         "changes": 0,
         "events": 0,
-        "error": "独立证据核对未通过：产品行称公告列出“合同分析、尽调、合规与诉讼”等工作，但所引10月公告未支持这些既有工作类别；且该行asOf改为2026-10-09却仍以单一产品更新公告覆盖原面向客户与工作范围表述，证据不充分。其余融资、团队、定价等项与原文一致。"
+        "error": "独立证据核对未通过：产品行新增的“85+ 国家使用”与原文“Countries Harvey is used in 85+”不符，属事实混淆；且该行 asOf 标为 2026-10-13，但官网数据无发布日期，时效无法确认。团队行新增波士顿办公室后 asOf 改为 2026-10-01，与原文 2026-09-09 公告的创始团队信息混用，日期不一致。其余修改与事件基本有原文支"
       },
       {
         "companyId": "interaction",
         "status": "failed",
         "changes": 0,
         "events": 0,
-        "error": "旧消息或未来消息不能进入本期动态"
+        "error": "独立证据核对未通过：多处证据不足或引用不匹配：产品行称“账户、隐私和集成可在网页管理”仅用删除账户FAQ支撑，未覆盖隐私与集成管理；团队行称“2025年9月公司公告列出CEO/CTO”但launch来源为新闻稿且publishedAt为空，日期依据不足；funding行称“Scott Wu、Walden Yan曾是早期天使投资人”，原文仅Scott Wu自述“Walden an"
       }
     ]
   }
