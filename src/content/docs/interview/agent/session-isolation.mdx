@@ -1,0 +1,49 @@
+---
+title: user_id、session_id、run_id 怎么分？会话文件和并发状态怎么隔离？
+description: 为用户、对话和执行分配不同标识，约束共享状态与临时文件。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 生产可靠性
+  level: advanced
+  order: 19
+  tags: [Session, Run, 多租户, 临时文件, 并发]
+sidebar:
+  label: 会话标识与隔离
+  order: 19
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+user_id 标识用户，session_id 标识一段对话，run_id 标识一次具体执行。一个用户可有多段对话，一段对话可启动多次执行。UUID 避免碰撞，不证明访问权限；读取状态或文件时，仍要核对它属于谁。
+
+```mermaid
+flowchart TB
+  A[租户与用户] --> B[会话 S1]
+  A --> C[会话 S2]
+  B --> D[执行 R1]
+  B --> E[执行 R2]
+  D --> F["状态与工作目录<br/>保存产物引用"]
+  E --> G[独立执行状态与工作目录]
+```
+
+## 两次执行不能覆盖彼此的进度
+
+教学例：用户连续发两条消息，后一次执行不应覆盖前一次未完成的工具结果。可以串行处理同会话的状态变更，或使用版本校验明确冲突规则；工作目录按租户和执行隔离，避免都写一个 output.json。
+
+由任务服务管理文件归属、引用和保留期，工具进程只使用分配的目录。临时文件可以有到期清理，但要排除正在运行或等待恢复的任务；需保留的产物先移入持久存储。别因清理进程退出就误删恢复所需的输入。
+
+### 容器重启后目录还在吗？
+
+取决于存储。容器临时磁盘通常不能作为恢复承诺；检查点、文件和执行记录应放在满足持久性要求的位置，并实际测试重启恢复。身份和租户信息由可信服务注入，不能由模型参数决定。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[AgentScope 状态与会话](https://doc.agentscope.io/tutorial/task_state.html)、[LangChain 短期记忆](https://docs.langchain.com/oss/python/langchain/short-term-memory)。标识、文件生命周期和冲突方案为本站工程设计。
+
+</details>
+
+</InterviewQuestion>

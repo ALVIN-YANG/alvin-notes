@@ -1,0 +1,52 @@
+---
+title: 长期记忆怎么写入、更新和删除？冲突的用户画像怎么办？
+description: 为长期事实设置来源、归属、有效时间和更新规则。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 上下文与记忆
+  level: advanced
+  order: 30
+  tags: [长期记忆, 用户画像, 去重, 冲突处理]
+sidebar:
+  label: 长期记忆的更新与删除
+  order: 30
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+长期记忆应保存经过筛选、以后仍有用的信息，并支持更正、失效和删除。记录至少包括主体、内容、来源与有效时间。用户更正可能替换旧偏好，也可能只适用于这一次任务；不能把每句新话都当作永久画像。
+
+```mermaid
+flowchart TB
+  A[对话中的候选信息] --> B[检查来源、用途与归属]
+  B --> C[查找已有记录]
+  C --> D{关系是什么？}
+  D -->|重复| E[合并或忽略]
+  D -->|明确更正| F[旧版本失效，保存新版本]
+  D -->|条件不同| G[保留条件和有效时间]
+  E --> H["查询时过滤权限<br/>排除失效记录"]
+  F --> H
+  G --> H
+```
+
+## 相似不是同一条事实
+
+教学例：“平时住杭州”和“本周出差南京”可以同时成立；“以后别用英文回复”则可能更新语言偏好。先对齐主体、属性、条件和时间，再决定追加或替换，不能仅靠向量相似度覆盖记录。
+
+更新应留下版本，避免后台任务基于旧数据覆盖新更正。删除需要处理主记录、检索索引和缓存；审计或备份的留存方式另行规定，不能把“查询时不返回”说成所有副本已经消失。
+
+### 模型可以直接把推测写进去吗？
+
+推测不应成为已确认事实。外部网页的指令也不能作为用户偏好保存。记忆检索按用户与租户隔离；语义相关不代表有权限读取。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangChain 长期记忆与命名空间](https://docs.langchain.com/oss/python/langchain/long-term-memory)、[AgentScope 长期记忆](https://doc.agentscope.io/tutorial/task_long_term_memory.html)。更新、删除和冲突方案为本站工程建议。
+
+</details>
+
+</InterviewQuestion>

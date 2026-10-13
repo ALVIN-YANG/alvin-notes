@@ -1,0 +1,582 @@
+{
+  "asOf": "2026-10-14",
+  "metric": "按题意归并后的独立面经记录数；同一作者、同一公司、同一题只计一次。先比较记录数，再比较公司数、最近发帖日期，最后按题号稳定排序。",
+  "sources": [
+    {
+      "id": "byte-fullstack",
+      "postId": "e3bbac936dd846f8aafe48898880ec5b",
+      "title": "字节AI全栈开发一面面经(已过)",
+      "url": "https://www.nowcoder.com/discuss/913848724952997888",
+      "company": "字节跳动",
+      "role": "AI 全栈开发实习一面",
+      "author": "osillow",
+      "authorId": "927837144",
+      "postedAt": "2026-08-03",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "project-evidence",
+          "prompt": "介绍 Agent 项目的执行链路和个人负责的部分。"
+        },
+        {
+          "question": "streaming-and-cancellation",
+          "prompt": "前后端怎样分阶段传递流式回复。"
+        },
+        {
+          "question": "rag-pipeline",
+          "prompt": "项目怎样存储资料并召回。"
+        },
+        {
+          "question": "multimodal-documents",
+          "prompt": "OCR 与语音输入如何接入项目。"
+        },
+        {
+          "question": "session-isolation",
+          "prompt": "UUID 标识用户还是一次会话。"
+        },
+        {
+          "question": "multi-agent-coordination",
+          "prompt": "为何采用多个模块，而没有拆成多个 Agent。"
+        },
+        {
+          "question": "framework-selection",
+          "prompt": "没有使用 Agent 框架时，模块如何交换数据。"
+        },
+        {
+          "question": "workflow-vs-agent",
+          "prompt": "哪些步骤用模型，哪些步骤由固定流程执行。"
+        },
+        {
+          "question": "ai-coding-verification",
+          "prompt": "AI 编码出错后怎样排查和验证。"
+        }
+      ]
+    },
+    {
+      "id": "byte-harness",
+      "postId": "22c921146ef04c1890cf922e17cc29a5",
+      "title": "字节跳动9.3 Agent开发一面面经",
+      "url": "https://www.nowcoder.com/discuss/925342611194286080",
+      "company": "字节跳动",
+      "role": "Agent 开发一面",
+      "author": "小妞脂",
+      "authorId": "257616219",
+      "postedAt": "2026-09-04",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "project-evidence",
+          "prompt": "详细说明 AI 项目的设计。"
+        },
+        {
+          "question": "structured-output",
+          "prompt": "评分结果如何按固定结构输出。"
+        },
+        {
+          "question": "rag-pipeline",
+          "prompt": "离线入库与在线问答各怎样运行。"
+        },
+        {
+          "question": "harness-design",
+          "prompt": "解释 Harness 在 Agent 中的职责。"
+        },
+        {
+          "question": "agent-latency",
+          "prompt": "长任务耗时突然增加时怎样定位原因。"
+        },
+        {
+          "question": "tool-calling",
+          "prompt": "工具需要固定参数时怎样保障调用可靠。"
+        },
+        {
+          "question": "context-and-memory",
+          "prompt": "多轮对话使上下文增长，怎样管理。"
+        },
+        {
+          "question": "context-compression",
+          "prompt": "压缩对话时怎样少丢关键信息。"
+        }
+      ]
+    },
+    {
+      "id": "byte-rag",
+      "postId": "bf387ba772604b86beed3759bd586fc2",
+      "title": "字节Agent开发后端 日常实习一面凉面",
+      "url": "https://www.nowcoder.com/discuss/932295617999622144",
+      "company": "字节跳动",
+      "role": "Agent 后端日常实习一面",
+      "author": "溯洄之洲",
+      "authorId": "872364425",
+      "postedAt": "2026-09-23",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "framework-selection",
+          "prompt": "选择 LangGraph 的依据与工作流设计。"
+        },
+        {
+          "question": "evaluation-dataset",
+          "prompt": "评测集如何构造，合成数据如何保证质量和覆盖。"
+        },
+        {
+          "question": "agent-evaluation",
+          "prompt": "哪些指标反映项目是否达成目标。"
+        },
+        {
+          "question": "query-understanding",
+          "prompt": "如何处理口语、错字与不清晰的意图。"
+        },
+        {
+          "question": "rag-pipeline",
+          "prompt": "Markdown、TXT、PDF 的分块策略。"
+        },
+        {
+          "question": "hybrid-retrieval",
+          "prompt": "BM25 与向量如何融合，RRF 与 Cross-Encoder 为何有效。"
+        },
+        {
+          "question": "project-evidence",
+          "prompt": "技术选型怎样证明有效，两个项目的差别是什么。"
+        }
+      ]
+    },
+    {
+      "id": "ks-data",
+      "postId": "e6c68b2e48a04bcaa044e56bab3bd937",
+      "title": "快手-data agent开发-1面-06.16",
+      "url": "https://www.nowcoder.com/discuss/904419777614049280",
+      "company": "快手",
+      "role": "Data Agent 开发一面",
+      "author": "不知道起什么名字好___",
+      "authorId": "149420071",
+      "postedAt": "2026-07-08",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "workflow-vs-agent",
+          "prompt": "说明 LLM 与 Agent 的关系和差别。"
+        },
+        {
+          "question": "planning-and-replanning",
+          "prompt": "说明 ReAct 的构成与任务执行循环。"
+        },
+        {
+          "question": "harness-design",
+          "prompt": "设计 Agent 框架时怎样划分模块及交互。"
+        },
+        {
+          "question": "mcp-and-tools",
+          "prompt": "MCP 与工具调用的关系和差别。"
+        },
+        {
+          "question": "context-and-memory",
+          "prompt": "短期、长期和分层记忆各保存什么。"
+        },
+        {
+          "question": "skills-and-progressive-disclosure",
+          "prompt": "Skill 怎样按任务逐步加载内容。"
+        }
+      ]
+    },
+    {
+      "id": "ks-java",
+      "postId": "7bd4afba29bc49c789427b5a00ced397",
+      "title": "快手后端-Java开发一面面经",
+      "url": "https://www.nowcoder.com/feed/main/detail/7bd4afba29bc49c789427b5a00ced397",
+      "company": "快手",
+      "role": "Java 后端一面",
+      "author": "EaXon",
+      "authorId": "981180148",
+      "postedAt": "2026-03-24",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "framework-selection",
+          "prompt": "Agent 使用什么框架，选型依据是什么。"
+        },
+        {
+          "question": "workflow-vs-agent",
+          "prompt": "Agent 的核心组成和执行链路。"
+        },
+        {
+          "question": "skills-and-progressive-disclosure",
+          "prompt": "Skills 的执行逻辑如何实现。"
+        },
+        {
+          "question": "project-evidence",
+          "prompt": "项目遇到的技术难点怎样处理。"
+        }
+      ]
+    },
+    {
+      "id": "ali-skills",
+      "postId": "b5000060cf85482097b87621f8cbaccd",
+      "title": "阿里淘天agent开发一面面经（50分钟）",
+      "url": "https://www.nowcoder.com/feed/main/detail/b5000060cf85482097b87621f8cbaccd",
+      "company": "阿里巴巴",
+      "role": "淘天 Agent 开发一面",
+      "author": "搬砖界泰斗",
+      "authorId": "929904741",
+      "postedAt": "2026-07-18",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "multi-agent-coordination",
+          "prompt": "项目为何必须拆成多个 Agent。"
+        },
+        {
+          "question": "skill-hot-reload",
+          "prompt": "Skill 热插拔的过程及进程池、RPC 方案取舍。"
+        },
+        {
+          "question": "session-isolation",
+          "prompt": "会话临时文件应由谁保存，什么时候删除。"
+        },
+        {
+          "question": "project-evidence",
+          "prompt": "项目的技术亮点是什么。"
+        }
+      ]
+    },
+    {
+      "id": "ali-graph",
+      "postId": "edbf58731d884f8f9e094a9b2eda0cf9",
+      "title": "阿里淘天agent开发一面凉经 面没招了",
+      "url": "https://www.nowcoder.com/feed/main/detail/edbf58731d884f8f9e094a9b2eda0cf9",
+      "company": "阿里巴巴",
+      "role": "淘天 Agent 开发一面",
+      "author": "C0bra",
+      "authorId": "942601298",
+      "postedAt": "2026-04-24",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "framework-selection",
+          "prompt": "LangGraph 和 LangChain 怎样选，节点状态如何传递。"
+        },
+        {
+          "question": "agent-evaluation",
+          "prompt": "怎样验证某个节点的实际效果。"
+        },
+        {
+          "question": "agent-latency",
+          "prompt": "项目的监控怎样实现。"
+        },
+        {
+          "question": "prompt-design",
+          "prompt": "项目如何组合提示词。"
+        },
+        {
+          "question": "rag-pipeline",
+          "prompt": "RAG 如何分块，是否使用重叠。"
+        },
+        {
+          "question": "embedding-selection",
+          "prompt": "向量化模型如何选择。"
+        },
+        {
+          "question": "multimodal-documents",
+          "prompt": "文档中的图片和表格怎样解析。"
+        },
+        {
+          "question": "project-evidence",
+          "prompt": "简历中的指标怎样提供证据。"
+        }
+      ]
+    },
+    {
+      "id": "ali-fullstack",
+      "postId": "dbadbb8ec25e421fb6274b54211a4f3f",
+      "title": "阿里全栈一面（发面经攒人品）",
+      "url": "https://www.nowcoder.com/feed/main/detail/dbadbb8ec25e421fb6274b54211a4f3f",
+      "company": "阿里巴巴",
+      "role": "全栈开发一面",
+      "author": "牛客569000128号",
+      "authorId": "569000128",
+      "postedAt": "2026-09-21",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "knowledge-graph-rag",
+          "prompt": "知识图谱与 RAG 的区别，代码关系怎样表示。"
+        },
+        {
+          "question": "project-evidence",
+          "prompt": "有无知识图谱的对照实验怎样度量改进。"
+        },
+        {
+          "question": "harness-design",
+          "prompt": "可插拔 Harness 怎样适配不同业务。"
+        }
+      ]
+    },
+    {
+      "id": "baidu-agent",
+      "postId": "bb8c28105f364770b57ff5eb5649cc60",
+      "title": "9.7百度agent开发日常实习面经",
+      "url": "https://www.nowcoder.com/feed/main/detail/bb8c28105f364770b57ff5eb5649cc60",
+      "company": "百度",
+      "role": "Agent 开发日常实习面试",
+      "author": "愤怒的哈里许愿简历通过",
+      "authorId": "364945396",
+      "postedAt": "2026-09-07",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "hybrid-retrieval",
+          "prompt": "混合检索如何实现。"
+        },
+        {
+          "question": "rag-pipeline",
+          "prompt": "文档分块粒度的选择依据。"
+        },
+        {
+          "question": "framework-selection",
+          "prompt": "自研 Agent 相比开源实现的收益。"
+        },
+        {
+          "question": "project-evidence",
+          "prompt": "自研系统的优点及项目中最难的问题。"
+        },
+        {
+          "question": "tool-calling",
+          "prompt": "工具执行器和错误兜底如何运行。"
+        },
+        {
+          "question": "context-and-memory",
+          "prompt": "长期记忆的实现。"
+        },
+        {
+          "question": "mcp-transports",
+          "prompt": "stdio 与 Streamable HTTP 的传输及流式语义。"
+        },
+        {
+          "question": "durable-execution",
+          "prompt": "任务中断后怎样继续。"
+        },
+        {
+          "question": "agent-latency",
+          "prompt": "如何用日志确定 Agent 停在什么步骤。"
+        },
+        {
+          "question": "multi-agent-coordination",
+          "prompt": "多 Agent 的协作机制。"
+        }
+      ]
+    },
+    {
+      "id": "baidu-memory",
+      "postId": "844d3eed71074b2991750f799639185a",
+      "title": "百度后端一面",
+      "url": "https://www.nowcoder.com/feed/main/detail/844d3eed71074b2991750f799639185a",
+      "company": "百度",
+      "role": "后端开发一面",
+      "author": "墨陨",
+      "authorId": "657725487",
+      "postedAt": "2026-08-19",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "context-and-memory",
+          "prompt": "上下文、短期记忆和长期记忆分别怎样保存。"
+        },
+        {
+          "question": "context-compression",
+          "prompt": "记忆怎样压缩。"
+        },
+        {
+          "question": "memory-lifecycle",
+          "prompt": "长期记忆何时更新，怎样定位要更新的记录。"
+        }
+      ]
+    },
+    {
+      "id": "tencent-test",
+      "postId": "d793ef7063d14bcfb8181d5d567058dc",
+      "title": "腾讯测开一面",
+      "url": "https://www.nowcoder.com/discuss/799324958273830912",
+      "company": "腾讯",
+      "role": "微信读书测试开发一面",
+      "author": "许愿工作顺",
+      "authorId": "924682487",
+      "postedAt": "2025-09-21",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "project-evidence",
+          "prompt": "AI 项目承担什么业务，做过哪些优化。"
+        },
+        {
+          "question": "multi-agent-coordination",
+          "prompt": "使用一个还是多个 Agent。"
+        },
+        {
+          "question": "tool-calling",
+          "prompt": "模型怎样决定调用工具。"
+        },
+        {
+          "question": "mcp-and-tools",
+          "prompt": "MCP 能力如何封装、发现和调用。"
+        },
+        {
+          "question": "model-selection",
+          "prompt": "怎样比较模型，基座是否需要微调。"
+        }
+      ]
+    },
+    {
+      "id": "tencent-wxg",
+      "postId": "3ffc762437274543b6a8f5e2ea6fb535",
+      "title": "27届秋招-腾讯WXG-微信读书-一面（已挂）",
+      "url": "https://www.nowcoder.com/feed/main/detail/3ffc762437274543b6a8f5e2ea6fb535",
+      "company": "腾讯",
+      "role": "WXG 微信读书一面",
+      "author": "dolzhuying",
+      "authorId": "864731584",
+      "postedAt": "2026-08-24",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "context-and-memory",
+          "prompt": "Coding Agent 的记忆如何实现。"
+        },
+        {
+          "question": "framework-selection",
+          "prompt": "自研 Coding Agent 与已有产品的差异。"
+        },
+        {
+          "question": "agent-evaluation",
+          "prompt": "如何评测 Agent。"
+        },
+        {
+          "question": "durable-execution",
+          "prompt": "容器重启或迁移后怎样恢复上下文。"
+        },
+        {
+          "question": "planning-and-replanning",
+          "prompt": "长任务怎样持续推进并避免偏离目标。"
+        },
+        {
+          "question": "context-compression",
+          "prompt": "长上下文中间的信息为何容易被忽略。"
+        }
+      ]
+    },
+    {
+      "id": "mt-ops",
+      "postId": "58159306df52463ab75d72daa80d66df",
+      "title": "美团Agent开发一面 日常",
+      "url": "https://www.nowcoder.com/feed/main/detail/58159306df52463ab75d72daa80d66df",
+      "company": "美团",
+      "role": "智能运维 Agent 日常实习一面",
+      "author": "QHN沙壁",
+      "authorId": "150030633",
+      "postedAt": "2026-08-25",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "project-evidence",
+          "prompt": "需求来源、技术选型及其依据。"
+        },
+        {
+          "question": "rag-vs-file-search",
+          "prompt": "RAG、长上下文与 Agent 文件搜索如何取舍。"
+        },
+        {
+          "question": "rag-pipeline",
+          "prompt": "没有标题的 Markdown 怎样分块。"
+        },
+        {
+          "question": "hybrid-retrieval",
+          "prompt": "关键词与向量召回各有什么缺点。"
+        },
+        {
+          "question": "embedding-selection",
+          "prompt": "短查询与长片段的向量怎样匹配。"
+        },
+        {
+          "question": "query-understanding",
+          "prompt": "长查询除了压缩还可以怎样处理。"
+        },
+        {
+          "question": "rag-debugging",
+          "prompt": "如何发现 RAG 答案中的幻觉。"
+        },
+        {
+          "question": "answer-verification",
+          "prompt": "对评测没有覆盖的错误，运行时怎样额外检测。"
+        },
+        {
+          "question": "ai-coding-verification",
+          "prompt": "如何核验 AI 写出的代码。"
+        },
+        {
+          "question": "multi-agent-coordination",
+          "prompt": "单 Agent 与多 Agent 的实践差别。"
+        },
+        {
+          "question": "planning-and-replanning",
+          "prompt": "选择 Plan-and-Execute 而非 ReAct 的依据。"
+        },
+        {
+          "question": "harness-design",
+          "prompt": "Agent 与 Harness 的职责区别。"
+        },
+        {
+          "question": "context-and-memory",
+          "prompt": "如何决定送入、保留和裁剪哪些上下文。"
+        },
+        {
+          "question": "vector-index",
+          "prompt": "向量数据库与逐条余弦计算的区别及索引机制。"
+        }
+      ]
+    },
+    {
+      "id": "mt-agent",
+      "postId": "1d067ce539c64d3988eabb9b646ef8a0",
+      "title": "美团Agent开发一面凉经😭",
+      "url": "https://www.nowcoder.com/feed/main/detail/1d067ce539c64d3988eabb9b646ef8a0",
+      "company": "美团",
+      "role": "Agent 开发日常实习一面",
+      "author": "人之律者",
+      "authorId": "764799618",
+      "postedAt": "2026-08-25",
+      "kind": "candidate-report",
+      "observations": [
+        {
+          "question": "project-evidence",
+          "prompt": "Agent 项目的目标与整体架构。"
+        },
+        {
+          "question": "rag-pipeline",
+          "prompt": "检索到生成的流程和分块策略。"
+        },
+        {
+          "question": "multi-agent-coordination",
+          "prompt": "任务分配、状态管理与结果合并。"
+        },
+        {
+          "question": "context-and-memory",
+          "prompt": "怎样避免上下文过长影响效果。"
+        },
+        {
+          "question": "workflow-vs-agent",
+          "prompt": "Agent 相比传统应用增加了什么能力。"
+        },
+        {
+          "question": "context-compression",
+          "prompt": "Agent 为什么需要上下文压缩。"
+        },
+        {
+          "question": "harness-design",
+          "prompt": "Agent 的工具、状态和任务调度怎样设计。"
+        },
+        {
+          "question": "ai-coding-verification",
+          "prompt": "AI 编码的使用方式及其局限。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+---
+import { interviewCorpus } from '../lib/interview-evidence.mjs';
+const sources = [...interviewCorpus.sources].sort((a, b) => b.postedAt.localeCompare(a.postedAt) || a.id.localeCompare(b.id));
+---
+<table>
+  <thead><tr><th>公司 / 岗位</th><th>发帖日期</th><th>作者与原帖</th></tr></thead>
+  <tbody>{sources.map(source => <tr>
+    <td>{source.company}<br />{source.role}</td>
+    <td>{source.postedAt}</td>
+    <td>{source.author}<br /><a href={source.url}>{source.title}</a></td>
+  </tr>)}</tbody>
+</table>

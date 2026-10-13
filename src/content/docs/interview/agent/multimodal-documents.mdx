@@ -1,0 +1,50 @@
+---
+title: RAG 里的 PDF、图片和表格怎么处理？OCR 后就够了吗？
+description: 保留版面、表格关系和引用位置，避免解析阶段损失证据。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 检索与知识
+  level: intermediate
+  order: 18
+  tags: [PDF, OCR, 多模态, 表格解析]
+sidebar:
+  label: 多模态文档解析
+  order: 18
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+OCR 提取字符，不一定恢复阅读顺序、表格关系和图片含义。RAG 建库应按文档类型解析，保留页码、位置、标题与原始资源；否则后续检索再准确，也只能使用已经损坏的证据。
+
+```mermaid
+flowchart TB
+  A[原始 PDF 或图片] --> B{是否有可靠文本层？}
+  B -->|有| C[提取文本与版面]
+  B -->|没有| D[OCR 与版面分析]
+  C --> E[表格、图、段落分别处理]
+  D --> E
+  E --> F["保存结构与原图<br/>保留引用位置"]
+  F --> G["切分与检索<br/>必要时回看原页"]
+```
+
+## 表格不能只剩一串数字
+
+教学例：表格中的“200”必须同时保留列名“报销上限”、单位和适用行。大表可以按行分段，但每段带表头、条件和表格 ID；需要求和或精确筛选时，可以把表格放进结构化查询系统，检索只负责找到这张表。
+
+图表可保存图像、图注及经过核对的描述；用户问题依赖曲线、布局或箭头时，再读取原图。多模态模型生成的解释也可能出错，不应直接当作原始事实。
+
+### 如何验收解析质量？
+
+检查阅读顺序、跨页表格、单位、脚注和引用回跳，抽样比较原页与产物。把解析错误与召回错误分开统计。原始字符缺失，改 top-k 或 Rerank 都无法补回。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Docling 技术报告](https://arxiv.org/abs/2408.09869)、[阿里云百炼知识检索](https://help.aliyun.com/zh/model-studio/rag-knowledge-retrieval)。表格保存及验收方案为本站工程示例。
+
+</details>
+
+</InterviewQuestion>

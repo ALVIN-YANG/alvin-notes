@@ -81,6 +81,7 @@ export default defineConfig({
           items: [
             { label: '全部题目', link: '/interview/' },
             { label: '学习路线与公开资料', link: '/interview/infra-roadmap/' },
+            { label: '面经来源与热度口径', link: '/interview/agent-sources/' },
             { label: 'AI Agent 开发', autogenerate: { directory: 'interview/agent' } },
             { label: 'AI Infra', autogenerate: { directory: 'interview/infra' } },
           ],

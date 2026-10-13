@@ -1,0 +1,49 @@
+---
+title: Agent 变慢或卡住，怎样用 Trace 定位？
+description: 沿关键路径拆分模型、工具、排队和重试耗时。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 评测与观测
+  level: advanced
+  order: 12
+  tags: [Trace, OpenTelemetry, 延迟, 关键路径]
+sidebar:
+  label: 长任务延迟与观测
+  order: 12
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+先找到这次任务的执行路径，再比较正常任务与异常任务：是调用次数增加，还是某一步变慢。Trace 应用 run_id 串起模型、检索和工具的 Span，记录开始结束、状态、重试、输入输出量及版本。只看最终耗时，无法知道卡在哪里。
+
+```mermaid
+flowchart TB
+  A[端到端耗时增加] --> B["对比正常任务<br/>与异常 Trace"]
+  B --> C{调用次数是否增加？}
+  C -->|是| D["查循环与重试<br/>查上下文增长"]
+  C -->|否| E["查模型、工具与检索<br/>检查排队等待"]
+  D --> F["定位关键路径<br/>针对性修复"]
+  E --> F
+```
+
+## 时间不能只把所有 Span 相加
+
+串行步骤会累积耗时，并行步骤要看任务依赖形成的关键路径。教学例：两个查询同时开始，分别耗时 2 秒和 5 秒，汇总前通常要等较慢的查询；这段墙钟时间不是 7 秒。再检查排队等待是否发生在 Span 计时之外。
+
+模型变慢时区分首 Token 与总生成时间，检查输入增长和输出量；工具变慢时查看依赖服务、连接池、锁及超时。一次 429 若在 SDK、网关和应用分别重试，可能造成重复等待。修复后用同条件任务复测质量与延迟。
+
+### 日志记全 Prompt 才够吗？
+
+不必。先保留步骤、标识、用量、错误及版本，对敏感内容做受控记录。日志和 Trace 应支持定位，而不是把用户数据无限复制到日志平台。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[AgentScope Tracing](https://doc.agentscope.io/tutorial/task_tracing.html)。关键路径、故障分类和两查询算例为本站工程解释。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,50 @@
+---
+title: 评测答对率很高，线上还会错，怎样做答案检测和拒答？
+description: 用证据、业务规则和人工抽查处理评测之外的错误。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 评测与观测
+  level: advanced
+  order: 29
+  tags: [幻觉检测, Grounding, 拒答, Judge, 置信度]
+sidebar:
+  label: 线上答案检测与拒答
+  order: 29
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+离线答对率说明系统在已有样本上的表现，不能识别每次线上错误。运行时可以检查关键结论是否有证据、字段是否符合规则、动作是否越界；证据不足时补充检索、澄清、拒答或转人工。模型自报的“置信度”没有校准，不能直接当作正确概率。
+
+```mermaid
+flowchart TB
+  A[候选答案与引用] --> B[提取需核对的结论]
+  B --> C["核对原文与数据<br/>检查业务规则"]
+  C --> D{支持是否充分？}
+  D -->|是| E[返回可追溯答案]
+  D -->|不足| F[补充证据、澄清或拒答]
+  E --> G[抽样复核与失败回流]
+  F --> G
+```
+
+## 检测器也需要验证
+
+教学例：“订单符合退款条件”应核对订单状态、时间和规则，而不是因为答案附了三个链接就通过。引用存在、引用相关和引用支持结论是三件事。Schema 校验通过，也只说明字段结构合规。
+
+可以用确定性规则处理可查的金额、状态和权限，再让 Judge 辅助判断证据支持关系。Judge 可能漏检或误报，需要已标注案例校准；拒答阈值应比较错误放行、错误拒答和人工处理负担，不能任意给一个分数。
+
+### 多问一个模型，是否就能保证正确？
+
+不能。两个模型可能共享相同误解。保留证据链和人工抽查，持续收集新分布的错误。涉及写操作时，答案检测也不能代替下游权限与业务约束。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[AgentScope Evaluation](https://doc.agentscope.io/tutorial/task_eval.html)。运行时检查、拒答和退款场景为本站工程建议；没有方案可以据此承诺所有线上错误都能被检测。
+
+</details>
+
+</InterviewQuestion>

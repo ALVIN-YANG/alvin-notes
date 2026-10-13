@@ -1,0 +1,50 @@
+---
+title: LangChain、LangGraph 和手写 Agent 怎么选？节点状态怎样流转？
+description: 从控制流和恢复需求比较框架，并解释状态更新规则。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 架构与选型
+  level: intermediate
+  order: 4
+  tags: [LangChain, LangGraph, State, Reducer, 框架选型]
+sidebar:
+  label: 框架与节点状态
+  order: 4
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+LangChain 提供模型、工具和 Agent 的较高层接口；LangGraph 更直接地表达有状态的图、分支和循环。当前 LangChain 的 Agent 构建在 LangGraph 上，二者可以一起使用。手写循环适合边界简单、依赖少的任务，但恢复、并发和观测仍要自己实现。
+
+```mermaid
+flowchart LR
+  A[输入 State] --> B[检索节点]
+  B --> C[返回状态增量]
+  C --> D["按更新规则合并<br/>Reducer"]
+  D --> E{证据足够？}
+  E -->|是| F[回答节点]
+  E -->|否| G[补充检索或澄清]
+  G --> D
+```
+
+## 选型要能回答状态归谁管
+
+一个问答图可以保存问题、证据、尝试次数和结果。节点接收状态，返回需要更新的字段；边决定下一节点。列表是追加、覆盖还是按 ID 合并，要明确 Reducer。两个并行节点同时写同一字段时，不能期待框架猜出业务上的合并规则。
+
+只有两三次顺序调用，可以先用普通函数。需要长任务、分支回退、暂停恢复或并行汇总时，再评估图运行时。比较自研与框架时，给出相同任务上的维护成本和故障恢复结果，不用代码行数证明优势。
+
+### 有了 State，就有持久化了吗？
+
+没有。内存状态需要配合持久检查点才能跨进程恢复；业务数据库中的事实还要单独管理。状态保存成功也不等于外部写操作已经安全去重。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangChain 概览](https://docs.langchain.com/oss/python/langchain/overview)、[LangGraph Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api)。选型建议与问答图为本站示例。
+
+</details>
+
+</InterviewQuestion>

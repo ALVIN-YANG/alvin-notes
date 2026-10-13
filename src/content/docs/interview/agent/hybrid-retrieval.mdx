@@ -1,16 +1,16 @@
 ---
 title: 向量检索、关键词检索和 Rerank 怎么配合？
 description: 解释多路召回与重排序各自解决的问题。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-14
 interview:
   track: agent
   topic: 检索与知识
   level: intermediate
-  order: 8
+  order: 9
   tags: [BM25, 向量检索, Rerank, Recall]
 sidebar:
   label: 混合检索与重排
-  order: 8
+  order: 9
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
@@ -34,9 +34,13 @@ flowchart TB
 
 ## 别直接把两路分数相加
 
-BM25 分数和向量相似度的尺度不同，直接相加会让某一路意外占主导。可以先用排名融合，例如 RRF 按名次给权重；也可以在明确校准后做分数融合。再用 Rerank 精排，代价是额外推理时间。
+BM25 分数和向量相似度的尺度不同，直接相加会让某一路意外占主导。可以先用排名融合，例如 RRF：对每篇文档，累加各路的 `1 / (常数 + 排名)`；没有进入某一路的文档在该路不加分。这样使用名次，避免直接比较异构分数，但仍需用业务评测选择召回量及参数。也可以在明确校准后做分数融合。
 
 候选 TopK 控制进入重排的数量，最终 TopK 控制交给生成模型的数量，两者不是同一个预算。先用有标准答案的查询查召回率，再看排序质量、答案依据和时延。
+
+### Cross-Encoder 为什么适合重排？
+
+双编码器分别把问题和文档变成可缓存的向量，适合快速召回。Cross-Encoder 把问题与候选文档一起输入模型，直接判断这一对是否相关，能利用更细的交互；每个候选都要额外推理，所以通常只重排有限候选。预训练目标未必适合当前业务，仍需对比相关证据排名、最终答案与延迟，不能仅凭模型名称宣称更准确。
 
 ### Rerank 能救回没有召回的文档吗？
 
@@ -49,7 +53,7 @@ BM25 分数和向量相似度的尺度不同，直接相加会让某一路意外
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。[百炼知识检索流程与参数](https://help.aliyun.com/zh/model-studio/rag-knowledge-retrieval)、[AgentScope 检索组件](https://doc.agentscope.io/tutorial/task_rag.html)。型号查询与组合策略为工程示例；RRF 见 [作者发布的原始论文](https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf)。
+核对于 2026-10-14。[百炼知识检索流程与参数](https://help.aliyun.com/zh/model-studio/rag-knowledge-retrieval)、[AgentScope 检索组件](https://doc.agentscope.io/tutorial/task_rag.html)、[Sentence Transformers Cross-Encoder](https://sbert.net/docs/cross_encoder/usage/usage.html)。型号查询与组合策略为工程示例；RRF 见 [作者发布的原始论文](https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf)。
 
 </details>
 

@@ -1,27 +1,30 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { compareInterviewQuestions, getInterviewEvidence, interviewCorpus } from '../lib/interview-evidence.mjs';
+import InterviewEvidence from './InterviewEvidence.astro';
 const tracks = { agent: 'AI Agent 开发', infra: 'AI Infra' };
 const levels = { basic: '基础', intermediate: '进阶', advanced: '困难' };
 const questions = (await getCollection('docs', entry => Boolean(entry.data.interview)))
-  .sort((a, b) => a.data.interview!.track.localeCompare(b.data.interview!.track) || a.data.interview!.order - b.data.interview!.order);
-const entries = await Promise.all(questions.map(async (entry, index) => ({entry, index, Content: (await render(entry)).Content})));
+  .sort(compareInterviewQuestions);
+const entries = await Promise.all(questions.map(async (entry, index) => ({entry, index, evidence: getInterviewEvidence(entry.id), Content: (await render(entry)).Content})));
 ---
 <div class="interview-bank" data-interview-bank>
   <header class="ib-heading not-content"><h1 id="_top">AI 工程问答</h1><div class="ib-track-choices" role="group" aria-label="内容方向" data-ib-enhanced hidden>
     {Object.entries(tracks).map(([id, label]) => <button type="button" data-ib-track={id} aria-pressed={id === 'agent' ? 'true' : 'false'}>{label}</button>)}
   </div></header>
+  <p class="ib-ranking-note not-content">Agent 按面经频次排序 · <a href="/interview/agent-sources/">{interviewCorpus.sources.length} 篇公开面经，查看统计口径</a></p>
   <div class="ib-workspace">
     <aside class="ib-catalog not-content" aria-label="题目目录">
       <div class="ib-filters" data-ib-enhanced hidden>
-        <label class="ib-search"><span class="sr-only">搜索题目</span><input type="search" data-ib-search placeholder="搜索题目" autocomplete="off" /></label>
+        <label class="ib-search"><span class="sr-only">搜索题目或公司</span><input type="search" data-ib-search placeholder="搜索题目或公司" autocomplete="off" /></label>
         <div class="ib-level-choices" role="group" aria-label="题目难度"><button type="button" data-ib-level="" aria-pressed="true">全部</button>{Object.entries(levels).map(([id,label]) => <button type="button" data-ib-level={id} aria-pressed="false">{label}</button>)}</div>
         <button type="button" class="ib-mobile-catalog" data-ib-catalog-toggle aria-expanded="false" aria-controls="ib-question-menu">目录</button>
       </div>
       <nav id="ib-question-menu" class="ib-catalog-scroll" data-ib-catalog-scroll data-open="false" aria-label="题目">
         <ol class="ib-question-list">
-          {entries.map(({entry, index}) => {
+          {entries.map(({entry, index, evidence}) => {
             const meta = entry.data.interview!;
-            return <li data-ib-question data-id={entry.id} data-track={meta.track} data-level={meta.level} data-panel={`ib-panel-${index}`} data-search={`${entry.data.title} ${meta.topic} ${meta.tags.join(' ')}`.toLowerCase()}><a class="ib-question" href={`/${entry.id}/`}><span class="ib-question-number">{String(meta.order).padStart(2,'0')}</span><span>{entry.data.title}</span><span class={`ib-level ${meta.level}`}>{levels[meta.level]}</span></a></li>;
+            return <li data-ib-question data-id={entry.id} data-track={meta.track} data-level={meta.level} data-panel={`ib-panel-${index}`} data-search={`${entry.data.title} ${meta.topic} ${meta.tags.join(' ')} ${evidence.companies.join(' ')}`.toLowerCase()}><a class="ib-question" href={`/${entry.id}/`}><span class="ib-question-number">{String(meta.order).padStart(2,'0')}</span><span>{entry.data.title}</span><span class={`ib-level ${meta.level}`}>{levels[meta.level]}</span>{meta.track === 'agent' && <span class="ib-question-evidence">{evidence.count ? `${evidence.count} 篇面经 · ${evidence.companies.join(' / ')}` : '工程补充'}</span>}</a></li>;
           })}
         </ol>
         <div class="ib-empty" data-ib-empty hidden><p>没有找到题目</p><button type="button" data-ib-reset>清除筛选</button></div>
@@ -39,7 +42,7 @@ const entries = await Promise.all(questions.map(async (entry, index) => ({entry,
       </div>
       <div class="ib-reading-scroll" data-ib-scroll tabindex="0" aria-label="滚动阅读答案">
         {entries.map(({entry, index, Content}) => <article id={`ib-panel-${index}`} class="ib-answer sl-markdown-content" data-ib-answer hidden={index !== 0} aria-labelledby={`ib-title-${index}`}>
-          <h2 id={`ib-title-${index}`} class="ib-answer-title">{entry.data.title}</h2><Content />
+          <h2 id={`ib-title-${index}`} class="ib-answer-title">{entry.data.title}</h2><Content /><InterviewEvidence id={entry.id} />
         </article>)}
         <p class="ib-reading-empty" data-ib-reading-empty hidden>换一个关键词，或清除筛选。</p>
       </div>

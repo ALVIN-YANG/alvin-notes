@@ -1,0 +1,18 @@
+---
+import { getInterviewEvidence, interviewCorpus } from '../lib/interview-evidence.mjs';
+const { id } = Astro.props;
+const evidence = getInterviewEvidence(id);
+const slug = id.split('/').at(-1);
+---
+{id.startsWith('interview/agent/') && <aside class="iq-evidence not-content" data-reader-ignore aria-label="面经来源">
+  <p class="iq-evidence-summary">{evidence.count ? `样本出题记录：${evidence.count} 篇 · ${evidence.companies.join('、')}` : '工程补充：本次面经样本未收录该题'}</p>
+  {evidence.count > 0 && <details>
+    <summary>查看面经出处与追问</summary>
+    <p>候选人自述，题意归并；回答由本站整理。核对日期：{interviewCorpus.asOf}。</p>
+    <ul>{evidence.sources.map(source => <li>
+      <a href={source.url}>{source.title}</a> · {source.company} · {source.role} · 发布于 {source.postedAt} · {source.author}
+      <p>考察：{source.observations.find(item => item.question === slug)?.prompt}</p>
+    </li>)}</ul>
+  </details>}
+  <a href="/interview/agent-sources/">样本、去重与热度口径</a>
+</aside>}

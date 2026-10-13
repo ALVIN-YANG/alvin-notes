@@ -1,0 +1,49 @@
+---
+title: 上下文怎样压缩？如何减少摘要丢信息和目标漂移？
+description: 区分必须精确保留的状态、可压缩历史和按需回读的原文。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 上下文与记忆
+  level: advanced
+  order: 7
+  tags: [Compaction, 摘要, Lost in the Middle, 目标漂移]
+sidebar:
+  label: 上下文压缩与信息保留
+  order: 7
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+压缩要保留继续任务所需的目标、约束、关键事实、已完成动作与未决事项，并留下原文位置。重复输出和已处理的中间过程可以裁掉。摘要有损，业务 ID、精确数值、授权和执行结果应有独立的结构化记录，不能全靠摘要转述。
+
+```mermaid
+flowchart LR
+  A[历史消息与工具结果] --> B[分类与去重]
+  B --> C["目标和执行事实<br/>精确保留"]
+  B --> D["过程与长输出<br/>摘要或引用"]
+  C --> E[新的工作上下文]
+  D --> E
+  E --> F[检查约束和未完成事项]
+```
+
+## 触发时机不能只看消息条数
+
+先估算下一轮输入、预期工具结果和输出预留。接近应用设定的预算时再压缩，避免刚压完就被一个大工具结果撑满。优先去掉不再需要的重复内容；调用与结果的消息关系仍要符合模型接口要求。
+
+教学例：修复任务的摘要要保留“只改模块 A、B 已测试、C 仍失败、不得发布”，而不是只写“正在修复”。后续步骤从持久任务清单校对目标，遇到参数变化或权限不明时停止相关动作。
+
+### 怎样测信息有没有丢？
+
+在长任务中插入早期约束、关键实体和未决问题，对比压缩前后继续执行的结果，统计遗漏约束、重复动作和错误结束。还要改变关键信息的位置；更短的摘要不是唯一目标。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[上下文工程中的 Compaction](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)、[LangChain 短期记忆](https://docs.langchain.com/oss/python/langchain/short-term-memory)。结构化保留、触发与回归方案为本站工程建议。
+
+</details>
+
+</InterviewQuestion>

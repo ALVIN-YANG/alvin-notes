@@ -1,0 +1,49 @@
+---
+title: 大上下文能替代 RAG 吗？让 Agent 直接搜索文件有什么不同？
+description: 比较完整文档输入、预建索引和按需文件探索。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 检索与知识
+  level: intermediate
+  order: 28
+  tags: [RAG, 长上下文, 文件搜索, Coding Agent]
+sidebar:
+  label: RAG 与文件搜索
+  order: 28
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+大上下文扩大一次可读的内容量；RAG 用索引先筛证据；文件搜索让 Agent 根据线索逐步读取。三者可以组合。即使忽略 Token 费用，仍有更新及时性、搜索覆盖、权限、读取次数和错误定位的差别。
+
+| 方式 | 更适合 | 主要限制 |
+| --- | --- | --- |
+| 直接放全文 | 少量完整文档，需要综合比较 | 容量上限；信息多时可能忽略关键段落 |
+| 预建 RAG | 大语料、重复问答、统一过滤和引用 | 解析、分块及索引更新可能丢失或延迟证据 |
+| 文件搜索与按需读 | 代码仓库、持续变化文件、探索调用关系 | 依赖搜索词和探索策略，可能漏文件或反复搜索 |
+
+```mermaid
+flowchart LR
+  A[任务与权限范围] --> B[全文、索引或文件探索]
+  B --> C[候选证据与文件位置]
+  C --> D[按需读原文和关联内容]
+  D --> E[回答并核对引用]
+```
+
+## 代码检索为何常需要组合
+
+“谁调用了这个函数”适合先查符号和引用；“哪段代码实现重试”可能需要语义检索。读到函数后，还应沿调用者、配置和测试确认行为。仅找到相似片段，不足以证明真实执行路径。
+
+用同一任务比较证据覆盖、答案正确率、完成时间和读取次数。论文曾观察到部分模型更容易使用上下文两端的信息；这不等于所有新模型都必然相同，应测试当前模型和位置变化。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Lost in the Middle 原论文](https://arxiv.org/abs/2307.03172)、[上下文工程中的按需读取](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)。场景取舍为本站工程建议。
+
+</details>
+
+</InterviewQuestion>

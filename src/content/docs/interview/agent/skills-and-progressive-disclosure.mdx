@@ -1,0 +1,48 @@
+---
+title: Skills 怎样工作？渐进式加载和 Tool、MCP 有什么区别？
+description: 解释任务方法、执行能力和连接协议的不同职责。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 工具与执行
+  level: basic
+  order: 21
+  tags: [Skills, 渐进式加载, Tool, MCP]
+sidebar:
+  label: Skills 与渐进式加载
+  order: 21
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+Skill 通常把某类任务的方法、资源和可选脚本放在一个目录里，让 Agent 需要时再读取。Tool 提供可执行的动作，MCP 提供连接和发现外部能力的协议。Skill 可以指导 Agent 使用 Tool 或 MCP，三者承担不同职责。
+
+```mermaid
+flowchart LR
+  A[启动：加载名称与描述] --> B{任务匹配？}
+  B -->|匹配| C["读取指令<br/>SKILL.md"]
+  C --> D[按需读取参考与脚本]
+  D --> E[调用获授权的工具]
+  B -->|不匹配| F[继续其他任务]
+```
+
+## 为什么不一次读完所有内容
+
+几百个 Skill 的全文会挤占上下文。先用短描述发现相关能力，再读取该 Skill 的方法，最后按需读详细资源，可以减少无关信息。例如处理 PDF 时，先匹配文档能力，再读表格解析说明；无需同时加载邮件和数据库操作指南。
+
+描述过宽会误触发，描述过窄会漏触发。要用真实任务检查是否选中正确 Skill、是否执行关键步骤、产物是否通过验收，而不是只测文件有没有加载。
+
+### 加载了 Skill，就自动获得执行权限吗？
+
+不会。读取说明与执行脚本是两件事；脚本仍应受沙箱、目录和网络权限约束。外部 Skill 的说明也不能覆盖用户授权或系统规则。渐进式加载减少输入量，不保证指令安全或任务正确。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Agent Skills 格式规范](https://github.com/agentskills/agentskills/blob/main/docs/specification.mdx)、[Anthropic：Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)。PDF 场景为教学示例。
+
+</details>
+
+</InterviewQuestion>
