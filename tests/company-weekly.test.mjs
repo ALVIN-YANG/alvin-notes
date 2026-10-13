@@ -75,6 +75,26 @@ test('引用失败的修复请求包含具体字段与错误引用，修正后�
   assert.equal(attempts,2);assert.equal(result.monitor.lastReview.status,'ok');
 });
 
+test('来源列表取自已验证引用，重复旧正文不改写历史日期，无效引用仍拒绝',async()=>{
+  const input=subject(), company=input.catalog.companies[0];
+  const unchanged=company.sections.find(section=>section.id==='funding').rows[0];
+  const generate=invalid=>async(task,payload)=>{
+    if(task==='verify')return {approved:true};
+    const p=proposed(payload.company);
+    p.changes=[
+      {sectionId:'product',rowIndex:0,text:'助手可在用户确认后完成预约并返回确认结果。',kind:'disclosed',sources:['incorrect-source'],asOf:'2026-10-12',evidence:invalid?[{sourceId:'product',quote:'Invented unsupported claim is not present.'}]:evidence()},
+      {sectionId:'funding',rowIndex:0,text:unchanged.text,kind:unchanged.kind,sources:[],asOf:'2026-10-13',evidence:[]}
+    ];
+    return p;
+  };
+  const result=await syncCompanyWeek(input,{fetcher,now,log:()=>{},generate:generate(false)});
+  assert.equal(result.monitor.lastReview.status,'ok');assert.equal(result.monitor.lastReview.companies[0].changes,1);
+  assert.deepEqual(result.catalog.companies[0].sections[0].rows[0].sources,['product']);
+  assert.equal(result.catalog.companies[0].sections.find(section=>section.id==='funding').rows[0].asOf,unchanged.asOf);
+  const rejected=await syncCompanyWeek(input,{fetcher,now,log:()=>{},generate:generate(true)});
+  assert.equal(rejected.monitor.lastReview.status,'partial');assert.deepEqual(rejected.catalog,input.catalog);
+});
+
 test('生成或独立核对失败保留档案和旧日期，不把失败写成无新动态',async()=>{
   const input=subject();
   for (const mode of ['network','rejected']) {
