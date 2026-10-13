@@ -1008,6 +1008,9 @@ main {
 /* ─── Hero Refinements (splash page) ─── */
 
 .content-panel:has(.home-intro) { padding-top: 1rem; }
+.home-intro { display: grid; grid-template-columns: minmax(17rem, .9fr) minmax(0, 1.6fr); align-items: center; gap: clamp(1rem, 2.3vw, 2rem); }
+.home-intro-copy { min-width: 0; }
+.home-intro .home-product-promo-link { height: 4.6rem; }
 
 .home-title {
 	width: min(100%, 72rem);
@@ -1022,7 +1025,9 @@ main {
 
 .home-avatar-hero {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(0, 19.5rem);
+	grid-template-columns: 4.6rem minmax(0, 1fr);
+	position: relative;
+	padding-bottom: 4.75rem;
 	align-items: center;
 	gap: 1rem;
 	width: min(100%, 72rem);
@@ -1034,15 +1039,16 @@ main {
 }
 
 .home-avatar-note .programmer-aside {
-	position: relative;
+	position: static;
 	width: 100%;
 }
 
 .home-avatar-note .programmer-bubble {
 	position: absolute;
-	left: 5.35rem;
+	top: 5.2rem;
+	left: 0;
 	z-index: 2;
-	max-width: min(25rem, calc(100% - 5.35rem));
+	max-width: 100%;
 }
 
 .home-product-promo-link {
@@ -1106,11 +1112,15 @@ main {
 	}
 
 	.home-product-promo {
+		grid-column: 2;
+		grid-row: 1;
 		width: min(100%, 19.5rem);
 		justify-self: end;
 	}
 
 	.home-avatar-note {
+		grid-column: 1;
+		grid-row: 1;
 		align-self: stretch;
 	}
 
@@ -1119,7 +1129,7 @@ main {
 	}
 
 	.home-avatar-note .programmer-bubble {
-		top: calc(100% + 0.75rem);
+		top: 5.2rem;
 		left: 0;
 		max-width: min(25rem, calc(100vw - 2rem));
 	}
@@ -1129,6 +1139,107 @@ main {
 		left: 1.5rem;
 		transform: rotate(135deg);
 	}
+}
+
+.home-avatar-note .programmer-bubble::after { top: -.38rem; left: 1.5rem; transform: rotate(135deg); }
+
+/* Agent Runtime：上下文、推理、工具扇出与反馈回路。 */
+.agent-execution {
+  --ar-signal: #488e86;
+  display: block;
+  container-type: inline-size;
+  min-width: 0;
+  padding: .5rem .6rem;
+  overflow: hidden;
+  border: 1px solid #d7dfd9;
+  border-radius: .65rem;
+  background: linear-gradient(140deg, rgba(255,255,255,.88), rgba(241,246,243,.55));
+  box-shadow: inset 0 1px 0 #fff, 0 3px 16px rgba(40,70,62,.025);
+}
+.ar-caption { display: flex; align-items: center; gap: .5rem; min-height: 1.4rem; padding-inline: .2rem; }
+.ar-kicker { display: inline-flex; align-items: center; gap: .4rem; white-space: nowrap; color: #44645f; font: 500 .63rem/1.3 var(--sl-font-mono); letter-spacing: .06em; }
+.ar-kicker small { margin-left: .15rem; color: #80948a; font: 400 .59rem/1.3 var(--sl-font); letter-spacing: 0; }
+.ar-caption-dot { width: .25rem; height: .25rem; border-radius: 50%; background: #75ab94; box-shadow: 0 0 0 3px rgba(117,171,148,.09); }
+.ar-status { margin-left: auto; color: #6c847d; font: 400 .64rem/1.4 var(--sl-font-utility); white-space: nowrap; }
+.ar-stage { position: relative; height: 10.4rem; background-image: radial-gradient(#b6cac123 .6px, transparent .6px); background-size: 12px 12px; }
+.ar-wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ar-wire { --ar-signal: #488e86; stroke: #c7d4ce; stroke-width: .85; vector-effect: non-scaling-stroke; }
+.ar-wire[data-kind='tool'], .ar-packet[data-kind='tool'] { --ar-signal: #7f89bc; }
+.ar-wire[data-kind='feedback'], .ar-packet[data-kind='feedback'] { --ar-signal: #b19363; }
+.ar-wire[data-active] { stroke: var(--ar-signal); stroke-width: 1.1; filter: drop-shadow(0 0 1px color-mix(in srgb, var(--ar-signal) 35%, transparent)); }
+.ar-packet { fill: var(--ar-signal); }
+.ar-packet-halo { opacity: .13; }
+.ar-packet-tail { fill: none; stroke: var(--ar-signal); stroke-width: 1.5; opacity: .45; stroke-linecap: round; }
+.ar-node { position: absolute; left: var(--ar-x); top: var(--ar-y); z-index: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: .15rem; width: clamp(3.5rem, 10.2%, 4.8rem); height: 1.9rem; border: 1px solid #d1dbd5; border-radius: .3rem; background: linear-gradient(175deg, #fff, #f0f5f1); color: #435b54; box-shadow: 0 1px 2px rgba(41,65,57,.03), inset 0 1px 0 white; transform: translate(-50%, -50%); }
+.ar-node-label { font: 500 .67rem/1.1 var(--sl-font); white-space: nowrap; }
+.ar-node-code { color: #93a49b; font: 400 .43rem/1 var(--sl-font-mono); letter-spacing: .07em; white-space: nowrap; }
+.ar-node-led { position: absolute; top: .2rem; right: .2rem; width: .13rem; height: .13rem; border-radius: 50%; background: #b9cbc0; }
+.ar-node[data-active] { border-color: #8eb4a5; background: linear-gradient(170deg, #fff, #e9f3ec); box-shadow: 0 0 0 2px rgba(99,149,126,.045), 0 2px 5px rgba(39,78,59,.04); }
+.ar-node[data-active] .ar-node-led { background: #6eaa8d; box-shadow: 0 0 4px rgba(76,148,110,.45); }
+.ar-model { width: 12%; min-width: 4.4rem; height: 2.7rem; overflow: hidden; border-color: #476d6b; background: linear-gradient(145deg, #426764, #233d3e 70%); color: #e7f4ef; box-shadow: 0 3px 9px rgba(23,61,53,.16), inset 0 1px 0 rgba(255,255,255,.17); }
+.ar-model .ar-node-label { z-index: 1; font: 500 1rem/1 var(--sl-font-mono); letter-spacing: .12em; }
+.ar-model .ar-node-code { z-index: 1; color: #9fbbb0; }
+.ar-model::after { position: absolute; inset: -20% -80%; background: linear-gradient(105deg, transparent 43%, rgba(149,221,189,.16) 50%, transparent 57%); transform: translateX(-25%); animation: arCoreSweep 4.6s ease-in-out infinite; content: ''; }
+.agent-execution[data-suspended='true'] .ar-model::after { animation-play-state: paused; }
+.ar-model[data-active] { border-color: #5c9a89; background: linear-gradient(145deg, #436c68, #233d3e 70%); box-shadow: 0 0 0 3px rgba(72,142,134,.07), 0 4px 12px rgba(37,103,81,.17), inset 0 1px 0 rgba(255,255,255,.17); }
+.ar-search, .ar-terminal, .ar-browser { border-color: #d5d9e4; background: linear-gradient(170deg, #fff, #f1f3f9); }
+.ar-search[data-active], .ar-terminal[data-active], .ar-browser[data-active] { border-color: #9ba8c8; background: #f1f3fc; }
+.ar-memory, .ar-state, .ar-skills { border-style: dashed; background: #f4f6f0; }
+.ar-output { border-color: #d9d8c8; background: #f6f6ee; }
+.ar-output[data-active] { border-color: #bfa778; background: #fbf7e9; box-shadow: 0 0 0 3px rgba(191,167,120,.08); }
+.ar-task { --ar-x: 6%; --ar-y: 18%; }
+.ar-context { --ar-x: 20%; --ar-y: 18%; }
+.ar-planner { --ar-x: 34%; --ar-y: 18%; }
+.ar-model { --ar-x: 48%; --ar-y: 18%; }
+.ar-guard { --ar-x: 62%; --ar-y: 18%; }
+.ar-router { --ar-x: 76%; --ar-y: 18%; }
+.ar-world { --ar-x: 94%; --ar-y: 18%; }
+.ar-memory { --ar-x: 20%; --ar-y: 57%; }
+.ar-state { --ar-x: 48%; --ar-y: 49%; }
+.ar-skills { --ar-x: 61%; --ar-y: 49%; }
+.ar-search { --ar-x: 72%; --ar-y: 45%; }
+.ar-terminal { --ar-x: 76%; --ar-y: 64%; }
+.ar-browser { --ar-x: 70%; --ar-y: 83%; }
+.ar-observe { --ar-x: 94%; --ar-y: 83%; }
+.ar-evaluate { --ar-x: 48%; --ar-y: 83%; }
+.ar-output { --ar-x: 6%; --ar-y: 83%; }
+.ar-footer { display: flex; justify-content: space-between; align-items: center; gap: .5rem; min-height: 1rem; padding-inline: .2rem; color: #97a59d; font: 400 .45rem/1 var(--sl-font-mono); letter-spacing: .015em; }
+.ar-loop-label { color: #8e947d; font: 400 .57rem/1.2 var(--sl-font); }
+@keyframes arCoreSweep { 0%, 15% { transform: translateX(-25%); } 65%, 100% { transform: translateX(25%); } }
+@container (max-width: 35rem) {
+  .ar-stage { height: 10.4rem; }
+  .ar-kicker small { display: none; }
+  .ar-node { width: 19%; height: 1.8rem; }
+  .ar-model { min-width: 0; width: 21%; height: 2.15rem; }
+  .ar-model .ar-node-label { font-size: .87rem; }
+  .ar-task { --ar-x: 12.5%; --ar-y: 12.5%; }
+  .ar-context { --ar-x: 37.5%; --ar-y: 12.5%; }
+  .ar-planner { --ar-x: 62.5%; --ar-y: 12.5%; }
+  .ar-model { --ar-x: 87.5%; --ar-y: 12.5%; }
+  .ar-memory { --ar-x: 12.5%; --ar-y: 37.5%; }
+  .ar-state { --ar-x: 37.5%; --ar-y: 37.5%; }
+  .ar-skills { --ar-x: 62.5%; --ar-y: 37.5%; }
+  .ar-guard { --ar-x: 87.5%; --ar-y: 37.5%; }
+  .ar-output { --ar-x: 12.5%; --ar-y: 62.5%; }
+  .ar-evaluate { --ar-x: 37.5%; --ar-y: 62.5%; }
+  .ar-router { --ar-x: 62.5%; --ar-y: 62.5%; }
+  .ar-world { --ar-x: 87.5%; --ar-y: 62.5%; }
+  .ar-search { --ar-x: 12.5%; --ar-y: 87.5%; }
+  .ar-terminal { --ar-x: 37.5%; --ar-y: 87.5%; }
+  .ar-browser { --ar-x: 62.5%; --ar-y: 87.5%; }
+  .ar-observe { --ar-x: 87.5%; --ar-y: 87.5%; }
+  .ar-footer > span:first-child { font-size: .4rem; }
+}
+@media (max-width: 40rem) {
+  .home-intro { grid-template-columns: minmax(0, 1fr); gap: .65rem; }
+  .home-avatar-note .programmer-aside { position: static; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ar-model::after { animation: none; }
+  .ar-packet { display: none; }
+}
+@media print {
+  .ar-packet, .ar-model::after { display: none; }
 }
 
 @media print {

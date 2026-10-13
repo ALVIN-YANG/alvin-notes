@@ -1,0 +1,210 @@
+---
+const nodes = [
+  { id: 'task', label: '输入目标', code: 'TASK' },
+  { id: 'context', label: '上下文', code: 'CONTEXT' },
+  { id: 'planner', label: '任务规划', code: 'PLAN' },
+  { id: 'model', label: 'LLM', code: 'INFERENCE' },
+  { id: 'guard', label: '边界校验', code: 'GUARD' },
+  { id: 'router', label: '工具路由', code: 'DISPATCH' },
+  { id: 'world', label: '外部环境', code: 'WORLD' },
+  { id: 'memory', label: '长期记忆', code: 'MEMORY' },
+  { id: 'state', label: '工作状态', code: 'STATE' },
+  { id: 'skills', label: 'Skills', code: 'POLICY' },
+  { id: 'search', label: '搜索', code: 'SEARCH' },
+  { id: 'terminal', label: '代码执行', code: 'TERMINAL' },
+  { id: 'browser', label: '浏览器', code: 'BROWSER' },
+  { id: 'observe', label: '观察结果', code: 'OBSERVE' },
+  { id: 'evaluate', label: '结果评估', code: 'EVALUATE' },
+  { id: 'output', label: '输出结果', code: 'DONE' },
+];
+const edges = [
+  ['input', 'task', 'context', 'right', 'left', 'reason'],
+  ['retrieve', 'memory', 'context', 'top', 'bottom', 'feedback'],
+  ['plan', 'context', 'planner', 'right', 'left', 'reason'],
+  ['infer', 'planner', 'model', 'right', 'left', 'reason'],
+  ['working', 'model', 'state', 'bottom', 'top', 'reason'],
+  ['guard', 'model', 'guard', 'right', 'left', 'reason'],
+  ['policy', 'skills', 'guard', 'top', 'bottom', 'reason'],
+  ['dispatch', 'guard', 'router', 'right', 'left', 'tool'],
+  ['search', 'router', 'search', 'bottom', 'top', 'tool'],
+  ['terminal', 'router', 'terminal', 'bottom', 'top', 'tool'],
+  ['browser', 'router', 'browser', 'bottom', 'top', 'tool'],
+  ['search-result', 'search', 'world', 'right', 'bottom', 'tool'],
+  ['terminal-result', 'terminal', 'world', 'right', 'bottom', 'tool'],
+  ['browser-result', 'browser', 'world', 'right', 'bottom', 'tool'],
+  ['observe', 'world', 'observe', 'bottom', 'top', 'feedback'],
+  ['evaluate', 'observe', 'evaluate', 'left', 'right', 'feedback'],
+  ['remember', 'evaluate', 'memory', 'left', 'bottom', 'feedback'],
+  ['feedback', 'evaluate', 'context', 'left', 'left', 'feedback'],
+  ['retry', 'evaluate', 'planner', 'top', 'bottom', 'feedback'],
+  ['finish', 'evaluate', 'output', 'left', 'right', 'feedback'],
+];
+---
+
+<agent-execution class="agent-execution" data-phase="0" aria-label="Agent 编排与执行循环示意">
+  <div class="ar-caption">
+    <span class="ar-kicker"><span class="ar-caption-dot"></span>AGENT RUNTIME <small>执行示意</small></span>
+    <span class="ar-status" data-runtime-status aria-live="off">编排上下文</span>
+  </div>
+  <div class="ar-stage" data-runtime-stage role="img" aria-label="输入目标结合长期记忆组成上下文，经任务规划和模型推理，经过 Skills 与边界校验后路由到搜索、代码执行和浏览器。工具作用于环境，观察结果经评估后写入记忆、继续推理或重试；达到目标则输出结果。">
+    <svg class="ar-wires" data-runtime-svg aria-hidden="true">
+      <defs><marker id="runtime-arrow" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="m1 1 3 1.5L1 4" fill="none" stroke="context-stroke" stroke-width="1" /></marker></defs>
+      {edges.map(([id, from, to, fromPort, toPort, kind]) => <path class="ar-wire" data-runtime-edge={id} data-from={from} data-to={to} data-from-port={fromPort} data-to-port={toPort} data-kind={kind} fill="none" marker-end="url(#runtime-arrow)" />)}
+      {Array.from({ length: 8 }, () => <g class="ar-packet" data-runtime-packet opacity="0"><path class="ar-packet-tail" d="M-11 0h8" /><circle class="ar-packet-halo" r="5" /><rect x="-2.3" y="-1.5" width="4.6" height="3" rx="1" /></g>)}
+    </svg>
+    {nodes.map((node) => <span class={`ar-node ar-${node.id}`} data-runtime-node={node.id} aria-hidden="true"><span class="ar-node-label">{node.label}</span><span class="ar-node-code">{node.code}</span><i class="ar-node-led"></i></span>)}
+  </div>
+  <div class="ar-footer" aria-hidden="true"><span>CONTEXT → REASON → ACT → OBSERVE</span><span class="ar-loop-label">评估 · 记忆 · 重试</span></div>
+</agent-execution>
+
+<script>
+  type Port = 'left' | 'right' | 'top' | 'bottom';
+  type Point = { x: number; y: number };
+  class AgentExecution extends HTMLElement {
+    private elapsed = 0;
+    private lastTime = 0;
+    private frame = 0;
+    private visible = true;
+    private initialized = false;
+    private phaseKey = '';
+    private activeEdges: string[] = [];
+    private nodes = new Map<string, HTMLElement>();
+    private paths = new Map<string, SVGPathElement>();
+    private lengths = new Map<string, number>();
+    private packets: SVGGElement[] = [];
+    private stage: HTMLElement | null = null;
+    private svg: SVGSVGElement | null = null;
+    private status: HTMLElement | null = null;
+    private observer: IntersectionObserver | null = null;
+    private resizeObserver: ResizeObserver | null = null;
+    private motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    private abortController = new AbortController();
+    private phases = [
+      { duration: 1500, label: '编排上下文', edges: ['input', 'retrieve'], nodes: ['context', 'memory'] },
+      { duration: 1900, label: '任务规划 · 模型推理', edges: ['plan', 'infer', 'working'], nodes: ['planner', 'model', 'state'] },
+      { duration: 1600, label: 'Skills · 边界校验', edges: ['guard', 'policy', 'dispatch'], nodes: ['guard', 'skills', 'router'] },
+      { duration: 1700, label: '三路工具并行执行', edges: ['search', 'terminal', 'browser'], nodes: ['router', 'search', 'terminal', 'browser'] },
+      { duration: 1700, label: '环境反馈 · 观察结果', edges: ['search-result', 'terminal-result', 'browser-result', 'observe'], nodes: ['world', 'observe'] },
+      { duration: 1500, label: '结果评估 · 更新记忆', edges: ['evaluate', 'remember'], nodes: ['evaluate', 'memory'] },
+      { duration: 1600, label: '回写上下文 · 继续循环', edges: ['feedback', 'retrieve'], nodes: ['context', 'memory'] },
+    ];
+    private total = this.phases.reduce((sum, phase) => sum + phase.duration, 0);
+
+    connectedCallback() {
+      if (this.initialized) return;
+      this.initialized = true;
+      this.stage = this.querySelector('[data-runtime-stage]');
+      this.svg = this.querySelector('[data-runtime-svg]');
+      this.status = this.querySelector('[data-runtime-status]');
+      this.querySelectorAll<HTMLElement>('[data-runtime-node]').forEach((node) => this.nodes.set(node.dataset.runtimeNode!, node));
+      this.querySelectorAll<SVGPathElement>('[data-runtime-edge]').forEach((path) => this.paths.set(path.dataset.runtimeEdge!, path));
+      this.packets = [...this.querySelectorAll<SVGGElement>('[data-runtime-packet]')];
+      const { signal } = this.abortController;
+      document.addEventListener('visibilitychange', this.sync, { signal });
+      this.motion.addEventListener('change', this.sync, { signal });
+      this.observer = new IntersectionObserver(([entry]) => {
+        this.visible = entry.isIntersecting;
+        this.sync();
+      });
+      this.observer.observe(this);
+      this.resizeObserver = new ResizeObserver(this.layout);
+      if (this.stage) this.resizeObserver.observe(this.stage);
+      this.layout();
+      this.render();
+      this.sync();
+    }
+
+    disconnectedCallback() {
+      window.cancelAnimationFrame(this.frame);
+      this.observer?.disconnect();
+      this.resizeObserver?.disconnect();
+      this.abortController.abort();
+    }
+
+    private point(node: HTMLElement, port: Port, origin: DOMRect): Point {
+      const rect = node.getBoundingClientRect();
+      return {
+        x: rect.left - origin.left + (port === 'left' ? 0 : port === 'right' ? rect.width : rect.width / 2),
+        y: rect.top - origin.top + (port === 'top' ? 0 : port === 'bottom' ? rect.height : rect.height / 2),
+      };
+    }
+
+    private layout = () => {
+      if (!this.stage || !this.svg) return;
+      const origin = this.stage.getBoundingClientRect();
+      this.svg.setAttribute('viewBox', `0 0 ${origin.width} ${origin.height}`);
+      const directions: Record<Port, Point> = { left: { x: -1, y: 0 }, right: { x: 1, y: 0 }, top: { x: 0, y: -1 }, bottom: { x: 0, y: 1 } };
+      this.paths.forEach((path, id) => {
+        const from = this.nodes.get(path.dataset.from!);
+        const to = this.nodes.get(path.dataset.to!);
+        if (!from || !to) return;
+        const fromPort = path.dataset.fromPort as Port;
+        const toPort = path.dataset.toPort as Port;
+        const a = this.point(from, fromPort, origin);
+        const b = this.point(to, toPort, origin);
+        const distance = Math.max(12, Math.min(32, Math.hypot(a.x - b.x, a.y - b.y) / 2));
+        const da = directions[fromPort];
+        const db = directions[toPort];
+        let d = `M${a.x} ${a.y}C${a.x + da.x * distance} ${a.y + da.y * distance},${b.x + db.x * distance} ${b.y + db.y * distance},${b.x} ${b.y}`;
+        if (id === 'feedback') {
+          const lane = b.x - 10;
+          d = `M${a.x} ${a.y}H${lane + 8}Q${lane} ${a.y} ${lane} ${a.y - 8}V${b.y + 8}Q${lane} ${b.y} ${lane + 8} ${b.y}H${b.x}`;
+        }
+        path.setAttribute('d', d);
+        this.lengths.set(id, path.getTotalLength());
+      });
+      this.render();
+    };
+
+    private sync = () => {
+      window.cancelAnimationFrame(this.frame);
+      this.lastTime = 0;
+      this.dataset.motion = this.motion.matches ? 'reduced' : 'running';
+      this.dataset.suspended = String(this.motion.matches || !this.visible || document.hidden);
+      if (!this.motion.matches && this.visible && !document.hidden) this.frame = window.requestAnimationFrame(this.tick);
+      else this.packets.forEach((packet) => packet.setAttribute('opacity', '0'));
+    };
+
+    private tick = (time: number) => {
+      if (this.lastTime) this.elapsed += Math.min(time - this.lastTime, 100);
+      this.lastTime = time;
+      this.render();
+      this.frame = window.requestAnimationFrame(this.tick);
+    };
+
+    private render() {
+      let position = this.elapsed % this.total;
+      const round = Math.floor(this.elapsed / this.total) % 3;
+      let phase = 0;
+      while (position >= this.phases[phase].duration) position -= this.phases[phase++].duration;
+      const current = this.phases[phase];
+      const key = `${round}-${phase}`;
+      if (key !== this.phaseKey) {
+        this.phaseKey = key;
+        this.dataset.phase = String(phase);
+        let label = current.label;
+        let activeNodes = current.nodes;
+        this.activeEdges = current.edges;
+        if (phase === 6 && round === 1) { label = '评估未通过 · 返回规划'; this.activeEdges = ['retry']; activeNodes = ['evaluate', 'planner']; }
+        if (phase === 6 && round === 2) { label = '目标达成 · 输出结果'; this.activeEdges = ['finish']; activeNodes = ['evaluate', 'output']; }
+        if (this.status) this.status.textContent = label;
+        this.paths.forEach((path, id) => path.toggleAttribute('data-active', this.activeEdges.includes(id)));
+        this.nodes.forEach((node, id) => node.toggleAttribute('data-active', activeNodes.includes(id)));
+      }
+      this.packets.forEach((packet, index) => {
+        const id = index < this.activeEdges.length * 2 ? this.activeEdges[index % this.activeEdges.length] : undefined;
+        const path = id ? this.paths.get(id) : undefined;
+        if (!id || !path || this.motion.matches) { packet.setAttribute('opacity', '0'); return; }
+        const length = this.lengths.get(id) || 0;
+        const progress = (position / current.duration + index * .19) % 1;
+        const point = path.getPointAtLength(length * progress);
+        const next = path.getPointAtLength(Math.min(length, length * progress + .5));
+        const angle = Math.atan2(next.y - point.y, next.x - point.x) * 180 / Math.PI;
+        packet.dataset.kind = path.dataset.kind;
+        packet.setAttribute('opacity', String(Math.min(1, progress * 8, (1 - progress) * 8)));
+        packet.setAttribute('transform', `translate(${point.x} ${point.y}) rotate(${angle})`);
+      });
+    }
+  }
+  if (!customElements.get('agent-execution')) customElements.define('agent-execution', AgentExecution);
+</script>
