@@ -1,0 +1,32 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import CompanyNav from '../../components/CompanyNav.astro';
+import CompanyUpdate from '../../components/CompanyUpdate.astro';
+import catalog from '../../data/companies/catalog.json';
+import updates from '../../data/companies/updates.json';
+import monitor from '../../data/companies/monitor.json';
+import { dateLabel, evidenceLabels, sourceFor, sourceKey } from '../../lib/company-observer.mjs';
+export function getStaticPaths() { return catalog.companies.map(company => ({ params: { id: company.id }, props: { company } })); }
+const { company } = Astro.props;
+const events = updates.reports.flatMap(report => report.items).filter(item => item.companyId === company.id).sort((a, b) => b.date.localeCompare(a.date));
+const related = catalog.companies.filter(other => other.category === company.category && other.id !== company.id);
+---
+<StarlightPage frontmatter={{ title: `${company.name} · AI 公司观察`, description: company.summary, template: 'splash', hidePageTitle: true }} sidebar={[]}>
+  <div class="company-observer co-profile not-content">
+    <CompanyNav />
+    <header class="co-profile-heading"><div><p class="co-kicker">{company.category} · {company.region}{company.status === '已收购' && ' · 已收购'}</p><h1 id="_top">{company.name}</h1><p class="co-product-name">{company.product}</p><p class="co-summary">{company.summary}</p></div><div class="co-profile-meta"><a href={sourceFor(company, 'product').url} target="_blank" rel="noopener noreferrer">产品官网与文档 ↗</a><span>资料核对 {dateLabel(company.reviewedAt)}</span><span>分析复核 {dateLabel(company.analysisAt)}</span></div></header>
+    <div class="co-profile-layout">
+      <aside class="co-outline"><nav aria-label="公司档案目录">{company.sections.map(section => <a href={`#${section.id}`}>{section.title}</a>)}{events.length > 0 && <a href="#changes">产品动态</a>}<a href="#sources">资料来源</a></nav></aside>
+      <div class="co-profile-content">
+        {company.sections.map(section => <section class="co-section" id={section.id} aria-labelledby={`heading-${section.id}`}>
+          <h2 id={`heading-${section.id}`}>{section.title}</h2>
+          {section.steps && <ol class="co-workflow">{section.steps.map((step, index) => <li><span>{['输入', '处理', '交付'][index]}</span>{step}</li>)}</ol>}
+          <dl class="co-facts">{section.rows.map(row => <div><dt>{row.label}<span class={`co-evidence ${row.kind}`}>{evidenceLabels[row.kind]}</span></dt><dd><p>{row.text}</p><div class="co-citations">{row.sources.map(id => { const source = sourceFor(company, id); return <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a>; })}<span>{row.kind === 'analysis' ? '判断日期' : '核对日期'} {dateLabel(row.kind === 'analysis' || row.sources.length === 0 ? row.asOf : row.sources.map(id => sourceFor(company, id).checkedAt).sort()[0])}{row.kind === 'disclosed' && row.asOf !== company.reviewedAt && ` · 披露日期 ${dateLabel(row.asOf)}`}</span></div></dd></div>)}</dl>
+        </section>)}
+        {events.length > 0 && <section class="co-section" id="changes"><h2>产品动态</h2>{events.map(item => <CompanyUpdate item={item} company={company} />)}</section>}
+        <section class="co-section" id="sources"><h2>资料来源</h2><p class="co-muted">公司主体：{company.company}。产品与团队资料以对应页面为准。</p><ul class="co-source-list">{company.sources.map(source => { const checked = monitor.sources[sourceKey(company.id, source.id)]; return <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a><span>{source.publishedAt && `发布 ${dateLabel(source.publishedAt)} · `}资料核对 {dateLabel(source.checkedAt)}{checked?.checkedAt && ` · 来源检查 ${dateLabel(checked.checkedAt)}`}{checked?.error && ' · 最近检查失败，保留原资料'}</span></li>; })}</ul></section>
+        <section class="co-section"><h2>同类产品</h2><div class="co-related">{related.map(other => <a href={`/companies/${other.id}/`}><strong>{other.name}</strong><span>{other.product}</span><span>{other.summary}</span></a>)}</div></section>
+      </div>
+    </div>
+  </div>
+</StarlightPage>

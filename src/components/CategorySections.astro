@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import { abilityMapMeta } from '../data/ability-map-meta';
 import aiInfraKnowledge, { aiInfraLessons } from '../data/ai-infra-knowledge';
 import concepts from '../data/ai-concepts.json';
+import companyCatalog from '../data/companies/catalog.json';
 
 const abilityMaps = [
   {
@@ -206,6 +207,7 @@ function formatDate(doc: typeof allDocs[number]) {
     }
   </nav>
   <a class="ai-concepts-home-link" href="/ai-concepts/"><span>AI 概念 <small>· {concepts.terms.length} 个词条</small></span><small>查释义 · 听读音 · 记概念 →</small></a>
+  <a class="co-home-link" href="/companies/"><span>AI 公司观察 <small>· {companyCatalog.companies.length} 家公司</small></span><small>看产品 · 比优势 · 追动态 →</small></a>
 </section>
 
 <div class="home-sections" aria-label="文章分栏">

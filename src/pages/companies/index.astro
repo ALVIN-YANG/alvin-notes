@@ -1,0 +1,34 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import CompanyNav from '../../components/CompanyNav.astro';
+import catalog from '../../data/companies/catalog.json';
+import updates from '../../data/companies/updates.json';
+import { companyCategories, latestCompanyUpdate, dateLabel, validateCompanies } from '../../lib/company-observer.mjs';
+validateCompanies(catalog, updates);
+const latest = updates.reports[0];
+---
+<StarlightPage frontmatter={{ title: 'AI 公司观察', description: '从核心产品、使用场景和付费理由，理解 AI 公司的商业前景、团队与投资背景。', template: 'splash', hidePageTitle: true }} sidebar={[]}>
+  <div class="company-observer not-content">
+    <header class="co-heading"><div><h1 id="_top">AI 公司观察</h1><p>从产品、使用场景和付费理由，理解公司。</p></div><span>{catalog.companies.length} 家 · 每周同步</span></header>
+    <CompanyNav />
+    {latest && <a class="co-latest" href="/companies/changes/"><span>本期变化 <time datetime={latest.publishedAt}>{dateLabel(latest.publishedAt)}</time></span><strong>{latest.summary}</strong><span>阅读 {latest.items.length} 条变化 →</span></a>}
+    <div class="co-controls" data-company-controls hidden>
+      <label class="co-search"><span class="co-sr-only">搜索公司、产品或使用场景</span><input type="search" id="company-search" placeholder="搜索公司、产品或使用场景" autocomplete="off" /></label>
+      <label class="co-region"><span class="co-sr-only">按地区筛选</span><select id="company-region"><option value="全部">全部地区</option>{[...new Set(catalog.companies.map(company => company.region))].map(region => <option value={region}>{region}</option>)}</select></label>
+      <div class="co-filters" role="group" aria-label="按产品方向筛选">{['全部', ...companyCategories].map(category => <button type="button" data-company-category={category} aria-pressed={category === '全部'}>{category}</button>)}</div>
+    </div>
+    <p class="co-filter-status" data-company-status aria-live="polite" aria-atomic="true"></p>
+    <div class="co-directory">
+      {catalog.companies.map(company => { const latestUpdate = latestCompanyUpdate(company.id, updates.reports); return (
+        <a class="co-card" href={`/companies/${company.id}/`} data-company-card data-category={company.category} data-region={company.region} data-search={`${company.name} ${company.company} ${company.product} ${company.summary} ${company.sections[0].rows[0].text}`}>
+          <div class="co-card-top"><span>{company.category}</span><span>{company.region}{company.status === '已收购' && ' · 已收购'}</span></div>
+          <h2>{company.name}</h2><p class="co-product-name">{company.product}</p><p class="co-card-summary">{company.summary}</p>
+          <div class="co-card-bottom"><span>{latestUpdate ? `最近动态 ${dateLabel(latestUpdate.date)}` : `资料核对 ${dateLabel(company.reviewedAt)}`}</span><span>看产品与分析 →</span></div>
+        </a>
+      ); })}
+    </div>
+    <div class="co-empty" data-company-empty hidden><p>没有匹配的公司。</p><button type="button" data-company-reset>清除搜索与筛选</button></div>
+    <p class="co-footnote">按产品方向分组。收购后保留历史档案；商业判断与企业披露分别标明来源。</p>
+  </div>
+</StarlightPage>
+<script>import { setupCompanyDirectory } from '../../scripts/company-directory'; setupCompanyDirectory();</script>

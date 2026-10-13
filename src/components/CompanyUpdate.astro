@@ -1,0 +1,11 @@
+---
+import { dateLabel, evidenceLabels, sourceFor } from '../lib/company-observer.mjs';
+const { item, company } = Astro.props;
+---
+<article class="co-update">
+  <div class="co-update-meta"><a href={`/companies/${company.id}/`}>{company.name}</a><time datetime={item.date}>{dateLabel(item.date)}</time><span class={`co-evidence ${item.kind}`}>{evidenceLabels[item.kind]}</span></div>
+  <h3>{item.title}</h3>
+  <p>{item.fact}</p>
+  <div class="co-update-analysis"><p><b>影响</b>{item.impact}</p><p><b>继续观察</b>{item.watch}</p></div>
+  <div class="co-citations">{item.sources.map(id => { const source = sourceFor(company, id); return <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a>; })}<span>核对日期 {dateLabel(company.sources.filter(source => item.sources.includes(source.id)).map(source => source.checkedAt).sort()[0])}</span></div>
+</article>

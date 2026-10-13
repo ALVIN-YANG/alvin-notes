@@ -1,0 +1,11 @@
+---
+const { active = 'directory' } = Astro.props;
+const links = [
+  { id: 'directory', label: '公司目录', href: '/companies/' },
+  { id: 'changes', label: '本周变化', href: '/companies/changes/' },
+  { id: 'method', label: '分析方法与来源', href: '/companies/methodology/' },
+];
+---
+<nav class="co-nav" aria-label="公司观察导航">
+  {links.map(link => <a href={link.href} aria-current={active === link.id ? 'page' : undefined}>{link.label}</a>)}
+</nav>

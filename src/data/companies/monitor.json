@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "lastRun": {
+    "at": "2026-10-13T05:32:42.988Z",
+    "week": "2026-W42",
+    "status": "ok",
+    "successCount": 18,
+    "failureCount": 0
+  },
+  "sources": {
+    "cursor:pricing": {
+      "title": "Cursor · Pricing",
+      "hash": "f3fb29cb4bb43fbc5e16ace126fafa8adce9ebd7bc9e0a52c6ce1431e9d24abd",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "cursor:updates": {
+      "title": "What's New in Cursor — Latest Updates & Release Notes",
+      "hash": "dc2af9519be2be0cbea46227077dec68236a01870f74c7be18ff3b9307170b8d",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "replit:updates": {
+      "title": "News | Replit",
+      "hash": "4a3a7b97e6f4c00e5d793544cb4aed33e1959f42b1a05e565e896d11f3e28109",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "replit:pricing": {
+      "title": "Pricing and Plans | Replit",
+      "hash": "cb7951447c639f6e51d650bc75ea283fda4f302289d3e50081aae28965c4ce1f",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "lovable:pricing": {
+      "title": "Lovable Pricing",
+      "hash": "cf288b181ce8e742f7ac21bbd61ce123d125264150a6bab5598e498373e73bca",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "lovable:updates": {
+      "title": "Blog - Lovable",
+      "hash": "784f74470b437d58a52ac62b9f0bfe5747a1ed3ea26de1ff9e41eab17f0f39fe",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "langchain:updates": {
+      "title": "LangChain Blog",
+      "hash": "40a0e8d4bee7bb9a282b7345889d7cc0b59995a734b7f1cf3f5fcbb0aed69249",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "langchain:pricing": {
+      "title": "LangSmith Plans and Pricing",
+      "hash": "118b930e6470fc0270f669949abd5ee9abbb5c296a19d1c618e97cd9c35d1438",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "dify:updates": {
+      "title": "Blog - Dify",
+      "hash": "3eb021e3fdaf7d046f0d376a3dcfa731093081fcd7730ee270dfd51819e87aac",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "firecrawl:pricing": {
+      "title": "Pricing | Firecrawl",
+      "hash": "18db3bbca7cc0c25831a9b524059530126994981b8262eb1d7edd8881d654996",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "dify:pricing": {
+      "title": "Dify Pricing - There’s Always a Plan for You",
+      "hash": "10ed453b4475959f3f5d911e4fbc41b913b455839ff5d80a1e6464fe2f5bf55c",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "firecrawl:updates": {
+      "title": "Firecrawl | Web Data API for AI Agents",
+      "hash": "2bd0e4d62af42eba2d0e44ebce9d0ae1a3343b3a451b86c561d4e80a45d18128",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "elevenlabs:pricing": {
+      "title": "ElevenLabs Pricing for Creators & Businesses of All Sizes",
+      "hash": "935f8dd105cb8e7d5ad2590547649212191f9de37b8f3d71b1f53d80bdb015c0",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "shengshu:company": {
+      "title": "新闻动态 | 生数科技产品、研究与生态进展",
+      "hash": "e29cb120900b8fc4df2ae74cae1e7643bc7385dd9a56c3b325a6fba5f18c2e9b",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "glean:updates": {
+      "title": "Work AI blog - AI agents, assistant, and search resources",
+      "hash": "67f79a87702c361e48d4ec5022d779ac27c3602c0d806fe215ee374d3fd650a6",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "harvey:updates": {
+      "title": "Harvey AI Blog: Learn about legal AI, Harvey, and more",
+      "hash": "052698d1dc20bbe6b6a2c9ffb00de02958913f8b1bf5c4c12e4f63d1bc0d0a98",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "elevenlabs:product": {
+      "title": "ElevenLabs Blog - Company, Research & Product Updates",
+      "hash": "5b0e89261097f85ab9d57d0eadb03fe37f69d5899737117a281a13caf22c4950",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    },
+    "runway:product": {
+      "title": "Product Updates & Changelog | Runway AI",
+      "hash": "b7ac3abece3cdcae160c6a9929a62f158ef1446ad1b89b8fb1fc140ca680ea87",
+      "checkedAt": "2026-10-13T05:32:42.988Z",
+      "attemptedAt": "2026-10-13T05:32:42.988Z",
+      "error": null
+    }
+  },
+  "candidates": []
+}

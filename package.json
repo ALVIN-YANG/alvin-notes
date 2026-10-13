@@ -8,6 +8,8 @@
   "scripts": {
     "concepts:sync": "node scripts/sync-ai-concepts.mjs",
     "concepts:check": "node scripts/sync-ai-concepts.mjs --check",
+    "companies:sync": "node scripts/sync-ai-companies.mjs",
+    "companies:check": "node scripts/sync-ai-companies.mjs --check",
     "test": "node --test",
     "fonts:update": "node scripts/update-font-subsets.mjs",
     "dev": "astro dev",

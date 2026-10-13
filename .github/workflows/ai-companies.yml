@@ -1,0 +1,51 @@
+name: AI 公司观察每周同步
+
+on:
+  schedule:
+    # 周一北京时间 08:30；09:00 的本聊天任务接着核实与发布分析。
+    - cron: '30 0 * * 1'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: '重新检查本周已检查过的来源'
+        type: boolean
+        default: false
+
+concurrency:
+  group: ai-companies-sync
+  cancel-in-progress: false
+
+jobs:
+  check-sources:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: 验证资料与失败恢复
+        run: node --test tests/company-observer.test.mjs
+      - name: 每周检查官方来源
+        id: sync
+        continue-on-error: true
+        run: npm run companies:sync -- ${{ inputs.force && '--force' || '' }}
+      - name: 保存检查状态
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/companies/monitor.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "更新 AI 公司每周来源检查状态"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: 报告未完成的来源
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo '部分来源检查失败，已保留上次资料；需在本周分析同步时复核。'
+          exit 1
