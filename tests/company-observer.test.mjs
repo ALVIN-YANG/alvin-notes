@@ -12,8 +12,8 @@ const page = value => `<html><title>Official product news</title><main><h1>Produ
 const fetcher = value => async () => new Response(page(value));
 
 test('首期公司档案、事件日期与直接引用可完整追溯', () => {
-  assert.equal(catalog.companies.length, 12);
-  assert.equal(new Set(catalog.companies.map(company => company.category)).size, 4);
+  assert.ok(catalog.companies.length >= 12);
+  assert.ok(catalog.companies.some(company => company.id === 'interaction' && company.product === 'Poke' && company.category === '个人助手'));
   assert.ok(catalog.companies.some(company => company.region === '中国'));
   assert.equal(validateCompanies(catalog, updates), true);
 });
@@ -80,6 +80,17 @@ test('同一周的成功检查跳过重复访问，周边界使用北京时间',
   const first = await checkCompanySources(subject, empty(), { fetcher: fetcher('Original content.'), now });
   const skipped = await checkCompanySources(subject, first.state, { fetcher: async () => { throw new Error('Should not fetch'); }, now: new Date('2026-10-18T10:00:00Z') });
   assert.equal(skipped.skipped, true);
+});
+
+test('同周新增公司的来源也会建立基线，不被旧的成功记录跳过', async () => {
+  const first = await checkCompanySources(subject, empty(), { fetcher: fetcher('Original content.'), now });
+  const expanded = structuredClone(subject);
+  expanded.companies.push({ id: 'new-company', sources: [{ id: 'news', url: 'https://new.example/news', monitor: true }] });
+  const result = await checkCompanySources(expanded, first.state, { fetcher: fetcher('Original content.'), now });
+  assert.equal(result.skipped, false);
+  assert.equal(result.state.lastRun.successCount, 2);
+  assert.ok(result.state.sources['new-company:news'].hash);
+  assert.equal(result.state.candidates.length, 0);
 });
 
 test('脚本、导航和页脚变化不生成内容变化；空壳和挑战页不能成为有效基线', () => {

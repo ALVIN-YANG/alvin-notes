@@ -21,7 +21,7 @@ const latest = updates.reports[0];
     <div class="co-directory">
       {catalog.companies.map(company => { const latestUpdate = latestCompanyUpdate(company.id, updates.reports); return (
         <a class="co-card" href={`/companies/${company.id}/`} data-company-card data-category={company.category} data-region={company.region} data-search={`${company.name} ${company.company} ${company.product} ${company.summary} ${company.sections[0].rows[0].text}`}>
-          <div class="co-card-top"><span>{company.category}</span><span>{company.region}{company.status === '已收购' && ' · 已收购'}</span></div>
+          <div class="co-card-top"><span>{company.category}</span><span>{company.region}{company.status !== '在观察' && ` · ${company.status}`}</span></div>
           <h2>{company.name}</h2><p class="co-product-name">{company.product}</p><p class="co-card-summary">{company.summary}</p>
           <div class="co-card-bottom"><span>{latestUpdate ? `最近动态 ${dateLabel(latestUpdate.date)}` : `资料核对 ${dateLabel(company.reviewedAt)}`}</span><span>看产品与分析 →</span></div>
         </a>

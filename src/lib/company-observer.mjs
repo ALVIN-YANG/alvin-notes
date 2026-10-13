@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { JSDOM } from 'jsdom';
 import { getISOWeek } from './weekly-report.mjs';
 
-export const companyCategories = ['AI 编程', 'Agent 基础设施', '语音与视频', '企业应用'];
+export const companyCategories = ['AI 编程', 'Agent 基础设施', '语音与视频', '企业应用', '个人助手'];
 export const evidenceLabels = { verified: '已核实事实', disclosed: '企业自述', analysis: '分析判断', unknown: '待核实' };
 export const sectionIds = ['product', 'workflow', 'pricing', 'competition', 'outlook', 'team', 'funding'];
 
@@ -85,9 +85,13 @@ export async function checkCompanySources(catalog, previous, { fetcher = fetch, 
   const at = now.toISOString();
   const date = shanghaiDate(now);
   const week = getISOWeek(date);
-  if (!force && previous.lastRun?.week === week && previous.lastRun.status === 'ok') return { state: previous, skipped: true };
-  const state = structuredClone(previous);
   const jobs = catalog.companies.flatMap(company => company.sources.filter(source => source.monitor).map(source => ({ company, source })));
+  const covered = jobs.every(({ company, source }) => {
+    const checked = previous.sources[sourceKey(company.id, source.id)];
+    return checked?.checkedAt && !checked.error && getISOWeek(shanghaiDate(new Date(checked.checkedAt))) === week;
+  });
+  if (!force && previous.lastRun?.week === week && previous.lastRun.status === 'ok' && covered) return { state: previous, skipped: true };
+  const state = structuredClone(previous);
   let successCount = 0;
   let failureCount = 0;
   // A bounded pool keeps one failed website from blocking the other companies.

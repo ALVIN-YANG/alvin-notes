@@ -2581,6 +2581,334 @@
           "method": "browser"
         }
       ]
+    },
+    {
+      "id": "interaction",
+      "name": "Interaction",
+      "company": "The Interaction Company of California",
+      "category": "个人助手",
+      "region": "海外",
+      "product": "Poke",
+      "summary": "把个人助手放进已有的聊天工具，用消息管理邮件、日程与日常任务。",
+      "status": "加入 Cognition",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "Poke 面向个人用户，直接在 Apple Messages、Telegram、WhatsApp 和 RCS 中提供助手服务，不需要安装独立的 Poke App。账户、隐私和集成也可在网页管理。",
+              "kind": "disclosed",
+              "sources": [
+                "product",
+                "faq"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "具体能力",
+              "text": "连接邮件、日历等服务后，用户可通过消息处理邮件、安排日程、设置提醒、搜索网页，并用 Recipes 模板建立自动化。",
+              "kind": "disclosed",
+              "sources": [
+                "product",
+                "integrations"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "价值在于减少切换工具和重复操作，让助手利用已授权的个人上下文持续完成任务。是否值得付费，应看任务完成率与实际省下的时间。",
+              "kind": "analysis",
+              "sources": [
+                "product",
+                "integrations"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "rows": [
+            {
+              "label": "使用示例",
+              "text": "连接邮箱和日历后，在聊天中要求整理待回复邮件、寻找空闲时间并安排会议；结果仍需核对收件人、时间及实际执行情况。",
+              "kind": "analysis",
+              "sources": [
+                "product",
+                "integrations"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "人工执行",
+              "text": "Poke Human 可把现实世界任务交给真人处理，属于 Ultra 方案；实际发生的采购、出行等费用另按成本扣除。",
+              "kind": "disclosed",
+              "sources": [
+                "faq",
+                "updates"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "能力边界",
+              "text": "这是通过已支持的集成调用服务，并不意味着能任意操作手机上所有 App。FAQ 当前列出 Gmail、Outlook，且暂无支持 iCloud、Yahoo 的计划；敏感操作仍需确认授权和结果。",
+              "kind": "analysis",
+              "sources": [
+                "faq",
+                "integrations"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ],
+          "steps": [
+            "授权邮箱、日历等服务",
+            "在消息中交代任务，助手调用集成",
+            "收到结果，核对并继续安排"
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "官方当前提供 Free（0 美元/月）、Pro（19 美元/月）和 Ultra（199 美元/月）。Ultra 超出包含额度后可按用量付费；Poke Human 的实际支出另付。",
+              "kind": "disclosed",
+              "sources": [
+                "pricing",
+                "faq"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较每项完成并验收任务的总成本，包括订阅、额外用量、真人执行支出与人工核对时间；消息量不能替代有效任务量。",
+              "kind": "analysis",
+              "sources": [
+                "pricing",
+                "faq"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "手机系统助手、通用 AI 助手的任务功能、邮件与日历自动化，以及真人助理，都可能解决同一类个人事务。",
+              "kind": "analysis",
+              "sources": [
+                "product",
+                "integrations"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "已有聊天入口降低使用门槛；长期授权的个人上下文、Recipes 和主动处理任务的习惯，可能带来迁移成本。入口方便本身不足以证明壁垒。",
+              "kind": "analysis",
+              "sources": [
+                "product",
+                "integrations",
+                "investor"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "入口依赖消息平台的接入与政策，集成授权也可能失效。如果系统助手提供同样可靠的执行和更低成本，Poke 的便利性优势会缩小。",
+              "kind": "analysis",
+              "sources": [
+                "product",
+                "integrations"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "高频个人事务适合形成持续使用，但商业前景取决于可靠执行、留存和付费转化。加入 Cognition 后的模型与基础设施改进是官方提出的后续方向，尚不能当作已交付能力。",
+              "kind": "analysis",
+              "sources": [
+                "product",
+                "company"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "持续观察任务成功率、错误操作的恢复能力、主动消息是否造成干扰、免费转付费、留存，以及消息平台和外部集成依赖。",
+              "kind": "analysis",
+              "sources": [
+                "product",
+                "faq"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的当前留存率、付费转化率、单任务毛利与收入数据，暂不根据消息数量或融资热度判断商业成功。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "创始团队",
+              "text": "2025 年 9 月公司公告列出 Marvin von Hagen 为 CEO、Felix Schlegel 为 CTO。投资方介绍二人曾共同创办 TUM Boring；这些是历史披露，不代表加入 Cognition 后的当前职务。",
+              "kind": "disclosed",
+              "sources": [
+                "launch",
+                "investor"
+              ],
+              "asOf": "2025-09-08"
+            },
+            {
+              "label": "工程背景",
+              "text": "General Catalyst 当时介绍团队有来自 Jane Street、Apple、Robinhood 和 Amazon 的工程师；当前团队人数、岗位构成和并入后的汇报关系尚缺公开核验资料。",
+              "kind": "disclosed",
+              "sources": [
+                "investor"
+              ],
+              "asOf": "2025-09-08"
+            },
+            {
+              "label": "组织变化",
+              "text": "2026 年 7 月 23 日，Poke 发布记录和 Cognition 同日宣布 Interaction 加入 Cognition，并称用户可继续使用现有 Poke 产品。",
+              "kind": "disclosed",
+              "sources": [
+                "company",
+                "updates"
+              ],
+              "asOf": "2026-07-23"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "融资与投资背景",
+          "rows": [
+            {
+              "label": "历史融资",
+              "text": "公司在 2025 年 9 月 8 日披露完成 1500 万美元种子轮，由 General Catalyst 领投，Village Global、Earlybird VC 等参与；这是该轮金额，不是当前累计融资。",
+              "kind": "disclosed",
+              "sources": [
+                "launch",
+                "investor"
+              ],
+              "asOf": "2025-09-08"
+            },
+            {
+              "label": "加入 Cognition",
+              "text": "Cognition 在 2026 年 7 月 23 日的公告中披露加入消息，并称 Scott Wu、Walden Yan 曾是早期天使投资人；该公告未披露交易金额。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-07-23"
+            },
+            {
+              "label": "证据缺口",
+              "text": "当前累计融资、交易金额及最新估值尚未以可核验的一手资料确认；历史融资或估值不能直接视为当前公司价值。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "Poke 官方文档：产品与消息入口",
+          "url": "https://poke.com/docs",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "integrations",
+          "title": "Poke 官方文档：管理集成与 Recipes",
+          "url": "https://poke.com/docs/managing-integrations",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "pricing",
+          "title": "Poke 官方价格",
+          "url": "https://poke.com/pricing",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "faq",
+          "title": "Poke 官方 FAQ",
+          "url": "https://poke.com/faq",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "updates",
+          "title": "Poke 官方产品发布记录",
+          "url": "https://poke.com/docs/release-notes",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "investor",
+          "title": "General Catalyst：Interaction 种子轮与团队",
+          "url": "https://www.generalcatalyst.com/stories/seeding-the-future-with-the-interaction-company-of-california",
+          "publishedAt": "2025-09-08",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "launch",
+          "title": "Interaction 公司新闻稿：1500 万美元种子轮",
+          "url": "https://www.webwire.com/ViewPressRel.asp?aId=343533",
+          "publishedAt": "2025-09-08",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "company",
+          "title": "Cognition：Interaction 与 Poke 加入",
+          "url": "https://cognition.com/blog/interaction",
+          "publishedAt": "2026-07-23",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        }
+      ]
     }
   ]
 }
