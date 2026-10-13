@@ -14,7 +14,10 @@ function subject() {
   const company = structuredClone(real);
   company.id = 'example'; company.sources = [{ id: 'product', title: '产品', url: material.url, checkedAt: '2026-10-01', monitor: true, method: 'web' }];
   company.reviewedAt = company.analysisAt = '2026-09-01';
-  for (const section of company.sections) for (const row of section.rows) row.sources = row.kind === 'unknown' ? [] : ['product'];
+  for (const section of company.sections) for (const row of section.rows) {
+    row.sources = row.kind === 'unknown' ? [] : ['product'];
+    delete row.checkedAt;
+  }
   return { catalog: { schemaVersion: 1, companies: [company] }, updates: { schemaVersion: 1, reports: [] }, monitor: { schemaVersion: 1, lastRun: null, sources: {}, candidates: [] } };
 }
 function proposed(company) {
@@ -47,6 +50,29 @@ test('部分确认只更新相应字段日期，不冒充整家公司复核',()=
   assert.equal(applied.company.sections[0].rows[0].checkedAt,'2026-10-13');assert.equal(company.sections[0].rows[0].checkedAt,undefined);
   assert.equal(applied.company.sections[0].rows[1].checkedAt,'2026-10-01');
   assert.equal(applied.company.sources[0].checkedAt,'2026-10-13');
+});
+
+test('发布日期可来自含年份的原文句子，缺年份或多个不同日期不能确认',()=>{
+  const company=subject().catalog.companies[0], p=proposed(company);
+  const dateQuote='Last updated Oct 08, 2026.';
+  const dated={...material,publishedAt:null,text:`${dateQuote} October 09, 2026. October 08. ${quote}`};
+  p.events=[{date:'2026-10-08',title:'新增预约能力',fact:'可以完成预约',impact:'可能减少操作',watch:'观察完成率',sources:['product'],evidence:evidence(),dateEvidence:{sourceId:'product',quote:dateQuote}}];
+  assert.equal(validateCompanyProposal(company,p,[dated],period),true);
+  p.events[0].dateEvidence.quote='October 08.';assert.throws(()=>validateCompanyProposal(company,p,[dated],period),/日期没有原文/);
+  p.events[0].dateEvidence.quote=`${dateQuote} October 09, 2026.`;assert.throws(()=>validateCompanyProposal(company,p,[dated],period),/日期没有原文/);
+});
+
+test('引用失败的修复请求包含具体字段与错误引用，修正后才能发布',async()=>{
+  const input=subject();let attempts=0;
+  const incorrect='Invented unsupported claim is not present.';
+  const result=await syncCompanyWeek(input,{fetcher,now,log:()=>{},generate:async(task,payload)=>{
+    if(task==='verify')return {approved:true};
+    const p=proposed(payload.company);
+    if(attempts++===0)p.confirmed[0].evidence.push({sourceId:'product',quote:incorrect});
+    else {assert.ok(payload.repair.includes(incorrect));assert.ok(payload.repair.includes('confirmed.product:0'));}
+    return p;
+  }});
+  assert.equal(attempts,2);assert.equal(result.monitor.lastReview.status,'ok');
 });
 
 test('生成或独立核对失败保留档案和旧日期，不把失败写成无新动态',async()=>{
