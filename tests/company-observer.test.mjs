@@ -32,7 +32,7 @@ test('阻止没有来源的事实、未知引用和错误周报日期进入页�
   unsafe.companies[0].sources[0].url = 'javascript:alert(1)';
   assert.throws(() => validateCompanies(unsafe, updates), /来源地址无效/);
   const future = structuredClone(eventFixture);
-  future.reports[0].items[0].date = '2026-10-14';
+  future.reports[0].items[0].date = new Date(Date.parse(future.reports[0].end) + 86400000).toISOString().slice(0, 10);
   assert.throws(() => validateCompanies(catalog, future), /事件不在本期范围内/);
   const unknown = structuredClone(eventFixture);
   unknown.reports[0].items[0].sources = ['missing'];
