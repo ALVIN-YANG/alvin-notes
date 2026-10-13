@@ -28,6 +28,7 @@ if (process.argv.includes('--check')) {
   if (result.skipped) {
     console.log('本周已完成资料、动态与商业分析核对，跳过重复运行');
   } else {
+    if (process.env.COMPANY_REVIEW_LOG) await writeFile(process.env.COMPANY_REVIEW_LOG, `${JSON.stringify(result.audit, null, 2)}\n`);
     for (const [name, data] of Object.entries({ 'catalog.json': result.catalog, 'updates.json': result.updates, 'monitor.json': result.monitor })) {
       await writeFile(new URL(`${name}.tmp`, directory), `${JSON.stringify(data, null, 2)}\n`);
     }

@@ -46,7 +46,16 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          COMPANY_REVIEW_LOG: ${{ runner.temp }}/ai-company-review.json
         run: npm run companies:sync -- ${{ inputs.force && '--force' || '' }}
+      - name: 保存公开资料核对记录
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-company-review
+          path: ${{ runner.temp }}/ai-company-review.json
+          if-no-files-found: ignore
+          retention-days: 14
       - name: 校验输出数据
         run: npm run companies:check
       - name: 安装字体工具
