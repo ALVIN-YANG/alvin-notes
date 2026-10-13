@@ -11,6 +11,7 @@ const articleJsonLd = createArticleJsonLd(Astro.locals.starlightRoute, canonical
 ---
 
 <StarlightHead />
+<meta name="google-adsense-account" content="ca-pub-5340951184052106" />
 <Analytics />
 {articleJsonLd && <script is:inline type="application/ld+json" set:html={articleJsonLd} />}
 <link
