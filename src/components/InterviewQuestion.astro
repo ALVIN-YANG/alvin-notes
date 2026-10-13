@@ -1,0 +1,9 @@
+---
+const route = Astro.locals.starlightRoute;
+const meta = route?.entry?.data?.interview;
+const slug = route?.slug?.split('/').at(-1);
+---
+<div class="interview-question">
+  {meta && <nav class="iq-meta not-content" aria-label="题目导航"><a href={`/interview/?track=${meta.track}&question=${slug}`}>← 连续阅读</a></nav>}
+  <div data-iq-answer><slot /></div>
+</div>

@@ -33,6 +33,8 @@ const problems = [];
 const emittedFontFiles = new Set();
 let sourceDiagramCount = 0;
 let outputDiagramCount = 0;
+let interviewSourceDiagramCount = 0;
+let interviewOutputDiagramCount = 0;
 
 async function walk(directory, inspectFile) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -48,7 +50,11 @@ async function walk(directory, inspectFile) {
 await walk(contentDirectory.pathname, async (file, name) => {
   if (!/\.mdx?$/.test(name)) return;
   const source = await readFile(file, 'utf8');
-  sourceDiagramCount += source.match(/```mermaid\s*\n/g)?.length ?? 0;
+  const count = source.match(/```mermaid\s*\n/g)?.length ?? 0;
+  sourceDiagramCount += count;
+  if (path.relative(contentDirectory.pathname, file).startsWith('interview/') && /^interview:\s*$/m.test(source)) {
+    interviewSourceDiagramCount += count;
+  }
 });
 
 const fontManifest = JSON.parse(await readFile(fontManifestPath, 'utf8'));
@@ -103,7 +109,9 @@ await walk(outputDirectory.pathname, async (file, name) => {
 
   if (!name.endsWith('.html')) return;
   const html = await readFile(file, 'utf8');
-  outputDiagramCount += html.match(/<div class="mermaid-static__canvas"/g)?.length ?? 0;
+  const count = html.match(/<div class="mermaid-static__canvas"/g)?.length ?? 0;
+  outputDiagramCount += count;
+  if (relativePath === 'interview/index.html') interviewOutputDiagramCount = count;
 
   if (/class="language-mermaid"|<pre class="mermaid"|mermaid\.core\.|mermaid-static__theme/.test(html)) {
     problems.push(`Uncompiled Mermaid markup emitted: ${relativePath}`);
@@ -116,8 +124,12 @@ for (const fontFile of requiredFontFiles) {
   }
 }
 
-if (outputDiagramCount !== sourceDiagramCount) {
-  problems.push(`Static Mermaid count mismatch: source=${sourceDiagramCount}, output=${outputDiagramCount}`);
+// 面试题在独立页面与同页阅读器中各渲染一次，两个位置都必须完整。
+if (interviewOutputDiagramCount !== interviewSourceDiagramCount) {
+  problems.push(`Interview Mermaid count mismatch: source=${interviewSourceDiagramCount}, output=${interviewOutputDiagramCount}`);
+}
+if (outputDiagramCount !== sourceDiagramCount + interviewSourceDiagramCount) {
+  problems.push(`Static Mermaid count mismatch: expected=${sourceDiagramCount + interviewSourceDiagramCount}, output=${outputDiagramCount}`);
 }
 
 const algorithmHtml = await readFile(algorithmOutputPath, 'utf8');

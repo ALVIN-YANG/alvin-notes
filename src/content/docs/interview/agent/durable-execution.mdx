@@ -1,0 +1,62 @@
+---
+title: Agent 执行中断后怎样恢复？如何避免重复副作用？
+description: 区分任务检查点、业务幂等与执行结果未知，解释恢复中的崩溃窗口。
+lastUpdated: 2026-10-13
+interview:
+  track: agent
+  topic: 生产可靠性
+  level: advanced
+  order: 14
+  tags: [Durable execution, 幂等, 崩溃窗口]
+sidebar:
+  label: 中断恢复与幂等
+  order: 14
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+Checkpoint 能让任务从保存的位置继续，不能保证外部操作只执行一次。
+
+最容易漏掉的是这个窗口：退款接口已经成功，Agent 还没保存结果就崩溃了。恢复后看起来这一步没做过，再调一次就可能重复退款。
+
+```mermaid
+sequenceDiagram
+  participant A as Agent runtime
+  participant S as 状态存储
+  participant B as 业务服务
+  A->>S: 保存待执行步骤与稳定操作标识
+  A->>B: 请求退款，携带同一幂等标识
+  B->>B: 原子检查标识并执行或返回已有结果
+  B-->>A: 已完成
+  Note over A,S: 若此时崩溃，业务已发生，结果尚未保存
+  A->>B: 恢复后查询或用同一标识重试
+  B-->>A: 返回已记录结果
+  A->>S: 保存完成状态
+```
+
+## 恢复前先确认业务结果
+
+在调用前保存稳定的业务操作标识，让下游用它去重并记录结果。恢复后先查询状态，或者用同一标识重试。标识要对应同一次业务意图，不能每次让模型重新生成，也不能把同一订单的所有退款都当成一笔操作。
+
+去重与业务写入是否原子、幂等记录保存多久、同一标识但参数不同怎样处理，都影响实际保证。只在 Agent 侧写“执行过”，仍然存在跨系统的崩溃窗口。
+
+下游如果既不能幂等，也不能查结果，就记录为“结果未知”，人工核对或按业务规则补偿。不能直接承诺 exactly-once。
+
+### 超时为什么不等于失败？
+
+调用方只知道没及时收到响应。请求可能没到，也可能已经执行成功。对写操作，应查状态或幂等重试，不能把“没响应”当成“没发生”。
+
+### 上下文摘要和 Checkpoint 有什么区别？
+
+摘要帮助模型理解当前目标和未完成事项；Checkpoint 与执行记录帮助程序恢复状态。一个负责信息，一个负责执行，不能互相替代。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。[阿里 AgentScope 状态保存](https://doc.agentscope.io/tutorial/task_state.html)、[Spring AI Alibaba 状态与人工中断](https://github.com/spring-ai-alibaba/website/blob/main/docs/frameworks/agent-framework/tutorials/hooks.md)。机制依据见 [Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)、[幂等 API](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/) 与 [长期任务 Harness](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)。状态设计和退款流程为工程示例。延伸阅读：[上下文持久化与恢复](/ai/agent-context-persistence-recovery/)。
+
+</details>
+
+</InterviewQuestion>

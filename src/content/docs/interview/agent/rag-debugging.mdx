@@ -1,0 +1,57 @@
+---
+title: RAG 检索到了资料，为什么回答还是错？怎样分层排查？
+description: 把资料、召回、重排与生成拆开，定位 RAG 的错误来源。
+lastUpdated: 2026-10-13
+interview:
+  track: agent
+  topic: RAG 与检索
+  level: intermediate
+  order: 7
+  tags: [RAG, Recall@k, Rerank]
+sidebar:
+  label: RAG 分层排查
+  order: 7
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+先看正确资料有没有进入模型的输入，再判断模型是否用错了资料。
+
+RAG 返回了文档，只说明检索有结果。文档可能过期、属于另一款产品，或者缺少决定答案的条件。排查时按顺序查：资料与索引、召回候选、过滤和重排、最终上下文、生成结果。
+
+```mermaid
+flowchart TB
+  A[正确版本是否入库] --> B[候选是否召回正确证据]
+  B --> C["过滤与重排<br/>是否保留证据"]
+  C --> D["上下文是否<br/>包含完整条件"]
+  D --> E["回答是否引用<br/>并遵守证据"]
+  A -.缺失.-> F[修资料与索引]
+  B -.遗漏.-> G[修切片、检索与过滤]
+  D -.截断.-> H[修上下文组织]
+  E -.编造.-> I[修生成约束与拒答]
+```
+
+## 用一条错答案定位问题
+
+假设新退款规则是“签收后 7 天”，旧规则是“下单后 7 天”。返回的全是旧文档，查索引更新和版本过滤；正确文档被重排丢掉，查重排；文档进入上下文却少了“签收后”，查切片和截断；完整规则已给到模型，它还写错，才查生成。
+
+向量检索适合语义匹配，关键词检索适合型号、编号等精确内容。两者可以混合，再用 Rerank 排序。召回多少、最终送入多少，要用自己的数据测，不能照搬别人的最优参数。
+
+### 检索和回答怎样分别评测？
+
+一题标注了 3 个相关片段，前 k 个候选找到 2 个，这组标注下 Recall@k 是 2/3。它不等于答案正确率。回答还要检查事实、引用是否支持结论，以及证据不足时是否拒答。
+
+### top-k 越大越好吗？
+
+不一定。更多片段可能补齐证据，也可能带进旧版本、无关内容，并增加耗时。没有足够证据时就说明不足，必要时追问产品或时间范围。相似度不是真实性评分，也不能代替访问权限。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。[百炼知识检索](https://help.aliyun.com/zh/model-studio/rag-knowledge-retrieval)、[阿里 AgentScope RAG](https://doc.agentscope.io/tutorial/task_rag.html)。检索方法见 [Contextual Retrieval](https://www.anthropic.com/engineering/contextual-retrieval)，RAG 机制见 [Lewis 等人的论文](https://arxiv.org/abs/2005.11401)。排查顺序与退款规则为教学示例。延伸阅读：[RAG 实战速查](/rag/)。
+
+</details>
+
+</InterviewQuestion>

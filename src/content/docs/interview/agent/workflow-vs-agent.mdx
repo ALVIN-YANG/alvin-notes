@@ -1,0 +1,55 @@
+---
+title: Workflow 和 Agent 有什么区别？什么时候不该用 Agent？
+description: 用控制流、失败代价和任务边界解释 Agent 的选型。
+lastUpdated: 2026-10-13
+interview:
+  track: agent
+  topic: 架构与选型
+  level: basic
+  order: 1
+  tags: [Workflow, Agent loop, 控制流]
+sidebar:
+  label: Workflow 与 Agent
+  order: 1
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+Workflow 按写好的步骤执行，Agent 由模型根据当前结果决定下一步。两者都能调用 LLM，也都能调用工具；区别在于执行顺序由谁决定。
+
+售后流程如果已经明确为“查订单 → 检查规则 → 给出方案”，用 Workflow 就够了。模型可以理解用户的说法，但订单归属、退款金额和是否可退，要交给业务代码判断。
+
+```mermaid
+flowchart TB
+  subgraph W["Workflow<br/>程序决定下一步"]
+    A[读订单] --> B[按规则判断] --> C[生成回复]
+  end
+  subgraph G["Agent<br/>模型按观察决策"]
+    D[目标与当前状态] --> E[模型决策]
+    E --> F[受限工具执行]
+    F --> H[新观察]
+    H --> E
+    E --> I[满足结束条件]
+  end
+```
+
+如果任务是“调查这笔订单为什么异常”，下一步要查物流、支付还是库存，得看前一步找到什么。这类任务更适合 Agent。工具权限、超时、调用次数和结束条件仍由应用控制。
+
+### Function calling 就是 Agent 吗？
+
+不是。程序固定调用一次工具，也属于 Workflow。模型能在循环中根据工具结果选择下一步，才符合这里采用的 Agent 定义。不同团队对这个词的用法不完全一致。
+
+### 怎样判断 Agent 值不值得用？
+
+让固定流程和 Agent 做同一批任务，比较完成率、错误操作、人工接管、耗时和成本。如果效果差不多，保留固定流程。只有任务确实需要动态探索时，再增加自主性。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。[阿里 AgentScope ReAct Agent](https://doc.agentscope.io/tutorial/quickstart_agent.html)、[Qwen-Agent](https://github.com/QwenLM/Qwen-Agent)，架构定义见 [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)。场景与选型建议为教学示例。延伸阅读：[什么时候不该用 Agent](/ai/when-not-to-use-ai-agent/)。
+
+</details>
+
+</InterviewQuestion>

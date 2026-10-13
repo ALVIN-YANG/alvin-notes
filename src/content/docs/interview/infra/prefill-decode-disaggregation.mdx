@@ -1,0 +1,60 @@
+---
+title: Prefill 和 Decode 为什么要拆开部署？什么时候不值得拆？
+description: 解释 PD 分离的干扰、资源配置和 KV 传输代价。
+lastUpdated: 2026-10-13
+interview:
+  track: infra
+  topic: 推理服务架构
+  level: advanced
+  order: 15
+  tags: [PD 分离, TTFT, TPOT, KV transfer, RDMA]
+sidebar:
+  label: PD 分离与 KV 传输
+  order: 15
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+PD 分离让 Prefill 和 Decode 由不同实例处理。长输入的 Prefill 与持续生成的 Decode 可能争抢同一批 GPU 资源；拆开后可以分别调度、扩容和选配置，代价是传 KV、路由与故障处理更复杂。
+
+Prefill 节点计算输入的 KV，传给 Decode 节点；后者接着逐 Token 生成。不同模型或布局之间不一定能直接使用同一份 KV，传输格式和并行配置要兼容。
+
+```mermaid
+sequenceDiagram
+  participant R as 路由与调度
+  participant P as Prefill 节点
+  participant D as Decode 节点
+  participant U as 用户
+  U->>R: 输入与生成要求
+  R->>P: 安排 Prefill
+  R->>D: 确认 Decode 容量
+  P->>P: 计算输入 KV
+  P->>D: 传输兼容 KV 与请求状态
+  D->>D: 继续 Decode
+  D-->>U: 流式输出
+```
+
+## 比较整条请求，不只比较 GPU 时间
+
+把排队、Prefill、KV 传输、Decode 都计入时延。长上下文的 KV 可能很大，跨机网络带宽、拓扑和传输队列会成为瓶颈。Prefix cache 复用能减少部分工作，但也要算缓存读取成本。
+
+分别看 TTFT、每 Token 延迟和满足 SLO 的吞吐。Prefill 很快而 Decode 排很久，用户仍然得不到稳定输出。扩容也要按输入和输出负载分配，不能固定一比一。
+
+### 请求不多，是否也要拆？
+
+低负载、短输入，或网络条件不足时，单实例加合理批处理可能更简单。只有阶段干扰或独立配置带来的收益超过传输与运维开销，拆分才值得。
+
+### 传 KV 到一半节点坏了怎么办？
+
+记录传输和请求状态，避免把不完整 KV 当成可用。可以重做 Prefill 或按支持能力恢复；已输出内容怎样续接，也要有协议。客户端重连不能直接触发一遍新的写入类 Agent 任务。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。[阿里云 InferX PD 分离配置](https://help.aliyun.com/zh/pai/create-and-manage-inference-services)、[Kimi Mooncake 论文](https://arxiv.org/html/2407.00079v1)、[Mooncake 官方仓库](https://github.com/kvcache-ai/Mooncake)。选型与故障处理为工程推导，图为简化数据流。
+
+</details>
+
+</InterviewQuestion>

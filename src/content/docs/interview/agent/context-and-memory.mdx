@@ -1,0 +1,56 @@
+---
+title: Context window、会话状态和长期记忆有什么区别？
+description: 解释模型当前可见的输入、任务恢复状态与跨会话记忆的不同用途。
+lastUpdated: 2026-10-13
+interview:
+  track: agent
+  topic: 上下文与记忆
+  level: intermediate
+  order: 10
+  tags: [Context engineering, Memory, Checkpoint]
+sidebar:
+  label: 上下文与记忆
+  order: 10
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+上下文是这次实际送给模型的输入，Context window 是这次最多能接收多少 token。会话状态保存一个任务进行到哪一步；长期记忆保存下次任务仍可能用到的信息。
+
+把聊天记录存进数据库，不代表模型已经读到了它。应用还得选出当前需要的内容，再放进上下文。
+
+```mermaid
+flowchart TB
+  A["会话状态<br/>消息、步骤与结果"] --> D[选择与压缩]
+  B["长期记忆<br/>偏好、事实与经验"] --> E[按任务与权限检索]
+  C["原始资料<br/>文件与业务记录"] --> F[按需读取]
+  D --> G[本次上下文]
+  E --> G
+  F --> G
+  G --> H[模型下一次推理]
+```
+
+## 恢复任务时分别读取什么
+
+假设技术方案写到一半：会话状态记录“容量算完了，成本还没核对”；长期记忆保存已确认的语言偏好；原始文件保存需求和测量数据。继续任务时读取这些必要内容，不必把全部聊天记录重放一遍。
+
+历史太长可以裁掉重复输出、压缩成摘要，或保留文件位置按需读取。摘要会丢细节；精确数据、权限和业务执行结果应回到原始记录核对。
+
+### 大窗口能取代记忆系统吗？
+
+不能。窗口变大，只是一次能放进更多内容。持久保存、更新、删除、权限和检索仍需要应用处理，输入越多也可能越慢、越贵。
+
+### 长期记忆要记录哪些信息？
+
+记录内容的来源、归属和有效时间。用户更正后旧记录应失效，不同租户必须隔离。模型猜测或网页里的指令，不能直接当作可信事实保存。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。[阿里 AgentScope 长期记忆](https://doc.agentscope.io/tutorial/task_long_term_memory.html)、[状态与会话](https://doc.agentscope.io/tutorial/task_state.html)。概念见 [Memory overview](https://docs.langchain.com/oss/python/concepts/memory)，上下文策略见 [Anthropic 文章](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)。示例中的任务与治理方案为教学设计。延伸阅读：[Agent 记忆系统设计](/ai/agent-memory-system-design/)。
+
+</details>
+
+</InterviewQuestion>

@@ -10,6 +10,13 @@ export const collections = {
 				date: z.coerce.date().optional(),
 				verifiedAgainst: z.string().min(1).optional(),
 				hidePageTitle: z.boolean().optional(),
+				interview: z.object({
+					track: z.enum(['agent', 'infra']),
+					topic: z.string().min(1),
+					level: z.enum(['basic', 'intermediate', 'advanced']),
+					order: z.number().int().positive(),
+					tags: z.array(z.string().min(1)).min(1),
+				}).optional(),
 				comments: z.boolean().optional(),
 				headline: z.string().min(1).optional(),
 				reportFormat: z.enum(['modular']).optional(),

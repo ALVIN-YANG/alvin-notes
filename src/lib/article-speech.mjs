@@ -161,7 +161,7 @@ export function mountArticleReader(root) {
       synth.resume();
       if (!currentUtterance) speakNext();
     } else {
-      chunks = getArticleSpeechChunks(article, document.getElementById('_top')?.textContent || '');
+      chunks = getArticleSpeechChunks(article, root.dataset.readerTitle ?? document.getElementById('_top')?.textContent ?? '');
       if (!chunks.length) return;
       generation++;
       synth.cancel();

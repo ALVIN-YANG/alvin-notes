@@ -1,0 +1,58 @@
+---
+title: 人工确认应该插在哪里？用户点了同意，为什么还要再检查？
+description: 解释操作审批、状态变化和恢复时的重复执行风险。
+lastUpdated: 2026-10-13
+interview:
+  track: agent
+  topic: 安全与权限
+  level: advanced
+  order: 16
+  tags: [Human-in-the-loop, Checkpoint, 授权, 幂等]
+sidebar:
+  label: 人工确认与执行边界
+  order: 16
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+人工确认应放在具体写操作之前，让用户看到对象、参数和影响。用户同意“给 T42 发这封邮件”，不等于同意之后所有发送操作，也不等于业务系统可以跳过权限检查。
+
+暂停时保存任务状态和待执行操作。恢复时核对确认记录对应的用户、操作和参数；参数变了，原确认不能直接沿用。框架的 Checkpoint 负责恢复流程，业务授权仍由应用和下游服务负责。
+
+```mermaid
+flowchart TB
+  A[生成待执行操作] --> B["保存对象与参数<br/>稳定操作标识"]
+  B --> C[向用户展示具体影响]
+  C --> D{批准、修改或拒绝？}
+  D -->|拒绝| E[结束该操作]
+  D -->|修改| A
+  D -->|批准| F["保存确认记录<br/>恢复任务"]
+  F --> G["重查权限<br/>核对业务状态"]
+  G --> H[沿用稳定操作标识执行]
+  H --> I[保存业务结果]
+```
+
+## 确认等待期间，业务状态可能变了
+
+假设用户确认取消订单，几分钟后订单已经发货。恢复后要重新读状态，按业务规则拒绝或让用户重新选择，不能把旧确认当成强行执行的理由。
+
+确认记录可以绑定操作版本或参数摘要，并设有效期。不要只存一个会话级 approved=true；同一会话里可能有多笔不同操作。实际身份和权限也不能由模型填写。
+
+### 用户重复点同意，会不会执行两次？
+
+确认提交应允许去重，业务写操作也要复用同一个幂等标识。确认只提交一次，仍可能遇到“业务已成功、任务结果未落库”的崩溃窗口，不能因此省掉下游幂等。
+
+### 每一步都确认，才算安全吗？
+
+频繁确认容易让人不看内容就点击。按实际权限和风险划边界：允许范围内的查询可以自动执行；会改变外部状态、扩大数据访问或超出授权范围的操作，展示具体变化再确认。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。[Spring AI Alibaba HumanInTheLoopHook 与状态保存](https://github.com/spring-ai-alibaba/website/blob/main/docs/frameworks/agent-framework/tutorials/hooks.md)、[AgentScope 状态与会话](https://doc.agentscope.io/tutorial/task_state.html)。审批绑定、过期和订单检查为工程设计示例。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,55 @@
+---
+title: Prefill 和 Decode 有什么区别？为什么首字慢和逐字慢要分开看？
+description: 从输入处理与逐 token 生成解释 LLM 的两阶段推理。
+lastUpdated: 2026-10-13
+interview:
+  track: infra
+  topic: 模型执行
+  level: basic
+  order: 3
+  tags: [Prefill, Decode, TTFT]
+sidebar:
+  label: Prefill 与 Decode
+  order: 3
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+Prefill 处理输入 token，建立 KV cache，并产生用于生成首个输出 token 的结果。Decode 利用已有缓存计算新位置，逐步生成后续 token。
+
+长 Prompt 要做更多 Prefill 工作，可能让首字等待变长。首字出来后每个 token 的速度，是另一个问题。所以要分开看 TTFT 和后续输出间隔。
+
+```mermaid
+flowchart LR
+  A[发送请求] --> B[网络、排队与输入处理]
+  B --> C["Prefill<br/>处理输入并建 KV"]
+  C --> D[首个输出 token]
+  D --> E[Decode 新位置]
+  E --> F[下一个 token]
+  F --> E
+```
+
+## 从慢的阶段找原因
+
+输入变长、输出长度不变，先看 Prefill 工作量；输入不变、流量升高，先看排队；逐字输出变慢，则查 Decode 批量、上下文长度、KV 容量和带宽，也要看长 Prefill 是否挤占执行时间。
+
+较大批量的 Prefill 往往更受计算能力限制，小批量 Decode 常受权重和 KV 读取带宽限制。模型、硬件、上下文和批量都会改变瓶颈，仍要测。
+
+### 前缀缓存能加速哪一段？
+
+命中后可以复用已计算前缀的 KV，减少 Prefill。它不是回答缓存，也不保证后续生成都变快。跨实例复用还要计算数据传输的开销。
+
+### 流式输出会让模型算得更快吗？
+
+不会因为传输方式改变，就自动减少计算。它让用户更早看到已经生成的结果。测 TTFT 和输出间隔需要流式返回；一次性拿到完整回答，看不到中间时点。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。机制见 [Transformers](https://huggingface.co/docs/transformers/cache_explanation)，阶段调度见 [vLLM 优化文档](https://docs.vllm.ai/en/latest/configuration/optimization/)，服务指标见 [阿里云 EAS 压测](https://help.aliyun.com/zh/pai/automatic-service-stress-testing)。数字场景为示例。延伸阅读：[模型执行与实验](/ai-infra/model-execution/)。
+
+</details>
+
+</InterviewQuestion>

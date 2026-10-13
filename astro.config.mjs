@@ -77,6 +77,15 @@ export default defineConfig({
       },
       sidebar: [
         {
+          label: 'AI 工程问答',
+          items: [
+            { label: '全部题目', link: '/interview/' },
+            { label: '学习路线与公开资料', link: '/interview/infra-roadmap/' },
+            { label: 'AI Agent 开发', autogenerate: { directory: 'interview/agent' } },
+            { label: 'AI Infra', autogenerate: { directory: 'interview/infra' } },
+          ],
+        },
+        {
           label: '作品',
           autogenerate: { directory: 'projects' },
         },

@@ -1,0 +1,62 @@
+---
+title: 怎样评测 Agent？为什么最终答案正确还不够？
+description: 用结果、过程、约束与稳定性设计 Agent 评测。
+lastUpdated: 2026-10-13
+interview:
+  track: agent
+  topic: 评测与观测
+  level: advanced
+  order: 13
+  tags: [Evals, Trace, pass@k]
+sidebar:
+  label: Agent 评测
+  order: 13
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+先把“成功”写成可检查的条件，再运行 Agent。回复听起来正确，只能证明表达像样，不能证明它改对了工单、遵守了权限，或没有重复发消息。
+
+能用程序核对的内容就用程序核对，例如工单状态、金额和工具参数。表达质量可以用有明确评分规则的模型评审，再用人工抽查校准。保存执行轨迹，才能知道分数为什么变了。
+
+```mermaid
+flowchart TB
+  A["任务与初始环境<br/>成功条件"] --> B["运行 Agent<br/>记录轨迹"]
+  B --> C[结果：工单状态与回复]
+  B --> D["过程：工具与参数<br/>执行对象"]
+  B --> E["约束：权限与确认<br/>禁止操作"]
+  B --> F["开销：时延与成本<br/>调用次数"]
+  C --> G[按明确规则评分与归因]
+  D --> G
+  E --> G
+  F --> G
+```
+
+## 一条工单任务怎么测
+
+任务是“查询 T42，写解决建议，未经确认不要发给客户”。检查四件事：建议是否符合工单事实；操作的是不是 T42；有没有调用发送工具、有没有真实授权；有没有超时或无效重试。
+
+没有要求固定工具顺序，就别因为另一条合法路径而判失败。测试集应包括常见任务、历史故障和边界情况。改动后重跑已通过的任务，防止修好一处又破坏另一处。
+
+比较两版 Agent 时，固定初始数据、工具行为和成功条件，记录模型及提示词版本。涉及写操作，用隔离环境恢复同一初始状态，避免前一次执行改变下一次的题目。重要权限违规应单独判定，不能用回答质量高分抵消。
+
+### pass@k 和 pass^k 有什么区别？
+
+pass@k 看 k 次里至少成功一次；pass^k 看 k 次是否全部成功。允许生成多个候选再验证的任务，可以关注前者；每次都要可靠完成的任务，更关心后者。
+
+假设每次成功率都是 80%，且尝试独立，三次至少成功一次是 99.2%，三次全成功只有 51.2%。实际任务难度和尝试相关性会影响结果。
+
+### 有 Trace 就算有评测了吗？
+
+不算。Trace 记录发生了什么，评测规则判断做得对不对。只有日志，无法判成功；只有总分，难以查原因。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。[阿里 AgentScope Evaluation](https://doc.agentscope.io/tutorial/task_eval.html)、[Tracing](https://doc.agentscope.io/tutorial/task_tracing.html)。指标见 [Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)，工具评测见 [Writing tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents)。工单案例与数值为教学示例。延伸阅读：[Agent 评测与可观测性](/ai/agent-evaluation-observability/)。
+
+</details>
+
+</InterviewQuestion>

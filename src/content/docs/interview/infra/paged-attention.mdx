@@ -1,0 +1,55 @@
+---
+title: PagedAttention 怎么管理 KV？它和 FlashAttention 是一回事吗？
+description: 解释 KV 分页分配、逻辑映射和注意力计算优化的区别。
+lastUpdated: 2026-10-13
+interview:
+  track: infra
+  topic: 推理内存与调度
+  level: intermediate
+  order: 8
+  tags: [PagedAttention, KV cache, FlashAttention, 碎片]
+sidebar:
+  label: PagedAttention 与显存管理
+  order: 8
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+PagedAttention 把 KV cache 分成固定大小的块，按需分配。一个请求的逻辑块可以映射到不连续的显存块，注意力 kernel 按映射读取数据，减少连续大块预留造成的浪费。
+
+请求每生成一些 Token，就申请新的块；结束后释放。若每个请求一开始按最大输出长度留空间，短输出会浪费很多显存。分页可以改善这种浪费，但最后一个未填满的块仍有内部碎片。
+
+```mermaid
+flowchart TB
+  A["请求 A 逻辑块<br/>0、1、2"] --> B["物理块映射<br/>7、2、9"]
+  C["请求 B 逻辑块<br/>0、1"] --> D["物理块映射<br/>4、6"]
+  B --> E["注意力 kernel<br/>按映射读取 KV"]
+  D --> E
+  F[请求结束] --> G[归还块到空闲池]
+  G --> H[新请求按需分配]
+```
+
+## 两种 Attention 优化解决不同问题
+
+FlashAttention 通过分块与数据复用，减少注意力计算时对显存的读写，避免完整保存庞大的注意力矩阵。PagedAttention 关注服务中 KV 的存放和访问。两者可以在适当实现中配合使用，不能把“分页”理解为把注意力计算量消掉。
+
+分页也不改变每个 KV 元素需要的字节数。输出持续增长，已分配的块照样会增加；显存不足时仍需要限制准入、抢占或其他策略。
+
+### 块越小，越省显存吗？
+
+小块可能减少尾部浪费，但映射、管理和访问开销也会变化。块大小与 kernel、模型结构和负载有关，不能只看碎片率。
+
+### 多个请求能共享块吗？
+
+实现支持时，相同前缀的只读块可复用；修改共享尾部需要复制或等效隔离。引用计数和释放规则要正确，否则可能提前释放其他请求仍在使用的 KV。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。[阿里 DashInfer SpanAttention](https://github.com/modelscope/dash-infer)、[PagedAttention 原始论文](https://arxiv.org/abs/2309.06180)、[FlashAttention 原始论文](https://arxiv.org/abs/2205.14135)。物理块编号为示意，不是实际地址。
+
+</details>
+
+</InterviewQuestion>

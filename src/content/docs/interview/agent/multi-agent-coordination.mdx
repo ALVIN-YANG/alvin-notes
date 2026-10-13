@@ -1,0 +1,58 @@
+---
+title: 什么时候值得用多 Agent？怎样避免互相聊天却做不完事？
+description: 用任务依赖、责任和结果合并判断多 Agent 的价值。
+lastUpdated: 2026-10-13
+interview:
+  track: agent
+  topic: 规划与控制
+  level: advanced
+  order: 17
+  tags: [Multi-agent, Handoff, 并发, 冲突]
+sidebar:
+  label: 多 Agent 协作
+  order: 17
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+任务能拆成相对独立的工作，或需要不同工具和权限时，多 Agent 才容易产生收益。如果所有步骤都依赖同一份上下文、必须串行完成，增加 Agent 往往只增加消息、成本和协调难度。
+
+例如调研三家供应商，可以分别收集材料，由一个负责人核对并合并。每个子任务说明范围、来源要求和完成条件；合并者要核实证据，不能把三个自然语言结论拼起来就算完成。
+
+```mermaid
+flowchart TB
+  A[总任务与共享约束] --> B[划分任务与责任]
+  B --> C["Agent A<br/>供应商 A 资料"]
+  B --> D["Agent B<br/>供应商 B 资料"]
+  B --> E["Agent C<br/>供应商 C 资料"]
+  C --> F[返回结构化结果与来源]
+  D --> F
+  E --> F
+  F --> G["负责人核对<br/>冲突、缺项与权限"]
+  G --> H[合并或安排有限补查]
+```
+
+## 交接的是任务，不是全部聊天记录
+
+交接包保留目标、已有证据、约束、下一步和完成条件，避免把大量无关历史塞给接手者。任务状态和负责人要有明确记录，消息送达不等于任务被接手，更不等于完成。
+
+多个 Agent 不应同时修改同一资源而没有协调。可以指定唯一写入者，让其他 Agent 返回建议；确实要并发写时，用业务事务或版本检查处理冲突。模型协商不能代替并发控制。
+
+### 并发后延迟和成本怎样变化？
+
+独立任务并发时，完成时间可能接近最慢的子任务再加合并时间。总调用量通常仍是各任务之和，还可能多出沟通和复核。比较单 Agent 基线的成功率、成本和尾延迟，才能判断是否值得拆。
+
+### 子 Agent 卡住了怎么办？
+
+设置截止时间、明确状态和失败原因。负责人可以重派或降级，但要确认旧执行者不会继续写入同一资源。限制交接次数，避免 A 交给 B、B 又交给 A 的循环。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-13。[阿里 AgentScope 并发 Agent](https://doc.agentscope.io/tutorial/workflow_concurrent_agents.html)、[AgentScope Handoffs](https://doc.agentscope.io/tutorial/workflow_handoffs.html)。供应商调研、交接协议和写入协调为工程示例。
+
+</details>
+
+</InterviewQuestion>
