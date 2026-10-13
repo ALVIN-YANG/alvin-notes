@@ -1,13 +1,13 @@
-name: AI 公司来源周检
+name: AI 公司观察每周同步
 
 on:
   schedule:
-    # 每周一北京时间 08:30；完全在 GitHub Actions 运行。
+    # 每周一北京时间 08:30；全部运行在 GitHub Actions。
     - cron: '30 0 * * 1'
   workflow_dispatch:
     inputs:
       force:
-        description: '重新检查本周已检查过的来源'
+        description: '重新核对本周资料与商业分析'
         type: boolean
         default: false
 
@@ -16,36 +16,72 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  check-sources:
+  sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 40
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - name: 验证资料与失败恢复
-        run: node --test tests/company-observer.test.mjs
-      - name: 每周检查官方来源
+      - uses: actions/cache@v4
+        with:
+          path: .font-sources
+          key: font-sources-v1-misans-2025-07-14-sarasa-1.0.41
+      - name: 安装依赖与验证证据校验、失败恢复
+        run: npm ci && node --test tests/company-observer.test.mjs tests/company-weekly.test.mjs
+      - name: 核对来源、更新档案与本期动态
         id: sync
         continue-on-error: true
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_BASE_URL: https://api.deepseek.com
+          DEEPSEEK_MODEL: deepseek-v4-flash
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
         run: npm run companies:sync -- ${{ inputs.force && '--force' || '' }}
-      - name: 保存检查状态
+      - name: 校验输出数据
+        run: npm run companies:check
+      - name: 安装字体工具
+        run: sudo apt-get update && sudo apt-get install --yes libarchive-tools python3-venv
+      - name: 构建并发布资料
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/companies/monitor.json
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "更新 AI 公司每周来源检查状态"
-          git pull --rebase origin main
-          git push origin HEAD:main
-      - name: 报告未完成的来源
+          set -euo pipefail
+          snapshot="$RUNNER_TEMP/companies-sync"
+          mkdir -p "$snapshot"
+          cp src/data/companies/{catalog,updates,monitor}.json "$snapshot/"
+          base_sha=$(git rev-parse HEAD)
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3; do
+            git fetch origin main
+            # 同模块被人工修改时停止，不覆盖公司范围、档案或已发布事件。
+            if ! git diff --quiet "$base_sha" origin/main -- src/data/companies/; then
+              echo '公司资料在同步期间发生并发修改，保留远程资料，请重新运行。' >&2
+              exit 1
+            fi
+            # 仅重置 Actions 的临时检出；重放本次资料并基于最新 main 生成字体。
+            git reset --hard origin/main
+            cp "$snapshot/"*.json src/data/companies/
+            npm run companies:check
+            npm run fonts:update
+            npm run build
+            git add src/data/companies/{catalog,updates,monitor}.json public/fonts/misans/ public/fonts/sarasa/ scripts/font-subset-codepoints.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "同步 AI 公司产品、分析与本期动态 $(date -u +%Y-%m-%d)"
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          echo '发布失败：主分支持续变化，请重新运行。' >&2
+          exit 1
+      - name: 报告未完成项
         if: steps.sync.outcome == 'failure'
         run: |
-          echo '部分来源检查失败，已保留上次资料；请查看 Actions 日志并核实失败来源。'
+          echo '本期存在来源或证据核对失败，已保留相应旧资料与旧日期；详见日志及运行摘要。'
           exit 1

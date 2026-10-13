@@ -46,6 +46,7 @@ export function validateCompanies(catalog, updates) {
       for (const row of section.rows) {
         if (!row.text?.trim() || !row.label?.trim() || !evidenceLabels[row.kind]) fail(`${company.id} 证据内容无效`);
         date(row.asOf, row.label);
+        if (row.checkedAt) date(row.checkedAt, row.label);
         if (['verified', 'disclosed'].includes(row.kind) && !row.sources.length) fail(`${company.id}/${row.label} 事实缺少来源`);
         for (const id of row.sources) if (!sources.has(id)) fail(`${company.id} 引用未知来源 ${id}`);
       }
@@ -68,17 +69,35 @@ export function validateCompanies(catalog, updates) {
   return true;
 }
 
-export function extractSource(html, url) {
-  const document = new JSDOM(html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ''), { url }).window.document;
+export function readSourceContent(html, url) {
+  const dom = new JSDOM(html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ''), { url });
+  const document = dom.window.document;
   const title = document.querySelector('title')?.textContent?.trim() || new URL(url).hostname;
-  document.querySelectorAll('script,style,noscript,nav,header,footer,aside,iframe,svg,[hidden],[aria-hidden="true"]').forEach(node => node.remove());
-  const root = document.querySelector('main') || document.querySelector('article') || document.body;
+  let publishedAt = document.querySelector('meta[property="article:published_time"]')?.content?.slice(0, 10);
+  for (const script of document.querySelectorAll('script[type="application/ld+json"]')) {
+    try {
+      const values = JSON.parse(script.textContent);
+      const entries = Array.isArray(values) ? values : [values, ...(values['@graph'] || [])];
+      publishedAt ||= entries.find(value => value?.datePublished)?.datePublished?.slice(0, 10);
+    } catch { /* Invalid optional metadata cannot become evidence. */ }
+  }
+  document.querySelectorAll('script,style,noscript,nav,footer,aside,iframe,svg').forEach(node => node.remove());
+  document.querySelectorAll('header').forEach(node => { if (!node.querySelector('h1,article')) node.remove(); });
+  const roots = [document.querySelector('article'), document.querySelector('main'), document.body].filter(Boolean);
+  const root = roots.find(node => node.textContent.replace(/\s+/g, ' ').trim().length >= 100) || document.body;
   const text = root.textContent.replace(/\s+/g, ' ').trim();
+  const links = [...root.querySelectorAll('a[href]')].map(link => ({ url: link.href, text: link.textContent.replace(/\s+/g, ' ').trim() }));
+  dom.window.close();
   if (text.length < 100 || /^(we.?re sorry|just a moment|access denied|checking your browser|enable javascript)/i.test(text)) {
     throw new Error('未取得可检查的正文，需浏览器核对');
   }
   const normalized = text.slice(0, 18000);
-  return { title, hash: createHash('sha256').update(normalized).digest('hex') };
+  return { title, text: normalized, links, publishedAt: /^\d{4}-\d{2}-\d{2}$/.test(publishedAt || '') ? publishedAt : null, hash: createHash('sha256').update(normalized).digest('hex') };
+}
+
+export function extractSource(html, url) {
+  const { title, hash } = readSourceContent(html, url);
+  return { title, hash };
 }
 
 export async function checkCompanySources(catalog, previous, { fetcher = fetch, now = new Date(), force = false } = {}) {

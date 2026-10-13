@@ -11,8 +11,9 @@ const overdue = !latest || Date.parse(shanghaiDate()) - Date.parse(latest.end) >
 ---
 <StarlightPage frontmatter={{ title: '本周变化 · AI 公司观察', description: '每周核实 AI 公司产品、使用条件与商业背景的变化，并记录对判断的影响。', template: 'splash', hidePageTitle: true }} sidebar={[]}>
   <div class="company-observer not-content">
-    <header class="co-heading"><div><h1 id="_top">本周变化</h1><p>看变化，也看它对产品与判断的影响。</p></div><span>来源周检</span></header>
+    <header class="co-heading"><div><h1 id="_top">本周变化</h1><p>看变化，也看它对产品与判断的影响。</p></div><span>每周同步</span></header>
     <CompanyNav active="changes" />
+    {monitor.lastReview && <p class="co-notice">资料与分析核对 {dateLabel(monitor.lastReview.at)} · {monitor.lastReview.successCount} 家完成{monitor.lastReview.failureCount > 0 && ` · ${monitor.lastReview.failureCount} 家未完成，保留旧资料与旧日期`}{monitor.lastRun?.failureCount > 0 && ` · ${monitor.lastRun.failureCount} 个来源读取失败`}。</p>}
     <p class="co-notice" data-company-stale-through={latest?.end || ''} hidden={!overdue}>最新一期覆盖至 {latest ? dateLabel(latest.end) : '尚未发布'}。本周动态尚未完成核实。</p>
     {updates.reports.map((report, index) => <section class="co-report" aria-labelledby={`report-${report.id}`}>
       <header><div><p class="co-kicker">{index === 0 ? '最新一期' : '往期记录'} · {dateLabel(report.start)} — {dateLabel(report.end)}</p><h2 id={`report-${report.id}`}>{report.summary}</h2></div><span>{report.items.length} 条 · 发布 {dateLabel(report.publishedAt)}</span></header>
