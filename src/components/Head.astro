@@ -8,10 +8,22 @@ const canonicalPath = Astro.url.pathname;
 const canonicalUrl = new URL(canonicalPath, siteUrl).href;
 const ogImage = new URL('/images/brand/og-default.png', siteUrl).href;
 const articleJsonLd = createArticleJsonLd(Astro.locals.starlightRoute, canonicalUrl);
+const enableAds = Boolean(articleJsonLd)
+  && !['/about/', '/privacy/'].includes(canonicalPath)
+  && !canonicalPath.startsWith('/ai-news/')
+  && !canonicalPath.startsWith('/interview/');
 ---
 
 <StarlightHead />
 <meta name="google-adsense-account" content="ca-pub-5340951184052106" />
+{enableAds && (
+  <script
+    is:inline
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5340951184052106"
+    crossorigin="anonymous"
+  ></script>
+)}
 <Analytics />
 {articleJsonLd && <script is:inline type="application/ld+json" set:html={articleJsonLd} />}
 <link

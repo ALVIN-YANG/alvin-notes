@@ -32,11 +32,11 @@ AI 概念卡片使用浏览器的本地存储保存学习进度。站点主题�
 
 ## Google 广告与 Cookie
 
-本站计划使用 Google AdSense。广告接入并启用后，Google 及其广告合作伙伴可能使用 Cookie、网络信标、IP 地址或其他标识符，处理访问和广告互动信息，用于投放广告、防止欺诈、控制展示频次和衡量效果。第三方可能在你的浏览器中放置或读取 Cookie。
+本站已接入 Google AdSense，广告须经 Google 审核通过后展示。Google 及其广告合作伙伴可能使用 Cookie、网络信标、IP 地址或其他标识符，处理访问和广告互动信息，用于投放广告、防止欺诈、控制展示频次和衡量效果。第三方可能在你的浏览器中放置或读取 Cookie。
 
 个性化广告可能依据你对本站及其他网站的访问情况。详情见 [Google 如何使用合作伙伴网站或应用的数据](https://policies.google.com/technologies/partner-sites)和 [Google 广告 Cookie 说明](https://policies.google.com/technologies/ads)。你可以在 [Google 我的广告中心](https://myadcenter.google.com/)管理个性化广告，也可以通过浏览器设置管理 Cookie。
 
-启用广告时，如所在地区要求取得同意，本站将显示广告隐私选择消息。你可以拒绝个性化广告，或通过页面上的“隐私和 Cookie 设置”入口重新调整选择。拒绝个性化广告不一定会停止所有广告。
+加载广告的文章页面为欧洲经济区、英国和瑞士的访客提供 Google 广告隐私选择消息。你可以选择“不同意”，或通过页面上的“隐私和 Cookie 设置”入口重新调整选择。拒绝个性化广告不一定会停止所有广告。
 
 ## 联系与更新
 
