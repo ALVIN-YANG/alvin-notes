@@ -1,0 +1,96 @@
+{
+  "version": "2026-09-29",
+  "request": {
+    "primary": {
+      "temperature": 0,
+      "max_tokens": 1024
+    },
+    "fallback": {
+      "max_completion_tokens": 2048
+    },
+    "fallback_when": "HTTP 400 whose body mentions \"unsupported parameter\", \"max_tokens\" or \"temperature\"",
+    "timeout_seconds": 60,
+    "follow_redirects": false,
+    "endpoint": "only the URL path is changed and the query string is kept: a path ending in /chat/completions is used as-is; no path gets /v1/chat/completions; any other path gets /chat/completions appended"
+  },
+  "thresholds": {
+    "top": 85,
+    "middle": 60
+  },
+  "probes": [
+    {
+      "id": "instruct",
+      "label_zh": "指令遵循",
+      "label_en": "Instruction following",
+      "weight": 15,
+      "prompt": "Reply with exactly the single word CORRECT — uppercase, no punctuation, nothing else.",
+      "rule": {
+        "type": "letters_equal",
+        "value": "CORRECT"
+      }
+    },
+    {
+      "id": "base64",
+      "label_zh": "Base64 解码",
+      "label_en": "Base64 decoding",
+      "weight": 15,
+      "prompt": "Decode this Base64 string and output ONLY the decoded plain text: dGhlIG1hZ2ljIHdvcmQgaXMgZmFsY29u",
+      "rule": {
+        "type": "regex",
+        "pattern": "falcon",
+        "flags": "i"
+      }
+    },
+    {
+      "id": "needle",
+      "label_zh": "长上下文·大海捞针",
+      "label_en": "Needle in ~3.5k chars",
+      "weight": 20,
+      "prompt": "第 1 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 2 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 3 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 4 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 5 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 6 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 7 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 8 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 9 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 10 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 11 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 12 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 13 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 14 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 15 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 16 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 17 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 18 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 19 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 20 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 21 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 22 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 23 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 24 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 25 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 26 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 27 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 28 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 29 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 30 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 31 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 32 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 33 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 34 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 35 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n\n【请记住这一句】本次任务的访问码是 7391。\n\n第 1 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 2 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 3 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 4 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 5 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 6 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 7 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 8 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 9 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 10 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 11 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 12 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 13 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 14 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 15 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 16 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 17 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 18 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 19 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 20 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 21 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 22 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 23 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 24 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 25 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 26 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 27 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 28 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 29 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 30 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 31 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 32 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 33 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 34 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n第 35 段:这里是一些用于填充上下文的常规说明文字,描述系统的日常配置与运行流程,无需特别记忆。\n\n问题:上文出现的访问码是多少?只回答那个数字。",
+      "rule": {
+        "type": "regex",
+        "pattern": "7391"
+      }
+    },
+    {
+      "id": "reason",
+      "label_zh": "推理陷阱",
+      "label_en": "Reasoning (bat and ball)",
+      "weight": 20,
+      "prompt": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost? Answer with only the dollar amount.",
+      "rule": {
+        "type": "regex",
+        "pattern": "(^|[^0-9.,\\-])0?\\.05(?![.,]?[0-9])|(^|[^0-9.,\\-])5\\s*cents",
+        "flags": "i"
+      }
+    },
+    {
+      "id": "math",
+      "label_zh": "算术",
+      "label_en": "Arithmetic",
+      "weight": 10,
+      "prompt": "Compute 17 * 24. Reply with only the number.",
+      "rule": {
+        "type": "regex",
+        "pattern": "(^|[^0-9.,\\-])408(?![.,]?[0-9])"
+      }
+    },
+    {
+      "id": "code",
+      "label_zh": "代码理解",
+      "label_en": "Code evaluation",
+      "weight": 20,
+      "prompt": "What does this Python expression evaluate to: len(set([1,1,2,3,3,3])) ? Reply with only the number.",
+      "rule": {
+        "type": "regex",
+        "pattern": "(^|[^0-9.,\\-])3(?![.,]?[0-9])"
+      }
+    }
+  ],
+  "notice": {
+    "source": "https://github.com/cocodot2026/cocodot-llmprobe",
+    "copyright": "Copyright (c) 2026 cocodot2026",
+    "license": "MIT",
+    "text": "MIT License\n\nCopyright (c) 2026 cocodot2026\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  }
+}

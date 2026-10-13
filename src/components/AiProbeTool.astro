@@ -1,0 +1,37 @@
+---
+import { PROBES, expectedAnswer } from '../lib/ai-probe.mjs';
+---
+<section class="ai-probe-tool not-content" data-ai-probe-tool aria-label="AI 降智检测工具">
+  <form class="probe-form" data-probe-form>
+    <fieldset data-probe-credentials>
+      <legend>填写被测平台</legend>
+      <label class="probe-url"><span>Base URL</span><input name="baseUrl" type="url" placeholder="https://your-relay.com/v1" required maxlength="2048" autocomplete="off" autocapitalize="off" spellcheck="false" /><small>填写平台的 API 地址，支持公网 HTTPS 默认端口。</small></label>
+      <label><span>API Key</span><input name="apiKey" type="password" placeholder="填写该平台的 Key" required minlength="8" maxlength="2048" autocomplete="off" autocapitalize="off" spellcheck="false" /><small>只用于本次检测，结束后清空。</small></label>
+      <label><span>模型名</span><input name="model" type="text" placeholder="填写平台支持的模型名" required maxlength="160" autocomplete="off" autocapitalize="off" spellcheck="false" /><small>使用平台提供的模型标识。</small></label>
+    </fieldset>
+    <p class="probe-privacy">Key 会经本站临时转发给你填写的平台。本站应用不保存 Key，不把它写入日志或报告。检测会消耗该平台的 API 额度。</p>
+    <p class="probe-form-error" data-probe-form-error role="alert" hidden></p>
+    <div class="probe-actions"><button class="probe-primary" type="submit" data-probe-start>开始检测 · 6 项</button><button type="button" data-probe-stop hidden>停止检测</button><span>逐项运行，每项最多等待 45 秒</span></div>
+    <noscript><p>请启用 JavaScript 后使用检测工具。</p></noscript>
+  </form>
+
+  <section class="probe-report" data-probe-report hidden aria-labelledby="probe-report-title">
+    <header class="probe-summary"><div><p class="probe-kicker">检测结果</p><h2 id="probe-report-title" data-probe-verdict>正在检测</h2><p data-probe-summary aria-live="polite">等待第一项结果。</p></div><div class="probe-score"><strong data-probe-score>—</strong><span data-probe-score-label>未完成不判分</span></div></header>
+    <progress data-probe-progress max="6" value="0" aria-label="检测进度"></progress>
+    <div class="probe-report-actions"><button type="button" data-probe-json disabled>下载 JSON</button><button type="button" data-probe-markdown disabled>下载 Markdown</button></div>
+    <p class="probe-result-note">基础题通过不能证明模型身份；低分也不能单独证明平台偷偷换了模型。请结合逐题回答判断。</p>
+  </section>
+
+  <div class="probe-results" aria-label="六项检测明细">
+    {PROBES.map((probe,index)=><article class="probe-result" data-probe-id={probe.id} data-state="pending">
+      <header><div><span class="probe-number">{String(index+1).padStart(2,'0')}</span><h3>{probe.label}</h3><span class="probe-weight">{probe.weight} 分</span></div><span class="probe-badge" data-probe-status>等待检测</span></header>
+      <p class="probe-metrics" data-probe-metrics>检测后显示耗时与接口返回用量。</p>
+      <p class="probe-row-error" data-probe-error hidden></p>
+      <details class="probe-detail"><summary>查看题目、答案与判分依据</summary><p>标准答案：<code>{expectedAnswer(probe.id)}</code>。去掉首尾空白后比对完整答案；推理题接受等价金额写法。</p><p class="probe-detail-label">实际回答</p><pre data-probe-answer>尚未获得回答。</pre><p class="probe-detail-label">题目</p><pre>{probe.prompt}</pre><p data-probe-model>返回型号与结束原因尚未取得。</p></details>
+    </article>)}
+  </div>
+  <p class="probe-footnote">固定题可能被针对性优化；测试没有覆盖流式、工具调用、图片、计费真实性及标称长上下文。型号和用量均为接口自报。</p>
+</section>
+<script>
+  import '../scripts/ai-probe-client';
+</script>

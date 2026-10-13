@@ -1,0 +1,41 @@
+---
+title: AI 降智检测
+description: 用六项可核对答案的基础题检查 AI API，查看逐题回答、耗时、接口返回用量与错误明细。
+date: 2026-10-13
+template: splash
+hidePageTitle: true
+comments: false
+prev: false
+next: false
+sidebar:
+  order: 2
+  label: AI 降智检测
+tableOfContents: false
+---
+
+import ToolNav from '../../../components/ToolNav.astro';
+import AiProbeTool from '../../../components/AiProbeTool.astro';
+
+<h1 id="_top" class="tool-title">AI 降智检测</h1>
+
+<ToolNav active="ai-probe" />
+
+检查 OpenAI 兼容 API 的六项基础能力，查看逐题答案、耗时与接口返回用量。基础题通过不能证明模型身份。
+
+<AiProbeTool />
+
+## 怎样解读结果
+
+只有六项全部取得完整回答，才计算加权总分。请求失败、超时、空回复或输出被截断时显示“检测未完成”，不按答错处理。六项全过显示“基础题全部通过”；出现错误时指出异常项目，低于 60 分显示“多项基础题异常”。分数只适用于本次检测。
+
+查看每项的标准答案、完整回答与判分依据。这里比对完整答案，比原项目的部分关键词规则更严格；回答格式也可能影响结果。约 3500 字符的上下文题不能验证模型宣称的长上下文能力。简单小模型可能全部通过，公开固定题也可能被针对性优化。
+
+## Key、请求与费用
+
+支持 OpenAI 兼容的 Chat Completions 接口。Key 随检测请求发送到本站转发接口，再发送到你填写的 API 平台。本站应用不持久化 Key，不写入日志、报告或浏览器存储，检测结束或离开页面时清空输入框。平台自身的处理和计费规则由该平台管理。
+
+每项正常发送一次请求。仅当平台明确返回参数不支持时，使用兼容参数重试一次；网络错误和超时不会自动重试。停止检测会取消等待并停止后续题目，已经发出的请求仍可能计费。
+
+只支持公网 HTTPS 默认端口，不访问本机、内网、保留地址或重定向目标。如果不希望 Key 经过本站，可在自己电脑运行[原项目的 CLI](https://github.com/cocodot2026/cocodot-llmprobe#smoke-test--the-same-6-checks-as-probecocodotco)。
+
+题目与权重来自 [cocodot-llmprobe](https://github.com/cocodot2026/cocodot-llmprobe)，按 MIT 协议使用并保留[版权与许可声明](/licenses/cocodot-llmprobe.txt)；本站判分规则对完整答案进行比对。JSON／Markdown 报告包含题目、回答与本次结果，不包含 Key。

@@ -1,0 +1,7 @@
+---
+const { active = 'index' } = Astro.props;
+const links = [{id:'index',href:'/tools/',label:'全部工具'},{id:'code-image',href:'/tools/code-image/',label:'代码图片'},{id:'ai-probe',href:'/tools/ai-probe/',label:'AI 降智检测'}];
+---
+<nav class="tool-nav not-content" aria-label="工具箱导航">
+  {links.map(link=><a href={link.href} aria-current={active===link.id?'page':undefined}>{link.label}</a>)}
+</nav>

@@ -1,5 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/ai-probe.js": { "maxDuration": 60 }
+  },
   "redirects": [
     {
       "source": "/ai/1-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/",

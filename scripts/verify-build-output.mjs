@@ -339,9 +339,11 @@ for (const articlePath of seoArticlePaths) {
   }
 }
 
-const toolHtml = await readFile(new URL('tools/code-image/index.html', outputDirectory), 'utf8');
-if (/<script\b[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?"@type":"BlogPosting"/.test(toolHtml)) {
-  problems.push('Code image tool must not be marked as a blog article');
+for (const toolPath of ['tools/', 'tools/code-image/', 'tools/ai-probe/']) {
+  const toolHtml = await readFile(new URL(`${toolPath}index.html`, outputDirectory), 'utf8');
+  if (/<script\b[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?"@type":"BlogPosting"/.test(toolHtml)) {
+    problems.push(`Tool must not be marked as a blog article: ${toolPath}`);
+  }
 }
 
 if (problems.length > 0) {
