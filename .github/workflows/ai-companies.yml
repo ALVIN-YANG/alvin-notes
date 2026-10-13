@@ -47,7 +47,7 @@ jobs:
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
           COMPANY_REVIEW_LOG: ${{ runner.temp }}/ai-company-review.json
-        run: npm run companies:sync -- ${{ inputs.force && '--force' || '' }}
+        run: node tests/company-review-model.mjs && npm run companies:sync -- ${{ inputs.force && '--force' || '' }}
       - name: 保存公开资料核对记录
         if: always()
         uses: actions/upload-artifact@v4
