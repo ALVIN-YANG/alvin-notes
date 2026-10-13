@@ -1,46 +1,22 @@
 ---
 import { getCollection } from 'astro:content';
-import { abilityMapMeta } from '../data/ability-map-meta';
-import aiInfraKnowledge, { aiInfraLessons } from '../data/ai-infra-knowledge';
-import concepts from '../data/ai-concepts.json';
-import companyCatalog from '../data/companies/catalog.json';
 
 const abilityMaps = [
   {
-    id: 'infra',
-    title: 'AI Infra 学习地图',
-    desc: '模型执行、KV cache、批处理与性能分析。',
+    title: 'AI Infra',
     href: '/ai-infra-knowledge/',
-    route: ['模型执行', '性能测量', '部署运行'],
-    stats: `${aiInfraKnowledge.meta.domainCount} 个领域 · ${Object.keys(aiInfraLessons).length} 篇技术笔记`,
-    pointCount: aiInfraKnowledge.meta.pointCount,
   },
   {
-    id: 'algorithm',
-    title: '算法能力地图',
-    desc: '先学解题模板，再闭卷解决高频题。',
+    title: '算法',
     href: '/algorithm-knowledge/',
-    route: ['识别信号', '守住不变量', '闭卷解题'],
-    stats: `${abilityMapMeta.algorithm.templateCount} 种模板 · ${abilityMapMeta.algorithm.practiceCount} 道高频题`,
-    pointCount: abilityMapMeta.algorithm.templateCount + abilityMapMeta.algorithm.practiceCount,
   },
   {
-    id: 'system',
-    title: '系统设计能力地图',
-    desc: '从需求与容量出发，一路推到故障恢复。',
+    title: '系统设计',
     href: '/system-design-knowledge/',
-    route: ['明确约束', '设计取舍', '故障恢复'],
-    stats: `${abilityMapMeta.system.domainCount} 个领域 · ${abilityMapMeta.system.pointCount} 个知识点`,
-    pointCount: abilityMapMeta.system.pointCount,
   },
   {
-    id: 'agent',
-    title: 'AI Agent 能力地图',
-    desc: '串起模型、工具、记忆、评测与生产运行。',
+    title: 'AI Agent',
     href: '/agent-knowledge/',
-    route: ['判断边界', '组织执行', '评测运行'],
-    stats: `${abilityMapMeta.agent.domainCount} 个领域 · ${abilityMapMeta.agent.pointCount} 个知识点`,
-    pointCount: abilityMapMeta.agent.pointCount,
   },
 ] as const;
 
@@ -185,31 +161,18 @@ function formatDate(doc: typeof allDocs[number]) {
 }
 ---
 
-<section class="ability-map-showcase" aria-label="能力地图">
-  <nav class="ability-map-grid" aria-label="学习地图">
-    {
-      abilityMaps.map((map) => (
-        <a class={`ability-map-card ${map.id}`} href={map.href}>
-          <span class="ability-map-card-head">
-            <span class="ability-map-title">{map.title}</span>
-            <svg class="ability-map-arrow" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 12h13M13 6l6 6-6 6" />
-            </svg>
-          </span>
-          <span class="ability-map-desc">{map.desc}</span>
-          <span class="ability-map-route" aria-hidden="true">
-            {map.route.map((stop) => <span>{stop}</span>)}
-          </span>
-          <span class="ability-map-stats">{map.stats}</span>
-          <span class="sr-only">，共 {map.pointCount} 个知识点</span>
-        </a>
-      ))
-    }
+<section class="ability-map-showcase" aria-labelledby="home-learning-title">
+  <div class="home-resource-group">
+    <h2 class="home-resource-heading" id="home-learning-title">学习地图</h2>
+    <nav class="ability-map-grid" aria-label="学习地图">
+      {abilityMaps.map((map) => <a href={map.href}>{map.title}</a>)}
+    </nav>
+  </div>
+  <nav class="home-quick-links" aria-label="快捷查阅">
+    <a href="/ai-concepts/">AI 概念</a>
+    <a href="/companies/">公司观察</a>
+    <a href="/interview/">AI 工程问答</a>
   </nav>
-  <a class="ai-concepts-home-link" href="/ai-concepts/"><span>AI 概念 <small>· {concepts.terms.length} 个词条</small></span><small>查释义 · 听读音 · 记概念 →</small></a>
-  <a class="co-home-link" href="/companies/"><span>AI 公司观察 <small>· {companyCatalog.companies.length} 家公司</small></span><small>看产品 · 比优势 · 追动态 →</small></a>
-
-  <a class="interview-home-link" href="/interview/"><span>AI 工程问答 <small>· AI Agent 开发 / AI Infra</small></span><small>查阅问答 · 看机制图 →</small></a>
 </section>
 
 <div class="home-sections" aria-label="文章分栏">
@@ -247,160 +210,6 @@ function formatDate(doc: typeof allDocs[number]) {
 </div>
 
 <style>
-  .ability-map-showcase {
-    margin: 1rem 0 1.4rem;
-  }
-
-  .ability-map-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-auto-rows: 1fr;
-    gap: 0.72rem;
-  }
-
-  .ability-map-card {
-    --map-accent: #3f78e6;
-    --map-wash: #e9f0ff;
-    position: relative;
-    display: flex;
-    min-width: 0;
-    min-height: 9rem;
-    overflow: hidden;
-    flex-direction: column;
-    padding: 0.85rem 1rem;
-    border: 1px solid color-mix(in srgb, var(--map-accent) 18%, var(--sl-color-gray-5));
-    border-radius: 0.9rem;
-    background:
-      radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--map-wash) 48%, transparent) 0, transparent 46%),
-      color-mix(in srgb, var(--sl-color-surface) 78%, var(--sl-color-bg));
-    box-shadow: 0 1px 2px rgba(36, 41, 47, 0.025), 0 12px 30px rgba(36, 41, 47, 0.035);
-    color: inherit;
-    text-decoration: none !important;
-    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-  }
-
-  .ability-map-card.system {
-    --map-accent: #2d8b69;
-    --map-wash: #dff3e9;
-  }
-
-  .ability-map-card.agent {
-    --map-accent: #7a5db0;
-    --map-wash: #eee8f8;
-  }
-
-  .ability-map-card:hover {
-    border-color: color-mix(in srgb, var(--map-accent) 42%, var(--sl-color-gray-5));
-    box-shadow: 0 2px 5px rgba(36, 41, 47, 0.035), 0 16px 34px rgba(36, 41, 47, 0.055);
-    transform: translateY(-2px);
-  }
-
-  .ability-map-card:focus-visible {
-    outline: 2px solid var(--map-accent);
-    outline-offset: 3px;
-  }
-
-  .ability-map-card-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-  }
-
-  .ability-map-title {
-    color: var(--sl-color-white);
-    font-family: var(--sl-font-heading);
-    font-size: 1.02rem;
-    font-weight: 650;
-    line-height: 1.3;
-  }
-
-  .ability-map-arrow {
-    width: 1.1rem;
-    height: 1.1rem;
-    flex: 0 0 auto;
-    fill: none;
-    stroke: var(--map-accent);
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.75;
-    transition: transform 180ms ease;
-  }
-
-  .ability-map-card:hover .ability-map-arrow {
-    transform: translateX(0.18rem);
-  }
-
-  .ability-map-desc {
-    display: block;
-    margin-top: 0.48rem;
-    color: var(--sl-color-gray-2);
-    font-size: 0.75rem;
-    line-height: 1.45;
-  }
-
-  .ability-map-route {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.35rem;
-    margin-top: 0.65rem;
-    padding-top: 1.15rem;
-  }
-
-  .ability-map-route::before {
-    position: absolute;
-    top: 0.32rem;
-    right: calc(16.666% - 0.18rem);
-    left: calc(16.666% - 0.18rem);
-    height: 1px;
-    background: color-mix(in srgb, var(--map-accent) 38%, var(--sl-color-gray-5));
-    content: '';
-  }
-
-  .ability-map-route span {
-    position: relative;
-    color: var(--sl-color-gray-2);
-    font-size: 0.65rem;
-    line-height: 1.35;
-    text-align: center;
-  }
-
-  .ability-map-route span::before {
-    position: absolute;
-    top: -1.05rem;
-    left: calc(50% - 0.22rem);
-    width: 0.44rem;
-    height: 0.44rem;
-    border: 2px solid color-mix(in srgb, var(--map-accent) 72%, white);
-    border-radius: 50%;
-    background: var(--sl-color-bg);
-    box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--map-wash) 65%, transparent);
-    content: '';
-  }
-
-  .ability-map-stats {
-    display: block;
-    margin-top: 0.6rem;
-    padding-top: 0.5rem;
-    border-top: 1px solid color-mix(in srgb, var(--map-accent) 14%, var(--sl-color-gray-5));
-    color: color-mix(in srgb, var(--map-accent) 78%, var(--sl-color-gray-1));
-    font-family: var(--sl-font-utility);
-    font-size: 0.67rem;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.01em;
-  }
-
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-  }
-
   .home-sections {
     display: grid;
     gap: 0.72rem;
@@ -560,15 +369,9 @@ function formatDate(doc: typeof allDocs[number]) {
 
   @media (prefers-reduced-motion: reduce) {
     .section-card { animation: none; }
-    .ability-map-card,
-    .ability-map-arrow { transition: none; }
   }
 
   @media (max-width: 800px) {
-    .ability-map-grid {
-      grid-template-columns: 1fr;
-    }
-
     .section-card {
       grid-template-columns: 0.25rem minmax(8.5rem, 0.72fr) minmax(0, 1.4fr);
       gap: 0.9rem;
@@ -585,15 +388,6 @@ function formatDate(doc: typeof allDocs[number]) {
   }
 
   @media (max-width: 560px) {
-    .ability-map-card {
-      min-height: 0;
-      padding: 0.75rem 0.85rem;
-    }
-
-    .ability-map-route {
-      display: none;
-    }
-
     .section-card {
       grid-template-columns: 0.25rem minmax(0, 1fr);
       gap: 0.8rem;
