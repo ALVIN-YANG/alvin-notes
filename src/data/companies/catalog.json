@@ -351,12 +351,13 @@
           "rows": [
             {
               "label": "产品与用户",
-              "text": "面向企业员工与 IT 管理团队；公开产品包括企业搜索、助手、Agent 构建与治理。",
+              "text": "面向企业员工与 IT 管理团队；公开产品包括企业搜索、助手、Agent 构建与治理，并已把技能（skills）纳入同一治理体系：技能在创建、上传、导入、分享和发布时扫描，运行时在沙箱隔离并由凭证代理按策略放行，管理员与技能审核者可审核、标记安全或封禁版本。",
               "kind": "disclosed",
               "sources": [
-                "product"
+                "news-78d7f2d5b31d"
               ],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-08",
+              "checkedAt": "2026-10-13"
             },
             {
               "label": "付费理由",
@@ -365,7 +366,8 @@
               "sources": [
                 "product"
               ],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-13",
+              "checkedAt": "2026-10-13"
             }
           ]
         },
@@ -380,12 +382,13 @@
           "rows": [
             {
               "label": "能力边界",
-              "text": "企业数据接入、权限同步和答案时效决定可用性；检索能力不能替代敏感操作审批。",
+              "text": "企业数据接入、权限同步和答案时效决定可用性；检索能力不能替代敏感操作审批。技能与 Agent 执行还引入新的边界：技能包本身可能藏有提示注入或外发指令，因此需要入口扫描、运行时沙箱隔离、凭证代理按策略放行，以及管理员对共享范围与发布版本的控制。",
               "kind": "analysis",
               "sources": [
-                "product"
+                "news-78d7f2d5b31d"
               ],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-08",
+              "checkedAt": "2026-10-13"
             }
           ]
         },
@@ -395,19 +398,21 @@
           "rows": [
             {
               "label": "计费方式",
-              "text": "企业方案需要询价；本轮未取得可核实的公开标准单价，不把部署与模型费用假定为免费。",
+              "text": "企业方案需要询价；本轮未取得可核实的公开标准单价，不把部署与模型费用假定为免费。官方博客另称已提供 AI 使用控制，用于在扩大使用的同时保持成本可预测，但未公布具体价格。",
               "kind": "disclosed",
               "sources": [
-                "product"
+                "updates"
               ],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-13",
+              "checkedAt": "2026-10-13"
             },
             {
               "label": "成本怎么比",
               "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
               "kind": "analysis",
               "sources": [],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-13",
+              "checkedAt": "2026-10-13"
             }
           ]
         },
@@ -417,12 +422,13 @@
           "rows": [
             {
               "label": "替代方案",
-              "text": "企业现有协作平台的 AI 助手、自建 RAG，以及其他企业搜索服务。",
+              "text": "企业现有协作平台的 AI 助手、自建 RAG，以及其他企业搜索服务；官方博客也把 Glean 与 Elastic、Microsoft Copilot 等作为职场企业搜索的替代方案进行比较。",
               "kind": "analysis",
               "sources": [
-                "product"
+                "updates"
               ],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-13",
+              "checkedAt": "2026-10-13"
             },
             {
               "label": "可能的优势",
@@ -431,7 +437,8 @@
               "sources": [
                 "product"
               ],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-13",
+              "checkedAt": "2026-10-13"
             },
             {
               "label": "失效条件",
@@ -440,7 +447,8 @@
               "sources": [
                 "product"
               ],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-13",
+              "checkedAt": "2026-10-13"
             }
           ]
         },
@@ -455,21 +463,27 @@
               "sources": [
                 "product"
               ],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-13",
+              "checkedAt": "2026-10-13"
             },
             {
               "label": "下一步观察",
-              "text": "部署周期、权限错误、答案可追溯性、员工持续使用和组织续费。",
+              "text": "部署周期、权限错误、答案可追溯性、员工持续使用和组织续费；技能与 Agent 治理是否真正落地（扫描拦截、沙箱与凭证代理、管理员发布控制），以及 AI 使用控制能否约束成本。",
               "kind": "analysis",
-              "sources": [],
-              "asOf": "2026-10-13"
+              "sources": [
+                "news-78d7f2d5b31d",
+                "updates"
+              ],
+              "asOf": "2026-10-13",
+              "checkedAt": "2026-10-13"
             },
             {
               "label": "证据缺口",
               "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
               "kind": "unknown",
               "sources": [],
-              "asOf": "2026-10-13"
+              "asOf": "2026-10-13",
+              "checkedAt": "2026-10-13"
             }
           ]
         },
@@ -484,7 +498,8 @@
               "sources": [
                 "company"
               ],
-              "asOf": "2025-06-10"
+              "asOf": "2025-06-10",
+              "checkedAt": "2026-10-13"
             }
           ]
         },
@@ -499,7 +514,8 @@
               "sources": [
                 "company"
               ],
-              "asOf": "2025-06-10"
+              "asOf": "2025-06-10",
+              "checkedAt": "2026-10-13"
             }
           ]
         }
@@ -531,6 +547,16 @@
           "checkedAt": "2026-10-13",
           "monitor": false,
           "method": "web"
+        },
+        {
+          "id": "news-78d7f2d5b31d",
+          "title": "How Glean ensures skills stay secure and permissions aware",
+          "url": "https://www.glean.com/blog/skills-governance-2026",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web",
+          "discovered": true
         }
       ]
     },
