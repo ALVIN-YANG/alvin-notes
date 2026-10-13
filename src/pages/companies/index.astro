@@ -10,7 +10,7 @@ const categories = companyCategories.filter(category => catalog.companies.some(c
 ---
 <StarlightPage frontmatter={{ title: 'AI 公司观察', description: '从核心产品、使用场景和付费理由，理解 AI 公司的商业前景、团队与投资背景。', template: 'splash', hidePageTitle: true }} sidebar={[]}>
   <div class="company-observer not-content">
-    <header class="co-heading"><div><h1 id="_top">AI 公司观察</h1><p>观察能接受委派、完成实际任务的个人助理与行业 Agent。</p></div><span>{catalog.companies.length} 家 · 每周同步</span></header>
+    <header class="co-heading"><div><h1 id="_top">AI 公司观察</h1><p>观察能接受委派、完成实际任务的个人助理与行业 Agent。</p></div><span>{catalog.companies.length} 家 · 每周来源检查</span></header>
     <CompanyNav />
     {latest && <a class="co-latest" href="/companies/changes/"><span>本期变化 <time datetime={latest.publishedAt}>{dateLabel(latest.publishedAt)}</time></span><strong>{latest.summary}</strong><span>{latest.items.length ? `阅读 ${latest.items.length} 条变化 →` : '查看本期记录 →'}</span></a>}
     <div class="co-controls" data-company-controls hidden>

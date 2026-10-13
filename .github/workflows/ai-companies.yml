@@ -1,8 +1,8 @@
-name: AI 公司观察每周同步
+name: AI 公司来源周检
 
 on:
   schedule:
-    # 周一北京时间 08:30；09:00 的本聊天任务接着核实与发布分析。
+    # 每周一北京时间 08:30；完全在 GitHub Actions 运行。
     - cron: '30 0 * * 1'
   workflow_dispatch:
     inputs:
@@ -47,5 +47,5 @@ jobs:
       - name: 报告未完成的来源
         if: steps.sync.outcome == 'failure'
         run: |
-          echo '部分来源检查失败，已保留上次资料；需在本周分析同步时复核。'
+          echo '部分来源检查失败，已保留上次资料；请查看 Actions 日志并核实失败来源。'
           exit 1
