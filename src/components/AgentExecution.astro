@@ -166,6 +166,10 @@ const edges = [
     };
 
     private tick = (time: number) => {
+      if (this.motion.matches || !this.visible || document.hidden) {
+        this.sync();
+        return;
+      }
       if (this.lastTime) this.elapsed += Math.min(time - this.lastTime, 100);
       this.lastTime = time;
       this.render();
