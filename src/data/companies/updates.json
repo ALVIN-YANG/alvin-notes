@@ -6,35 +6,8 @@
       "publishedAt": "2026-10-13",
       "start": "2026-10-06",
       "end": "2026-10-13",
-      "summary": "企业治理与远程接管：本期两项变化都扩展了产品的使用条件。",
-      "items": [
-        {
-          "id": "lovable-eu-inference",
-          "companyId": "lovable",
-          "date": "2026-10-12",
-          "title": "Lovable 增加 EU inference",
-          "fact": "Enterprise 工作区可由所有者或管理员启用欧盟区域推理；官方提示配置生效可能需要约 20 分钟。",
-          "impact": "区域推理为企业采购提供新的部署选项，但不能单凭该功能认定整个产品满足某项合规要求。",
-          "watch": "核对支持的模型、请求处理范围，以及客户是否因此开始或扩大使用。",
-          "kind": "disclosed",
-          "sources": [
-            "eu"
-          ]
-        },
-        {
-          "id": "cursor-remote-control",
-          "companyId": "cursor",
-          "date": "2026-10-06",
-          "title": "Cursor 支持远程接管本地 Agent",
-          "fact": "iOS App 可以查看并回复电脑上运行的本地 Agent；电脑仍需开机联网，企业组织需管理员启用。",
-          "impact": "开发者可以离开电脑后继续处理 Agent 的反馈；远程接管不会把本地任务自动迁移到云端。",
-          "watch": "观察长任务是否减少等待，以及配对、权限和电脑在线条件带来的使用限制。",
-          "kind": "disclosed",
-          "sources": [
-            "remote"
-          ]
-        }
-      ]
+      "summary": "收录范围调整后，本期暂未收录新的已核实产品事件。",
+      "items": []
     }
   ]
 }

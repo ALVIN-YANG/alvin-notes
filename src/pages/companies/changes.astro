@@ -16,7 +16,7 @@ const overdue = !latest || Date.parse(shanghaiDate()) - Date.parse(latest.end) >
     <p class="co-notice" data-company-stale-through={latest?.end || ''} hidden={!overdue}>最新一期覆盖至 {latest ? dateLabel(latest.end) : '尚未发布'}。本周动态尚未完成核实。</p>
     {updates.reports.map((report, index) => <section class="co-report" aria-labelledby={`report-${report.id}`}>
       <header><div><p class="co-kicker">{index === 0 ? '最新一期' : '往期记录'} · {dateLabel(report.start)} — {dateLabel(report.end)}</p><h2 id={`report-${report.id}`}>{report.summary}</h2></div><span>{report.items.length} 条 · 发布 {dateLabel(report.publishedAt)}</span></header>
-      {report.items.length ? report.items.map(item => <CompanyUpdate item={item} company={catalog.companies.find(company => company.id === item.companyId)} />) : <p class="co-muted">本期核对后没有发现值得单独发布的变化。</p>}
+      {report.items.length ? report.items.map(item => <CompanyUpdate item={item} company={catalog.companies.find(company => company.id === item.companyId)} />) : <p class="co-muted">本期没有收录新的已核实事件，历史消息保留在相应公司档案中。</p>}
     </section>)}
     {monitor.lastRun && <p class="co-footnote">来源检查 {dateLabel(monitor.lastRun.at)} · {monitor.lastRun.successCount} 个页面成功{monitor.lastRun.failureCount > 0 && ` · ${monitor.lastRun.failureCount} 个页面未完成，保留上次资料`}。来源检查日期与分析复核日期分别记录。</p>}
   </div>

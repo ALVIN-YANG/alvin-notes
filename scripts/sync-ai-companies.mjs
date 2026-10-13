@@ -5,7 +5,9 @@ const directory = new URL('../src/data/companies/', import.meta.url);
 const read = async name => JSON.parse(await readFile(new URL(name, directory), 'utf8'));
 const catalog = await read('catalog.json');
 const updates = await read('updates.json');
+const archive = await read('archive.json');
 validateCompanies(catalog, updates);
+validateCompanies(archive, archive);
 if (process.argv.includes('--check')) {
   console.log(`已校验 ${catalog.companies.length} 份公司档案及动态引用`);
 } else {

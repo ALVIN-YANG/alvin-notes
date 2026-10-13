@@ -5,17 +5,23 @@ import { validateCompanies, checkCompanySources, extractSource, shanghaiDate } f
 
 const catalog = JSON.parse(await readFile(new URL('../src/data/companies/catalog.json', import.meta.url), 'utf8'));
 const updates = JSON.parse(await readFile(new URL('../src/data/companies/updates.json', import.meta.url), 'utf8'));
+const archive = JSON.parse(await readFile(new URL('../src/data/companies/archive.json', import.meta.url), 'utf8'));
+const eventFixture = { schemaVersion: 1, reports: [{ ...updates.reports[0], items: [{ id: 'sample-event', companyId: catalog.companies[0].id, date: updates.reports[0].end, title: '产品更新', fact: '官方披露的更新', impact: '任务影响', watch: '下一步观察', kind: 'disclosed', sources: ['product'] }] }] };
 const empty = () => ({ schemaVersion: 1, lastRun: null, sources: {}, candidates: [] });
 const subject = { companies: [{ id: 'example', sources: [{ id: 'news', url: 'https://example.com/news', monitor: true }] }] };
 const now = new Date('2026-10-12T01:00:00Z');
 const page = value => `<html><title>Official product news</title><main><h1>Product update</h1><p>${value.repeat(30)}</p></main></html>`;
 const fetcher = value => async () => new Response(page(value));
 
-test('首期公司档案、事件日期与直接引用可完整追溯', () => {
-  assert.ok(catalog.companies.length >= 12);
+test('当前与归档公司档案、事件日期和直接引用可完整追溯', () => {
+  assert.ok(catalog.companies.some(company => company.id === 'instinct'));
   assert.ok(catalog.companies.some(company => company.id === 'interaction' && company.product === 'Poke' && company.category === '个人助手'));
-  assert.ok(catalog.companies.some(company => company.region === '中国'));
+  for (const company of archive.companies) assert.ok(!catalog.companies.some(active => active.id === company.id));
+  assert.ok(archive.companies.some(company => company.id === 'cursor'));
+  assert.ok(archive.companies.some(company => company.id === 'dify'));
   assert.equal(validateCompanies(catalog, updates), true);
+  assert.equal(validateCompanies(archive, archive), true);
+  assert.equal(validateCompanies(catalog, eventFixture), true);
 });
 
 test('阻止没有来源的事实、未知引用和错误周报日期进入页面', () => {
@@ -25,10 +31,10 @@ test('阻止没有来源的事实、未知引用和错误周报日期进入页�
   const unsafe = structuredClone(catalog);
   unsafe.companies[0].sources[0].url = 'javascript:alert(1)';
   assert.throws(() => validateCompanies(unsafe, updates), /来源地址无效/);
-  const future = structuredClone(updates);
+  const future = structuredClone(eventFixture);
   future.reports[0].items[0].date = '2026-10-14';
   assert.throws(() => validateCompanies(catalog, future), /事件不在本期范围内/);
-  const unknown = structuredClone(updates);
+  const unknown = structuredClone(eventFixture);
   unknown.reports[0].items[0].sources = ['missing'];
   assert.throws(() => validateCompanies(catalog, unknown), /缺少有效来源/);
 });

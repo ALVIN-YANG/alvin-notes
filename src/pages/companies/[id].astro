@@ -4,16 +4,18 @@ import CompanyNav from '../../components/CompanyNav.astro';
 import CompanyUpdate from '../../components/CompanyUpdate.astro';
 import catalog from '../../data/companies/catalog.json';
 import updates from '../../data/companies/updates.json';
+import archive from '../../data/companies/archive.json';
 import monitor from '../../data/companies/monitor.json';
 import { dateLabel, evidenceLabels, sourceFor, sourceKey } from '../../lib/company-observer.mjs';
-export function getStaticPaths() { return catalog.companies.map(company => ({ params: { id: company.id }, props: { company } })); }
-const { company } = Astro.props;
-const events = updates.reports.flatMap(report => report.items).filter(item => item.companyId === company.id).sort((a, b) => b.date.localeCompare(a.date));
+export function getStaticPaths() { return [...catalog.companies.map(company => ({ params: { id: company.id }, props: { company, archived: false } })), ...archive.companies.map(company => ({ params: { id: company.id }, props: { company, archived: true } }))]; }
+const { company, archived } = Astro.props;
+const events = (archived ? archive.reports : updates.reports).flatMap(report => report.items).filter(item => item.companyId === company.id).sort((a, b) => b.date.localeCompare(a.date));
 const related = catalog.companies.filter(other => other.category === company.category && other.id !== company.id);
 ---
 <StarlightPage frontmatter={{ title: `${company.name} · AI 公司观察`, description: company.summary, template: 'splash', hidePageTitle: true }} sidebar={[]}>
   <div class="company-observer co-profile not-content">
     <CompanyNav />
+    {archived && <p class="co-notice">已于 {dateLabel(archive.excludedAt)} 退出当前观察范围，后续不参与每周同步。保留历史资料供查阅。<a href="/companies/methodology/">查看收录标准</a></p>}
     <header class="co-profile-heading"><div><p class="co-kicker">{company.category} · {company.region}{company.status !== '在观察' && ` · ${company.status}`}</p><h1 id="_top">{company.name}</h1><p class="co-product-name">{company.product}</p><p class="co-summary">{company.summary}</p></div><div class="co-profile-meta"><a href={sourceFor(company, 'product').url} target="_blank" rel="noopener noreferrer">产品官网与文档 ↗</a><span>资料核对 {dateLabel(company.reviewedAt)}</span><span>分析复核 {dateLabel(company.analysisAt)}</span></div></header>
     <div class="co-profile-layout">
       <aside class="co-outline"><nav aria-label="公司档案目录">{company.sections.map(section => <a href={`#${section.id}`}>{section.title}</a>)}{events.length > 0 && <a href="#changes">产品动态</a>}<a href="#sources">资料来源</a></nav></aside>

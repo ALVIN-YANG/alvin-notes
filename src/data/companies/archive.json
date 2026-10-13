@@ -1,0 +1,2214 @@
+{
+  "schemaVersion": 1,
+  "excludedAt": "2026-10-13",
+  "reason": "本模块聚焦能接受用户委派并交付实际任务结果的个人助理与行业 Agent。开发平台、框架、API 和纯内容生成、搜索或写作工具不再纳入目录及周同步。",
+  "companies": [
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "company": "Anysphere",
+      "category": "AI 编程",
+      "region": "海外",
+      "product": "Cursor Agent",
+      "summary": "把需求、代码修改、测试和审查放进同一开发环境。",
+      "status": "已收购",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "面向开发者与工程团队；编辑器、CLI、云端 Agent 和代码审查围绕同一个代码库工作。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "把需求、代码修改、测试和审查放进同一开发环境。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "需求与代码库",
+            "Agent 修改、运行与测试",
+            "开发者审查并交付"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "远程控制本地 Agent 要求电脑保持开机联网；生成代码和测试结果仍需验收。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "官方当前列出 Free、Plus、Premium、Super、Ultra 及团队/企业方案。个人 Plus 标为 8 美元/月且仅支持 Grok 模型；Premium 标为 30 美元/月，第三方模型在 Cursor 内按用量另付。税费与地区条件另看价格页。",
+              "kind": "disclosed",
+              "sources": [
+                "pricing"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "其他编程 Agent、IDE 助手，以及开发者直接使用模型 API。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "代码上下文、编辑器入口和团队工作流可能形成习惯与迁移成本。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "若竞争者在相同任务上更可靠、更便宜，使用习惯可能不足以阻止迁移。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "价值取决于完整任务交付效率。被收购后的算力与组织整合可能改变成本和产品方向。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "企业续费、从需求到上线的验收时间，以及收购后模型选择与价格变化。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "组织变化",
+              "text": "2026-08-14 公司公告称已被 SpaceX 收购；保留历史档案，状态改为已收购。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-08-14"
+            },
+            {
+              "label": "团队能力",
+              "text": "官网同时展示模型研究与编辑器、CLI、云端 Agent 产品；不能由此推断研发人员比例。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "最近核实的资本事件",
+              "text": "2026-08-14 收购公告未在该页面披露交易金额；不沿用历史估值作为当前价格。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-08-14"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "Cursor 产品",
+          "url": "https://cursor.com/",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "pricing",
+          "title": "Cursor 价格",
+          "url": "https://cursor.com/pricing",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "updates",
+          "title": "Cursor 更新日志",
+          "url": "https://cursor.com/changelog",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "company",
+          "title": "加入 SpaceX 的公告",
+          "url": "https://cursor.com/blog/joining-spacex",
+          "publishedAt": "2026-08-14",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "remote",
+          "title": "本地 Agent 远程控制发布",
+          "url": "https://cursor.com/changelog/remote-control-local-agents",
+          "publishedAt": "2026-10-06",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        }
+      ]
+    },
+    {
+      "id": "replit",
+      "name": "Replit",
+      "company": "Replit",
+      "category": "AI 编程",
+      "region": "海外",
+      "product": "Replit Agent",
+      "summary": "把应用生成、运行环境和发布接在一起，减少从原型到可访问应用的步骤。",
+      "status": "在观察",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "面向创业者、产品人员和工程团队，用自然语言构建应用，再在平台运行和发布。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "把应用生成、运行环境和发布接在一起，减少从原型到可访问应用的步骤。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "描述应用与业务流程",
+            "Agent 编写并测试应用",
+            "预览、验收与部署"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "可运行原型仍需要检查权限、数据操作和部署费用；平台也明确提示模型可能出错。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "订阅含额度，Agent 使用与应用运行可能产生额外费用；官方文档采用 Effort-Based Pricing。",
+              "kind": "disclosed",
+              "sources": [
+                "pricing"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "Lovable、独立开发团队、编程 Agent 加自选云平台。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "托管环境、数据库和部署一体化可能降低交付摩擦。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "如果运行成本上升或导出迁移容易，集成便利未必形成持久壁垒。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "关键是用户能否从首次生成走到持续运营，而非生成了多少应用。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "上线应用的持续使用、账单可预测性和企业治理能力。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "管理与产品团队",
+              "text": "官网列出 Amjad Masad（创始人兼 CEO）、Haya Odeh（联合创始人、设计负责人）、Michele Catasta（总裁）、Luis Héctor Chávez（CTO）、Ghazi Masood（收入负责人）、Scott Kennedy（工程负责人）、Jordan Walke（产品负责人）。",
+              "kind": "disclosed",
+              "sources": [
+                "team"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "能力要求",
+              "text": "需要同时做好 Agent、运行平台、开发体验和企业交付；未获得这些团队的人员比例。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "已披露融资",
+              "text": "2026-03-11 公告披露融资 4 亿美元、估值 90 亿美元；列出的投资方包括 Georgian、G Squared、YC、Coatue、a16z 等。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-03-11"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "Replit Agent 文档",
+          "url": "https://docs.replit.com/features/agent/overview",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "pricing",
+          "title": "Replit 价格",
+          "url": "https://replit.com/pricing",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "updates",
+          "title": "Replit 新闻",
+          "url": "https://replit.com/blog/category/news/1",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "company",
+          "title": "2026 年融资公告",
+          "url": "https://replit.com/blog/replit-raises-400-million-dollars",
+          "publishedAt": "2026-03-11",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "team",
+          "title": "Replit 管理团队",
+          "url": "https://replit.com/about",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        }
+      ]
+    },
+    {
+      "id": "lovable",
+      "name": "Lovable",
+      "company": "Lovable",
+      "category": "AI 编程",
+      "region": "海外",
+      "product": "Lovable",
+      "summary": "让了解业务的人用自然语言构建 Web 应用，再连接业务系统和发布。",
+      "status": "在观察",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "面向创业者、业务团队和产品人员；官方展示应用生成、GitHub 同步、后端和业务集成。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "让了解业务的人用自然语言构建 Web 应用，再连接业务系统和发布。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "描述需求或提供参考",
+            "生成界面、连接数据与服务",
+            "测试权限、发布并维护"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "业务人员能生成应用，不代表复杂权限、数据模型和安全问题会自动正确。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "采用订阅与 credits；应用运行和 AI 服务用量需与构建额度分开看。",
+              "kind": "disclosed",
+              "sources": [
+                "pricing"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "Replit、低代码平台、外包开发以及工程团队自建。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "业务用户入口、集成与应用治理可能让工具成为日常工作的一部分。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "如果用户只在原型阶段使用，或者模型供应商提供同样的一体化体验，持续收费会受压。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "产品正在从生成原型延伸到运营业务；持续价值需要生产应用、组织治理和续费证据。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "上线后的活跃使用、故障修复、企业权限以及区域推理带来的客户采用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "公开创始团队",
+              "text": "公司资料介绍 Anton Osika 与 Fabian Hedin；2026-08-12 公告强调机器学习、产品、基础设施和安全招聘。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-08-12"
+            },
+            {
+              "label": "团队规模",
+              "text": "公告中的约 450 人是当年招聘目标，不能当作已核实的当前员工人数。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-08-12"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "已披露融资",
+              "text": "2026-08-12 公告披露 C 轮 4 亿美元、估值 133 亿美元；Menlo Ventures 领投，EQT 管理的 Scaleup Europe Fund 联合领投。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-08-12"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "面向创业者的产品说明",
+          "url": "https://lovable.dev/founders",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "pricing",
+          "title": "Lovable 价格",
+          "url": "https://lovable.dev/pricing",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "updates",
+          "title": "Lovable 博客",
+          "url": "https://lovable.dev/blog",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "company",
+          "title": "C 轮融资公告",
+          "url": "https://lovable.dev/blog/series-c",
+          "publishedAt": "2026-08-12",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "eu",
+          "title": "EU inference 发布",
+          "url": "https://lovable.dev/blog/eu-inference",
+          "publishedAt": "2026-10-12",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        }
+      ]
+    },
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "company": "LangChain",
+      "category": "Agent 基础设施",
+      "region": "海外",
+      "product": "LangSmith · LangGraph",
+      "summary": "把 Agent 的编排、追踪、评测和部署接成持续改进流程。",
+      "status": "在观察",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "面向构建生产 Agent 的开发团队；LangChain、LangGraph 是框架，LangSmith 是商业工程平台。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "把 Agent 的编排、追踪、评测和部署接成持续改进流程。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "接入 Agent 与真实轨迹",
+            "追踪、评测并定位问题",
+            "部署与持续改进"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "使用框架和平台不能替代业务验收标准；生产数据进入追踪系统还需管理权限与保留策略。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "LangSmith Developer 为 0 美元/席位/月，Plus 为 39 美元/席位/月，两者均可能产生额外用量费用；Enterprise 定制报价。模型与部署用量需单独核对。",
+              "kind": "disclosed",
+              "sources": [
+                "pricing"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "自建追踪评测、其他观测平台，以及直接使用底层 Agent 框架。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "开源开发者入口与线上轨迹、评测数据的积累可能降低后续迁移意愿。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "如果框架用户很少转为付费平台客户，开源使用量无法自动成为商业壁垒。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "商业核心是团队是否持续为可靠交付和排障付费，框架下载量只是入口信号。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "LangSmith 的生产采用、跨框架兼容、付费留存与用量成本。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "创始团队",
+              "text": "公司介绍称 Harrison Chase 与 Ankush Gola 于 2023 年创办公司；产品覆盖开源框架和商业平台。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "组织观察",
+              "text": "需要同时维持开源工程、平台可靠性和企业交付；具体人员构成未公开核实。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "已披露融资",
+              "text": "2025-10-20 公告披露融资 1.25 亿美元、估值 12.5 亿美元；IVP 领投，参与者包括 Sequoia、Benchmark、Amplify、CapitalG、Sapphire。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2025-10-20"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "LangChain 公司与产品",
+          "url": "https://www.langchain.com/about",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "pricing",
+          "title": "LangSmith 价格",
+          "url": "https://www.langchain.com/pricing",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "updates",
+          "title": "LangChain 博客",
+          "url": "https://www.langchain.com/blog",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "company",
+          "title": "B 轮融资公告",
+          "url": "https://www.langchain.com/blog/series-b",
+          "publishedAt": "2025-10-20",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        }
+      ]
+    },
+    {
+      "id": "firecrawl",
+      "name": "Firecrawl",
+      "company": "Firecrawl",
+      "category": "Agent 基础设施",
+      "region": "海外",
+      "product": "Firecrawl API",
+      "summary": "把网页转成 Agent 和检索系统可用的 Markdown 或结构化数据。",
+      "status": "在观察",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "面向 AI 应用开发者；官方产品覆盖搜索、抓取和网页交互。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "把网页转成 Agent 和检索系统可用的 Markdown 或结构化数据。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "提交 URL、检索或数据需求",
+            "抓取并转换网页内容",
+            "校验结构与时效，再交给应用"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "抓取成功不等于内容真实；动态页面、访问限制和版权仍需由使用者处理。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "按 credits 计费；Hobby 月付为 19 美元/月，年付折合 16 美元/月，额度 5,000 credits/月。不同接口消耗不同，基础抓取页面与搜索、交互、结构化提取不能按同一请求单位比较。",
+              "kind": "disclosed",
+              "sources": [
+                "pricing"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "自建浏览器抓取、通用采集服务和其他 Agent 数据接口。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "抓取覆盖、转换质量和稳定运行可能比单个接口功能更难复制。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "如果网页平台开放标准接口，或竞争者以更低成本达到相同成功率，价值差距可能缩小。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "适合作为 Agent 的上游数据服务；判断应围绕真实抓取成功率和单位可用结果成本。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "动态页面成功率、时效、结构化质量、故障率和用量增长。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "创始团队",
+              "text": "官网列出 Caleb Peffer（CEO）、Eric Ciarla（增长）、Nicolas Silberstein Camara（CTO）；此前做过 Mendable 与 SideGuide。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "公开投资背景",
+              "text": "官网披露累计融资 1,620 万美元，列出 Nexus Venture Partners、Y Combinator、Zapier 等；累计金额不等于单轮金额。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "Firecrawl 产品与公司",
+          "url": "https://www.firecrawl.dev/about",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "pricing",
+          "title": "Firecrawl 价格",
+          "url": "https://www.firecrawl.dev/pricing",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "updates",
+          "title": "Firecrawl 博客",
+          "url": "https://www.firecrawl.dev/blog",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        }
+      ]
+    },
+    {
+      "id": "dify",
+      "name": "Dify",
+      "company": "LangGenius（Dify）",
+      "category": "Agent 基础设施",
+      "region": "全球团队",
+      "product": "Dify",
+      "summary": "把模型、知识库和工具组装成可发布的业务工作流。",
+      "status": "在观察",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "面向业务与工程团队；提供可视化工作流、知识管线、插件，以及云服务、社区版和企业部署。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "把模型、知识库和工具组装成可发布的业务工作流。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "选择模型、整理知识与工具",
+            "编排工作流并调试",
+            "部署、观察结果与改进"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "可视化编排降低搭建门槛，业务评测、复杂流程恢复和权限设计仍需要工程工作。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "Cloud 按工作区套餐提供额度；自带模型 API key 的费用需另算，私有部署还需运行与维护成本。",
+              "kind": "disclosed",
+              "sources": [
+                "pricing"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "LangGraph 等代码框架、其他低代码编排平台和自建系统。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "插件生态、团队知识与已运行流程可能形成迁移成本。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "如果大部分用户只使用免费自部署版本，社区规模未必转化成可持续商业收入。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "机会来自把试验转为长期运行的企业流程；重点看付费部署和运维能力。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "云服务与企业版的持续采用、流程可靠性、模型成本与开源许可变化。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "公开负责人",
+              "text": "2026-03-10 公告由 Luyu Zhang（创始人兼 CEO）署名；团队在 2023 年 3 月创办 Dify。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-03-10"
+            },
+            {
+              "label": "团队能力",
+              "text": "开源、模型集成、产品编排和企业交付都与产品有关；未核实各部门人数。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "已披露融资",
+              "text": "2026-03-10 公告披露 Pre-A 轮 3,000 万美元，HSG 领投；参与者包括 GL Ventures、Alt-Alpha Capital、5Y Capital、Mizuho Leaguer Investment、NYX Ventures。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-03-10"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "Dify 产品",
+          "url": "https://dify.ai/",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "pricing",
+          "title": "Dify Cloud 价格",
+          "url": "https://www.dify.ai/pricing",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "updates",
+          "title": "Dify 博客",
+          "url": "https://dify.ai/blog",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "company",
+          "title": "Pre-A 融资公告",
+          "url": "https://dify.ai/blog/dify-raises-30m-tomorrow-s-organizations-will-be-built-by-people-and-agents",
+          "publishedAt": "2026-03-10",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        }
+      ]
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "company": "ElevenLabs",
+      "category": "语音与视频",
+      "region": "海外",
+      "product": "ElevenAgents · ElevenCreative · API",
+      "summary": "把语音生成、识别和对话接入内容制作或客户服务流程。",
+      "status": "在观察",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "创作者使用音频制作工具；企业和开发者通过语音 Agent 与 API 构建客服、销售及交互产品。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "把语音生成、识别和对话接入内容制作或客户服务流程。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "提供文本、音频或对话流程",
+            "生成音频或执行语音对话",
+            "编辑验收、接入业务与监测"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "音色质量不等于业务完成率；实时场景还受延迟、打断、工具调用、授权与交接影响。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "创作平台、Agent 与 API 的套餐和用量需分别核对；字符、音频与通话费用不能混成一个单位。",
+              "kind": "disclosed",
+              "sources": [
+                "pricing"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "其他语音 API、自建语音栈、传统客服与配音制作。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "模型质量、音频授权与内容生态、企业集成可能形成多层优势。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "如果通用模型以更低成本达到同样体验，单一音色优势会减弱；授权也是关键约束。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "发展方向覆盖创作工具与企业交互，需分别判断付费与交付质量。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "通话任务完成率、转人工率、端到端延迟，以及内容授权与企业续费。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "创始团队",
+              "text": "2026 年融资公告由 Mati Staniszewski 与 Piotr Dabkowski 署名；公告介绍研究、创作平台、企业 Agent 和全球交付。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-02-04"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "已披露融资",
+              "text": "2026-02-04 披露 D 轮 5 亿美元、估值 110 亿美元，Sequoia 领投。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-02-04"
+            },
+            {
+              "label": "后续股权事件",
+              "text": "2026-09-30 披露 3 亿美元员工股权要约交易，对应估值 220 亿美元，由 Wellington 与 T. Rowe Price 领投；该交易不等于公司获得同额新融资。",
+              "kind": "disclosed",
+              "sources": [
+                "tender"
+              ],
+              "asOf": "2026-09-30"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "产品、研究与公司公告",
+          "url": "https://elevenlabs.io/blog",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "pricing",
+          "title": "ElevenLabs 价格",
+          "url": "https://elevenlabs.io/pricing",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "company",
+          "title": "D 轮融资公告",
+          "url": "https://elevenlabs.io/blog/series-d",
+          "publishedAt": "2026-02-04",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "tender",
+          "title": "员工股权要约交易",
+          "url": "https://elevenlabs.io/blog/tender-22bn",
+          "publishedAt": "2026-09-30",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        }
+      ]
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "company": "Runway AI",
+      "category": "语音与视频",
+      "region": "海外",
+      "product": "Runway Creative · Dev",
+      "summary": "让生成、编辑、编排和导出视频进入同一制作流程。",
+      "status": "在观察",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "面向创作者、制作团队和开发者；产品包含生成模型、创意 Agent、编辑工具、工作流与 API。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "让生成、编辑、编排和导出视频进入同一制作流程。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "输入脚本、参考素材或已有视频",
+            "生成、编辑与组合镜头",
+            "审核、导出并进入制作流程"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "能生成单个好镜头，不代表长片一致性、素材权利或批量交付已经解决。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "订阅、credits、不同模型与 API 计费需要区分；实际费用还取决于重试、时长与输出规格。",
+              "kind": "disclosed",
+              "sources": [
+                "pricing"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "其他视频生成服务、传统制作工具，以及制作团队自建模型管线。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "模型研究与制作工具、素材和工作流的连接可能形成生产流程优势。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "若竞争者的可用镜头成本更低，或专业制作团队难以接入现有流程，模型优势可能无法变现。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "应重点观察是否从试用生成工具进入稳定制作预算，而非只比较样片。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "可用镜头比例、多镜头一致性、编辑与导出、团队复用及 API 成本。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "公开团队线索",
+              "text": "公司介绍与招聘页列出研究、后端/API 和产品设计等方向；AI Festival 官方页列出 Cristóbal Valenzuela 为联合创始人兼 CEO。",
+              "kind": "disclosed",
+              "sources": [
+                "team",
+                "festival"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "人数与分工",
+              "text": "未获得可核查的当前部门人数；招聘需求不等于现有团队构成。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "已披露融资",
+              "text": "2026-02-10 公告披露 E 轮 3.15 亿美元，由 General Atlantic 领投；参与者包括 NVIDIA、Adobe Ventures、AllianceBernstein、AMD Ventures、Fidelity、Mirae Asset、Felicis 等。该公告未披露估值。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-02-10"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "Runway 产品更新",
+          "url": "https://runway.com/changelog",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "team",
+          "title": "Runway 公司与岗位",
+          "url": "https://runway.com/about",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "festival",
+          "title": "AI Festival 创始人介绍",
+          "url": "https://aif.runwayml.com/",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "company",
+          "title": "2026 年 E 轮融资公告",
+          "url": "https://runway.com/news/runway-series-e-funding",
+          "publishedAt": "2026-02-10",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "pricing",
+          "title": "Runway 价格",
+          "url": "https://runway.com/pricing",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        }
+      ]
+    },
+    {
+      "id": "shengshu",
+      "name": "生数科技",
+      "company": "北京生数科技有限公司",
+      "category": "语音与视频",
+      "region": "中国",
+      "product": "Vidu",
+      "summary": "以视频生成、参考素材与 API 支持可复用的内容制作。",
+      "status": "在观察",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "面向创作者、内容机构和企业开发者；官方提供文生视频、图生视频、参考生视频，以及 Vidu API。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "以视频生成、参考素材与 API 支持可复用的内容制作。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "提供文本、图片与角色参考",
+            "生成并调整视频",
+            "选择可用镜头、剪辑与交付"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "角色一致性和物理合理性仍需用真实项目验证；世界模型研究不能直接等同于可用的视频产品。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "创作者产品与 Vidu API 的费用应分开核对；本轮未完整核实所有套餐，购买前查看产品内价格。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "Runway、其他视频模型、传统拍摄与动画制作。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "参考素材控制、模型研究和内容生产流程可能带来差异。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "若同样角色和镜头的可用结果更便宜、更可控，生成模型的阶段性优势可能减弱。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "重点看内容制作中的稳定交付，而不是仅凭模型榜单推断商业成功。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "参考生视频的稳定性、可用视频成本、企业 API 采用和编辑控制。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "已披露成员",
+              "text": "2026 年公告列出创始人朱军；政府平台转载公司公告列出 CEO 骆怡航。职务按公告日期记录。",
+              "kind": "disclosed",
+              "sources": [
+                "company",
+                "team"
+              ],
+              "asOf": "2026-02-08"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "已披露融资",
+              "text": "官网新闻列表披露 2026-04-10 完成近 20 亿元人民币 B 轮；本轮未核实完整投资方名单。",
+              "kind": "disclosed",
+              "sources": [
+                "company"
+              ],
+              "asOf": "2026-04-10"
+            },
+            {
+              "label": "历史投资背景",
+              "text": "2026-02-05 A+ 轮超过 6 亿元人民币；公司公告的政府转载列出中关村科学城公司、星连资本等。该信息不是 B 轮名单。",
+              "kind": "disclosed",
+              "sources": [
+                "team"
+              ],
+              "asOf": "2026-02-05"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "Vidu 与公司产品说明",
+          "url": "https://www.genspi.com/zh/about/",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        },
+        {
+          "id": "company",
+          "title": "生数官方新闻",
+          "url": "https://www.genspi.com/zh/news/",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": true,
+          "method": "web"
+        },
+        {
+          "id": "team",
+          "title": "A+ 轮公告转载与成员",
+          "url": "https://www.ncsti.gov.cn/kjdt/xwjj/202602/t20260208_237672.html",
+          "publishedAt": "2026-02-08",
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "web"
+        }
+      ]
+    },
+    {
+      "id": "metasota",
+      "name": "秘塔科技",
+      "company": "上海秘塔网络科技有限公司",
+      "category": "企业应用",
+      "region": "中国",
+      "product": "秘塔 AI 搜索 · 写作猫 · MetaLaw",
+      "summary": "围绕带来源的搜索、写作和法律文档，减少专业文字工作的重复步骤。",
+      "status": "在观察",
+      "reviewedAt": "2026-10-13",
+      "analysisAt": "2026-10-13",
+      "sections": [
+        {
+          "id": "product",
+          "title": "核心产品",
+          "rows": [
+            {
+              "label": "产品与用户",
+              "text": "官网展示 AI 搜索、写作猫、法律翻译和 MetaLaw；覆盖一般知识检索与专业文字场景。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "付费理由",
+              "text": "围绕带来源的搜索、写作和法律文档，减少专业文字工作的重复步骤。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "workflow",
+          "title": "实际工作流程",
+          "steps": [
+            "提交问题、文档或案件描述",
+            "检索来源、分析与生成草稿",
+            "用户核对引用、术语与成稿"
+          ],
+          "rows": [
+            {
+              "label": "能力边界",
+              "text": "带引用的回答仍可能引用错误；专业文档和法律结果需要人工核对。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "title": "价格与使用条件",
+          "rows": [
+            {
+              "label": "计费方式",
+              "text": "产品入口分别提供服务；本轮未完整核实各产品的最新套餐与额度，不展示猜测的价格。",
+              "kind": "disclosed",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "成本怎么比",
+              "text": "比较完成并验收一次任务的总成本，包括返工、人工审查、模型调用和运行费用。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "competition",
+          "title": "竞争与商业壁垒",
+          "rows": [
+            {
+              "label": "替代方案",
+              "text": "传统搜索、通用 AI 助手、其他中文检索与法律工具。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "可能的优势",
+              "text": "中文专业场景积累、术语与领域工作流可能形成产品差异。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "失效条件",
+              "text": "如果检索质量与专业流程没有持续差异，通用助手可能覆盖相同任务。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "outlook",
+          "title": "商业前景",
+          "rows": [
+            {
+              "label": "当前判断",
+              "text": "应分别判断一般搜索与专业文档的付费理由，免费用户规模不能替代商业证据。",
+              "kind": "analysis",
+              "sources": [
+                "product"
+              ],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "下一步观察",
+              "text": "引用准确性、专业使用频率、收费产品转化和长期留存。",
+              "kind": "analysis",
+              "sources": [],
+              "asOf": "2026-10-13"
+            },
+            {
+              "label": "证据缺口",
+              "text": "未获得可独立核验的留存率、净收入留存与毛利数据，暂不据融资或用户热度判断盈利能力。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "团队构成",
+          "rows": [
+            {
+              "label": "公开团队成员",
+              "text": "官网介绍闵可锐、王益为、唐悦，经历分别涉及 AI 与工程、法律实务及软件工程；该页面未完整列出当前职务与部门人数。",
+              "kind": "disclosed",
+              "sources": [
+                "team"
+              ],
+              "asOf": "2026-10-13"
+            }
+          ]
+        },
+        {
+          "id": "funding",
+          "title": "投资背景",
+          "rows": [
+            {
+              "label": "待补充",
+              "text": "本轮未取得可核对的最新公司或投资方融资公告；暂不以商业数据库旧记录当作最新融资。",
+              "kind": "unknown",
+              "sources": [],
+              "asOf": "2026-10-13"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "product",
+          "title": "秘塔产品中心",
+          "url": "https://metasota.ai/#/",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "browser"
+        },
+        {
+          "id": "team",
+          "title": "公司与团队介绍",
+          "url": "https://metasota.ai/#/about",
+          "publishedAt": null,
+          "checkedAt": "2026-10-13",
+          "monitor": false,
+          "method": "browser"
+        }
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "id": "2026-10-13",
+      "publishedAt": "2026-10-13",
+      "start": "2026-10-06",
+      "end": "2026-10-13",
+      "summary": "企业治理与远程接管：本期两项变化都扩展了产品的使用条件。",
+      "items": [
+        {
+          "id": "lovable-eu-inference",
+          "companyId": "lovable",
+          "date": "2026-10-12",
+          "title": "Lovable 增加 EU inference",
+          "fact": "Enterprise 工作区可由所有者或管理员启用欧盟区域推理；官方提示配置生效可能需要约 20 分钟。",
+          "impact": "区域推理为企业采购提供新的部署选项，但不能单凭该功能认定整个产品满足某项合规要求。",
+          "watch": "核对支持的模型、请求处理范围，以及客户是否因此开始或扩大使用。",
+          "kind": "disclosed",
+          "sources": [
+            "eu"
+          ]
+        },
+        {
+          "id": "cursor-remote-control",
+          "companyId": "cursor",
+          "date": "2026-10-06",
+          "title": "Cursor 支持远程接管本地 Agent",
+          "fact": "iOS App 可以查看并回复电脑上运行的本地 Agent；电脑仍需开机联网，企业组织需管理员启用。",
+          "impact": "开发者可以离开电脑后继续处理 Agent 的反馈；远程接管不会把本地任务自动迁移到云端。",
+          "watch": "观察长任务是否减少等待，以及配对、权限和电脑在线条件带来的使用限制。",
+          "kind": "disclosed",
+          "sources": [
+            "remote"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "lastRun": {
-    "at": "2026-10-13T06:14:52.249Z",
+    "at": "2026-10-13T06:36:16.722Z",
     "week": "2026-W42",
     "status": "ok",
-    "successCount": 20,
+    "successCount": 6,
     "failureCount": 0
   },
   "sources": {
@@ -109,15 +109,15 @@
     "glean:updates": {
       "title": "Work AI blog - AI agents, assistant, and search resources",
       "hash": "67f79a87702c361e48d4ec5022d779ac27c3602c0d806fe215ee374d3fd650a6",
-      "checkedAt": "2026-10-13T06:14:52.249Z",
-      "attemptedAt": "2026-10-13T06:14:52.249Z",
+      "checkedAt": "2026-10-13T06:36:16.722Z",
+      "attemptedAt": "2026-10-13T06:36:16.722Z",
       "error": null
     },
     "harvey:updates": {
       "title": "Harvey AI Blog: Learn about legal AI, Harvey, and more",
       "hash": "052698d1dc20bbe6b6a2c9ffb00de02958913f8b1bf5c4c12e4f63d1bc0d0a98",
-      "checkedAt": "2026-10-13T06:14:52.249Z",
-      "attemptedAt": "2026-10-13T06:14:52.249Z",
+      "checkedAt": "2026-10-13T06:36:16.722Z",
+      "attemptedAt": "2026-10-13T06:36:16.722Z",
       "error": null
     },
     "elevenlabs:product": {
@@ -137,15 +137,29 @@
     "interaction:updates": {
       "title": "Release Notes – Poke Docs",
       "hash": "68c7fadf1b46a6517ac146f26430120133314251305f3d1259ddeca2ec38c5c4",
-      "checkedAt": "2026-10-13T06:14:52.249Z",
-      "attemptedAt": "2026-10-13T06:14:52.249Z",
+      "checkedAt": "2026-10-13T06:36:16.722Z",
+      "attemptedAt": "2026-10-13T06:36:16.722Z",
       "error": null
     },
     "interaction:pricing": {
       "title": "Pricing – Poke",
       "hash": "425c12064bdd7b918998250ca34ad69d5bcd2206b80a553caca1fc8dfde82b78",
-      "checkedAt": "2026-10-13T06:14:52.249Z",
-      "attemptedAt": "2026-10-13T06:14:52.249Z",
+      "checkedAt": "2026-10-13T06:36:16.722Z",
+      "attemptedAt": "2026-10-13T06:36:16.722Z",
+      "error": null
+    },
+    "instinct:terms": {
+      "title": "Terms of Service | Instinct",
+      "hash": "43f811193205665bdbe8878f76df8d3d4e63bf6e976af91e2ea1491cb214c930",
+      "checkedAt": "2026-10-13T06:36:16.722Z",
+      "attemptedAt": "2026-10-13T06:36:16.722Z",
+      "error": null
+    },
+    "instinct:privacy": {
+      "title": "Privacy Policy | Instinct",
+      "hash": "c90ef3525284c2dd9e617fa16bb146f08533e469ec2062762c78798569ce81e6",
+      "checkedAt": "2026-10-13T06:36:16.722Z",
+      "attemptedAt": "2026-10-13T06:36:16.722Z",
       "error": null
     }
   },
