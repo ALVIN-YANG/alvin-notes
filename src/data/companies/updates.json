@@ -8,7 +8,21 @@
       "end": "2026-10-13",
       "summary": "本期同步有未完成项，已保留旧资料与待核实线索。",
       "status": "partial",
-      "items": []
+      "items": [
+        {
+          "id": "harvey-2026-10-09-26470d6bd8e2",
+          "companyId": "harvey",
+          "date": "2026-10-09",
+          "title": "Harvey 发布 2026 年 10 月产品更新",
+          "fact": "2026-10-09 产品公告列出连接器库、SharePoint/Google Drive 代理检索、Gmail 检索、PacerPro Vault 同步、Ironclad 文件导入、LexisNexis 动议驳回工作流、130+ 法律研究来源、Octus 知识源、自定义知识源过滤器、Excel 公式读取、Review Table 刷新、Fable 5.1 与 GPT-6 Astra 模型选择、移动端代理与连接器、实时听写、英语/德语/意大利语/葡萄牙语本地化。",
+          "impact": "若这些功能按公告落地，Harvey 的使用条件从单一法律 AI 助手扩展到跨系统检索、外部连接器与多模型选择，可能提高其在既有法律工作流中的嵌入度。",
+          "watch": "连接器权限控制、代理检索引用准确性、动议工作流审批节点、Excel 单元格引用可靠性，以及多语言本地化在实际交付中的质量。",
+          "kind": "disclosed",
+          "sources": [
+            "news-26470d6bd8e2"
+          ]
+        }
+      ]
     }
   ]
 }
