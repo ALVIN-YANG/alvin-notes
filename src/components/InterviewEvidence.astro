@@ -4,8 +4,8 @@ const { id } = Astro.props;
 const evidence = getInterviewEvidence(id);
 const slug = id.split('/').at(-1);
 ---
-{id.startsWith('interview/agent/') && <aside class="iq-evidence not-content" data-reader-ignore aria-label="面经来源">
-  <p class="iq-evidence-summary">{evidence.count ? `近 90 天：${evidence.recentCount} 篇 · 全部样本：${evidence.count} 篇 · ${evidence.companies.join('、')}` : evidence.collections.length ? `题单收录：${evidence.collections.length} 份 · 暂无本站核对的对应原帖` : '工程补充：暂无本站核对的对应原帖或题单'}</p>
+{id.startsWith('interview/') && <aside class="iq-evidence not-content" data-reader-ignore aria-label="面经来源">
+  <p class="iq-evidence-summary">{evidence.count ? `近 90 天：${evidence.recentCount} 篇 · 全部样本：${evidence.count} 篇 · ${evidence.companies.join('、')}` : evidence.collections.length ? `题单收录：${evidence.collections.length} 份 · 暂无本站核对的对应原帖` : '知识补充：暂无本站核对的对应原帖或题单，技术资料见上方'}</p>
   {evidence.count > 0 && <details>
     <summary>查看面经出处与追问</summary>
     <p>候选人自述，题意归并；同一作者、同一公司、同一主题计一次。近 90 天按发帖日期计算：{interviewCorpus.recentSince} 至 {interviewCorpus.asOf}。回答由本站整理。</p>

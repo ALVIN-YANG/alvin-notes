@@ -1,12 +1,13 @@
 ---
 import InterviewEvidence from './InterviewEvidence.astro';
+import { getInterviewModule, getInterviewTopic } from '../lib/interview-taxonomy.mjs';
 const route = Astro.locals.starlightRoute;
 const meta = route?.entry?.data?.interview;
 const slug = route?.slug?.split('/').at(-1);
-const id = meta ? `interview/${meta.track}/${slug}` : '';
+const id = meta ? route.entry.id : '';
 ---
 <div class="interview-question">
-  {meta && <nav class="iq-meta not-content" aria-label="题目导航"><a href={`/interview/?track=${meta.track}&question=${slug}`}>← 连续阅读</a></nav>}
+  {meta && <nav class="iq-meta not-content" aria-label="题目导航"><a href={`/interview/?module=${meta.module}&topic=${meta.topic}&question=${slug}`}>← {getInterviewModule(meta.module)?.label} · {getInterviewTopic(meta.module, meta.topic)?.label}</a></nav>}
   <div data-iq-answer><slot /></div>
   {meta && <InterviewEvidence id={id} />}
 </div>

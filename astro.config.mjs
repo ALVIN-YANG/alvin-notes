@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import remarkStaticMermaid from './src/plugins/remark-static-mermaid.mjs';
+import { buildInterviewSidebar } from './src/lib/interview-sidebar.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -82,8 +83,7 @@ export default defineConfig({
             { label: '全部题目', link: '/interview/' },
             { label: '学习路线与公开资料', link: '/interview/infra-roadmap/' },
             { label: '面经来源与热度口径', link: '/interview/agent-sources/' },
-            { label: 'AI Agent 开发', autogenerate: { directory: 'interview/agent' } },
-            { label: 'AI Infra', autogenerate: { directory: 'interview/infra' } },
+            ...buildInterviewSidebar(),
           ],
         },
         {

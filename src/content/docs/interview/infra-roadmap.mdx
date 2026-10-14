@@ -1,0 +1,45 @@
+---
+title: AI 工程问答：能力分类与学习路线
+description: 七个能力模块、二级专题、当前覆盖和公开资料。
+lastUpdated: 2026-10-14
+---
+
+import InterviewCoverage from '../../../components/InterviewCoverage.astro';
+
+题库按主要考察的能力组织：产品与业务、编程与工程基础、系统设计、AI 应用与 Agent、模型训练与推理、可靠性与运维、工程交付与协作。每题有一个主模块和一个二级专题，技术与场景通过标签提供交叉入口。先找到薄弱能力，再按专题、标签、难度或公司练习。[进入题库](/interview/)。
+
+当前保留 116 道独立问题。题目以 AI 应用及其工程实践为主，产品能力和部分通用基础专题仍待补齐。下表直接按题目统计，不把目录里预留的主题当作已有内容。
+
+## 能力与专题覆盖
+
+<InterviewCoverage />
+
+## 怎么判断题目归属
+
+按解答需要的主要机制归类。例如 Python 并发归工程基础，任务表与消息队列的一致性归系统设计，线上超时排查归可靠性与运维，Agent 规划归 AI 应用。题目中的 Agent、Python、客服、运维、性能和安全等关联，保留为技术、场景或关注点标签。
+
+RAG 关注怎样检索并生成有依据的回答；数据与知识工程关注解析、入库、索引、版本和更新。规划与多 Agent 关注怎样分解和执行任务；Harness 运行工程关注循环、预算、状态、中断恢复和执行控制。模型训练与推理解释计算机制，可靠性与运维关注这些服务上线后的观测与故障。
+
+二级专题参考了[极客时间 AI 面试题库的公开目录](https://time.geekbang.org/space/wiki/AI_Interview?section=1.2)，按本库能力边界重新组织。框架名称作为技术标签，框架选型放在相关架构专题；难度用于独立筛选。
+
+## 怎么练习和排序
+
+先理解机制，再解释失败条件，最后用一个具体场景说明取舍和验证方法。练习系统设计时说明目标、负载、数据与失败边界；练习 Agent 时核对证据、工具、权限、状态与结果；练习模型时明确模型、硬件、精度、序列长度与并发。
+
+模块内，有对应原帖的题按近 90 天独立作者与公司的出现频次排列；没有原帖的题标为题单收录或知识补充，再按现有学习顺序排列。热度、难度与能力分类是不同维度，频次高不等于更难。来源、时间窗口和去重规则见[面经来源与热度口径](/interview/agent-sources/)。
+
+每题仍保留原 URL 和技术资料。旧 Agent / Infra 连续阅读链接会定位到对应能力模块，具体题目的历史链接继续可用。
+
+## 公开资料入口
+
+| 来源 | 适合核对什么 |
+| --- | --- |
+| [阿里云百炼](https://help.aliyun.com/zh/model-studio/rag-knowledge-retrieval) | 知识检索、重排、模型调用与结构化输出 |
+| [AgentScope](https://doc.agentscope.io/tutorial/index.html)、[Qwen-Agent](https://github.com/QwenLM/Qwen-Agent) | 工具、MCP、记忆、计划、状态与评测 |
+| [Spring AI Alibaba](https://github.com/spring-ai-alibaba/website) | Java Agent 的工具执行、Hook 与运行控制 |
+| [AI Agent Handbook](https://github.com/aliyun/ai-agent-handbook) | 运行、观测、网关与安全 |
+| [PAI](https://help.aliyun.com/zh/pai/product-overview/service-architecture)、[Pai-Megatron-Patch](https://github.com/alibaba/Pai-Megatron-Patch) | 模型训练、并行与平台资源 |
+| [DashInfer](https://github.com/modelscope/dash-infer)、[Mooncake](https://github.com/kvcache-ai/Mooncake) | KV、缓存、量化和推理架构 |
+| [verl](https://verl.readthedocs.io/en/latest/hybrid_flow.html)、[DeepSeek-V3 报告](https://arxiv.org/html/2412.19437v2) | 后训练数据流与 MoE 系统 |
+
+每题的“资料”保留对应链接和核对日期。工程场景及算例是教学示例；部署参数和支持范围按选定版本核对。

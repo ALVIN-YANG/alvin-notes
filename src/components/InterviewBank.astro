@@ -1,22 +1,27 @@
 ---
 import { getCollection, render } from 'astro:content';
 import { compareInterviewQuestions, getInterviewEvidence, interviewCorpus } from '../lib/interview-evidence.mjs';
+import { interviewModules, getInterviewModule, getInterviewTopic } from '../lib/interview-taxonomy.mjs';
 import InterviewEvidence from './InterviewEvidence.astro';
-const tracks = { agent: 'AI Agent 开发', infra: 'AI Infra' };
 const levels = { basic: '基础', intermediate: '进阶', advanced: '困难' };
-const questions = (await getCollection('docs', entry => Boolean(entry.data.interview)))
-  .sort(compareInterviewQuestions);
+const questions = (await getCollection('docs', entry => Boolean(entry.data.interview))).sort(compareInterviewQuestions);
 const entries = await Promise.all(questions.map(async (entry, index) => ({entry, index, evidence: getInterviewEvidence(entry.id), Content: (await render(entry)).Content})));
 ---
 <div class="interview-bank" data-interview-bank>
-  <header class="ib-heading not-content"><h1 id="_top">AI 工程问答</h1><div class="ib-track-choices" role="group" aria-label="内容方向" data-ib-enhanced hidden>
-    {Object.entries(tracks).map(([id, label]) => <button type="button" data-ib-track={id} aria-pressed={id === 'agent' ? 'true' : 'false'}>{label}</button>)}
-  </div></header>
-  <p class="ib-ranking-note not-content">Agent 按近 90 天原帖频次排序 · <a href="/interview/agent-sources/">{interviewCorpus.sources.length} 篇面经与近期题单，查看来源</a></p>
+  <header class="ib-heading not-content"><h1 id="_top">AI 工程问答</h1><a class="ib-guide-link" href="/interview/infra-roadmap/">分类与学习路线</a></header>
+  <nav class="ib-module-choices not-content" aria-label="能力模块" data-ib-enhanced hidden>
+    <button type="button" data-ib-module="all" aria-pressed="true">全部<span>{questions.length}</span></button>
+    {interviewModules.map(module => <button type="button" data-ib-module={module.id} aria-pressed="false">{module.label}<span>{questions.filter(entry => entry.data.interview!.module === module.id).length}</span></button>)}
+  </nav>
+  <p class="ib-ranking-note not-content">按能力与专题练习 · 有原帖的题按近 90 天频次排序 · <a href="/interview/agent-sources/">{interviewCorpus.sources.length} 篇面经与热度口径</a></p>
   <div class="ib-workspace">
     <aside class="ib-catalog not-content" aria-label="题目目录">
       <div class="ib-filters" data-ib-enhanced hidden>
-        <label class="ib-search"><span class="sr-only">搜索题目或公司</span><input type="search" data-ib-search placeholder="搜索题目或公司" autocomplete="off" /></label>
+        <div class="ib-topic-options">
+          <label><span class="sr-only">二级专题</span><select data-ib-topic><option value="">全部二级专题</option></select></label>
+          <label><span class="sr-only">技术与场景标签</span><select data-ib-tag><option value="">全部技术与场景标签</option></select></label>
+        </div>
+        <label class="ib-search"><span class="sr-only">搜索题目、标签或公司</span><input type="search" data-ib-search placeholder="搜索题目、标签或公司" autocomplete="off" /></label>
         <div class="ib-level-choices" role="group" aria-label="题目难度"><button type="button" data-ib-level="" aria-pressed="true">全部</button>{Object.entries(levels).map(([id,label]) => <button type="button" data-ib-level={id} aria-pressed="false">{label}</button>)}</div>
         <button type="button" class="ib-mobile-catalog" data-ib-catalog-toggle aria-expanded="false" aria-controls="ib-question-menu">目录</button>
       </div>
@@ -24,18 +29,20 @@ const entries = await Promise.all(questions.map(async (entry, index) => ({entry,
         <ol class="ib-question-list">
           {entries.map(({entry, index, evidence}) => {
             const meta = entry.data.interview!;
+            const module = getInterviewModule(meta.module)!;
+            const topic = getInterviewTopic(meta.module, meta.topic)!;
             const companies = evidence.companies.slice(0, 2).join(' / ') + (evidence.companies.length > 2 ? ' 等' : '');
-            const badge = evidence.count ? `近 90 天 ${evidence.recentCount} 篇 · ${companies}` : evidence.collections.length ? `${evidence.collections.length} 份题单收录` : '工程补充';
-            return <li data-ib-question data-id={entry.id} data-track={meta.track} data-level={meta.level} data-panel={`ib-panel-${index}`} data-search={`${entry.data.title} ${meta.topic} ${meta.tags.join(' ')} ${evidence.companies.join(' ')}`.toLowerCase()}><a class="ib-question" href={`/${entry.id}/`}><span class="ib-question-number">{String(meta.order).padStart(2,'0')}</span><span>{entry.data.title}</span><span class={`ib-level ${meta.level}`}>{levels[meta.level]}</span>{meta.track === 'agent' && <span class="ib-question-evidence">{badge}</span>}</a></li>;
+            const badge = evidence.count ? `近 90 天 ${evidence.recentCount} 篇 · ${companies}` : evidence.collections.length ? `${evidence.collections.length} 份题单收录` : '知识补充';
+            return <li data-ib-question data-id={entry.id} data-track={meta.track} data-module={meta.module} data-topic={meta.topic} data-tags={JSON.stringify(meta.tags)} data-level={meta.level} data-panel={`ib-panel-${index}`} data-search={`${entry.data.title} ${module.label} ${topic.label} ${meta.tags.join(' ')} ${evidence.companies.join(' ')}`.toLowerCase()}><a class="ib-question" href={`/${entry.id}/`}><span class="ib-question-number" data-ib-number>{String(index + 1).padStart(2,'0')}</span><span>{entry.data.title}</span><span class="ib-question-topic">{module.label} · {topic.label}</span><span class={`ib-level ${meta.level}`}>{levels[meta.level]}</span><span class="ib-question-evidence">{badge}</span></a></li>;
           })}
         </ol>
-        <div class="ib-empty" data-ib-empty hidden><p>没有找到题目</p><button type="button" data-ib-reset>清除筛选</button></div>
+        <div class="ib-empty" data-ib-empty hidden><p data-ib-empty-message>没有找到题目</p><button type="button" data-ib-reset>清除筛选</button></div>
       </nav>
-      <footer class="ib-catalog-footer"><span data-ib-count role="status" aria-live="polite">{questions.length} 题</span><a href="/interview/infra-roadmap/">资料</a></footer>
+      <footer class="ib-catalog-footer"><span data-ib-count role="status" aria-live="polite">{questions.length} 题</span><a href="/interview/infra-roadmap/">覆盖范围</a></footer>
     </aside>
     <section class="ib-reading" aria-label="答案阅读区">
       <div class="ib-reading-toolbar not-content" data-ib-enhanced hidden>
-        <div class="ib-nav-actions"><button type="button" data-ib-prev aria-label="上一题" title="上一题（←）">←</button><span data-ib-position>1 / {questions.filter(entry => entry.data.interview!.track === 'agent').length}</span><button type="button" data-ib-next aria-label="下一题" title="下一题（→）">→</button></div>
+        <div class="ib-nav-actions"><button type="button" data-ib-prev aria-label="上一题" title="上一题（←）">←</button><span data-ib-position>1 / {questions.length}</span><button type="button" data-ib-next aria-label="下一题" title="下一题（→）">→</button></div>
         <div class="article-reader ib-reader" data-ib-reader role="group" aria-label="题目朗读" hidden>
           <button type="button" data-reader-toggle aria-label="朗读题目" title="朗读 / 暂停 / 继续（R）"><span data-reader-label>朗读</span><kbd>R</kbd></button>
           <button type="button" data-reader-stop aria-label="停止朗读" title="停止朗读（Esc）" hidden>停止</button>
@@ -44,6 +51,7 @@ const entries = await Promise.all(questions.map(async (entry, index) => ({entry,
       </div>
       <div class="ib-reading-scroll" data-ib-scroll tabindex="0" aria-label="滚动阅读答案">
         {entries.map(({entry, index, Content}) => <article id={`ib-panel-${index}`} class="ib-answer sl-markdown-content" data-ib-answer hidden={index !== 0} aria-labelledby={`ib-title-${index}`}>
+          <p class="ib-answer-topic not-content" data-reader-ignore>{getInterviewModule(entry.data.interview!.module)?.label} / {getInterviewTopic(entry.data.interview!.module, entry.data.interview!.topic)?.label}</p>
           <h2 id={`ib-title-${index}`} class="ib-answer-title">{entry.data.title}</h2><Content /><InterviewEvidence id={entry.id} />
         </article>)}
         <p class="ib-reading-empty" data-ib-reading-empty hidden>换一个关键词，或清除筛选。</p>

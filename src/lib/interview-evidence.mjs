@@ -28,18 +28,14 @@ export function getInterviewEvidence(id, dataset = corpus) {
 }
 
 export function compareInterviewQuestions(a, b) {
-  const track = a.data.interview.track.localeCompare(b.data.interview.track);
-  if (track) return track;
-  if (a.data.interview.track === 'agent') {
-    const first = getInterviewEvidence(a.id);
-    const second = getInterviewEvidence(b.id);
-    const heat = second.recentCount - first.recentCount
-      || second.recentCompanies.length - first.recentCompanies.length
-      || second.count - first.count
-      || second.companies.length - first.companies.length
-      || second.latest.localeCompare(first.latest)
-      || second.collections.length - first.collections.length;
-    if (heat) return heat;
-  }
-  return a.data.interview.order - b.data.interview.order || a.id.localeCompare(b.id);
+  const first = getInterviewEvidence(a.id);
+  const second = getInterviewEvidence(b.id);
+  return second.recentCount - first.recentCount
+    || second.recentCompanies.length - first.recentCompanies.length
+    || second.count - first.count
+    || second.companies.length - first.companies.length
+    || second.latest.localeCompare(first.latest)
+    || second.collections.length - first.collections.length
+    || a.data.interview.order - b.data.interview.order
+    || a.id.localeCompare(b.id);
 }
