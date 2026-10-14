@@ -1,7 +1,3 @@
-import { createHash } from 'node:crypto';
-import { JSDOM } from 'jsdom';
-import { getISOWeek } from './weekly-report.mjs';
-
 export const companyCategories = ['AI 编程', 'Agent 基础设施', '语音与视频', '企业应用', '个人助手'];
 export const evidenceLabels = { verified: '已核实事实', disclosed: '企业自述', analysis: '分析判断', unknown: '待核实' };
 export const sectionIds = ['product', 'workflow', 'pricing', 'competition', 'outlook', 'team', 'funding'];
@@ -67,80 +63,4 @@ export function validateCompanies(catalog, updates) {
     }
   }
   return true;
-}
-
-export function readSourceContent(html, url) {
-  const dom = new JSDOM(html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ''), { url });
-  const document = dom.window.document;
-  const title = document.querySelector('title')?.textContent?.trim() || new URL(url).hostname;
-  let publishedAt = document.querySelector('meta[property="article:published_time"]')?.content?.slice(0, 10);
-  for (const script of document.querySelectorAll('script[type="application/ld+json"]')) {
-    try {
-      const values = JSON.parse(script.textContent);
-      const entries = Array.isArray(values) ? values : [values, ...(values['@graph'] || [])];
-      publishedAt ||= entries.find(value => value?.datePublished)?.datePublished?.slice(0, 10);
-    } catch { /* Invalid optional metadata cannot become evidence. */ }
-  }
-  document.querySelectorAll('script,style,noscript,nav,footer,aside,iframe,svg').forEach(node => node.remove());
-  document.querySelectorAll('header').forEach(node => { if (!node.querySelector('h1,article')) node.remove(); });
-  const roots = [document.querySelector('article'), document.querySelector('main'), document.body].filter(Boolean);
-  const root = roots.find(node => node.textContent.replace(/\s+/g, ' ').trim().length >= 100) || document.body;
-  const text = root.textContent.replace(/\s+/g, ' ').trim();
-  const links = [...root.querySelectorAll('a[href]')].map(link => ({ url: link.href, text: link.textContent.replace(/\s+/g, ' ').trim() }));
-  dom.window.close();
-  if (text.length < 100 || /^(we.?re sorry|just a moment|access denied|checking your browser|enable javascript)/i.test(text)) {
-    throw new Error('未取得可检查的正文，需浏览器核对');
-  }
-  const normalized = text.slice(0, 18000);
-  return { title, text: normalized, links, publishedAt: /^\d{4}-\d{2}-\d{2}$/.test(publishedAt || '') ? publishedAt : null, hash: createHash('sha256').update(normalized).digest('hex') };
-}
-
-export function extractSource(html, url) {
-  const { title, hash } = readSourceContent(html, url);
-  return { title, hash };
-}
-
-export async function checkCompanySources(catalog, previous, { fetcher = fetch, now = new Date(), force = false } = {}) {
-  const at = now.toISOString();
-  const date = shanghaiDate(now);
-  const week = getISOWeek(date);
-  const jobs = catalog.companies.flatMap(company => company.sources.filter(source => source.monitor).map(source => ({ company, source })));
-  const covered = jobs.every(({ company, source }) => {
-    const checked = previous.sources[sourceKey(company.id, source.id)];
-    return checked?.checkedAt && !checked.error && getISOWeek(shanghaiDate(new Date(checked.checkedAt))) === week;
-  });
-  if (!force && previous.lastRun?.week === week && previous.lastRun.status === 'ok' && covered) return { state: previous, skipped: true };
-  const state = structuredClone(previous);
-  let successCount = 0;
-  let failureCount = 0;
-  // A bounded pool keeps one failed website from blocking the other companies.
-  let cursor = 0;
-  async function worker() {
-    while (cursor < jobs.length) {
-      const { company, source } = jobs[cursor++];
-      const key = sourceKey(company.id, source.id);
-      const old = previous.sources[key];
-      try {
-        const response = await fetcher(source.url, { headers: { 'User-Agent': 'AlvinNotes-CompanyObserver/1.0' }, signal: AbortSignal.timeout(20000) });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        if (Number(response.headers?.get('content-length') || 0) > 4_000_000) throw new Error('来源页面过大');
-        const html = await response.text();
-        if (html.length > 4_000_000) throw new Error('来源页面过大');
-        const result = extractSource(html, response.url || source.url);
-        state.sources[key] = { ...result, checkedAt: at, attemptedAt: at, error: null };
-        if (old?.hash && old.hash !== result.hash) {
-          const id = `${key}:${result.hash.slice(0, 16)}`;
-          if (!state.candidates.some(item => item.id === id)) state.candidates.push({ id, companyId: company.id, sourceId: source.id, detectedAt: at, status: 'pending' });
-        }
-        successCount++;
-      } catch (error) {
-        state.sources[key] = { ...old, attemptedAt: at, error: String(error.message).slice(0, 200) };
-        failureCount++;
-      }
-    }
-  }
-  await Promise.all(Array.from({ length: Math.min(4, jobs.length) }, worker));
-  state.candidates.sort((a, b) => a.id.localeCompare(b.id));
-  state.lastRun = { at, week, status: failureCount ? 'partial' : 'ok', successCount, failureCount };
-  return { state, skipped: false };
 }

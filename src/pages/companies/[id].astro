@@ -1,34 +1,27 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import CompanyNav from '../../components/CompanyNav.astro';
-import CompanyUpdate from '../../components/CompanyUpdate.astro';
+import CompanyHistorical from '../../components/CompanyHistorical.astro';
+import directory from '../../data/companies/directory.json';
 import catalog from '../../data/companies/catalog.json';
-import updates from '../../data/companies/updates.json';
 import archive from '../../data/companies/archive.json';
-import monitor from '../../data/companies/monitor.json';
-import { dateLabel, evidenceLabels, sourceFor, sourceKey } from '../../lib/company-observer.mjs';
-export function getStaticPaths() { return [...catalog.companies.map(company => ({ params: { id: company.id }, props: { company, archived: false } })), ...archive.companies.map(company => ({ params: { id: company.id }, props: { company, archived: true } }))]; }
-const { company, archived } = Astro.props;
-const events = (archived ? archive.reports : updates.reports).flatMap(report => report.items).filter(item => item.companyId === company.id).sort((a, b) => b.date.localeCompare(a.date));
-const related = catalog.companies.filter(other => other.category === company.category && other.id !== company.id);
+import { dateLabel } from '../../lib/company-directory.mjs';
+export function getStaticPaths() {
+  const old = [...catalog.companies, ...archive.companies];
+  const ids = new Set([...directory.companies.map(company => company.id), ...old.map(company => company.id)]);
+  return [...ids].map(id => ({ params: { id }, props: { listing: directory.companies.find(company => company.id === id), historical: old.find(company => company.id === id) } }));
+}
+const { listing, historical } = Astro.props;
+const name = listing?.name || historical.name;
 ---
-<StarlightPage frontmatter={{ title: `${company.name} · AI 公司观察`, description: company.summary, template: 'splash', hidePageTitle: true }} sidebar={[]}>
+<StarlightPage frontmatter={{ title: `${name} · AI 公司观察`, description: listing?.summary || historical.summary, template: 'splash', hidePageTitle: true }} sidebar={[]}>
   <div class="company-observer co-profile not-content">
     <CompanyNav />
-    {archived && <p class="co-notice">已于 {dateLabel(archive.excludedAt)} 退出当前观察范围，后续不参与每周同步。保留历史资料供查阅。<a href="/companies/methodology/">查看收录标准</a></p>}
-    <header class="co-profile-heading"><div><p class="co-kicker">{company.category} · {company.region}{company.status !== '在观察' && ` · ${company.status}`}</p><h1 id="_top">{company.name}</h1><p class="co-product-name">{company.product}</p><p class="co-summary">{company.summary}</p></div><div class="co-profile-meta"><a href={sourceFor(company, 'product').url} target="_blank" rel="noopener noreferrer">产品官网与文档 ↗</a><span>资料核对 {dateLabel(company.reviewedAt)}</span><span>分析复核 {dateLabel(company.analysisAt)}</span></div></header>
-    <div class="co-profile-layout">
-      <aside class="co-outline"><nav aria-label="公司档案目录">{company.sections.map(section => <a href={`#${section.id}`}>{section.title}</a>)}{events.length > 0 && <a href="#changes">产品动态</a>}<a href="#sources">资料来源</a></nav></aside>
-      <div class="co-profile-content">
-        {company.sections.map(section => <section class="co-section" id={section.id} aria-labelledby={`heading-${section.id}`}>
-          <h2 id={`heading-${section.id}`}>{section.title}</h2>
-          {section.steps && <ol class="co-workflow">{section.steps.map((step, index) => <li><span>{['输入', '处理', '交付'][index]}</span>{step}</li>)}</ol>}
-          <dl class="co-facts">{section.rows.map(row => <div><dt>{row.label}<span class={`co-evidence ${row.kind}`}>{evidenceLabels[row.kind]}</span></dt><dd><p>{row.text}</p><div class="co-citations">{row.sources.map(id => { const source = sourceFor(company, id); return <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a>; })}<span>{row.kind === 'analysis' ? '判断日期' : '核对日期'} {dateLabel(row.checkedAt || (row.kind === 'analysis' || row.sources.length === 0 ? row.asOf : row.sources.map(id => sourceFor(company, id).checkedAt).sort()[0]))}{row.kind === 'disclosed' && row.asOf !== company.reviewedAt && ` · 披露日期 ${dateLabel(row.asOf)}`}</span></div></dd></div>)}</dl>
-        </section>)}
-        {events.length > 0 && <section class="co-section" id="changes"><h2>产品动态</h2>{events.map(item => <CompanyUpdate item={item} company={company} />)}</section>}
-        <section class="co-section" id="sources"><h2>资料来源</h2><p class="co-muted">公司主体：{company.company}。产品与团队资料以对应页面为准。</p><ul class="co-source-list">{company.sources.map(source => { const checked = monitor.sources[sourceKey(company.id, source.id)]; return <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a><span>{source.publishedAt && `发布 ${dateLabel(source.publishedAt)} · `}资料核对 {dateLabel(source.checkedAt)}{checked?.checkedAt && ` · 来源检查 ${dateLabel(checked.checkedAt)}`}{checked?.error && ' · 最近检查失败，保留原资料'}</span></li>; })}</ul></section>
-        {related.length > 0 && <section class="co-section"><h2>同类产品</h2><div class="co-related">{related.map(other => <a href={`/companies/${other.id}/`}><strong>{other.name}</strong><span>{other.product}</span><span>{other.summary}</span></a>)}</div></section>}
-      </div>
-    </div>
+    {listing ? <>
+      <header class="co-profile-heading"><div><p class="co-kicker">{listing.category} · {listing.region}{listing.city && ` · ${listing.city}`}</p><h1 id="_top">{listing.name}</h1><p class="co-summary">{listing.summary}</p></div><div class="co-profile-meta"><a href={listing.website} target="_blank" rel="noopener noreferrer">访问官网 ↗</a><span>目录同步 {dateLabel(listing.syncedAt)}</span></div></header>
+      <section class="co-section"><h2>公开信息</h2><dl class="co-facts"><div><dt>所在地</dt><dd>{listing.location}{listing.hangzhouTeam && '（在杭州设有团队）'}</dd></div><div><dt>收录依据</dt><dd>{listing.activity.label} · {dateLabel(listing.activity.asOf)}<p class="co-muted">表示公开产品或名册中的活动记录，不代表经营业绩或产品效果已核实。</p></dd></div>{listing.sourceSummary && listing.sourceSummary !== listing.summary && <div><dt>来源原文</dt><dd>{listing.sourceSummary}</dd></div>}</dl></section>
+      <section class="co-section"><h2>信息来源</h2><ul class="co-source-list">{listing.sources.map(source => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a><span>{source.sourceId === 'cac' ? '备案日期' : '资料读取'} {dateLabel(source.asOf)}</span></li>)}</ul></section>
+      {historical && <details class="co-history"><summary>历史深度档案（已停止更新）</summary><CompanyHistorical company={historical} /></details>}
+    </> : <><header class="co-heading"><h1 id="_top">{name}</h1></header><CompanyHistorical company={historical} /></>}
   </div>
 </StarlightPage>

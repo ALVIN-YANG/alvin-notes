@@ -1,0 +1,1143 @@
+{
+  "schemaVersion": 1,
+  "companies": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "website": "https://openai.com/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "大模型",
+      "summary": "提供通用模型、ChatGPT 和开发者 API。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "ChatGPT 官方产品介绍",
+          "url": "https://chatgpt.com/overview/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "website": "https://www.anthropic.com/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "大模型",
+      "summary": "开发 Claude 模型、编程助手与企业 AI 服务。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.anthropic.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "deepmind",
+      "name": "Google DeepMind",
+      "website": "https://deepmind.google/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "大模型",
+      "summary": "研究通用人工智能，开发 Gemini 等模型。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://deepmind.google/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "mistral",
+      "name": "Mistral AI",
+      "website": "https://mistral.ai/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "大模型",
+      "summary": "提供开放模型、Le Chat 和企业模型部署服务。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://mistral.ai/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "website": "https://cohere.com/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "大模型",
+      "summary": "提供面向企业检索、生成和工作流的模型服务。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://cohere.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "website": "https://www.perplexity.ai/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "AI Agent",
+      "summary": "提供带来源的 AI 搜索与研究工具。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.perplexity.ai/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "sierra",
+      "name": "Sierra",
+      "website": "https://sierra.ai/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "AI Agent",
+      "summary": "将对话 Agent 接入企业客服与业务系统。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://sierra.ai/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "decagon",
+      "name": "Decagon",
+      "website": "https://decagon.ai/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "AI Agent",
+      "summary": "提供跨语音、聊天和邮件的客户服务 Agent。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://decagon.ai/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "instinct",
+      "name": "Instinct",
+      "website": "https://instinct.com/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "AI Agent",
+      "summary": "通过电话和消息承接预约、采购等个人事务。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://instinct.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "glean",
+      "name": "Glean",
+      "website": "https://www.glean.com/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "AI Agent",
+      "summary": "连接企业知识与工作系统，提供搜索和任务助手。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.glean.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "harvey",
+      "name": "Harvey",
+      "website": "https://www.harvey.ai/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "行业应用",
+      "summary": "将 AI 用于法律文档、研究和专业工作流程。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.harvey.ai/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "interaction",
+      "name": "Interaction / Poke",
+      "website": "https://poke.com/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "AI Agent",
+      "summary": "在聊天工具中处理邮件、日程和个人任务。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://poke.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "website": "https://elevenlabs.io/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "语音技术",
+      "summary": "提供语音生成、识别和对话 Agent 服务。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://elevenlabs.io/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "website": "https://runwayml.com/",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "category": "生成工具",
+      "summary": "开发视频生成模型和内容制作工具。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://runwayml.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "zhipu",
+      "name": "智谱",
+      "website": "https://www.bigmodel.cn/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "大模型",
+      "summary": "提供 GLM 模型、开放平台和智能体产品。",
+      "aliases": [
+        "北京智谱华章科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.bigmodel.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "moonshot",
+      "name": "月之暗面",
+      "website": "https://www.moonshot.cn/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "大模型",
+      "summary": "开发 Kimi 模型与面向用户的 AI 助手。",
+      "aliases": [
+        "北京月之暗面科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.moonshot.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "minimax",
+      "name": "MiniMax",
+      "website": "https://www.minimax.io/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "大模型",
+      "summary": "开发文本、语音和视频模型及应用。",
+      "aliases": [
+        "上海稀宇科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.minimax.io/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "stepfun",
+      "name": "阶跃星辰",
+      "website": "https://www.stepfun.com/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "大模型",
+      "summary": "开发多模态模型及 AI 助手产品。",
+      "aliases": [
+        "上海阶跃星辰智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.stepfun.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "baichuan",
+      "name": "百川智能",
+      "website": "https://www.baichuan-ai.com/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "大模型",
+      "summary": "开发大语言模型和行业 AI 服务。",
+      "aliases": [
+        "北京百川智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.baichuan-ai.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "zero-one",
+      "name": "零一万物",
+      "website": "https://www.01.ai/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "大模型",
+      "summary": "开发 Yi 模型与企业 AI 解决方案。",
+      "aliases": [
+        "北京零一万物科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.01.ai/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "modelbest",
+      "name": "面壁智能",
+      "website": "https://www.modelbest.cn/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "大模型",
+      "summary": "开发高效模型和端侧智能应用能力。",
+      "aliases": [
+        "北京面壁智能科技有限责任公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.modelbest.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "siliconflow",
+      "name": "硅基流动",
+      "website": "https://siliconflow.cn/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "基础设施",
+      "summary": "提供模型推理、部署和开发者 API 服务。",
+      "aliases": [
+        "北京硅基流动科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://siliconflow.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "infinigence",
+      "name": "无问芯穹",
+      "website": "https://www.infinigence.com/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "基础设施",
+      "summary": "提供 AI 算力、模型推理和异构计算服务。",
+      "aliases": [
+        "上海无问芯穹智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.infinigence.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "laiye",
+      "name": "来也科技",
+      "website": "https://laiye.com/product/worker",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "AI Agent",
+      "summary": "提供桌面 AI 员工与跨系统任务执行能力。",
+      "aliases": [
+        "来也科技（北京）有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://laiye.com/product/worker",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "bairong",
+      "name": "百融智能",
+      "website": "https://www.brgroup.com/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "AI Agent",
+      "summary": "面向企业提供智能体与业务结果交付服务。",
+      "aliases": [
+        "百融云创科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.brgroup.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "metasota",
+      "name": "秘塔科技",
+      "website": "https://metaso.cn/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "AI Agent",
+      "summary": "提供 AI 搜索、资料研究和写作工具。",
+      "aliases": [
+        "上海秘塔网络科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://metaso.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "sensetime",
+      "name": "商汤科技",
+      "website": "https://www.sensetime.com/cn",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "行业应用",
+      "summary": "提供视觉智能、模型和行业 AI 服务。",
+      "aliases": [
+        "上海商汤智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.sensetime.com/cn",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "iflytek",
+      "name": "科大讯飞",
+      "website": "https://www.iflytek.com/",
+      "region": "国内",
+      "city": "",
+      "location": "中国",
+      "category": "大模型",
+      "summary": "提供星火模型、语音技术与行业 AI 应用。",
+      "aliases": [
+        "科大讯飞股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.iflytek.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "website": "https://www.deepseek.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "大模型",
+      "summary": "开发 DeepSeek 模型及对话与推理服务。",
+      "aliases": [
+        "杭州深度求索人工智能基础技术研究有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.deepseek.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "aliyun",
+      "name": "阿里云",
+      "website": "https://www.aliyun.com/product/bailian",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "大模型",
+      "summary": "提供通义模型、百炼平台及企业 AI 服务。",
+      "aliases": [
+        "阿里云计算有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.aliyun.com/product/bailian",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "indeed",
+      "name": "实在智能",
+      "website": "https://www.ai-indeed.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供能操作软件和企业系统的实在 Agent。",
+      "aliases": [
+        "浙江实在智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.ai-indeed.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "byai",
+      "name": "百应科技",
+      "website": "https://www.byai.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供语音和客户运营 Agent，连接企业客户互动流程。",
+      "aliases": [
+        "浙江百应科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.byai.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "betteryeah",
+      "name": "斑头雁 / BetterYeah",
+      "website": "https://www.betteryeah.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供企业 Agent 开发、编排与部署平台。",
+      "aliases": [
+        "斑头雁（杭州）智能科技有限责任公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.betteryeah.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "qunhe",
+      "name": "群核科技",
+      "website": "https://www.qunhe.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供空间设计软件与空间智能相关产品。",
+      "aliases": [
+        "杭州群核信息技术有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.qunhe.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "faceunity",
+      "name": "相芯科技",
+      "website": "https://www.faceunity.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供数字人、虚拟形象和视觉 AI 技术。",
+      "aliases": [
+        "杭州相芯科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.faceunity.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "unitree",
+      "name": "宇树科技",
+      "website": "https://www.unitree.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "开发四足与人形机器人及相关控制技术。",
+      "aliases": [
+        "杭州宇树科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.unitree.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "deeprobotics",
+      "name": "云深处科技",
+      "website": "https://www.deeprobotics.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "开发四足机器人及巡检等行业智能应用。",
+      "aliases": [
+        "杭州云深处科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.deeprobotics.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor / Anysphere",
+      "website": "https://cursor.com/",
+      "category": "AI 编程",
+      "summary": "提供 AI 代码编辑器和编程 Agent。",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://cursor.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "replit",
+      "name": "Replit",
+      "website": "https://replit.com/",
+      "category": "AI 编程",
+      "summary": "提供在线开发环境和应用开发 Agent。",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://replit.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "website": "https://www.langchain.com/",
+      "category": "基础设施",
+      "summary": "提供 Agent 开发、运行与可观测性工具。",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.langchain.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "firecrawl",
+      "name": "Firecrawl",
+      "website": "https://www.firecrawl.dev/",
+      "category": "基础设施",
+      "summary": "提供面向 AI 应用的网页抓取与结构化数据服务。",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司官网与公开产品",
+          "url": "https://www.firecrawl.dev/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "lovable",
+      "name": "Lovable",
+      "website": "https://lovable.dev/",
+      "category": "AI 编程",
+      "summary": "通过自然语言生成和迭代 Web 应用。",
+      "region": "国外",
+      "city": "",
+      "location": "国外（官网未整理城市）",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品文档（首次整理）",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "Lovable 官方产品文档",
+          "url": "https://docs.lovable.dev/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    }
+  ]
+}

@@ -4,29 +4,16 @@ import CompanyNav from '../../components/CompanyNav.astro';
 import CompanyUpdate from '../../components/CompanyUpdate.astro';
 import catalog from '../../data/companies/catalog.json';
 import updates from '../../data/companies/updates.json';
-import monitor from '../../data/companies/monitor.json';
-import { dateLabel, shanghaiDate } from '../../lib/company-observer.mjs';
-const latest = updates.reports[0];
-const overdue = !latest || Date.parse(shanghaiDate()) - Date.parse(latest.end) > 8 * 86400000;
+import { dateLabel } from '../../lib/company-observer.mjs';
 ---
-<StarlightPage frontmatter={{ title: '本周变化 · AI 公司观察', description: '每周核实 AI 公司产品、使用条件与商业背景的变化，并记录对判断的影响。', template: 'splash', hidePageTitle: true }} sidebar={[]}>
+<StarlightPage frontmatter={{ title: '历史动态 · AI 公司观察', description: '此前核实的公司动态，保留原始日期与来源。', template: 'splash', hidePageTitle: true }} sidebar={[]}>
   <div class="company-observer not-content">
-    <header class="co-heading"><div><h1 id="_top">本周变化</h1><p>看变化，也看它对产品与判断的影响。</p></div><span>每周同步</span></header>
+    <header class="co-heading"><div><h1 id="_top">历史动态</h1><p>此前核实的事件，保留原始日期和来源。</p></div><span>已停止更新</span></header>
     <CompanyNav active="changes" />
-    {monitor.lastReview && <p class="co-notice">资料与分析核对 {dateLabel(monitor.lastReview.at)} · {monitor.lastReview.successCount} 家完成{monitor.lastReview.failureCount > 0 && ` · ${monitor.lastReview.failureCount} 家未完成，保留旧资料与旧日期`}{monitor.lastRun?.failureCount > 0 && ` · ${monitor.lastRun.failureCount} 个来源读取失败`}。</p>}
-    <p class="co-notice" data-company-stale-through={latest?.end || ''} hidden={!overdue}>最新一期覆盖至 {latest ? dateLabel(latest.end) : '尚未发布'}。本周动态尚未完成核实。</p>
+    <p class="co-notice">栏目已改为每月同步公司目录，不再监控变化或生成周报。以下记录截至 2026.10.13。</p>
     {updates.reports.map((report, index) => <section class="co-report" aria-labelledby={`report-${report.id}`}>
       <header><div><p class="co-kicker">{index === 0 ? '最新一期' : '往期记录'} · {dateLabel(report.start)} — {dateLabel(report.end)}</p><h2 id={`report-${report.id}`}>{report.summary}</h2></div><span>{report.items.length} 条 · 发布 {dateLabel(report.publishedAt)}</span></header>
       {report.items.length ? report.items.map(item => <CompanyUpdate item={item} company={catalog.companies.find(company => company.id === item.companyId)} />) : <p class="co-muted">本期没有收录新的已核实事件，历史消息保留在相应公司档案中。</p>}
     </section>)}
-    {monitor.lastRun && <p class="co-footnote">来源检查 {dateLabel(monitor.lastRun.at)} · {monitor.lastRun.successCount} 个页面成功{monitor.lastRun.failureCount > 0 && ` · ${monitor.lastRun.failureCount} 个页面未完成，保留上次资料`}。来源检查日期与分析复核日期分别记录。</p>}
   </div>
 </StarlightPage>
-<script>
-  const notice = document.querySelector<HTMLElement>('[data-company-stale-through]');
-  if (notice) {
-    const end = notice.dataset.companyStaleThrough;
-    const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-    notice.hidden = Boolean(end) && Date.parse(today) - Date.parse(end!) <= 8 * 86400000;
-  }
-</script>

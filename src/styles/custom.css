@@ -75,7 +75,7 @@
   .probe-summary h2 { font-size:1rem; }
 }
 
-/* 公司观察：用产品任务、证据与变化组织阅读。 */
+/* 公司目录与保留的历史档案。 */
 .sl-container:has(.company-observer) { max-width: 78rem; }
 .company-observer { --co-ink: #25364a; --co-muted: #647387; --co-blue: #426d9f; --co-soft: #edf3f8; --co-green: #327866; --co-line: #dbe3ec; width: min(100%, 68rem); margin-inline: auto; padding-bottom: 3rem; color: var(--co-ink); }
 .company-observer *, .co-update * { box-sizing: border-box; }
@@ -97,7 +97,7 @@
 .co-latest > span { display: grid; gap: .2rem; color: var(--co-blue); font-size: .72rem; }
 .co-latest time { font: .66rem var(--sl-font-mono); color: var(--co-muted); }
 .co-latest strong { font-size: .85rem; font-weight: 500; line-height: 1.6; }
-.co-controls { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .75rem; }
+.co-controls { display: grid; grid-template-columns: minmax(0,1fr); gap: .75rem; }
 .co-search input, .co-region select { width: 100%; min-height: 2.6rem; padding: .55rem .7rem; border: 1px solid var(--co-line); border-radius: .4rem; color: var(--co-ink); background: #fff; font: .82rem var(--sl-font); }
 .co-search input { appearance: none; }
 .co-region select { width: 8rem; }
@@ -116,6 +116,18 @@
 .company-observer .co-card-summary { flex: 1; margin-top: .65rem; font-size: .9rem; line-height: 1.8; }
 .co-card-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem .8rem; margin-top: 1rem; padding-top: .65rem; border-top: 1px solid var(--co-line); color: var(--co-muted); font-size: .65rem; }
 .co-card-bottom > span:last-child { color: var(--co-blue); }
+.co-region-filters { order: -1; }
+.co-region-filters button { font-size: .86rem; padding: .45rem .85rem; }
+.co-region-filters button span { margin-left: .2rem; font-size: .68rem; opacity: .75; }
+.co-card h2 a { color: var(--co-ink); }
+.co-card h2 a:hover, .co-card-bottom a { color: var(--co-blue); }
+.co-card-sources { display: flex; flex-wrap: wrap; gap: .25rem .6rem; margin-top: .8rem; font-size: .7rem; line-height: 1.7; }
+.co-card-sources > span { color: var(--co-muted); }
+.co-card-sources a { color: var(--co-blue); overflow-wrap: anywhere; }
+.co-history { margin-top: 2rem; border-top: 1px solid var(--co-line); padding-top: 1rem; }
+.co-history summary { cursor: pointer; color: var(--co-muted); font-size: .85rem; }
+.co-history > .company-observer { margin-top: 1rem; }
+
 .company-observer .co-footnote { margin-top: 1.5rem; color: var(--co-muted); font-size: .73rem; line-height: 1.8; }
 .co-empty { padding: 2rem 1rem; text-align: center; color: var(--co-muted); font-size: .9rem; }
 .co-empty button { margin-top: .6rem; border-color: var(--co-line); color: var(--co-blue); }

@@ -1,15 +1,10 @@
-name: AI 公司观察每周同步
+name: AI 公司目录每月同步
 
 on:
   schedule:
-    # 每周一北京时间 08:30；全部运行在 GitHub Actions。
-    - cron: '30 0 * * 1'
+    # 每月 1 日北京时间 08:30；只同步公开名单，不调用模型。
+    - cron: '30 0 1 * *'
   workflow_dispatch:
-    inputs:
-      force:
-        description: '重新核对本周资料与商业分析'
-        type: boolean
-        default: false
 
 concurrency:
   group: ai-companies-sync
@@ -18,7 +13,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 25
     permissions:
       contents: write
     steps:
@@ -30,67 +25,52 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - uses: actions/cache@v4
         with:
           path: .font-sources
           key: font-sources-v1-misans-2025-07-14-sarasa-1.0.41
-      - name: 安装依赖与验证证据校验、失败恢复
-        run: npm ci && node --test tests/company-observer.test.mjs tests/company-weekly.test.mjs
-      - name: 核对来源、更新档案与本期动态
+      - name: 安装依赖与检查目录及失败恢复
+        run: npm ci && python -m pip install pypdf==6.10.0 && node --test tests/company-directory.test.mjs tests/company-observer.test.mjs
+      - name: 同步名单与备案来源
         id: sync
         continue-on-error: true
-        env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          DEEPSEEK_BASE_URL: https://api.deepseek.com
-          DEEPSEEK_MODEL: deepseek-v4-flash
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
-          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
-          COMPANY_REVIEW_LOG: ${{ runner.temp }}/ai-company-review.json
-        run: node tests/company-review-model.mjs && npm run companies:sync -- ${{ inputs.force && '--force' || '' }}
-      - name: 保存公开资料核对记录
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ai-company-review
-          path: ${{ runner.temp }}/ai-company-review.json
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: 校验输出数据
+        run: npm run companies:sync
+      - name: 校验目录
         run: npm run companies:check
       - name: 安装字体工具
         run: sudo apt-get update && sudo apt-get install --yes libarchive-tools python3-venv
-      - name: 构建并发布资料
+      - name: 构建并发布目录
         run: |
           set -euo pipefail
           snapshot="$RUNNER_TEMP/companies-sync"
           mkdir -p "$snapshot"
-          cp src/data/companies/{catalog,updates,monitor}.json "$snapshot/"
+          cp src/data/companies/{directory,sync-state}.json "$snapshot/"
           base_sha=$(git rev-parse HEAD)
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           for attempt in 1 2 3; do
             git fetch origin main
-            # 同模块被人工修改时停止，不覆盖公司范围、档案或已发布事件。
-            if ! git diff --quiet "$base_sha" origin/main -- src/data/companies/; then
-              echo '公司资料在同步期间发生并发修改，保留远程资料，请重新运行。' >&2
+            if ! git diff --quiet "$base_sha" origin/main -- src/data/companies/ src/lib/company-directory.mjs scripts/sync-ai-companies.mjs; then
+              echo '目录或同步规则在运行期间发生修改，请重新运行。' >&2
               exit 1
             fi
-            # 仅重置 Actions 的临时检出；重放本次资料并基于最新 main 生成字体。
             git reset --hard origin/main
             cp "$snapshot/"*.json src/data/companies/
             npm run companies:check
             npm run fonts:update
             npm run build
-            git add src/data/companies/{catalog,updates,monitor}.json public/fonts/misans/ public/fonts/sarasa/ scripts/font-subset-codepoints.json
+            git add src/data/companies/{directory,sync-state}.json public/fonts/misans/ public/fonts/sarasa/ scripts/font-subset-codepoints.json
             if git diff --cached --quiet; then exit 0; fi
-            git commit -m "同步 AI 公司产品、分析与本期动态 $(date -u +%Y-%m-%d)"
+            git commit -m "同步 AI 公司目录与公开来源 $(date -u +%Y-%m-%d)"
             if git push origin HEAD:main; then exit 0; fi
           done
           echo '发布失败：主分支持续变化，请重新运行。' >&2
           exit 1
-      - name: 报告未完成项
+      - name: 报告来源失败
         if: steps.sync.outcome == 'failure'
         run: |
-          echo '本期存在来源或证据核对失败，已保留相应旧资料与旧日期；详见日志及运行摘要。'
+          echo '部分来源同步失败，已保留其上次成功数据和日期；其他成功来源照常更新。'
           exit 1

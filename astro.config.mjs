@@ -132,8 +132,8 @@ export default defineConfig({
           label: 'AI 公司观察',
           items: [
             { label: '公司目录', link: '/companies/' },
-            { label: '本周变化', link: '/companies/changes/' },
-            { label: '分析方法与来源', link: '/companies/methodology/' },
+            { label: '历史动态', link: '/companies/changes/' },
+            { label: '收录规则与来源', link: '/companies/methodology/' },
           ],
         },
         {

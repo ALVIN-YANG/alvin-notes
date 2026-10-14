@@ -1,28 +1,18 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import CompanyNav from '../../components/CompanyNav.astro';
-import { evidenceLabels } from '../../lib/company-observer.mjs';
+import sources from '../../data/companies/sources.json';
+import seed from '../../data/companies/seed.json';
+import state from '../../data/companies/sync-state.json';
+import { dateLabel } from '../../lib/company-directory.mjs';
 ---
-<StarlightPage frontmatter={{ title: '分析方法与来源 · AI 公司观察', description: '以产品任务分析公司，区分事实、企业自述、判断和证据缺口。', template: 'splash', hidePageTitle: true }} sidebar={[]}>
+<StarlightPage frontmatter={{ title: '收录规则与来源 · AI 公司观察', description: '公司目录的收录门槛、信息来源和同步范围。', template: 'splash', hidePageTitle: true }} sidebar={[]}>
   <div class="company-observer co-method not-content">
-    <header class="co-heading"><div><h1 id="_top">分析方法与来源</h1><p>先看产品解决什么问题，再看优势能否持续。</p></div></header>
+    <header class="co-heading"><div><h1 id="_top">收录规则与来源</h1><p>有官网、有公开产品或活动记录，保留直接来源。</p></div></header>
     <CompanyNav active="method" />
-    <section class="co-section"><h2>收录范围</h2><p>收录能直接接受用户委派、执行完整任务并交付结果的 AI 公司，包括个人助理和企业、法律、客服等行业 Agent。重点比较任务完成率、交付质量、持续使用与付费理由。</p><p>排除编程平台、开发框架、爬取 API、通用语音平台，以及以生成图片、视频、搜索或写作为主的工具公司。退出范围的旧档案保留历史链接，停止每周同步。产品提供 API 不会自动被排除，判断依据是核心产品是否承接用户的完整任务。</p></section>
-    <section class="co-section"><h2>从一个具体任务开始</h2><p>使用 Clayton Christensen 的 Jobs to Be Done 框架，先确定用户在什么场景下想完成什么任务，再比较现有做法和替代产品。使用者与付费者分别记录。公开文档能说明产品定位，真实需求、效率和持续付费仍需客户或实际使用证据。</p><p><a href="https://www.christenseninstitute.org/theory/jobs-to-be-done/" target="_blank" rel="noopener noreferrer">Christensen Institute：Jobs to Be Done ↗</a></p></section>
-    <section class="co-section"><h2>四种证据状态</h2><dl class="co-facts">{[
-      ['verified', '实际检查或可追溯的独立证据支持这项事实；不代表已经验证整个产品。'],
-      ['disclosed', '公司、团队或投资方公开披露。产品效果、客户规模和资本数据仍需注意口径。'],
-      ['analysis', '依据已列资料作出的判断，写出优势、适用条件和可能推翻判断的变化。'],
-      ['unknown', '资料不足或来源冲突，保留缺口，不补写猜测。'],
-    ].map(([kind, detail]) => <div><dt><span class={`co-evidence ${kind}`}>{evidenceLabels[kind]}</span></dt><dd>{detail}</dd></div>)}</dl></section>
-    <section class="co-section"><h2>来源怎样使用</h2><div class="co-table-wrap"><table><thead><tr><th>来源</th><th>适合核对什么</th><th>边界</th></tr></thead><tbody>
-      <tr><td>官网、文档、价格与更新日志</td><td>能力、计费、发布条件</td><td>发布能力与实际任务效果分开记录</td></tr>
-      <tr><td>公司和投资机构公告</td><td>团队、轮次、金额和投资关系</td><td>多篇转载同一公告只算一个原始来源</td></tr>
-      <tr><td><a href="https://www.ycombinator.com/companies/">YC 公司目录</a></td><td>早期公司与公开背景</td><td>主要覆盖 YC 投资企业，不代表全部市场</td></tr>
-      <tr><td><a href="https://about.crunchbase.com/products/crunchbase-api">Crunchbase</a>、<a href="https://dealroom.co/products/api/">Dealroom</a></td><td>补充公司、团队和融资记录</td><td>当前未接入付费 API；公开展示需核对许可</td></tr>
-      <tr><td><a href="https://www.sec.gov/file/form-d-building-blocks">SEC Form D</a></td><td>美国部分证券发行记录</td><td>不是完整融资历史，也不验证产品价值</td></tr>
-    </tbody></table></div></section>
-    <section class="co-section"><h2>每周同步一次</h2><p>每周读取已登记来源与同站本期公告，核对产品、价格、团队和资本资料，更新有原文支持的字段与本期事件。每月首次同步复核商业判断。事实修改需附逐字原文并通过独立核对；这属于公开资料核对，不等于产品实测。失败或证据不足时保留旧资料与旧日期，并显示未完成项。</p><p>资料核对、来源检查和分析复核各有日期。页面变动只是核查线索，不能直接成为产品发布或商业结论。只对实际核实的内容更新日期，没有新变化时不重复发布旧消息。</p></section>
-    <section class="co-section"><h2>比较与财务口径</h2><p>只在同一任务、质量要求与使用条件下比较产品。价格要包括额度、超额计费、运行费用、返工和人工验收；免费试用和年度套餐不能当作同一个购买条件。</p><p>融资额、累计融资、估值、员工股权交易、ARR 与实际收入分开记录。前景分析不生成缺乏证据的成功概率。公司被收购、上市或关闭后更新状态并保留历史。</p></section>
+    <section class="co-section"><h2>收录什么公司</h2><p>收录提供 AI 产品或服务的公司，包括大模型、Agent、AI 编程、生成工具、基础设施、语音技术和行业应用。公司应有官网，并有公开产品页面，或可信名册中的 Active 状态。只提供培训、营销或资讯而没有 AI 产品的主体不纳入。</p><p>公开产品页表示首次整理时可以查到产品入口，不代表完成实测。近期发布、招聘或融资也可用于补充活动依据，使用近 12 个月的记录。活跃依据的日期按原始读取或活动日期保留，不随目录同步刷新；旧资料不能当作当前经营状态。</p><p>国外、国内分别按公开所在地整理；杭州属于国内。总部或公开主体在杭州的公司标注杭州，仅在杭州设团队的另加标签。无法核对的城市留空。同一官网只出现一次，多个产品归到同一公司；被收购的品牌不单独视为独立创业公司，历史关系以旧档案为准。</p></section>
+    <section class="co-section"><h2>信息来源</h2><p>每张卡片和公司页均链接直接来源。基础名单共 {seed.companies.length} 家，首次以公司官网整理名称、方向、所在地和产品入口；国内名单缺少官网时，首次补齐后保存，不在每次同步时重新调查。</p><div class="co-table-wrap"><table><thead><tr><th>来源</th><th>范围与方式</th><th>当前记录</th></tr></thead><tbody>{sources.map(source => { const record = state.sources[source.id]; return <tr><td><a href={source.originalUrl || source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a>{source.id === 'yc' && <p><a href="https://github.com/yc-oss/api" target="_blank" rel="noopener noreferrer">非官方 JSON 镜像 ↗</a></p>}</td><td>{source.scope} · {source.mode === 'automatic' ? '自动同步' : '人工补充'}<p>{source.note}</p></td><td>{source.mode === 'reference' ? '未接入自动同步' : record?.syncedAt ? <>上次成功 {dateLabel(record.syncedAt)}<p>{source.id === 'yc' ? `本次名册选取 ${record.count} 家` : `最新附件匹配 ${record.count} 家已整理公司`}</p>{record.title && <p>{record.title}</p>}{record.error && <p>最近读取失败，保留上次资料。</p>}</> : '尚无成功同步记录'}</td></tr>; })}</tbody></table></div></section>
+    <section class="co-section"><h2>同步范围与频率</h2><p>每月 1 日北京时间 08:30，在 GitHub Actions 同步公开名单，更新名称、官网、所在地、分类、活动状态和直接来源。YC 名单读取 JSON；国内备案来源读取汇总页的最新 PDF，只匹配已经补齐官网的公司。浙江图片公告及旧服务商名单作为人工补充来源，不自动识图。</p><p>同步程序不调用大模型，不逐家公司搜索新闻、检查官网变化或生成商业分析与周报。简介首次整理后保留；来源原文在公司页单独列出。新增名册条目可以直接显示原文。</p><p>一个来源失败时保留它上次成功的数据和日期，其他来源仍可更新。公司暂时从名册缺失不会直接删除；来源明确标记非 Active 时，退出该来源的自动名单。公司名称、别名和官网用于去重，地区、来源和搜索可以组合筛选。</p></section>
+    <section class="co-section"><h2>怎样理解这些资料</h2><p>收录表示有公开产品或活动依据，不是前景排名。备案、入选机构名册、融资与官网宣传都不能单独证明产品质量或商业成功。公司介绍主要来自企业和名册，缺少独立验证的经营数据不补写。</p><p>来源日期、活动依据日期和目录同步日期分别记录。此前的深度分析和动态保留为历史资料，已经停止更新。</p></section>
   </div>
 </StarlightPage>
