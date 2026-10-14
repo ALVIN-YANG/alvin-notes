@@ -216,32 +216,29 @@
 @media (prefers-reduced-motion: reduce) { .co-card { transition: none; } }
 
 /* AI 工程问答：目录与答案同屏，正文在独立区域滚动。 */
-.sl-container:has(.interview-bank) { max-width: 88rem; }
+main:has(.interview-bank) { padding: 0; }
+main:has(.interview-bank) > .content-panel:not(:has(.interview-bank)) { display: none; }
+.content-panel:has(.interview-bank) { padding: .5rem; border: 0; }
+.sl-container:has(.interview-bank) { max-width: none; }
+.sl-container:has(.interview-bank) > footer { display: none; }
 .interview-bank { --ib-blue: #3061ad; --ib-purple: #7255a6; --ib-green: #39715b; color: var(--sl-color-white); }
 .interview-bank *, .interview-question * { box-sizing: border-box; }
 .interview-bank [hidden] { display: none !important; }
 .interview-bank :is(h1,p,ol) { margin: 0; }
+.interview-bank :is(.ib-workspace,.ib-reading,.ib-reading-scroll,.ib-reading-footer,.ib-answer) { margin-block: 0; }
 .interview-bank :is(button,input,select) { font: inherit; }
 .interview-bank button { cursor: pointer; }
 .interview-bank :is(a,button,input,select):focus-visible { outline: 2px solid var(--ib-blue); outline-offset: 3px; }
-.ib-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: .85rem; }
-.interview-bank #_top { font: 600 1.45rem/1.4 var(--sl-font-heading); font-size: 1.45rem !important; line-height: 1.4 !important; letter-spacing: -.025em; }
-.ib-guide-link { margin-left: auto; color: var(--sl-color-gray-2); font-size: .75rem; text-underline-offset: .2em; }
-.ib-module-choices { display: flex; gap: .2rem; overflow-x: auto; margin-bottom: .7rem; padding: .2rem; scrollbar-width: thin; }
-.ib-module-choices button, .ib-level-choices button { flex: none; padding: .35rem .7rem; border: 0; border-radius: .3rem; color: var(--sl-color-gray-2); background: transparent; font-size: .8rem; white-space: nowrap; }
-.ib-module-choices button span { margin-left: .35rem; color: var(--sl-color-gray-3); font-size: .67rem; }
-.ib-module-choices button[aria-pressed='true'], .ib-level-choices button[aria-pressed='true'] { color: var(--ib-blue); background: color-mix(in srgb,#628cd0 12%,var(--sl-color-bg)); }
-.ib-workspace { display: grid; grid-template-columns: 19rem minmax(0,1fr); height: calc(100dvh - var(--sl-nav-height) - 11rem); min-height: 25rem; border: 1px solid var(--sl-color-gray-5); border-radius: .4rem; overflow: hidden; }
+.ib-workspace { display: grid; grid-template-columns: 19rem minmax(0,1fr); height: calc(100dvh - var(--sl-nav-height) - 1rem); min-height: 0; border: 1px solid var(--sl-color-gray-5); border-radius: .4rem; overflow: hidden; }
 .ib-catalog { display: flex; min-height: 0; flex-direction: column; border-right: 1px solid var(--sl-color-gray-5); }
 .ib-filters { padding: .7rem; border-bottom: 1px solid var(--sl-color-gray-5); }
-.ib-topic-options { display: grid; gap: .45rem; margin-bottom: .5rem; }
-.ib-topic-options label { min-width: 0; }
-.ib-topic-options select { width: 100%; min-width: 0; padding: .4rem .35rem; border: 1px solid var(--sl-color-gray-5); border-radius: .3rem; color: var(--sl-color-white); background: var(--sl-color-bg); font-size: .76rem; }
-.ib-topic-options select:disabled { color: var(--sl-color-gray-3); }
+.ib-module-filter { display: block; margin-bottom: .5rem; }
+.ib-module-filter select { width: 100%; padding: .45rem .6rem; border: 1px solid var(--sl-color-gray-5); border-radius: .3rem; color: var(--sl-color-white); background: var(--sl-color-bg); font-size: .8rem; }
 .ib-search { display: block; }
 .ib-search input { width: 100%; padding: .45rem .6rem; border: 1px solid var(--sl-color-gray-5); border-radius: .3rem; color: var(--sl-color-white); background: var(--sl-color-bg); font-size: .8rem; }
 .ib-level-choices { display: flex; justify-content: space-between; margin-top: .5rem; }
-.ib-level-choices button { padding: .25rem .6rem; font-size: .75rem; }
+.ib-level-choices button { flex: none; padding: .25rem .6rem; border: 0; border-radius: .3rem; color: var(--sl-color-gray-2); background: transparent; font-size: .75rem; white-space: nowrap; }
+.ib-level-choices button[aria-pressed='true'] { color: var(--ib-blue); background: color-mix(in srgb,#628cd0 12%,var(--sl-color-bg)); }
 .ib-catalog-scroll { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .ib-mobile-catalog { display: none; }
 .ib-question-list { padding: .3rem; list-style: none; }
@@ -264,8 +261,8 @@
 .interview-bank .ib-reader { margin: 0; }
 .interview-bank .ib-reader button { padding: .3rem .55rem; min-height: 2rem; font-size: .75rem; }
 .ib-reader kbd { margin-left: .4rem; }
-.ib-reading-scroll { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; padding: 1.3rem 1.8rem 2rem; }
-.ib-answer { max-width: 48rem; margin-inline: auto; font-size: .91rem; line-height: 1.85; }
+.ib-reading-scroll { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; padding: 1rem 1.5rem 2rem; }
+.ib-answer { max-width: 64rem; margin-inline: auto; font-size: .91rem; line-height: 1.85; }
 .ib-answer .ib-answer-title { margin: 0 0 1rem; font-size: 1.35rem; font-weight: 600; line-height: 1.55; }
 .ib-answer h2:not(.ib-answer-title) { margin-top: 1.7rem; font-size: 1.02rem; }
 .ib-answer h3 { margin-top: 1.2rem; font-size: .94rem; }
@@ -279,9 +276,7 @@
 .ib-empty button { margin-top: .6rem; padding: .25rem .5rem; border: 1px solid var(--sl-color-gray-5); border-radius: .3rem; color: var(--sl-color-text-accent); background: transparent; font-size: .77rem; }
 .iq-meta { margin-bottom: .75rem; font-size: .78rem; }
 .iq-meta a { color: var(--sl-color-text-accent); text-decoration: none; }
-.interview-bank .ib-ranking-note { margin: -.25rem 0 .65rem; color: var(--sl-color-gray-2); font-size: .75rem; line-height: 1.7; }
 .ib-question-evidence { grid-column: 2; color: var(--sl-color-gray-3); font-size: .65rem; line-height: 1.6; }
-.ib-question-topic { grid-column: 2; color: var(--sl-color-gray-3); font-size: .65rem; line-height: 1.6; }
 .ib-answer .ib-answer-topic { margin: 0 0 .5rem; color: var(--sl-color-gray-3); font-size: .72rem; }
 .iq-evidence { margin-top: 1.5rem; padding-top: .8rem; border-top: 1px solid var(--sl-color-gray-5); color: var(--sl-color-gray-2); font-size: .77rem; line-height: 1.8; }
 .iq-evidence .iq-evidence-summary { margin: 0 0 .3rem; }
@@ -289,14 +284,14 @@
 .iq-evidence li + li { margin-top: .7rem; }
 .iq-evidence li p { margin: .15rem 0; }
 @media (max-width: 55rem) {
-  .ib-workspace { display: flex; flex-direction: column; height: calc(100dvh - var(--sl-nav-height) - 10rem); min-height: 20rem; overflow: visible; }
+  .ib-workspace { display: flex; flex-direction: column; height: calc(100dvh - var(--sl-nav-height) - 1rem); min-height: 0; overflow: visible; }
   .ib-catalog { position: relative; z-index: 2; flex: none; border-right: 0; }
   .ib-catalog-scroll { display: none; position: absolute; top: 100%; left: 0; right: 0; max-height: min(60dvh,24rem); border: 1px solid var(--sl-color-gray-5); border-radius: .3rem; background: var(--sl-color-bg); box-shadow: 0 .5rem 1.5rem #0001; }
   .ib-catalog-scroll[data-open='true'] { display: block; }
   .ib-mobile-catalog { display: block; padding: .25rem .4rem; border: 1px solid var(--sl-color-gray-5); border-radius: .3rem; color: var(--sl-color-gray-2); background: transparent; font-size: .75rem; }
   .ib-catalog-footer { display: none; }
   .ib-filters { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .5rem; align-items: center; }
-  .ib-topic-options { grid-column: 1 / -1; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: .4rem; margin: 0; }
+  .ib-module-filter { grid-column: 1 / -1; margin: 0; }
   .ib-search { grid-column: 1; min-width: 0; }
   .ib-mobile-catalog { grid-column: 2; grid-row: 2; }
   .ib-level-choices { grid-column: 1 / -1; justify-content: flex-start; gap: .6rem; margin: 0; }
@@ -305,9 +300,6 @@
   .ib-reading-scroll { padding: 1rem; }
   .ib-answer { font-size: .9rem; }
   .ib-answer .ib-answer-title { font-size: 1.15rem; }
-  .ib-heading { gap: .4rem; }
-  .interview-bank #_top { font-size: 1.25rem !important; }
-  .ib-module-choices button { padding: .3rem .45rem; font-size: .74rem; }
   .ib-reading-footer { font-size: .61rem; }
 }
 @media print { .ib-workspace, .ib-reading { display: block; height: auto; } .ib-reading-scroll { overflow: visible; } .ib-catalog, .ib-reading-toolbar, .ib-reading-footer { display: none; } }

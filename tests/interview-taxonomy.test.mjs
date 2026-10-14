@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync } from 'node:fs';
-import { interviewModules, getInterviewTopic } from '../src/lib/interview-taxonomy.mjs';
+import { interviewModules, getInterviewModule } from '../src/lib/interview-taxonomy.mjs';
 import { buildInterviewSidebar } from '../src/lib/interview-sidebar.mjs';
 
 const entries = ['agent', 'infra'].flatMap(directory => {
@@ -12,20 +12,20 @@ const entries = ['agent', 'infra'].flatMap(directory => {
   });
 });
 
-test('every question belongs to one registered ability module and its own topic', () => {
+test('every question belongs to one flat ability category', () => {
   assert.equal(interviewModules.length, 7);
   assert.equal(new Set(interviewModules.map(module => module.id)).size, 7);
-  const topicIds = interviewModules.flatMap(module => module.topics.map(topic => topic.id));
-  assert.equal(new Set(topicIds).size, topicIds.length);
+  assert(interviewModules.every(module => !('topics' in module)));
   assert.equal(new Set(entries.map(entry => entry.url)).size, entries.length);
-  for (const entry of entries) assert(getInterviewTopic(entry.module, entry.topic), entry.url);
-  assert.equal(getInterviewTopic('ai-agent', 'model-memory'), undefined);
+  for (const entry of entries) assert(getInterviewModule(entry.module), entry.url);
+  assert(entries.every(entry => entry.topic === undefined));
 });
 
 test('the capability sidebar reaches every unchanged question URL exactly once', () => {
   const walk = entries => entries.flatMap(entry => entry.items ? walk(entry.items) : [entry.link]);
   const links = walk(buildInterviewSidebar()).filter(link => !link.includes('?'));
   assert.deepEqual(links.sort(), entries.map(entry => entry.url).sort());
+  assert(buildInterviewSidebar().every(group => group.items.every(entry => !entry.items)));
   const product = buildInterviewSidebar().find(entry => entry.label === '产品与业务');
   assert.equal(product.items[0].link, '/interview/?module=product');
 });

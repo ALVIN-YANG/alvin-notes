@@ -13,6 +13,7 @@ export default defineConfig({
     remarkPlugins: [remarkStaticMermaid],
   },
   redirects: {
+    '/interview/infra-roadmap': '/interview/',
     '/ai/prompt-engineering': '/ai-workflow/16-prompt-task-contract-practice/',
     '/ai/1-prompt-engineering': '/ai-workflow/16-prompt-task-contract-practice/',
     '/ai-workflow/10-vibe-coding-prompt-engineering': '/ai-workflow/16-prompt-task-contract-practice/',
@@ -81,7 +82,6 @@ export default defineConfig({
           label: 'AI 工程问答',
           items: [
             { label: '全部题目', link: '/interview/' },
-            { label: '学习路线与公开资料', link: '/interview/infra-roadmap/' },
             { label: '面经来源与热度口径', link: '/interview/agent-sources/' },
             ...buildInterviewSidebar(),
           ],
