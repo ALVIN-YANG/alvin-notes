@@ -1140,6 +1140,960 @@
       ]
     },
     {
+      "id": "rokid",
+      "name": "Rokid / 灵伴科技",
+      "website": "https://www.rokid.com/zh-CN/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 AI 与 AR 智能眼镜及人机交互产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "Rokid AI 产品与杭州注册主体",
+          "url": "https://rokid-xr.rokidcdn.com/prod/RokidAI/protocol/GlassesPrivacyPolicy.html",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方联系方式与杭州办公室",
+          "url": "https://www.rokid.com/zh-CN/contact",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "brainco",
+      "name": "强脑科技 / BrainCo",
+      "website": "https://www.brainco.cn/",
+      "region": "国内",
+      "city": "",
+      "location": "中国及海外办公室",
+      "category": "行业应用",
+      "summary": "开发脑机接口、智能仿生义肢和脑科学 AI 产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "脑机接口与 BrainAI 官方产品",
+          "url": "https://www.brainco.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方联系方式与杭州办公室",
+          "url": "https://www.brainco.cn/contact",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ],
+      "hangzhouTeam": true
+    },
+    {
+      "id": "tuya",
+      "name": "涂鸦智能",
+      "website": "https://www.tuya.com/cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 AI 与物联网开发平台及智能硬件服务。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "AI 与物联网官方产品",
+          "url": "https://www.tuya.com/cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方联系方式与杭州公司",
+          "url": "https://www.tuya.com/cn/contact",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "fit2cloud",
+      "name": "飞致云",
+      "website": "https://fit2cloud.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 MaxKB、SQLBot 等开源智能体和 AI 数据分析产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "MaxKB、SQLBot 等官方产品",
+          "url": "https://fit2cloud.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司介绍与杭州主体、办公地址",
+          "url": "https://fit2cloud.com/about/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "dtstack",
+      "name": "袋鼠云",
+      "website": "https://www.dtstack.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供多模态数据平台、企业智能体开发和智能问数工具。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "数据与 AI 官方产品",
+          "url": "https://www.dtstack.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方联系方式与杭州总部",
+          "url": "https://www.dtstack.com/zh-cn/contact/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "dtwave",
+      "name": "数澜科技",
+      "website": "https://www.dtwave.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供数据智能基础设施、企业智能体和大模型平台。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "数据与智能体官方产品",
+          "url": "https://www.dtwave.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方联系方式与杭州总部",
+          "url": "https://www.dtwave.com/about/contact",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "shuyun",
+      "name": "数云",
+      "website": "https://www.shuyun.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "将 Agentic AI 用于消费者运营、营销和客户管理。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "消费者运营 AI 官方产品",
+          "url": "https://www.shuyun.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司介绍与杭州总部",
+          "url": "https://www.shuyun.com/intro",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "linker",
+      "name": "联汇科技",
+      "website": "https://om.linker.cc/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 Om 多模态模型、空间运营和知识服务智能体。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "Om 官方产品与杭州公司地址",
+          "url": "https://om.linker.cc/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "hikvision",
+      "name": "海康威视",
+      "website": "https://www.hikvision.com/cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供视频感知、观澜大模型和行业智能应用。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "视觉 AI 与行业官方产品",
+          "url": "https://www.hikvision.com/cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方联系方式与杭州公司地址",
+          "url": "https://www.hikvision.com/cn/aboutus/ContactUs/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "dahua",
+      "name": "大华股份",
+      "website": "https://www.dahuatech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供视觉智能、星汉大模型和行业数字化产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "视觉 AI 官方产品与杭州公司地址",
+          "url": "https://www.dahuatech.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "uniview",
+      "name": "宇视科技",
+      "website": "https://cn.uniview.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供视频智能、行业大模型及视觉应用产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "视觉 AI 与行业官方产品",
+          "url": "https://cn.uniview.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方联系方式与杭州基地",
+          "url": "https://cn.uniview.com/About_Us/Contact_Us/default.htm",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方服务政策中的杭州注册主体",
+          "url": "https://ezcloud.uniview.com/static/doc/PrivacyPolicy_Chs.pdf",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "arcsoft",
+      "name": "虹软科技",
+      "website": "https://www.arcsoft.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供计算机视觉、影像算法与智能设备 AI 技术。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "计算机视觉与 AI 官方产品",
+          "url": "https://www.arcsoft.com.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司介绍与杭州总部",
+          "url": "https://www.arcsoft.com.cn/corporate/about.html",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "netease",
+      "name": "网易（伏羲）",
+      "website": "https://fuxi.163.com/",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 伏羲产品在杭州设有服务主体",
+      "category": "AI Agent",
+      "summary": "提供有灵智能体、工程机器人与绘梦天工数字内容平台。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "伏羲与有灵智能体官方产品",
+          "url": "https://fuxi.163.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "绘梦天工官方隐私政策（杭州服务主体）",
+          "url": "https://static.fuxi.netease.com/avatar/avatarkit/agreement-20250806/%E2%80%9C%E7%BB%98%E6%A2%A6%E5%A4%A9%E5%B7%A5%E2%80%9D%E5%B9%B3%E5%8F%B0%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96.pdf",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ],
+      "hangzhouTeam": true
+    },
+    {
+      "id": "hundsun",
+      "name": "恒生电子",
+      "website": "https://www.hundsun.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 LightGPT 金融大模型、光子助手及金融业务软件。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "LightGPT、光子官方产品与杭州地址",
+          "url": "https://www.hundsun.com/lightgpt",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司介绍与杭州总部",
+          "url": "https://en.hundsun.com/about?anch=anch1",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "ths",
+      "name": "同花顺",
+      "website": "https://www.10jqka.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供金融数据、问财 AI 助手与智能投研工具。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "同花顺问财等官方产品",
+          "url": "https://download.10jqka.com.cn/phone/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "问财官方隐私政策（杭州注册主体）",
+          "url": "https://ms.10jqka.com.cn/feedFinance/privacyPolicy.html",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "antgroup",
+      "name": "蚂蚁集团",
+      "website": "https://www.antgroup.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "大模型",
+      "summary": "开发百灵模型体系及健康、金融和生活服务 AI 产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "百灵模型体系官方介绍",
+          "url": "https://www.antgroup.com/technology/new-tech-Technology-Antfocuses-Tabcomnent-detail/20241028001",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司官网与杭州总部地址",
+          "url": "https://www.antgroup.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "dbapp",
+      "name": "安恒信息",
+      "website": "https://www.dbappsecurity.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供恒脑安全大模型与安全运营、数据安全智能体。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "安全 AI 智能体官方产品",
+          "url": "https://www.dbappsecurity.com.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司介绍与杭州主体",
+          "url": "https://www.dbappsecurity.com.cn/about/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "arcvideo",
+      "name": "当虹科技",
+      "website": "https://www.arcvideo.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供智能视频处理、AIGC 内容生产和行业视觉 AI 产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "视频 AI 与 AIGC 官方产品",
+          "url": "https://www.arcvideo.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方联系方式与杭州总部",
+          "url": "https://www.arcvideo.cn/lianxiwomen/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "raycloud",
+      "name": "光云科技",
+      "website": "https://www.raycloud.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供电商经营软件及萝卜塔 AI 客服、运营工具。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "电商 AI 与智能客服官方产品",
+          "url": "https://www.raycloud.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方联系方式与杭州公司地址",
+          "url": "https://www.raycloud.com/lxwm1/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "zhiyi",
+      "name": "知衣科技",
+      "website": "https://www.zhiyitech.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供服装行业趋势分析、AI 设计与内容生成工具。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "服装 AI 官方产品",
+          "url": "https://www.zhiyitech.cn/home",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司介绍与杭州主体、地址",
+          "url": "https://www.zhiyitech.cn/about",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "yiwise",
+      "name": "一知智能",
+      "website": "https://www.yiwise.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "语音技术",
+      "summary": "提供语音互动智能体、数字人直播和营销内容生成工具。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "语音智能体官方产品与杭州公司地址",
+          "url": "https://www.yiwise.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "vesoft",
+      "name": "悦数科技 / NebulaGraph",
+      "website": "https://www.nebula-graph.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供图数据库、GraphRAG 与图数据 AI 应用平台。",
+      "aliases": [
+        "杭州悦数科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "NebulaGraph 与 AI 应用官方产品",
+          "url": "https://www.nebula-graph.com.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方软件许可中的杭州主体",
+          "url": "https://docs.nebula-graph.com.cn/master/9.about-license/1.license-overview/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "databuff",
+      "name": "乘云数字 / DataBuff",
+      "website": "https://databuff.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 OpenOcta 智能体和 DataBuff AI 应用可观测工具。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "官方产品介绍与杭州公司说明",
+          "url": "https://databuff.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "style3d",
+      "name": "凌迪科技 / Style3D",
+      "website": "https://www.style3d.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供服装 AI 设计、3D 仿真和数字内容制作工具。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "Style3D AI 与 3D 官方产品",
+          "url": "https://www.style3d.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司介绍与杭州总部",
+          "url": "https://www.style3d.com/aboutus/introduction",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "harmonycloud",
+      "name": "谐云科技",
+      "website": "https://www.harmonycloud.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 GPU 调度、模型训练推理和智能体开发平台。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "AI 基础设施、智能体产品与杭州地址",
+          "url": "https://www.harmonycloud.cn/trial/ai-applications",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "moresec",
+      "name": "默安科技",
+      "website": "https://www.moresec.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 AI 驱动的主动防御智能体与软件开发安全产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "幻阵主动防御智能体官方产品",
+          "url": "https://www.moresec.cn/product/magic-shield",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司官网与杭州总部地址",
+          "url": "https://www.moresec.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "jztdata",
+      "name": "金智塔科技",
+      "website": "https://www.jztdata.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供隐私计算、可信数据空间及 AI 智能体平台。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "可信数据与 AI 智能体官方产品",
+          "url": "https://www.jztdata.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司介绍与杭州主体",
+          "url": "https://www.jztdata.com/about/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "mingdu",
+      "name": "明度数智",
+      "website": "https://mingdutech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 Atlas 生命科学行业专属模型、智能体与业务应用。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "Atlas AI 官方产品与杭州公司地址",
+          "url": "https://mingdutech.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "hsmap",
+      "name": "火石创造",
+      "website": "https://www.hsmap.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供产业数据平台、招商智能体和科技金融 AI 服务。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "产业智能体官方产品与杭州公司地址",
+          "url": "https://www.hsmap.com/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "puhui",
+      "name": "蒲惠智造",
+      "website": "https://www.yunmes.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供制造业工业大模型与云化工业软件。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "公司介绍、工业大模型与杭州总部",
+          "url": "https://www.yunmes.com/about/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "commind",
+      "name": "传播大脑",
+      "website": "https://www.commind.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供传媒 AI、内容生产与融媒体协同平台。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "公开产品页",
+        "asOf": "2026-10-14"
+      },
+      "syncedAt": "2026-10-14",
+      "sources": [
+        {
+          "title": "传播大模型及融媒体官方产品",
+          "url": "https://www.commind.cn/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        },
+        {
+          "title": "公司介绍与杭州办公地址",
+          "url": "https://www.commind.cn/commindindex/about/",
+          "asOf": "2026-10-14",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
       "id": "yc-checkr",
       "name": "Checkr",
       "website": "http://www.checkr.com/",
