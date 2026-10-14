@@ -1,0 +1,44 @@
+---
+title: 主 Agent 怎样路由到正确的子 Agent，并处理超时？
+description: 路由结果也是待验证的决策与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 多 Agent 协作
+  level: intermediate
+  order: 52
+  tags: ["路由器", "能力目录", "超时"]
+sidebar:
+  label: 主 Agent 怎样路由到正确的子 Agent，并处理超时？
+  order: 52
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+路由器根据任务、能力、权限和当前容量选择执行者，输出受约束的角色或任务类型。固定分类可优先使用规则或小模型；不确定时澄清，不能把所有模糊请求发送给权限最大的 Agent。
+
+```mermaid
+flowchart TB
+  A["识别任务类别"] --> B["权限与容量过滤"]
+  B["权限与容量过滤"] --> C["分配子任务"]
+  C["分配子任务"] --> D["超时核对与回收"]
+```
+
+## 路由结果也是待验证的决策
+
+维护能力目录和输入契约，检查执行者是否接收该任务类型。任务分配携带标识、截止时间与回传地址，超时后查询状态再决定重试。重派写任务前确认旧执行是否已产生副作用。
+
+### 怎样测试路由器？
+
+使用跨类别、歧义、超范围和无权限请求，检查分类、拒绝、负载和最终成功率。分类正确但执行者缺少上下文，任务仍会失败。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangChain 多 Agent 模式](https://docs.langchain.com/oss/python/langchain/multi-agent)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,44 @@
+---
+title: 多跳问题怎样拆解和检索，避免错误逐步传播？
+description: 分清独立问题与依赖问题与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 检索与知识
+  level: advanced
+  order: 90
+  tags: ["多跳检索", "子问题", "证据链"]
+sidebar:
+  label: 多跳问题怎样拆解和检索，避免错误逐步传播？
+  order: 90
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+多跳检索需要先找到中间事实，再用它查询下一步。每个中间结论应带来源和置信边界；未验证的模型推断不能直接变成下一跳的事实条件。
+
+```mermaid
+flowchart TB
+  A["识别依赖关系"] --> B["核对中间事实"]
+  B["核对中间事实"] --> C["检索下一跳"]
+  C["检索下一跳"] --> D["合并证据链"]
+```
+
+## 分清独立问题与依赖问题
+
+“某产品供应商的退款政策”需要先确认供应商，再查对应政策；两款产品的价格则可并行查询。用依赖图记录子问题、所需实体和已取得证据，结果不足时回到上一跳修正，不把所有子问题都强行并行。
+
+### 第一跳找不到明确答案怎么办？
+
+可以尝试限定版本、改写或替换数据源，但不能编造一个实体继续检索。设置停止条件，向用户说明哪一跳缺少资料，并保留已完成部分。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangChain 检索架构](https://docs.langchain.com/oss/python/deepagents/retrieval)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

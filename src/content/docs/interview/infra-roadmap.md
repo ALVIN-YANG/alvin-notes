@@ -6,7 +6,7 @@ lastUpdated: 2026-10-14
 
 Agent 开发关注怎样把模型接进真实任务：准备信息、调用工具、控制执行、检查结果。AI Infra 关注这些模型怎样训练和运行：显存、算子、通信、调度与服务性能。两个方向都需要理解对方的边界，例如 Agent 的长上下文会直接影响推理服务的 KV 和时延。
 
-当前有 56 题：Agent 开发 38 题，AI Infra 18 题。[进入 AI 工程问答](/interview/)。Agent 根据国内公司公开面经补充并按样本出题频次排序；原帖、转述与去重口径见[面经来源](/interview/agent-sources/)。难度是本站的学习顺序，不代表厂商招聘标准；AI Infra 按机制学习顺序排列。
+当前有 116 题：Agent 开发 98 题，AI Infra 18 题。[进入 AI 工程问答](/interview/)。Agent 根据国内公司公开面经补充并按近 90 天样本出题频次排序；原帖、转述与去重口径见[面经来源](/interview/agent-sources/)。难度是本站的学习顺序，不代表厂商招聘标准；AI Infra 按机制学习顺序排列。
 
 ```mermaid
 flowchart TB
@@ -26,8 +26,8 @@ flowchart TB
 | 层次 | 当前覆盖 | 阅读入口 |
 | --- | --- | --- |
 | 基础 | Workflow 与 Agent、工具调用、Token 与采样、提示词、RAG 建库、MCP、Skills、项目证据 | [基础题](/interview/?track=agent&level=basic) |
-| 进阶 | RAG 排障、混合检索、框架与状态、Harness、模型与 Embedding 选型、文件搜索、多模态解析、AI Coding | [进阶题](/interview/?track=agent&level=intermediate) |
-| 困难 | 评测集、答案检测、延迟排障、上下文压缩、记忆更新、向量索引、知识图谱、会话隔离、热插拔、恢复与安全 | [困难题](/interview/?track=agent&level=advanced) |
+| 进阶 | RAG 排障、检索指标、框架与状态、Harness、工具设计、CLI、MCP Server、模型选型、Reflection、AI Coding | [进阶题](/interview/?track=agent&level=intermediate) |
+| 困难 | 工具调度、租约与恢复、运行时适配、评测校准、灰度发布、记忆评测、沙箱、知识权限、Text-to-SQL 与多 Agent 场景设计 | [困难题](/interview/?track=agent&level=advanced) |
 
 先读基础题，再看相应机制失败时怎么办。排障时沿执行链检查：任务是否明确、输入证据是否正确、工具是否适用、执行是否符合权限、结果是否经过验证。
 

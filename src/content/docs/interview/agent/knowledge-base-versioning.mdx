@@ -1,0 +1,44 @@
+---
+title: 知识库增量更新、删除和版本切换怎样保证一致？
+description: 读取一份可解释的快照与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 检索与知识
+  level: advanced
+  order: 18
+  tags: ["知识版本", "增量索引", "删除"]
+sidebar:
+  label: 知识库增量更新、删除和版本切换怎样保证一致？
+  order: 18
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+知识更新要同时处理原文、切片、向量、关键词索引和缓存。给文档与索引建立版本关系，新版本可检索并通过校验后再切换读取；删除也要使旧切片和缓存失效。
+
+```mermaid
+flowchart TB
+  A["产生文档新版本"] --> B["重建变化切片"]
+  B["重建变化切片"] --> C["校验并发布"]
+  C["校验并发布"] --> D["切换读取快照"]
+```
+
+## 读取一份可解释的快照
+
+文档更新产生新版本和内容哈希，只重建变化部分。建立切片所属文档及版本的映射，验证数量、解析质量和权限后发布新索引。一次查询固定读取版本；回滚切换到旧快照，避免不同召回通道混用版本。
+
+### 知识更新后，旧对话还能引用原答案吗？
+
+旧答案应保留原出处和生成时的版本，继续追问时判断是否需要刷新。涉及价格、权限和政策时重新查当前版本，不能把历史回答当成最新知识。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)、[LangChain 检索架构](https://docs.langchain.com/oss/python/deepagents/retrieval)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

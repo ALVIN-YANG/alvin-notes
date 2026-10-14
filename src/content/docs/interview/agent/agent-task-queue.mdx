@@ -1,0 +1,44 @@
+---
+title: Agent 长任务怎样用消息队列异步执行？
+description: 处理提交与消费的两端重复与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 运行时与平台
+  level: advanced
+  order: 29
+  tags: ["任务队列", "Outbox", "幂等"]
+sidebar:
+  label: Agent 长任务怎样用消息队列异步执行？
+  order: 29
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+请求先创建持久化任务并返回 task_id，Worker 从队列领取任务，状态和产物可独立查询。任务表是业务状态来源；队列通知不应成为唯一进度记录。
+
+```mermaid
+flowchart TB
+  A["事务创建任务与通知"] --> B["投递队列"]
+  B["投递队列"] --> C["领取并持久化进度"]
+  C["领取并持久化进度"] --> D["查询最终状态"]
+```
+
+## 处理提交与消费的两端重复
+
+数据库提交任务与发送消息可用事务 Outbox 衔接，再由投递器重试。消费端用任务状态、版本和执行标识去重，领取后续租。业务副作用采用幂等或状态核对；积压按租户、优先级与下游容量限流。
+
+### 数据库成功但发消息失败怎么办？
+
+Outbox 与任务记录同事务提交，后台扫描并重发。Worker 执行成功但确认消息失败时会重复投递，所以仍需消费端幂等；这套方案不能自动使外部写操作恰好一次。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)、[分布式锁与 Fencing](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

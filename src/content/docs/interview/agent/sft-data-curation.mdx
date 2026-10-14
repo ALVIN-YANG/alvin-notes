@@ -1,0 +1,44 @@
+---
+title: Agent 的 SFT 数据怎样清洗、重采样与划分？
+description: 划分先于扩增与模板生成与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 模型与数据
+  level: advanced
+  order: 56
+  tags: ["SFT 数据", "去重", "数据泄漏"]
+sidebar:
+  label: Agent 的 SFT 数据怎样清洗、重采样与划分？
+  order: 56
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+SFT 数据要确保任务、工具轨迹和答案一致，过滤格式错误、无依据成功和敏感内容。清洗后按场景难度与数据质量重采样，避免大量简单近重复样本淹没关键失败类型。
+
+```mermaid
+flowchart TB
+  A["检查轨迹一致性"] --> B["去重脱敏与分割"]
+  B["去重脱敏与分割"] --> C["按场景重采样"]
+  C["按场景重采样"] --> D["独立评测泛化"]
+```
+
+## 划分先于扩增与模板生成
+
+按用户、任务、文档或时间分割，再在训练集内扩增。检查多轮调用是否正确配对、执行结果是否真实支持答案，失败样本明确是训练拒绝还是纠错。评测集包含未见工具、异常与越权情形。
+
+### 数据越多就一定越好吗？
+
+错误标注和重复轨迹可能放大坏行为。对比数量、质量和配比的消融结果，测任务成功与拒绝能力；训练损失下降不等于实际 Agent 更可靠。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Spring AI 工具调用](https://docs.spring.io/spring-ai/reference/api/tools.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

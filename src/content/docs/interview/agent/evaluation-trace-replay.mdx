@@ -1,0 +1,44 @@
+---
+title: Agent 轨迹怎样留存和回放，怎样保证评测可比较？
+description: 固定变化来源与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 评测与观测
+  level: advanced
+  order: 50
+  tags: ["Trace Replay", "工具快照", "可复现"]
+sidebar:
+  label: Agent 轨迹怎样留存和回放，怎样保证评测可比较？
+  order: 50
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+轨迹保存模型输入配置、工具调用、工具结果、状态变化和产物，并关联版本与运行标识。回放可以固定工具响应来比较决策，也可以真实重执行；两种模式的结论不同。
+
+```mermaid
+flowchart TB
+  A["保存脱敏轨迹"] --> B["选择回放模式"]
+  B["选择回放模式"] --> C["固定版本与依赖"]
+  C["固定版本与依赖"] --> D["比较状态和产物"]
+```
+
+## 固定变化来源
+
+工具回放适合隔离 Prompt 或模型变更，但无法验证真实下游的新行为。真实重执行使用隔离环境和测试对象，写操作禁止无审核地重放到生产。记录随机性、知识快照、依赖版本与时限，敏感日志先脱敏。
+
+### 回放成功是否证明线上也成功？
+
+不能。线上权限、数据、负载和下游响应可能不同。用回放定位差异，再以集成测试和受控线上观察补证据；不把录制的成功返回当成真实执行。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[OpenTelemetry Traces](https://opentelemetry.io/docs/concepts/signals/traces/)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

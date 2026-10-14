@@ -1,0 +1,44 @@
+---
+title: 不同 Runtime 交接时，摘要和检查点怎样避免状态失真？
+description: 以真实产物验证交接描述与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 运行时与平台
+  level: advanced
+  order: 62
+  tags: ["上下文交接", "检查点", "工作区状态"]
+sidebar:
+  label: 不同 Runtime 交接时，摘要和检查点怎样避免状态失真？
+  order: 62
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+原生检查点记录运行时状态，摘要只保留部分语义，二者不能互相替代。跨 Runtime 交接需要明确已完成动作、待做任务、产物版本与工作区事实，接收者先核对再继续。
+
+```mermaid
+flowchart TB
+  A["记录已完成动作"] --> B["打包版本与产物"]
+  B["打包版本与产物"] --> C["接收方核对事实"]
+  C["接收方核对事实"] --> D["从安全边界继续"]
+```
+
+## 以真实产物验证交接描述
+
+交接记录目标、约束、工具操作标识、文件哈希、测试结果与未解决问题。代码任务检查当前 Git 状态和产物，不因摘要说“测试通过”就直接发布。无法迁移的内部状态显式标明，必要时从安全边界重新执行。
+
+### 摘要和文件实际状态冲突怎么办？
+
+以可核对的文件、数据库及执行记录确认事实，暂停依赖冲突状态的副作用。修正交接记录后再继续，不能选择更方便的一方当作完成证据。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

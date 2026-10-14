@@ -1,0 +1,44 @@
+---
+title: Agent 的工具缓存和语义缓存怎样避免返回过期结果？
+description: 先判定结果是否可复用与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 工具与执行
+  level: advanced
+  order: 94
+  tags: ["缓存", "TTL", "语义缓存"]
+sidebar:
+  label: Agent 的工具缓存和语义缓存怎样避免返回过期结果？
+  order: 94
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+确定性读工具可按输入与数据版本缓存；语义缓存按近似问题复用答案，误命中风险更高。缓存必须包含租户、权限范围、工具或模型版本，并遵守业务对新鲜度的要求。
+
+```mermaid
+flowchart TB
+  A["核对权限和版本"] --> B["判断是否可复用"]
+  B["判断是否可复用"] --> C["命中或真实执行"]
+  C["命中或真实执行"] --> D["验证并更新缓存"]
+```
+
+## 先判定结果是否可复用
+
+查询历史文档可用较长有效期，库存与退款状态通常要实时读取或使用很短有效期。写操作不能靠缓存文本跳过执行核对。语义相似不代表约束相同，涉及时间、金额和对象时需额外精确检查。
+
+### 如何证明缓存真的有效？
+
+同时统计命中率、时延、过期错误和跨权限命中。对命中的答案抽样重新执行比较，数据或权限变化触发失效；不能只报告减少了多少模型调用。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Spring AI 工具调用](https://docs.spring.io/spring-ai/reference/api/tools.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

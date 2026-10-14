@@ -1,0 +1,44 @@
+---
+title: 多用户 Agent 平台一定要每个用户启动一个容器吗？
+description: 逻辑隔离与计算隔离分别设计与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 运行时与平台
+  level: advanced
+  order: 51
+  tags: ["多租户", "运行时部署", "资源隔离"]
+sidebar:
+  label: 多用户 Agent 平台一定要每个用户启动一个容器吗？
+  order: 51
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+容器粒度由隔离需求、任务形态和资源成本决定。纯服务端工具调用可用共享 Runtime 加严格的会话与授权隔离；执行不可信代码时通常需要更强的独立工作区及运行隔离。
+
+```mermaid
+flowchart TB
+  A["确定任务隔离等级"] --> B["分区状态与存储"]
+  B["分区状态与存储"] --> C["配置执行配额"]
+  C["配置执行配额"] --> D["验证串数据与恢复"]
+```
+
+## 逻辑隔离与计算隔离分别设计
+
+数据库、记忆、缓存、事件流和附件按租户及运行标识划分，执行资源配置配额。受控共享进程避免跨会话全局变量；独立沙箱限制文件、网络和凭据。长任务迁移需持久状态，粘性会话不能代替恢复。
+
+### 共享进程怎样验证没有串数据？
+
+并行运行不同用户的相似任务，测试标识伪造、取消、异常、缓存和复用 Worker 等路径。内存占用和任务积压也按租户监控，避免一个用户影响全部服务。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Docker Engine Security](https://docs.docker.com/engine/security/)、[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

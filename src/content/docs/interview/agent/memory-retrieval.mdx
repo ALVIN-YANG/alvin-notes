@@ -1,0 +1,44 @@
+---
+title: 长期记忆怎样召回，防止不相关经验污染当前任务？
+description: 区分事实、偏好和任务经验与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 上下文与记忆
+  level: advanced
+  order: 39
+  tags: ["记忆召回", "时间衰减", "事实版本"]
+sidebar:
+  label: 长期记忆怎样召回，防止不相关经验污染当前任务？
+  order: 39
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+记忆召回应同时考虑语义相关、身份范围、时间和可信程度。记录来源、更新时间与失效条件，先做权限和类型过滤，再排序；相似度高不代表当前仍然适用。
+
+```mermaid
+flowchart TB
+  A["按身份和类型过滤"] --> B["检索相关记忆"]
+  B["检索相关记忆"] --> C["检查时间与冲突"]
+  C["检查时间与冲突"] --> D["只注入可用内容"]
+```
+
+## 区分事实、偏好和任务经验
+
+用户偏好可以跨会话使用，订单状态通常需要实时查询，某次失败经验要限定工具和版本。冲突事实保留版本并选择有效项，不把旧记忆重复追加到每轮上下文。被删除或撤回授权的记忆不能继续通过缓存命中。
+
+### 怎样评估召回是否污染了任务？
+
+比较无记忆、正确记忆、过期记忆和其他用户相似记忆下的结果，检查错误引用与越权。记录模型最终使用了哪条记忆，不能只测检索命中率。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

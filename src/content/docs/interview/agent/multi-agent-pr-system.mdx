@@ -1,0 +1,44 @@
+---
+title: 多 Agent 自动生成 PR 的系统怎样设计？
+description: 协调代码所有权与集成顺序与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 场景设计
+  level: advanced
+  order: 87
+  tags: ["自动 PR", "多 Agent", "代码验收"]
+sidebar:
+  label: 多 Agent 自动生成 PR 的系统怎样设计？
+  order: 87
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+任务从确定需求和仓库版本开始，按可独立模块分配受控工作区，合并改动后统一构建与验收。生成 PR 与合并发布是不同权限，执行者不能自行扩大到生产变更。
+
+```mermaid
+flowchart TB
+  A["固定需求和基线"] --> B["分配隔离工作区"]
+  B["分配隔离工作区"] --> C["集成审查与测试"]
+  C["集成审查与测试"] --> D["按授权创建 PR"]
+```
+
+## 协调代码所有权与集成顺序
+
+任务契约包含允许文件、接口、验收条件和截止时间。每个 Agent 在独立工作区提交可审查改动，协调者检查重叠、接口兼容与依赖。测试运行在沙箱，凭据由提交代理持有；PR 记录真实验证结果。
+
+### 多个 Agent 改了同一文件怎么办？
+
+先明确负责人或序列化集成，冲突时按需求重新判断语义，不能只自动选择一侧。合并后重新验证集成行为，单个分支测试通过不证明组合正确。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangChain 多 Agent 模式](https://docs.langchain.com/oss/python/langchain/multi-agent)、[Docker Engine Security](https://docs.docker.com/engine/security/)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,44 @@
+---
+title: Tokenizer 怎样影响代码补全、Token 预算和文本切片？
+description: 切片先保留语义结构与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 模型与数据
+  level: basic
+  order: 98
+  tags: ["Tokenizer", "BPE", "代码补全"]
+sidebar:
+  label: Tokenizer 怎样影响代码补全、Token 预算和文本切片？
+  order: 98
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+Tokenizer 把文本映射成模型使用的 Token；一个字、词或代码标识符不一定对应一个 Token。词表与切分规则影响长度、成本和代码片段表示，预算应使用所选模型的实际计数。
+
+```mermaid
+flowchart TB
+  A["输入文本或代码"] --> B["按模型规则编码"]
+  B["按模型规则编码"] --> C["计算真实 Token"]
+  C["计算真实 Token"] --> D["保留结构并分块"]
+```
+
+## 切片先保留语义结构
+
+代码按函数、类和依赖组织，再检查 Token 上限；文本按章节、句子与表格处理。仅按字符数估算可能低估中文、特殊符号或长标识符的用量。比较模型时同时核对可用窗口和工具 Schema 开销。
+
+### 增大词表是否一定提高代码能力？
+
+不一定。词表影响表示与训练分布，能力还取决于数据、模型和后训练。不能仅从 Token 更少推断代码更正确；应实测补全、工具参数和成本。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Hugging Face Tokenizers](https://huggingface.co/docs/tokenizers/main/en/quicktour)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,44 @@
+---
+title: Subagent 怎样创建、回收，如何限制递归分裂？
+description: 把任务树作为受控状态与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 多 Agent 协作
+  level: advanced
+  order: 40
+  tags: ["Subagent 生命周期", "递归预算", "任务树"]
+sidebar:
+  label: Subagent 怎样创建、回收，如何限制递归分裂？
+  order: 40
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+子 Agent 要有明确任务、输入、产物和结束条件。父任务管理子任务状态、总预算和取消传播，限制深度、数量与并发；否则动态拆解可能不停创建新 Agent。
+
+```mermaid
+flowchart TB
+  A["定义子任务契约"] --> B["检查深度与预算"]
+  B["检查深度与预算"] --> C["调度并监控"]
+  C["调度并监控"] --> D["验收回收或取消"]
+```
+
+## 把任务树作为受控状态
+
+创建前判断是否已有相同任务、是否构成循环依赖、预算是否足够。完成后验证产物再汇总，失败决定重试、替换或终止。子 Agent 申请新工作时由协调者审核边界，不能自行扩大权限。
+
+### 父 Agent 已经结束，子 Agent 还在执行怎么办？
+
+取消可停止的子任务，记录无法中止的操作并对账，禁止迟到结果更新新运行。最终状态说明未完成分支，进程退出不等于业务操作被撤销。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangChain 多 Agent 模式](https://docs.langchain.com/oss/python/langchain/multi-agent)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

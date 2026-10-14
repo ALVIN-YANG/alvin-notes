@@ -1,0 +1,44 @@
+---
+title: 记忆系统有什么量化指标？怎样证明记忆有用？
+description: 用对照实验检验增益与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 上下文与记忆
+  level: advanced
+  order: 86
+  tags: ["记忆评测", "消融实验", "遗忘"]
+sidebar:
+  label: 记忆系统有什么量化指标？怎样证明记忆有用？
+  order: 86
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+评测记忆需同时检查写入、召回、更新和删除，以及对最终任务的贡献。命中率高可能只是记住了大量无关内容；应在多会话、时间变化和权限变化的任务上验证。
+
+```mermaid
+flowchart TB
+  A["构造跨会话任务"] --> B["对比有无记忆"]
+  B["对比有无记忆"] --> C["检查更新与删除"]
+  C["检查更新与删除"] --> D["测量任务收益"]
+```
+
+## 用对照实验检验增益
+
+固定模型和任务，对比无记忆、现有记忆与改进方案。指标包含必要事实召回率、过期或错误记忆率、跨用户泄露、更新后正确率、删除后残留和任务成功率，同时记录额外 Token 与时延。
+
+### 只保存最近 N 条为什么不够？
+
+时间新不一定相关，较早的关键偏好可能被丢弃，近期一次错误也可能被反复使用。应根据类型、效用和失效规则保留，并用跨长周期任务检验遗忘策略。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

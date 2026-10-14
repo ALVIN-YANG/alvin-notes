@@ -1,0 +1,44 @@
+---
+title: Agentic RAG 与固定 RAG 流水线有什么区别？
+description: 先验证是否需要自主决策与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 检索与知识
+  level: intermediate
+  order: 80
+  tags: ["Agentic RAG", "检索决策", "路由"]
+sidebar:
+  label: Agentic RAG 与固定 RAG 流水线有什么区别？
+  order: 80
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+固定 RAG 通常按预设顺序检索、重排并生成；Agentic RAG 允许模型根据当前证据决定是否检索、改写问题、换数据源或继续查找。收益来自适应复杂问题，代价是额外调用、路径不稳定和更难评测。
+
+```mermaid
+flowchart TB
+  A["判断信息缺口"] --> B["选择检索源"]
+  B["选择检索源"] --> C["检查召回证据"]
+  C["检查召回证据"] --> D["回答或继续查找"]
+```
+
+## 先验证是否需要自主决策
+
+查询单条产品说明时，固定链路更容易控制。比较多个版本的配置差异时，Agent 可以先定位版本，再分别检索。工具返回文档标识、版本和出处；控制器设置最大检索次数，缺少证据时明确说明缺口。
+
+### 怎么证明 Agentic RAG 比普通 RAG 好？
+
+使用同一批问题、知识快照和判分标准，对比答案正确率、证据覆盖、拒答、时延与成本。按单跳、多跳、知识缺失分组，不能只展示一个复杂问题的成功案例。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangChain 检索架构](https://docs.langchain.com/oss/python/deepagents/retrieval)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

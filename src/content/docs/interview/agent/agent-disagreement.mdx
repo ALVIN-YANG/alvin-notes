@@ -1,0 +1,44 @@
+---
+title: 多个 Agent 的结论互相矛盾，怎样收敛？
+description: 统一比较对象和评价标准与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 多 Agent 协作
+  level: advanced
+  order: 78
+  tags: ["分歧处理", "证据仲裁", "停止条件"]
+sidebar:
+  label: 多个 Agent 的结论互相矛盾，怎样收敛？
+  order: 78
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+先区分事实冲突、规则冲突和偏好差异。事实问题回到原始证据和版本，规则问题按明确优先级处理，偏好差异交给具有决策权的人；多数投票不能自动变成真相。
+
+```mermaid
+flowchart TB
+  A["收集结论与依据"] --> B["对齐假设和版本"]
+  B["对齐假设和版本"] --> C["核对冲突证据"]
+  C["核对冲突证据"] --> D["裁决或升级人工"]
+```
+
+## 统一比较对象和评价标准
+
+要求各角色输出结论、依据、假设与缺口。协调者对齐时间、数据范围和目标，再做确定性验证或补充检索。设定争议轮次和成本上限；无法收敛时保留分歧及待核实事项。
+
+### 增加更多 Agent 投票会更可靠吗？
+
+同一模型和同一错误上下文会产生相关错误。独立证据、不同验证方法和明确裁决规则通常比单纯增加人数更有用；用冲突样本检验改善幅度。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangChain 多 Agent 模式](https://docs.langchain.com/oss/python/langchain/multi-agent)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

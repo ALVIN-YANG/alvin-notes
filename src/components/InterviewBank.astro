@@ -12,7 +12,7 @@ const entries = await Promise.all(questions.map(async (entry, index) => ({entry,
   <header class="ib-heading not-content"><h1 id="_top">AI 工程问答</h1><div class="ib-track-choices" role="group" aria-label="内容方向" data-ib-enhanced hidden>
     {Object.entries(tracks).map(([id, label]) => <button type="button" data-ib-track={id} aria-pressed={id === 'agent' ? 'true' : 'false'}>{label}</button>)}
   </div></header>
-  <p class="ib-ranking-note not-content">Agent 按面经频次排序 · <a href="/interview/agent-sources/">{interviewCorpus.sources.length} 篇公开面经，查看统计口径</a></p>
+  <p class="ib-ranking-note not-content">Agent 按近 90 天原帖频次排序 · <a href="/interview/agent-sources/">{interviewCorpus.sources.length} 篇面经与近期题单，查看来源</a></p>
   <div class="ib-workspace">
     <aside class="ib-catalog not-content" aria-label="题目目录">
       <div class="ib-filters" data-ib-enhanced hidden>
@@ -24,7 +24,9 @@ const entries = await Promise.all(questions.map(async (entry, index) => ({entry,
         <ol class="ib-question-list">
           {entries.map(({entry, index, evidence}) => {
             const meta = entry.data.interview!;
-            return <li data-ib-question data-id={entry.id} data-track={meta.track} data-level={meta.level} data-panel={`ib-panel-${index}`} data-search={`${entry.data.title} ${meta.topic} ${meta.tags.join(' ')} ${evidence.companies.join(' ')}`.toLowerCase()}><a class="ib-question" href={`/${entry.id}/`}><span class="ib-question-number">{String(meta.order).padStart(2,'0')}</span><span>{entry.data.title}</span><span class={`ib-level ${meta.level}`}>{levels[meta.level]}</span>{meta.track === 'agent' && <span class="ib-question-evidence">{evidence.count ? `${evidence.count} 篇面经 · ${evidence.companies.join(' / ')}` : '工程补充'}</span>}</a></li>;
+            const companies = evidence.companies.slice(0, 2).join(' / ') + (evidence.companies.length > 2 ? ' 等' : '');
+            const badge = evidence.count ? `近 90 天 ${evidence.recentCount} 篇 · ${companies}` : evidence.collections.length ? `${evidence.collections.length} 份题单收录` : '工程补充';
+            return <li data-ib-question data-id={entry.id} data-track={meta.track} data-level={meta.level} data-panel={`ib-panel-${index}`} data-search={`${entry.data.title} ${meta.topic} ${meta.tags.join(' ')} ${evidence.companies.join(' ')}`.toLowerCase()}><a class="ib-question" href={`/${entry.id}/`}><span class="ib-question-number">{String(meta.order).padStart(2,'0')}</span><span>{entry.data.title}</span><span class={`ib-level ${meta.level}`}>{levels[meta.level]}</span>{meta.track === 'agent' && <span class="ib-question-evidence">{badge}</span>}</a></li>;
           })}
         </ol>
         <div class="ib-empty" data-ib-empty hidden><p>没有找到题目</p><button type="button" data-ib-reset>清除筛选</button></div>

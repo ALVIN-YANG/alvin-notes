@@ -5,14 +5,19 @@ const evidence = getInterviewEvidence(id);
 const slug = id.split('/').at(-1);
 ---
 {id.startsWith('interview/agent/') && <aside class="iq-evidence not-content" data-reader-ignore aria-label="面经来源">
-  <p class="iq-evidence-summary">{evidence.count ? `样本出题记录：${evidence.count} 篇 · ${evidence.companies.join('、')}` : '工程补充：本次面经样本未收录该题'}</p>
+  <p class="iq-evidence-summary">{evidence.count ? `近 90 天：${evidence.recentCount} 篇 · 全部样本：${evidence.count} 篇 · ${evidence.companies.join('、')}` : evidence.collections.length ? `题单收录：${evidence.collections.length} 份 · 暂无本站核对的对应原帖` : '工程补充：暂无本站核对的对应原帖或题单'}</p>
   {evidence.count > 0 && <details>
     <summary>查看面经出处与追问</summary>
-    <p>候选人自述，题意归并；回答由本站整理。核对日期：{interviewCorpus.asOf}。</p>
+    <p>候选人自述，题意归并；同一作者、同一公司、同一主题计一次。近 90 天按发帖日期计算：{interviewCorpus.recentSince} 至 {interviewCorpus.asOf}。回答由本站整理。</p>
     <ul>{evidence.sources.map(source => <li>
       <a href={source.url}>{source.title}</a> · {source.company} · {source.role} · 发布于 {source.postedAt} · {source.author}
       <p>考察：{source.observations.find(item => item.question === slug)?.prompt}</p>
     </li>)}</ul>
+  </details>}
+  {evidence.collections.length > 0 && <details>
+    <summary>查看外部题单收录</summary>
+    <p>题单用于补充考察方向，其题量、公司标签和外部热度未计入本站原帖频次。</p>
+    <ul>{evidence.collections.map(source => <li><a href={source.url}>{source.title}</a> · {source.period}</li>)}</ul>
   </details>}
   <a href="/interview/agent-sources/">样本、去重与热度口径</a>
 </aside>}

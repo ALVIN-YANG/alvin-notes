@@ -1,0 +1,44 @@
+---
+title: MCP Server 从能力注册到业务执行怎样设计？
+description: 把协议与业务逻辑分开与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 工具与执行
+  level: intermediate
+  order: 84
+  tags: ["MCP Server", "能力发现", "业务适配"]
+sidebar:
+  label: MCP Server 从能力注册到业务执行怎样设计？
+  order: 84
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+MCP Server 把业务能力暴露为可发现、可调用的工具，也可以提供资源和提示模板。协议层负责连接、协商和消息处理，业务层负责身份授权、参数校验、实际执行和审计。
+
+```mermaid
+flowchart TB
+  A["连接与能力协商"] --> B["发现工具定义"]
+  B["发现工具定义"] --> C["授权并执行业务"]
+  C["授权并执行业务"] --> D["返回结果或错误"]
+```
+
+## 把协议与业务逻辑分开
+
+初始化时协商协议版本和能力，工具列表提供名称、描述及 Schema。调用进入统一授权与限流层，再委派已有业务服务；错误区分协议失败和工具执行失败。工具版本变化需要兼容策略，不能在客户端仍持有旧定义时悄悄改变语义。
+
+### 如何验证 Server 可用于生产？
+
+覆盖能力发现、合法及非法参数、权限拒绝、超时、断连和取消。再用真实业务任务测工具选择与结果质量；协议测试通过不证明 Agent 能正确使用它。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[MCP Tools 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

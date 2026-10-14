@@ -1,0 +1,44 @@
+---
+title: Agent 执行代码和命令怎样设计沙箱？
+description: 按任务授予最小能力与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 安全与隔离
+  level: advanced
+  order: 79
+  tags: ["沙箱", "容器", "资源隔离"]
+sidebar:
+  label: Agent 执行代码和命令怎样设计沙箱？
+  order: 79
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+沙箱限制文件、网络、系统调用、凭据和资源，使模型生成的代码只能在授权范围执行。容器是隔离的一种手段，共享宿主内核；强隔离需求可能需要更严格的运行环境。
+
+```mermaid
+flowchart TB
+  A["创建隔离工作区"] --> B["授予有限能力"]
+  B["授予有限能力"] --> C["限额执行代码"]
+  C["限额执行代码"] --> D["检查产物并回收"]
+```
+
+## 按任务授予最小能力
+
+使用专用工作区、非特权身份、只读基础文件系统及 CPU、内存、进程数和运行时限。网络采用明确目的地规则，业务密钥不进入代码环境。产物导出检查路径、大小和类型，失败任务及时回收资源。
+
+### 把执行命令写进黑名单够吗？
+
+不够，命令组合、解释器和网络都可能绕过字符串限制。安全边界由运行环境与授权代理执行，命令规则只是补充；测试越界文件访问、资源耗尽和网络绕过。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Docker Engine Security](https://docs.docker.com/engine/security/)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

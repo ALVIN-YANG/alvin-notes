@@ -1,0 +1,44 @@
+---
+title: BM25 和倒排索引怎样工作，为什么还需要向量检索？
+description: 词频增加不是无限加分与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 检索与知识
+  level: basic
+  order: 92
+  tags: ["BM25", "倒排索引", "关键词"]
+sidebar:
+  label: BM25 和倒排索引怎样工作，为什么还需要向量检索？
+  order: 92
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+倒排索引记录每个词出现在哪些文档中；BM25 根据词频、词的区分度和文档长度给结果打分。它适合产品编号、错误码和专有名词；向量检索更擅长找语义近似但字面不同的表达。
+
+```mermaid
+flowchart TB
+  A["文档分词"] --> B["建立词到文档映射"]
+  B["建立词到文档映射"] --> C["计算 BM25 分数"]
+  C["计算 BM25 分数"] --> D["与语义召回融合"]
+```
+
+## 词频增加不是无限加分
+
+BM25 对词频采用饱和处理，并对文档长度做归一化，避免长文仅因重复关键词获得优势。中文分词、字段权重和停用词会影响效果；同一个检索器换分词器后也应重跑评测。
+
+### 直接把 BM25 分数与向量相似度相加行吗？
+
+两者分数尺度不同，未经校准相加没有稳定含义。可以先采用基于名次的融合，再按标注集调权重和重排。混合检索的完整链路见对应题。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Milvus 全文检索](https://milvus.io/docs/full-text-search.md)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

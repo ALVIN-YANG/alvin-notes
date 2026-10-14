@@ -1,0 +1,44 @@
+---
+title: A2A 的 Task 和 Artifact 怎样支持跨 Agent 长任务？
+description: 任务协议要包含生命周期与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 多 Agent 协作
+  level: advanced
+  order: 85
+  tags: ["A2A", "Task", "Artifact"]
+sidebar:
+  label: A2A 的 Task 和 Artifact 怎样支持跨 Agent 长任务？
+  order: 85
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+A2A 面向 Agent 之间的协作，可用任务状态、消息和产物描述跨系统工作；MCP 主要连接 Agent 与工具或数据服务。跨 Agent 长任务需要可查询的状态，不能只依赖一次 HTTP 回复。
+
+```mermaid
+flowchart TB
+  A["提交跨 Agent 任务"] --> B["查询或订阅状态"]
+  B["查询或订阅状态"] --> C["处理输入与取消"]
+  C["处理输入与取消"] --> D["验收最终产物"]
+```
+
+## 任务协议要包含生命周期
+
+使用任务标识关联提交、进度、需要补充输入、完成和失败；产物有标识、格式和出处。客户端处理断连、恢复和重复通知，服务端校验协作权限。不同版本的状态枚举和传输支持应按实际协议核对。
+
+### 取消任务等于撤销已发生的操作吗？
+
+不等于。取消请求只能影响仍可停止的工作，已提交的业务变更需要查询与补偿。任务终态还应说明哪些产物有效、哪些步骤已产生副作用。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[A2A 协议规范](https://a2a-protocol.org/latest/specification/)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

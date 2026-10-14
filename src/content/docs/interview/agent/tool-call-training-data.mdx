@@ -1,0 +1,44 @@
+---
+title: Function Calling 能力不足，训练数据怎样设计与验证？
+description: 保持调用与结果的协议一致与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 模型与数据
+  level: advanced
+  order: 89
+  tags: ["工具调用数据", "SFT", "负样本"]
+sidebar:
+  label: Function Calling 能力不足，训练数据怎样设计与验证？
+  order: 89
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+训练数据不仅包含正确工具与参数，还需要无需调用、无工具可用、澄清、错误反馈和多步依赖样本。先判断是工具描述问题、协议适配问题还是模型能力不足，再决定是否训练。
+
+```mermaid
+flowchart TB
+  A["诊断调用失败原因"] --> B["构造正负轨迹"]
+  B["构造正负轨迹"] --> C["训练并协议验证"]
+  C["训练并协议验证"] --> D["测试泛化与拒绝"]
+```
+
+## 保持调用与结果的协议一致
+
+样本保留用户需求、工具定义、调用标识、参数、结果和最终回答，使用目标模型的消息格式。检查参数类型、业务约束及实际可执行性，数据集按任务和工具家族划分，避免近重复泄漏。
+
+### 训练后怎样证明不是只记住了工具名？
+
+测试未见参数、改名工具、相似工具、无权限及无答案场景。分别测工具选择、参数正确、拒绝与端到端成功率；Schema 合法不代表业务正确。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Spring AI 工具调用](https://docs.spring.io/spring-ai/reference/api/tools.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,44 @@
+---
+title: 工具返回几万行结果，怎样卸载到上下文之外？
+description: 引用要能重新读取和授权与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 上下文与记忆
+  level: intermediate
+  order: 83
+  tags: ["结果卸载", "文件引用", "上下文预算"]
+sidebar:
+  label: 工具返回几万行结果，怎样卸载到上下文之外？
+  order: 83
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+大结果可以存入受控文件或对象存储，只向模型提供摘要、结构和引用。后续按行号、字段或搜索条件读取局部内容，避免每轮都把原始数据塞进上下文。
+
+```mermaid
+flowchart TB
+  A["保存工具原始结果"] --> B["生成摘要与引用"]
+  B["生成摘要与引用"] --> C["按需读取局部"]
+  C["按需读取局部"] --> D["核对关键结论"]
+```
+
+## 引用要能重新读取和授权
+
+结果记录内容哈希、来源、有效期和访问范围。摘要保留字段含义、关键统计、异常和缺失信息，不能用有损摘要替代审计原文。读文件工具限制范围和大小，路径由应用生成并验证，不接受任意系统路径。
+
+### 只保留摘要为什么还会答错？
+
+摘要可能丢掉尾部异常或少数关键记录。需要原始数据验证的结论应按引用回读，对表格统计尽量用代码计算；超出读取预算时说明限制。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangChain Middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

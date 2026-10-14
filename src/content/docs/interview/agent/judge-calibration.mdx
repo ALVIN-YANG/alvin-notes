@@ -1,0 +1,44 @@
+---
+title: LLM-as-Judge 怎样校准，避免评分模型自信地打错分？
+description: 让评价器也有测试集与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 评测与观测
+  level: advanced
+  order: 21
+  tags: ["LLM Judge", "校准", "一致性"]
+sidebar:
+  label: LLM-as-Judge 怎样校准，避免评分模型自信地打错分？
+  order: 21
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+模型评分适合补充难以写成规则的质量判断，但必须使用明确 Rubric 和人工标注样本校准。答案顺序、长度、文风和模型来源可能引入偏差，不能把一次分数当作客观真值。
+
+```mermaid
+flowchart TB
+  A["定义判分标准"] --> B["建立人工标注集"]
+  B["建立人工标注集"] --> C["校准误判与偏差"]
+  C["校准误判与偏差"] --> D["监控评分漂移"]
+```
+
+## 让评价器也有测试集
+
+定义事实性、完整性和可执行性等具体标准，尽量引用原始证据。与人工标签比较一致性及各类误判，交换候选答案顺序并多次判分。能用测试、数据库状态或引用匹配判断的部分优先用确定性检查。
+
+### 评分模型与被测模型可以是同一个吗？
+
+可以使用，但错误可能相关，应单独测偏差并引入外部验证。对高影响争议抽样人工复核，记录 Judge 版本；换 Judge 后不能直接比较旧分数。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[OpenTelemetry Traces](https://opentelemetry.io/docs/concepts/signals/traces/)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

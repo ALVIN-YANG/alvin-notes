@@ -1,0 +1,44 @@
+---
+title: 输入一个 PR，怎样设计只提意见的代码 Review Agent？
+description: 控制上下文与误报与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 场景设计
+  level: advanced
+  order: 66
+  tags: ["Code Review", "PR", "证据定位"]
+sidebar:
+  label: 输入一个 PR，怎样设计只提意见的代码 Review Agent？
+  order: 66
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+Review Agent 获取固定版本的 Diff、相关上下文和仓库规则，输出可定位且有依据的问题。权限只允许读取与生成审查产物；是否发布评论由工作流的授权决定。
+
+```mermaid
+flowchart TB
+  A["固定 PR 版本"] --> B["读取 Diff 与上下文"]
+  B["读取 Diff 与上下文"] --> C["验证候选问题"]
+  C["验证候选问题"] --> D["输出定位准确的意见"]
+```
+
+## 控制上下文与误报
+
+按模块和风险选择关联代码、调用者与测试，不仅逐行看新增代码。每个发现包含触发条件、影响和准确行号，区分确定问题与待验证假设。对重复意见归并，用真实回归样本测误报和漏报。
+
+### 读取仓库规则会遇到提示注入吗？
+
+会。代码、注释和文档属于待审材料，不能改变系统授权或要求上传凭据。规则来源分级，执行测试在受控沙箱中，外部内容无权让 Agent 推送代码。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Docker Engine Security](https://docs.docker.com/engine/security/)、[Spring AI 工具调用](https://docs.spring.io/spring-ai/reference/api/tools.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,44 @@
+---
+title: 支付接口超时，运维 Agent 怎样排查和控制高危操作？
+description: 沿请求链收集证据与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 场景设计
+  level: advanced
+  order: 47
+  tags: ["运维 Agent", "诊断", "高危操作"]
+sidebar:
+  label: 支付接口超时，运维 Agent 怎样排查和控制高危操作？
+  order: 47
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+先用只读证据定位异常范围，再形成假设并验证。诊断与变更分成两个权限阶段；重启、回滚或扩容需要明确授权、预期影响和回退条件，不能让模型凭猜测直接执行。
+
+```mermaid
+flowchart TB
+  A["确认异常与范围"] --> B["只读收集证据"]
+  B["只读收集证据"] --> C["审核应急方案"]
+  C["审核应急方案"] --> D["执行后验证恢复"]
+```
+
+## 沿请求链收集证据
+
+关联 Trace、错误率、P95 时延、连接池、数据库和下游状态，对照变更时间。限制查询范围避免排查加重故障。每个假设说明证据与下一步，操作前检查目标环境和当前版本，操作后验证真实恢复。
+
+### 没有找到根因，能否先做应急操作？
+
+可以按已批准的 Runbook 执行限流或降级，但应说明依据和影响，并监控恢复指标。没有证据时不伪称已定位根因，无法确认权限的变更转交值班人员。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[OpenTelemetry Traces](https://opentelemetry.io/docs/concepts/signals/traces/)、[Spring AI 工具调用](https://docs.spring.io/spring-ai/reference/api/tools.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

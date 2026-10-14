@@ -1,0 +1,44 @@
+---
+title: Agent 怎样做灰度、Shadow 和线上效果监控？
+description: 发布单元要可回滚与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 评测与观测
+  level: advanced
+  order: 44
+  tags: ["灰度", "Shadow", "线上评测"]
+sidebar:
+  label: Agent 怎样做灰度、Shadow 和线上效果监控？
+  order: 44
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+离线通过后，在小范围用户或任务上灰度验证；Shadow 使用相同输入旁路运行，不向用户提交结果，也不执行真实写入。线上监控要覆盖任务质量、安全、成本和长尾时延。
+
+```mermaid
+flowchart TB
+  A["离线验证候选版本"] --> B["隔离旁路运行"]
+  B["隔离旁路运行"] --> C["小范围灰度"]
+  C["小范围灰度"] --> D["监控与回滚"]
+```
+
+## 发布单元要可回滚
+
+发布绑定模型、Prompt、Skill、工具和知识版本。按任务类型比较成功、转人工、投诉与错误率，并设置关键指标退化门槛。Shadow 用模拟写工具或只读权限，否则所谓旁路也可能产生业务副作用。
+
+### 离线分数没变，线上投诉却增加怎么办？
+
+先看流量和任务分布是否变化，再核对知识、权限、下游与耗时。将线上新失败纳入独立评测集，避免只优化已有样本；必要时回滚具体版本。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[OpenTelemetry Traces](https://opentelemetry.io/docs/concepts/signals/traces/)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

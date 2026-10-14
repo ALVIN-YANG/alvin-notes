@@ -1,0 +1,44 @@
+---
+title: 团队 Skill 平台怎样管理上传、版本、权限和下线？
+description: 发布和执行分成两层控制与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 运行时与平台
+  level: advanced
+  order: 22
+  tags: ["Skill 治理", "版本", "供应链"]
+sidebar:
+  label: 团队 Skill 平台怎样管理上传、版本、权限和下线？
+  order: 22
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+Skill 平台管理的不只是 Markdown，还包括脚本、资源、依赖和执行权限。上传后检查结构、来源与危险能力，按版本发布；下载与运行仍受用户授权约束。
+
+```mermaid
+flowchart TB
+  A["检查 Skill 包"] --> B["版本化注册"]
+  B["版本化注册"] --> C["回归并发布"]
+  C["回归并发布"] --> D["监控与撤销"]
+```
+
+## 发布和执行分成两层控制
+
+注册表保存负责人、版本、兼容 Runtime、依赖和权限需求，包校验路径与内容，避免路径越界。变更经过相关任务回归后灰度，运行固定版本以便追踪；撤销可疑包后阻止新任务加载并处理在途任务。
+
+### 热加载为什么还需要版本管理？
+
+运行中替换说明或脚本可能让同一任务前后语义变化。新运行使用新版本，在途运行固定或按明确迁移策略升级，记录实际执行版本才能回放。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Agent Skills 规范](https://agentskills.io/specification)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

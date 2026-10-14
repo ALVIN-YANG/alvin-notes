@@ -1,0 +1,44 @@
+---
+title: 多个工具存在依赖时怎样并行调度？
+description: 调度器负责预算与状态与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 工具与执行
+  level: advanced
+  order: 82
+  tags: ["DAG", "并发限制", "工具调度"]
+sidebar:
+  label: 多个工具存在依赖时怎样并行调度？
+  order: 82
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+先用依赖图区分可以并行的读取与必须串行的操作。并行能缩短独立任务的等待时间，但涉及相同资源的写操作需要冲突控制，不能因为模型同一轮提出多次调用就全部执行。
+
+```mermaid
+flowchart TB
+  A["生成依赖图"] --> B["执行就绪节点"]
+  B["执行就绪节点"] --> C["归并状态与结果"]
+  C["归并状态与结果"] --> D["继续或停止分支"]
+```
+
+## 调度器负责预算与状态
+
+任务节点保存依赖、超时、重试和结果，只有前置节点成功才进入就绪队列。限制全局、租户和下游并发；部分失败时明确是否继续独立分支。取消传播到未启动和可取消任务，已产生副作用的操作单独对账。
+
+### 一个分支失败，其他分支要回滚吗？
+
+看业务是否要求原子性。分布式写操作通常不能靠撤销模型消息回滚，应设计补偿或人工恢复。纯读取可以保留已成功结果，并告知完整性不足。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[Spring AI 工具调用](https://docs.spring.io/spring-ai/reference/api/tools.html)、[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

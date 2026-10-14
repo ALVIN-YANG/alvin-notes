@@ -1,0 +1,44 @@
+---
+title: 多个 Agent 同时更新状态，怎样避免覆盖和冲突？
+description: 不同字段采用不同合并语义与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 运行时与平台
+  level: advanced
+  order: 49
+  tags: ["乐观锁", "CAS", "状态合并"]
+sidebar:
+  label: 多个 Agent 同时更新状态，怎样避免覆盖和冲突？
+  order: 49
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+共享状态需要规定字段的所有者和合并规则。两个节点读到同一版本再分别写回，会丢失更新；可用版本号条件更新、事务或明确的 Reducer 控制，具体取决于状态类型。
+
+```mermaid
+flowchart TB
+  A["读取状态版本"] --> B["计算本次更新"]
+  B["计算本次更新"] --> C["条件提交"]
+  C["条件提交"] --> D["冲突后重读与归并"]
+```
+
+## 不同字段采用不同合并语义
+
+追加事件可以按唯一事件 ID 合并，预算扣减必须原子执行，最终任务状态需要合法转换。版本冲突后重新读取并计算，不能无条件重试旧值。长时间工具执行不要持有数据库事务锁。
+
+### 把所有结果拼成列表就没有冲突了吗？
+
+列表仍可能重复、乱序或包含取消后的结果。每条结果关联任务、尝试和版本；归并时校验身份、顺序与有效性，业务终态只能由指定协调者发布。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>

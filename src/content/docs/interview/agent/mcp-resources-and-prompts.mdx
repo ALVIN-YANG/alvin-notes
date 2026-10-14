@@ -1,0 +1,44 @@
+---
+title: MCP 的 Tools、Resources 和 Prompts 各负责什么？
+description: 控制数据进入上下文的方式与相关工程取舍。
+lastUpdated: 2026-10-14
+interview:
+  track: agent
+  topic: 工具与执行
+  level: basic
+  order: 96
+  tags: ["MCP Resources", "MCP Prompts", "工具"]
+sidebar:
+  label: MCP 的 Tools、Resources 和 Prompts 各负责什么？
+  order: 96
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+Tools 暴露可执行操作；Resources 提供通过 URI 标识的上下文数据；Prompts 提供可复用的消息模板及参数。它们是不同能力，不是三个名称不同的工具接口。
+
+```mermaid
+flowchart TB
+  A["发现服务能力"] --> B["选择操作或数据"]
+  B["选择操作或数据"] --> C["应用授权控制"]
+  C["应用授权控制"] --> D["组装必要上下文"]
+```
+
+## 控制数据进入上下文的方式
+
+工具通常由模型提出调用，应用执行；资源由客户端按需读取或订阅；提示模板由用户或客户端选择并填充参数。具体交互由 Host 决定。资源 URI 不是公开访问许可，读取与模板展开仍要检查权限和内容可信度。
+
+### 把所有资料都做成 Tool 可以吗？
+
+可以实现类似效果，但会增加调用和参数设计负担，也失去资源发现及更新通知等语义。根据数据是否稳定、是否需要执行动作、客户端如何消费来选择。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-14。[MCP Resources](https://modelcontextprotocol.io/specification/2025-11-25/server/resources)、[MCP Tools 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)、[MCP Prompts](https://modelcontextprotocol.io/specification/2025-11-25/server/prompts)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+
+</details>
+
+</InterviewQuestion>
