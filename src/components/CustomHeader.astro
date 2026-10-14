@@ -3,12 +3,13 @@ import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
 import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
 import Search from '@astrojs/starlight/components/Search.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import { bookStartUrl } from '../data/agent-book-links.mjs';
 
 const navGroups = [
   {
     label: 'AI 工程',
     links: [
-      { label: 'AI Agent', href: '/agent-knowledge/', match: '/agent-knowledge/' },
+      { label: 'AI Agent', href: bookStartUrl, match: '/agent-knowledge/' },
       { label: 'AI Infra', href: '/ai-infra-knowledge/', match: '/ai-infra' },
       { label: 'RAG 实战', href: '/rag/', match: '/rag/' },
       { label: 'AI 概念', href: '/ai-concepts/', match: '/ai-concepts/' },

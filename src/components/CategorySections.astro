@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { bookStartUrl } from '../data/agent-book-links.mjs';
 
 const abilityMaps = [
   {
@@ -15,8 +16,8 @@ const abilityMaps = [
     href: '/system-design-knowledge/',
   },
   {
-    title: 'AI Agent',
-    href: '/agent-knowledge/',
+    title: 'AI Agent 原书',
+    href: bookStartUrl,
   },
 ] as const;
 
@@ -163,8 +164,8 @@ function formatDate(doc: typeof allDocs[number]) {
 
 <section class="ability-map-showcase" aria-labelledby="home-learning-title">
   <div class="home-resource-group">
-    <h2 class="home-resource-heading" id="home-learning-title">学习地图</h2>
-    <nav class="ability-map-grid" aria-label="学习地图">
+    <h2 class="home-resource-heading" id="home-learning-title">学习入口</h2>
+    <nav class="ability-map-grid" aria-label="学习入口">
       {abilityMaps.map((map) => <a href={map.href}>{map.title}</a>)}
     </nav>
   </div>
