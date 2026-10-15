@@ -754,8 +754,15 @@
           "url": "https://www.iflytek.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
         }
-      ]
+      ],
+      "hangzhouTeam": true
     },
     {
       "id": "deepseek",
@@ -810,6 +817,24 @@
           "url": "https://www.aliyun.com/product/bailian",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案信息（2024年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvHaciuAb2ebr7U8X1xV5925vz0vHSSJ6sATU6DtmcGo1wYjaLSPNhSkF5EQhi7RHdlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-01"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年11月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvCnMpu55tdMNqr3ITiKrl4lvz0vHSSJ6sATU6DtmcGo1DMDlVi4eDu3YppkngQSWT1AfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B411%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-03"
         }
       ]
     },
@@ -838,6 +863,12 @@
           "url": "https://www.ai-indeed.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年10月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvM7gLXbEvywdV7qsaDEeZIpvz0vHSSJ6sATU6DtmcGo1X3Q9QkGCXewH01vmxF~8SVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B410%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-08"
         }
       ]
     },
@@ -866,6 +897,24 @@
           "url": "https://www.byai.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年6月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1EK~B~GRIuQzz0vNKmupMtFAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B46%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-12"
         }
       ]
     },
@@ -894,6 +943,12 @@
           "url": "https://www.betteryeah.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "附件7：生成式人工智能服务已备案和已登记信息（2025年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvJU/TD~kOS2Ih3/TRVNsvLlvz0vHSSJ6sATU6DtmcGo1WeCOTuWKYDNBmOqUVzGiOlAfqphfFn00jUfFRLdBE5I=&fText=%E9%99%84%E4%BB%B67%EF%BC%9A%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-07"
         }
       ]
     },
@@ -922,6 +977,18 @@
           "url": "https://www.qunhe.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年3月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvMJN~~~VfG4e3TRGnFD8PfRvz0vHSSJ6sATU6DtmcGo1SYHLWjBVO7y7k4jU7SSsXlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B43%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-05"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年6月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1EK~B~GRIuQzz0vNKmupMtFAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B46%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-12"
         }
       ]
     },
@@ -950,6 +1017,12 @@
           "url": "https://www.faceunity.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -978,6 +1051,18 @@
           "url": "https://www.unitree.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1jaT2QSSyYLABPnQL~026zVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-13"
         }
       ]
     },
@@ -1006,6 +1091,12 @@
           "url": "https://www.deeprobotics.cn/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
         }
       ]
     },
@@ -1168,6 +1259,18 @@
           "url": "https://www.rokid.com/zh-CN/contact",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年12月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvP1809CcosfzhSGkLq7RFWxvz0vHSSJ6sATU6DtmcGo1NLoeh94hPeAnsJuPBEs79lAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B412%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-09"
         }
       ]
     },
@@ -1265,6 +1368,12 @@
           "url": "https://fit2cloud.com/about/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -1361,6 +1470,18 @@
           "url": "https://www.shuyun.com/intro",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -1387,6 +1508,24 @@
           "url": "https://om.linker.cc/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年11月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvCnMpu55tdMNqr3ITiKrl4lvz0vHSSJ6sATU6DtmcGo1DMDlVi4eDu3YppkngQSWT1AfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B411%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-03"
         }
       ]
     },
@@ -1419,6 +1558,18 @@
           "url": "https://www.hikvision.com/cn/aboutus/ContactUs/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年10月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvM7gLXbEvywdV7qsaDEeZIpvz0vHSSJ6sATU6DtmcGo1X3Q9QkGCXewH01vmxF~8SVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B410%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-08"
         }
       ]
     },
@@ -1445,6 +1596,24 @@
           "url": "https://www.dahuatech.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年11月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvCnMpu55tdMNqr3ITiKrl4lvz0vHSSJ6sATU6DtmcGo1DMDlVi4eDu3YppkngQSWT1AfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B411%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-03"
         }
       ]
     },
@@ -1515,6 +1684,24 @@
           "url": "https://www.arcsoft.com.cn/corporate/about.html",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvD3k2jZHxW62PpTbCodAq/hvz0vHSSJ6sATU6DtmcGo1SVh2XLVTbvXpuP4KM0gfclAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-02"
         }
       ]
     },
@@ -1547,6 +1734,24 @@
           "url": "https://static.fuxi.netease.com/avatar/avatarkit/agreement-20250806/%E2%80%9C%E7%BB%98%E6%A2%A6%E5%A4%A9%E5%B7%A5%E2%80%9D%E5%B9%B3%E5%8F%B0%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96.pdf",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年11月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvCnMpu55tdMNqr3ITiKrl4lvz0vHSSJ6sATU6DtmcGo1DMDlVi4eDu3YppkngQSWT1AfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B411%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-03"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年6月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvLGupl4aHWqlv5jFDErUO79vz0vHSSJ6sATU6DtmcGo1wYOpeJyew3x7NQfDdRX9iFAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B46%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-06"
         }
       ],
       "hangzhouTeam": true
@@ -1580,6 +1785,12 @@
           "url": "https://en.hundsun.com/about?anch=anch1",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -1612,6 +1823,12 @@
           "url": "https://ms.10jqka.com.cn/feedFinance/privacyPolicy.html",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案信息（2024年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvHaciuAb2ebr7U8X1xV5925vz0vHSSJ6sATU6DtmcGo1wYjaLSPNhSkF5EQhi7RHdlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-01"
         }
       ]
     },
@@ -1644,6 +1861,12 @@
           "url": "https://www.antgroup.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案信息（2024年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvHaciuAb2ebr7U8X1xV5925vz0vHSSJ6sATU6DtmcGo1wYjaLSPNhSkF5EQhi7RHdlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-01"
         }
       ]
     },
@@ -1676,6 +1899,18 @@
           "url": "https://www.dbappsecurity.com.cn/about/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年11月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvCnMpu55tdMNqr3ITiKrl4lvz0vHSSJ6sATU6DtmcGo1DMDlVi4eDu3YppkngQSWT1AfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B411%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-03"
         }
       ]
     },
@@ -1708,6 +1943,24 @@
           "url": "https://www.arcvideo.cn/lianxiwomen/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年1月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvMJN~~~VfG4e3TRGnFD8PfRvz0vHSSJ6sATU6DtmcGo1/SlbWBI5~oROMVCft2OZdVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B41%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-04"
         }
       ]
     },
@@ -1772,6 +2025,12 @@
           "url": "https://www.zhiyitech.cn/about",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
         }
       ]
     },
@@ -1798,6 +2057,18 @@
           "url": "https://www.yiwise.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年6月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1EK~B~GRIuQzz0vNKmupMtFAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B46%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-12"
         }
       ]
     },
@@ -1890,6 +2161,18 @@
           "url": "https://www.style3d.com/aboutus/introduction",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -1916,6 +2199,12 @@
           "url": "https://www.harmonycloud.cn/trial/ai-applications",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -1948,6 +2237,12 @@
           "url": "https://www.moresec.cn/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -1980,6 +2275,12 @@
           "url": "https://www.jztdata.com/about/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -2006,6 +2307,12 @@
           "url": "https://mingdutech.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -2032,6 +2339,24 @@
           "url": "https://www.hsmap.com/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年11月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvCnMpu55tdMNqr3ITiKrl4lvz0vHSSJ6sATU6DtmcGo1DMDlVi4eDu3YppkngQSWT1AfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B411%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-03"
         }
       ]
     },
@@ -2058,6 +2383,12 @@
           "url": "https://www.yunmes.com/about/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },
@@ -2090,6 +2421,3620 @@
           "url": "https://www.commind.cn/commindindex/about/",
           "asOf": "2026-10-14",
           "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案信息（2024年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvHaciuAb2ebr7U8X1xV5925vz0vHSSJ6sATU6DtmcGo1wYjaLSPNhSkF5EQhi7RHdlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-01"
+        }
+      ]
+    },
+    {
+      "id": "huarui",
+      "name": "华睿科技",
+      "website": "https://www.irayple.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供机器视觉、移动机器人与工业视觉 AI 产品。",
+      "aliases": [
+        "浙江华睿科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.irayple.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "luyun",
+      "name": "联运环境 / 联运知慧",
+      "website": "https://zjlianyun.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供云联固废模型、AI 分拣与环境智能产品。",
+      "aliases": [
+        "浙江联运知慧科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://zjlianyun.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1jaT2QSSyYLABPnQL~026zVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-13"
+        }
+      ]
+    },
+    {
+      "id": "hangcha",
+      "name": "杭叉集团",
+      "website": "https://www.hcforklift.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供工业车辆、无人叉车与智能物流产品。",
+      "aliases": [
+        "杭叉集团股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.hcforklift.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "杭叉智能无人叉车与物流产品",
+          "url": "https://www.hcgzintel.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "xio",
+      "name": "西奥电梯",
+      "website": "https://www.xiolift.com/products/productsinfo2/2/2.html",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 AI 人流识别、智能调度与电梯物联网产品。",
+      "aliases": [
+        "杭州西奥电梯有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.xiolift.com/products/productsinfo2/2/2.html",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "jwinfo",
+      "name": "经纬信息",
+      "website": "https://www.gisway.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供能源数字化、智能巡检与电力技术服务。",
+      "aliases": [
+        "杭州经纬信息技术股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.gisway.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "yugu",
+      "name": "宇谷科技",
+      "website": "https://www.yugu.net.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供能源充换电网络与安骑大模型。",
+      "aliases": [
+        "杭州宇谷科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.yugu.net.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年10月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvM7gLXbEvywdV7qsaDEeZIpvz0vHSSJ6sATU6DtmcGo1X3Q9QkGCXewH01vmxF~8SVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B410%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-08"
+        },
+        {
+          "title": "浙江网信 2026-09-23 新增备案、登记公告",
+          "url": "https://www.zjwx.gov.cn/col/col1694583/art/2026/art_5508ef95c63c4ca696e6e3ef5f93fe23.html",
+          "asOf": "2026-10-15",
+          "sourceId": "zjwx-sep23"
+        }
+      ]
+    },
+    {
+      "id": "dptech",
+      "name": "迪普科技",
+      "website": "https://www.dptech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供先知安全模型与网络安全产品。",
+      "aliases": [
+        "杭州迪普科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.dptech.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGww3O6bSTCWgK0Ed72mFb7wB7HPrRt~1khXArUkYV7jzFbGV4URDRziReL724DuNlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-11"
+        }
+      ]
+    },
+    {
+      "id": "gongji",
+      "name": "共绩科技",
+      "website": "https://suanli.cn/",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 在杭州设有公司或团队",
+      "hangzhouTeam": true,
+      "category": "基础设施",
+      "summary": "提供分布式 AI 算力调度与模型计算服务。",
+      "aliases": [
+        "共绩科技（杭州）有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://suanli.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年6月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1EK~B~GRIuQzz0vNKmupMtFAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B46%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-12"
+        }
+      ]
+    },
+    {
+      "id": "tianyu",
+      "name": "天娱数科",
+      "website": "https://www.tianyushuke.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供视觉模型、数字人与行业 AI 应用。",
+      "aliases": [
+        "天娱数科人工智能技术（杭州）有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.tianyushuke.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年12月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvP1809CcosfzhSGkLq7RFWxvz0vHSSJ6sATU6DtmcGo1NLoeh94hPeAnsJuPBEs79lAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B412%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-09"
+        }
+      ]
+    },
+    {
+      "id": "dessmann",
+      "name": "德施曼",
+      "website": "https://www.dessmann.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 AI 智能管家锁和家居交互硬件。",
+      "aliases": [
+        "浙江德施曼科技智能股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.dessmann.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "dingtalk",
+      "name": "钉钉",
+      "website": "https://www.dingtalk.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 AI 助理、企业智能体和协同办公平台。",
+      "aliases": [
+        "钉钉科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.dingtalk.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvD3k2jZHxW62PpTbCodAq/hvz0vHSSJ6sATU6DtmcGo1SVh2XLVTbvXpuP4KM0gfclAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-02"
+        }
+      ]
+    },
+    {
+      "id": "cainiao",
+      "name": "菜鸟",
+      "website": "https://www.cainiao.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供物流大模型、智能物流及供应链服务。",
+      "aliases": [
+        "杭州菜鸟物流信息科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.cainiao.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvD3k2jZHxW62PpTbCodAq/hvz0vHSSJ6sATU6DtmcGo1SVh2XLVTbvXpuP4KM0gfclAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-02"
+        }
+      ]
+    },
+    {
+      "id": "uidt",
+      "name": "全民认证",
+      "website": "https://www.uidt.net/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供政务智能助手、身份识别与城市治理服务。",
+      "aliases": [
+        "全民认证科技（杭州）有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.uidt.net/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年12月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvP1809CcosfzhSGkLq7RFWxvz0vHSSJ6sATU6DtmcGo1NLoeh94hPeAnsJuPBEs79lAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B412%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-09"
+        }
+      ]
+    },
+    {
+      "id": "shimi",
+      "name": "拾米网络",
+      "website": "https://novelist.shimi-tech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供 AI 神笔、小说辅助写作等内容生成工具。",
+      "aliases": [
+        "杭州拾米网络科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://novelist.shimi-tech.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGww3O6bSTCWgK0Ed72mFb7wB7HPrRt~1khXArUkYV7jzFbGV4URDRziReL724DuNlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-11"
+        }
+      ]
+    },
+    {
+      "id": "puui",
+      "name": "谱育科技",
+      "website": "https://www.expec-tech.com/news1-6.html",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供智能分析仪器与自动化监测产品。",
+      "aliases": [
+        "杭州谱育科技发展有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.expec-tech.com/news1-6.html",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "bocai",
+      "name": "博采传媒",
+      "website": "https://www.ver.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供墨客模型、虚拟制作与 AI 内容生产工具。",
+      "aliases": [
+        "浙江博采传媒有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.ver.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年10月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvM7gLXbEvywdV7qsaDEeZIpvz0vHSSJ6sATU6DtmcGo1X3Q9QkGCXewH01vmxF~8SVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B410%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-08"
+        },
+        {
+          "title": "官方公司介绍与杭州办公室",
+          "url": "https://ver.cn/?page_id=9",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "h3c",
+      "name": "新华三",
+      "website": "https://www.h3c.com/cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供百业灵犀大模型、智能体与 AI 算力基础设施。",
+      "aliases": [
+        "新华三技术有限公司",
+        "新华三人工智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.h3c.com/cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案信息（2024年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvHaciuAb2ebr7U8X1xV5925vz0vHSSJ6sATU6DtmcGo1wYjaLSPNhSkF5EQhi7RHdlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-01"
+        }
+      ]
+    },
+    {
+      "id": "bywin",
+      "name": "半云科技",
+      "website": "https://www.bywin.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供视觉智能、数据平台和能源行业 AI 服务。",
+      "aliases": [
+        "杭州半云科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.bywin.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "bsfit",
+      "name": "邦盛科技",
+      "website": "https://www.bsfit.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供实时智能决策、风控与数据处理平台。",
+      "aliases": [
+        "浙江邦盛科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.bsfit.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "supcon",
+      "name": "中控技术",
+      "website": "https://www.supcon.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供工业 AI、大模型及流程工业自动化产品。",
+      "aliases": [
+        "中控技术股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.supcon.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "yuansuan",
+      "name": "远算科技",
+      "website": "https://yuansuan.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供工程 AI、仿真与先进计算平台。",
+      "aliases": [
+        "浙江远算科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://yuansuan.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "topyun",
+      "name": "托普云农",
+      "website": "https://www.zjtuopu.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供农业 AI、机器视觉及智能农业设备。",
+      "aliases": [
+        "浙江托普云农科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.zjtuopu.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "orange",
+      "name": "炽橙数字",
+      "website": "https://www.czy3d.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供工业智能交互、数字孪生和 AI 应用。",
+      "aliases": [
+        "杭州炽橙数字科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.czy3d.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "浙江网信 2026-09-23 新增备案、登记公告",
+          "url": "https://www.zjwx.gov.cn/col/col1694583/art/2026/art_5508ef95c63c4ca696e6e3ef5f93fe23.html",
+          "asOf": "2026-10-15",
+          "sourceId": "zjwx-sep23"
+        }
+      ]
+    },
+    {
+      "id": "iunicloud",
+      "name": "宇泛智能",
+      "website": "https://www.uniubi.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供视觉 AI、智能物联及行业硬件产品。",
+      "aliases": [
+        "杭州宇泛智能科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.uniubi.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "moredian",
+      "name": "魔点科技",
+      "website": "https://www.moredian.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供人脸识别、融合感知与空间智能产品。",
+      "aliases": [
+        "杭州魔点科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.moredian.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "starsino",
+      "name": "星汉信息",
+      "website": "https://www.starsino.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供智慧档案和档案 AI 应用产品。",
+      "aliases": [
+        "浙江星汉信息技术股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.starsino.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "deepwise",
+      "name": "深睿医疗（杭州主体）",
+      "website": "https://www.deepwise.com/",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 在杭州设有公司或团队",
+      "hangzhouTeam": true,
+      "category": "行业应用",
+      "summary": "提供医疗影像 AI、辅助诊断与医疗大数据产品。",
+      "aliases": [
+        "杭州深睿博联科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.deepwise.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "keepsoft",
+      "name": "贵仁科技",
+      "website": "https://www.keepsoft.net/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供水科学模型、AI 大模型与智慧水利产品。",
+      "aliases": [
+        "浙江贵仁信息科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.keepsoft.net/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "hitry",
+      "name": "华创视讯",
+      "website": "https://www.hitry.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供多模态交互、视频通信及交通行业智能体。",
+      "aliases": [
+        "浙江华创视讯科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.hitry.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "supconit",
+      "name": "中控信息",
+      "website": "https://www.supconit.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供智能交通、基础设施物联与城市 AI 应用。",
+      "aliases": [
+        "浙江中控信息产业股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.supconit.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "bsoft",
+      "name": "创业慧康",
+      "website": "https://www.bsoft.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供医疗 AI、智能导诊和医院信息化软件。",
+      "aliases": [
+        "创业慧康科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.bsoft.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "ezviz",
+      "name": "萤石网络",
+      "website": "https://www.ezviz.com/cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供视觉 AI、智能摄像机和智能家居产品。",
+      "aliases": [
+        "杭州萤石软件有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.ezviz.com/cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年11月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvCnMpu55tdMNqr3ITiKrl4lvz0vHSSJ6sATU6DtmcGo1DMDlVi4eDu3YppkngQSWT1AfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B411%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-03"
+        }
+      ]
+    },
+    {
+      "id": "unitrust",
+      "name": "合众数据",
+      "website": "https://www.unimasdata.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供数据融合、安全交换及智能数据服务。",
+      "aliases": [
+        "杭州合众数据技术有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.unimasdata.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "lianxin",
+      "name": "连信科技",
+      "website": "https://www.lx-tech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "大模型",
+      "summary": "提供洞见人和模型与心理、情绪分析相关应用。",
+      "aliases": [
+        "浙江连信科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.lx-tech.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvD3k2jZHxW62PpTbCodAq/hvz0vHSSJ6sATU6DtmcGo1SVh2XLVTbvXpuP4KM0gfclAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-02"
+        }
+      ]
+    },
+    {
+      "id": "ebupt",
+      "name": "新讯数字",
+      "website": "https://www.e-byte.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供白泽模型服务、AIOps 及通信智能化产品。",
+      "aliases": [
+        "新讯数字科技（杭州）有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.e-byte.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "newgrand",
+      "name": "新中大",
+      "website": "https://www.newgrand.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供工程建设管理及视觉 AI 管控软件。",
+      "aliases": [
+        "杭州新中大科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.newgrand.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "xiziparking",
+      "name": "西子智能停车",
+      "website": "https://xiziiparking.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供智能停车系统与车库云协同产品。",
+      "aliases": [
+        "杭州西子智能停车股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://xiziiparking.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "fubao",
+      "name": "孚宝智能",
+      "website": "https://app.fubaorobot.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供医疗、养老与公共服务场景的 AI 服务机器人。",
+      "aliases": [
+        "浙江孚宝智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://app.fubaorobot.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "robam",
+      "name": "老板电器",
+      "website": "https://www.robam.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供食神烹饪大模型和智能厨房产品。",
+      "aliases": [
+        "杭州老板电器股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.robam.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年12月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvP1809CcosfzhSGkLq7RFWxvz0vHSSJ6sATU6DtmcGo1NLoeh94hPeAnsJuPBEs79lAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B412%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-09"
+        }
+      ]
+    },
+    {
+      "id": "desai",
+      "name": "德适生物",
+      "website": "https://diagens.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供染色体核型分析与 AI 医学诊断产品。",
+      "aliases": [
+        "杭州德适生物科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://diagens.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "hzmg",
+      "name": "名光微电子",
+      "website": "https://www.hzmg-micro.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 AI 生物识别芯片与模组。",
+      "aliases": [
+        "杭州名光微电子科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.hzmg-micro.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "whale",
+      "name": "座头鲸科技 / Whale",
+      "website": "https://www.meetwhale.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供面向品牌营销和零售的 AI 智能体与数据工具。",
+      "aliases": [
+        "杭州座头鲸科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.meetwhale.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "lierda",
+      "name": "鲁尔物联",
+      "website": "https://www.ruhrtec.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供视觉监测、物联网与工程安全感知产品。",
+      "aliases": [
+        "杭州鲁尔物联科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.ruhrtec.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "engipower",
+      "name": "英集动力",
+      "website": "https://www.engipower.com/about",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 AI 预测控制、智慧供热与能源管理软件。",
+      "aliases": [
+        "浙江英集动力科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.engipower.com/about",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "huashi",
+      "name": "华是科技",
+      "website": "https://www.zjwhyis.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供视觉智能识别、航道及交通行业应用。",
+      "aliases": [
+        "浙江华是科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.zjwhyis.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "gongdao",
+      "name": "共道科技",
+      "website": "https://www.gongdao.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供法鼎模型、法律智能体与数字司法产品。",
+      "aliases": [
+        "共道网络科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.gongdao.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "svite",
+      "name": "思维特",
+      "website": "https://www.svite.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供制造业数字化软件与海外营销智能体。",
+      "aliases": [
+        "浙江思维特数字科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.svite.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "scantech",
+      "name": "思看科技",
+      "website": "https://www.3d-scantech.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供三维视觉测量与自动化智能检测系统。",
+      "aliases": [
+        "思看科技（杭州）股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.3d-scantech.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "youquan",
+      "name": "祐全科技",
+      "website": "http://www.hangzhouyq.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供智慧餐饮与 AI 管理平台。",
+      "aliases": [
+        "杭州祐全科技发展有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "http://www.hangzhouyq.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "hyperchain",
+      "name": "趣链科技",
+      "website": "https://hyperchain.com.cn/about/company",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供可信数据基础设施与行业 AI 应用。",
+      "aliases": [
+        "杭州趣链科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://hyperchain.com.cn/about/company",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "shining3d",
+      "name": "先临三维",
+      "website": "https://www.shining3d.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供三维视觉、智能检测和数字化扫描产品。",
+      "aliases": [
+        "先临三维科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.shining3d.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "cityos",
+      "name": "杭州城市大脑",
+      "website": "https://www.cityos.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供文生义模型、城市治理和政企智能体服务。",
+      "aliases": [
+        "杭州城市大脑有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.cityos.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年12月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvP1809CcosfzhSGkLq7RFWxvz0vHSSJ6sATU6DtmcGo1NLoeh94hPeAnsJuPBEs79lAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B412%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-09"
+        }
+      ]
+    },
+    {
+      "id": "guozir",
+      "name": "国自机器人",
+      "website": "https://www.gzrobot.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供移动机器人、智能巡检与多机器人调度系统。",
+      "aliases": [
+        "浙江国自机器人技术股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.gzrobot.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "wasu",
+      "name": "华数传媒",
+      "website": "https://www.wasu.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "大模型",
+      "summary": "提供文旅及视听大模型与数字媒体服务。",
+      "aliases": [
+        "华数传媒控股股份有限公司",
+        "华数传媒网络有限公司",
+        "杭州拱墅华数科技有限公司",
+        "华数云科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.wasu.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "附件7：生成式人工智能服务已备案和已登记信息（2025年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvJU/TD~kOS2Ih3/TRVNsvLlvz0vHSSJ6sATU6DtmcGo1WeCOTuWKYDNBmOqUVzGiOlAfqphfFn00jUfFRLdBE5I=&fText=%E9%99%84%E4%BB%B67%EF%BC%9A%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-07"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年12月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvP1809CcosfzhSGkLq7RFWxvz0vHSSJ6sATU6DtmcGo1NLoeh94hPeAnsJuPBEs79lAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B412%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-09"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGww3O6bSTCWgK0Ed72mFb7wB7HPrRt~1khXArUkYV7jzFbGV4URDRziReL724DuNlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-11"
+        }
+      ]
+    },
+    {
+      "id": "aims",
+      "name": "安脉盛",
+      "website": "https://www.aimsphm.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供工业设备预测性维护与工业 AI 产品。",
+      "aliases": [
+        "杭州安脉盛智能技术有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.aimsphm.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "shifang",
+      "name": "食方科技",
+      "website": "https://www.shifang.co/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供食物识别、食方大模型与智能餐饮产品。",
+      "aliases": [
+        "杭州食方科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.shifang.co/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年2月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvLGupl4aHWqlv5jFDErUO79vz0vHSSJ6sATU6DtmcGo1YoYJDltyJqpCTDRSAKq6GlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B42%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-10"
+        }
+      ]
+    },
+    {
+      "id": "tiankuan",
+      "name": "天宽科技",
+      "website": "https://www.tiankuan.net/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供数智安全、算力及人工智能技术服务。",
+      "aliases": [
+        "杭州天宽科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.tiankuan.net/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "trizen",
+      "name": "全诊医学",
+      "website": "https://trizen.ai/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 AI 导诊、电子病历和智能医生助手。",
+      "aliases": [
+        "杭州全诊医学科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://trizen.ai/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "sunyard",
+      "name": "信雅达",
+      "website": "https://www.sunyard.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供金融 AI、智能质检及业务自动化产品。",
+      "aliases": [
+        "信雅达科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.sunyard.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "hikrobot",
+      "name": "海康机器人",
+      "website": "https://www.hikrobotics.com/cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供机器视觉、移动机器人与工业智能产品。",
+      "aliases": [
+        "杭州海康机器人股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.hikrobotics.com/cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "chipl",
+      "name": "中昊芯英",
+      "website": "https://www.chipltech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 AI 芯片、高性能计算系统与算力集群。",
+      "aliases": [
+        "中昊芯英（杭州）科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.chipltech.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "esign",
+      "name": "e签宝",
+      "website": "https://www.esign.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供电子签名、智慧合同与合同 AI 产品。",
+      "aliases": [
+        "杭州天谷信息科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.esign.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "isv",
+      "name": "易思维",
+      "website": "https://www.isv-tech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供机器视觉、智能检测与工业测量产品。",
+      "aliases": [
+        "易思维（杭州）科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.isv-tech.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "zhiyuan",
+      "name": "杭州智元研究院",
+      "website": "https://zy.csgc.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供具身智能、外骨骼和机器人相关技术产品。",
+      "aliases": [
+        "杭州智元研究院有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://zy.csgc.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "fuyun",
+      "name": "浮云科技",
+      "website": "https://www.fuyuncc.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供法律模型、律师智能体和数字内容产品。",
+      "aliases": [
+        "杭州浮云网络科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.fuyuncc.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年12月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvP1809CcosfzhSGkLq7RFWxvz0vHSSJ6sATU6DtmcGo1NLoeh94hPeAnsJuPBEs79lAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B412%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-09"
+        }
+      ]
+    },
+    {
+      "id": "insigma",
+      "name": "浙大网新",
+      "website": "https://www.insigma.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供政务 AI 中枢、行业软件和智能体应用。",
+      "aliases": [
+        "浙江浙大网新软件产业集团有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.insigma.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "servyou",
+      "name": "税友股份",
+      "website": "https://www.servyou.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供财税 AI、智能报表与企业服务软件。",
+      "aliases": [
+        "税友软件集团股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.servyou.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "secsmart",
+      "name": "闪捷信息",
+      "website": "https://www.secsmart.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供数据分类识别、安全大模型与数据安全产品。",
+      "aliases": [
+        "闪捷信息科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.secsmart.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "附件7：生成式人工智能服务已备案和已登记信息（2025年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvJU/TD~kOS2Ih3/TRVNsvLlvz0vHSSJ6sATU6DtmcGo1WeCOTuWKYDNBmOqUVzGiOlAfqphfFn00jUfFRLdBE5I=&fText=%E9%99%84%E4%BB%B67%EF%BC%9A%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-07"
+        }
+      ]
+    },
+    {
+      "id": "jftech",
+      "name": "杰峰科技",
+      "website": "https://www.jftech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "大模型",
+      "summary": "提供杰飞模型、视频智能和物联网产品。",
+      "aliases": [
+        "杭州杰峰科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.jftech.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "附件7：生成式人工智能服务已备案和已登记信息（2025年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvJU/TD~kOS2Ih3/TRVNsvLlvz0vHSSJ6sATU6DtmcGo1WeCOTuWKYDNBmOqUVzGiOlAfqphfFn00jUfFRLdBE5I=&fText=%E9%99%84%E4%BB%B67%EF%BC%9A%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-07"
+        }
+      ]
+    },
+    {
+      "id": "dian",
+      "name": "迪安诊断",
+      "website": "https://www.dazd.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供医学检验、诊断 AI 与多模态模型应用。",
+      "aliases": [
+        "迪安诊断技术集团股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.dazd.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "58zn",
+      "name": "五八智能",
+      "website": "https://58znkj.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供面向行业场景的四足及人形机器人。",
+      "aliases": [
+        "五八智能科技（杭州）有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://58znkj.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "zheda",
+      "name": "哲达科技",
+      "website": "https://www.zetacn.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供智慧能源、AI 优化控制与能碳管理产品。",
+      "aliases": [
+        "杭州哲达科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.zetacn.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "lingzhi",
+      "name": "灵智科技",
+      "website": "https://www.lingzhiac.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供三维视觉拆垛、装车与物流机器人。",
+      "aliases": [
+        "杭州灵智科技数字化装备有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.lingzhiac.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "xinchen",
+      "name": "西湖心辰",
+      "website": "https://xinchenai.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "大模型",
+      "summary": "提供西湖大模型、生成工具与企业 AI 服务。",
+      "aliases": [
+        "西湖心辰（杭州）科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://xinchenai.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案信息（2024年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvHaciuAb2ebr7U8X1xV5925vz0vHSSJ6sATU6DtmcGo1wYjaLSPNhSkF5EQhi7RHdlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-01"
+        }
+      ]
+    },
+    {
+      "id": "byering",
+      "name": "百聆科技",
+      "website": "https://www.byering.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供百聆千变与数字内容 AI 产品。",
+      "aliases": [
+        "杭州百聆科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.byering.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvD3k2jZHxW62PpTbCodAq/hvz0vHSSJ6sATU6DtmcGo1SVh2XLVTbvXpuP4KM0gfclAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-02"
+        }
+      ]
+    },
+    {
+      "id": "lawk",
+      "name": "李未可 / LAWK",
+      "website": "https://www.lawaken.com/",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 在杭州设有公司或团队",
+      "hangzhouTeam": true,
+      "category": "行业应用",
+      "summary": "提供 AI 眼镜、李未可模型和个人智能助手。",
+      "aliases": [
+        "杭州李未可科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.lawaken.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年11月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvCnMpu55tdMNqr3ITiKrl4lvz0vHSSJ6sATU6DtmcGo1DMDlVi4eDu3YppkngQSWT1AfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B411%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-03"
+        },
+        {
+          "title": "李未可官方隐私政策（杭州服务主体）",
+          "url": "https://lawaken.com/agreement/privacy.html",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "xinhua-zhiyun",
+      "name": "新华智云",
+      "website": "https://xinhuazhiyun.cn/",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 在杭州设有公司或团队",
+      "hangzhouTeam": true,
+      "category": "生成工具",
+      "summary": "提供媒体 AI、大模型与智能内容生产工具。",
+      "aliases": [
+        "新华智云科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://xinhuazhiyun.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2024年11月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvCnMpu55tdMNqr3ITiKrl4lvz0vHSSJ6sATU6DtmcGo1DMDlVi4eDu3YppkngQSWT1AfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882024%E5%B9%B411%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-03"
+        },
+        {
+          "title": "媒体大脑官方杭州联系方式",
+          "url": "https://www.shuwen.com/contact.html",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "huace",
+      "name": "华策影视",
+      "website": "https://www.huacemedia.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供国色大模型与影视内容 AI 应用。",
+      "aliases": [
+        "华策集团"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.huacemedia.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年1月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvMJN~~~VfG4e3TRGnFD8PfRvz0vHSSJ6sATU6DtmcGo1/SlbWBI5~oROMVCft2OZdVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B41%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-04"
+        },
+        {
+          "title": "官方公司介绍与杭州总部",
+          "url": "https://www.huacemedia.com/mobile/index.php/news/info/904.html",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "qbb",
+      "name": "亲宝宝",
+      "website": "https://www.qbb6.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供育儿服务、亲宝宝育儿模型和 AI 助手。",
+      "aliases": [
+        "杭州点望科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.qbb6.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年3月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvMJN~~~VfG4e3TRGnFD8PfRvz0vHSSJ6sATU6DtmcGo1SYHLWjBVO7y7k4jU7SSsXlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B43%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-05"
+        }
+      ]
+    },
+    {
+      "id": "yifangyun",
+      "name": "360 亿方云",
+      "website": "https://www.fangcloud.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供企业云盘、AI 知识库和智能办公工具。",
+      "aliases": [
+        "杭州三六零亿方智能有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.fangcloud.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年6月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvLGupl4aHWqlv5jFDErUO79vz0vHSSJ6sATU6DtmcGo1wYOpeJyew3x7NQfDdRX9iFAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B46%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-06"
+        }
+      ]
+    },
+    {
+      "id": "aizhushou",
+      "name": "爱助手",
+      "website": "https://www.enterpriseai.com.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供企业知识、工作与业务场景的 AI 助手。",
+      "aliases": [
+        "杭州爱助手信息技术有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.enterpriseai.com.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年12月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvP1809CcosfzhSGkLq7RFWxvz0vHSSJ6sATU6DtmcGo1NLoeh94hPeAnsJuPBEs79lAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B412%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-09"
+        }
+      ]
+    },
+    {
+      "id": "hunyu",
+      "name": "魂域科技",
+      "website": "https://www.hunyutech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 SoulAI 与企业、个人 AI 产品。",
+      "aliases": [
+        "杭州魂域科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.hunyutech.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2025年12月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvP1809CcosfzhSGkLq7RFWxvz0vHSSJ6sATU6DtmcGo1NLoeh94hPeAnsJuPBEs79lAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B412%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-09"
+        }
+      ]
+    },
+    {
+      "id": "hyperchain-vnt",
+      "name": "云象科技",
+      "website": "https://www.yunphant.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供可信数据、区块链与云枢 AI 应用。",
+      "aliases": [
+        "杭州云象网络技术有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.yunphant.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年4月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGww3O6bSTCWgK0Ed72mFb7wB7HPrRt~1khXArUkYV7jzFbGV4URDRziReL724DuNlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B44%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-11"
+        }
+      ]
+    },
+    {
+      "id": "openpie",
+      "name": "拓数派 / OpenPie",
+      "website": "https://www.openpie.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供数据计算、涵思模型与智能体平台。",
+      "aliases": [
+        "杭州拓数派科技发展有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.openpie.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年6月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1EK~B~GRIuQzz0vNKmupMtFAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B46%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-12"
+        }
+      ]
+    },
+    {
+      "id": "qiuguo",
+      "name": "秋果计划",
+      "website": "https://www.qiuguojihua.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 XR 眼镜、绿洲模型与空间智能应用。",
+      "aliases": [
+        "杭州秋果计划科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.qiuguojihua.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1jaT2QSSyYLABPnQL~026zVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-13"
+        }
+      ]
+    },
+    {
+      "id": "chenlian",
+      "name": "辰链科技",
+      "website": "https://chenliantech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供万象模型与企业互联网软件服务。",
+      "aliases": [
+        "杭州辰链信息科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://chenliantech.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1jaT2QSSyYLABPnQL~026zVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-13"
+        }
+      ]
+    },
+    {
+      "id": "jetvoice",
+      "name": "捷途慧声",
+      "website": "https://jet-voice.com/index.html",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "语音技术",
+      "summary": "提供语音识别、多模态交互与捷途模型。",
+      "aliases": [
+        "杭州捷途慧声科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://jet-voice.com/index.html",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "附件7：生成式人工智能服务已备案和已登记信息（2025年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvJU/TD~kOS2Ih3/TRVNsvLlvz0vHSSJ6sATU6DtmcGo1WeCOTuWKYDNBmOqUVzGiOlAfqphfFn00jUfFRLdBE5I=&fText=%E9%99%84%E4%BB%B67%EF%BC%9A%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-07"
+        }
+      ]
+    },
+    {
+      "id": "xingyu",
+      "name": "星语智能",
+      "website": "https://www.xingyu-ai.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "语音技术",
+      "summary": "提供 AI 客服、语音服务与星语模型。",
+      "aliases": [
+        "杭州星语人工智能有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.xingyu-ai.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年2月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvLGupl4aHWqlv5jFDErUO79vz0vHSSJ6sATU6DtmcGo1YoYJDltyJqpCTDRSAKq6GlAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B42%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-10"
+        }
+      ]
+    },
+    {
+      "id": "wanxty",
+      "name": "万像天影",
+      "website": "https://www.wanxty.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供天影视觉导演助手与影视创作工具。",
+      "aliases": [
+        "杭州万像天影影视科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.wanxty.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年6月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1EK~B~GRIuQzz0vNKmupMtFAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B46%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-12"
+        }
+      ]
+    },
+    {
+      "id": "firefly",
+      "name": "互向科技 / 影伙引擎",
+      "website": "https://fireflyfusion.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供 BoomCut 与 AI 影视创作工具。",
+      "aliases": [
+        "杭州互向科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://fireflyfusion.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1jaT2QSSyYLABPnQL~026zVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-13"
+        },
+        {
+          "title": "官方用户协议（杭州互向主体）",
+          "url": "https://fireflyfusion.cn/terms-of-service",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "zhongsen",
+      "name": "众森卫士",
+      "website": "https://www.zhongsenweishi.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供大模型相关平台与智能技术服务。",
+      "aliases": [
+        "杭州众森卫士科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.zhongsenweishi.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年6月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1EK~B~GRIuQzz0vNKmupMtFAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B46%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-12"
+        }
+      ]
+    },
+    {
+      "id": "cmcc-hangzhou",
+      "name": "中移杭州",
+      "website": "https://hy.10086.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供灵犀家庭智能体、网联机器人与家庭 AI 产品。",
+      "aliases": [
+        "中移（杭州）信息技术有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://hy.10086.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "eslink",
+      "name": "易联云计算",
+      "website": "https://www.eslink.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供易联模型与公用事业智能运营软件。",
+      "aliases": [
+        "易联云计算（杭州）有限责任公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.eslink.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        },
+        {
+          "title": "附件7：生成式人工智能服务已备案和已登记信息（2025年8月）",
+          "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvJU/TD~kOS2Ih3/TRVNsvLlvz0vHSSJ6sATU6DtmcGo1WeCOTuWKYDNBmOqUVzGiOlAfqphfFn00jUfFRLdBE5I=&fText=%E9%99%84%E4%BB%B67%EF%BC%9A%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882025%E5%B9%B48%E6%9C%88%EF%BC%89",
+          "asOf": "2026-10-15",
+          "sourceId": "cac-07"
+        }
+      ]
+    },
+    {
+      "id": "gaoxin",
+      "name": "高信技术",
+      "website": "https://www.zeiet.com/home.html",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供交通大模型、智能感知与智慧交通服务。",
+      "aliases": [
+        "浙江高信技术股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.zeiet.com/home.html",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
+        }
+      ]
+    },
+    {
+      "id": "dashengda",
+      "name": "大胜达",
+      "website": "https://www.sdpack.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供 X-FUN 智能包装设计与 AIGC 产品。",
+      "aliases": [
+        "浙江大胜达包装股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.sdpack.cn/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "youlu",
+      "name": "有鹿机器人",
+      "website": "https://www.udeerai.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 LPLM 具身模型、通用智能大脑和清扫机器人。",
+      "aliases": [
+        "浙江有鹿机器人科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.udeerai.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "shiwei",
+      "name": "时微科技",
+      "website": "https://shiwei.tech/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供通灵云模型与企业营销智能决策工具。",
+      "aliases": [
+        "杭州时微科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://shiwei.tech/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "浙江网信 2026-09-23 新增备案、登记公告",
+          "url": "https://www.zjwx.gov.cn/col/col1694583/art/2026/art_5508ef95c63c4ca696e6e3ef5f93fe23.html",
+          "asOf": "2026-10-15",
+          "sourceId": "zjwx-sep23"
+        }
+      ]
+    },
+    {
+      "id": "wensli",
+      "name": "万事利",
+      "website": "https://www.wensli.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "生成工具",
+      "summary": "提供 AI 花型设计、智能体与个性化丝绸定制服务。",
+      "aliases": [
+        "杭州万事利丝绸文化股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://www.wensli.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2024 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2024"
+        }
+      ]
+    },
+    {
+      "id": "jubo",
+      "name": "聚玻工业",
+      "website": "https://jbgy.atjubo.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供玻璃行业 SaaS 与工业视觉 AI 检测产品。",
+      "aliases": [
+        "聚玻工业科技（杭州）股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品记录",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "官方产品与服务",
+          "url": "https://jbgy.atjubo.com/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "2025 年浙江省人工智能四类名单（正式公布）",
+          "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+          "asOf": "2026-10-15",
+          "sourceId": "zj-service-2025"
         }
       ]
     },

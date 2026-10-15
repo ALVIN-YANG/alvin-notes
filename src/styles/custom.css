@@ -183,6 +183,7 @@
 .co-method { max-width: 56rem; }
 .co-method .co-section > p { margin-top: .65rem; font-size: .9rem; line-height: 1.9; }
 .co-table-wrap { overflow-x: auto; }
+.co-coverage .co-table-wrap table { min-width: 42rem; }
 .co-table-wrap table { width: 100%; border-collapse: collapse; font-size: .8rem; line-height: 1.8; }
 .co-table-wrap :is(th,td) { padding: .7rem; border-bottom: 1px solid var(--co-line); vertical-align: top; text-align: left; }
 .co-table-wrap th { color: var(--co-blue); font-weight: 500; }

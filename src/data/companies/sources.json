@@ -1,6 +1,46 @@
 [
-  { "id": "yc", "title": "YC AI 公司目录", "url": "https://raw.githubusercontent.com/yc-oss/api/main/tags/artificial-intelligence.json", "originalUrl": "https://www.ycombinator.com/companies/industry/artificial-intelligence", "mode": "automatic", "kind": "yc", "limit": 35, "scope": "国外为主", "note": "通过 yc-oss 非官方 JSON 镜像读取 YC 公开名册；卡片链接指向 YC 原始档案。只收录 Active 且有官网的 AI 公司，优先源标记的 Top Company、招聘中及团队较大的公司，以控制导入量；不作为前景排名。" },
-  { "id": "cac", "title": "国家网信办生成式 AI 服务备案名单", "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm", "mode": "automatic", "kind": "registry", "scope": "国内", "note": "解析汇总页最新 PDF，按已整理的公司主体匹配备案记录；备案不证明经营活跃或发展前景。缺少官网的陌生主体不会自动上架。" },
-  { "id": "zjwx", "title": "浙江网信网生成式 AI 备案公告", "url": "https://www.zjwx.gov.cn/", "mode": "reference", "scope": "浙江及杭州", "note": "部分名册以图片发布，作为首次整理和补充来源；不调用模型识图，不宣称已自动接入。" },
-  { "id": "zj-service", "title": "浙江省人工智能服务商名单", "url": "https://jxt.zj.gov.cn/module/download/downfile.jsp?classid=0&filename=ba57bb1a2fab4598b1a2e24abe218081.pdf", "mode": "reference", "scope": "浙江及杭州", "note": "2025-02-05 发布的 2024 年名单，仅补充主体及地方背景；旧名单不证明近期活跃。" }
+  {
+    "id": "yc",
+    "title": "YC AI 公司目录",
+    "url": "https://raw.githubusercontent.com/yc-oss/api/main/tags/artificial-intelligence.json",
+    "originalUrl": "https://www.ycombinator.com/companies/industry/artificial-intelligence",
+    "mode": "automatic",
+    "kind": "yc",
+    "limit": 35,
+    "scope": "国外为主",
+    "note": "通过 yc-oss 非官方 JSON 镜像读取 YC 公开名册；卡片链接指向 YC 原始档案。只收录 Active 且有官网的 AI 公司，优先源标记的 Top Company、招聘中及团队较大的公司，以控制导入量；不作为前景排名。"
+  },
+  {
+    "id": "cac",
+    "title": "国家网信办生成式 AI 服务备案名单",
+    "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm",
+    "mode": "automatic",
+    "kind": "registry",
+    "scope": "国内",
+    "note": "解析汇总页最新 PDF，按已整理的公司主体匹配备案记录；备案不证明经营活跃或发展前景。缺少官网的陌生主体不会自动上架。"
+  },
+  {
+    "id": "zjwx",
+    "title": "浙江网信网生成式 AI 备案公告",
+    "url": "https://www.zjwx.gov.cn/",
+    "mode": "reference",
+    "scope": "浙江及杭州",
+    "note": "已逐项比对 2026-09-02、09-23 两则新增公告，共 16 条。部分名册以图片发布，仅作一次性补充，不调用模型自动识图。"
+  },
+  {
+    "id": "zj-service",
+    "title": "浙江省 2024 年人工智能四类名单",
+    "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/ba57bb1a2fab4598b1a2e24abe218081.pdf",
+    "mode": "reference",
+    "scope": "浙江及杭州",
+    "note": "正式公布的应用场景、标杆企业、服务商、产品四类名单。2026-10-15 全量读取 179 条，逐项比对杭州 85 条；旧名单不能单独证明近期活跃。"
+  },
+  {
+    "id": "zj-service-2025",
+    "title": "浙江省 2025 年人工智能四类名单",
+    "url": "https://zjjcmspublicnew.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/cms_files/jcms1/web1585/site/attach/0/1e63e73ced80471f91753cd2f90dd0f0.pdf",
+    "mode": "reference",
+    "scope": "浙江及杭州",
+    "note": "正式公布的应用场景、标杆企业、服务商、产品四类名单。2026-10-15 全量读取 178 条，逐项比对杭州 97 条；与 2024 年名单一同保留，避免漏掉往年主体。"
+  }
 ]

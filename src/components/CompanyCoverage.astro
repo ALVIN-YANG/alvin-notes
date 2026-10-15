@@ -1,0 +1,41 @@
+---
+import audit from '../data/companies/hangzhou-audit.json';
+import directory from '../data/companies/directory.json';
+const companies = new Map(directory.companies.map(company => [company.id, company]));
+const sources = new Map(audit.sources.map(source => [source.id, source]));
+const pending = [...new Set(audit.rows.filter(row => row.status === 'unconfirmed').map(row => row.company))];
+const labels = { included: '已收录', internal: '内部应用，未纳入', 'non-company': '非公司主体', outside: '杭州外主体', unconfirmed: '暂未确认' };
+const groups = [
+  { title: '浙江省经信厅 2024、2025 年四类名单', rows: audit.rows.filter(row => row.sourceId.startsWith('zj-service-')) },
+  { title: '国家网信办全部 13 期附件中的浙江记录', rows: audit.rows.filter(row => row.sourceId.startsWith('cac-')) },
+  { title: '浙江网信 2026 年 9 月两则新增公告', rows: audit.rows.filter(row => row.sourceId.startsWith('zjwx-')) },
+];
+const citation = row => `${sources.get(row.sourceId).url}${row.page ? `#page=${row.page}` : ''}`;
+---
+<section class="co-section co-coverage" id="hangzhou-coverage">
+  <h2>杭州官方名单比对记录</h2>
+  <p>{audit.reviewedAt} 完成一次性比对，新增 {audit.added} 家公司；比对后杭州分类共 {audit.hangzhouCount} 家，含仅确认杭州公司或团队的条目。每项记录保留官方主体名称、产品或场景及处理结果，同一公司可能出现在多份名单中。</p>
+  <p>核对范围：省经信厅 2024、2025 年正式公布的四类名单共 357 条，其中杭州 182 条；国家网信办截至 2026 年 8 月的全部 13 期附件，其中浙江 109 条；浙江网信 2026 年 9 月两则新增公告共 16 条。以下共 {audit.rows.length} 条比对记录。</p>
+  <p>名单范围内，已确认有官网、公开 AI 产品和杭州归属的公司均已收录。另有 {pending.length} 个主体暂未确认所需信息，保留待补；这不代表它们不符合标准。本次没有覆盖所有专项、园区或协会名册，不能据此称全杭州已收齐。</p>
+  <details class="co-history">
+    <summary>暂未确认的 {pending.length} 个主体及原因</summary>
+    <div class="co-table-wrap"><table>
+      <thead><tr><th>官方主体</th><th>本次未确认的内容</th><th>原始记录</th></tr></thead>
+      <tbody>{pending.map(name => { const rows = audit.rows.filter(row => row.company === name && row.status === 'unconfirmed'); return <tr>
+        <td>{name}</td><td>{[...new Set(rows.map(row => row.reason))].join(' ')}</td>
+        <td>{rows.map(row => <p><a href={citation(row)} target="_blank" rel="noopener noreferrer">{sources.get(row.sourceId).title} · {row.section}第 {row.no} 项 ↗</a></p>)}</td>
+      </tr>; })}</tbody>
+    </table></div>
+  </details>
+  {groups.map(group => <details class="co-history">
+    <summary>{group.title}：逐项结果（{group.rows.length} 条）</summary>
+    <div class="co-table-wrap"><table>
+      <thead><tr><th>官方主体</th><th>产品、模型或场景原文</th><th>官方来源</th><th>比对结果</th></tr></thead>
+      <tbody>{group.rows.map(row => <tr>
+        <td>{row.company}</td><td>{row.product || '名单未列产品名称'}</td>
+        <td><a href={citation(row)} target="_blank" rel="noopener noreferrer">{sources.get(row.sourceId).title} ↗</a><p>{row.section}第 {row.no} 项{row.page && ` · PDF 第 ${row.page} 页`}{row.date && ` · ${row.date}`}</p></td>
+        <td>{labels[row.status]}{'companyId' in row && companies.has(row.companyId) && <p><a href={`/companies/${row.companyId}/`}>{companies.get(row.companyId).name} →</a></p>}<p>{row.reason}</p></td>
+      </tr>)}</tbody>
+    </table></div>
+  </details>)}
+</section>

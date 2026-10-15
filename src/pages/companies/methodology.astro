@@ -1,6 +1,7 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import CompanyNav from '../../components/CompanyNav.astro';
+import CompanyCoverage from '../../components/CompanyCoverage.astro';
 import sources from '../../data/companies/sources.json';
 import seed from '../../data/companies/seed.json';
 import state from '../../data/companies/sync-state.json';
@@ -12,8 +13,9 @@ import { dateLabel } from '../../lib/company-directory.mjs';
     <CompanyNav active="method" />
     <section class="co-section"><h2>收录什么公司</h2><p>收录提供 AI 产品或服务的公司，包括大模型、Agent、AI 编程、生成工具、基础设施、语音技术和行业应用。公司应有官网，并有公开产品页面，或可信名册中的 Active 状态。只提供培训、营销或资讯而没有 AI 产品的主体不纳入。</p><p>公开产品页表示首次整理时可以查到产品入口，不代表完成实测。近期发布、招聘或融资也可用于补充活动依据，使用近 12 个月的记录。活跃依据的日期按原始读取或活动日期保留，不随目录同步刷新；旧资料不能当作当前经营状态。</p><p>国外、国内分别按公开所在地整理；杭州属于国内。总部或公开主体在杭州的公司标注杭州，仅在杭州设团队的另加标签。无法核对的城市留空。同一官网只出现一次，多个产品归到同一公司；被收购的品牌不单独视为独立创业公司，历史关系以旧档案为准。</p></section>
     <section class="co-section"><h2>杭州收录范围</h2><p>杭州名单覆盖大模型与 Agent，也包括数据基础设施、AI 安全、计算机视觉、语音、智能硬件及医疗、金融、制造、服装等行业的 AI 产品公司。不因公司成立较早或业务较多而排除，也不因使用 AI 办公就收录。</p><p>新增杭州条目同时保留产品依据和所在地依据。所在地以官网的总部、注册主体、办公地址或服务政策为准；只确认杭州办公室或团队时，标注“杭州团队”。外地公司的杭州客户、参展或活动记录不能作为杭州归属依据。名单持续补充，不视为杭州全部 AI 企业名录。</p></section>
+    <CompanyCoverage />
     <section class="co-section"><h2>信息来源</h2><p>每张卡片和公司页均链接直接来源。基础名单共 {seed.companies.length} 家，以公司官网整理名称、方向、所在地和产品入口；杭州归属优先引用官方联系方式、公司介绍和产品服务政策。地方名册用于发现候选公司，补齐官网与公开产品后保存，不在每次同步时重新调查。</p><div class="co-table-wrap"><table><thead><tr><th>来源</th><th>范围与方式</th><th>当前记录</th></tr></thead><tbody>{sources.map(source => { const record = state.sources[source.id]; return <tr><td><a href={source.originalUrl || source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a>{source.id === 'yc' && <p><a href="https://github.com/yc-oss/api" target="_blank" rel="noopener noreferrer">非官方 JSON 镜像 ↗</a></p>}</td><td>{source.scope} · {source.mode === 'automatic' ? '自动同步' : '人工补充'}<p>{source.note}</p></td><td>{source.mode === 'reference' ? '未接入自动同步' : record?.syncedAt ? <>上次成功 {dateLabel(record.syncedAt)}<p>{source.id === 'yc' ? `本次名册选取 ${record.count} 家` : `最新附件匹配 ${record.count} 家已整理公司`}</p>{record.title && <p>{record.title}</p>}{record.error && <p>最近读取失败，保留上次资料。</p>}</> : '尚无成功同步记录'}</td></tr>; })}</tbody></table></div></section>
-    <section class="co-section"><h2>同步范围与频率</h2><p>每月 1 日北京时间 08:30，在 GitHub Actions 同步公开名单，更新名称、官网、所在地、分类、活动状态和直接来源。YC 名单读取 JSON；国内备案来源读取汇总页的最新 PDF，只匹配已经补齐官网的公司。浙江图片公告及旧服务商名单作为人工补充来源，不自动识图。</p><p>同步程序不调用大模型，不逐家公司搜索新闻、检查官网变化或生成商业分析与周报。简介首次整理后保留；来源原文在公司页单独列出。新增名册条目可以直接显示原文。</p><p>一个来源失败时保留它上次成功的数据和日期，其他来源仍可更新。公司暂时从名册缺失不会直接删除；来源明确标记非 Active 时，退出该来源的自动名单。公司名称、别名和官网用于去重，地区、来源和搜索可以组合筛选。</p></section>
+    <section class="co-section"><h2>同步范围与频率</h2><p>每月 1 日北京时间 08:30，在 GitHub Actions 同步公开名单，更新名称、官网、所在地、分类、活动状态和直接来源。YC 名单读取 JSON；国内备案来源读取汇总页的最新 PDF，只匹配已经补齐官网的公司。本次完整比对保留全部历史附件；月度同步仍只读取最新附件。浙江图片公告及省经信厅名单作为人工补充来源，不自动识图。</p><p>同步程序不调用大模型，不逐家公司搜索新闻、检查官网变化或生成商业分析与周报。简介首次整理后保留；来源原文在公司页单独列出。新增名册条目可以直接显示原文。</p><p>一个来源失败时保留它上次成功的数据和日期，其他来源仍可更新。公司暂时从名册缺失不会直接删除；来源明确标记非 Active 时，退出该来源的自动名单。公司名称、别名和官网用于去重，地区、来源和搜索可以组合筛选。</p></section>
     <section class="co-section"><h2>怎样理解这些资料</h2><p>收录表示有公开产品或活动依据，不是前景排名。备案、入选机构名册、融资与官网宣传都不能单独证明产品质量或商业成功。公司介绍主要来自企业和名册，缺少独立验证的经营数据不补写。</p><p>来源日期、活动依据日期和目录同步日期分别记录。此前的深度分析和动态保留为历史资料，已经停止更新。</p></section>
   </div>
 </StarlightPage>
