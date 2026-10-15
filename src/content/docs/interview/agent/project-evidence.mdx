@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 先讲解决谁的什么问题，再讲任务如何经过模型、检索和工具完成，最后说明自己负责的决策与验证结果。技术亮点要回答“为什么需要、与什么比较、收益怎样测”，而不是只报框架名称。
 
-```mermaid
-flowchart LR
-  A["业务目标<br/>与约束"] --> B["执行链<br/>及个人职责"]
-  B --> C["关键选型<br/>与基线"]
-  C --> D["验证结果<br/>与剩余边界"]
-```
+<InterviewVisual src="/images/interview/cards/agent-project-evidence.webp" alt="项目介绍与效果证据图解。问题与约束；方案与取舍；明确自己的职责；测试、发布与业务证据；真实结果与估算分开。" />
 
 ## 一个指标要能经得住追问
 

@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 任务从确定需求和仓库版本开始，按可独立模块分配受控工作区，合并改动后统一构建与验收。生成 PR 与合并发布是不同权限，执行者不能自行扩大到生产变更。
 
-```mermaid
-flowchart TB
-  A["固定需求和基线"] --> B["分配隔离工作区"]
-  B["分配隔离工作区"] --> C["集成审查与测试"]
-  C["集成审查与测试"] --> D["按授权创建 PR"]
-```
+<InterviewVisual src="/images/interview/cards/agent-multi-agent-pr-system.webp" alt="多 Agent 自动生成 PR 的系统怎样设计？图解。划分文件与模块所有权；隔离分支开发；独立测试与审查；有序集成并生成 PR；PR ≠ 合并 ≠ 发布 ≠ 验收。" />
 
 ## 协调代码所有权与集成顺序
 

@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,17 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 PPO 常包含策略、参考、奖励和价值计算等组件；GRPO 用同一问题的一组回答计算相对训练信号，通常不需要独立的价值模型。奖励也可以是程序规则，不一定是另一个大模型。
 
-```mermaid
-flowchart TB
-  A[问题批次与策略版本] --> B[Rollout 生成回答]
-  B --> C[规则或奖励模型评分]
-  B --> D["按算法计算<br/>概率与其他信号"]
-  C --> E[计算优势等训练输入]
-  D --> E
-  E --> F[策略前向、反向与更新]
-  F --> G[同步新权重到生成引擎]
-  G --> A
-```
+<InterviewVisual src="/images/interview/cards/infra-rl-training-pipeline.webp" alt="后训练与 Rollout 调度图解。Rollout 生成样本；奖励与参考评分；策略优化；版本与资源协调；共卡或分池按阶段负载权衡。" />
 
 ## 同卡切换和分离部署各有代价
 

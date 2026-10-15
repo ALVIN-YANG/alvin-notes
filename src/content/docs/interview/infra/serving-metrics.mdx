@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,20 +22,7 @@ TTFT 是发送请求到收到首个输出 token 的时间。ITL 是相邻输出 
 
 总 token/s 表示系统单位时间完成多少工作，不代表单个用户生成得快。批量加大后，总吞吐可能上升，排队和逐字等待也可能一起上升。
 
-```mermaid
-sequenceDiagram
-  participant C as 客户端
-  participant S as 推理服务
-  C->>S: t0 发送请求
-  Note over S: 排队、输入处理、Prefill
-  S-->>C: t1 首个输出 token
-  S-->>C: t2 下一个 token
-  S-->>C: t3 后续 token
-  S-->>C: tn 最后一个 token
-  Note over C: TTFT = t1 - t0
-  Note over C: ITL 示例 = t2 - t1
-  Note over C: E2E = tn - t0
-```
+<InterviewVisual src="/images/interview/cards/infra-serving-metrics.webp" alt="指标与有效压测图解。t0 发送；t1 首 Token；t2 下个 Token；tn 最后 Token；TTFT = t1 − t0；ITL = t2 − t1；E2E = tn − t0；TPOT = (tn − t1)/(n − 1)，n > 1；吞吐 ≠ 单请求速度；P99 ≠ 平均；流事件 ≠ Token；固定负载、口径与成功条件。" />
 
 输出数大于 1、首尾 Token 的时点可观测时，`TPOT = (最后一个 Token 的时间 - 第一个 Token 的时间)/(输出 Token 数 - 1)`。只输出一个 Token 时，该公式没有定义，应标记不适用；若平台约定记为 0，也要说明统计口径，不能把这个 0 解释为真实测得的生成间隔。
 

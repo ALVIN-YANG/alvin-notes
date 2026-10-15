@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 SFT 数据要确保任务、工具轨迹和答案一致，过滤格式错误、无依据成功和敏感内容。清洗后按场景难度与数据质量重采样，避免大量简单近重复样本淹没关键失败类型。
 
-```mermaid
-flowchart TB
-  A["检查轨迹一致性"] --> B["去重脱敏与分割"]
-  B["去重脱敏与分割"] --> C["按场景重采样"]
-  C["按场景重采样"] --> D["独立评测泛化"]
-```
+<InterviewVisual src="/images/interview/cards/agent-sft-data-curation.webp" alt="Agent 的 SFT 数据怎样清洗、重采样与划分？图解。去重、纠错与脱敏；验证工具调用与真实结果；按任务分布重采样；按来源划分训练与测试；模型生成轨迹不自动是真值。" />
 
 ## 划分先于扩增与模板生成
 

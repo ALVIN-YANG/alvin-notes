@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,18 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 例如调研三家供应商，可以分别收集材料，由一个负责人核对并合并。每个子任务说明范围、来源要求和完成条件；合并者要核实证据，不能把三个自然语言结论拼起来就算完成。
 
-```mermaid
-flowchart TB
-  A[总任务与共享约束] --> B[划分任务与责任]
-  B --> C["Agent A<br/>供应商 A 资料"]
-  B --> D["Agent B<br/>供应商 B 资料"]
-  B --> E["Agent C<br/>供应商 C 资料"]
-  C --> F[返回结构化结果与来源]
-  D --> F
-  E --> F
-  F --> G["负责人核对<br/>冲突、缺项与权限"]
-  G --> H[合并或安排有限补查]
-```
+<InterviewVisual src="/images/interview/cards/agent-multi-agent-coordination.webp" alt="多 Agent 协作图解。共同目标与边界；A / B / C 独立调研；分别返回报告与来源；核对冲突与缺项后合并；共享资源受控写入；并行可能更快，总成本未必更低。" />
 
 ## 交接的是任务，不是全部聊天记录
 

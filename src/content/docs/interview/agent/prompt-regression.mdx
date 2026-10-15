@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 把 Prompt、Skill、工具 Schema 和模型配置一起版本化，用固定任务及环境比较变更前后表现。成功案例要测试，历史失败、边界、权限拒绝和无答案任务也要保留。
 
-```mermaid
-flowchart TB
-  A["固定任务与环境"] --> B["运行新旧版本"]
-  B["运行新旧版本"] --> C["比较行为与指标"]
-  C["比较行为与指标"] --> D["通过门槛再发布"]
-```
+<InterviewVisual src="/images/interview/cards/agent-prompt-regression.webp" alt="修改 Prompt、Skill 或工具描述后怎样做回归评测？图解。旧版本；新版本；相同冻结用例；质量、越权、成本与延迟；改 Prompt 也要检查退化。" />
 
 ## 比较完整行为而非措辞
 

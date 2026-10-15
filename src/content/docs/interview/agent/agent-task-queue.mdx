@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 请求先创建持久化任务并返回 task_id，Worker 从队列领取任务，状态和产物可独立查询。任务表是业务状态来源；队列通知不应成为唯一进度记录。
 
-```mermaid
-flowchart TB
-  A["事务创建任务与通知"] --> B["投递队列"]
-  B["投递队列"] --> C["领取并持久化进度"]
-  C["领取并持久化进度"] --> D["查询最终状态"]
-```
+<InterviewVisual src="/images/interview/cards/agent-agent-task-queue.webp" alt="Agent 长任务怎样用消息队列异步执行？图解。提交 → 任务 ID；队列暂存；Worker 执行；查询任务状态；提交去重 + 副作用幂等；入队 ≠ 完成。" />
 
 ## 处理提交与消费的两端重复
 

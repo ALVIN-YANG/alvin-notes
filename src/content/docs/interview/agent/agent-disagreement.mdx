@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 先区分事实冲突、规则冲突和偏好差异。事实问题回到原始证据和版本，规则问题按明确优先级处理，偏好差异交给具有决策权的人；多数投票不能自动变成真相。
 
-```mermaid
-flowchart TB
-  A["收集结论与依据"] --> B["对齐假设和版本"]
-  B["对齐假设和版本"] --> C["核对冲突证据"]
-  C["核对冲突证据"] --> D["裁决或升级人工"]
-```
+<InterviewVisual src="/images/interview/cards/agent-agent-disagreement.webp" alt="多个 Agent 的结论互相矛盾，怎样收敛？图解。结论 A；结论 B；对齐对象、时间、口径；核对来源与证据；有限补查或升级；票多不代表正确。" />
 
 ## 统一比较对象和评价标准
 

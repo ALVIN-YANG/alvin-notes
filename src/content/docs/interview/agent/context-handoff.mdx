@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 原生检查点记录运行时状态，摘要只保留部分语义，二者不能互相替代。跨 Runtime 交接需要明确已完成动作、待做任务、产物版本与工作区事实，接收者先核对再继续。
 
-```mermaid
-flowchart TB
-  A["记录已完成动作"] --> B["打包版本与产物"]
-  B["打包版本与产物"] --> C["接收方核对事实"]
-  C["接收方核对事实"] --> D["从安全边界继续"]
-```
+<InterviewVisual src="/images/interview/cards/agent-context-handoff.webp" alt="不同 Runtime 交接时，摘要和检查点怎样避免状态失真？图解。目标与约束；已验证产物；下一步与检查点；接手后核对真实状态；摘要 ≠ 完整执行检查点。" />
 
 ## 以真实产物验证交接描述
 

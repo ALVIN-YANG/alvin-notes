@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,20 +22,7 @@ PD 分离让 Prefill 和 Decode 由不同实例处理。长输入的 Prefill 与
 
 Prefill 节点计算输入的 KV，传给 Decode 节点；后者接着逐 Token 生成。不同模型或布局之间不一定能直接使用同一份 KV，传输格式和并行配置要兼容。
 
-```mermaid
-sequenceDiagram
-  participant R as 路由与调度
-  participant P as Prefill 节点
-  participant D as Decode 节点
-  participant U as 用户
-  U->>R: 输入与生成要求
-  R->>P: 安排 Prefill
-  R->>D: 确认 Decode 容量
-  P->>P: 计算输入 KV
-  P->>D: 传输兼容 KV 与请求状态
-  D->>D: 继续 Decode
-  D-->>U: 流式输出
-```
+<InterviewVisual src="/images/interview/cards/infra-prefill-decode-disaggregation.webp" alt="PD 分离与 KV 传输图解。Prefill 池；KV 经网络转移；Decode 池；分别调度与扩容；收益要覆盖传输与资源开销。" />
 
 ## 比较整条请求，不只比较 GPU 时间
 

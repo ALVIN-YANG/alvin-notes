@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Review Agent 获取固定版本的 Diff、相关上下文和仓库规则，输出可定位且有依据的问题。权限只允许读取与生成审查产物；是否发布评论由工作流的授权决定。
 
-```mermaid
-flowchart TB
-  A["固定 PR 版本"] --> B["读取 Diff 与上下文"]
-  B["读取 Diff 与上下文"] --> C["验证候选问题"]
-  C["验证候选问题"] --> D["输出定位准确的意见"]
-```
+<InterviewVisual src="/images/interview/cards/agent-code-review-agent.webp" alt="输入一个 PR，怎样设计只提意见的代码 Review Agent？图解。PR Diff + 必要上下文；问题、位置、证据；复现并核验；只输出建议；只读 Review，不自动合并。" />
 
 ## 控制上下文与误报
 

@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,17 +22,7 @@ MoE 的路由器为每个 Token 选择少量专家参与计算，所以激活参
 
 专家并行 EP 把不同专家放到不同 GPU；TP 切分同一层或专家内部的张量。两者可以组合，但增加并行维度也会增加通信与调度复杂度。
 
-```mermaid
-flowchart TB
-  A[一批 Token] --> B[路由器选择专家]
-  B --> C[分发到目标 GPU]
-  C --> D["GPU A<br/>专家 1、2"]
-  C --> E["GPU B<br/>专家 3、4"]
-  D --> F["返回结果<br/>按路由权重合并"]
-  E --> F
-  F --> G["恢复 Token<br/>原顺序"]
-  H["统计专家负载<br/>与网络耗时"] --> B
-```
+<InterviewVisual src="/images/interview/cards/infra-moe-expert-parallelism.webp" alt="MoE 与专家并行图解。Router 选择少量专家；专家权重仍需驻留；Token 跨卡分发与返回；负载与通信成本；少量激活参数 ≠ 少量部署成本。" />
 
 ## 最忙的专家可能拖慢整个批次
 

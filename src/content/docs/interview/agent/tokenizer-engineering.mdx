@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Tokenizer 把文本映射成模型使用的 Token；一个字、词或代码标识符不一定对应一个 Token。词表与切分规则影响长度、成本和代码片段表示，预算应使用所选模型的实际计数。
 
-```mermaid
-flowchart TB
-  A["输入文本或代码"] --> B["按模型规则编码"]
-  B["按模型规则编码"] --> C["计算真实 Token"]
-  C["计算真实 Token"] --> D["保留结构并分块"]
-```
+<InterviewVisual src="/images/interview/cards/agent-tokenizer-engineering.webp" alt="Tokenizer 怎样影响代码补全、Token 预算和文本切片？图解。文本 → Token ID；按模型 Tokenizer 计数；预算与费用；有效文本边界切片；一个汉字不一定是一个 Token。" />
 
 ## 切片先保留语义结构
 

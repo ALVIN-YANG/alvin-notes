@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,23 +22,7 @@ Function calling 让模型表达“调用哪个工具、带什么参数”。MCP
 
 Host 是承载 Agent 的应用，Client 管理与 Server 的连接，Server 提供工具等能力。MCP 还包括资源和提示模板，不能把整个协议等同于工具调用。
 
-```mermaid
-sequenceDiagram
-  participant M as 模型
-  participant H as Agent 应用
-  participant C as MCP Client
-  participant S as MCP Server
-  C->>S: 初始化与能力发现
-  S-->>C: 工具定义
-  H->>M: 任务与允许使用的工具
-  M-->>H: 工具名与参数
-  H->>H: 校验权限和参数
-  H->>C: 转发允许的调用
-  C->>S: 执行工具
-  S-->>C: MCP 工具结果
-  C-->>H: 返回调用结果
-  H->>M: 返回结果，继续任务
-```
+<InterviewVisual src="/images/interview/cards/agent-mcp-and-tools.webp" alt="MCP 与工具连接图解。模型提出调用；应用校验与授权；MCP Client ↔ Server；业务工具执行；结果经 Client 返回；接通协议 ≠ 获得业务权限。" />
 
 ## 协议接通，权限仍要自己管
 

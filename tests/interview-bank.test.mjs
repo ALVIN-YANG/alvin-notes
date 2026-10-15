@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { JSDOM } from 'jsdom';
 import { mountInterviewBank } from '../src/lib/interview-bank.mjs';
 
-function setup(t, query = '?module=ai-agent', { saved, storageBlocked = false } = {}) {
+function setup(t, query = '?module=ai-agent', { saved, storageBlocked = false, visuals = false } = {}) {
   const items = [['agent','one','basic','ai-agent',['Tool','RAG']],['agent','two','advanced','ai-agent',['Trace']],['infra','three','basic','models',['KV cache']],['agent','four','advanced','system-design',['Tool','Agent']]];
   const dom = new JSDOM(`<html lang="zh-CN"><body><div data-interview-bank>
     <select data-ib-module-select>${['all','product','fundamentals','system-design','ai-agent','models','reliability','delivery'].map(id=>`<option value="${id}">${id}</option>`).join('')}</select>
@@ -11,7 +11,7 @@ function setup(t, query = '?module=ai-agent', { saved, storageBlocked = false } 
     ${items.map(([track,id,level,module,tags],index)=>`<div data-ib-question data-id="interview/${track}/${id}" data-track="${track}" data-module="${module}" data-level="${level}" data-search="${id} ${tags.join(' ').toLowerCase()}" data-panel="panel-${index}"><a href="/old/${id}/"><span data-ib-number></span>${id}</a></div>`).join('')}
     <span data-ib-position></span><span data-ib-count></span><div data-ib-empty hidden><p data-ib-empty-message></p></div><button data-ib-reset></button>
     <button data-ib-prev></button><button data-ib-next></button><div data-ib-scroll tabindex="0">
-    ${items.map(([,id],index)=>`<article id="panel-${index}" data-ib-answer><h2>${id}</h2><p>${id} 的答案。</p><details data-reader-ignore><summary>资料</summary><p>不朗读资料。</p></details></article>`).join('')}
+    ${items.map(([,id],index)=>`<article id="panel-${index}" data-ib-answer><h2>${id}</h2><p>${id} 的答案。</p>${visuals ? `<figure data-reader-ignore><img data-iq-src="/images/${id}.webp" hidden alt="${id}图解"></figure>` : ''}<details data-reader-ignore><summary>资料</summary><p>不朗读资料。</p></details></article>`).join('')}
     </div><p data-ib-reading-empty></p><div data-ib-reader hidden><button data-reader-toggle><span data-reader-label></span></button><button data-reader-stop></button><span data-reader-status></span></div>
     </div></body></html>`, {url:`https://example.com/interview/${query}`});
   const doc = dom.window.document;
@@ -42,6 +42,20 @@ test('selects a linked question and switches inline without navigating away',t=>
   assert.equal(event.defaultPrevented,true);
   assert.equal(f.active(),'panel-1');
   assert.equal(f.dom.window.location.pathname,'/interview/');
+});
+
+test('only visited questions receive image URLs, including a linked initial question', t => {
+  const f = setup(t, '?module=ai-agent&question=two', { visuals: true });
+  const image = index => f.doc.querySelector(`#panel-${index} img`);
+  assert.equal(image(1).getAttribute('src'), '/images/two.webp');
+  assert.equal(image(1).hidden, false);
+  for (const index of [0, 2, 3]) assert.equal(image(index).hasAttribute('src'), false);
+  f.key('ArrowLeft');
+  assert.equal(image(0).getAttribute('src'), '/images/one.webp');
+  assert.equal(image(1).getAttribute('src'), '/images/two.webp');
+  chooseModule(f, 'models');
+  assert.equal(image(2).getAttribute('src'), '/images/three.webp');
+  assert.equal(image(3).hasAttribute('src'), false);
 });
 
 test('keyboard navigation stays within filtered results and handles an empty list',t=>{

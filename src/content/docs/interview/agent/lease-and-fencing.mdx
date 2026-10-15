@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 租约过期后，新 Worker 可以接管任务，但旧 Worker 可能只是暂停后恢复。仅靠租约不能阻止旧 Worker 继续写；需要递增的 Fencing Token，并由写入端拒绝旧令牌。
 
-```mermaid
-flowchart TB
-  A["领取任务和代次"] --> B["续租并执行"]
-  B["续租并执行"] --> C["新 Worker 接管"]
-  C["新 Worker 接管"] --> D["写入端拒绝旧代次"]
-```
+<InterviewVisual src="/images/interview/cards/agent-lease-and-fencing.webp" alt="Agent Worker 失联后，Lease 和 Fencing Token 怎样防止双写？图解。旧 Worker：Token 7；新 Worker：Token 8；真正写入处原子校验；拒绝旧 Token 写入；Fencing ≠ 业务幂等。" />
 
 ## 令牌必须在真正写入处生效
 

@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 先用只读证据定位异常范围，再形成假设并验证。诊断与变更分成两个权限阶段；重启、回滚或扩容需要明确授权、预期影响和回退条件，不能让模型凭猜测直接执行。
 
-```mermaid
-flowchart TB
-  A["确认异常与范围"] --> B["只读收集证据"]
-  B["只读收集证据"] --> C["审核应急方案"]
-  C["审核应急方案"] --> D["执行后验证恢复"]
-```
+<InterviewVisual src="/images/interview/cards/agent-incident-response-agent.webp" alt="支付接口超时，运维 Agent 怎样排查和控制高危操作？图解。请求 ID 串起证据；应用、下游、业务状态；先只读排查；高危操作受控确认；支付超时 ≠ 支付失败。" />
 
 ## 沿请求链收集证据
 

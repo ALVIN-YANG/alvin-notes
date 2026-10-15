@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,18 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 先分清三件事：加载或启动时 OOM、运行时 OOM、KV 不足导致的抢占重算。抢占不等于进程 OOM，但重算会让请求更慢。提高 gpu_memory_utilization 不是通用解法，还可能挤掉其他运行开销的余量。
 
-```mermaid
-flowchart TB
-  A[并发升高后异常] --> B{先分清发生阶段}
-  B --> C["启动阶段<br/>权重、加载峰值<br/>图捕获"]
-  B --> D["运行阶段<br/>KV、工作区与并发"]
-  B --> E["抢占阶段<br/>KV 不足<br/>回收与重算"]
-  C --> F["核对每卡预算<br/>与实际分配"]
-  D --> F
-  E --> F
-  F --> G[限制负载或调整配置]
-  G --> H["按真实长度分布<br/>复测 SLO"]
-```
+<InterviewVisual src="/images/interview/cards/infra-capacity-and-oom.webp" alt="容量与 OOM 排障图解。权重；活跃 Token 的 KV；工作区与运行时余量；容量内接纳请求；只看模型权重会低估显存需求。" />
 
 ## 给输出增长留空间
 

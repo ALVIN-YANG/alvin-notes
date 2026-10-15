@@ -14,20 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 user_id 标识用户，session_id 标识一段对话，run_id 标识一次具体执行。一个用户可有多段对话，一段对话可启动多次执行。UUID 避免碰撞，不证明访问权限；读取状态或文件时，仍要核对它属于谁。
 
-```mermaid
-flowchart TB
-  A[租户与用户] --> B[会话 S1]
-  A --> C[会话 S2]
-  B --> D[执行 R1]
-  B --> E[执行 R2]
-  D --> F["状态与工作目录<br/>保存产物引用"]
-  E --> G[独立执行状态与工作目录]
-```
+<InterviewVisual src="/images/interview/cards/agent-session-isolation.webp" alt="会话标识与隔离图解。user_id：谁；session_id：哪段会话；run_id：哪次执行；数据与临时文件按归属隔离；并发更新还要检查版本。" />
 
 ## 两次执行不能覆盖彼此的进度
 

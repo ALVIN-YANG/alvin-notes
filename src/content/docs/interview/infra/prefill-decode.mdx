@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,15 +22,7 @@ Prefill 处理输入 token，建立 KV cache，并产生用于生成首个输出
 
 长 Prompt 要做更多 Prefill 工作，可能让首字等待变长。首字出来后每个 token 的速度，是另一个问题。所以要分开看 TTFT 和后续输出间隔。
 
-```mermaid
-flowchart LR
-  A[发送请求] --> B[网络、排队与输入处理]
-  B --> C["Prefill<br/>处理输入并建 KV"]
-  C --> D[首个输出 token]
-  D --> E[Decode 新位置]
-  E --> F[下一个 token]
-  F --> E
-```
+<InterviewVisual src="/images/interview/cards/infra-prefill-decode.webp" alt="Prefill 与 Decode图解。Prefill：处理输入 Prompt；建立 KV 与首个输出；Decode：逐步生成后续 Token；队列与网络也影响首字；首字慢与逐字慢分开诊断。" />
 
 ## 从慢的阶段找原因
 

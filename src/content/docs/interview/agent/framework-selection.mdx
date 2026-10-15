@@ -14,21 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 LangChain 提供模型、工具和 Agent 的较高层接口；LangGraph 更直接地表达有状态的图、分支和循环。当前 LangChain 的 Agent 构建在 LangGraph 上，二者可以一起使用。手写循环适合边界简单、依赖少的任务，但恢复、并发和观测仍要自己实现。
 
-```mermaid
-flowchart LR
-  A[输入 State] --> B[检索节点]
-  B --> C[返回状态增量]
-  C --> D["按更新规则合并<br/>Reducer"]
-  D --> E{证据足够？}
-  E -->|是| F[回答节点]
-  E -->|否| G[补充检索或澄清]
-  G --> D
-```
+<InterviewVisual src="/images/interview/cards/agent-framework-selection.webp" alt="框架与节点状态图解。简单控制流：手写；组件组合：LangChain；状态图与恢复：LangGraph；明确状态更新规则；框架不自动保证业务幂等。" />
 
 ## 选型要能回答状态归谁管
 

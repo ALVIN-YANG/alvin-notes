@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,13 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 单卡 OOM 后直接开 DP，不一定有用：完整模型状态仍在每个副本上。先查是权重、梯度、优化器状态还是激活占得多，再决定怎么切。
 
-```mermaid
-flowchart TB
-  A[DP：不同数据] --> B["副本执行完整模型<br/>同步梯度"]
-  C[TP：层内张量] --> D[多卡协作计算同一层]
-  E[PP：模型层] --> F["各阶段运行不同层<br/>传递激活"]
-  G["ZeRO<br/>冗余训练状态"] --> H["数据并行组内<br/>分片与通信"]
-```
+<InterviewVisual src="/images/interview/cards/infra-training-parallelism.webp" alt="训练并行与状态分片图解。DP：模型副本处理不同数据；TP：层内张量切分；PP：不同层分阶段；ZeRO：按阶段切分训练状态；省显存方式不同，通信代价也不同。" />
 
 ## 它们各自省什么，又多了什么开销
 

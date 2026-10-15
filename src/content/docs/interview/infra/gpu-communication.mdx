@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,13 +22,7 @@ AllReduce 把各卡的数据归约，例如求和，再让每卡拿到结果；A
 
 数据并行常用 AllReduce 同步梯度，状态分片会用到 AllGather 和 ReduceScatter，MoE 专家并行会做分发与合并。通信操作由算法需要决定，不能互相随意替换。
 
-```mermaid
-flowchart TB
-  A[AllReduce] --> B["各卡数值归约<br/>每卡得相同结果"]
-  C[AllGather] --> D["收集各卡分片<br/>每卡得完整集合"]
-  E[ReduceScatter] --> F["先归约<br/>各卡持不同分片"]
-  G[All-to-all] --> H["各卡按目的地<br/>分发不同数据"]
-```
+<InterviewVisual src="/images/interview/cards/infra-gpu-communication.webp" alt="多卡通信基础图解。AllReduce：归约后各卡都有；AllGather：各卡收齐分片；All-to-all：各卡互换分片；通信与拓扑影响扩展收益；加卡不保证线性加速。" />
 
 ## 多一张卡，也多了通信和等待
 

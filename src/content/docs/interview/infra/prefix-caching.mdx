@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,16 +22,7 @@ Prefix cache 复用相同输入前缀已经算出的 KV，让后续请求少做�
 
 例如一组请求共用同一份长系统规则，把稳定内容放前面，变量放后面，更容易命中前缀。通常要求前缀 Token 一致，还要保证模型、适配器和相关执行配置兼容；文字意思相近不够。
 
-```mermaid
-flowchart TB
-  A[稳定前缀与本次问题] --> B[查兼容的前缀 KV]
-  B --> C{可复用？}
-  C -->|是| D["读取 KV<br/>计算未命中部分"]
-  C -->|否| E["完整 Prefill<br/>按策略入缓存"]
-  D --> F[Decode 本次输出]
-  E --> F
-  G["路由同时考虑<br/>命中收益与负载"] --> B
-```
+<InterviewVisual src="/images/interview/cards/infra-prefix-caching.webp" alt="前缀缓存与路由图解。相同 Token 前缀；兼容模型与执行配置；复用前缀 KV；不同后缀继续计算；命中缓存不代表没有排队或解码耗时。" />
 
 ## 命中收益要减去搬运和排队
 

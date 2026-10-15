@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,16 +22,7 @@ RAG 先从外部资料找相关片段，再把片段交给模型回答。它通�
 
 建库时，解析文档，按语义边界切成片段，保存来源、版本和权限，并生成向量或关键词索引。查询时，把问题送进检索器，选出相关片段，连同问题交给模型；答案里的引用要能指回原文。
 
-```mermaid
-flowchart TB
-  A[文档] --> B["解析与切分<br/>保留标题和来源"]
-  B --> C[向量索引与关键词索引]
-  D[用户问题与访问身份] --> E[检索并过滤权限]
-  C --> E
-  E --> F[相关片段与引用标识]
-  F --> G[模型依据片段回答]
-  G --> H[核对答案与引用]
-```
+<InterviewVisual src="/images/interview/cards/agent-rag-pipeline.webp" alt="RAG 与文档切分图解。解析与语义切块；索引；检索与重排；证据进入上下文；引用来源作答；切块保留语义与来源边界。" />
 
 ## 切得太小和太大都会出问题
 

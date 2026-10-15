@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 视频任务先处理采样帧、音频、字幕和时间对齐，再按标签定义标注并合并结果。媒体处理耗时长，应采用异步任务、可查询进度和幂等回调；上传完成不等于标注完成。
 
-```mermaid
-flowchart TB
-  A["提交素材任务"] --> B["采样并对齐模态"]
-  B["采样并对齐模态"] --> C["标注与质量检查"]
-  C["标注与质量检查"] --> D["幂等发布产物"]
-```
+<InterviewVisual src="/images/interview/cards/agent-video-annotation-agent.webp" alt="视频或图文标注 Agent 怎样设计异步链路？图解。上传返回任务 ID；分段与时间戳；异步推理与标注；结构与时序校验；抽检后交付版本化产物。" />
 
 ## 产物必须能定位到原始素材
 

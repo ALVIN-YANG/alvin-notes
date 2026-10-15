@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 调研先限定问题、时间范围和交付标准，再把可独立主题交给子任务。每个结论携带出处、日期和支持段落，汇总时核对冲突与重复；搜索结果标题不能当作已读证据。
 
-```mermaid
-flowchart TB
-  A["限定调研问题"] --> B["分派独立主题"]
-  B["分派独立主题"] --> C["核对来源与冲突"]
-  C["核对来源与冲突"] --> D["汇总并标明缺口"]
-```
+<InterviewVisual src="/images/interview/cards/agent-research-agent.webp" alt="多 Agent 文献调研怎样处理来源、矛盾与长任务失败？图解。独立收集文献；来源、时间、主张与证据；对齐研究条件；记录矛盾与缺口；有限补查与长任务恢复。" />
 
 ## 让证据跟随结论传递
 

@@ -14,19 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Skill 通常把某类任务的方法、资源和可选脚本放在一个目录里，让 Agent 需要时再读取。Tool 提供可执行的动作，MCP 提供连接和发现外部能力的协议。Skill 可以指导 Agent 使用 Tool 或 MCP，三者承担不同职责。
 
-```mermaid
-flowchart LR
-  A[启动：加载名称与描述] --> B{任务匹配？}
-  B -->|匹配| C["读取指令<br/>SKILL.md"]
-  C --> D[按需读取参考与脚本]
-  D --> E[调用获授权的工具]
-  B -->|不匹配| F[继续其他任务]
-```
+<InterviewVisual src="/images/interview/cards/agent-skills-and-progressive-disclosure.webp" alt="Skills 与渐进式加载图解。索引：名称与描述；选中后加载指令；按需读取脚本与参考；Tool 执行，MCP 连接；发现 Skill ≠ 获准执行。" />
 
 ## 为什么不一次读完所有内容
 

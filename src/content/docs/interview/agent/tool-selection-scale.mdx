@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 大规模能力集通常分层加载：先提供简短能力目录，再按任务检索候选，最后加载具体说明和工具 Schema。权限过滤在选择前完成；召回不足时允许补充搜索，但要限制次数。
 
-```mermaid
-flowchart TB
-  A["按身份过滤能力"] --> B["检索候选目录"]
-  B["检索候选目录"] --> C["加载详细定义"]
-  C["加载详细定义"] --> D["选择并校验调用"]
-```
+<InterviewVisual src="/images/interview/cards/agent-tool-selection-scale.webp" alt="上百个工具或 Skill 怎样检索和选择？图解。先过滤权限与场景；检索少量候选；加载完整描述与 Schema；校验后执行；最相似不等于最合适或已授权。" />
 
 ## 检索能力不等于获得权限
 

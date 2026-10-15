@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 离线通过后，在小范围用户或任务上灰度验证；Shadow 使用相同输入旁路运行，不向用户提交结果，也不执行真实写入。线上监控要覆盖任务质量、安全、成本和长尾时延。
 
-```mermaid
-flowchart TB
-  A["离线验证候选版本"] --> B["隔离旁路运行"]
-  B["隔离旁路运行"] --> C["小范围灰度"]
-  C["小范围灰度"] --> D["监控与回滚"]
-```
+<InterviewVisual src="/images/interview/cards/agent-online-release-evaluation.webp" alt="Agent 怎样做灰度、Shadow 和线上效果监控？图解。离线评测；Shadow：不重复真实副作用；Canary：少量真实流量；监控后扩大或回滚；回滚不能撤销已发生的外部操作。" />
 
 ## 发布单元要可回滚
 

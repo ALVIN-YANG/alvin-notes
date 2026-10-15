@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 模型路由把简单任务交给较低成本模型，把需要复杂推理或特定能力的任务交给更强模型。规则应来自任务评测与服务约束，不能只用模型自己声称的置信度判断。
 
-```mermaid
-flowchart TB
-  A["识别任务能力需求"] --> B["选择候选模型"]
-  B["选择候选模型"] --> C["验证结果与预算"]
-  C["验证结果与预算"] --> D["必要时有限升级"]
-```
+<InterviewVisual src="/images/interview/cards/agent-model-routing.webp" alt="不同任务怎样路由到大小模型，升级条件如何确定？图解。简单任务先走小模型；检查格式、证据与质量；必要时升级；预算与时限封顶；换大模型不扩大权限。" />
 
 ## 升级触发需要可观测证据
 

@@ -14,21 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 OCR 提取字符，不一定恢复阅读顺序、表格关系和图片含义。RAG 建库应按文档类型解析，保留页码、位置、标题与原始资源；否则后续检索再准确，也只能使用已经损坏的证据。
 
-```mermaid
-flowchart TB
-  A[原始 PDF 或图片] --> B{是否有可靠文本层？}
-  B -->|有| C[提取文本与版面]
-  B -->|没有| D[OCR 与版面分析]
-  C --> E[表格、图、段落分别处理]
-  D --> E
-  E --> F["保存结构与原图<br/>保留引用位置"]
-  F --> G["切分与检索<br/>必要时回看原页"]
-```
+<InterviewVisual src="/images/interview/cards/agent-multimodal-documents.webp" alt="多模态文档解析图解。正文与页码；表头、行列与单位；图片、图注与位置；解析后对照原页；OCR 文本不等于完整文档结构。" />
 
 ## 表格不能只剩一串数字
 

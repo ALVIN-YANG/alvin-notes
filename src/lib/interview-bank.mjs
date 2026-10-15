@@ -91,6 +91,14 @@ export function mountInterviewBank(root) {
     selected = row?.dataset.id;
     if (row) lastQuestions[module] = selected;
     root.querySelectorAll('[data-ib-answer]').forEach(panel => { panel.hidden = panel.id !== row?.dataset.panel; });
+    if (row) {
+      const panel = document.getElementById(row.dataset.panel);
+      panel?.querySelectorAll('img[data-iq-src]').forEach(image => {
+        image.src = image.dataset.iqSrc;
+        image.hidden = false;
+        image.removeAttribute('data-iq-src');
+      });
+    }
     rows.forEach(item => {
       const link = item.querySelector('a');
       if (item === row) link.setAttribute('aria-current', 'true'); else link.removeAttribute('aria-current');

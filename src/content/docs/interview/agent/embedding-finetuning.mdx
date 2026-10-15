@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 先排查分块、查询表达、索引和重排，再判断 Embedding 是否不适应领域。若业务词义与通用语料明显不同，可用真实查询与相关片段构造正样本，并加入容易混淆但不相关的难负样本。
 
-```mermaid
-flowchart TB
-  A["收集查询与证据"] --> B["构造正负样本"]
-  B["构造正负样本"] --> C["训练并独立评测"]
-  C["训练并独立评测"] --> D["重建向量索引"]
-```
+<InterviewVisual src="/images/interview/cards/agent-embedding-finetuning.webp" alt="什么时候微调 Embedding？训练样本怎样构造？图解。先查解析与检索基线；Query + 正例 + 难负例；训练与测试按来源隔离；业务留出集验证；不让训练材料泄漏进测试。" />
 
 ## 防止训练集与评测集泄漏
 

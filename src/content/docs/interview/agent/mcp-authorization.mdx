@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 MCP 授权解决客户端如何访问受保护的服务，业务授权仍决定当前身份可以操作哪些对象。HTTP 场景按所选协议版本处理 OAuth、资源元数据和 Token；本地 stdio 的凭据方式需要单独设计。
 
-```mermaid
-flowchart TB
-  A["校验访问 Token"] --> B["确定真实身份"]
-  B["确定真实身份"] --> C["检查对象权限"]
-  C["检查对象权限"] --> D["最小范围访问下游"]
-```
+<InterviewVisual src="/images/interview/cards/agent-mcp-authorization.webp" alt="MCP 的 OAuth 授权能代替业务权限检查吗？图解。Token 目标与 Scope；租户与资源权限；业务动作授权；工具执行；OAuth 通过 ≠ 所有操作都获准。" />
 
 ## 验证 Token 的目标与范围
 

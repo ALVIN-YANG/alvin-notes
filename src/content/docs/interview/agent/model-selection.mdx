@@ -14,20 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 先确定任务、验收规则和成本约束，再比较模型。通用榜单只能筛选候选；Agent 还要测工具选择、参数、长任务稳定性、延迟和每次成功任务的总成本。微调应针对稳定的能力缺口，不能替代缺失的知识、坏工具或错误的上下文。
 
-```mermaid
-flowchart TB
-  A[相同任务、工具与权限] --> B[比较候选模型]
-  B --> C["统计完成率与错误<br/>记录延迟与成本"]
-  C --> D{失败来自哪里？}
-  D -->|资料缺失| E[补知识与检索]
-  D -->|契约或状态错误| F[改工具与运行系统]
-  D -->|稳定能力缺口| G[评估提示优化或微调]
-```
+<InterviewVisual src="/images/interview/cards/agent-model-selection.webp" alt="模型选型与微调图解。真实任务评测；按失败原因选改进；知识缺口：检索；行为缺口：再考虑微调；比较质量、成本与延迟。" />
 
 ## 比较的是完整任务
 

@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 检索权限必须由应用的真实登录身份决定，并跟随文档、切片和引用传播。只在生成后过滤答案太晚：未授权内容一旦进入模型上下文，就已经越过边界。
 
-```mermaid
-flowchart TB
-  A["验证登录身份"] --> B["计算文档权限"]
-  B["计算文档权限"] --> C["授权范围内检索"]
-  C["授权范围内检索"] --> D["核对引用访问权"]
-```
+<InterviewVisual src="/images/interview/cards/agent-knowledge-base-access.webp" alt="企业 RAG 怎样落实文档权限，防止跨租户泄露？图解。租户与用户身份；所有召回通道过滤；文档访问再校验；缓存与输出同步约束；Prompt 不是权限边界。" />
 
 ## 所有检索通道执行同一权限约束
 

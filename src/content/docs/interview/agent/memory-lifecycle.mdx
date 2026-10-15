@@ -14,23 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 长期记忆应保存经过筛选、以后仍有用的信息，并支持更正、失效和删除。记录至少包括主体、内容、来源与有效时间。用户更正可能替换旧偏好，也可能只适用于这一次任务；不能把每句新话都当作永久画像。
 
-```mermaid
-flowchart TB
-  A[对话中的候选信息] --> B[检查来源、用途与归属]
-  B --> C[查找已有记录]
-  C --> D{关系是什么？}
-  D -->|重复| E[合并或忽略]
-  D -->|明确更正| F[旧版本失效，保存新版本]
-  D -->|条件不同| G[保留条件和有效时间]
-  E --> H["查询时过滤权限<br/>排除失效记录"]
-  F --> H
-  G --> H
-```
+<InterviewVisual src="/images/interview/cards/agent-memory-lifecycle.webp" alt="长期记忆的更新与删除图解。来源、归属、有效期；写入与版本更新；冲突核实；过期、删除与缓存清理；模型猜测不能直接成为用户事实。" />
 
 ## 相似不是同一条事实
 

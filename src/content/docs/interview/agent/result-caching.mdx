@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 确定性读工具可按输入与数据版本缓存；语义缓存按近似问题复用答案，误命中风险更高。缓存必须包含租户、权限范围、工具或模型版本，并遵守业务对新鲜度的要求。
 
-```mermaid
-flowchart TB
-  A["核对权限和版本"] --> B["判断是否可复用"]
-  B["判断是否可复用"] --> C["命中或真实执行"]
-  C["命中或真实执行"] --> D["验证并更新缓存"]
-```
+<InterviewVisual src="/images/interview/cards/agent-result-caching.webp" alt="Agent 的工具缓存和语义缓存怎样避免返回过期结果？图解。身份、参数与版本入 Key；检查时效与权限；命中后才能复用；更新时失效；语义相近 ≠ 同一业务操作。" />
 
 ## 先判定结果是否可复用
 

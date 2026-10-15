@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,17 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 草稿可以来自小模型、辅助预测头或其他方法。目标模型已拿到候选序列，因此能并行计算这些位置的条件概率；单独生成时，下一位置要等前一位置选出来。
 
-```mermaid
-flowchart TB
-  A[当前已确认前缀] --> B[草稿提出多个候选]
-  B --> C["目标模型<br/>一次计算验证概率"]
-  C --> D{候选能接受到哪里？}
-  D --> E[接受合法前缀]
-  D --> F["拒绝处按算法修正<br/>丢弃后续草稿"]
-  E --> G[更新已确认前缀]
-  F --> G
-  G --> B
-```
+<InterviewVisual src="/images/interview/cards/infra-speculative-decoding.webp" alt="投机解码图解。草稿模型提议多个 Token；目标模型批量验证；接受有效前缀；拒绝处正确修正采样；保真依赖正确算法，加速取决于接受率。" />
 
 ## 加速取决于接受率和额外成本
 

@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Supervisor 统一派发并汇总；Handoff 把当前控制权和必要状态交给另一角色；Router 先按任务类别分发。选择取决于谁负责全局状态、是否需要多轮交互、任务能否独立完成。
 
-```mermaid
-flowchart TB
-  A["识别协作需求"] --> B["确定控制权"]
-  B["确定控制权"] --> C["选择拓扑模式"]
-  C["选择拓扑模式"] --> D["验证调用成本"]
-```
+<InterviewVisual src="/images/interview/cards/agent-agent-topologies.webp" alt="Supervisor、Handoff、Router 怎样选择协作方式？图解。Supervisor：集中分工与验收；Handoff：转交控制权；Router：选择执行路径；先定控制权，再选拓扑。" />
 
 ## 先明确控制权和产物边界
 

@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 共享状态需要规定字段的所有者和合并规则。两个节点读到同一版本再分别写回，会丢失更新；可用版本号条件更新、事务或明确的 Reducer 控制，具体取决于状态类型。
 
-```mermaid
-flowchart TB
-  A["读取状态版本"] --> B["计算本次更新"]
-  B["计算本次更新"] --> C["条件提交"]
-  C["条件提交"] --> D["冲突后重读与归并"]
-```
+<InterviewVisual src="/images/interview/cards/agent-concurrent-state-updates.webp" alt="多个 Agent 同时更新状态，怎样避免覆盖和冲突？图解。A、B 都读取 v1；A 写入成功 → v2；B 持 v1 写入：拒绝；读取 v2 后重试；按字段语义合并；追加日志 ≠ 覆盖状态。" />
 
 ## 不同字段采用不同合并语义
 

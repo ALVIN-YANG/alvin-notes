@@ -14,19 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 知识图谱用实体和关系表达结构；RAG 是先检索外部证据、再辅助生成的方式。图谱可以作为 RAG 的检索来源，二者能组合。普通向量检索擅长找语义相近的文本，关系查询更适合追踪调用、依赖和多跳联系，但需要额外建图和更新成本。
 
-```mermaid
-flowchart LR
-  A[问题与实体] --> B[语义召回相关代码]
-  A --> C[查询调用、依赖与关联]
-  B --> D[合并证据并读原文件]
-  C --> D
-  D --> E[回答与引用]
-```
+<InterviewVisual src="/images/interview/cards/agent-knowledge-graph-rag.webp" alt="知识图谱与 RAG图解。向量找相似资料；图谱查明确关系；跨文件调用与依赖；回到源代码核对；关系收益要覆盖建图维护成本。" />
 
 ## 代码图先明确关系从哪里来
 

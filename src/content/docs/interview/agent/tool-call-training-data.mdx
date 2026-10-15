@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 训练数据不仅包含正确工具与参数，还需要无需调用、无工具可用、澄清、错误反馈和多步依赖样本。先判断是工具描述问题、协议适配问题还是模型能力不足，再决定是否训练。
 
-```mermaid
-flowchart TB
-  A["诊断调用失败原因"] --> B["构造正负轨迹"]
-  B["构造正负轨迹"] --> C["训练并协议验证"]
-  C["训练并协议验证"] --> D["测试泛化与拒绝"]
-```
+<InterviewVisual src="/images/interview/cards/agent-tool-call-training-data.webp" alt="Function Calling 能力不足，训练数据怎样设计与验证？图解。选工具与填参数；多轮调用结果关联；澄清、拒绝与难负例；真实执行结果核验；训练与测试任务隔离。" />
 
 ## 保持调用与结果的协议一致
 

@@ -14,19 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 热插拔是系统运行时发现、启用或替换能力。更新目录只是分发新内容，还要处理校验、运行资源、版本绑定和旧实例退出。正在执行的任务通常应继续使用原版本，新任务再采用新版本，避免说明、参数和脚本互不匹配。
 
-```mermaid
-flowchart LR
-  A[发布 Skill v2] --> B[校验内容与权限]
-  B --> C[准备新版本运行环境]
-  C --> D[新任务绑定 v2]
-  E[旧任务绑定 v1] --> F[运行完成或受控终止]
-  F --> G[回收旧版本]
-```
+<InterviewVisual src="/images/interview/cards/agent-skill-hot-reload.webp" alt="Skill 热插拔与版本图解。旧任务固定 v1；注册新版本 v2；新任务使用 v2；显式检查点迁移；不在执行一半时悄悄换规则。" />
 
 ## 用最简单的隔离满足实际需要
 

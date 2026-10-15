@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Hook 或 Middleware 用于在模型调用、工具执行和结果返回等边界插入处理逻辑。它既可执行授权、预算等确定性检查，也可调用模型做摘要或内容审核。强制权限与资源上限仍由程序执行，不能只依赖模型判断或提示词。
 
-```mermaid
-flowchart TB
-  A["模型前控制"] --> B["工具前授权"]
-  B["工具前授权"] --> C["工具后检查"]
-  C["工具后检查"] --> D["输出前门禁"]
-```
+<InterviewVisual src="/images/interview/cards/agent-hooks-and-middleware.webp" alt="Agent 的 Hook 和 Middleware 应放在哪些执行节点？图解。模型调用前后；工具调用前后；完成与失败；副作用前做强校验；权限不能靠模型自觉。" />
 
 ## 检查发生在副作用之前
 

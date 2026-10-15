@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,18 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 算术强度是完成的运算量除以读取和写入的字节数。搬一次数据后能做很多计算，更容易受算力限制；频繁搬数据却只算一点，更容易受带宽限制。Roofline 用这两种上限估计性能，但实际还会受并行度、通信和启动开销影响。
 
-```mermaid
-flowchart TB
-  A[一次训练或推理很慢] --> B{先看主要等待在哪里}
-  B --> C["计算单元<br/>算子与并行度"]
-  B --> D["显存读写<br/>字节量与复用"]
-  B --> E[网络：跨卡数据传输]
-  B --> F["CPU 或存储<br/>数据供给"]
-  C --> G["Profiler 量时间<br/>再选优化"]
-  D --> G
-  E --> G
-  F --> G
-```
+<InterviewVisual src="/images/interview/cards/infra-gpu-bottlenecks.webp" alt="GPU 与性能瓶颈图解。算力：每秒能算多少；容量：能放多少；带宽：每秒能搬多少；按阶段分析性能；GPU 利用率高 ≠ 请求一定更快。" />
 
 ## 利用率只是起点
 

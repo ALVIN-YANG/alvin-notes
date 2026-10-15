@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,19 +22,7 @@ Workflow 按写好的步骤执行，Agent 由模型根据当前结果决定下�
 
 售后流程如果已经明确为“查订单 → 检查规则 → 给出方案”，用 Workflow 就够了。模型可以理解用户的说法，但订单归属、退款金额和是否可退，要交给业务代码判断。
 
-```mermaid
-flowchart TB
-  subgraph W["Workflow<br/>程序决定下一步"]
-    A[读订单] --> B[按规则判断] --> C[生成回复]
-  end
-  subgraph G["Agent<br/>模型按观察决策"]
-    D[目标与当前状态] --> E[模型决策]
-    E --> F[受限工具执行]
-    F --> H[新观察]
-    H --> E
-    E --> I[满足结束条件]
-  end
-```
+<InterviewVisual src="/images/interview/cards/agent-workflow-vs-agent.webp" alt="Workflow 与 Agent图解。Workflow：预定控制流；Agent：按观察选下一步；稳定步骤用确定性流程；不确定部分受控决策；两者可以组合。" />
 
 如果任务是“调查这笔订单为什么异常”，下一步要查物流、支付还是库存，得看前一步找到什么。这类任务更适合 Agent。工具权限、超时、调用次数和结束条件仍由应用控制。
 

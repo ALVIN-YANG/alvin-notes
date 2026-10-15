@@ -14,21 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 先给出目标、现有约定、允许的变更和可观察的验收条件，再让 Agent 执行。生成结束后检查差异，运行与风险相称的验证，并核对真实结果。能编译和示例能跑，只覆盖部分正确性；AI 自评也不能替代独立证据。
 
-```mermaid
-flowchart LR
-  A[需求与权限] --> B[明确验收条件]
-  B --> C["Agent 读取与实现<br/>执行相应测试"]
-  C --> D["检查代码差异<br/>运行独立验证"]
-  D --> E{通过验收？}
-  E -->|否| F[定位原因并修正]
-  F --> C
-  E -->|是| G[记录验证结果与剩余边界]
-```
+<InterviewVisual src="/images/interview/cards/agent-ai-coding-verification.webp" alt="AI 编码与验证图解。明确验收条件；AI 修改代码；独立审查 Diff；真实运行与行为验证；能解释 ≠ 已通过验收。" />
 
 ## 测试不能只复述实现
 

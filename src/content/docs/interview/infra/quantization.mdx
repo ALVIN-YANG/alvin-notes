@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,15 +22,7 @@ FP16 和 BF16 都占 16 bit，但表示范围与精度分配不同：BF16 的指
 
 先说清量化的是权重、激活还是 KV。W4A16 表示权重用 4 bit、激活用 16 bit；权重变小，不会自动把全部运行状态也缩成四分之一。
 
-```mermaid
-flowchart TB
-  A[原始模型与业务样本] --> B[选量化对象与格式]
-  B --> C["校准或转换<br/>保存缩放信息"]
-  C --> D["确认 GPU<br/>与引擎支持"]
-  D --> E["测试答案质量<br/>与工具行为"]
-  E --> F["同负载比较<br/>显存、吞吐与延迟"]
-  F --> G[满足目标再采用]
-```
+<InterviewVisual src="/images/interview/cards/infra-quantization.webp" alt="精度与量化图解。FP16 / BF16；INT8 / INT4；精度与范围；核函数与硬件支持；实测质量、显存与延迟；位数更低不保证更快。" />
 
 ## 省显存和加速是两件事
 

@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 大结果可以存入受控文件或对象存储，只向模型提供摘要、结构和引用。后续按行号、字段或搜索条件读取局部内容，避免每轮都把原始数据塞进上下文。
 
-```mermaid
-flowchart TB
-  A["保存工具原始结果"] --> B["生成摘要与引用"]
-  B["生成摘要与引用"] --> C["按需读取局部"]
-  C["按需读取局部"] --> D["核对关键结论"]
-```
+<InterviewVisual src="/images/interview/cards/agent-tool-output-offloading.webp" alt="工具返回几万行结果，怎样卸载到上下文之外？图解。大结果保存在受控产物库；上下文只放摘要与句柄；需要时回读精确片段；检查权限与保留期；摘要不替代原始证据。" />
 
 ## 引用要能重新读取和授权
 

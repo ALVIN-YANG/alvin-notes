@@ -14,19 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Query Rewrite 把用户表达转成更适合检索的查询，同时保留原意。它可以纠正常见错字、补回对话中明确的对象、拆解多个问题；缺失的信息若会改变答案或动作，就应该澄清，不能让模型自行猜出城市、日期或用户权限。
 
-```mermaid
-flowchart TB
-  A[原问题与相关对话] --> B{关键信息足够？}
-  B -->|不足| C[问一个必要的澄清问题]
-  B -->|足够| D["生成改写<br/>同时保留原 Query"]
-  D --> E[原问题与改写分别检索]
-  E --> F[融合、去重并检查证据]
-```
+<InterviewVisual src="/images/interview/cards/agent-query-understanding.webp" alt="Query 改写与澄清图解。保留实体、时间与否定；纠错与候选改写；结合证据检索；意图不清先澄清；改写不能替用户编造需求。" />
 
 ## 哪些内容可以补，哪些不能补
 

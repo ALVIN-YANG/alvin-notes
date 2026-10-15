@@ -1,0 +1,74 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+const { src, alt, width = 1536, height = 1024 } = Astro.props;
+const inBank = Astro.url.pathname.replace(/\/+$/, '') === '/interview';
+---
+<figure class="interview-visual" data-reader-ignore>
+  <a href={src} data-iq-visual data-astro-prefetch="false" aria-label={`放大题图：${alt}`}>
+    <img src={inBank ? undefined : src} data-iq-src={inBank ? src : undefined} hidden={inBank} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
+    {inBank && <noscript><img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" /></noscript>}
+    <span class="iq-visual-hint" aria-hidden="true">放大查看</span>
+  </a>
+</figure>
+<script>
+  document.addEventListener('click', event => {
+    if (!(event.target instanceof Element) || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest<HTMLAnchorElement>('[data-iq-visual]');
+    const source = link?.querySelector('img');
+    if (!link || !source || document.querySelector('[data-iq-visual-dialog]')) return;
+    event.preventDefault();
+
+    const dialog = document.createElement('dialog');
+    dialog.className = 'iq-visual-dialog';
+    dialog.dataset.iqVisualDialog = '';
+    dialog.setAttribute('aria-label', '放大题图');
+    const compact = window.matchMedia('(max-width: 50rem)').matches;
+    dialog.classList.toggle('iq-visual-expanded', compact);
+    const controls = document.createElement('div');
+    controls.className = 'iq-visual-controls';
+    const zoom = document.createElement('button');
+    zoom.type = 'button';
+    zoom.textContent = compact ? '适应窗口' : '放大查看';
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.textContent = '关闭';
+    close.autofocus = true;
+    controls.append(zoom, close);
+    const canvas = document.createElement('div');
+    canvas.className = 'iq-visual-canvas';
+    canvas.tabIndex = 0;
+    canvas.setAttribute('aria-label', '题图，可滚动查看');
+    const image = document.createElement('img');
+    image.src = source.currentSrc || link.href;
+    image.alt = source.alt;
+    image.width = source.naturalWidth || Number(source.getAttribute('width'));
+    image.height = source.naturalHeight || Number(source.getAttribute('height'));
+    canvas.append(image);
+    dialog.append(controls, canvas);
+    document.body.append(dialog);
+
+    zoom.addEventListener('click', () => {
+      const expanded = dialog.classList.toggle('iq-visual-expanded');
+      zoom.textContent = expanded ? '适应窗口' : '放大查看';
+      canvas.scrollTop = 0;
+      canvas.scrollLeft = expanded && compact ? Math.max(0, (canvas.scrollWidth - canvas.clientWidth) / 2) : 0;
+    });
+    close.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('keydown', e => e.stopPropagation());
+    const previousOverflow = document.body.style.overflow;
+    dialog.addEventListener('close', () => {
+      dialog.remove();
+      document.body.style.overflow = previousOverflow;
+      link.focus({ preventScroll: true });
+    }, { once: true });
+    document.body.style.overflow = 'hidden';
+    dialog.showModal();
+    if (compact) requestAnimationFrame(() => { canvas.scrollLeft = Math.max(0, (canvas.scrollWidth - canvas.clientWidth) / 2); });
+  });
+</script>

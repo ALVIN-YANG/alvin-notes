@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 倒排索引记录每个词出现在哪些文档中；BM25 根据词频、词的区分度和文档长度给结果打分。它适合产品编号、错误码和专有名词；向量检索更擅长找语义近似但字面不同的表达。
 
-```mermaid
-flowchart TB
-  A["文档分词"] --> B["建立词到文档映射"]
-  B["建立词到文档映射"] --> C["计算 BM25 分数"]
-  C["计算 BM25 分数"] --> D["与语义召回融合"]
-```
+<InterviewVisual src="/images/interview/cards/agent-bm25-and-inverted-index.webp" alt="BM25 和倒排索引怎样工作，为什么还需要向量检索？图解。词 → 文档倒排表；词频收益逐渐饱和；文档长度归一化；向量补充语义匹配；词面匹配与语义匹配互补。" />
 
 ## 词频增加不是无限加分
 

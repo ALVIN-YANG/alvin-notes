@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 CLI 容易复用现有命令、脚本和文件工作流；MCP 提供统一的能力发现与调用协议。选择取决于部署位置、授权、输出结构和维护方式，协议本身不会自动提高工具正确率。
 
-```mermaid
-flowchart TB
-  A["明确执行位置"] --> B["比较授权与契约"]
-  B["比较授权与契约"] --> C["选择接口形态"]
-  C["选择接口形态"] --> D["验证实际任务效果"]
-```
+<InterviewVisual src="/images/interview/cards/agent-cli-vs-mcp.webp" alt="为什么 Agent 用 CLI 而不是 MCP？两者怎样选择？图解。CLI：命令与进程边界；MCP：客户端与服务端协议；都要权限、隔离与审计；按实际执行边界选择。" />
 
 ## 比较实际执行边界
 

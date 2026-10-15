@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,16 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 例如搜索“X42 网关报 E103 怎么办”，型号和错误码需要精确匹配，问题的口语表达又可能与文档不同。只走一路容易漏掉相关资料。
 
-```mermaid
-flowchart TB
-  A[问题与权限条件] --> B[关键词召回：精确词]
-  A --> C[向量召回：语义]
-  B --> D[去重与排名融合]
-  C --> D
-  D --> E["Rerank<br/>逐对判断相关性"]
-  E --> F[选取能回答问题的片段]
-  F --> G[模型回答并引用]
-```
+<InterviewVisual src="/images/interview/cards/agent-hybrid-retrieval.webp" alt="混合检索与重排图解。关键词召回；向量召回；合并与去重；Rerank 精排；选择证据；两路召回并行，再统一排序。" />
 
 ## 别直接把两路分数相加
 

@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 输入新需求、接口契约和可核对的验收条件，Agent 生成测试候选，再由规则、执行与评审筛选。没有历史用例不等于没有判定依据；先澄清不确定需求，避免凭模型想象业务。
 
-```mermaid
-flowchart TB
-  A["读取需求与契约"] --> B["生成行为覆盖候选"]
-  B["生成行为覆盖候选"] --> C["校验断言并执行"]
-  C["校验断言并执行"] --> D["评审缺口与结果"]
-```
+<InterviewVisual src="/images/interview/cards/agent-agent-test-case-generation.webp" alt="没有历史用例的新需求，测试用例生成 Agent 怎样工作？图解。需求行为；边界与失败路径；生成用例；实际执行并核验；用例多 ≠ 覆盖完整。" />
 
 ## 从行为覆盖到真实执行
 

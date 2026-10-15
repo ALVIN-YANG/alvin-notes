@@ -14,19 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Embedding 把不同长度的文本映射到固定维度的向量。能计算距离，不代表适合检索；检索模型需要学会让问题靠近支持答案的段落。短问题与长文档属于非对称检索，查询和文档的编码指令可能不同，应遵循模型要求。
 
-```mermaid
-flowchart LR
-  A[短问题：报销多久？] --> C[按查询要求编码]
-  B["长段落<br/>期限、对象与例外"] --> D[按文档要求编码]
-  C --> E[兼容向量空间中的检索]
-  D --> E
-  E --> F["核对正确证据<br/>是否进入候选集"]
-```
+<InterviewVisual src="/images/interview/cards/agent-embedding-selection.webp" alt="Embedding 与长短文本图解。短 Query；长 Chunk；兼容的编码配置；共享语义空间；业务检索质量与成本；维度相同 ≠ 向量可混用。" />
 
 ## 文本长度相同，不是匹配的前提
 

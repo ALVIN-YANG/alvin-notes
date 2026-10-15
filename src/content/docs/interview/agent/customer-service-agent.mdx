@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 客服 Agent 把政策问答与真实订单操作分开。知识检索回答规则，业务工具查询当前订单；涉及退款时由确定性流程核对身份、状态、金额和审批，Agent 负责理解与解释。
 
-```mermaid
-flowchart TB
-  A["确认用户与诉求"] --> B["检索政策查订单"]
-  B["检索政策查订单"] --> C["校验并确认操作"]
-  C["校验并确认操作"] --> D["查询结果或转人工"]
-```
+<InterviewVisual src="/images/interview/cards/agent-customer-service-agent.webp" alt="电商客服 Agent 从意图识别到退款怎样设计？图解。澄清诉求；核对订单与规则；确认金额与权限；幂等执行并查结果；模糊需求不等于退款授权。" />
 
 ## 模糊需求先澄清
 

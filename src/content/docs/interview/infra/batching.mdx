@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,19 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 Chunked prefill 则把长输入拆成较小的计算块，方便与正在 Decode 的请求一起调度。一个改变谁在这批里，另一个改变长输入每轮做多少工作。
 
-```mermaid
-flowchart TB
-  subgraph B[连续批处理：换成员]
-    A[迭代 1：A、B、C] --> D[A 完成退出]
-    D --> E["迭代 2：B、C<br/>D 新加入"]
-  end
-  subgraph P["Chunked prefill<br/>拆分输入计算"]
-    F[长输入] --> G[Prefill 块 1]
-    F --> H[Prefill 块 2]
-    G --> I["与已有 Decode<br/>按预算调度"]
-    H --> J[后续迭代继续调度]
-  end
-```
+<InterviewVisual src="/images/interview/cards/infra-batching.webp" alt="连续批处理与分块图解。完成的序列离开；新序列进入连续批次；长 Prefill 分块；给 Decode 调度机会；吞吐与单请求延迟需要一起权衡。" />
 
 ## 为什么批量不能一直加大
 

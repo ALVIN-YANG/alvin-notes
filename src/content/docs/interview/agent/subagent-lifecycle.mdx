@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 子 Agent 要有明确任务、输入、产物和结束条件。父任务管理子任务状态、总预算和取消传播，限制深度、数量与并发；否则动态拆解可能不停创建新 Agent。
 
-```mermaid
-flowchart TB
-  A["定义子任务契约"] --> B["检查深度与预算"]
-  B["检查深度与预算"] --> C["调度并监控"]
-  C["调度并监控"] --> D["验收回收或取消"]
-```
+<InterviewVisual src="/images/interview/cards/agent-subagent-lifecycle.webp" alt="Subagent 怎样创建、回收，如何限制递归分裂？图解。限定任务与权限；共享预算、深度与时限；跟踪状态与产物；取消、回收与结果确认；不能无限递归分裂。" />
 
 ## 把任务树作为受控状态
 

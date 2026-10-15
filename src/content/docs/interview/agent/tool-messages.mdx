@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 工具结果要关联模型发出的调用标识，才能区分同一轮的多个调用。工具名相同也可能参数不同；只按消息到达顺序拼接，会把结果绑定到错误请求。
 
-```mermaid
-flowchart TB
-  A["模型接口返回调用标识"] --> B["并行执行工具"]
-  B["并行执行工具"] --> C["按标识归并结果"]
-  C["按标识归并结果"] --> D["回传当前运行"]
-```
+<InterviewVisual src="/images/interview/cards/agent-tool-messages.webp" alt="多轮工具消息怎样关联，为什么不能只返回一段文本？图解。调用 A ↔ 结果 A；调用 B ↔ 结果 B；用 Call ID 正确关联；协议请求 ID；业务幂等键；不同 ID 解决不同问题。" />
 
 ## 保留调用与结果的完整配对
 

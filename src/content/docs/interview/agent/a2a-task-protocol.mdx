@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 A2A 面向 Agent 之间的协作，可用任务状态、消息和产物描述跨系统工作；MCP 主要连接 Agent 与工具或数据服务。跨 Agent 长任务需要可查询的状态，不能只依赖一次 HTTP 回复。
 
-```mermaid
-flowchart TB
-  A["提交跨 Agent 任务"] --> B["查询或订阅状态"]
-  B["查询或订阅状态"] --> C["处理输入与取消"]
-  C["处理输入与取消"] --> D["验收最终产物"]
-```
+<InterviewVisual src="/images/interview/cards/agent-a2a-task-protocol.webp" alt="A2A 的 Task 和 Artifact 怎样支持跨 Agent 长任务？图解。Task：任务 ID 与状态；处理、等待输入、完成或失败；Artifact：artifactId + parts；文本、文件、结构化数据；按版本规则组装增量产物；取消不等于撤销，协议不替代持久化。" />
 
 ## 任务协议要包含生命周期
 

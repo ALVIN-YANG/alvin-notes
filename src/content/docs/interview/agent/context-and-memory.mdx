@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,16 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 把聊天记录存进数据库，不代表模型已经读到了它。应用还得选出当前需要的内容，再放进上下文。
 
-```mermaid
-flowchart TB
-  A["会话状态<br/>消息、步骤与结果"] --> D[选择与压缩]
-  B["长期记忆<br/>偏好、事实与经验"] --> E[按任务与权限检索]
-  C["原始资料<br/>文件与业务记录"] --> F[按需读取]
-  D --> G[本次上下文]
-  E --> G
-  F --> G
-  G --> H[模型下一次推理]
-```
+<InterviewVisual src="/images/interview/cards/agent-context-and-memory.webp" alt="上下文与记忆图解。上下文：本轮可见；窗口：容量上限；会话状态：任务进度；长期记忆：后续复用；选择、检索后再放入；存进数据库 ≠ 模型已经读到。" />
 
 ## 恢复任务时分别读取什么
 

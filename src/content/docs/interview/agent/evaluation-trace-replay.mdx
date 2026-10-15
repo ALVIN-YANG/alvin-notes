@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 轨迹保存模型输入配置、工具调用、工具结果、状态变化和产物，并关联版本与运行标识。回放可以固定工具响应来比较决策，也可以真实重执行；两种模式的结论不同。
 
-```mermaid
-flowchart TB
-  A["保存脱敏轨迹"] --> B["选择回放模式"]
-  B["选择回放模式"] --> C["固定版本与依赖"]
-  C["固定版本与依赖"] --> D["比较状态和产物"]
-```
+<InterviewVisual src="/images/interview/cards/agent-evaluation-trace-replay.webp" alt="Agent 轨迹怎样留存和回放，怎样保证评测可比较？图解。固定版本与条件；记录事件与工具结果；Mock 回放；真实执行；可比较 ≠ 必然逐字重现。" />
 
 ## 固定变化来源
 

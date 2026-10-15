@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 同一工具连续调用可能是在分页或轮询，不能仅凭工具名判定死循环。检测同时看规范化参数、结果变化和任务进展，配合轮数、时限及估算费用预算；费用控制的实际边界见[总预算与降级](/interview/agent/budget-and-fallback/)。
 
-```mermaid
-flowchart TB
-  A["规范化调用与结果"] --> B["计算是否有进展"]
-  B["计算是否有进展"] --> C["检查重复与振荡"]
-  C["检查重复与振荡"] --> D["调整一次或停止"]
-```
+<InterviewVisual src="/images/interview/cards/agent-loop-detection-implementation.webp" alt="怎样检测 Agent 无效循环，为什么不能只看重复工具名？图解。工具与规范化参数；证据与状态变化；是否取得进展；有限重规划或停止；重复工具名 ≠ 无效循环。" />
 
 ## 记录语义状态而不是原始字符串
 

@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,18 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 能用程序核对的内容就用程序核对，例如工单状态、金额和工具参数。表达质量可以用有明确评分规则的模型评审，再用人工抽查校准。保存执行轨迹，才能知道分数为什么变了。
 
-```mermaid
-flowchart TB
-  A["任务与初始环境<br/>成功条件"] --> B["运行 Agent<br/>记录轨迹"]
-  B --> C[结果：工单状态与回复]
-  B --> D["过程：工具与参数<br/>执行对象"]
-  B --> E["约束：权限与确认<br/>禁止操作"]
-  B --> F["开销：时延与成本<br/>调用次数"]
-  C --> G[按明确规则评分与归因]
-  D --> G
-  E --> G
-  F --> G
-```
+<InterviewVisual src="/images/interview/cards/agent-agent-evaluation.webp" alt="Agent 评测图解。结果是否正确；执行路径是否合规；成本与时限是否达标；多次运行是否稳定；答对了，也可能越权。" />
 
 ## 一条工单任务怎么测
 

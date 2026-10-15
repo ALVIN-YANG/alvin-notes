@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 MCP Server 把业务能力暴露为可发现、可调用的工具，也可以提供资源和提示模板。协议层负责连接、协商和消息处理，业务层负责身份授权、参数校验、实际执行和审计。
 
-```mermaid
-flowchart TB
-  A["连接与能力协商"] --> B["发现工具定义"]
-  B["发现工具定义"] --> C["授权并执行业务"]
-  C["授权并执行业务"] --> D["返回结果或错误"]
-```
+<InterviewVisual src="/images/interview/cards/agent-mcp-server-design.webp" alt="MCP Server 从能力注册到业务执行怎样设计？图解。能力注册与列举；参数与权限校验；业务服务：幂等校验后执行；超时与审计贯穿执行；协议成功 ≠ 业务完成。" />
 
 ## 把协议与业务逻辑分开
 

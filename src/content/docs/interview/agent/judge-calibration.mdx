@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 模型评分适合补充难以写成规则的质量判断，但必须使用明确 Rubric 和人工标注样本校准。答案顺序、长度、文风和模型来源可能引入偏差，不能把一次分数当作客观真值。
 
-```mermaid
-flowchart TB
-  A["定义判分标准"] --> B["建立人工标注集"]
-  B["建立人工标注集"] --> C["校准误判与偏差"]
-  C["校准误判与偏差"] --> D["监控评分漂移"]
-```
+<InterviewVisual src="/images/interview/cards/agent-judge-calibration.webp" alt="LLM-as-Judge 怎样校准，避免评分模型自信地打错分？图解。人工标注基准；盲评与交换顺序；检查偏差和一致性；不确定项人工复核；评分模型也需要被评测。" />
 
 ## 让评价器也有测试集
 

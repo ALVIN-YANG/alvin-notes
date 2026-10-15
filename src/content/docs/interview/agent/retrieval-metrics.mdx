@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Precision@k 看前 k 个结果中相关项的比例；Recall@k 看已标注相关项被找回的比例；MRR 对多条查询的首个相关结果倒数排名取平均；NDCG 把考虑相关等级和位置折扣的排序得分，除以理想排序得分。它们评价检索，不能直接证明答案正确。
 
-```mermaid
-flowchart TB
-  A["标注相关证据"] --> B["计算召回指标"]
-  B["计算召回指标"] --> C["比较重排指标"]
-  C["比较重排指标"] --> D["验证最终答案"]
-```
+<InterviewVisual src="/images/interview/cards/agent-retrieval-metrics.webp" alt="Precision、Recall、MRR、NDCG 怎样用于 RAG 评测？图解。Precision：返回的有多准；Recall：相关的找回多少；MRR：首个命中排名倒数的平均；NDCG：相对理想排序；先逐 Query 取首个命中排名的倒数，再求均值。" />
 
 ## 先说明标注和分母
 

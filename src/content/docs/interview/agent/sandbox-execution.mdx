@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 沙箱通过文件、网络、系统调用、凭据和资源限制，约束模型生成代码的影响范围。容器是隔离的一种手段，通常共享宿主内核，不能据此承诺不会逃逸；运行不可信代码时，要按威胁模型选择并验证隔离机制。
 
-```mermaid
-flowchart TB
-  A["创建隔离工作区"] --> B["授予有限能力"]
-  B["授予有限能力"] --> C["限额执行代码"]
-  C["限额执行代码"] --> D["检查产物并回收"]
-```
+<InterviewVisual src="/images/interview/cards/agent-sandbox-execution.webp" alt="Agent 执行代码和命令怎样设计沙箱？图解。代码在隔离环境运行；限制资源与网络；只挂载授权文件；拒绝宿主秘密与高权限入口；容器本身不是完整安全保证。" />
 
 ## 按任务授予最小能力
 

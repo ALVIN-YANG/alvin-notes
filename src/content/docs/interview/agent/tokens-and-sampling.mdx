@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,15 +22,7 @@ Token 是模型处理文本的单位，不等于一个字或一个词。同一�
 
 输入里除了用户问题，还有系统规则、历史消息、工具定义和工具结果。规划输入长度时，也要给输出及模型要求计入的推理 Token 留空间。各接口怎样计算这些限制，要查对应模型文档。
 
-```mermaid
-flowchart TB
-  A["规则与历史<br/>问题与工具"] --> B[按目标模型计数]
-  B --> C[检查输入与输出预算]
-  C --> D["计算下一 Token<br/>的概率分布"]
-  D --> E["temperature<br/>调整分布"]
-  E --> F["top_p<br/>按累计概率筛选"]
-  F --> G["选择 Token<br/>继续生成"]
-```
+<InterviewVisual src="/images/interview/cards/agent-tokens-and-sampling.webp" alt="Token 与采样图解。Token：模型处理的片段；窗口：输入与输出容量；Temperature：采样随机性；预算按实际接口核对；低温度不保证事实正确。" />
 
 ## 参数该怎么调
 

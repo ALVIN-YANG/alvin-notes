@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 记忆召回应同时考虑语义相关、身份范围、时间和可信程度。记录来源、更新时间与失效条件，先做权限和类型过滤，再排序；相似度高不代表当前仍然适用。
 
-```mermaid
-flowchart TB
-  A["按身份和类型过滤"] --> B["检索相关记忆"]
-  B["检索相关记忆"] --> C["检查时间与冲突"]
-  C["检查时间与冲突"] --> D["只注入可用内容"]
-```
+<InterviewVisual src="/images/interview/cards/agent-memory-retrieval.webp" alt="长期记忆怎样召回，防止不相关经验污染当前任务？图解。当前任务；按身份召回候选；检查来源、时效与冲突；精选后进入上下文；相似 ≠ 相关，更不等于仍然正确。" />
 
 ## 区分事实、偏好和任务经验
 

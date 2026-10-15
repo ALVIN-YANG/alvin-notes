@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,17 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 对应用自定义工具，一次调用分为四步：把工具定义给模型；接收模型生成的调用；由应用校验并执行；把结果送回模型。模型再决定继续调用，还是回复用户。服务商托管工具可能由服务商执行，责任边界要另外确认。
 
-```mermaid
-flowchart TB
-  A[任务与工具定义] --> B[模型提出工具调用]
-  B --> C["应用校验参数<br/>权限与业务条件"]
-  C -->|通过| D[业务服务执行]
-  C -->|拒绝| E[结构化错误]
-  D --> F["关联调用标识<br/>返回结果"]
-  E --> F
-  F --> B
-  B --> G[模型生成最终回复]
-```
+<InterviewVisual src="/images/interview/cards/agent-tool-calling.webp" alt="工具调用与权限图解。模型提出名称与参数；应用校验权限与确认；实际执行工具；匹配 Call ID 返回结果；模型说调用了 ≠ 工具已经执行。" />
 
 ## 参数正确，不代表有权执行
 

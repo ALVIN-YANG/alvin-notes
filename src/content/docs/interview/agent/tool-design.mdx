@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 工具应对应清晰的业务意图，说明什么时候使用、必需输入、返回含义和副作用。只有接口名和参数类型，模型很难判断适用条件；把所有业务放进一个万能工具也会让校验与调试变难。
 
-```mermaid
-flowchart TB
-  A["定义业务意图"] --> B["写明适用条件"]
-  B["写明适用条件"] --> C["校验输入与权限"]
-  C["校验输入与权限"] --> D["返回结构化结果"]
-```
+<InterviewVisual src="/images/interview/cards/agent-tool-design.webp" alt="工具粒度和描述怎样设计，才能减少误调用？图解。清楚的业务职责；明确描述与参数；区分读写与副作用；结构化结果与错误；粒度太粗或太碎都会增加误用。" />
 
 ## 让工具输出可继续行动
 

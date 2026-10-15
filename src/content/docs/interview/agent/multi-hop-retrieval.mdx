@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 多跳检索需要先找到中间事实，再用它查询下一步。每个中间结论应带来源和置信边界；未验证的模型推断不能直接变成下一跳的事实条件。
 
-```mermaid
-flowchart TB
-  A["识别依赖关系"] --> B["核对中间事实"]
-  B["核对中间事实"] --> C["检索下一跳"]
-  C["检索下一跳"] --> D["合并证据链"]
-```
+<InterviewVisual src="/images/interview/cards/agent-multi-hop-retrieval.webp" alt="多跳问题怎样拆解和检索，避免错误逐步传播？图解。先解依赖问题；核实中间结论与来源；再作为下一跳输入；缺证据时停止或补查；每一跳都可能放大错误。" />
 
 ## 分清独立问题与依赖问题
 

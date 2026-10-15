@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 大规模入库应把上传、解析、切片、Embedding 和索引发布拆成可恢复的阶段。上传先返回任务标识，后台按资源限额处理；用户看到明确进度，不能把上传成功显示为可检索。
 
-```mermaid
-flowchart TB
-  A["接收上传任务"] --> B["限流解析图文"]
-  B["限流解析图文"] --> C["批量生成向量"]
-  C["批量生成向量"] --> D["验证并发布索引"]
-```
+<InterviewVisual src="/images/interview/cards/agent-document-ingestion-scale.webp" alt="大量图文文档怎样入库，避免解析拖慢用户请求？图解。上传后返回任务 ID；解析 / OCR；切分与向量化；索引与阶段状态；失败按阶段恢复；入库去重 ≠ 外部调用免重复计费。" />
 
 ## 每个阶段都能查状态和重试
 

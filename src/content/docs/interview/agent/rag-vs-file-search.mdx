@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -25,13 +26,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 | 预建 RAG | 大语料、重复问答、统一过滤和引用 | 解析、分块及索引更新可能丢失或延迟证据 |
 | 文件搜索与按需读 | 代码仓库、持续变化文件、探索调用关系 | 依赖搜索词和探索策略，可能漏文件或反复搜索 |
 
-```mermaid
-flowchart LR
-  A[任务与权限范围] --> B[全文、索引或文件探索]
-  B --> C[候选证据与文件位置]
-  C --> D[按需读原文和关联内容]
-  D --> E[回答并核对引用]
-```
+<InterviewVisual src="/images/interview/cards/agent-rag-vs-file-search.webp" alt="RAG 与文件搜索图解。大上下文：直接放入；RAG：索引检索；文件搜索：按需查读；按规模、更新与成本选择；大窗口不保证完美找全信息。" />
 
 ## 代码检索为何常需要组合
 

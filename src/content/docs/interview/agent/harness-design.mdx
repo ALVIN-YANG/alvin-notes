@@ -14,21 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Harness 是承载 Agent 执行的运行系统：为模型准备上下文，把它提出的动作交给工具，保存状态，并控制权限、预算和停止条件。模型决定下一步，不等于程序可以直接照做。不同框架对这个词的边界不完全相同，回答时应说明自己的划分。
 
-```mermaid
-flowchart TB
-  A[目标、身份与验收条件] --> B[上下文组装]
-  B --> C[模型提出动作]
-  C --> D[执行器校验与调用工具]
-  D --> E["记录结果与状态<br/>保存 Trace"]
-  E --> F{达成目标或触及限制？}
-  F -->|继续| B
-  F -->|结束| G[验证结果并返回]
-```
+<InterviewVisual src="/images/interview/cards/agent-harness-design.webp" alt="Harness 与运行框架图解。模型提出动作；上下文管理；受控工具执行；状态与恢复；预算与验证；Harness 把决策变成可靠执行。" />
 
 ## 用一条任务说明模块边界
 

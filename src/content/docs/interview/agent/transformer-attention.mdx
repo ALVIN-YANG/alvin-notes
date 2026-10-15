@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,12 +22,7 @@ Q 是查询，K 是用于匹配的键，V 是被聚合的值。自注意力中�
 
 因果掩码把未来位置的分数设为负无穷，使其 softmax 权重为 0；当前位置仍可关注自身和历史位置。填充掩码处理的是补齐位置，两者用途不同。
 
-```mermaid
-flowchart TB
-  A["输入表示投影"] --> B["计算 QK 相似度"]
-  B["计算 QK 相似度"] --> C["应用因果掩码"]
-  C["应用因果掩码"] --> D["加权聚合 V"]
-```
+<InterviewVisual src="/images/interview/cards/agent-transformer-attention.webp" alt="Attention 的 Q、K、V 如何计算？因果掩码有什么作用？图解。输入投影出 Q / K / V；Q 与 K 计算分数；因果掩码挡住未来；Softmax 得到权重；加权汇总 V；先 Mask，再 Softmax。" />
 
 ## 解释形状与计算量
 

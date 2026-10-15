@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,15 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 例如退款咨询，可以规定：根据订单服务返回的状态解释退款规则；信息不足时查订单或询问；未经授权不提交退款；回复包含当前状态和下一步。订单事实由工具提供，权限由服务端检查，提示词负责说明任务。
 
-```mermaid
-flowchart TB
-  A[任务：解释退款状态] --> E[组成模型输入]
-  B["依据：订单事实<br/>适用规则"] --> E
-  C["缺信息先查<br/>写操作需授权"] --> E
-  D["状态准确<br/>下一步明确"] --> E
-  E --> F[运行固定样本]
-  F --> G["定位失败<br/>理解、资料、工具<br/>或权限"]
-```
+<InterviewVisual src="/images/interview/cards/agent-prompt-design.webp" alt="提示词与任务边界图解。任务目标；输入与输出；权限与完成条件；用样例检验；缺工具或证据，不能只靠改措辞。" />
 
 ## 示例要展示决策，不只展示语气
 

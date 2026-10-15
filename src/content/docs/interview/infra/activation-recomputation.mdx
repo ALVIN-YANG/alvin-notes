@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,16 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 梯度累积能减少一次处理的样本数及相应激活，但权重、优化器状态和累积梯度仍要保存。已经是参数或优化器状态占满显存时，光减 microbatch 未必有用。
 
-```mermaid
-flowchart TB
-  A[前向：保留边界激活] --> B[丢弃可重建的中间激活]
-  B --> C[反向前重新计算该段]
-  C --> D["计算当前<br/>microbatch 梯度"]
-  D --> E[累加到梯度缓冲]
-  E --> F{达到累积步数？}
-  F -->|否| A
-  F -->|是| G["同步所需梯度<br/>更新参数"]
-```
+<InterviewVisual src="/images/interview/cards/infra-activation-recomputation.webp" alt="重计算与梯度累积图解。少存中间激活；反向时重新计算；用计算换显存；微批次累积梯度后更新；激活 Checkpoint ≠ 磁盘恢复点。" />
 
 ## 大 batch 被拆开，更新节奏要保持一致
 

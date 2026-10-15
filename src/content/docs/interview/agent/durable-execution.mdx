@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,20 +22,7 @@ Checkpoint 能让任务从保存的位置继续，不能保证外部操作只执
 
 最容易漏掉的是这个窗口：退款接口已经成功，Agent 还没保存结果就崩溃了。恢复后看起来这一步没做过，再调一次就可能重复退款。
 
-```mermaid
-sequenceDiagram
-  participant A as Agent runtime
-  participant S as 状态存储
-  participant B as 业务服务
-  A->>S: 保存待执行步骤与稳定操作标识
-  A->>B: 请求退款，携带同一幂等标识
-  B->>B: 原子检查标识并执行或返回已有结果
-  B-->>A: 已完成
-  Note over A,S: 若此时崩溃，业务已发生，结果尚未保存
-  A->>B: 恢复后查询或用同一标识重试
-  B-->>A: 返回已记录结果
-  A->>S: 保存完成状态
-```
+<InterviewVisual src="/images/interview/cards/agent-durable-execution.webp" alt="中断恢复与幂等图解。外部操作已成功；保存结果前崩溃；本地仍待执行；先查询业务结果；下游支持时同标识幂等重试；Checkpoint 恢复步骤，不保证只执行一次。" />
 
 ## 恢复前先确认业务结果
 

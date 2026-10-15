@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 固定 RAG 通常按预设顺序检索、重排并生成；Agentic RAG 允许模型根据当前证据决定是否检索、改写问题、换数据源或继续查找。收益来自适应复杂问题，代价是额外调用、路径不稳定和更难评测。
 
-```mermaid
-flowchart TB
-  A["判断信息缺口"] --> B["选择检索源"]
-  B["选择检索源"] --> C["检查召回证据"]
-  C["检查召回证据"] --> D["回答或继续查找"]
-```
+<InterviewVisual src="/images/interview/cards/agent-agentic-rag.webp" alt="Agentic RAG 与固定 RAG 流水线有什么区别？图解。固定 RAG：预定步骤；生成模型；Agentic RAG：按证据选动作；搜索、改写、检索、核对；预算与停止条件；固定流程够用时，先用它。" />
 
 ## 先验证是否需要自主决策
 

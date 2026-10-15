@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 评测记忆需同时检查写入、召回、更新和删除，以及对最终任务的贡献。命中率高可能只是记住了大量无关内容；应在多会话、时间变化和权限变化的任务上验证。
 
-```mermaid
-flowchart TB
-  A["构造跨会话任务"] --> B["对比有无记忆"]
-  B["对比有无记忆"] --> C["检查更新与删除"]
-  C["检查更新与删除"] --> D["测量任务收益"]
-```
+<InterviewVisual src="/images/interview/cards/agent-memory-evaluation.webp" alt="记忆系统有什么量化指标？怎样证明记忆有用？图解。相同任务与模型；不使用记忆；使用记忆；质量、污染、成本、延迟；用对照实验判断记忆增益。" />
 
 ## 用对照实验检验增益
 

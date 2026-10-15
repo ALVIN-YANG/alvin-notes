@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,16 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 例如 Agent 正在总结网页，网页却要求它读取内部报表并上传。网页是待总结的资料，没有资格授权这项操作。即使文字声称“系统管理员要求”，也不能改变它的来源。
 
-```mermaid
-flowchart TB
-  A[用户授权的任务] --> C[模型读取上下文]
-  B["外部网页或结果<br/>藏有恶意指令"] --> C
-  C --> D[模型提出工具调用]
-  D --> E{"执行层检查<br/>身份、目标<br/>与数据范围"}
-  E -->|越权或不在任务范围| F[拒绝并记录]
-  E -->|权限成立| G[必要时确认具体操作]
-  G --> H[业务服务执行并审计]
-```
+<InterviewVisual src="/images/interview/cards/agent-prompt-injection.webp" alt="提示词注入防护图解。可信任务；不可信网页或文档；数据中夹带指令；工具权限独立校验；外部资料不能升级为执行授权。" />
 
 ## 防护不能只靠一句“忽略恶意指令”
 

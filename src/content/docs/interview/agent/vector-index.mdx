@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -25,14 +26,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 | HNSW | 沿多层邻接图搜索 | 内存与构建成本；扩大搜索范围可提高召回 |
 | IVF | 先定位聚类桶，再查部分桶 | 桶数、探测桶数与数据分布影响速度和召回 |
 
-```mermaid
-flowchart LR
-  A[查询向量与权限条件] --> B[选择候选范围]
-  B --> C[距离计算与排序]
-  C --> D[返回候选片段]
-  E[全量精确搜索基线] --> F["比较 ANN Recall<br/>与查询延迟"]
-  D --> F
-```
+<InterviewVisual src="/images/interview/cards/agent-vector-index.webp" alt="向量数据库与索引图解。精确扫描：逐个比较；HNSW：沿近邻图搜索；IVF：选簇后搜索；平衡召回、延迟与内存；近似索引不保证全局精确最邻近。" />
 
 ## 先分清两种召回
 

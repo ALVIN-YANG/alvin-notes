@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 长文档分析先建立章节、条款和引用关系，再按审查目标分块提取。局部结果回到全局规则汇总，关键结论回读原文；一次压缩整份合同容易丢失例外和跨章节条件。
 
-```mermaid
-flowchart TB
-  A["解析结构与引用"] --> B["按目标局部提取"]
-  B["按目标局部提取"] --> C["合并跨条款关系"]
-  C["合并跨条款关系"] --> D["回读原文验证"]
-```
+<InterviewVisual src="/images/interview/cards/agent-long-document-agent.webp" alt="300 页合同怎样分析，避免分块后漏掉跨章节约束？图解。分章提取与页码；跨章约束矩阵；核对例外与矛盾；回到原文确认；局部摘要不能替代全局判断。" />
 
 ## 局部提取与全局判断分开
 

@@ -269,6 +269,20 @@ main:has(.interview-bank) > .content-panel:not(:has(.interview-bank)) { display:
 .ib-answer p { margin-block: .8rem; }
 .ib-answer .sl-anchor-link { display: none; }
 .ib-answer .mermaid-static { margin-block: 1.2rem; }
+.interview-visual { margin: 1.2rem 0; }
+.interview-visual > a { display: block; position: relative; overflow: hidden; border: 1px solid var(--sl-color-gray-6); border-radius: .5rem; cursor: zoom-in; }
+.interview-visual img { display: block; width: 100%; height: auto; margin: 0; }
+.interview-visual img[hidden] { display: none; }
+.iq-visual-hint { position: absolute; right: .5rem; bottom: .5rem; padding: .15rem .5rem; border: 1px solid #d9d8d0; border-radius: .25rem; background: #fffdf5ee; color: #37414b; font-size: .75rem; }
+.iq-visual-dialog { width: calc(100vw - 2rem); height: calc(100dvh - 2rem); max-width: none; max-height: none; padding: 0; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; background: var(--sl-color-bg); color: var(--sl-color-text); overflow: hidden; }
+.iq-visual-dialog::backdrop { background: #121b27d9; }
+.iq-visual-controls { display: flex; justify-content: flex-end; gap: .5rem; height: 3.25rem; padding: .5rem; border-bottom: 1px solid var(--sl-color-gray-6); }
+.iq-visual-controls button { padding: .25rem .8rem; border: 1px solid var(--sl-color-gray-5); border-radius: .25rem; background: var(--sl-color-bg); color: inherit; font: inherit; cursor: pointer; }
+.iq-visual-canvas { display: flex; align-items: flex-start; justify-content: center; height: calc(100% - 3.25rem); overflow: auto; overscroll-behavior: contain; }
+.iq-visual-canvas img { display: block; flex-shrink: 0; width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; margin: auto; }
+.iq-visual-expanded .iq-visual-canvas { display: block; }
+.iq-visual-expanded .iq-visual-canvas img { width: auto; max-width: none; max-height: none; margin: 0 auto; }
+@media (max-width: 50rem) { .iq-visual-expanded .iq-visual-canvas img { width: min(1536px, calc(200vw - 4rem)); } }
 .ib-answer details { margin-top: 1.5rem; color: var(--sl-color-gray-2); font-size: .77rem; }
 .ib-answer details summary { cursor: pointer; width: fit-content; }
 .ib-answer kbd, .ib-reading-footer kbd, .ib-reader kbd { padding: 0 .2rem; border: 1px solid var(--sl-color-gray-5); border-radius: .2rem; font: .67rem var(--sl-font-mono); }

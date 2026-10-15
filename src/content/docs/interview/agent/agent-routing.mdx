@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 路由器根据任务、能力、权限和当前容量选择执行者，输出受约束的角色或任务类型。固定分类可优先使用规则或小模型；不确定时澄清，不能把所有模糊请求发送给权限最大的 Agent。
 
-```mermaid
-flowchart TB
-  A["识别任务类别"] --> B["权限与容量过滤"]
-  B["权限与容量过滤"] --> C["分配子任务"]
-  C["分配子任务"] --> D["超时核对与回收"]
-```
+<InterviewVisual src="/images/interview/cards/agent-agent-routing.webp" alt="主 Agent 怎样路由到正确的子 Agent，并处理超时？图解。能力与权限匹配；明确任务与产物；截止时间；超时收回控制；晚到结果再校验。" />
 
 ## 路由结果也是待验证的决策
 

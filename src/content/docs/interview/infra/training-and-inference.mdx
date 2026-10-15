@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,16 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 训练先前向计算输出和损失，再反向计算梯度，最后用优化器更新参数。反向传播需要前向中的中间结果，也就是激活；优化器可能还保存每个参数的动量等状态。这些都占显存。
 
-```mermaid
-flowchart TB
-  A[训练样本与当前参数] --> B[前向：输出与损失]
-  B --> C[保存必要激活]
-  C --> D[反向：计算梯度]
-  D --> E[优化器状态与参数更新]
-  E --> B
-  F[推理输入与固定参数] --> G[前向计算]
-  G --> H["输出并维护<br/>KV 等运行状态"]
-```
+<InterviewVisual src="/images/interview/cards/infra-training-and-inference.webp" alt="训练、微调与推理图解。预训练：广泛数据学习；微调：定向调整行为；推理：固定权重生成；训练多出梯度、激活与优化器状态；推理也需要 KV 与工作区。" />
 
 ## 微调也可能很吃资源
 

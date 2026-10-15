@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Reflection 是对已生成方案或执行结果进行检查与修改；Reflexion 的代表做法把任务反馈转成文字经验，保存在情景记忆中供后续尝试使用，不通过这一步更新模型权重。它们能提供纠错机会，但同一模型再次判断不构成独立验证。
 
-```mermaid
-flowchart TB
-  A["执行候选方案"] --> B["获取外部反馈"]
-  B["获取外部反馈"] --> C["修订或停止"]
-  C["修订或停止"] --> D["保存已验证经验"]
-```
+<InterviewVisual src="/images/interview/cards/agent-reflection-and-verification.webp" alt="Self-Reflection 和 Reflexion 能让 Agent 自动纠错吗？图解。自我反思提出修正；来源、工具或测试核验；保存文字反馈；下一次尝试参考；反思不等于验证，也不直接更新权重。" />
 
 ## 先得到可靠反馈
 

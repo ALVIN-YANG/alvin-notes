@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,17 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 RAG 返回了文档，只说明检索有结果。文档可能过期、属于另一款产品，或者缺少决定答案的条件。排查时按顺序查：资料与索引、召回候选、过滤和重排、最终上下文、生成结果。
 
-```mermaid
-flowchart TB
-  A[正确版本是否入库] --> B[候选是否召回正确证据]
-  B --> C["过滤与重排<br/>是否保留证据"]
-  C --> D["上下文是否<br/>包含完整条件"]
-  D --> E["回答是否引用<br/>并遵守证据"]
-  A -.缺失.-> F[修资料与索引]
-  B -.遗漏.-> G[修切片、检索与过滤]
-  D -.截断.-> H[修上下文组织]
-  E -.编造.-> I[修生成约束与拒答]
-```
+<InterviewVisual src="/images/interview/cards/agent-rag-debugging.webp" alt="RAG 分层排查图解。文档与切块；召回与排序；上下文选择；主张与证据对齐；检索到资料 ≠ 回答已经正确。" />
 
 ## 用一条错答案定位问题
 

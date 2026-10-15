@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 知识更新要同时处理原文、切片、向量、关键词索引和缓存。给文档与索引建立版本关系，新版本可检索并通过校验后再切换读取；删除也要使旧切片和缓存失效。
 
-```mermaid
-flowchart TB
-  A["产生文档新版本"] --> B["重建变化切片"]
-  B["重建变化切片"] --> C["校验并发布"]
-  C["校验并发布"] --> D["切换读取快照"]
-```
+<InterviewVisual src="/images/interview/cards/agent-knowledge-base-versioning.webp" alt="知识库增量更新、删除和版本切换怎样保证一致？图解。旧快照 A；构建新快照 B；原子切换读取指针；删除与撤权持续生效；回滚不能复活已删除或撤权文档。" />
 
 ## 读取一份可解释的快照
 

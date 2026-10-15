@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 上下文拼装先区分可信指令、当前任务、历史状态和外部证据，再按任务需要分配预算。没有对所有模型都最优的固定顺序；权限与规则不能因为历史变长而被摘要丢弃。
 
-```mermaid
-flowchart TB
-  A["区分指令与数据"] --> B["选择当前相关内容"]
-  B["选择当前相关内容"] --> C["分配上下文预算"]
-  C["分配上下文预算"] --> D["验证长任务稳定性"]
-```
+<InterviewVisual src="/images/interview/cards/agent-context-selection.webp" alt="Prompt 拼装顺序怎样设计，哪些上下文优先保留？图解。可信规则与当前目标；必要工具结果；相关证据；留出输出预算；相关 ≠ 可信。" />
 
 ## 信息相关性和可信度分别处理
 

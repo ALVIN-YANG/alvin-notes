@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 容器粒度由隔离需求、任务形态和资源成本决定。纯服务端工具调用可用共享 Runtime 加严格的会话与授权隔离；执行不可信代码时通常需要更强的独立工作区及运行隔离。
 
-```mermaid
-flowchart TB
-  A["确定任务隔离等级"] --> B["分区状态与存储"]
-  B["分区状态与存储"] --> C["配置执行配额"]
-  C["配置执行配额"] --> D["验证串数据与恢复"]
-```
+<InterviewVisual src="/images/interview/cards/agent-tenant-runtime-deployment.webp" alt="多用户 Agent 平台一定要每个用户启动一个容器吗？图解。共享进程与逻辑隔离；隔离 Worker；专属租户容器；按代码信任与风险选择；不是每个用户都要常驻容器。" />
 
 ## 逻辑隔离与计算隔离分别设计
 

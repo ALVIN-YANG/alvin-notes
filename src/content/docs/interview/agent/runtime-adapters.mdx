@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 适配层统一任务输入、运行事件、取消与产物，但不能假定各 Runtime 具有相同的检查点、工具或恢复语义。先定义最小接口，再显式声明可选能力和限制。
 
-```mermaid
-flowchart TB
-  A["声明运行时能力"] --> B["转换输入和配置"]
-  B["转换输入和配置"] --> C["归一化事件与状态"]
-  C["归一化事件与状态"] --> D["按能力恢复或交接"]
-```
+<InterviewVisual src="/images/interview/cards/agent-runtime-adapters.webp" alt="平台怎样统一适配不同 Agent Runtime？图解。平台任务与事件契约；Runtime A 适配；Runtime B 适配；显式映射状态、取消与错误；不支持的能力不能伪装成支持。" />
 
 ## 统一事件，保留原始语义
 

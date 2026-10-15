@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,17 +22,7 @@ KV cache 保存每层已经处理的位置对应的 Key 和 Value。生成新 to
 
 各层结构相同、采用全注意力、无压缩和共享时，单请求容量是：`2 × 层数 × KV heads × 每头维度 × token 数 × 每元素字节数`。不同长度请求按各自 token 数累加。
 
-```mermaid
-flowchart TB
-  A[新位置输入] --> B[本层 q、k、v]
-  B --> C["新 k、v 追加<br/>到本层缓存"]
-  B --> D["新 q 查询合法的<br/>历史与当前 K、V"]
-  C --> D
-  E[逻辑块 0] --> F[物理块 7]
-  G[逻辑块 1] --> H[物理块 2]
-  I["块表管理位置<br/>不压缩有效 K、V"] -.-> E
-  I -.-> G
-```
+<InterviewVisual src="/images/interview/cards/infra-kv-cache.webp" alt="KV cache 容量图解。缓存历史 Token 的 K 与 V；后续解码复用；随活跃 Token 增长；分页减少分配浪费；分页不消除真实 KV 数据量。" />
 
 ## 算一次显存
 

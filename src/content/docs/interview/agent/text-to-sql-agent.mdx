@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 先确认业务指标、时间、粒度和权限，再选择相关 Schema 与指标定义。模型生成 SQL 后由执行层检查结构、授权、成本和只读限制；语法可执行不代表业务口径正确。
 
-```mermaid
-flowchart TB
-  A["澄清指标与范围"] --> B["选择相关 Schema"]
-  B["选择相关 Schema"] --> C["检查并只读执行"]
-  C["检查并只读执行"] --> D["核对口径与结果"]
-```
+<InterviewVisual src="/images/interview/cards/agent-text-to-sql-agent.webp" alt="数据分析 Agent 怎样生成并执行安全、口径正确的 SQL？图解。先对齐指标口径；限定表、列与参数；AST 校验与只读权限；资源限制与结果核验；SELECT 不能自动保证安全。" />
 
 ## 把数据字典与执行代理分开
 

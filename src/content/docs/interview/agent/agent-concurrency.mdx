@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 模型 API 和网络工具多为 I/O 等待，适合异步并发；阻塞 SDK 可在线程中隔离，CPU 密集计算可考虑进程或释放 GIL 的库。选择要看实际运行时和依赖，不能把 async 当成自动并行计算。
 
-```mermaid
-flowchart TB
-  A["识别 I/O 与计算"] --> B["选择执行方式"]
-  B["选择执行方式"] --> C["限制并发与超时"]
-  C["限制并发与超时"] --> D["验证资源及取消"]
-```
+<InterviewVisual src="/images/interview/cards/agent-agent-concurrency.webp" alt="Python Agent 的 async、线程和进程怎样选择？图解。I/O 等待：async；阻塞库：受控线程；CPU 密集：进程；并发上限与背压；取消请求 ≠ 远端已停止。" />
 
 ## 异步链路仍然需要容量控制
 

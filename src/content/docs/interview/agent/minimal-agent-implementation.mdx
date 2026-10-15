@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 最小循环需要模型接口、工具注册表、消息状态和明确的停止条件。模型只提出调用，执行器负责校验和运行，再把结果按调用标识送回。示例先实现串行读取，生产副作用另加授权与幂等。
 
-```mermaid
-flowchart TB
-  A["请求模型决策"] --> B["校验工具调用"]
-  B["校验工具调用"] --> C["执行并回传结果"]
-  C["执行并回传结果"] --> D["回答或达到预算"]
-```
+<InterviewVisual src="/images/interview/cards/agent-minimal-agent-implementation.webp" alt="脱离框架，怎样手写一个最小工具调用 Agent？图解。请求模型；校验工具调用；执行并返回匹配 ID；继续或输出答案；步数、时限与错误出口；最小循环也要有执行边界。" />
 
 ## 核心控制流程
 

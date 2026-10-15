@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,18 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 暂停时保存任务状态和待执行操作。恢复时核对确认记录对应的用户、操作和参数；参数变了，原确认不能直接沿用。框架的 Checkpoint 负责恢复流程，业务授权仍由应用和下游服务负责。
 
-```mermaid
-flowchart TB
-  A[生成待执行操作] --> B["保存对象与参数<br/>稳定操作标识"]
-  B --> C[向用户展示具体影响]
-  C --> D{批准、修改或拒绝？}
-  D -->|拒绝| E[结束该操作]
-  D -->|修改| A
-  D -->|批准| F["保存确认记录<br/>恢复任务"]
-  F --> G["重查权限<br/>核对业务状态"]
-  G --> H[沿用稳定操作标识执行]
-  H --> I[保存业务结果]
-```
+<InterviewVisual src="/images/interview/cards/agent-human-approval.webp" alt="人工确认与执行边界图解。具体目标与参数；用户确认；执行前重查状态与版本；绑定操作后执行；同意 ≠ 已执行，变更后需重新判断。" />
 
 ## 确认等待期间，业务状态可能变了
 

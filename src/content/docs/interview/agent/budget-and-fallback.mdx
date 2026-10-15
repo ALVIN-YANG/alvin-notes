@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -23,18 +24,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 调用次数和本地时限可以由程序限制；精确费用还受服务商计量、结果未知的调用及计费延迟影响。费用预算需留余量并与实际账单对账，取消本地等待也不代表服务商停止计算或计费。
 
-```mermaid
-flowchart TB
-  A[任务总预算] --> B[下一步调用前检查]
-  B --> C{仍有额度且依赖健康？}
-  C -->|是| D[调用模型或工具]
-  D --> E[记录用量、耗时、结果]
-  E --> B
-  C -->|临时故障| F[退避重试，仍占总预算]
-  F --> B
-  C -->|无额度或持续故障| G["停止或转人工<br/>采用已验证降级"]
-  G --> H["已完成结果<br/>剩余问题"]
-```
+<InterviewVisual src="/images/interview/cards/agent-budget-and-fallback.webp" alt="预算、限流与降级图解。共享总预算；调用前原子预留；步骤、费用、截止时间；重试也消耗预算；降级仍须满足权限与能力。" />
 
 ## 先查哪一段把开销放大了
 

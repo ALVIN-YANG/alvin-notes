@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 闭环先收集可解释的失败，再分类、修复并回归。模型可以提出 Skill 或 Prompt 修改，但候选变更必须经过验证和发布控制；不能把用户一次负反馈直接写成全局规则。
 
-```mermaid
-flowchart TB
-  A["收集脱敏失败"] --> B["归因并去重"]
-  B["归因并去重"] --> C["生成候选修复"]
-  C["生成候选修复"] --> D["验证后受控发布"]
-```
+<InterviewVisual src="/images/interview/cards/agent-badcase-feedback.webp" alt="Agent 的 Badcase 怎样形成可控的改进闭环？图解。保留失败轨迹；定位出错阶段；修正真正原因；加入回归并评估；不是每个错误都改 Prompt。" />
 
 ## 按故障所在阶段分类
 

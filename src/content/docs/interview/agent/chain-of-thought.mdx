@@ -14,21 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 CoT 在一次推理中展开中间步骤；ReAct 把推理与真实工具反馈交替执行；Tree of Thoughts 则探索多个候选推理路径并选择后续分支。三者解决的控制问题不同，更多推理步骤也会增加成本。
 
-```mermaid
-flowchart TB
-  A[CoT] --> B[沿一条中间推理链求解]
-  C[ReAct] --> D[推理并选择环境动作]
-  D --> E[观察真实结果]
-  E --> D
-  F[Tree of Thoughts] --> G[提出多个候选步骤]
-  G --> H[评价、剪枝或回溯]
-  H --> G
-```
+<InterviewVisual src="/images/interview/cards/agent-chain-of-thought.webp" alt="CoT、ReAct 和 Tree of Thoughts 有什么区别？图解。CoT：推理步骤；ReAct：思考 → 行动 → 观察；ToT：分支 → 评估 → 剪枝；三种思路，按任务选择。" />
 
 ## 用任务决定是否分支
 

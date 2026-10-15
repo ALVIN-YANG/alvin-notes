@@ -14,20 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 先找到这次任务的执行路径，再比较正常任务与异常任务：是调用次数增加，还是某一步变慢。Trace 用 trace_id 及 Span 的父子关系关联模型、检索和工具步骤，run_id 作为业务字段关联具体任务；两种标识不能混为一谈。记录开始结束、状态、重试、输入输出量及版本，才能定位等待发生在哪里。
 
-```mermaid
-flowchart TB
-  A[端到端耗时增加] --> B["对比正常任务<br/>与异常 Trace"]
-  B --> C{调用次数是否增加？}
-  C -->|是| D["查循环与重试<br/>查上下文增长"]
-  C -->|否| E["查模型、工具与检索<br/>检查排队等待"]
-  D --> F["定位关键路径<br/>针对性修复"]
-  E --> F
-```
+<InterviewVisual src="/images/interview/cards/agent-agent-latency.webp" alt="长任务延迟与观测图解。排队；模型；工具；重试；沿关键路径定位；并行耗时不能直接相加。" />
 
 ## 时间不能只把所有 Span 相加
 

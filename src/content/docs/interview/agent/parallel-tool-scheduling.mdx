@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 先用依赖图区分可以并行的读取与必须串行的操作。并行能缩短独立任务的等待时间，但涉及相同资源的写操作需要冲突控制，不能因为模型同一轮提出多次调用就全部执行。
 
-```mermaid
-flowchart TB
-  A["生成依赖图"] --> B["执行就绪节点"]
-  B["执行就绪节点"] --> C["归并状态与结果"]
-  C["归并状态与结果"] --> D["继续或停止分支"]
-```
+<InterviewVisual src="/images/interview/cards/agent-parallel-tool-scheduling.webp" alt="多个工具存在依赖时怎样并行调度？图解。独立读操作并行；依赖任务等待前置结果；汇合后校验；并发、预算与失败控制；可并行 ≠ 可以无协调地并发写。" />
 
 ## 调度器负责预算与状态
 

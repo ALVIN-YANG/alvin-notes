@@ -14,18 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 stdio 通过本地进程的标准输入输出交换 MCP 消息，适合由客户端管理的本地服务。Streamable HTTP 用 HTTP 连接服务，可按协议返回 JSON 或通过 SSE 传递消息。这里的流式主要指协议消息传输，不等于音视频编解码或模型 Token 流。
 
-```mermaid
-flowchart TB
-  A[MCP Client] -->|标准输入输出| B["本地进程<br/>MCP Server"]
-  A -->|HTTP 请求| C["远程端点<br/>MCP Endpoint"]
-  C --> D["JSON 响应<br/>或 SSE 消息"]
-  D --> A
-```
+<InterviewVisual src="/images/interview/cards/agent-mcp-transports.webp" alt="MCP 传输与流式语义图解。stdio：本地进程消息；Streamable HTTP：远程消息；可使用 SSE；日志不污染协议输出；协议消息流 ≠ 音视频流。" />
 
 ## 选择取决于部署和生命周期
 

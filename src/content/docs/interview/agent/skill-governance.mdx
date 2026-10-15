@@ -14,17 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 Skill 平台管理的不只是 Markdown，还包括脚本、资源、依赖和执行权限。上传后检查结构、来源与危险能力，按版本发布；下载与运行仍受用户授权约束。
 
-```mermaid
-flowchart TB
-  A["检查 Skill 包"] --> B["版本化注册"]
-  B["版本化注册"] --> C["回归并发布"]
-  C["回归并发布"] --> D["监控与撤销"]
-```
+<InterviewVisual src="/images/interview/cards/agent-skill-governance.webp" alt="团队 Skill 平台怎样管理上传、版本、权限和下线？图解。上传后审查；不可变版本；按租户授权启用；记录运行版本；撤销与下线有明确策略。" />
 
 ## 发布和执行分成两层控制
 

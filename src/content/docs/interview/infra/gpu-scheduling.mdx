@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,17 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 例如需要同机 4 卡的任务，遇到四台机器各空 1 卡，仍无法放置。数据集挂载、镜像准备、配额和资源预留也可能阻止启动，不能把排队都归因于卡不够。
 
-```mermaid
-flowchart TB
-  A["任务要求<br/>型号、卡数<br/>拓扑与身份"] --> B[检查租户配额与优先级]
-  B --> C[检查节点和网络约束]
-  C --> D{"能满足整组<br/>worker？"}
-  D -->|能| E[成组分配并启动]
-  D -->|不能| F["排队或调整放置<br/>按已配置策略处理"]
-  E --> G[监控运行与失败]
-  G --> H[任务结束释放资源]
-  H --> B
-```
+<InterviewVisual src="/images/interview/cards/infra-gpu-scheduling.webp" alt="GPU 调度与多租户图解。GPU 类型与显存；数量与拓扑约束；配额、优先级与公平；满足条件才能放置；零散空闲不等于可用组合。" />
 
 ## 吞吐和公平可能冲突
 

@@ -14,19 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 从真实任务和已观察到的失败构造评测集，每题保存输入、可用环境、正确证据及验收规则。合成数据用于补足稀缺场景和表达变化，但需要核对答案、覆盖与难度；同一个模型生成并自评，可能把它的共同错误当成正确结果。
 
-```mermaid
-flowchart TB
-  A[真实任务与失败样本] --> C[定义任务类型与验收标准]
-  B[针对缺口合成案例] --> C
-  C --> D[人工核对证据与标签]
-  D --> E["去重与隔离<br/>开发集、保留测试集"]
-  E --> F["固定版本，多次运行<br/>逐项分析失败"]
-```
+<InterviewVisual src="/images/interview/cards/agent-evaluation-dataset.webp" alt="评测集与合成数据图解。真实任务；失败样本；人工核验的合成补充；覆盖与正确标签；冻结测试集；开发与最终测试隔离。" />
 
 ## 覆盖要按失败类型设计
 

@@ -14,20 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 压缩要保留继续任务所需的目标、约束、关键事实、已完成动作与未决事项，并留下原文位置。重复输出和已处理的中间过程可以裁掉。摘要有损，业务 ID、精确数值、授权和执行结果应有独立的结构化记录，不能全靠摘要转述。
 
-```mermaid
-flowchart LR
-  A[历史消息与工具结果] --> B[分类与去重]
-  B --> C["目标和执行事实<br/>精确保留"]
-  B --> D["过程与长输出<br/>摘要或引用"]
-  C --> E[新的工作上下文]
-  D --> E
-  E --> F[检查约束和未完成事项]
-```
+<InterviewVisual src="/images/interview/cards/agent-context-compression.webp" alt="上下文压缩与信息保留图解。精确保留目标与约束；压缩冗余历史；原文可回读；核对丢失信息；摘要不能代替业务状态。" />
 
 ## 触发时机不能只看消息条数
 

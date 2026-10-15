@@ -14,21 +14,13 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
 离线答对率说明系统在已有样本上的表现，不能识别每次线上错误。运行时可以检查关键结论是否有证据、字段是否符合规则、动作是否越界；证据不足时补充检索、澄清、拒答或转人工。模型自报的“置信度”没有校准，不能直接当作正确概率。
 
-```mermaid
-flowchart TB
-  A[候选答案与引用] --> B[提取需核对的结论]
-  B --> C["核对原文与数据<br/>检查业务规则"]
-  C --> D{支持是否充分？}
-  D -->|是| E[返回可追溯答案]
-  D -->|不足| F[补充证据、澄清或拒答]
-  E --> G[抽样复核与失败回流]
-  F --> G
-```
+<InterviewVisual src="/images/interview/cards/agent-answer-verification.webp" alt="线上答案检测与拒答图解。回答主张；来源证据；业务规则；不确定时拒答或升级；离线高分 ≠ 线上全对。" />
 
 ## 检测器也需要验证
 

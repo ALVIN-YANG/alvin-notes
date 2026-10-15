@@ -14,6 +14,7 @@ sidebar:
 ---
 
 import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
 
 <InterviewQuestion>
 
@@ -21,22 +22,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 把一次执行分成有类型的事件，例如文本片段、工具开始、工具结束和任务结束。前端根据事件更新界面，不从“正在查询”这句话推断后端状态。工具参数要组装完整并校验后才能执行。
 
-```mermaid
-sequenceDiagram
-  participant U as 用户界面
-  participant R as Agent runtime
-  participant M as 模型服务
-  participant T as 业务工具
-  R->>M: 请求生成
-  M-->>R: 内容与调用事件
-  R-->>U: 文本或工具状态
-  U->>R: 取消指定 run
-  R->>R: 标记取消，停止安排新步骤
-  R->>M: 请求停止生成
-  R->>T: 对支持取消的操作发送取消
-  T-->>R: 已停止、已完成或结果未知
-  R-->>U: 返回可确认的最终状态
-```
+<InterviewVisual src="/images/interview/cards/agent-streaming-and-cancellation.webp" alt="流式输出与取消图解。界面停止输出；编排器停止新派发；请求取消正在执行的工具；确认远端最终结果；断开流 ≠ 操作已经停止。" />
 
 ## 取消要穿过整条执行链
 
