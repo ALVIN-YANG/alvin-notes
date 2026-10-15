@@ -1,7 +1,7 @@
 ---
 title: 长期记忆怎样召回，防止不相关经验污染当前任务？
 description: 区分事实、偏好和任务经验与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -32,12 +32,12 @@ flowchart TB
 
 ### 怎样评估召回是否污染了任务？
 
-比较无记忆、正确记忆、过期记忆和其他用户相似记忆下的结果，检查错误引用与越权。记录模型最终使用了哪条记忆，不能只测检索命中率。
+比较无记忆、正确记忆、过期记忆和其他用户相似记忆下的结果，检查错误引用与越权。记录检索候选、实际注入的记忆及答案引用，配合移除某条记忆的对照实验判断影响。模型自称使用了某条记忆，不足以证明其内部推理过程；也不能只测检索命中率。
 
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[LangChain 长期记忆、命名空间与检索](https://docs.langchain.com/oss/python/langchain/long-term-memory)。过期过滤、权限撤销及对照评测为工程建议。
 
 </details>
 

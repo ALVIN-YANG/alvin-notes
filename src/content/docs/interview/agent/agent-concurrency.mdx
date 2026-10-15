@@ -1,7 +1,7 @@
 ---
 title: Python Agent 的 async、线程和进程怎样选择？
 description: 异步链路仍然需要容量控制与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: fundamentals
@@ -28,16 +28,16 @@ flowchart TB
 
 ## 异步链路仍然需要容量控制
 
-使用有界并发、超时和取消，避免一次启动所有任务压垮下游。同步文件操作或重计算会阻塞事件循环。对线程、进程与异步方案分别测吞吐、P95、内存和资源回收；Python 版本及 GIL 配置会影响结论。
+使用有界并发、超时和取消，避免一次启动所有任务压垮下游。阻塞文件操作或 CPU 密集计算放在协程里直接运行，仍会阻塞事件循环；`async def` 不会自动把它们移到后台。对线程、进程与异步方案分别测吞吐、P95、内存和资源回收；Python 版本及 GIL 配置会影响结论。
 
 ### 取消异步任务后，远程调用一定停止吗？
 
-不一定，客户端取消只说明本地等待终止。远程可能已经执行，需要调用标识和状态查询；写任务不能因等待取消就直接重复提交。
+不一定。协程取消是协作式的，依赖代码需要正确处理取消信号；取消等待 `asyncio.to_thread()` 的任务，也不会强制停止已经运行的线程。远程操作可能已经执行，需要调用标识和状态查询；写任务不能因等待取消就直接重复提交。
 
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[Python asyncio Tasks](https://docs.python.org/3/library/asyncio-task.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[Python asyncio Tasks](https://docs.python.org/3/library/asyncio-task.html)。
 
 </details>
 

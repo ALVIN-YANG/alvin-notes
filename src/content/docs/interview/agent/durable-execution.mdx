@@ -1,7 +1,7 @@
 ---
 title: Agent 执行中断后怎样恢复？如何避免重复副作用？
 description: 区分任务检查点、业务幂等与执行结果未知，解释恢复中的崩溃窗口。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -55,7 +55,7 @@ sequenceDiagram
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。[阿里 AgentScope 状态保存](https://doc.agentscope.io/tutorial/task_state.html)、[Spring AI Alibaba 状态与人工中断](https://github.com/spring-ai-alibaba/website/blob/main/docs/frameworks/agent-framework/tutorials/hooks.md)。机制依据见 [Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)、[幂等 API](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/) 与 [长期任务 Harness](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)。状态设计和退款流程为工程示例。延伸阅读：[上下文持久化与恢复](/ai/agent-context-persistence-recovery/)。
+核对于 2026-10-15。[阿里 AgentScope 状态保存](https://doc.agentscope.io/tutorial/task_state.html)、[Spring AI Alibaba 状态与人工中断](https://github.com/spring-ai-alibaba/website/blob/main/docs/frameworks/agent-framework/tutorials/hooks.md)。机制依据见 [Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)、[幂等 API](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/) 与 [长期任务 Harness](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)。状态设计和退款流程为工程示例。延伸阅读：[上下文持久化与恢复](/ai/agent-context-persistence-recovery/)。
 
 </details>
 

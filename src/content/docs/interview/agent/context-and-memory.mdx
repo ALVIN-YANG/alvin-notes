@@ -1,7 +1,7 @@
 ---
 title: Context window、会话状态和长期记忆有什么区别？
 description: 解释模型当前可见的输入、任务恢复状态与跨会话记忆的不同用途。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -17,7 +17,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 <InterviewQuestion>
 
-上下文是这次实际送给模型的输入，Context window 是这次最多能接收多少 token。会话状态保存一个任务进行到哪一步；长期记忆保存下次任务仍可能用到的信息。
+上下文是本轮提供给模型的信息；Context window 是模型处理上下文的容量限制。常见自回归接口需要在总窗口内同时容纳输入与生成中的输出，模型还可能单设输入、输出或推理 Token 限额，预算按所用接口核对。会话状态保存任务进行到哪一步；长期记忆保存后续任务仍可能用到的信息。
 
 把聊天记录存进数据库，不代表模型已经读到了它。应用还得选出当前需要的内容，再放进上下文。
 
@@ -49,7 +49,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。[阿里 AgentScope 长期记忆](https://doc.agentscope.io/tutorial/task_long_term_memory.html)、[状态与会话](https://doc.agentscope.io/tutorial/task_state.html)。概念见 [Memory overview](https://docs.langchain.com/oss/python/concepts/memory)，上下文策略见 [Anthropic 文章](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)。示例中的任务与治理方案为教学设计。延伸阅读：[Agent 记忆系统设计](/ai/agent-memory-system-design/)。
+核对于 2026-10-15。[阿里 AgentScope 长期记忆](https://doc.agentscope.io/tutorial/task_long_term_memory.html)、[状态与会话](https://doc.agentscope.io/tutorial/task_state.html)。概念见 [Memory overview](https://docs.langchain.com/oss/python/concepts/memory)，上下文策略见 [Anthropic 文章](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)。示例中的任务与治理方案为教学设计。延伸阅读：[Agent 记忆系统设计](/ai/agent-memory-system-design/)。
 
 </details>
 

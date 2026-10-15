@@ -1,7 +1,7 @@
 ---
 title: 人工确认应该插在哪里？用户点了同意，为什么还要再检查？
 description: 解释操作审批、状态变化和恢复时的重复执行风险。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -17,7 +17,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 <InterviewQuestion>
 
-人工确认应放在具体写操作之前，让用户看到对象、参数和影响。用户同意“给 T42 发这封邮件”，不等于同意之后所有发送操作，也不等于业务系统可以跳过权限检查。
+需要人工确认的操作，应在实际执行前展示对象、参数和影响。已有明确授权的操作可在约定范围内自动执行；用户同意“给 T42 发这封邮件”，不等于同意之后所有发送操作，也不等于业务系统可以跳过权限检查。
 
 暂停时保存任务状态和待执行操作。恢复时核对确认记录对应的用户、操作和参数；参数变了，原确认不能直接沿用。框架的 Checkpoint 负责恢复流程，业务授权仍由应用和下游服务负责。
 
@@ -46,12 +46,12 @@ flowchart TB
 
 ### 每一步都确认，才算安全吗？
 
-频繁确认容易让人不看内容就点击。按实际权限和风险划边界：允许范围内的查询可以自动执行；会改变外部状态、扩大数据访问或超出授权范围的操作，展示具体变化再确认。
+频繁确认容易让人不看内容就点击。应事先划定可自动执行的对象、参数和额度；已经获得授权且仍在边界内的操作，不必重复询问。新增外部影响、扩大数据访问或越过约定权限时，再展示具体变化并确认。
 
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。[Spring AI Alibaba HumanInTheLoopHook 与状态保存](https://github.com/spring-ai-alibaba/website/blob/main/docs/frameworks/agent-framework/tutorials/hooks.md)、[AgentScope 状态与会话](https://doc.agentscope.io/tutorial/task_state.html)。审批绑定、过期和订单检查为工程设计示例。
+核对于 2026-10-15。[Spring AI Alibaba HumanInTheLoopHook 与状态保存](https://github.com/spring-ai-alibaba/website/blob/main/docs/frameworks/agent-framework/tutorials/hooks.md)、[AgentScope 状态与会话](https://doc.agentscope.io/tutorial/task_state.html)。审批绑定、过期和订单检查为工程设计示例。
 
 </details>
 

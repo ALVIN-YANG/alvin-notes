@@ -1,7 +1,7 @@
 ---
 title: Agent 长任务怎样用消息队列异步执行？
 description: 处理提交与消费的两端重复与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: system-design
@@ -37,7 +37,7 @@ Outbox 与任务记录同事务提交，后台扫描并重发。Worker 执行成
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)、[分布式锁与 Fencing](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[AWS：事务 Outbox 与重复消费](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html)、[分布式锁与 Fencing](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)。任务表、租约与限流组合为工程设计，不是消息队列默认提供的端到端保证。
 
 </details>
 

@@ -1,7 +1,7 @@
 ---
 title: A2A 的 Task 和 Artifact 怎样支持跨 Agent 长任务？
 description: 任务协议要包含生命周期与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: system-design
@@ -28,7 +28,9 @@ flowchart TB
 
 ## 任务协议要包含生命周期
 
-使用任务标识关联提交、进度、需要补充输入、完成和失败；产物有标识、格式和出处。客户端处理断连、恢复和重复通知，服务端校验协作权限。不同版本的状态枚举和传输支持应按实际协议核对。
+Task 用任务标识和状态关联提交、处理、等待补充输入、完成或失败。Artifact 用 `artifactId` 标识任务产物，`parts` 承载文本、文件或结构化数据；产物与普通对话消息分开，便于客户端持续收集和验收结果。引用出处和业务验收规则仍需应用补充，协议不会自动证明产物正确。
+
+客户端应处理断连、状态查询和重复通知，服务端校验协作权限。流式增量产物还要按所用版本的追加与结束标记组装，不能把每个片段当成完整结果。状态枚举、方法名和传输支持按双方协商的版本核对。
 
 ### 取消任务等于撤销已发生的操作吗？
 
@@ -37,7 +39,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[A2A 协议规范](https://a2a-protocol.org/latest/specification/)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[A2A 协议规范](https://a2a-protocol.org/latest/specification/)。
 
 </details>
 

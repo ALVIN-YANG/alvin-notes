@@ -1,7 +1,7 @@
 ---
 title: CoT、ReAct 和 Tree of Thoughts 有什么区别？
 description: 用任务决定是否分支与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -21,9 +21,13 @@ CoT 在一次推理中展开中间步骤；ReAct 把推理与真实工具反馈�
 
 ```mermaid
 flowchart TB
-  A["提出假设"] --> B["查真实证据"]
-  B["查真实证据"] --> C["更新方案"]
-  C["更新方案"] --> D["验证完成条件"]
+  A[CoT] --> B[沿一条中间推理链求解]
+  C[ReAct] --> D[推理并选择环境动作]
+  D --> E[观察真实结果]
+  E --> D
+  F[Tree of Thoughts] --> G[提出多个候选步骤]
+  G --> H[评价、剪枝或回溯]
+  H --> G
 ```
 
 ## 用任务决定是否分支
@@ -37,7 +41,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[ReAct 论文](https://arxiv.org/abs/2210.03629)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[CoT 原始论文](https://arxiv.org/abs/2201.11903)、[ReAct 原始论文](https://arxiv.org/abs/2210.03629)、[Tree of Thoughts 原始论文](https://arxiv.org/abs/2305.10601)。订单排障为机制示例，不代表这些方法能保证判断正确。
 
 </details>
 

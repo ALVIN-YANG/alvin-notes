@@ -1,7 +1,7 @@
 ---
 title: PagedAttention 怎么管理 KV？它和 FlashAttention 是一回事吗？
 description: 解释 KV 分页分配、逻辑映射和注意力计算优化的区别。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: infra
   module: models
@@ -48,7 +48,7 @@ FlashAttention 通过分块与数据复用，减少注意力计算时对显存�
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。[阿里 DashInfer SpanAttention](https://github.com/modelscope/dash-infer)、[PagedAttention 原始论文](https://arxiv.org/abs/2309.06180)、[FlashAttention 原始论文](https://arxiv.org/abs/2205.14135)。物理块编号为示意，不是实际地址。
+核对于 2026-10-15。[阿里 DashInfer SpanAttention](https://github.com/modelscope/dash-infer)、[PagedAttention 原始论文](https://arxiv.org/abs/2309.06180)、[FlashAttention 原始论文](https://arxiv.org/abs/2205.14135)。物理块编号为示意，不是实际地址。
 
 </details>
 

@@ -1,7 +1,7 @@
 ---
 title: Agent Worker 失联后，Lease 和 Fencing Token 怎样防止双写？
 description: 令牌必须在真正写入处生效与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: system-design
@@ -28,7 +28,9 @@ flowchart TB
 
 ## 令牌必须在真正写入处生效
 
-接管时从可靠的协调机制获取更高代次，任务状态和下游写操作携带代次。数据库用条件更新验证当前代次，外部系统若不支持 Fencing 则另用幂等键、单写代理或对账。心跳续租是活性机制，不能替代写入校验。
+接管时从可靠的协调机制获取更高代次，任务状态和下游写操作携带代次。写入端把令牌检查与业务修改原子完成：验证当前代次，或按协议记录并拒绝小于已接受代次的令牌；不能先检查，再在事务外无条件写入。
+
+幂等键只去重同一次业务操作，不会自动拒绝旧 Worker 发出的另一笔写入，不能替代 Fencing。外部系统不支持令牌校验时，可由具有可靠写入控制的代理统一提交，或限制自动接管并对账；若仍无法隔离旧执行者，就不能承诺不会发生陈旧写入。
 
 ### 用了分布式锁就能保证只有一个 Worker 吗？
 
@@ -37,7 +39,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[分布式锁与 Fencing](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[分布式锁与 Fencing](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)。
 
 </details>
 

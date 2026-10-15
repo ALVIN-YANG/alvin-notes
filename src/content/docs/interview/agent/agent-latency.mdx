@@ -1,7 +1,7 @@
 ---
 title: Agent 变慢或卡住，怎样用 Trace 定位？
 description: 沿关键路径拆分模型、工具、排队和重试耗时。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: reliability
@@ -17,7 +17,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 <InterviewQuestion>
 
-先找到这次任务的执行路径，再比较正常任务与异常任务：是调用次数增加，还是某一步变慢。Trace 应用 run_id 串起模型、检索和工具的 Span，记录开始结束、状态、重试、输入输出量及版本。只看最终耗时，无法知道卡在哪里。
+先找到这次任务的执行路径，再比较正常任务与异常任务：是调用次数增加，还是某一步变慢。Trace 用 trace_id 及 Span 的父子关系关联模型、检索和工具步骤，run_id 作为业务字段关联具体任务；两种标识不能混为一谈。记录开始结束、状态、重试、输入输出量及版本，才能定位等待发生在哪里。
 
 ```mermaid
 flowchart TB
@@ -42,7 +42,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[AgentScope Tracing](https://doc.agentscope.io/tutorial/task_tracing.html)。关键路径、故障分类和两查询算例为本站工程解释。
+核对于 2026-10-15。[AgentScope Tracing](https://doc.agentscope.io/tutorial/task_tracing.html)、[OpenTelemetry 的 Trace 与 Span](https://opentelemetry.io/docs/concepts/signals/traces/)。关键路径、故障分类和两查询算例为工程解释。
 
 </details>
 

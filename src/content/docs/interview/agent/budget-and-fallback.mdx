@@ -1,7 +1,7 @@
 ---
 title: Agent 反复调用工具、费用上涨，怎么限制和排查？
 description: 解释任务预算、重试放大、熔断与模型降级。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -19,7 +19,9 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 限制单次输出长度，只管得住一次模型调用。Agent 会多轮调用模型和工具，所以预算要覆盖整个任务：总时长、模型调用次数、工具调用次数、Token 和允许的费用。
 
-执行层在下一次调用前检查剩余预算，运行中记录实际用量。不能只把“最多调用五次”写进提示词。并发子任务要共享或分配总预算，别让每个子 Agent 都拿一份完整额度。
+执行层在下一次调用前检查剩余预算，运行中记录实际用量。不能只把“最多调用五次”写进提示词。并发子任务要从同一总额中原子预占或预先分配额度，避免各自读到余额充足后同时超额调用。
+
+调用次数和本地时限可以由程序限制；精确费用还受服务商计量、结果未知的调用及计费延迟影响。费用预算需留余量并与实际账单对账，取消本地等待也不代表服务商停止计算或计费。
 
 ```mermaid
 flowchart TB
@@ -51,7 +53,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。[Spring AI Alibaba 模型调用限制与工具重试](https://github.com/spring-ai-alibaba/website/blob/main/docs/frameworks/agent-framework/tutorials/hooks.md)、[阿里云 Agent 可观测性](https://github.com/aliyun/ai-agent-handbook/blob/main/04-governance/%E7%AC%AC%2013%20%E7%AB%A0%E3%80%80Agent%20%E7%9A%84%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7.md)。总预算与分层重试的处理为工程建议。
+核对于 2026-10-15。[Spring AI Alibaba 模型调用限制与工具重试](https://github.com/spring-ai-alibaba/website/blob/main/docs/frameworks/agent-framework/tutorials/hooks.md)、[阿里云 Agent 可观测性](https://github.com/aliyun/ai-agent-handbook/blob/main/04-governance/%E7%AC%AC%2013%20%E7%AB%A0%E3%80%80Agent%20%E7%9A%84%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7.md)。总预算与分层重试的处理为工程建议。
 
 </details>
 

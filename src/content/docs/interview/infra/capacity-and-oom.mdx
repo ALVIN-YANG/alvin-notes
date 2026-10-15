@@ -1,7 +1,7 @@
 ---
 title: 推理服务在高并发下 OOM 或频繁抢占，怎样估算容量和排障？
 description: 从权重、KV、运行时显存与负载增长解释容量上界和实测边界。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: infra
   module: reliability
@@ -58,7 +58,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。依据：[vLLM 优化](https://docs.vllm.ai/en/latest/configuration/optimization/)、[PAI 监控](https://help.aliyun.com/zh/pai/service-monitoring)、[PAI 缓存服务](https://help.aliyun.com/zh/pai/inferx-kv-cache)。容量为教学算例。延伸阅读：[KV cache 容量推导](/ai-infra/kv-cache/)。
+核对于 2026-10-15。依据：[vLLM 优化](https://docs.vllm.ai/en/latest/configuration/optimization/)、[PAI 监控](https://help.aliyun.com/zh/pai/service-monitoring)、[PAI 缓存服务](https://help.aliyun.com/zh/pai/inferx-kv-cache)。容量为教学算例。延伸阅读：[KV cache 容量推导](/ai-infra/kv-cache/)。
 
 </details>
 

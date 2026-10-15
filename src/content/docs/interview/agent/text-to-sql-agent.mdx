@@ -1,7 +1,7 @@
 ---
 title: 数据分析 Agent 怎样生成并执行安全、口径正确的 SQL？
 description: 把数据字典与执行代理分开与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -28,7 +28,9 @@ flowchart TB
 
 ## 把数据字典与执行代理分开
 
-提供表关系、字段含义、时区、指标公式和示例，Schema 变更后刷新版本。使用 SQL 解析器及数据库最小权限账户，限制扫描量、返回行数和超时，避免单纯用字符串黑名单。对结果做范围、空值与总量核对。
+提供表关系、字段含义、时区、指标公式和示例，Schema 变更后刷新版本。执行层用 SQL 解析器限制语句、表、列和函数，并使用数据库最小权限账户及适用的只读事务；只检查以 `SELECT` 开头不够，查询仍可能调用有副作用的函数，或扫描过量数据。
+
+租户及行级权限由可信身份绑定，不能让模型自行填写租户 ID 决定范围。再限制扫描量、返回行数和超时，对结果做范围、空值与总量核对。只读限制主要保护数据修改，不能自动防止越权读取和资源耗尽。
 
 ### 表结构变化导致线上失败怎样恢复？
 
@@ -37,7 +39,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[Spring AI 工具调用](https://docs.spring.io/spring-ai/reference/api/tools.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[LangChain SQL Agent 的安全说明](https://docs.langchain.com/oss/python/langchain/sql-agent)、[PostgreSQL 行级安全](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)。执行代理、限额与结果核对为工程建议，权限能力按实际数据库验证。
 
 </details>
 

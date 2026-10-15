@@ -1,7 +1,7 @@
 ---
 title: Attention 的 Q、K、V 如何计算？因果掩码有什么作用？
 description: 解释形状与计算量与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: models
@@ -17,7 +17,9 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 <InterviewQuestion>
 
-输入表示分别线性投影得到 Q、K、V，注意力权重由 Q 与 K 的相似度计算，再对 V 加权聚合。缩放点积形式为 softmax(QKᵀ / √dₖ + mask)V；因果掩码阻止当前位置访问未来 Token。
+Q 是查询，K 是用于匹配的键，V 是被聚合的值。自注意力中，同一序列的表示分别线性投影得到 Q、K、V；交叉注意力中，Q 与 K、V 可以来自不同序列。缩放点积注意力为 `softmax(QKᵀ / √dₖ + mask)V`。
+
+因果掩码把未来位置的分数设为负无穷，使其 softmax 权重为 0；当前位置仍可关注自身和历史位置。填充掩码处理的是补齐位置，两者用途不同。
 
 ```mermaid
 flowchart TB
@@ -28,7 +30,7 @@ flowchart TB
 
 ## 解释形状与计算量
 
-单头序列长度 n、头维度 dₖ，注意力分数矩阵为 n×n。多头关注不同投影子空间，拼接后再投影。全注意力的分数部分随序列长度平方增长，但整层还包含投影和前馈网络，不能只按 n²估算全部耗时。
+单头自注意力的序列长度为 n、头维度为 dₖ 时，分数矩阵为 n×n。多头关注不同投影子空间，拼接后再投影。全注意力的分数部分随序列长度平方增长，但整层还包含投影和前馈网络，不能只按 n² 估算全部耗时。
 
 ### Next Token Prediction 为什么必须屏蔽未来？
 
@@ -37,7 +39,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[Attention Is All You Need](https://arxiv.org/abs/1706.03762)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[Attention Is All You Need](https://arxiv.org/abs/1706.03762)。
 
 </details>
 

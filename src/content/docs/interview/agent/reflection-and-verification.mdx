@@ -1,7 +1,7 @@
 ---
 title: Self-Reflection 和 Reflexion 能让 Agent 自动纠错吗？
 description: 先得到可靠反馈与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -17,7 +17,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 <InterviewQuestion>
 
-Reflection 是对已生成方案或执行结果进行检查与修改；Reflexion 的代表做法还会把失败反馈转成文字经验，供后续尝试使用。它们能提供纠错机会，但同一模型再次判断不构成独立验证。
+Reflection 是对已生成方案或执行结果进行检查与修改；Reflexion 的代表做法把任务反馈转成文字经验，保存在情景记忆中供后续尝试使用，不通过这一步更新模型权重。它们能提供纠错机会，但同一模型再次判断不构成独立验证。
 
 ```mermaid
 flowchart TB
@@ -37,7 +37,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[Reflexion 论文](https://arxiv.org/abs/2303.11366)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[Reflexion 论文](https://arxiv.org/abs/2303.11366)。
 
 </details>
 

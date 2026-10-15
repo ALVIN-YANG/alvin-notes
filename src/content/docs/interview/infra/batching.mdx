@@ -1,7 +1,7 @@
 ---
 title: 连续批处理与 Chunked prefill 分别解决什么问题？
 description: 从请求生命周期与 token 预算理解推理调度。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: infra
   module: models
@@ -54,7 +54,7 @@ vLLM V1 当前文档中的 Chunked prefill 策略先安排 Decode，再用剩余
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。依据：[Orca](https://www.usenix.org/conference/osdi22/presentation/yu)、[vLLM 优化文档](https://docs.vllm.ai/en/latest/configuration/optimization/)、[阿里云压测](https://help.aliyun.com/zh/pai/automatic-service-stress-testing)。请求长度与调参步骤为教学示例。延伸阅读：[批处理与调度实验](/ai-infra/batching-scheduling/)。
+核对于 2026-10-15。依据：[Orca](https://www.usenix.org/conference/osdi22/presentation/yu)、[vLLM 优化文档](https://docs.vllm.ai/en/latest/configuration/optimization/)、[阿里云压测](https://help.aliyun.com/zh/pai/automatic-service-stress-testing)。请求长度与调参步骤为教学示例。延伸阅读：[批处理与调度实验](/ai-infra/batching-scheduling/)。
 
 </details>
 

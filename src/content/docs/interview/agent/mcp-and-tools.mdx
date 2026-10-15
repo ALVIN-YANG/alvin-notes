@@ -1,7 +1,7 @@
 ---
 title: MCP 和 Function calling 是什么关系？接上 MCP 就能安全用工具吗？
 description: 区分模型调用表达、工具连接协议和业务授权。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -34,7 +34,8 @@ sequenceDiagram
   H->>H: 校验权限和参数
   H->>C: 转发允许的调用
   C->>S: 执行工具
-  S-->>H: 工具结果
+  S-->>C: MCP 工具结果
+  C-->>H: 返回调用结果
   H->>M: 返回结果，继续任务
 ```
 
@@ -55,7 +56,7 @@ MCP 主要连接应用与工具、资源等能力；A2A 主要描述 Agent 间�
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。[AgentScope MCP](https://doc.agentscope.io/tutorial/task_mcp.html)、[Qwen-Agent MCP 接入](https://github.com/QwenLM/Qwen-Agent)、[MCP 官方架构](https://modelcontextprotocol.io/docs/learn/architecture)。授权与工具包装为工程设计建议。
+核对于 2026-10-15。[AgentScope MCP](https://doc.agentscope.io/tutorial/task_mcp.html)、[Qwen-Agent MCP 接入](https://github.com/QwenLM/Qwen-Agent)、[MCP 官方架构](https://modelcontextprotocol.io/docs/learn/architecture)。授权与工具包装为工程设计建议。
 
 </details>
 

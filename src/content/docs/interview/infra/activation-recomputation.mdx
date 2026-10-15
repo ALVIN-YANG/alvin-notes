@@ -1,7 +1,7 @@
 ---
 title: 重计算和梯度累积怎么省显存？Checkpoint 都是保存到磁盘吗？
 description: 区分激活重计算、梯度累积与训练故障恢复检查点。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: infra
   module: models
@@ -49,7 +49,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。[阿里云训练参数中的激活检查点与梯度累积](https://help.aliyun.com/zh/pai/parameter-settings)、[verl 训练状态保存](https://verl.readthedocs.io/en/latest/workers/model_engine.html)。64 条样本为教学算例，具体参数支持范围以框架版本为准。
+核对于 2026-10-15。[阿里云训练参数中的激活检查点与梯度累积](https://help.aliyun.com/zh/pai/parameter-settings)、[verl 训练状态保存](https://verl.readthedocs.io/en/latest/workers/model_engine.html)。64 条样本为教学算例，具体参数支持范围以框架版本为准。
 
 </details>
 

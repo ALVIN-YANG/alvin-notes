@@ -1,7 +1,7 @@
 ---
 title: PPO、GRPO 后训练为什么难调度？Rollout 和训练要放同一批卡吗？
 description: 解释生成、评分、参数更新和权重同步的系统协作。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: infra
   module: models
@@ -50,7 +50,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。[字节 verl HybridFlow 数据流](https://verl.readthedocs.io/en/latest/hybrid_flow.html)、[verl 性能调优](https://verl.readthedocs.io/en/latest/perf/perf_tuning.html)、[verl 异步训练模式](https://verl.readthedocs.io/en/latest/advance/v1_async_trainer.html)。图省略算法特有分支，不表示 PPO 与 GRPO 的组件完全相同。
+核对于 2026-10-15。[字节 verl HybridFlow 数据流](https://verl.readthedocs.io/en/latest/hybrid_flow.html)、[verl 性能调优](https://verl.readthedocs.io/en/latest/perf/perf_tuning.html)、[verl 异步训练模式](https://verl.readthedocs.io/en/latest/advance/v1_async_trainer.html)。图省略算法特有分支，不表示 PPO 与 GRPO 的组件完全相同。
 
 </details>
 

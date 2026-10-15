@@ -1,7 +1,7 @@
 ---
 title: KV cache 缓存什么？显存怎样计算？PagedAttention 解决什么问题？
 description: 用形状与完整算例推导缓存容量，区分页管理与数据压缩。
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-15
 interview:
   track: infra
   module: models
@@ -60,7 +60,7 @@ PagedAttention 把缓存切成块，通过块表映射到物理位置，减少�
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-13。依据：[Transformers cache](https://huggingface.co/docs/transformers/cache_explanation)、[PagedAttention](https://arxiv.org/abs/2309.06180)、[PAI KV Cache](https://help.aliyun.com/zh/pai/inferx-kv-cache)。容量为指定假设下的算例，不是硬件实测。延伸阅读：[KV cache 完整推导与实验](/ai-infra/kv-cache/)。
+核对于 2026-10-15。依据：[Transformers cache](https://huggingface.co/docs/transformers/cache_explanation)、[PagedAttention](https://arxiv.org/abs/2309.06180)、[PAI KV Cache](https://help.aliyun.com/zh/pai/inferx-kv-cache)。容量为指定假设下的算例，不是硬件实测。延伸阅读：[KV cache 完整推导与实验](/ai-infra/kv-cache/)。
 
 </details>
 

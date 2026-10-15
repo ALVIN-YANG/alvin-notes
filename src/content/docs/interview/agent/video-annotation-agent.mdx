@@ -1,7 +1,7 @@
 ---
 title: 视频或图文标注 Agent 怎样设计异步链路？
 description: 产物必须能定位到原始素材与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -28,7 +28,7 @@ flowchart TB
 
 ## 产物必须能定位到原始素材
 
-保留时间戳、片段范围、素材版本及模型版本，选择采样策略时评测短事件漏检。任务按解码、识别、标注与审核分阶段恢复，回调携带事件标识，重复到达不会重复发布。
+保留时间戳、片段范围、素材版本及模型版本，选择采样策略时评测短事件漏检。任务按解码、识别、标注与审核分阶段恢复；回调接收端用事件唯一约束和原子状态更新去重，产物用稳定标识发布。仅携带事件 ID，不会自动保证幂等，发布到外部系统时仍需核对其重试语义。
 
 ### 只抽几帧能保证理解完整视频吗？
 
@@ -37,7 +37,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[Spring AI 工具调用](https://docs.spring.io/spring-ai/reference/api/tools.html)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[Qwen-VL 官方视频输入与采样示例](https://github.com/QwenLM/Qwen3-VL)。异步任务、时间对齐、验收和幂等发布为工程设计；采样不保证覆盖素材中的每个事件。
 
 </details>
 

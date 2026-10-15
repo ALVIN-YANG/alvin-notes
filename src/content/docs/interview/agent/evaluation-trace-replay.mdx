@@ -1,7 +1,7 @@
 ---
 title: Agent 轨迹怎样留存和回放，怎样保证评测可比较？
 description: 固定变化来源与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: reliability
@@ -28,7 +28,9 @@ flowchart TB
 
 ## 固定变化来源
 
-工具回放适合隔离 Prompt 或模型变更，但无法验证真实下游的新行为。真实重执行使用隔离环境和测试对象，写操作禁止无审核地重放到生产。记录随机性、知识快照、依赖版本与时限，敏感日志先脱敏。
+工具回放适合隔离 Prompt 或模型变更，但无法验证真实下游的新行为。回放响应应按工具、规范化参数及数据快照匹配；模型换了查询条件，就不能按调用顺序塞入旧结果。未匹配的调用要标明无法回放，或转入受控测试工具。
+
+真实重执行使用隔离环境和测试对象，写操作禁止无审核地重放到生产。记录随机性、知识快照、依赖版本与时限，敏感日志先脱敏。OpenTelemetry 提供轨迹关联能力，不会自动实现上述回放执行器。
 
 ### 回放成功是否证明线上也成功？
 
@@ -37,7 +39,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[OpenTelemetry Traces](https://opentelemetry.io/docs/concepts/signals/traces/)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[OpenTelemetry Traces](https://opentelemetry.io/docs/concepts/signals/traces/)。
 
 </details>
 

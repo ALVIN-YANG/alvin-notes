@@ -1,7 +1,7 @@
 ---
 title: 大量图文文档怎样入库，避免解析拖慢用户请求？
 description: 每个阶段都能查状态和重试与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -32,12 +32,14 @@ flowchart TB
 
 ### 同一文档重复上传会不会重复收费和建索引？
 
-按租户、内容哈希和处理版本识别重复任务。重试沿用阶段操作标识；处理器版本变更时可以重建，不能永久复用旧解析结果。
+按租户、内容哈希和处理版本识别重复任务，用唯一约束或原子创建阻止两个 Worker 同时开工。重试复用阶段操作标识，索引写入采用稳定的文档与切片 ID；处理器版本变化时允许重建。
+
+本地任务去重不等于外部调用只计费一次。OCR 或 Embedding 请求超时后可能已经完成；下游支持幂等键或状态查询时复用同一操作标识核对，否则记录结果未知，按明确的补偿或人工处理策略恢复，不能直接承诺重复上传绝不重复计费。
 
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[LangChain 检索架构](https://docs.langchain.com/oss/python/deepagents/retrieval)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[LangChain 检索架构](https://docs.langchain.com/oss/python/deepagents/retrieval)、[AWS 幂等 API 与未知执行结果](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/)。分阶段发布、去重与计费核对为工程设计。
 
 </details>
 

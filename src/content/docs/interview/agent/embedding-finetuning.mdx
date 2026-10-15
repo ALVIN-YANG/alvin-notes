@@ -1,7 +1,7 @@
 ---
 title: 什么时候微调 Embedding？训练样本怎样构造？
 description: 防止训练集与评测集泄漏与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: models
@@ -37,7 +37,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[LangChain 检索架构](https://docs.langchain.com/oss/python/deepagents/retrieval)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[Sentence Transformers 微调、数据与损失函数](https://sbert.net/docs/sentence_transformer/training_overview.html)。数据划分、负样本复核及索引切换为工程建议，具体训练格式按模型和损失函数选择。
 
 </details>
 

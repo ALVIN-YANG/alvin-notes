@@ -1,7 +1,7 @@
 ---
 title: 知识库增量更新、删除和版本切换怎样保证一致？
 description: 读取一份可解释的快照与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -28,7 +28,9 @@ flowchart TB
 
 ## 读取一份可解释的快照
 
-文档更新产生新版本和内容哈希，只重建变化部分。建立切片所属文档及版本的映射，验证数量、解析质量和权限后发布新索引。一次查询固定读取版本；回滚切换到旧快照，避免不同召回通道混用版本。
+文档更新产生新版本和内容哈希，只重建变化部分。建立切片所属文档及版本的映射，验证数量、解析质量和权限后发布新索引。一次查询固定读取版本，避免不同召回通道混用版本；工程上可通过版本指针或索引别名切换。
+
+删除记录与当前授权要独立于内容快照校验。回滚索引不能重新放出已删除文档，或恢复已撤销的访问权；旧向量、原文读取、缓存和引用下载都应受同一失效规则约束。
 
 ### 知识更新后，旧对话还能引用原答案吗？
 
@@ -37,7 +39,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)、[LangChain 检索架构](https://docs.langchain.com/oss/python/deepagents/retrieval)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[Elasticsearch 索引别名与切换](https://www.elastic.co/docs/manage-data/data-store/aliases)、[LangChain 检索架构](https://docs.langchain.com/oss/python/deepagents/retrieval)。统一快照、删除拦截和回滚规则为工程设计，不表示所有检索系统都原生提供同样能力。
 
 </details>
 

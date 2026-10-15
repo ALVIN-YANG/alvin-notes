@@ -1,7 +1,7 @@
 ---
 title: 怎样检测 Agent 无效循环，为什么不能只看重复工具名？
 description: 记录语义状态而不是原始字符串与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -17,7 +17,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 <InterviewQuestion>
 
-同一工具连续调用可能是在分页或轮询，不能仅凭工具名判定死循环。检测同时看规范化参数、结果变化和任务进展，配合轮数、时限、费用三类硬预算。
+同一工具连续调用可能是在分页或轮询，不能仅凭工具名判定死循环。检测同时看规范化参数、结果变化和任务进展，配合轮数、时限及估算费用预算；费用控制的实际边界见[总预算与降级](/interview/agent/budget-and-fallback/)。
 
 ```mermaid
 flowchart TB
@@ -37,7 +37,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[ReAct 论文](https://arxiv.org/abs/2210.03629)、[OpenTelemetry Traces](https://opentelemetry.io/docs/concepts/signals/traces/)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[ReAct 论文](https://arxiv.org/abs/2210.03629)、[OpenTelemetry Traces](https://opentelemetry.io/docs/concepts/signals/traces/)。
 
 </details>
 

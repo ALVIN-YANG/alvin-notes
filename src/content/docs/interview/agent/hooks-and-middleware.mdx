@@ -1,7 +1,7 @@
 ---
 title: Agent 的 Hook 和 Middleware 应放在哪些执行节点？
 description: 检查发生在副作用之前与相关工程取舍。
-lastUpdated: 2026-10-14
+lastUpdated: 2026-10-15
 interview:
   track: agent
   module: ai-agent
@@ -17,7 +17,7 @@ import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
 
 <InterviewQuestion>
 
-Hook 或 Middleware 用于在模型、工具和结果边界插入确定性控制，例如授权、预算、日志和结果检查。名称随框架变化，但控制必须作用在真实执行路径，不能只写在提示词里。
+Hook 或 Middleware 用于在模型调用、工具执行和结果返回等边界插入处理逻辑。它既可执行授权、预算等确定性检查，也可调用模型做摘要或内容审核。强制权限与资源上限仍由程序执行，不能只依赖模型判断或提示词。
 
 ```mermaid
 flowchart TB
@@ -37,7 +37,7 @@ flowchart TB
 <details data-reader-ignore>
 <summary>资料</summary>
 
-核对于 2026-10-14。[LangChain Middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in)。正文场景、示例代码与方案取舍为教学示例；具体接口按选定版本核对。
+核对于 2026-10-15。[LangChain Middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in)。
 
 </details>
 
