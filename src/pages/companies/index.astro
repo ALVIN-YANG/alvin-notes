@@ -17,7 +17,7 @@ const categories = directoryCategories.filter(category => directory.companies.so
     </div>
     <p class="co-filter-status" data-company-status aria-live="polite" aria-atomic="true"></p>
     <div class="co-directory">
-      {directory.companies.map(company => <article class="co-card" data-company-card data-category={company.category} data-region={company.region} data-hangzhou={inRegion(company, '杭州') ? 'true' : 'false'} data-search={`${company.name} ${company.summary} ${company.location} ${company.category}`}>
+      {directory.companies.map(company => <article class="co-card" data-company-card data-category={company.category} data-region={company.region} data-hangzhou={inRegion(company, '杭州') ? 'true' : 'false'} data-search={`${company.name} ${(company.aliases || []).join(' ')} ${company.summary} ${company.location} ${company.category}`}>
         <div class="co-card-top"><span>{company.category}</span><span>{company.city === '杭州' ? '国内 · 杭州' : company.region}{company.hangzhouTeam && ' · 杭州团队'}</span></div>
         <h2><a href={`/companies/${company.id}/`}>{company.name}</a></h2>
         <p class="co-card-summary">{company.summary}</p>

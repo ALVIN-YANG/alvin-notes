@@ -6039,6 +6039,47 @@
       ]
     },
     {
+      "id": "hoorii",
+      "name": "HooRii / 和众科技",
+      "website": "https://hoorii.io/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "开发 ClawStage 桌面 AI 终端、HooRii Workshop 和智能体设备连接工具。",
+      "aliases": [
+        "杭州和众科技管理有限公司",
+        "HooRii Technology"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-15"
+      },
+      "syncedAt": "2026-10-15",
+      "sources": [
+        {
+          "title": "ClawStage 官方产品（hoorii.io 当前入口）",
+          "url": "https://clawstage.ai/",
+          "asOf": "2026-10-15",
+          "sourceId": "official"
+        },
+        {
+          "title": "声网合作介绍：ClawStage 与杭州和众科技",
+          "url": "https://www.shengwang.cn/news/blogdetail/clawstage/",
+          "asOf": "2026-10-15",
+          "sourceId": "partner"
+        },
+        {
+          "title": "中国计算机学会：杭州和众科技管理有限公司",
+          "url": "https://www.ccf.org.cn/Awardsnew/lnhjmd/2025/ccfkxjsj/ccfkjcgj/2025-11-24/853392.shtml",
+          "asOf": "2026-10-15",
+          "sourceId": "ccf"
+        }
+      ]
+    },
+    {
       "id": "yc-checkr",
       "name": "Checkr",
       "website": "http://www.checkr.com/",
