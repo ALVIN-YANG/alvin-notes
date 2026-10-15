@@ -7,6 +7,7 @@ const read = async name => JSON.parse(await readFile(new URL(`../src/data/compan
 const audit = await read('hangzhou-audit');
 const directory = await read('directory');
 const seed = await read('seed');
+const supplements = await read('hangzhou-supplements');
 
 test('杭州比对包含两年四类省级名单、全部十三期国家附件和两则新增公告，条目无漏记或重复', () => {
   assert.equal(audit.sources.length, 17);
@@ -52,4 +53,28 @@ test('每项官方记录有明确结论，收录项均指向杭州目录、基�
   }
   assert.deepEqual(counts, audit.counts);
   assert.match(audit.limits, /不视为不符合/);
+});
+
+test('名单外补充逐家公司去重并保留官网和杭州依据，待补项不混入正式目录', () => {
+  assert.equal(supplements.rows.length, 50);
+  assert.equal(new Set(supplements.rows.map(row => row.id)).size, supplements.rows.length);
+  const added = supplements.rows.filter(row => row.status === 'included');
+  assert.equal(added.length, supplements.added);
+  assert.equal(new Set(added.map(row => row.companyId)).size, supplements.added);
+  for (const row of supplements.rows) {
+    assert.ok(row.reason && row.sources.length, row.id);
+    assert.ok(row.sources.every(source => /^https?:$/.test(new URL(source.url).protocol)), row.id);
+    if (row.status === 'unconfirmed') {
+      assert.ok(!row.companyId && !directory.companies.some(company => company.id === row.id), row.id);
+      continue;
+    }
+    assert.equal(row.status, 'included');
+    for (const collection of [directory, seed]) {
+      const company = collection.companies.find(company => company.id === row.companyId);
+      assert.ok(company && inRegion(company, '杭州') && company.region === '国内', row.id);
+      assert.equal(company.website, row.website);
+      assert.ok(row.sources.every(source => company.sources.some(citation => citation.url === source.url)), row.id);
+    }
+  }
+  assert.match(supplements.limits, /不代表产品实测/);
 });

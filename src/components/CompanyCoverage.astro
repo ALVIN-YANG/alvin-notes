@@ -1,6 +1,7 @@
 ---
 import audit from '../data/companies/hangzhou-audit.json';
 import directory from '../data/companies/directory.json';
+import supplements from '../data/companies/hangzhou-supplements.json';
 const companies = new Map(directory.companies.map(company => [company.id, company]));
 const sources = new Map(audit.sources.map(source => [source.id, source]));
 const pending = [...new Set(audit.rows.filter(row => row.status === 'unconfirmed').map(row => row.company))];
@@ -12,6 +13,23 @@ const groups = [
 ];
 const citation = row => `${sources.get(row.sourceId).url}${row.page ? `#page=${row.page}` : ''}`;
 ---
+<section class="co-section co-coverage" id="hangzhou-supplements">
+  <h2>杭州官网与产品补充</h2>
+  <p>{supplements.reviewedAt} 按 AI 硬件、算力与 Agent 产品补充 {supplements.added} 家，补充后杭州分类共 {supplements.hangzhouCount} 家。来源为企业官网、公开产品页、文档及官方联系方式，不要求入选官方名单或拥有模型备案。</p>
+  <p>本轮保留 {supplements.rows.length} 个官网候选的结果。只确认公开产品与杭州归属；研发或预约中的产品按官网阶段描述。只确认杭州办公室、研发或运营中心的，标注“杭州团队”。暂未确认的保留缺项，不代表不符合标准，也不代表杭州企业已经收齐。</p>
+  <details class="co-history">
+    <summary>本轮公司、来源与结果（{supplements.added} 家已补入，{supplements.rows.length - supplements.added} 个待补）</summary>
+    <div class="co-table-wrap"><table>
+      <thead><tr><th>公司或品牌</th><th>公开产品与服务</th><th>直接来源</th><th>结果与依据</th></tr></thead>
+      <tbody>{supplements.rows.map(row => <tr>
+        <td>{'companyId' in row ? <a href={`/companies/${row.companyId}/`}>{row.name} →</a> : row.name}</td>
+        <td>{row.product || '本轮未确认完整收录信息'}</td>
+        <td>{row.sources.map(source => <p><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a></p>)}</td>
+        <td>{row.status === 'included' ? '已收录' : '暂未确认'}<p>{row.reason}</p></td>
+      </tr>)}</tbody>
+    </table></div>
+  </details>
+</section>
 <section class="co-section co-coverage" id="hangzhou-coverage">
   <h2>杭州官方名单比对记录</h2>
   <p>{audit.reviewedAt} 完成一次性比对，新增 {audit.added} 家公司；比对后杭州分类共 {audit.hangzhouCount} 家，含仅确认杭州公司或团队的条目。每项记录保留官方主体名称、产品或场景及处理结果，同一公司可能出现在多份名单中。</p>

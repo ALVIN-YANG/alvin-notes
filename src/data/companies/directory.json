@@ -6080,6 +6080,1191 @@
       ]
     },
     {
+      "id": "quadrengine",
+      "name": "全进科技",
+      "website": "https://quadrengine.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "开发 Tovigor 智能力量健身设备及 Meteer 等 AI 陪伴硬件。",
+      "aliases": [
+        "杭州全进科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://quadrengine.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "hiyan",
+      "name": "海宴科技",
+      "website": "https://www.hiyanai.com/official-website/home",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 杭州办公",
+      "hangzhouTeam": true,
+      "category": "行业应用",
+      "summary": "提供多模态行为感知、校园安全预警与机器人情绪感知方案。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.hiyanai.com/official-website/home",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "huixingyun",
+      "name": "慧星云",
+      "website": "https://www.huixingyun.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 GPU 算力租赁、模型训练与 ComfyUI 等 AI 创作工具。",
+      "aliases": [
+        "慧星云（杭州）数字科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.huixingyun.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方公司介绍与杭州地址",
+          "url": "https://www.huixingyun.com/aboutUs",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "exbot",
+      "name": "寻者机器人",
+      "website": "https://www.exrobottech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 Brain OS、机器人硬件与工业、医疗等场景的智能机器人方案。",
+      "aliases": [
+        "杭州寻者机器人科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.exrobottech.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "nuanmate",
+      "name": "暖星伴",
+      "website": "https://nuanmate.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "开发狐狸系列 AI 陪伴机器人及暖星伴应用。",
+      "aliases": [
+        "杭州暖星伴智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://nuanmate.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "qingyon",
+      "name": "青庸科技",
+      "website": "https://www.qingyon.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "开发 Revornix AI 信息工作台、Mosael 创作工具与企业智能体。",
+      "aliases": [
+        "青庸科技（杭州）有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.qingyon.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "zgi",
+      "name": "智能起源 / ZGI",
+      "website": "https://www.zgiai.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 ZGI 智能体平台、知识检索、工作流与模型网关。",
+      "aliases": [
+        "杭州智能起源科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.zgiai.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "cupboo",
+      "name": "简墨科技 / Cupboo",
+      "website": "https://www.cupboo.com/index.jsp",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "开发 Cupboo 咘咘 AI 智能宠物机器人。",
+      "aliases": [
+        "杭州简墨科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.cupboo.com/index.jsp",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "xingluan",
+      "name": "星鸾云 / 星临科技",
+      "website": "https://xingluan.cn/home",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 GPU 云实例、AI 训练推理与算力管理工具。",
+      "aliases": [
+        "杭州星临科技有限责任公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://xingluan.cn/home",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "chenyu",
+      "name": "晨羽智云",
+      "website": "https://www.chenyu.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 GPU 算力市场、LoRA 训练、AI 应用商店与生成工具。",
+      "aliases": [
+        "晨羽智云（杭州）科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.chenyu.cn/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "yidao",
+      "name": "一道科技",
+      "website": "https://www.yidaoit.cn/index.html",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 AI 应用王、AI 擎天、AI 魔方与行业智能体定制。",
+      "aliases": [
+        "杭州一道网络科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.yidaoit.cn/index.html",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方 AI 应用王、AI 擎天与 AI 魔方产品矩阵",
+          "url": "https://www.yidaoit.cn/products.html",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "habitax",
+      "name": "栖界 / Habitax",
+      "website": "https://www.habitaxx.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "开发 NOBI 家庭 AI 机器人与宠物行为感知平台。",
+      "aliases": [
+        "杭州栖界科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.habitaxx.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "yiwa",
+      "name": "亿娲人工智能",
+      "website": "https://yiwaai.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供企业智能体、智能巡店与知识库等 AI 应用交付。",
+      "aliases": [
+        "亿娲（杭州）人工智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://yiwaai.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "sysoul",
+      "name": "希秀 / Sysoul",
+      "website": "https://sysoul.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "开发 Robonix OS 机器人操作系统与技能编排基础设施。",
+      "aliases": [
+        "杭州希秀泛在计算技术有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://sysoul.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "mituan",
+      "name": "米团数智",
+      "website": "https://mituanai.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "开发咪崽·五咪上将 AI 猫形机器人与情感交互应用。",
+      "aliases": [
+        "杭州米团数智科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://mituanai.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "superbobo",
+      "name": "超级有爱",
+      "website": "https://superchiochio.com/contact",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州主体 · 深圳办公",
+      "category": "行业应用",
+      "summary": "开发超级球球 AI 陪伴硬件与情感交互应用。",
+      "aliases": [
+        "超级有爱（杭州）智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://superchiochio.com/contact",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "moelab",
+      "name": "镭萌科技 / Moe Lab",
+      "website": "https://moe-lab.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "开发 bibo 非语言交互 AI 情感机器人。",
+      "aliases": [
+        "杭州镭萌科技有限责任公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://moe-lab.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "aiforia",
+      "name": "爱霏粒 / AIFORIA",
+      "website": "https://www.aiforia.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 FORIA OS 视觉智能体中枢与空间行为预警产品。",
+      "aliases": [
+        "爱霏粒（杭州）智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.aiforia.cn/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "raagent",
+      "name": "满宁科技 / RAAGENT",
+      "website": "https://raagent.me/me",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 RAAGENT 智能体市场、本地运行与智能体发布平台。",
+      "aliases": [
+        "杭州满宁科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://raagent.me/me",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "demean",
+      "name": "地鸣信息",
+      "website": "https://demean.cn/services/agent",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供企业知识助手、多智能体协作与业务系统定制。",
+      "aliases": [
+        "杭州地鸣信息技术有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://demean.cn/services/agent",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方 AI 助手与多智能体案例",
+          "url": "https://demean.cn/cases/index.html",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "cloudnine",
+      "name": "云尖信息",
+      "website": "https://www.cloudnineinfo.com/sol_ai/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 AI 服务器、算力部件与大模型一体机。",
+      "aliases": [
+        "云尖信息技术股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.cloudnineinfo.com/sol_ai/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方公司介绍与杭州总部",
+          "url": "https://www.cloudnineinfo.com/About/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "shunwang",
+      "name": "顺网科技",
+      "website": "https://shunwang.com/about.html",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供顺网智算、异构算力调度与模型训练推理服务。",
+      "aliases": [
+        "杭州顺网科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://shunwang.com/about.html",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "insmtx",
+      "name": "智慧矩阵",
+      "website": "https://insmtx.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 Lework AI 队友、CoreKG 知识引擎与 CatAPI 能力平台。",
+      "aliases": [
+        "杭州智慧矩阵人工智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://insmtx.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方企业 AI 产品矩阵",
+          "url": "https://insmtx.com/products",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方公司介绍与杭州总部",
+          "url": "https://insmtx.com/about",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "starcore",
+      "name": "星核引力 / LUMI AI",
+      "website": "https://starcoreai.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 LUMI AI 营销智能体、内容生成与增长分析平台。",
+      "aliases": [
+        "杭州星核引力人工智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://starcoreai.cn/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "LUMI AI 官方产品平台",
+          "url": "https://geo.starcoreai.cn/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "haihuman",
+      "name": "拟仁智能",
+      "website": "https://www.haihuman.com/",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 杭州研发中心",
+      "hangzhouTeam": true,
+      "category": "AI Agent",
+      "summary": "提供数字人智能体、具身智能体与交互应用定制。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.haihuman.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "jsagent",
+      "name": "具身人工智能",
+      "website": "https://jsagent.net/aboutus.html",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 AI 内容生成、客服智能体与自动化发布软件。",
+      "aliases": [
+        "杭州具身人工智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://jsagent.net/aboutus.html",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "tongdun",
+      "name": "同盾科技",
+      "website": "https://www.tongdun.com/",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 杭州团队",
+      "hangzhouTeam": true,
+      "category": "行业应用",
+      "summary": "提供智策决策智能、智邦隐私计算及智能风控产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.tongdun.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "lanxin",
+      "name": "蓝芯机器人",
+      "website": "https://www.lanxincn.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供 3D 视觉相机、工业移动机器人与智能物流系统。",
+      "aliases": [
+        "杭州蓝芯机器人技术股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.lanxincn.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "shenhao",
+      "name": "申昊科技",
+      "website": "https://www.shenhaoinfo.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供工业 AI 检测、智能巡检与具身机器人产品。",
+      "aliases": [
+        "杭州申昊科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.shenhaoinfo.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "iplus",
+      "name": "迦智科技",
+      "website": "https://www.iplusbot.cn/",
+      "region": "国内",
+      "city": "",
+      "location": "台州总部 · 杭州运营中心",
+      "hangzhouTeam": true,
+      "category": "行业应用",
+      "summary": "提供 EMMA 系列 AMR、叉取机器人与集群调度软件。",
+      "aliases": [
+        "浙江迦智科技股份有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.iplusbot.cn/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方公司介绍（台州总部）",
+          "url": "https://www.iplusbot.cn/about-us/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方杭州运营中心联系方式",
+          "url": "https://www.iplusbot.cn/contact/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "aigrow",
+      "name": "简爱数智 / AIGROW",
+      "website": "https://www.aigrow.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供 PatX 知小寻专利智能体与 AideX 知识引擎。",
+      "aliases": [
+        "简爱数智（杭州）科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.aigrow.cn/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "veloxis",
+      "name": "微路智能 / VELOXIS AI",
+      "website": "https://www.veloxis-tech.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "研发 VLX 系列端侧 AI 加速卡，提供计算与互联 IP 授权方案。",
+      "aliases": [
+        "杭州微路智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.veloxis-tech.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "lpck",
+      "name": "联保致新",
+      "website": "https://lpcknew.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "AI Agent",
+      "summary": "提供企业 AI 智能体独立站与外贸询盘助手。",
+      "aliases": [
+        "杭州联保致新科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://lpcknew.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "xingwuzhong",
+      "name": "星物种机器人",
+      "website": "https://xingwuzhong.cn/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "行业应用",
+      "summary": "提供空间智能清洁机器人与视觉决策控制系统。",
+      "aliases": [
+        "杭州星物种机器人有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://xingwuzhong.cn/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "zzrobot",
+      "name": "HOVERAir / 零零科技",
+      "website": "https://www.zzrobotics.com/",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 杭州团队",
+      "hangzhouTeam": true,
+      "category": "行业应用",
+      "summary": "开发 AI 自主跟拍飞行相机与机器视觉产品。",
+      "aliases": [],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.zzrobotics.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "HOVERAir 官方跟拍相机产品",
+          "url": "https://hoverair.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "zitai",
+      "name": "咨钛服务器",
+      "website": "https://www.zitai.tech/about.html",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 杭州办公",
+      "hangzhouTeam": true,
+      "category": "基础设施",
+      "summary": "提供 GPU 算力服务器、国产算力平台与服务器租赁。",
+      "aliases": [
+        "浙江咨钛服务器制造有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.zitai.tech/about.html",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "xiuyuan",
+      "name": "秀源智能",
+      "website": "https://gpu-expert.com/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 AI GPU 设备维保、算力租赁与硬件供应服务。",
+      "aliases": [
+        "杭州秀源智能科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://gpu-expert.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "oasis",
+      "name": "智绘绿洲",
+      "website": "https://www.oasisinfo.cn/newpro/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 AI 算力服务器、算力卡与数据中心基础设施。",
+      "aliases": [
+        "杭州智绘绿洲科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.oasisinfo.cn/newpro/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        },
+        {
+          "title": "官方公司介绍与杭州总部",
+          "url": "https://www.oasisinfo.cn/about/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "mzcs",
+      "name": "摩智超算",
+      "website": "https://www.mzcsai.com/",
+      "region": "国内",
+      "city": "",
+      "location": "国内 · 杭州办公",
+      "hangzhouTeam": true,
+      "category": "基础设施",
+      "summary": "提供 AI 服务器、算力卡与异构智算基础设施方案。",
+      "aliases": [
+        "浙江摩智超算科技有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://www.mzcsai.com/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
+      "id": "hzksyun",
+      "name": "杭州金山云网络",
+      "website": "https://hzksyun.net/",
+      "region": "国内",
+      "city": "杭州",
+      "location": "杭州",
+      "category": "基础设施",
+      "summary": "提供 GPU 裸金属服务器与云计算服务。",
+      "aliases": [
+        "杭州金山云网络技术有限公司"
+      ],
+      "sourceId": "seed",
+      "activity": {
+        "kind": "public-product",
+        "label": "官网与公开 AI 产品介绍",
+        "asOf": "2026-10-16"
+      },
+      "syncedAt": "2026-10-16",
+      "sources": [
+        {
+          "title": "官方产品介绍与公司信息",
+          "url": "https://hzksyun.net/",
+          "asOf": "2026-10-16",
+          "sourceId": "official"
+        }
+      ]
+    },
+    {
       "id": "yc-checkr",
       "name": "Checkr",
       "website": "http://www.checkr.com/",
