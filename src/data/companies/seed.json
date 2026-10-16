@@ -592,7 +592,7 @@
     {
       "id": "infinigence",
       "name": "无问芯穹",
-      "website": "https://www.infinigence.com/",
+      "website": "https://www.infinigence-ai.com/",
       "region": "国内",
       "city": "",
       "location": "中国",
@@ -604,15 +604,15 @@
       "sourceId": "seed",
       "activity": {
         "kind": "public-product",
-        "label": "公开产品页（首次整理）",
-        "asOf": "2026-10-14"
+        "label": "官方产品页（本轮复核）",
+        "asOf": "2026-10-16"
       },
-      "syncedAt": "2026-10-14",
+      "syncedAt": "2026-10-16",
       "sources": [
         {
-          "title": "公司官网与公开产品",
-          "url": "https://www.infinigence.com/",
-          "asOf": "2026-10-14",
+          "title": "无问芯穹官方产品与服务",
+          "url": "https://www.infinigence-ai.com/",
+          "asOf": "2026-10-16",
           "sourceId": "official"
         }
       ]
@@ -955,7 +955,7 @@
     {
       "id": "qunhe",
       "name": "群核科技",
-      "website": "https://www.qunhe.com/",
+      "website": "https://www.manycoretech.com/",
       "region": "国内",
       "city": "杭州",
       "location": "杭州",
@@ -967,15 +967,15 @@
       "sourceId": "seed",
       "activity": {
         "kind": "public-product",
-        "label": "公开产品页（首次整理）",
-        "asOf": "2026-10-14"
+        "label": "官方产品页（本轮复核）",
+        "asOf": "2026-10-16"
       },
-      "syncedAt": "2026-10-14",
+      "syncedAt": "2026-10-16",
       "sources": [
         {
-          "title": "公司官网与公开产品",
-          "url": "https://www.qunhe.com/",
-          "asOf": "2026-10-14",
+          "title": "群核科技官方产品与杭州联系方式",
+          "url": "https://www.manycoretech.com/",
+          "asOf": "2026-10-16",
           "sourceId": "official"
         },
         {

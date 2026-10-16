@@ -5,6 +5,9 @@ import CompanyHistorical from '../../components/CompanyHistorical.astro';
 import directory from '../../data/companies/directory.json';
 import catalog from '../../data/companies/catalog.json';
 import archive from '../../data/companies/archive.json';
+import analyses from '../../data/companies/employee-analyses.json';
+import CompanyEmployeeAnalysis from '../../components/CompanyEmployeeAnalysis.astro';
+import { analysisFor, validateEmployeeAnalyses } from '../../lib/company-employee-analysis.mjs';
 import { dateLabel } from '../../lib/company-directory.mjs';
 export function getStaticPaths() {
   const old = [...catalog.companies, ...archive.companies];
@@ -13,15 +16,20 @@ export function getStaticPaths() {
 }
 const { listing, historical } = Astro.props;
 const name = listing?.name || historical.name;
+validateEmployeeAnalyses(analyses);
+const report = listing ? analysisFor(listing, analyses) : undefined;
 ---
-<StarlightPage frontmatter={{ title: `${name} · AI 公司观察`, description: listing?.summary || historical.summary, template: 'splash', hidePageTitle: true }} sidebar={[]}>
+<StarlightPage frontmatter={{ title: `${name} · AI 公司观察`, description: report?.teaser || listing?.summary || historical.summary, template: 'splash', hidePageTitle: true }} sidebar={[]}>
   <div class="company-observer co-profile not-content">
     <CompanyNav />
     {listing ? <>
-      <header class="co-profile-heading"><div><p class="co-kicker">{listing.category} · {listing.region}{listing.city && ` · ${listing.city}`}</p><h1 id="_top">{listing.name}</h1><p class="co-summary">{listing.summary}</p></div><div class="co-profile-meta"><a href={listing.website} target="_blank" rel="noopener noreferrer">访问官网 ↗</a><span>目录同步 {dateLabel(listing.syncedAt)}</span></div></header>
+      <CompanyEmployeeAnalysis company={listing} report={report} />
+      <details class="co-history"><summary>收录依据与目录来源</summary>
       <section class="co-section"><h2>公开信息</h2><dl class="co-facts"><div><dt>所在地</dt><dd>{listing.location}{listing.hangzhouTeam && '（在杭州设有团队）'}</dd></div><div><dt>收录依据</dt><dd>{listing.activity.label} · {dateLabel(listing.activity.asOf)}<p class="co-muted">表示公开产品或名册中的活动记录，不代表经营业绩或产品效果已核实。</p></dd></div>{listing.sourceSummary && listing.sourceSummary !== listing.summary && <div><dt>来源原文</dt><dd>{listing.sourceSummary}</dd></div>}</dl></section>
       <section class="co-section"><h2>信息来源</h2><ul class="co-source-list">{listing.sources.map(source => <li><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a><span>{source.sourceId === 'cac' ? '备案日期' : '资料读取'} {dateLabel(source.asOf)}</span></li>)}</ul></section>
+      </details>
       {historical && <details class="co-history"><summary>历史深度档案（已停止更新）</summary><CompanyHistorical company={historical} /></details>}
     </> : <><header class="co-heading"><h1 id="_top">{name}</h1></header><CompanyHistorical company={historical} /></>}
   </div>
 </StarlightPage>
+<script>import { setupCompanyAnalysis } from '../../scripts/company-directory'; setupCompanyAnalysis();</script>
