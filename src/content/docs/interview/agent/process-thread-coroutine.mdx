@@ -1,0 +1,36 @@
+---
+title: "进程、线程和协程有什么区别？切换开销花在哪里？"
+description: "进程隔离地址空间与资源；同一进程内的线程共享地址空间，各自保存栈、寄存器等执行状态。协程由语言运行时或库调度，可以在等待时挂起；它不是额外的一颗 CPU，也不一定固定对应一个系统线程。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: basic
+  order: 19
+  tags: ["操作系统","进程","线程","协程"]
+sidebar:
+  label: "进程、线程和协程有什么区别？切换开销花在哪里？"
+  order: 19
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+进程隔离地址空间与资源；同一进程内的线程共享地址空间，各自保存栈、寄存器等执行状态。协程由语言运行时或库调度，可以在等待时挂起；它不是额外的一颗 CPU，也不一定固定对应一个系统线程。
+
+<InterviewVisual src="/images/interview/cards/agent-process-thread-coroutine.webp" alt="进程、线程和协程有什么区别？切换开销花在哪里？图解。进程：资源与地址空间；线程：共享资源、独立执行状态；协程：运行时调度；等待时挂起 ≠ 自动多核并行。" />
+
+进程切换可能涉及地址空间切换与缓存影响，线程切换仍要保存执行状态。协程切换通常可在用户态完成，但阻塞系统调用、运行时实现和实际工作负载会改变成本，不能用固定倍数比较。
+
+例如 Agent 同时等待多个模型接口，可在少量线程上运行许多协程；一个协程直接做大量同步计算，仍可能堵住事件循环。CPU 密集任务要考虑多进程、可并行运行时或释放 GIL 的原生库，并用实际延迟和资源开销验证。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Linux pthreads](https://man7.org/linux/man-pages/man7/pthreads.7.html)、[Python asyncio](https://docs.python.org/3/library/asyncio.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

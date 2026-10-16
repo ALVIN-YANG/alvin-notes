@@ -1,0 +1,36 @@
+---
+title: "HashMap 怎样处理哈希冲突和扩容？为什么不能直接用于并发写？"
+description: "HashMap 用哈希值定位桶，再通过键的相等性判断找到元素。OpenJDK 的常见实现使用数组、链表和红黑树；碰撞严重且表容量等条件满足时，桶可以树化。哈希值相同不代表 key 相同，仍要比较键。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 55
+  tags: ["Java","HashMap","数据结构"]
+sidebar:
+  label: "HashMap 怎样处理哈希冲突和扩容？为什么不能直接用于并发写？"
+  order: 55
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+HashMap 用哈希值定位桶，再通过键的相等性判断找到元素。OpenJDK 的常见实现使用数组、链表和红黑树；碰撞严重且表容量等条件满足时，桶可以树化。哈希值相同不代表 key 相同，仍要比较键。
+
+<InterviewVisual src="/images/interview/cards/agent-java-hashmap.webp" alt="HashMap 怎样处理哈希冲突和扩容？为什么不能直接用于并发写？图解。哈希定位桶，再比较键；冲突：链表或树；扩容重新分布；HashMap 不保证并发安全。" />
+
+JDK 8 的典型实现扩容时，旧桶元素依据哈希值新增的那一位，分到原位置或“原位置 + 旧容量”。这些是实现细节，不是所有 Map 都保证采用的规则。可变 key 如果参与 equals/hashCode 的字段变了，还可能导致元素查不到。
+
+HashMap 本身不保证线程安全。多个线程同时写，或一个线程写、其他线程无同步读取，都不能依赖其正确性；按场景使用 ConcurrentHashMap 或外部同步。并发容器的单次方法安全，也不自动让“先检查、再写入”整个业务流程原子。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[HashMap](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/HashMap.html)、[OpenJDK HashMap](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/HashMap.java)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

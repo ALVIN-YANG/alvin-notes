@@ -1,0 +1,36 @@
+---
+title: "Redis hot key 和 big key 怎样发现与处理？"
+description: "hot key 的核心问题是访问集中，big key 的问题是单个值或集合过大、操作或传输代价高；二者可能重合，也可能互不相关。先看命令耗时、请求分布、网络带宽与实例负载，定位到具体 key 或业务请求。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: reliability
+  level: intermediate
+  order: 89
+  tags: ["Redis","hot key","big key","性能"]
+sidebar:
+  label: "Redis hot key 和 big key 怎样发现与处理？"
+  order: 89
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+hot key 的核心问题是访问集中，big key 的问题是单个值或集合过大、操作或传输代价高；二者可能重合，也可能互不相关。先看命令耗时、请求分布、网络带宽与实例负载，定位到具体 key 或业务请求。
+
+<InterviewVisual src="/images/interview/cards/agent-redis-hot-big-key.webp" alt="Redis hot key 和 big key 怎样发现与处理？图解。hot key：访问集中；big key：单值或集合过大；分片不会自动拆开一个 key；拆分后重查原子边界。" />
+
+热点可用请求合并、允许陈旧时的本地缓存、合理复制或业务拆分分担，但单个 key 不会因为增加 Cluster 分片就自动分散。计数等写热点要设计分片聚合，并明确一致性边界。
+
+大值可拆分、分页读取或限制集合增长；删除时评估 UNLINK 等异步释放方式，避免在生产直接对大集合做全量扫描或阻塞操作。拆 key 还会改变原子操作范围，必须同时评估业务语义。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Redis latency diagnosis](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/)、[UNLINK](https://redis.io/docs/latest/commands/unlink/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

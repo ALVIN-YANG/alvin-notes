@@ -1,0 +1,36 @@
+---
+title: "Go 的 G、M、P 各是什么？goroutine 多了为什么仍会变慢？"
+description: "G 是 goroutine 的执行状态，M 对应运行时管理的系统线程，P 提供执行 Go 代码所需的调度资源。M 需要关联 P 才能运行普通 Go 代码；GOMAXPROCS 限制可同时执行 Go 代码的 P 数量，不等于整个进程只能有这么多线程。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 39
+  tags: ["Go","GMP","goroutine","调度"]
+sidebar:
+  label: "Go 的 G、M、P 各是什么？goroutine 多了为什么仍会变慢？"
+  order: 39
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+G 是 goroutine 的执行状态，M 对应运行时管理的系统线程，P 提供执行 Go 代码所需的调度资源。M 需要关联 P 才能运行普通 Go 代码；GOMAXPROCS 限制可同时执行 Go 代码的 P 数量，不等于整个进程只能有这么多线程。
+
+<InterviewVisual src="/images/interview/cards/agent-go-gmp-scheduling.webp" alt="Go 的 G、M、P 各是什么？goroutine 多了为什么仍会变慢？图解。G：goroutine 状态；M：系统线程；P：执行 Go 代码的资源；轻量并发仍需容量上限。" />
+
+运行时通过本地与全局可运行队列、网络轮询、工作窃取等机制安排 G；系统调用阻塞时可让其他线程接手 P，具体细节随 Go 版本变化。goroutine 轻量，但栈、对象、调度和下游连接都要资源。
+
+一万个协程同时调模型，不代表模型能同时接收一万个请求。用有界 Worker 或信号量限制并发，传递 context 的超时与取消，并确保阻塞发送、接收和等待都有退出条件，避免 goroutine 泄漏。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Go runtime scheduler source](https://go.dev/src/runtime/proc.go)、[Go diagnostics](https://go.dev/doc/diagnostics)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

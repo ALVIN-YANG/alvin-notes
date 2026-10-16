@@ -1,0 +1,36 @@
+---
+title: "布隆过滤器和 Bitmap 有什么区别？误判率受哪些因素影响？"
+description: "Bitmap 在有界且可映射为位下标的集合中直接记录成员，映射不冲突时可以精确判断；布隆过滤器把一个元素映射到多个位，节省空间，但不同元素可能共用这些位，导致把不存在的元素判断为“可能存在”。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 135
+  tags: ["布隆过滤器","Bitmap","哈希"]
+sidebar:
+  label: "布隆过滤器和 Bitmap 有什么区别？误判率受哪些因素影响？"
+  order: 135
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+Bitmap 在有界且可映射为位下标的集合中直接记录成员，映射不冲突时可以精确判断；布隆过滤器把一个元素映射到多个位，节省空间，但不同元素可能共用这些位，导致把不存在的元素判断为“可能存在”。
+
+<InterviewVisual src="/images/interview/cards/agent-bloom-filter-bitmap.webp" alt="布隆过滤器和 Bitmap 有什么区别？误判率受哪些因素影响？图解。Bitmap：下标直接记录；Bloom：多个哈希位共享；不存在 → 可能误判存在；可能存在还要查真实数据。" />
+
+标准布隆过滤器在正确插入、没有删除或数据丢失等前提下，不应把已插入元素判断为不存在。误判率取决于位数组大小、已插入元素数和哈希函数数量；哈希函数越多并不总是越好，还增加计算成本。
+
+过滤器回答“可能有”后仍要查询真实数据源。普通布隆过滤器不能直接清掉某个元素对应的位，因为这些位可能被其他元素共用；需要删除时考虑带计数等合适结构，并处理重建与更新一致性。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Redis Bloom filters](https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/)、[Redis bitmaps](https://redis.io/docs/latest/develop/data-types/bitmaps/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,35 @@
+---
+title: "AVL 树和红黑树有什么区别？读多写少就一定选 AVL 吗？"
+description: "两者都能把树高限制在 O(log n)。AVL 对高度平衡要求更严格，但实际读写成本还受实现、缓存局部性和数据分布影响。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 114
+  tags: [数据结构, AVL, 红黑树, 平衡树]
+sidebar:
+  label: AVL 与红黑树选型
+  order: 114
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+AVL 树和红黑树都是能保持 O(log n) 树高的二叉搜索树。区别主要在平衡规则，以及插入、删除后维护这些规则的成本。
+
+AVL 要求每个节点的左右子树高度差不超过 1；红黑树用节点颜色、红节点相邻限制和各路径黑节点数一致等规则控制高度，允许更宽松的形状。两者的查找、插入、删除最坏时间都是 O(log n)，不能说红黑树不平衡或 AVL 总是快一倍。
+
+读多写少时，AVL 更严格的高度限制有利于减少查找路径，是合理候选；写入较多时，要比较旋转、重新着色和高度维护的实际成本。仅凭读写比例不能保证谁更快，还要看树的实际形状、节点布局、比较操作开销及并发方式。
+
+工程上优先选择语言或项目已有的可靠容器。若查找确实是瓶颈，再用实际数据和操作比例比较耗时与内存。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+Princeton Algorithms 的 [AVLTreeST](https://github.com/kevin-wayne/algs4/blob/master/src/main/java/edu/princeton/cs/algs4/AVLTreeST.java) 与 [RedBlackBST](https://github.com/kevin-wayne/algs4/blob/master/src/main/java/edu/princeton/cs/algs4/RedBlackBST.java) 实现及复杂度说明。后者采用左倾红黑树实现，具体维护步骤不能代表所有红黑树实现。
+
+</details>
+
+</InterviewQuestion>

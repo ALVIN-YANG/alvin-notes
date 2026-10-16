@@ -1,0 +1,35 @@
+---
+title: "客户端显示发送成功，服务端却说没收到，应该怎样排查？"
+description: "先确认成功发生在哪一层，再用同一次请求的标识，沿客户端、网关和应用逐段核对。发送成功不等于业务已执行。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: reliability
+  level: advanced
+  order: 97
+  tags: [网络, HTTP, TCP, Trace, 故障排查]
+sidebar:
+  label: 发送成功却未收到
+  order: 97
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+先确认“成功”指什么：写入客户端发送缓冲区、TCP 收到确认、HTTP 返回响应，还是业务操作已完成。这几件事发生在不同层，不能互相替代。
+
+给同一次请求找到可关联的标识，核对请求时间、目标地址、方法和响应内容，再沿客户端、DNS 与代理配置、负载均衡、网关、应用入口逐段查日志。重点找最后一个确实看见请求的位置。也要确认双方查看的是同一环境、同一实例，时间范围一致。
+
+例如，客户端拿到 HTTP 202，只表示请求已被接受，处理可能尚未完成；拿到 200，也要核对响应由谁返回、接口约定的成功含义，以及是否真的走到目标业务。应用没有日志，还可能是日志采样或查询范围错误，不能直接判定网络丢包。
+
+日志仍不能定位时，再对相关链路抓包或补充观测。若请求包含扣款、发消息等写操作，排查期间先查业务状态；需要重试时复用受支持的幂等标识，避免为了验证“没收到”而重复执行。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[HTTP 语义：状态码与请求处理](https://www.rfc-editor.org/rfc/rfc9110.html#section-15)、[OpenTelemetry Trace](https://opentelemetry.io/docs/concepts/signals/traces/)。原帖未说明“成功”属于哪一层，答案保留这一缺口。
+
+</details>
+
+</InterviewQuestion>

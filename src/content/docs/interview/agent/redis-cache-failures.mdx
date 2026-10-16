@@ -1,0 +1,36 @@
+---
+title: "缓存穿透、击穿和雪崩怎样区分？分别怎样保护数据库？"
+description: "穿透是反复查询不存在的数据，缓存总不命中；击穿通常指热点 key 失效后大量请求同时回源；雪崩通常是许多 key 集中过期或缓存整体不可用，引发大面积回源。先判断是哪种流量与故障，处理方式才有针对性。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: system-design
+  level: intermediate
+  order: 80
+  tags: ["Redis","缓存","穿透","击穿","雪崩"]
+sidebar:
+  label: "缓存穿透、击穿和雪崩怎样区分？分别怎样保护数据库？"
+  order: 80
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+穿透是反复查询不存在的数据，缓存总不命中；击穿通常指热点 key 失效后大量请求同时回源；雪崩通常是许多 key 集中过期或缓存整体不可用，引发大面积回源。先判断是哪种流量与故障，处理方式才有针对性。
+
+<InterviewVisual src="/images/interview/cards/agent-redis-cache-failures.webp" alt="缓存穿透、击穿和雪崩怎样区分？分别怎样保护数据库？图解。穿透：不存在的数据反复回源；击穿：热点失效并发回源；雪崩：大面积同时回源；最后一道：数据库限流与降级。" />
+
+不存在的数据可短时缓存空结果，必要时增加布隆过滤器，但要处理新建记录与过滤器更新。热点重建可合并请求、限制单次重建并发，或在允许旧数据的场景使用逻辑过期。分散过期时间能缓解同时失效，却不能解决整个 Redis 集群不可用。
+
+数据库侧仍要限制回源并发与重试，缓存故障时按业务降级。锁或空值缓存都会引入额外边界：重建者可能失败，空值可能短暂遮住新数据，不能只背一种万能方案。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Redis caching](https://redis.io/docs/latest/develop/use/client-side-caching/)、[Redis Bloom](https://redis.io/docs/latest/develop/data-types/probabilistic/bloom-filter/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

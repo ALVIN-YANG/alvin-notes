@@ -1,0 +1,36 @@
+---
+title: "Redis 主从复制与故障切换怎样工作？主节点挂了会不会丢写入？"
+description: "Redis 复制通常是异步的，副本通过初次同步与后续命令传播追上主节点；断开后能否部分重同步取决于复制标识、偏移和 backlog 中是否还保留需要的数据。副本落后时，刚写入主节点的数据不一定已经可见。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: system-design
+  level: intermediate
+  order: 90
+  tags: ["Redis","复制","Sentinel","故障切换"]
+sidebar:
+  label: "Redis 主从复制与故障切换怎样工作？主节点挂了会不会丢写入？"
+  order: 90
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+Redis 复制通常是异步的，副本通过初次同步与后续命令传播追上主节点；断开后能否部分重同步取决于复制标识、偏移和 backlog 中是否还保留需要的数据。副本落后时，刚写入主节点的数据不一定已经可见。
+
+<InterviewVisual src="/images/interview/cards/agent-redis-replication.webp" alt="Redis 主从复制与故障切换怎样工作？主节点挂了会不会丢写入？图解。主节点异步传播到副本；复制偏移与 backlog；故障后选择副本晋升；已确认写入仍可能丢失。" />
+
+Sentinel 可监测主节点故障并协调副本晋升，Redis Cluster 也有自身的故障检测和晋升机制；部署模式不同，不能把两者混成一套流程。客户端还需要发现新主、处理连接与不确定的请求结果。
+
+主节点确认后、变更尚未到达将被晋升的副本时，故障切换可能丢掉这部分写入。WAIT 能等待副本确认，但不把系统自动变成强一致数据库，也不能代替刷盘与业务幂等。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Redis replication](https://redis.io/docs/latest/operate/oss_and_stack/management/replication/)、[Redis Sentinel](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

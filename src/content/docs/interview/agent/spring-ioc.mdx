@@ -1,0 +1,33 @@
+---
+title: "Spring 的 IoC 和依赖注入是什么？比自己 new 对象好在哪里？"
+description: "IoC 把对象的创建和组装交给容器；依赖注入让对象直接接收所需的依赖，不必自己寻找或创建它们。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: basic
+  order: 131
+  tags: [Spring, IoC, 依赖注入, Java]
+sidebar:
+  label: Spring IoC 与依赖注入
+  order: 131
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+IoC（控制反转）把对象的创建、组装和生命周期管理交给容器。依赖注入是实现它的一种方式：对象声明自己需要什么，由容器提供，不必自己创建或查找依赖。Spring 管理的对象称为 Bean。
+
+例如，订单服务需要支付接口。如果在服务内部直接创建某个支付实现，更换支付渠道或测试替身时，往往要改服务本身。改成通过构造器接收支付接口，服务只处理订单逻辑，外部决定提供哪个实现。构造器注入也能让必需的依赖一目了然。
+
+依赖注入本身不要求 Spring，手工组装对象也可以做到。Spring 的价值在于统一管理大量对象及其关系；它不会自动让单例 Bean 变得线程安全。把用户身份或订单状态保存在单例的可变字段里，仍可能串数据。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[Spring IoC 与 Bean](https://docs.spring.io/spring-framework/reference/core/beans/introduction.html)、[依赖注入](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html)。支付服务为解释示例；原帖考察方向见下方出处。
+
+</details>
+
+</InterviewQuestion>

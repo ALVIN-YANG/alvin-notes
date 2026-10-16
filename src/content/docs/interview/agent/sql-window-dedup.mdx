@@ -1,0 +1,50 @@
+---
+title: "SQL 怎样按业务键去重？ROW_NUMBER 和 DISTINCT 有什么区别？"
+description: "DISTINCT 去掉选中列组合的重复值；ROW_NUMBER 可在每个业务分组内按规则编号，保留满足业务顺序的那一条完整记录。它们回答的是不同问题，不能把任意重复数据都交给 DISTINCT。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 120
+  tags: ["SQL","ROW_NUMBER","去重"]
+sidebar:
+  label: "SQL 怎样按业务键去重？ROW_NUMBER 和 DISTINCT 有什么区别？"
+  order: 120
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+DISTINCT 去掉选中列组合的重复值；ROW_NUMBER 可在每个业务分组内按规则编号，保留满足业务顺序的那一条完整记录。它们回答的是不同问题，不能把任意重复数据都交给 DISTINCT。
+
+<InterviewVisual src="/images/interview/cards/agent-sql-window-dedup.webp" alt="SQL 怎样按业务键去重？ROW_NUMBER 和 DISTINCT 有什么区别？图解。DISTINCT：选中列去重；ROW_NUMBER：分组排序编号；时间相同，用唯一 ID 决胜；外层筛选 rn = 1。" />
+
+例如每个用户保留最新任务：按 user_id 分区，按 created_at DESC、id DESC 排序，再在外层筛选 rn = 1。加入唯一的 id 用来打破时间相同的平局，否则保留哪条可能不稳定。窗口函数结果通常不能在同层 WHERE 中直接过滤。
+
+删除重复数据前先明确业务键、保留规则和外键影响，查询预览再小批处理。查询去重不等于阻止以后再写入重复项；应结合唯一约束与写入规则。
+
+```sql
+WITH ranked AS (
+  SELECT id, user_id, created_at,
+         ROW_NUMBER() OVER (
+           PARTITION BY user_id
+           ORDER BY created_at DESC, id DESC
+         ) AS rn
+  FROM tasks
+)
+SELECT id, user_id, created_at
+FROM ranked
+WHERE rn = 1;
+```
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[MySQL window functions](https://dev.mysql.com/doc/refman/8.4/en/window-function-descriptions.html)、[DISTINCT optimization](https://dev.mysql.com/doc/refman/8.4/en/distinct-optimization.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

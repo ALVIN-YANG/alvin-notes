@@ -1,0 +1,36 @@
+---
+title: "限流、熔断和降级有什么区别？令牌桶与漏桶怎么选？"
+description: "限流控制进入系统的流量或并发，熔断在下游持续异常时暂时停止调用，降级则返回成本更低或能力受限的结果。三者处理的对象不同，可以组合，不能把失败后重试叫作熔断。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: reliability
+  level: intermediate
+  order: 64
+  tags: ["限流","熔断","降级","令牌桶"]
+sidebar:
+  label: "限流、熔断和降级有什么区别？令牌桶与漏桶怎么选？"
+  order: 64
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+限流控制进入系统的流量或并发，熔断在下游持续异常时暂时停止调用，降级则返回成本更低或能力受限的结果。三者处理的对象不同，可以组合，不能把失败后重试叫作熔断。
+
+<InterviewVisual src="/images/interview/cards/agent-rate-limit-circuit-breaker.webp" alt="限流、熔断和降级有什么区别？令牌桶与漏桶怎么选？图解。限流：控制入口；熔断：暂避异常下游；降级：缩减可用能力；令牌桶允许有限突发。" />
+
+令牌桶按速率补充令牌，并允许桶容量范围内的短时突发；漏桶按约定速率平滑输出，具体实现还需要有限队列和溢出规则。固定窗口简单但有边界突发，滑动窗口更平滑但记录与计算成本更高。
+
+Agent 系统还应分别限制请求数、并发数和 Token 预算，并覆盖全局、租户和供应商维度。降级模型必须仍能满足任务所需权限与能力；返回旧数据或转人工要明确状态，不能把不完整结果伪装成成功。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Azure throttling](https://learn.microsoft.com/en-us/azure/architecture/patterns/throttling)、[Circuit breaker](https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

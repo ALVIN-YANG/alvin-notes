@@ -1,0 +1,36 @@
+---
+title: "HTTP 和 HTTPS 有什么区别？TLS 怎样防窃听与冒充？"
+description: "HTTPS 是通过 TLS 保护的 HTTP。TLS 为传输提供机密性、完整性与端点认证；常见浏览器场景通过证书链和主机名校验确认服务器身份，再协商会话密钥保护应用数据。TLS 不会自动让业务接口具备用户权限检查。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: basic
+  order: 44
+  tags: ["HTTP","HTTPS","TLS","网络"]
+sidebar:
+  label: "HTTP 和 HTTPS 有什么区别？TLS 怎样防窃听与冒充？"
+  order: 44
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+HTTPS 是通过 TLS 保护的 HTTP。TLS 为传输提供机密性、完整性与端点认证；常见浏览器场景通过证书链和主机名校验确认服务器身份，再协商会话密钥保护应用数据。TLS 不会自动让业务接口具备用户权限检查。
+
+<InterviewVisual src="/images/interview/cards/agent-https-tls.webp" alt="HTTP 和 HTTPS 有什么区别？TLS 怎样防窃听与冒充？图解。校验证书与主机名；协商密钥，保护应用数据；HTTPS ≠ 业务授权；HTTP/3 使用 QUIC。" />
+
+以 TLS 1.3 的常见握手为例，客户端与服务端协商参数并交换密钥材料，服务端用证书与签名证明身份，之后使用对称密码保护流量。证书通常不是拿来直接加密整份请求；私钥也不应传给客户端。
+
+HTTP/1.1、HTTP/2 常在 TCP 上使用 TLS；HTTP/3 则使用结合 TLS 1.3 的 QUIC。不能一概说所有 HTTPS 都先建立 TCP。调用模型接口出现证书错误时，应检查证书链、域名、时间和代理，不应直接关闭验证。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[TLS 1.3 RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)、[HTTP/3 RFC 9114](https://www.rfc-editor.org/rfc/rfc9114)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

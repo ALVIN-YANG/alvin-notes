@@ -1,0 +1,36 @@
+---
+title: "MySQL 为什么常用 B+ 树索引？聚簇索引和回表是什么？"
+description: "InnoDB 的 B+ 树把许多键放进一个页，较高扇出可减少定位记录需要访问的层数；叶子页按键有序连接，适合范围扫描。它与哈希索引的区别不只是快慢，还包括范围、排序和访问方式。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 20
+  tags: ["MySQL","InnoDB","B+树","回表"]
+sidebar:
+  label: "MySQL 为什么常用 B+ 树索引？聚簇索引和回表是什么？"
+  order: 20
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+InnoDB 的 B+ 树把许多键放进一个页，较高扇出可减少定位记录需要访问的层数；叶子页按键有序连接，适合范围扫描。它与哈希索引的区别不只是快慢，还包括范围、排序和访问方式。
+
+<InterviewVisual src="/images/interview/cards/agent-mysql-bplus-tree.webp" alt="MySQL 为什么常用 B+ 树索引？聚簇索引和回表是什么？图解。B+ 树：多路有序查找；聚簇索引叶子：整行；二级索引叶子：键与主键；缺少字段时再回表。" />
+
+InnoDB 聚簇索引的叶子保存整行数据，通常由主键组织；二级索引叶子保存二级索引键与主键。二级索引筛到记录后，如果还要查询索引中没有的列，就再按主键访问聚簇索引，通常称为回表。
+
+覆盖索引可在索引中拿到所需字段，减少回表，但会增加索引空间与更新成本。索引页保存在表空间中，也可能被缓存在 Buffer Pool；“索引在磁盘还是内存”不能只选一个。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[InnoDB index types](https://dev.mysql.com/doc/refman/8.4/en/innodb-index-types.html)、[InnoDB physical index structure](https://dev.mysql.com/doc/refman/8.4/en/innodb-physical-structure.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

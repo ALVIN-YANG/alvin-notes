@@ -1,0 +1,36 @@
+---
+title: "TCP 为什么要三次握手？连接成功能证明服务端已处理请求吗？"
+description: "三次握手让双方建立连接状态，交换初始序列号，并确认对方收到自己的连接信息。客户端发 SYN，服务端返回 SYN+ACK，客户端再确认；第三步让服务端确认客户端确实收到其响应，而不是只收到一个可能延迟到达的旧连接请求。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: basic
+  order: 79
+  tags: ["TCP","握手","序列号"]
+sidebar:
+  label: "TCP 为什么要三次握手？连接成功能证明服务端已处理请求吗？"
+  order: 79
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+三次握手让双方建立连接状态，交换初始序列号，并确认对方收到自己的连接信息。客户端发 SYN，服务端返回 SYN+ACK，客户端再确认；第三步让服务端确认客户端确实收到其响应，而不是只收到一个可能延迟到达的旧连接请求。
+
+<InterviewVisual src="/images/interview/cards/agent-tcp-handshake.webp" alt="TCP 为什么要三次握手？连接成功能证明服务端已处理请求吗？图解。客户端 SYN；服务端 SYN + ACK；客户端 ACK；传输确认 ≠ 业务完成。" />
+
+不能只用“双方都知道对方能收能发”解释所有边界，还要理解旧报文、连接状态与序列号。常见建立过程把服务端的 SYN 和 ACK 合在一个报文中，因此不需要为这两个动作固定拆成四次；同时打开等情况还有其他合法过程。
+
+TCP 建连成功只证明传输层连接已建立。后续 TLS、认证、HTTP 请求或业务处理仍可能失败；请求字节被 TCP 确认，也不代表扣款、发邮件等业务已完成。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[TCP RFC 9293](https://www.rfc-editor.org/rfc/rfc9293)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

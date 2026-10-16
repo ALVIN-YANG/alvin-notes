@@ -1,0 +1,36 @@
+---
+title: "进程间怎样通信？用户态和内核态在哪些地方参与？"
+description: "同一进程的线程可访问共享地址空间，独立进程则需要约定通信方式，例如管道、Unix socket、共享内存或网络 socket。共享内存避免了部分消息复制，但数据格式、同步、生命周期和权限仍要自己设计。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 67
+  tags: ["Linux","IPC","管道","用户态","内核态"]
+sidebar:
+  label: "进程间怎样通信？用户态和内核态在哪些地方参与？"
+  order: 67
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+同一进程的线程可访问共享地址空间，独立进程则需要约定通信方式，例如管道、Unix socket、共享内存或网络 socket。共享内存避免了部分消息复制，但数据格式、同步、生命周期和权限仍要自己设计。
+
+<InterviewVisual src="/images/interview/cards/agent-ipc-user-kernel.webp" alt="进程间怎样通信？用户态和内核态在哪些地方参与？图解。独立进程需要通信契约；管道、socket、共享内存；系统调用 ≠ 进程切换；ls | grep 才明确使用管道。" />
+
+用户态与内核态是处理器执行权限的边界；系统调用进入内核请求受保护服务，不等于一定切换到另一个进程。进程切换、线程切换、权限级切换和数据复制是不同成本，不能混为一次动作。
+
+例如 ls | grep md 中，shell 创建管道并把两个命令的输出、输入连接起来；单独运行 ls 并不一定用管道传给父进程，也可能直接写终端。不能因为终端里执行了命令，就断言通信方式必然是管道。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Linux pipe](https://man7.org/linux/man-pages/man7/pipe.7.html)、[Linux unix sockets](https://man7.org/linux/man-pages/man7/unix.7.html)、[Linux syscall](https://man7.org/linux/man-pages/man2/syscall.2.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

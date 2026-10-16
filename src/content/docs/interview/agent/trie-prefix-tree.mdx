@@ -1,0 +1,63 @@
+---
+title: "手写前缀树，完整单词查询与前缀查询有什么区别？"
+description: "前缀树让公共前缀共享路径；完整单词查询还必须检查终止标记，走到某个节点不代表该单词已插入。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 106
+  tags: [算法, Trie, 前缀树, Python]
+sidebar:
+  label: 前缀树实现与应用
+  order: 106
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+前缀树（Trie）按字符逐层存储字符串，让公共前缀共享路径。插入 `app` 和 `apple` 后，它们共用 `a → p → p`；完整单词查询要检查终止标记，前缀查询只需要路径存在。
+
+```python
+class Trie:
+    def __init__(self):
+        self.children = {}
+        self.end = False
+
+    def insert(self, word):
+        node = self
+        for char in word:
+            if char not in node.children:
+                node.children[char] = Trie()
+            node = node.children[char]
+        node.end = True
+
+    def _walk(self, text):
+        node = self
+        for char in text:
+            node = node.children.get(char)
+            if node is None:
+                return None
+        return node
+
+    def search(self, word):
+        node = self._walk(word)
+        return node is not None and node.end
+
+    def starts_with(self, prefix):
+        return self._walk(prefix) is not None
+```
+
+只插入 `apple` 时，查询单词 `app` 返回假，查询前缀 `app` 返回真。代码允许空字符串，插入它会把根标记为单词终点；不允许空串的接口应在入口拒绝。
+
+用哈希表存孩子时，长度为 L 的插入和查询平均为 O(L)。总空间随新增字符节点数增长，不能说每个词都只占 O(1)。它适合词典前缀匹配和自动补全；补全结果的排序、数量限制仍要另外实现。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[Princeton Algorithms：TrieST](https://github.com/kevin-wayne/algs4/blob/master/src/main/java/edu/princeton/cs/algs4/TrieST.java)。本站代码改用字符哈希表，接口与示例独立编写。
+
+</details>
+
+</InterviewQuestion>

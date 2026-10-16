@@ -1,0 +1,36 @@
+---
+title: "分页和分段有什么区别？虚拟地址怎样找到物理内存？"
+description: "分页按固定大小的页映射地址，虚拟地址可拆成页号与页内偏移，页表给出物理页框；分段按代码、数据、栈等逻辑区间组织，常见模型通过段基址和界限检查定位地址。分页主要解决物理分配与映射，分段强调逻辑范围与保护，二者并非同一种切块方法。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 129
+  tags: ["操作系统","虚拟内存","分页","分段"]
+sidebar:
+  label: "分页和分段有什么区别？虚拟地址怎样找到物理内存？"
+  order: 129
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+分页按固定大小的页映射地址，虚拟地址可拆成页号与页内偏移，页表给出物理页框；分段按代码、数据、栈等逻辑区间组织，常见模型通过段基址和界限检查定位地址。分页主要解决物理分配与映射，分段强调逻辑范围与保护，二者并非同一种切块方法。
+
+<InterviewVisual src="/images/interview/cards/agent-os-virtual-memory.webp" alt="分页和分段有什么区别？虚拟地址怎样找到物理内存？图解。分页：固定大小映射；页号 → 页框，偏移保留；分段：逻辑区间与边界；TLB 未命中 ≠ 缺页。" />
+
+TLB 缓存最近的地址翻译。TLB 未命中不等于缺页：前者可能只需要查页表，后者才需要内核处理不存在或不满足权限的映射，也不一定发生磁盘 I/O。
+
+某些体系可以先做分段得到线性地址，再分页；现代 x86-64 常用长模式主要依赖分页，不能把教材里的段页式流程当作所有系统的现状。面试先说明讨论的体系与操作系统。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Linux page tables](https://docs.kernel.org/mm/page_tables.html)、[Linux physical memory](https://docs.kernel.org/mm/physical_memory.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,44 @@
+---
+title: "怎样用 O(1) 额外空间判断链表有环？为什么快慢指针一定会相遇？"
+description: "慢指针每次走一步，快指针每次走两步。无环时快指针到达末尾；有环时两者进入环后会相遇。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: basic
+  order: 112
+  tags: [算法, 链表, 快慢指针, Python]
+sidebar:
+  label: 链表判环
+  order: 112
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+让慢指针每次走一步，快指针每次走两步。无环时快指针会到达末尾；有环时，两者进入环后，快指针每轮相对多走一步，最终会追上慢指针。
+
+```python
+def has_cycle(head):
+    slow = fast = head
+    while fast is not None and fast.next is not None:
+        slow = slow.next
+        fast = fast.next.next
+        if slow is fast:
+            return True
+    return False
+```
+
+假设环长是 C，两者在环中的相对位置每轮改变一格，至多再经过 C 轮就会重合。比较的是同一个节点对象，不能比较节点值：不同节点也可能保存相同数值。两指针最初都在头部，所以应先移动再判断。
+
+时间 O(n)，额外空间 O(1)。需要覆盖空链表、单节点无环、单节点指向自己、环从头部开始和环位于中间。用集合记录已访问节点也能判环，但需要 O(n) 额外空间。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[LeetCode 141 题面与常量空间要求](https://leetcode.com/problems/linked-list-cycle/description/)。代码和推导为本站编写。
+
+</details>
+
+</InterviewQuestion>

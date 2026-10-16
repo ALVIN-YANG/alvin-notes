@@ -1,0 +1,36 @@
+---
+title: "事务的 ACID、隔离级别和 MVCC 有什么关系？快照读会加行锁吗？"
+description: "ACID 分别描述原子性、一致性、隔离性和持久性；一致性还依赖业务约束正确实现。隔离级别决定事务间可见性与并发异常边界，不能简单理解为“用了事务就不怕并发”。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 47
+  tags: ["MySQL","ACID","MVCC","事务"]
+sidebar:
+  label: "事务的 ACID、隔离级别和 MVCC 有什么关系？快照读会加行锁吗？"
+  order: 47
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+ACID 分别描述原子性、一致性、隔离性和持久性；一致性还依赖业务约束正确实现。隔离级别决定事务间可见性与并发异常边界，不能简单理解为“用了事务就不怕并发”。
+
+<InterviewVisual src="/images/interview/cards/agent-mysql-mvcc-isolation.webp" alt="事务的 ACID、隔离级别和 MVCC 有什么关系？快照读会加行锁吗？图解。MVCC：读可见的历史版本；RC：每次一致性读新快照；RR：通常复用首次快照；快照读与当前读要区分。" />
+
+InnoDB 用记录版本、undo 信息和读视图实现一致性非锁定读。READ COMMITTED 下通常每次一致性读建立新快照；REPEATABLE READ 下通常以事务内首次一致性读建立的快照为准。普通快照 SELECT 通常不加记录锁，不等于所有 SELECT 都不加锁。
+
+SELECT ... FOR UPDATE、UPDATE 等需要当前版本并可能加锁，行为与快照读不同。REPEATABLE READ 下某些范围锁定读会使用 next-key 锁限制幻行；不能声称 MVCC 单独解决所有幻读，或把快照读和当前读混在同一个例子里。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[InnoDB consistent reads](https://dev.mysql.com/doc/refman/8.4/en/innodb-consistent-read.html)、[Transaction isolation](https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-isolation-levels.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

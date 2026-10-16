@@ -1,0 +1,36 @@
+---
+title: "epoll 为什么适合大量连接？I/O 多路复用等于异步 I/O 吗？"
+description: "epoll 让线程注册关注的文件描述符，并等待内核返回就绪事件，避免应用每次都线性检查全部连接。它通知“现在可以尝试读或写”，不是替应用把所有数据读完、处理完或自动并行执行。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 94
+  tags: ["Linux","epoll","I/O多路复用"]
+sidebar:
+  label: "epoll 为什么适合大量连接？I/O 多路复用等于异步 I/O 吗？"
+  order: 94
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+epoll 让线程注册关注的文件描述符，并等待内核返回就绪事件，避免应用每次都线性检查全部连接。它通知“现在可以尝试读或写”，不是替应用把所有数据读完、处理完或自动并行执行。
+
+<InterviewVisual src="/images/interview/cards/agent-epoll-io.webp" alt="epoll 为什么适合大量连接？I/O 多路复用等于异步 I/O 吗？图解。注册关注的文件描述符；内核返回就绪事件；应用仍要实际读写；事件循环不能混入长阻塞。" />
+
+非阻塞套接字通常与事件循环配合使用。边缘触发模式下，应持续读写到 EAGAIN 等边界，避免漏掉后续处理机会；水平触发则在就绪条件仍满足时继续通知。即使收到就绪事件，程序也要正确处理竞争、错误和连接关闭。
+
+事件循环里执行长时间同步计算、磁盘操作或阻塞 SDK，仍会拖住其他连接。不能因为用了 epoll，就声称所有业务都是异步 I/O 或整个程序没有阻塞点。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[epoll manual](https://man7.org/linux/man-pages/man7/epoll.7.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

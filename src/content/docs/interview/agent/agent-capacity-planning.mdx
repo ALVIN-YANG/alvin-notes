@@ -1,0 +1,36 @@
+---
+title: "每天十几万次 Agent 请求怎样扩容？为什么日均 QPS 不够用？"
+description: "先把日请求量换成时间分布、峰值到达率和请求类型，再量出每类请求的模型耗时、工具调用数、Token 消耗与资源占用。一天总量只能算日均，不能直接决定峰值时需要多少 Worker。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: system-design
+  level: advanced
+  order: 127
+  tags: ["容量规划","并发","扩容","Agent"]
+sidebar:
+  label: "每天十几万次 Agent 请求怎样扩容？为什么日均 QPS 不够用？"
+  order: 127
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+先把日请求量换成时间分布、峰值到达率和请求类型，再量出每类请求的模型耗时、工具调用数、Token 消耗与资源占用。一天总量只能算日均，不能直接决定峰值时需要多少 Worker。
+
+<InterviewVisual src="/images/interview/cards/agent-agent-capacity-planning.webp" alt="每天十几万次 Agent 请求怎样扩容？为什么日均 QPS 不够用？图解。日总量不代表峰值；并发取决于到达率与耗时；先找到真实资源瓶颈；扩容要配背压与配额。" />
+
+在稳定系统中，并发中的平均任务数可用到达率乘平均停留时间估算；实际配置还要考虑尾延迟、突发、重试与下游配额。把前端连接、任务执行、文档解析和模型服务分开扩容，并保留队列、背压和租户配额。
+
+例如 Worker 已足够，但供应商限速或数据库连接池先满，加机器只会增加排队或错误。通过固定输入分布的压测找容量拐点，检查 P95/P99、错误率、积压与成本，明确过载时拒绝、延迟或降级的行为。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Google SRE overload](https://sre.google/sre-book/handling-overload/)、[Google SRE load balancing](https://sre.google/sre-book/load-balancing-datacenter/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

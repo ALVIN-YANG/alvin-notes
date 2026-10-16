@@ -1,0 +1,36 @@
+---
+title: "Java 线程池怎样接收任务？为什么有了 maximumPoolSize 还会排队？"
+description: "ThreadPoolExecutor 通常先创建线程直到 corePoolSize；达到核心线程数后尝试入队；队列放不下时再尝试创建线程直到 maximumPoolSize，仍无法接收才执行拒绝策略。线程创建失败、线程池关闭等情况也可能导致拒绝。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 133
+  tags: ["Java","线程池","背压"]
+sidebar:
+  label: "Java 线程池怎样接收任务？为什么有了 maximumPoolSize 还会排队？"
+  order: 133
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+ThreadPoolExecutor 通常先创建线程直到 corePoolSize；达到核心线程数后尝试入队；队列放不下时再尝试创建线程直到 maximumPoolSize，仍无法接收才执行拒绝策略。线程创建失败、线程池关闭等情况也可能导致拒绝。
+
+<InterviewVisual src="/images/interview/cards/agent-java-thread-pool.webp" alt="Java 线程池怎样接收任务？为什么有了 maximumPoolSize 还会排队？图解。先补核心线程；再尝试入队；队列满后扩到上限；仍无法接收：拒绝；无界队列会持续排队。" />
+
+七个常见构造参数是 corePoolSize、maximumPoolSize、keepAliveTime、时间单位、workQueue、threadFactory 和 RejectedExecutionHandler。无界队列通常让任务不断排队，maximumPoolSize 很难发挥扩容作用；排队本身会增加等待时间和内存占用。
+
+为模型调用、文件解析等不同负载设置容量与等待上限，观察队列时延、执行耗时和拒绝数。CallerRunsPolicy 会占用提交者线程，不适合不允许阻塞的事件循环；静默丢弃也可能让业务一直等不到结果。超时或取消 Future 不保证外部写操作已经停止。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[ThreadPoolExecutor](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ThreadPoolExecutor.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

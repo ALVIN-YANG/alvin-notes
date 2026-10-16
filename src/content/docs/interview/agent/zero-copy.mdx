@@ -1,0 +1,36 @@
+---
+title: "零拷贝减少的是哪几次复制？sendfile 和 mmap 有什么区别？"
+description: "零拷贝通常指减少数据经过用户态缓冲区的复制或相关系统调用，不是数据完全不移动。普通文件读后再写套接字，会让数据经过内核与用户缓冲；sendfile 可在内核中完成部分文件到套接字的传输路径，减少用户态往返。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 66
+  tags: ["Linux","零拷贝","sendfile","mmap"]
+sidebar:
+  label: "零拷贝减少的是哪几次复制？sendfile 和 mmap 有什么区别？"
+  order: 66
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+零拷贝通常指减少数据经过用户态缓冲区的复制或相关系统调用，不是数据完全不移动。普通文件读后再写套接字，会让数据经过内核与用户缓冲；sendfile 可在内核中完成部分文件到套接字的传输路径，减少用户态往返。
+
+<InterviewVisual src="/images/interview/cards/agent-zero-copy.webp" alt="零拷贝减少的是哪几次复制？sendfile 和 mmap 有什么区别？图解。普通路径经过用户缓冲；sendfile 减少用户态往返；mmap 映射文件到地址空间；零拷贝 ≠ 数据不移动。" />
+
+mmap 把文件映射到进程虚拟地址空间，应用可直接访问映射内容，但不意味着后续网络发送完全不复制。能否进一步利用 DMA、页引用等优化，取决于内核、设备、协议与具体调用。
+
+应用要检查或改写正文、做某些用户态加密与压缩时，可能无法沿用同样的传输路径。选择要看数据是否需要处理、文件与套接字类型、兼容性和实际 CPU/吞吐收益，不能把“用了 mmap”直接写成全链路零拷贝。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[sendfile manual](https://man7.org/linux/man-pages/man2/sendfile.2.html)、[mmap manual](https://man7.org/linux/man-pages/man2/mmap.2.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

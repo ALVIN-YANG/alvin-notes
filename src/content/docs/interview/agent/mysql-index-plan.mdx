@@ -1,0 +1,36 @@
+---
+title: "联合索引什么时候能用？索引失效应该怎样验证？"
+description: "联合 B+ 树索引按列顺序排序，能否缩小扫描范围，要看查询条件能利用哪些连续的前导列。条件在 WHERE 中的书写顺序不等于索引列顺序；优化器会选择访问路径，不能靠换条件顺序判断索引是否命中。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 32
+  tags: ["MySQL","联合索引","EXPLAIN","覆盖索引"]
+sidebar:
+  label: "联合索引什么时候能用？索引失效应该怎样验证？"
+  order: 32
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+联合 B+ 树索引按列顺序排序，能否缩小扫描范围，要看查询条件能利用哪些连续的前导列。条件在 WHERE 中的书写顺序不等于索引列顺序；优化器会选择访问路径，不能靠换条件顺序判断索引是否命中。
+
+<InterviewVisual src="/images/interview/cards/agent-mysql-index-plan.webp" alt="联合索引什么时候能用？索引失效应该怎样验证？图解。联合索引按列顺序排列；书写顺序 ≠ 索引顺序；区分定位、过滤与覆盖；用实际执行计划验证。" />
+
+例如索引 (tenant_id, created_at, id)，按租户和时间查询通常可缩小范围；只查时间可能无法高效定位。范围条件之后的列并非完全无用，仍可能用于索引条件下推、覆盖或排序中的部分工作，具体看计划。
+
+检查 EXPLAIN 的访问方式、选择的索引、估算扫描行数、回表和额外排序；必要时用 EXPLAIN ANALYZE 对比实际执行。隐式转换、函数包裹、低选择性、返回大量记录或统计信息偏差都可能改变计划。“没选索引”也可能是全表扫描更便宜。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Multiple-column indexes](https://dev.mysql.com/doc/refman/8.4/en/multiple-column-indexes.html)、[EXPLAIN](https://dev.mysql.com/doc/refman/8.4/en/using-explain.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

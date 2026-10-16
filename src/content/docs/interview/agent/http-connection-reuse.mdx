@@ -1,0 +1,36 @@
+---
+title: "HTTP Keep-Alive、连接池与 HTTP/2、HTTP/3 有什么关系？"
+description: "持久连接允许多个请求复用底层连接，连接池负责管理可复用连接的数量、等待、超时和生命周期，两者不是同一个概念。HTTP/1.1 默认支持持久连接，但在一条连接上通常不能像 HTTP/2 那样并行复用多个请求流。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 126
+  tags: ["HTTP","Keep-Alive","连接池","HTTP/2","HTTP/3"]
+sidebar:
+  label: "HTTP Keep-Alive、连接池与 HTTP/2、HTTP/3 有什么关系？"
+  order: 126
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+持久连接允许多个请求复用底层连接，连接池负责管理可复用连接的数量、等待、超时和生命周期，两者不是同一个概念。HTTP/1.1 默认支持持久连接，但在一条连接上通常不能像 HTTP/2 那样并行复用多个请求流。
+
+<InterviewVisual src="/images/interview/cards/agent-http-connection-reuse.webp" alt="HTTP Keep-Alive、连接池与 HTTP/2、HTTP/3 有什么关系？图解。Keep-Alive：复用连接；连接池：管理数量与等待；HTTP/2：TCP 上多个流；HTTP/3：QUIC 独立流。" />
+
+HTTP/2 在 TCP 连接上多路复用多个流，减少连接需求，但 TCP 丢包仍可能阻碍同一连接上多个流推进。HTTP/3 使用 QUIC，在传输层提供独立流，避免这种跨流的有序交付阻塞；仍有拥塞、握手和资源限制。
+
+调用模型 API 时要同时看连接池等待、建连、TLS、首字与完整响应耗时。复用连接能减少部分开销，不会提高供应商配额，也不能让慢工具本身更快。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[HTTP/1.1 RFC 9112](https://www.rfc-editor.org/rfc/rfc9112)、[HTTP/2 RFC 9113](https://www.rfc-editor.org/rfc/rfc9113)、[HTTP/3 RFC 9114](https://www.rfc-editor.org/rfc/rfc9114)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

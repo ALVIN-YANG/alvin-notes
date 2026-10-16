@@ -1,0 +1,35 @@
+---
+title: "Spring AOP 怎样工作？为什么同一个类里的方法自调用可能绕过事务？"
+description: "Spring AOP 通过代理在方法调用前后执行公共逻辑；同一对象内部的 this 调用不会重新经过代理。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 132
+  tags: [Spring, AOP, 动态代理, 事务, Java]
+sidebar:
+  label: Spring AOP 与自调用
+  order: 132
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+Spring AOP 通过代理，在目标方法调用前后加入事务、计时等公共逻辑。调用方先进入代理，代理执行匹配的增强逻辑，再调用业务对象；这样不必在每个业务方法里重复写这些代码。
+
+Spring AOP 支持 JDK 接口代理和 CGLIB 子类代理，实际选择还受配置和 Spring Boot 默认设置影响。子类代理不能重写 `final` 或 `private` 方法，因此不能用这种方式增强它们。
+
+自调用的关键是调用有没有经过代理。例如，外部调用未开启事务的 `submit()`，它内部用 `this.save()` 调用带有 `@Transactional` 的方法。在默认代理模式下，这次内部调用绕过代理，`save()` 上的事务声明不会因此生效。如果外层本来就在事务中，内部代码仍可能在该事务里执行，不能笼统说成“自调用就没有事务”。
+
+常见处理是把事务操作移到独立 Bean，由调用方通过容器提供的代理调用；也可以按需要使用编程式事务。AspectJ 织入与代理模式不同，不能套用同一条自调用结论。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[Spring 代理机制](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html)、[声明式事务注解](https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html)。原帖问 AOP；事务自调用为本站解释示例。
+
+</details>
+
+</InterviewQuestion>

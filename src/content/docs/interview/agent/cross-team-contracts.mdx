@@ -1,0 +1,36 @@
+---
+title: "Agent 项目怎样和前端、业务团队对接接口，避免联调时各自理解不同？"
+description: "先对齐用户流程、各方负责的状态与验收结果，再约定请求字段、权限、错误、超时和版本兼容。Agent 接口还要区分“已接收任务”“处理中”“需要确认”和“最终完成”，不能只提供一段自然语言让前端猜状态。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: delivery
+  level: intermediate
+  order: 69
+  tags: ["接口契约","联调","协作","交付"]
+sidebar:
+  label: "Agent 项目怎样和前端、业务团队对接接口，避免联调时各自理解不同？"
+  order: 69
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+先对齐用户流程、各方负责的状态与验收结果，再约定请求字段、权限、错误、超时和版本兼容。Agent 接口还要区分“已接收任务”“处理中”“需要确认”和“最终完成”，不能只提供一段自然语言让前端猜状态。
+
+<InterviewVisual src="/images/interview/cards/agent-cross-team-contracts.webp" alt="Agent 项目怎样和前端、业务团队对接接口，避免联调时各自理解不同？图解。先对齐流程与状态归属；契约包括失败与重复提交；用同一批样例联调；接口成功 ≠ 整条业务验收。" />
+
+给出正常、缺字段、越权、超时和重复提交的具体样例，前后端用同一契约做 Mock 与联调。外部副作用要说清谁提交、谁查询最终状态、重试复用哪个标识；模糊之处先确认，不靠双方各自补默认值。
+
+字段或事件变化时说明旧客户端的行为、发布顺序与回退方式。以真实链路的验收结果确认交付，代码合并、接口返回 200 或各自单测通过，都不能单独证明整个业务已打通。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[OpenAPI specification](https://spec.openapis.org/oas/latest.html)、[HTTP semantics](https://www.rfc-editor.org/rfc/rfc9110)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

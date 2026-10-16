@@ -1,0 +1,36 @@
+---
+title: "Kafka 怎样保证消息顺序？增加消费者为什么不一定更快？"
+description: "Kafka 的日志顺序以分区为边界，不是整个 Topic 的全局顺序。需要同一订单或任务按序处理，可用稳定业务键选择分区；不同分区之间如果存在依赖，还要由业务版本或状态机协调。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: system-design
+  level: intermediate
+  order: 92
+  tags: ["Kafka","消息队列","分区","顺序"]
+sidebar:
+  label: "Kafka 怎样保证消息顺序？增加消费者为什么不一定更快？"
+  order: 92
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+Kafka 的日志顺序以分区为边界，不是整个 Topic 的全局顺序。需要同一订单或任务按序处理，可用稳定业务键选择分区；不同分区之间如果存在依赖，还要由业务版本或状态机协调。
+
+<InterviewVisual src="/images/interview/cards/agent-mq-ordering.webp" alt="Kafka 怎样保证消息顺序？增加消费者为什么不一定更快？图解。顺序只在分区内；同一业务键稳定路由；应用并行处理仍可能乱序；分区与下游限制并行度。" />
+
+一个消费者组内，同一分区在同一时刻通常只分配给一个消费者实例，但应用把消息再丢给并行线程后，处理完成顺序仍可能变化。确认消费位置前要考虑哪些消息已可靠完成，不能因为后面的消息先完成就跳过前面失败的消息。
+
+并行度受分区数、业务键分布和下游能力限制；消费者实例超过可分配分区数可能闲置。扩分区还可能改变键的路由与历史消息分布，不能把扩容当作不影响顺序的透明操作。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Kafka introduction](https://kafka.apache.org/43/getting-started/introduction/)、[Kafka consumer design](https://kafka.apache.org/43/design/protocol/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

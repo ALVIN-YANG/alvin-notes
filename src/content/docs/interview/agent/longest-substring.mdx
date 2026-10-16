@@ -1,0 +1,36 @@
+---
+title: "无重复字符的最长子串，滑动窗口怎样避免重复扫描？"
+description: "用左右边界维护一个不含重复字符的连续窗口。右边界遇到字符 c 时，若 c 上一次出现的位置仍在窗口里，把左边界移动到那个位置之后；否则左边界不动。记录每个字符最近位置，并更新最大窗口长度。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: basic
+  order: 118
+  tags: ["算法","滑动窗口","字符串"]
+sidebar:
+  label: "无重复字符的最长子串，滑动窗口怎样避免重复扫描？"
+  order: 118
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+用左右边界维护一个不含重复字符的连续窗口。右边界遇到字符 c 时，若 c 上一次出现的位置仍在窗口里，把左边界移动到那个位置之后；否则左边界不动。记录每个字符最近位置，并更新最大窗口长度。
+
+<InterviewVisual src="/images/interview/cards/agent-longest-substring.webp" alt="无重复字符的最长子串，滑动窗口怎样避免重复扫描？图解。窗口内没有重复字符；遇重复，只把左边界右移；left 不能退回去；子串必须连续。" />
+
+关键更新是 left = max(left, last[c] + 1)，不能让左边界往回退。例如 abba 处理最后一个 a 时，它旧的位置已在窗口外，不能据此扩大成仍有重复字符的窗口。
+
+在哈希操作期望常数时间的前提下，每个位置处理一次，时间 O(n)，额外空间由不同字符数决定。子串必须连续，不能误答成去掉重复字符后的子序列。还要先明确按字节、Unicode 码点还是用户感知字符计数。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[LeetCode longest substring](https://leetcode.com/problems/longest-substring-without-repeating-characters/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

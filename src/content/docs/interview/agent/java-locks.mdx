@@ -1,0 +1,36 @@
+---
+title: "synchronized 和 ReentrantLock 怎么选？锁会自动解决所有并发问题吗？"
+description: "两者都能提供互斥、可重入与相应的内存可见性。synchronized 随代码块或方法退出自动释放；ReentrantLock 提供可中断等待、限时尝试、公平性选项与多个 Condition，但必须在 finally 中释放。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 81
+  tags: ["Java","synchronized","ReentrantLock"]
+sidebar:
+  label: "synchronized 和 ReentrantLock 怎么选？锁会自动解决所有并发问题吗？"
+  order: 81
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+两者都能提供互斥、可重入与相应的内存可见性。synchronized 随代码块或方法退出自动释放；ReentrantLock 提供可中断等待、限时尝试、公平性选项与多个 Condition，但必须在 finally 中释放。
+
+<InterviewVisual src="/images/interview/cards/agent-java-locks.webp" alt="synchronized 和 ReentrantLock 怎么选？锁会自动解决所有并发问题吗？图解。synchronized：自动释放；ReentrantLock：限时与可中断等待；同一共享状态使用同一规则；本地锁不能协调多台机器。" />
+
+只需要保护短小临界区时，synchronized 通常更直接；需要 tryLock、等待超时或多个条件队列时可选择 ReentrantLock。公平锁不等于更高吞吐，性能结论要结合 JDK 和负载测试，不要只背早期 JVM 的锁升级路径。
+
+锁只保护使用同一同步规则的访问。给 Java 方法加锁不能协调一万台机器；也不能把外部数据库或文件操作变成同一事务。先确定共享对象、原子边界与锁顺序，避免在持锁期间等待慢模型接口。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[ReentrantLock](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/locks/ReentrantLock.html)、[Java synchronization](https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

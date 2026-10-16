@@ -1,0 +1,36 @@
+---
+title: "怎样判断会议是否冲突？最少会议室数量怎样计算？"
+description: "先约定区间边界：若按 [start, end) 处理，一场在 10 点结束、另一场在 10 点开始可以复用房间。按开始时间排序，若某场开始早于此前仍需考虑的最大结束时间，就存在冲突。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 124
+  tags: ["算法","区间","堆","会议室"]
+sidebar:
+  label: "怎样判断会议是否冲突？最少会议室数量怎样计算？"
+  order: 124
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+先约定区间边界：若按 [start, end) 处理，一场在 10 点结束、另一场在 10 点开始可以复用房间。按开始时间排序，若某场开始早于此前仍需考虑的最大结束时间，就存在冲突。
+
+<InterviewVisual src="/images/interview/cards/agent-meeting-rooms.webp" alt="怎样判断会议是否冲突？最少会议室数量怎样计算？图解。先约定 [start, end)；相接会议可以复用；最小堆保存占用中的结束时间；堆大小峰值 = 所需房间。" />
+
+求最少房间时，用小根堆维护正在占用房间的结束时间：处理新会议前，弹出所有已经结束的会议，再放入当前会议的结束时间，过程中堆大小的最大值就是同时占用的峰值。排序 O(n log n)，堆操作总计 O(n log n)。
+
+也可将开始和结束事件排序做扫描线，边界相同时先处理结束再处理开始。测试相接区间、完全包含、多场同时开始与空输入；这道题求的是并行资源数量，不是选出最多不冲突会议。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Princeton priority queues](https://algs4.cs.princeton.edu/24pq/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

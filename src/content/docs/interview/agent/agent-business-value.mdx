@@ -1,0 +1,36 @@
+---
+title: "怎样证明 Agent 项目有业务价值？完成率提高就一定值得上线吗？"
+description: "先说用户要完成的任务、现有流程的痛点，以及比较基线。业务价值要看任务是否真正完成、交付质量、人工处理量与风险，再把模型、工具、重试、人工复核和运维成本算进去；不能只用一次演示或模型答对率证明收益。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: product
+  level: intermediate
+  order: 16
+  tags: ["业务价值","指标","成本","产品"]
+sidebar:
+  label: "怎样证明 Agent 项目有业务价值？完成率提高就一定值得上线吗？"
+  order: 16
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+先说用户要完成的任务、现有流程的痛点，以及比较基线。业务价值要看任务是否真正完成、交付质量、人工处理量与风险，再把模型、工具、重试、人工复核和运维成本算进去；不能只用一次演示或模型答对率证明收益。
+
+<InterviewVisual src="/images/interview/cards/agent-agent-business-value.webp" alt="怎样证明 Agent 项目有业务价值？完成率提高就一定值得上线吗？图解。先定义用户任务与比较基线；看验收结果与人工介入；计入重试、复核和运维成本；生成更快 ≠ 交付更快。" />
+
+例如同一类工单比较人工流程与 Agent 辅助流程，分别记录从受理到验收的耗时、返工率、人工介入和单次成本。必须说明样本构成与统计口径，不能把“模型生成更快”直接换算成端到端效率提升。
+
+如果任务边界稳定、规则方案成本更低且可靠，Agent 未必值得引入。上线先明确验收和回退条件，保留高风险动作的人或确定性检查；收益由真实数据验证，不能临时编造“节省百分之多少”。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Google HEART paper](https://research.google/pubs/measuring-the-user-experience-on-a-large-scale-user-centered-metrics-for-web-applications/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

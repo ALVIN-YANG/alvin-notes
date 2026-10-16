@@ -1,0 +1,36 @@
+---
+title: "更新数据库后怎样保持缓存一致？为什么删除缓存也会失败？"
+description: "常见 Cache Aside 做法先更新数据库，再让缓存失效，后续读取时回源重建。它仍有窗口：数据库提交后删缓存可能失败，正在进行的旧查询也可能在删除后写回旧值，因此这通常是最终一致性方案。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: system-design
+  level: advanced
+  order: 110
+  tags: ["缓存一致性","MySQL","Redis","CDC"]
+sidebar:
+  label: "更新数据库后怎样保持缓存一致？为什么删除缓存也会失败？"
+  order: 110
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+常见 Cache Aside 做法先更新数据库，再让缓存失效，后续读取时回源重建。它仍有窗口：数据库提交后删缓存可能失败，正在进行的旧查询也可能在删除后写回旧值，因此这通常是最终一致性方案。
+
+<InterviewVisual src="/images/interview/cards/agent-cache-database-consistency.webp" alt="更新数据库后怎样保持缓存一致？为什么删除缓存也会失败？图解。先提交数据库，再失效缓存；删除失败需要可靠重试；旧查询可能写回旧值；最终一致 ≠ 强一致。" />
+
+将失效事件与业务变更可靠关联，例如事务 Outbox 或基于 binlog 的 CDC，再做重试、去重与监控；缓存值需要时可携带版本，避免旧事件覆盖新版本。设置 TTL 可限制部分陈旧时长，却不能证明中间过程没有读到旧值。
+
+延迟双删依赖读写耗时与时序，不能消除所有竞态。需要严格一致读的关键操作，应读可靠数据源，或采用具备相应一致性保证的设计，并说明吞吐和可用性代价。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Cache Aside](https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside)、[Transactional outbox](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

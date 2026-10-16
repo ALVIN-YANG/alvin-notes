@@ -1,0 +1,36 @@
+---
+title: "输入 URL 后怎样到达服务端？默认网关和 ARP 在哪一步起作用？"
+description: "浏览器解析 URL，结合缓存、代理和连接复用决定是否解析域名、建立连接；随后发送 HTTP 请求，接收响应并解析资源、构建页面。以首次访问 HTTPS 为例，还包括服务器身份校验与加密握手，后续子资源可能复用连接。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 48
+  tags: ["DNS","TCP/IP","ARP","路由"]
+sidebar:
+  label: "输入 URL 后怎样到达服务端？默认网关和 ARP 在哪一步起作用？"
+  order: 48
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+浏览器解析 URL，结合缓存、代理和连接复用决定是否解析域名、建立连接；随后发送 HTTP 请求，接收响应并解析资源、构建页面。以首次访问 HTTPS 为例，还包括服务器身份校验与加密握手，后续子资源可能复用连接。
+
+<InterviewVisual src="/images/interview/cards/agent-url-request-path.webp" alt="输入 URL 后怎样到达服务端？默认网关和 ARP 在哪一步起作用？图解。DNS：名字到地址；路由表选择下一跳；ARP 查询下一跳 MAC；逐跳转发，回程可不同。" />
+
+网络转发先查本机路由表，选择目的地址的下一跳。在 IPv4 以太网场景，ARP 用来查询下一跳的 MAC：同链路目标可直接查询目标，不同网段通常查询网关，不能把远端服务器 MAC 一直带过所有路由器。
+
+每一跳根据链路重新封装；若没有 NAT 等地址转换，源与目的 IP 通常保持不变。返回路径独立选路，不一定与去程一致。排障分别检查 DNS、路由、连接、TLS、HTTP 状态和服务处理耗时，不要把所有延迟都归因于大模型。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[ARP RFC 826](https://www.rfc-editor.org/rfc/rfc826)、[HTTP semantics](https://www.rfc-editor.org/rfc/rfc9110)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

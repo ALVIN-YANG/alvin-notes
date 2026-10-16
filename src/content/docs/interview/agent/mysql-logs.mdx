@@ -1,0 +1,36 @@
+---
+title: "undo log、redo log 和 binlog 各解决什么问题？为什么要协调提交？"
+description: "undo 保存撤销修改及构造历史版本所需的信息，支持回滚与 MVCC；redo 记录 InnoDB 恢复已修改数据页所需的信息；binlog 属于 MySQL 服务层，记录用于复制、增量恢复等用途的变更。三者用途不同，不能互相替代。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 123
+  tags: ["MySQL","undo log","redo log","binlog"]
+sidebar:
+  label: "undo log、redo log 和 binlog 各解决什么问题？为什么要协调提交？"
+  order: 123
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+undo 保存撤销修改及构造历史版本所需的信息，支持回滚与 MVCC；redo 记录 InnoDB 恢复已修改数据页所需的信息；binlog 属于 MySQL 服务层，记录用于复制、增量恢复等用途的变更。三者用途不同，不能互相替代。
+
+<InterviewVisual src="/images/interview/cards/agent-mysql-logs.webp" alt="undo log、redo log 和 binlog 各解决什么问题？为什么要协调提交？图解。undo：回滚与历史版本；redo：崩溃恢复；binlog：复制与增量恢复；提交需要协调与刷盘策略。" />
+
+常见 InnoDB 与 binlog 提交链路需要协调引擎事务与 binlog，避免一边认为成功、另一边没有对应记录。可用 redo prepare、写入 binlog、引擎提交的简化过程理解，崩溃恢复依据持久化信息与事务标识决定恢复结果；组提交会进一步批量处理。
+
+持久性取决于实际刷盘配置、存储与故障模型，不能把“写了日志”直接等同于机器掉电后绝不丢。binlog 也不是完整备份，需要可用的全量基线、连续日志与恢复验证。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[InnoDB redo log](https://dev.mysql.com/doc/refman/8.4/en/innodb-redo-log.html)、[InnoDB undo logs](https://dev.mysql.com/doc/refman/8.4/en/innodb-undo-logs.html)、[Binary log](https://dev.mysql.com/doc/refman/8.4/en/binary-log.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

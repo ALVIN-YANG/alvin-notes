@@ -1,0 +1,36 @@
+---
+title: "不用 MQ，怎样设计可恢复的异步任务系统？"
+description: "提交请求先把任务与必要参数持久化，再返回任务 ID；后台 Worker 从任务表领取待处理任务，记录进度与结果；查询接口按任务 ID 返回状态。仅在 HTTP 请求里开线程，进程重启后通常无法找回那份内存任务。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: system-design
+  level: advanced
+  order: 95
+  tags: ["异步任务","数据库队列","恢复"]
+sidebar:
+  label: "不用 MQ，怎样设计可恢复的异步任务系统？"
+  order: 95
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+提交请求先把任务与必要参数持久化，再返回任务 ID；后台 Worker 从任务表领取待处理任务，记录进度与结果；查询接口按任务 ID 返回状态。仅在 HTTP 请求里开线程，进程重启后通常无法找回那份内存任务。
+
+<InterviewVisual src="/images/interview/cards/agent-async-without-mq.webp" alt="不用 MQ，怎样设计可恢复的异步任务系统？图解。请求先持久化，再返回任务 ID；Worker 原子领取并续租；失联后可恢复，写操作仍需幂等；轮询有数据库负载与延迟。" />
+
+多实例领取需要数据库锁或条件更新等原子机制，执行期间用租约、心跳或超时回收识别失联 Worker。领取事务应尽快结束，不能一直持有数据库锁等待数分钟的模型调用。恢复后可能重复执行，业务副作用仍要幂等或先核对状态。
+
+设置最大重试、退避、任务保留期，并监控积压与最老等待时间。数据库轮询会增加负载与可见延迟；该方案适合规模与实时性允许的场景，不能因为少一个中间件就声称可靠性和吞吐没有代价。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[MySQL locking reads and SKIP LOCKED](https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html)、[AWS retry and idempotency](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

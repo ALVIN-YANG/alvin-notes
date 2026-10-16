@@ -1,0 +1,36 @@
+---
+title: "只有简陋 PRD，要求一周交付 App，应该怎样推进？"
+description: "先把模糊需求变成可验收的用户路径：谁使用、输入什么、系统做什么、什么结果算成功，以及权限与不能失败的约束。优先澄清会改变方案或上线范围的问题，再约定一周内必须交付的最小闭环。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: product
+  level: intermediate
+  order: 86
+  tags: ["PRD","需求澄清","范围","验收"]
+sidebar:
+  label: "只有简陋 PRD，要求一周交付 App，应该怎样推进？"
+  order: 86
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+先把模糊需求变成可验收的用户路径：谁使用、输入什么、系统做什么、什么结果算成功，以及权限与不能失败的约束。优先澄清会改变方案或上线范围的问题，再约定一周内必须交付的最小闭环。
+
+<InterviewVisual src="/images/interview/cards/agent-ambiguous-prd-delivery.webp" alt="只有简陋 PRD，要求一周交付 App，应该怎样推进？图解。澄清用户、路径与成功标准；先打通最小业务闭环；范围与时间冲突要明确取舍；按约定样例验收。" />
+
+先做能验证关键风险的纵向链路，把真实数据、接口、主要页面和验收贯通，再按优先级补边界。AI 可以辅助拆解和实现，但计划里的假设、依赖与验收标准仍需核对，不能用生成了多少页面代替需求完成度。
+
+如果时间与范围冲突，就把取舍具体化：哪些功能延后、哪些使用受限替代、哪些风险必须先解决。交付时验证核心路径、错误恢复、部署和回退，并让需求方按事先约定的样例验收。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[GOV.UK user stories](https://www.gov.uk/service-manual/agile-delivery/writing-user-stories)、[GOV.UK agile delivery](https://www.gov.uk/service-manual/agile-delivery)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

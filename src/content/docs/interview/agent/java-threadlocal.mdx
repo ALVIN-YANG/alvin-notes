@@ -1,0 +1,36 @@
+---
+title: "ThreadLocal 怎样隔离变量？线程池中为什么容易泄漏或串上下文？"
+description: "ThreadLocal 让同一个变量在不同线程里关联不同值，值存在线程的 ThreadLocalMap 中。它隔离的是线程，不是 HTTP 请求、租户或 Agent 会话；多个请求复用同一个线程时，旧值可能继续存在。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 136
+  tags: ["Java","ThreadLocal","线程池"]
+sidebar:
+  label: "ThreadLocal 怎样隔离变量？线程池中为什么容易泄漏或串上下文？"
+  order: 136
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+ThreadLocal 让同一个变量在不同线程里关联不同值，值存在线程的 ThreadLocalMap 中。它隔离的是线程，不是 HTTP 请求、租户或 Agent 会话；多个请求复用同一个线程时，旧值可能继续存在。
+
+<InterviewVisual src="/images/interview/cards/agent-java-threadlocal.webp" alt="ThreadLocal 怎样隔离变量？线程池中为什么容易泄漏或串上下文？图解。变量跟线程走，不跟请求走；线程复用可能残留旧值；finally 中 remove；跨线程显式传递上下文。" />
+
+典型 OpenJDK 实现中的 key 是弱引用，但 value 仍可能被存活线程持有。在线程池工作线程上忘记清理，可能造成内存滞留或身份串用；应在 finally 调用 remove，并明确建立与恢复上下文的边界。
+
+InheritableThreadLocal 的继承发生在线程创建时，不能正确代表线程池每次提交任务时的父上下文。跨线程调用要显式传递或使用有清理保证的上下文机制；协程切换线程后也不能凭 ThreadLocal 推断当前用户。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[ThreadLocal](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ThreadLocal.html)、[InheritableThreadLocal](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InheritableThreadLocal.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

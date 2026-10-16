@@ -1,0 +1,36 @@
+---
+title: "MySQL 深分页为什么慢？怎样用游标翻页代替大 OFFSET？"
+description: "LIMIT offset, size 往往仍需找到并跳过 offset 条符合条件的记录，偏移越大成本越高。先检查执行计划、过滤条件、排序索引、回表和实际扫描量，确认慢在跳过记录，还是本来就没有有效的访问路径。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: system-design
+  level: intermediate
+  order: 134
+  tags: ["MySQL","分页","游标"]
+sidebar:
+  label: "MySQL 深分页为什么慢？怎样用游标翻页代替大 OFFSET？"
+  order: 134
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+LIMIT offset, size 往往仍需找到并跳过 offset 条符合条件的记录，偏移越大成本越高。先检查执行计划、过滤条件、排序索引、回表和实际扫描量，确认慢在跳过记录，还是本来就没有有效的访问路径。
+
+<InterviewVisual src="/images/interview/cards/agent-mysql-deep-pagination.webp" alt="MySQL 深分页为什么慢？怎样用游标翻页代替大 OFFSET？图解。大 OFFSET 仍要跳过记录；稳定排序：时间 + 唯一 ID；从上一页边界继续；顺序翻页 ≠ 任意跳页。" />
+
+按 (created_at, id) 稳定排序时，可用上一页最后一条的这两个值继续查询，并建立与过滤条件匹配的联合索引。排序键必须有唯一的次序；只用可重复的时间戳会在边界漏掉记录。
+
+游标翻页适合顺序浏览，不天然支持跳到任意页。数据并发更新还可能改变结果，需要约定快照、截止时间或允许的实时变化。延迟关联先取主键再回表能减少部分成本，但不能让任意大 OFFSET 都变成常数时间。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[MySQL LIMIT optimization](https://dev.mysql.com/doc/refman/8.4/en/limit-optimization.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

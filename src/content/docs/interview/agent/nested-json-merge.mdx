@@ -1,0 +1,61 @@
+---
+title: "手写嵌套 JSON 合并，怎样保留类型规则且不修改输入？"
+description: "按题目规定分别处理类型：字典递归合并；列表拼接；数字相加；字符串拼接；布尔值取逻辑或；其余冲突由第二份覆盖。返回新结构，不能原地修改任一输入。原帖没有说明不同类型相遇的完整规则，现场要先确认；若约定覆盖，就以第二份值的深拷贝返回。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 121
+  tags: ["Python","JSON","递归","算法"]
+sidebar:
+  label: "手写嵌套 JSON 合并，怎样保留类型规则且不修改输入？"
+  order: 121
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+按题目规定分别处理类型：字典递归合并；列表拼接；数字相加；字符串拼接；布尔值取逻辑或；其余冲突由第二份覆盖。返回新结构，不能原地修改任一输入。原帖没有说明不同类型相遇的完整规则，现场要先确认；若约定覆盖，就以第二份值的深拷贝返回。
+
+<InterviewVisual src="/images/interview/cards/agent-nested-json-merge.webp" alt="手写嵌套 JSON 合并，怎样保留类型规则且不修改输入？图解。按类型分派，字典递归；先判断 bool，再判断数字；不同类型先确认规则；新结构不能共享可变内部对象。" />
+
+Python 中 bool 是 int 的子类，应先判断双方都是 bool，再判断严格的 int/float，否则 True 和 1 可能走到数字相加。字典中仅一边存在的嵌套对象、列表中的可变对象也要复制，否则“新字典”仍会与原输入共享内部对象。
+
+在正常无环 JSON 树上，时间与需要遍历和复制的输入规模相关；额外空间包含输出和递归栈。测试嵌套字典、空值、类型冲突、布尔值及输出修改后输入不变，不能只跑一个扁平样例。
+
+## 按已确认的覆盖规则实现
+
+```python
+from copy import deepcopy
+
+
+def merge_json(left, right):
+    # 本示例约定：类型不同且不都是数字时，由 right 覆盖。
+    if isinstance(left, bool) and isinstance(right, bool):
+        return left or right
+    if type(left) in (int, float) and type(right) in (int, float):
+        return left + right
+    if isinstance(left, dict) and isinstance(right, dict):
+        result = deepcopy(left)
+        for key, value in right.items():
+            result[key] = (merge_json(left[key], value)
+                           if key in left else deepcopy(value))
+        return result
+    if isinstance(left, list) and isinstance(right, list):
+        return deepcopy(left) + deepcopy(right)
+    if isinstance(left, str) and isinstance(right, str):
+        return left + right
+    return deepcopy(right)
+```
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Python copy](https://docs.python.org/3/library/copy.html)、[Python bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

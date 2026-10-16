@@ -1,0 +1,36 @@
+---
+title: "数组和链表怎样选择？为什么链表插入不总是 O(1)？"
+description: "数组按下标访问通常是 O(1)，连续存储更利于缓存；中间插入或删除可能要移动后续元素。链表通过指针连接节点，已知合适节点时可用常数次指针修改完成插入或删除，但按位置查找通常要遍历。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: basic
+  order: 119
+  tags: ["数组","链表","复杂度"]
+sidebar:
+  label: "数组和链表怎样选择？为什么链表插入不总是 O(1)？"
+  order: 119
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+数组按下标访问通常是 O(1)，连续存储更利于缓存；中间插入或删除可能要移动后续元素。链表通过指针连接节点，已知合适节点时可用常数次指针修改完成插入或删除，但按位置查找通常要遍历。
+
+<InterviewVisual src="/images/interview/cards/agent-arrays-and-linked-lists.webp" alt="数组和链表怎样选择？为什么链表插入不总是 O(1)？图解。数组：按下标直接定位；链表：先找到节点；已知节点，指针修改才快；查找成本不能漏算。" />
+
+“在第 k 个位置插入”如果还不知道那个节点，查找成本仍是 O(n)。单链表删除还需要前驱信息；双向链表多占指针空间，却能在已知节点时直接摘除。
+
+动态数组扩容也可能搬移，但许多实现的尾部追加具有摊还 O(1) 成本。LRU 需要按 key 快速定位、再移动节点，常把哈希表与双向链表组合，而不是单独靠链表扫描。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Java ArrayList](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/ArrayList.html)、[Java LinkedList](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/LinkedList.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

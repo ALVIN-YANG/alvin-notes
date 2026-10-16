@@ -1,0 +1,54 @@
+---
+title: "手写二叉树的右视图，为什么不能只沿右子树走？"
+description: "右视图需要每一层最右侧的节点。按层遍历时，记录这一层最后出队的节点即可。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 105
+  tags: [算法, 二叉树, BFS, Python]
+sidebar:
+  label: 二叉树右视图
+  order: 105
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+右视图取每一层最右侧的节点。用队列按层遍历，每层按从左到右的顺序入队，记录该层最后出队的节点即可。
+
+不能只沿右孩子走：根的右子树可能较浅，更深一层能看到的节点可能来自左子树。例如，根的左孩子是 2、右孩子是 3，只有 2 还有左孩子 4，右视图是 `[1, 3, 4]`。
+
+```python
+from collections import deque
+
+def right_side_view(root):
+    if root is None:
+        return []
+    queue = deque([root])
+    result = []
+    while queue:
+        width = len(queue)
+        for i in range(width):
+            node = queue.popleft()
+            if node.left is not None:
+                queue.append(node.left)
+            if node.right is not None:
+                queue.append(node.right)
+            if i == width - 1:
+                result.append(node.val)
+    return result
+```
+
+每层开始时先保存节点数，避免把下一层也处理进去。共访问 n 个节点，时间 O(n)；队列空间 O(w)，w 是最大层宽，不含返回结果。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[LeetCode 199 题面与边界](https://leetcode.com/problems/binary-tree-right-side-view/description/)。代码为本站编写。
+
+</details>
+
+</InterviewQuestion>

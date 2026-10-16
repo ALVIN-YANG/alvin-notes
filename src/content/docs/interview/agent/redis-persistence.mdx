@@ -1,0 +1,36 @@
+---
+title: "Redis 的 RDB 和 AOF 怎样取舍？有持久化为什么还需要数据库？"
+description: "RDB 保存某个时点的数据快照，适合备份与较快载入，但可能丢失快照之后的变更；AOF 记录写操作，按配置进行同步与重写，通常能缩小数据丢失窗口，同时增加日志与恢复成本。恢复行为还取决于 Redis 版本和是否使用混合持久化。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 83
+  tags: ["Redis","RDB","AOF","持久化"]
+sidebar:
+  label: "Redis 的 RDB 和 AOF 怎样取舍？有持久化为什么还需要数据库？"
+  order: 83
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+RDB 保存某个时点的数据快照，适合备份与较快载入，但可能丢失快照之后的变更；AOF 记录写操作，按配置进行同步与重写，通常能缩小数据丢失窗口，同时增加日志与恢复成本。恢复行为还取决于 Redis 版本和是否使用混合持久化。
+
+<InterviewVisual src="/images/interview/cards/agent-redis-persistence.webp" alt="Redis 的 RDB 和 AOF 怎样取舍？有持久化为什么还需要数据库？图解。RDB：时点快照；AOF：写操作日志；刷盘与复制决定丢失窗口；缓存成功 ≠ 业务可靠落库。" />
+
+everysec 表示通常约每秒同步 AOF，不应把所有故障下最多只丢一秒当成绝对保证。还要考虑磁盘延迟、异步复制、故障切换及备份恢复是否真的可用。
+
+Redis 可以作为某些业务的数据源，但是否合适取决于持久性、查询能力、约束和成本；不是装上 AOF 就等同于关系数据库。订单等关键记录通常仍需要清楚的事务与持久化边界，缓存写成功不能直接当作业务已经可靠落库。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Redis persistence](https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

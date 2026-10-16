@@ -1,0 +1,36 @@
+---
+title: "TCP 和 UDP 有什么区别？在 UDP 上做可靠传输还缺什么？"
+description: "TCP 提供面向连接的有序字节流，并结合确认、重传、流量控制和拥塞控制；UDP 保留报文边界，协议本身不保证交付、顺序或去重。TCP 的“可靠”也不能保证任意断网后业务最终成功，应用仍要处理超时和结果未知。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 93
+  tags: ["TCP","UDP","可靠传输","拥塞控制"]
+sidebar:
+  label: "TCP 和 UDP 有什么区别？在 UDP 上做可靠传输还缺什么？"
+  order: 93
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+TCP 提供面向连接的有序字节流，并结合确认、重传、流量控制和拥塞控制；UDP 保留报文边界，协议本身不保证交付、顺序或去重。TCP 的“可靠”也不能保证任意断网后业务最终成功，应用仍要处理超时和结果未知。
+
+<InterviewVisual src="/images/interview/cards/agent-tcp-udp-reliability.webp" alt="TCP 和 UDP 有什么区别？在 UDP 上做可靠传输还缺什么？图解。TCP：有序字节流；UDP：报文，不保证交付；可靠传输还需确认、去重与重排；重传必须配合拥塞控制。" />
+
+在 UDP 上实现可靠传输，至少要考虑序列标识、确认、丢失检测与重传、去重、重排和流量控制，还要对共享网络做拥塞控制。仅加 ACK 与超时重发，可能在网络拥塞时制造更大负载。
+
+TCP 流量控制保护接收方缓冲，拥塞控制保护网络；实际算法可能是 CUBIC、BBR 等，不应把某个教材窗口曲线当成所有 TCP 的固定行为。QUIC 是基于 UDP 构建可靠流与安全连接的现实例子，不等于简单的 UDP 加一个重传循环。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[TCP RFC 9293](https://www.rfc-editor.org/rfc/rfc9293)、[QUIC RFC 9000](https://www.rfc-editor.org/rfc/rfc9000)、[UDP RFC 768](https://www.rfc-editor.org/rfc/rfc768)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,36 @@
+---
+title: "MQ 消息积压怎样定位？如何判断是生产太快还是消费太慢？"
+description: "同时看生产速率、消费完成速率、积压数量、最老消息年龄与端到端延迟。积压增加说明流入持续超过有效处理能力，但根因可能是流量突增，也可能是慢接口、锁竞争、毒消息重试或消费者失效。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: reliability
+  level: intermediate
+  order: 51
+  tags: ["MQ","Kafka","积压","监控"]
+sidebar:
+  label: "MQ 消息积压怎样定位？如何判断是生产太快还是消费太慢？"
+  order: 51
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+同时看生产速率、消费完成速率、积压数量、最老消息年龄与端到端延迟。积压增加说明流入持续超过有效处理能力，但根因可能是流量突增，也可能是慢接口、锁竞争、毒消息重试或消费者失效。
+
+<InterviewVisual src="/images/interview/cards/agent-mq-backlog.webp" alt="MQ 消息积压怎样定位？如何判断是生产太快还是消费太慢？图解。生产、消费、积压一起看；再看最老消息与处理时延；扩容前确认下游容量；重试不能无限放大。" />
+
+先保护下游并止住重试放大，再按分区、消费者和处理阶段定位。扩消费者前检查分区数与业务顺序约束；下游数据库已经饱和时，盲目加并发会让积压更严重。允许批量处理、隔离慢任务或有上限地重试，超过边界进入可追踪的异常队列。
+
+恢复时间可粗估为积压量除以“消费完成速率减生产速率”，只有差值为正且速率足够稳定时才成立。告警同时考虑持续时间、最老消息与业务时限，不能只看一个瞬时队列长度。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Kafka monitoring](https://kafka.apache.org/43/operations/monitoring/)、[RocketMQ message retry](https://rocketmq.apache.org/docs/featureBehavior/10consumerretrypolicy/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

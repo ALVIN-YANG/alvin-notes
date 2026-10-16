@@ -1,0 +1,65 @@
+---
+title: "怎样实现插入、删除和等概率随机取值平均 O(1) 的集合？"
+description: "用数组保存元素、哈希表记录下标。删除时用末尾元素填补空位，再修正下标，避免移动后面的全部元素。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 96
+  tags: [算法, 哈希表, 数组, 随机集合, Python]
+sidebar:
+  label: 平均 O(1) 随机集合
+  order: 96
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+用数组保存元素，用哈希表记录“元素 → 数组下标”。数组便于等概率选下标，哈希表便于定位。删除时把末尾元素搬到被删位置，再弹出末尾，就不用移动后面所有元素。
+
+例如，数组是 `[10, 20, 30]`，删除 20 后变成 `[10, 30]`，同时把哈希表中 30 的下标改为 1。这里不要求保留插入顺序。
+
+```python
+import random
+
+class RandomizedSet:
+    def __init__(self):
+        self.values = []
+        self.index = {}
+
+    def insert(self, value):
+        if value in self.index:
+            return False
+        self.index[value] = len(self.values)
+        self.values.append(value)
+        return True
+
+    def remove(self, value):
+        if value not in self.index:
+            return False
+        position = self.index[value]
+        last = self.values[-1]
+        self.values[position] = last
+        self.index[last] = position
+        self.values.pop()
+        del self.index[value]
+        return True
+
+    def get_random(self):
+        if not self.values:
+            raise IndexError("集合为空")
+        return random.choice(self.values)
+```
+
+每个元素在数组中只占一个位置，因此均匀选下标就是等概率选元素。哈希操作是平均 O(1)，数组追加是均摊 O(1)，不能承诺所有单次操作最坏 O(1)。空间 O(n)。删除末尾或唯一元素也适用；代码不支持多线程同时修改。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[LeetCode 380 的标准题面](https://leetcode.com/problems/insert-delete-getrandom-o1/description/)。原帖报告“纯随机取值、增删 O(1)”；这里明确平均复杂度和等概率要求，代码为本站编写。
+
+</details>
+
+</InterviewQuestion>

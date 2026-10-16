@@ -1,0 +1,36 @@
+---
+title: "MySQL 乐观锁和悲观锁怎样选择？行锁与表锁由什么决定？"
+description: "悲观锁在操作时先取得数据库锁，例如事务内 SELECT ... FOR UPDATE；乐观控制通常在更新时检查版本或旧值，条件不再成立就判定冲突。乐观方案并不是没有任何锁，底层 UPDATE 仍要遵守数据库的并发控制。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 122
+  tags: ["MySQL","乐观锁","悲观锁","并发"]
+sidebar:
+  label: "MySQL 乐观锁和悲观锁怎样选择？行锁与表锁由什么决定？"
+  order: 122
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+悲观锁在操作时先取得数据库锁，例如事务内 SELECT ... FOR UPDATE；乐观控制通常在更新时检查版本或旧值，条件不再成立就判定冲突。乐观方案并不是没有任何锁，底层 UPDATE 仍要遵守数据库的并发控制。
+
+<InterviewVisual src="/images/interview/cards/agent-mysql-locking.webp" alt="MySQL 乐观锁和悲观锁怎样选择？行锁与表锁由什么决定？图解。悲观：先取得锁再决策；乐观：更新时检查版本；冲突要回读或有界重试；锁范围看索引与隔离级别。" />
+
+低冲突、可重试的更新可用版本条件；需要先读取并保护后续决策时，可考虑锁定读，并保持事务短小。高冲突下反复乐观重试会放大负载；锁定方案则要处理等待、死锁与超时。
+
+InnoDB 的记录锁通常锁索引记录，是否还锁间隙、扫描多少记录，取决于语句、索引和隔离级别。没有合适索引可能锁住更大的扫描范围，不能说“WHERE 有主键字段就一定只锁一行”。所有写入路径都要执行相同的版本检查或约束。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[InnoDB locking](https://dev.mysql.com/doc/refman/8.4/en/innodb-locking.html)、[Locking reads](https://dev.mysql.com/doc/refman/8.4/en/innodb-locking-reads.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

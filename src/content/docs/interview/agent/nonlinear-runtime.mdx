@@ -1,0 +1,35 @@
+---
+title: "一万个输入耗时 200ms，十万个却要 20s，怎样定位性能问题？"
+description: "输入增长十倍、耗时增长百倍，只能提示存在非线性成本或资源瓶颈；需要用规模对照和性能剖析定位，不能直接断定是 O(n²)。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: reliability
+  level: advanced
+  order: 98
+  tags: [性能分析, 复杂度, CPU, 内存, I/O]
+sidebar:
+  label: 输入十倍却慢百倍
+  order: 98
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+输入增至十倍、耗时增至百倍，值得怀疑重复扫描等 O(n²) 操作，但两个测量点不能证明算法复杂度。也可能是数据变大后触发频繁 GC、磁盘换页、数据库执行计划变化，或下游排队。
+
+先保证比较条件一致：输入分布、代码和配置、并发量、预热与缓存状态相同。再测几个中间规模，并把总耗时拆成计算、数据库、网络和等待，观察哪个部分增长最快。
+
+如果 CPU 忙，看剖析结果是否有嵌套遍历或重复序列化；如果主要在等待，查锁、连接池、磁盘和下游请求；如果内存明显增长，查分配量、GC、缺页与工作集是否超过可用内存。
+
+例如，循环中对列表做 `contains`，可能累计扫描 O(n²) 次；换成哈希集合后，再用相同输入检查耗时和结果。如果瓶颈实际是数据库每条一次往返，换容器未必有效，应核对是否需要批量访问。每次修改都验证对应的瓶颈是否下降。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[Brendan Gregg：性能分析方法](https://www.brendangregg.com/methodology.html)。数值来自原帖题设；列表查重和逐条查询为解释示例，不是对原帖故障原因的判断。
+
+</details>
+
+</InterviewQuestion>

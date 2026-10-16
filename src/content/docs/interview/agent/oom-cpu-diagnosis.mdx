@@ -1,0 +1,36 @@
+---
+title: "流量没增长，服务却突然 OOM 且 CPU 飙高，怎样排查？"
+description: "先确认是应用抛出的内存错误、容器超过限制被杀，还是宿主机内存压力；同时核对部署、配置、数据大小和下游延迟。流量数量不变，单次请求变大、重试增加或任务滞留，也会提高内存与 CPU 消耗。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: reliability
+  level: advanced
+  order: 91
+  tags: ["OOM","CPU","GC","故障诊断"]
+sidebar:
+  label: "流量没增长，服务却突然 OOM 且 CPU 飙高，怎样排查？"
+  order: 91
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+先确认是应用抛出的内存错误、容器超过限制被杀，还是宿主机内存压力；同时核对部署、配置、数据大小和下游延迟。流量数量不变，单次请求变大、重试增加或任务滞留，也会提高内存与 CPU 消耗。
+
+<InterviewVisual src="/images/interview/cards/agent-oom-cpu-diagnosis.webp" alt="流量没增长，服务却突然 OOM 且 CPU 飙高，怎样排查？图解。先分清应用 OOM 与容器被杀；关联队列、内存、CPU 与 GC；先限流止损，再定位引用；流量不变，工作量仍可增加。" />
+
+止损时限制入口与并发，隔离异常任务，按已验证方案回滚或扩容，并保存必要的日志与指标。定位时关联 RSS、堆占用、分配速率、GC 时间、线程栈、队列深度和连接池；不要只看到 CPU 高就直接加线程。
+
+例如慢模型接口让任务与上下文堆在队列中，频繁 GC 又消耗 CPU。应减少无界保留并定位引用链；如果是直接内存、线程栈或本地库增长，只看 Java 堆转储可能查不到。生产取证本身也有暂停与磁盘开销，要选择合适方式。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Linux cgroup memory](https://docs.kernel.org/admin-guide/cgroup-v2.html)、[Oracle troubleshooting](https://docs.oracle.com/en/java/javase/21/troubleshoot/troubleshooting-memory-leaks.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

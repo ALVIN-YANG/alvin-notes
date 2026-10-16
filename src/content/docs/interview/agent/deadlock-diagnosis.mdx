@@ -1,0 +1,35 @@
+---
+title: "死锁是怎样形成的？怎样定位，统一加超时能解决吗？"
+description: "死锁中的线程互相等待对方持有的资源，无法继续。定位要找到等待关系和持锁位置；超时只有配合退出与释放规则才有用。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 111
+  tags: [并发, 死锁, Java, 锁顺序]
+sidebar:
+  label: 死锁形成与定位
+  order: 111
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+死锁是参与者相互等待对方持有的资源，谁都无法继续。例如，线程 A 拿着锁 1 等锁 2，线程 B 拿着锁 2 等锁 1。
+
+经典资源死锁需要互斥、持有并等待、不可抢占、循环等待四个条件同时成立。工程上常通过统一获取资源的顺序、减少嵌套持锁来破坏这些条件。比如，多个账户转账始终按账户 ID 顺序加锁，就能避免这类相反顺序造成的锁环；还要检查代码是否持锁等待网络或其他任务。
+
+服务卡住时，先取得线程栈，核对每个线程持有什么、等待什么，再找到形成环的调用位置。Java 的 `ThreadMXBean.findDeadlockedThreads()` 能检查对象监视器和可拥有同步器的部分死锁，不能据此排除数据库锁、跨进程等待等所有问题。
+
+超时只有在等待方能退出、释放已持有资源，并处理半完成操作时才有帮助。超时后仍拿着旧锁重试，可能继续阻塞；双方不断同时退让又重试，也可能形成活锁。不能把“配置了超时”当成死锁已经解决。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[Java 并发教程：Deadlock](https://docs.oracle.com/javase/tutorial/essential/concurrency/deadlock.html)、[ThreadMXBean 的检测范围](https://docs.oracle.com/en/java/javase/21/docs/api/java.management/java/lang/management/ThreadMXBean.html)。原帖问死锁，账户与超时为本站解释。
+
+</details>
+
+</InterviewQuestion>

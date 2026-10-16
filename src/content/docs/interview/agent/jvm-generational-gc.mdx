@@ -1,0 +1,36 @@
+---
+title: "JVM 为什么区分新生代和老年代？G1、ZGC 该怎样比较？"
+description: "分代回收利用“多数对象存活时间短”的经验：频繁处理短命对象，减少每次扫描所有长期存活对象的成本。具体堆布局、晋升与回收行为取决于收集器和 JDK，不能把所有 JVM 都画成固定的 Eden、Survivor 与连续老年代。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 128
+  tags: ["JVM","GC","G1","ZGC"]
+sidebar:
+  label: "JVM 为什么区分新生代和老年代？G1、ZGC 该怎样比较？"
+  order: 128
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+分代回收利用“多数对象存活时间短”的经验：频繁处理短命对象，减少每次扫描所有长期存活对象的成本。具体堆布局、晋升与回收行为取决于收集器和 JDK，不能把所有 JVM 都画成固定的 Eden、Survivor 与连续老年代。
+
+<InterviewVisual src="/images/interview/cards/agent-jvm-generational-gc.webp" alt="JVM 为什么区分新生代和老年代？G1、ZGC 该怎样比较？图解。短命对象频繁回收；长期存活对象区别处理；G1：Region 与停顿目标；ZGC：更多并发工作；先说明 JDK 与负载。" />
+
+G1 以 Region 管理堆，结合年轻代、混合回收和并发标记，在吞吐与停顿目标间取舍；ZGC 更侧重把大部分工作放到并发阶段，降低停顿，但仍消耗 CPU、内存与并发回收余量。不同 JDK 中 ZGC 的分代实现与默认行为已有变化，应先报版本。
+
+选择时看分配速率、存活集、堆余量、CPU 配额及暂停分布。Agent 缓存或任务积压让对象持续可达，换 GC 不能消除这类内存增长；需要限制保留量并定位引用链。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Oracle GC guide](https://docs.oracle.com/en/java/javase/21/gctuning/introduction-garbage-collection-tuning.html)、[ZGC](https://docs.oracle.com/en/java/javase/21/gctuning/z-garbage-collector2.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

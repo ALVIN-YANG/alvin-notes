@@ -1,0 +1,35 @@
+---
+title: "A/B 测试系统怎样分流和统计，避免把流量差异当成效果提升？"
+description: "先定义指标和随机分组单位，稳定分流并记录实际曝光；确认数据可靠后，再按事先约定的分析规则比较效果。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: system-design
+  level: advanced
+  order: 117
+  tags: [A/B 测试, 实验平台, 随机分流, 业务指标]
+sidebar:
+  label: A/B 测试系统设计
+  order: 117
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+A/B 测试把可比较的对象随机分到不同版本，判断效果差异是否来自改动。先确定核心指标、风险指标、分组单位和分析规则，再实现分流、曝光记录、结果归因与统计。
+
+例如，比较两个客服方案，可按用户稳定分组，让同一用户始终使用同一版本，避免一次会话中切换。分组单位要符合影响范围：若企业内用户共用状态或配置，可能应按企业分组，不能只图方便按请求随机。
+
+服务端记录实验和版本、分组单位、实际曝光时间，再把任务结果关联回来。统计分母要按事先定义的曝光或符合条件的对象计算，不能只统计成功结束的任务，否则失败和超时可能被漏掉。Agent 场景除任务完成率，还要看转人工、错误操作、成本和耗时。
+
+解释收益前，先查分流比例是否异常、日志是否漏报，以及其他实验是否互相影响。需要的样本量取决于基线、希望检测的最小差异和统计方法；不能看见一天分数变高就宣布有效，也不能反复查看普通显著性检验结果、一达标就停止。灰度侧重控制发布风险，A/B 测试还需要可比较的对照与统计设计。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[Microsoft ExP：实验分流比例与指标告警](https://www.microsoft.com/en-us/research/articles/alerting-in-microsofts-experimentation-platform-exp/)、[实验指标解读的常见陷阱](https://www.microsoft.com/en-us/research/wp-content/uploads/2020/08/2017-08-KDDMetricInterpretationPitfalls.pdf)。客服方案为解释示例。
+
+</details>
+
+</InterviewQuestion>

@@ -1,0 +1,36 @@
+---
+title: "快速排序怎样划分区间？为什么平均快却可能退化成 O(n²)？"
+description: "快速排序选择 pivot，把元素划分到较小、相等和较大的区间，再递归处理需要排序的部分。划分若较均衡，递归层数约为 log n，每层总处理量约为 n，平均时间为 O(n log n)；每次只缩小一个元素时，递归会退化，最坏达到 O(n²)。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: basic
+  order: 58
+  tags: ["算法","快速排序","复杂度"]
+sidebar:
+  label: "快速排序怎样划分区间？为什么平均快却可能退化成 O(n²)？"
+  order: 58
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+快速排序选择 pivot，把元素划分到较小、相等和较大的区间，再递归处理需要排序的部分。划分若较均衡，递归层数约为 log n，每层总处理量约为 n，平均时间为 O(n log n)；每次只缩小一个元素时，递归会退化，最坏达到 O(n²)。
+
+<InterviewVisual src="/images/interview/cards/agent-quick-sort.webp" alt="快速排序怎样划分区间？为什么平均快却可能退化成 O(n²)？图解。选择 pivot，划分区间；均衡：平均 O(n log n)；极端偏斜：最坏 O(n²)；重复值可用三路划分。" />
+
+随机选 pivot 或合理采样可降低持续坏划分的风险，但不消除理论最坏情况。大量重复元素时，三路划分能避免反复处理相等元素。实现前说明使用哪种分区规则及闭区间或半开区间，不要混用边界。
+
+原地分区不等于零额外空间，还需要递归栈；普通快速排序通常不稳定。测试空数组、单元素、已排序、逆序与全部相等，并注意只递归较小侧等方法对栈深的控制。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Princeton quicksort](https://algs4.cs.princeton.edu/23quicksort/)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

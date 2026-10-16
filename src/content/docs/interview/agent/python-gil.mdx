@@ -1,0 +1,36 @@
+---
+title: "Python 有 GIL，为什么多线程仍然有用？GIL 能保证线程安全吗？"
+description: "常规带 GIL 的 CPython 中，同一解释器同一时刻通常只有一个线程执行 Python 字节码。网络 I/O 等等待可以释放 GIL，部分原生扩展也会释放它，因此多线程仍能重叠等待；纯 Python 的 CPU 密集计算通常不能靠加线程获得多核加速。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: intermediate
+  order: 85
+  tags: ["Python","GIL","线程安全"]
+sidebar:
+  label: "Python 有 GIL，为什么多线程仍然有用？GIL 能保证线程安全吗？"
+  order: 85
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+import InterviewVisual from '../../../../components/InterviewVisual.astro';
+
+<InterviewQuestion>
+
+常规带 GIL 的 CPython 中，同一解释器同一时刻通常只有一个线程执行 Python 字节码。网络 I/O 等等待可以释放 GIL，部分原生扩展也会释放它，因此多线程仍能重叠等待；纯 Python 的 CPU 密集计算通常不能靠加线程获得多核加速。
+
+<InterviewVisual src="/images/interview/cards/agent-python-gil.webp" alt="Python 有 GIL，为什么多线程仍然有用？GIL 能保证线程安全吗？图解。常规 CPython：字节码受 GIL 约束；I/O 等待可以重叠；GIL ≠ 业务操作原子；先说明版本与构建。" />
+
+GIL 不是业务锁。“检查余额，再扣余额”包含多个动作，线程切换后仍可能读到过期状态，必须用锁、队列或数据库约束保护完整操作。不要根据某次字节码表现，断言所有列表或字典复合操作都原子。
+
+Python 还存在 free-threaded 构建，支持线程并行执行字节码；扩展兼容性与实际构建方式会影响行为。面试先说明 CPython 版本、构建和依赖，再讨论多线程、多进程或异步方案。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+核对于 2026-10-16。[Python GIL](https://docs.python.org/3/glossary.html#term-global-interpreter-lock)、[Free-threaded Python](https://docs.python.org/3/howto/free-threading-python.html)。工程场景与实现取舍由本站解释，不代表原帖公司的实际架构。
+
+</details>
+
+</InterviewQuestion>

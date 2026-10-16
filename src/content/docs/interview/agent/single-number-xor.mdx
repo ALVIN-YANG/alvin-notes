@@ -1,0 +1,41 @@
+---
+title: "数组中只有一个数出现一次，其余都出现两次，怎样用异或找出来？"
+description: "把所有整数依次异或，成对出现的值会抵消，只留下出现一次的值；该方法依赖题目的次数条件。"
+lastUpdated: 2026-10-16
+interview:
+  track: agent
+  module: fundamentals
+  level: basic
+  order: 113
+  tags: [算法, 位运算, 异或, Python]
+sidebar:
+  label: 异或找单次数字
+  order: 113
+---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
+
+把所有数依次异或即可。异或满足交换律、结合律，且 `a ^ a = 0`、`a ^ 0 = a`。成对的数会抵消，留下唯一出现一次的数，与输入顺序无关。
+
+```python
+def single_number(nums):
+    result = 0
+    for value in nums:
+        result ^= value
+    return result
+```
+
+例如，`[4, 1, 2, 1, 2]` 可以按运算规律看成 `4 ^ (1 ^ 1) ^ (2 ^ 2)`，结果是 4。对于机器字长内的整数，时间 O(n)，额外空间 O(1)。
+
+这依赖“非空数组、一个数出现一次、其余每个数恰好出现两次”的前提，算法本身不验证它们。若有两个数只出现一次，结果只是这两个数的异或；若其余数出现三次，也不能照搬。原帖只写“找只出现一次的数字”，面试时应先确认次数条件。
+
+<details data-reader-ignore>
+<summary>资料</summary>
+
+[LeetCode 136 的完整次数约束](https://leetcode.com/problems/single-number/description/)。题目中的成对条件按标准算法题补明，不声称原帖公开了全部约束。
+
+</details>
+
+</InterviewQuestion>
