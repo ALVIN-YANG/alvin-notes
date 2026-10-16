@@ -15,7 +15,6 @@ test('当前发布目录的每家公司都有可追溯员工初筛，不能用�
   assert.equal(new Set(analyses.reports.map(report => report.career)).size, analyses.reports.length);
   for (const report of analyses.reports) {
     for (const key of ['action', 'thesis', 'career', 'counter', 'change']) assert.doesNotMatch(report[key], /待生成|待分析|占位|TODO/i, `${report.companyId}/${key}`);
-    assert.equal(new Set(report.questions).size, 2, report.companyId);
   }
 });
 

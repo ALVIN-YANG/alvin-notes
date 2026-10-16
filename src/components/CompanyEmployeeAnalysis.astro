@@ -21,7 +21,6 @@ const languageFor = source => /[가-힣]/.test(source.originalTitle || '') ? 'ko
     <section class="cea-career"><h3>职业积累<span>产品 → 推断</span></h3><p>{report.careerSources.map(id => <a class="cea-ref" href={`#${sourceTarget(id)}`} data-analysis-citation aria-label={`查看职业分析依据来源 ${numberFor(id)}`}>[{numberFor(id)}]</a>)} {report.career}</p></section>
     <section class="cea-counter"><h3>主要风险与最强反驳 {report.counterSources.map(id => <a class="cea-ref" href={`#${sourceTarget(id)}`} data-analysis-citation aria-label={`查看风险分析依据来源 ${numberFor(id)}`}>[{numberFor(id)}]</a>)}</h3><p>{report.counter}</p></section>
     <dl class="cea-change"><dt>何时改判</dt><dd>{report.change}</dd></dl>
-    <details class="cea-questions"><summary>进一步核实的两个问题</summary><ol>{report.questions.map(question => <li>{question}</li>)}</ol></details>
   </> : <section class="cea-verdict" data-level="limited"><h3>新收录公司，员工分析待补充。</h3><p>已有目录与产品来源，尚不形成就业判断。</p></section>}
   <details class="cea-sources" data-analysis-sources><summary>信息来源与证据口径 · {sources.length} 项</summary>
     <ol>{sources.map((source, index) => <li id={sourceTarget(source.id)} data-analysis-source><a href={source.url} target="_blank" rel="noopener noreferrer">[{index + 1}] {source.title} ↗</a>{source.originalTitle && <p>原题：<span lang={languageFor(source)}>{source.originalTitle}</span></p>}<p>{source.kind} · 查阅 / 整理 {dateLabel(source.asOf)}</p><p>{source.note}</p></li>)}</ol>

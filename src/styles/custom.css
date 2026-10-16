@@ -268,8 +268,6 @@
 .co-employee-analysis details { border-top:1px solid var(--co-line); }
 .co-employee-analysis summary { min-height:2.6rem; padding:.7rem 0; color:var(--co-muted); font-size:.77rem; line-height:1.8; cursor:pointer; }
 .co-employee-analysis details[open] > summary { color:var(--co-ink); }
-.cea-questions ol { padding:0 0 .9rem 1.1rem; color:var(--co-muted); font-size:.78rem; line-height:1.9; }
-.cea-questions li + li { margin-top:.4rem; }
 .cea-sources > ol { display:grid; gap:.55rem; padding:0; list-style:none; }
 .cea-sources li { padding:.65rem .8rem; border:1px solid var(--co-line); border-radius:.35rem; scroll-margin-block:1rem; }
 .cea-sources li[data-active='true'] { border-color:var(--co-blue); background:var(--co-soft); }

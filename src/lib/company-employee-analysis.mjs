@@ -19,7 +19,6 @@ export function validateEmployeeAnalyses(collection) {
     publicUrl(report.website);
     if (!validDate(report.reviewedAt) || !employeeAnalysisLabels[report.level]) fail(`${report.companyId} 日期或资料层级无效`);
     for (const field of ['teaser', 'action', 'thesis', 'career', 'counter', 'change', 'confidence']) if (!report[field]?.trim()) fail(`${report.companyId} 缺少 ${field}`);
-    if (!Array.isArray(report.questions) || report.questions.length !== 2 || report.questions.some(question => !question?.trim())) fail(`${report.companyId} 核实问题不完整`);
     if (!report.sources?.length) fail(`${report.companyId} 缺少来源`);
     const sourceIds = new Set();
     for (const source of report.sources) {
