@@ -1,0 +1,12 @@
+---
+import manifest from '../../vendor/phoenix/manifest.json';
+import DocumentImageZoom from './DocumentImageZoom.astro';
+const page=manifest.pages.find(p=>p.url===Astro.url.pathname);
+---
+<aside class="primer-source phoenix-source" aria-label="凤凰架构来源与许可" data-pagefind-ignore data-reader-ignore>
+  <p>《凤凰架构：构建可靠的大型分布式系统》 · 作者：周志明。</p>
+  <p>文档采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" rel="license">CC BY-NC-SA 4.0</a>；代码按原项目的 Apache 2.0 许可处理，第三方材料保留原署名和适用许可。</p>
+  <p><a href="https://icyfenix.cn/">原站</a> · <a href={`${manifest.repo}/blob/${manifest.commit}/${page?.source || 'README.md'}`}>原始章节</a> · <a href="/phoenix/">来源与协议</a> · 同步版本 {manifest.commit.slice(0,7)}。</p>
+  <p>本站提供免费、无广告的阅读适配，调整了目录、链接和展示格式，原文第一人称指原作者。本站不代表作者，亦不暗示作者为本站背书。相关文档适配继续按 CC BY-NC-SA 4.0 提供。</p>
+</aside>
+<DocumentImageZoom />

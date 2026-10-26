@@ -14,7 +14,7 @@
     "fonts:update": "node scripts/update-font-subsets.mjs",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/sync-system-design.mjs --check && node scripts/check-system-design-english.mjs && astro build && node scripts/verify-build-output.mjs",
+    "build": "node scripts/sync-system-design.mjs --check && node scripts/check-system-design-english.mjs && node scripts/sync-phoenix.mjs --check && astro build && node scripts/verify-build-output.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "news:daily": "node scripts/fetch-ai-news.mjs --daily",
@@ -27,19 +27,25 @@
     "model-arena:verify": "node scripts/verify-model-arena.mjs",
     "system-design:sync": "node scripts/sync-system-design.mjs",
     "system-design:check": "node scripts/sync-system-design.mjs --check",
-    "system-design:english-check": "node scripts/check-system-design-english.mjs"
+    "system-design:english-check": "node scripts/check-system-design-english.mjs",
+    "phoenix:sync": "node scripts/sync-phoenix.mjs",
+    "phoenix:check": "node scripts/sync-phoenix.mjs --check"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.1.2",
     "@astrojs/starlight": "^0.37.6",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@vercel/analytics": "^2.0.1",
+    "acorn": "^8.19.0",
     "astro": "^5.6.1",
     "fflate": "^0.8.2",
     "github-slugger": "^2.0.0",
     "marked": "^16.4.2",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
     "sharp": "^0.34.2",
-    "tslib": "^2.8.1"
+    "tslib": "^2.8.1",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "isomorphic-mermaid": "^0.1.1",

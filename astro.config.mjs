@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import remarkStaticMermaid from './src/plugins/remark-static-mermaid.mjs';
+import remarkPhoenix from './src/plugins/remark-phoenix.mjs';
+import { buildPhoenixSidebar } from './src/lib/phoenix-sidebar.mjs';
 import remarkSystemDesign from './src/plugins/remark-system-design.mjs';
 import { buildInterviewSidebar } from './src/lib/interview-sidebar.mjs';
 import { buildSystemDesignSidebar } from './src/lib/system-design-sidebar.mjs';
@@ -12,7 +14,7 @@ export default defineConfig({
   site: 'https://blog.mlxb.cc',
   prefetch: true,
   markdown: {
-    remarkPlugins: [remarkSystemDesign, remarkStaticMermaid],
+    remarkPlugins: [remarkPhoenix, remarkSystemDesign, remarkStaticMermaid],
   },
   redirects: {
     '/system-design-knowledge': '/system-design/',
@@ -82,6 +84,7 @@ export default defineConfig({
       },
       sidebar: [
         { label: '系统设计入门', items: buildSystemDesignSidebar() },
+        { label: '凤凰架构', items: buildPhoenixSidebar() },
         {
           label: 'AI 工程问答',
           items: [

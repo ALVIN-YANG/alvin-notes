@@ -29,6 +29,7 @@ const navGroups = [
     label: '工程基础',
     links: [
       { label: '系统设计', href: '/system-design/', match: '/system-design/' },
+      { label: '凤凰架构', href: '/phoenix/', match: '/phoenix/' },
       { label: '算法', href: '/algorithm-knowledge/', match: '/algorithm-knowledge/' },
       { label: '网络', href: '/network/ai-agent-communication-protocols/', match: '/network/' },
       { label: '安全', href: '/security/1-zero-day-vulnerability-primer/', match: '/security/' },
@@ -129,7 +130,7 @@ function isActive(match: string): boolean {
     </nav>
   </div>
   <div class="sl-flex right-group">
-    {currentPath.startsWith('/system-design/') ? <button type="button" disabled class="primer-search-open" data-primer-search-trigger>搜索文档 <kbd>⌘ K</kbd></button> : <Search {...Astro.props} />}
+    {(currentPath.startsWith('/system-design/') || currentPath.startsWith('/phoenix/')) ? <button type="button" disabled class="primer-search-open" data-primer-search-trigger>搜索文档 <kbd>⌘ K</kbd></button> : <Search {...Astro.props} />}
     <div class="sl-flex social-icons">
       <SocialIcons {...Astro.props} />
     </div>

@@ -2025,3 +2025,13 @@ primer-search button:active { background:var(--sl-color-gray-5); }
 @media(max-width:30rem) { .primer-search-dialog { width:calc(100vw - 1rem); padding:.8rem; } .primer-search-open kbd { display:none; } }
 .sidebar-content primer-search { display:block; margin-bottom:1.25rem; }
 .sidebar-content primer-search > button { width:100%; text-align:left; }
+
+/* Phoenix: use the established book layout, with persistent original-author attribution. */
+.phoenix-credit { margin:0 0 .8rem; color:var(--sl-color-gray-2); font-size:.78rem; line-height:1.8; }
+.phoenix-credit a { color:inherit; }
+.phoenix-note { margin-block:1.4rem; padding:1rem 1.2rem; background:var(--sl-color-gray-6); border-radius:.3rem; }
+.phoenix-center { text-align:center; background:transparent; padding:0; }
+.phoenix-right { text-align:right; background:transparent; padding:0; }
+body:has(.phoenix-heading) .sl-markdown-content img { max-width:100%; height:auto; }
+body:has(.phoenix-heading) .sl-markdown-content :is(h2,h3,h4) { overflow-wrap:anywhere; }
+body:has(.phoenix-heading) .sl-markdown-content iframe { width:100%; max-width:100%; }

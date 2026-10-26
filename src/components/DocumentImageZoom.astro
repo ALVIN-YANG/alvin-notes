@@ -1,0 +1,46 @@
+<script>
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element) || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest<HTMLAnchorElement>('[data-primer-image]');
+    const source = link?.querySelector('img');
+    if (!link || !source || document.querySelector('.primer-image-dialog')) return;
+    event.preventDefault();
+    const dialog = document.createElement('dialog');
+    dialog.className = 'primer-image-dialog';
+    dialog.setAttribute('aria-label', '查看原图');
+    const controls = document.createElement('div');
+    controls.className = 'primer-image-controls';
+    const zoom = document.createElement('button');
+    zoom.type = 'button';
+    zoom.textContent = '原始尺寸';
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.textContent = '关闭';
+    close.autofocus = true;
+    controls.append(zoom, close);
+    const canvas = document.createElement('div');
+    canvas.className = 'primer-image-canvas';
+    canvas.tabIndex = 0;
+    canvas.setAttribute('aria-label', '图片，可滚动查看');
+    const img = source.cloneNode() as HTMLImageElement;
+    img.loading = 'eager';
+    canvas.append(img);
+    dialog.append(controls, canvas);
+    document.body.append(dialog);
+    zoom.addEventListener('click', () => {
+      const expanded = dialog.classList.toggle('primer-image-expanded');
+      zoom.textContent = expanded ? '适应窗口' : '原始尺寸';
+      canvas.scrollTo(0, 0);
+    });
+    close.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+    const previousOverflow = document.body.style.overflow;
+    dialog.addEventListener('close', () => {
+      dialog.remove();
+      document.body.style.overflow = previousOverflow;
+      link.focus({ preventScroll: true });
+    }, { once: true });
+    document.body.style.overflow = 'hidden';
+    dialog.showModal();
+  });
+</script>

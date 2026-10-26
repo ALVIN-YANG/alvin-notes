@@ -1,0 +1,20 @@
+---
+{
+  "title": "部署环境",
+  "comments": false,
+  "editUrl": false,
+  "tableOfContents": {
+    "minHeadingLevel": 2,
+    "maxHeadingLevel": 4
+  },
+  "prev": {
+    "link": "/phoenix/tricks/2021/arch/",
+    "label": "ArchSummit2021主题演讲：从软件的历史看架构的未来"
+  },
+  "next": {
+    "link": "/phoenix/appendix/deployment-env-setup/setup-docker/",
+    "label": "部署 Docker CE 容器环境"
+  }
+}
+---
+这一部分介绍了 Docker 容器环境和 Kubernetes 集群环境的 Step-By-Step 的安装流程。加入开发与运维的环境依赖这些内容，严格来讲并不符合本文档的主题，但对于刚刚接触这个领域的读者，这些内容确实有一定的复杂性，为避免新人受到不必要的打击，笔者还是在附录中加入这部分的内容，如对这部分已有了解的读者，完全可以略过。

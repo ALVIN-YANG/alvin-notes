@@ -1,5 +1,6 @@
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
+import { verifyPhoenix } from './verify-phoenix.mjs';
 import { verifySystemDesign } from './verify-system-design.mjs';
 
 const outputDirectory = new URL('../dist/', import.meta.url);
@@ -241,6 +242,7 @@ if (!algorithmDataMatch) {
 }
 
 await verifySystemDesign().catch(error => problems.push(error.message));
+await verifyPhoenix().catch(error => problems.push(error.message));
 
 const homepageHtml = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
 if ((homepageHtml.match(/<h1\b/g) ?? []).length !== 1) {

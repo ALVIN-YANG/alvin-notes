@@ -52,6 +52,7 @@ const filteredSidebar = currentGroup
 ---
 
 {Astro.url.pathname.startsWith('/system-design/') && <SystemDesignSearch />}
+{Astro.url.pathname.startsWith('/phoenix/') && <SystemDesignSearch indexUrl="/phoenix-search.json" label="搜索凤凰架构" />}
 
 <SidebarPersister>
   <SidebarSublist sublist={filteredSidebar} />

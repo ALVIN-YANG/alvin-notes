@@ -1,6 +1,7 @@
 /** Build metadata only for dated articles from the content collection. */
 export function createArticleJsonLd({ slug, entry }, canonicalUrl) {
   const { data, body } = entry;
+  if (slug.startsWith('phoenix/')) return null;
   if (data.template === 'splash' || slug.startsWith('tools/') || !body?.trim()) return null;
   if (!(data.date instanceof Date) || !Number.isFinite(data.date.getTime())) return null;
 
