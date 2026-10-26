@@ -1,5 +1,5 @@
 <primer-search>
-  <button type="button" class="primer-search-open" aria-label="搜索系统设计文档" aria-keyshortcuts="Control+K Meta+K">搜索文档 <kbd>⌘ K</kbd></button>
+  <button type="button" disabled class="primer-search-open" aria-label="搜索系统设计文档" aria-keyshortcuts="Control+K Meta+K">搜索文档 <kbd>⌘ K</kbd></button>
   <dialog class="primer-search-dialog" aria-label="搜索系统设计文档">
     <form method="dialog" class="primer-search-bar">
       <label for="primer-search-input">搜索文档</label>
@@ -29,7 +29,10 @@
       }).catch(error => { index = undefined; throw error; });
       const show = () => { dialog.showModal(); input.focus(); };
       open.addEventListener('click', show);
-      document.querySelector('[data-primer-search-trigger]')?.addEventListener('click', show);
+      const headerTrigger = document.querySelector<HTMLButtonElement>('[data-primer-search-trigger]');
+      headerTrigger?.addEventListener('click', show);
+      open.disabled = false;
+      if (headerTrigger) headerTrigger.disabled = false;
       dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
       dialog.addEventListener('close', () => open.focus());
       dialog.addEventListener('keydown', event => {

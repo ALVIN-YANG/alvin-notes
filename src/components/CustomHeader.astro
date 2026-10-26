@@ -129,7 +129,7 @@ function isActive(match: string): boolean {
     </nav>
   </div>
   <div class="sl-flex right-group">
-    {currentPath.startsWith('/system-design/') ? <button type="button" class="primer-search-open" data-primer-search-trigger>搜索文档 <kbd>⌘ K</kbd></button> : <Search {...Astro.props} />}
+    {currentPath.startsWith('/system-design/') ? <button type="button" disabled class="primer-search-open" data-primer-search-trigger>搜索文档 <kbd>⌘ K</kbd></button> : <Search {...Astro.props} />}
     <div class="sl-flex social-icons">
       <SocialIcons {...Astro.props} />
     </div>
