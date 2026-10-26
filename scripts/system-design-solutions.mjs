@@ -5,6 +5,7 @@ import { marked } from 'marked';
 import Slugger from 'github-slugger';
 import { JSDOM } from 'jsdom';
 import sharp from 'sharp';
+import { applyEnglishUpdates } from './system-design-english-updates.mjs';
 
 const root = new URL('../', import.meta.url);
 const vendor = new URL('vendor/system-design-primer/', root);
@@ -30,7 +31,7 @@ export async function buildSolutions({check, update, download, images}) {
       const sourcePath = kind === 'site' ? 'src/data/system-design-supplements/circular-array.md' : `solutions/${kind}/${id}/${kind === 'system_design' ? 'README-zh-Hans.md' : `${objectFiles[id]}.ipynb`}`;
       const original = kind === 'site' ? await readFile(new URL(sourcePath, root), 'utf8') : await sourceFile(sourcePath);
       if (kind === 'site') sources[sourcePath] = hash(original);
-      let markdown = original;
+      let markdown = applyEnglishUpdates(sourcePath, original);
       if (kind === 'object_oriented_design') {
         const notebook = JSON.parse(original);
         if (notebook.cells.length !== 5 || notebook.cells.slice(0,4).some(c=>c.cell_type!=='markdown') || notebook.cells[4].cell_type!=='code') throw new Error(`Review changed notebook layout: ${sourcePath}`);

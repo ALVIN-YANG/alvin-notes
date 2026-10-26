@@ -1,0 +1,810 @@
+{
+  "commit": "ae9bbd7b02d90b9866215de185217d33f39ab733",
+  "patches": [
+    {
+      "id": "availability-numbers",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "### Availability in numbers",
+      "before": "## 域名系统\n",
+      "after": "### 可用率的量化\n\n> **依据英文版补译**：以下内容补齐中文原文缺失的可用率计算。\n\n可用率通常表示服务正常运行时间占总时间的比例，也可以从停机时间计算。它常用“几个 9”来描述，例如 99.99% 就是“四个 9”。\n\n#### 99.9% 可用率：三个 9\n\n| 统计周期 | 允许的停机时间 |\n| --- | --- |\n| 每年 | 8 小时 45 分 57 秒 |\n| 每月 | 43 分 49.7 秒 |\n| 每周 | 10 分 4.8 秒 |\n| 每天 | 1 分 26.4 秒 |\n\n#### 99.99% 可用率：四个 9\n\n| 统计周期 | 允许的停机时间 |\n| --- | --- |\n| 每年 | 52 分 35.7 秒 |\n| 每月 | 4 分 23 秒 |\n| 每周 | 1 分 0.48 秒 |\n| 每天 | 约 8.6 秒 |\n\n本站校注：年、月保留英文表的近似统计口径。英文表将四个 9 的每周停机时间写成了 `1m 5s`；按 7 天计算应为 `7 × 24 × 3600 × (1 - 0.9999) = 60.48` 秒，此处已更正。\n\n#### 串联与并联组件的可用率\n\n一个服务由多个可能失效的组件组成时，总体可用率取决于这些组件的依赖关系。\n\n**串联：每个组件都必须正常。** 当两个组件的可用率都低于 100% 时，串联后的总体可用率会下降：\n\n```text\n总可用率 = A 的可用率 × B 的可用率\n```\n\n如果 A 和 B 的可用率都是 99.9%，串联后为 `0.999 × 0.999 = 0.998001`，约为 99.8%。\n\n**并联：至少一个组件正常即可提供服务。** 两个组件并联可以提高总体可用率：\n\n```text\n总可用率 = 1 - (1 - A 的可用率) × (1 - B 的可用率)\n```\n\n如果 A 和 B 的可用率都是 99.9%，并联后为 `1 - 0.001 × 0.001 = 0.999999`，即 99.9999%。\n\n本站校注：上述乘法模型假设组件故障相互独立；并联还要求任一存活组件能够接管服务。共同依赖同一电源、网络或数据库时，不能直接用该公式宣称冗余后的可用率。\n\n## 域名系统\n",
+      "count": 1,
+      "chapters": [
+        "availability-patterns"
+      ]
+    },
+    {
+      "id": "availability-index",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "### Availability in numbers",
+      "before": "* [域名系统](#域名系统)",
+      "after": "    * [可用率的量化](#可用率的量化)\n        * [三个 9 与四个 9](#999-可用率三个-9)\n        * [串联与并联组件的可用率](#串联与并联组件的可用率)\n* [域名系统](#域名系统)",
+      "count": 1,
+      "chapters": [
+        "topic-index"
+      ]
+    },
+    {
+      "id": "push-cdn-use-cases",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "Sites with a small amount of traffic or sites with content that isn't often updated work well with push CDNs.",
+      "before": "### CDN 拉取（pull）",
+      "after": "流量较小，或内容不经常更新的网站，适合使用推送 CDN。内容只需放到 CDN 上一次，不必按固定间隔重新拉取。\n\n### CDN 拉取（pull）",
+      "count": 1,
+      "chapters": [
+        "cdn"
+      ]
+    },
+    {
+      "id": "interview-template",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "[System design template]",
+      "before": "* [系统架构与设计的面试简介](https://www.youtube.com/watch?v=ZgdS0EUmn70)",
+      "after": "* [系统架构与设计的面试简介](https://www.youtube.com/watch?v=ZgdS0EUmn70)\n* [系统设计面试模板](https://leetcode.com/discuss/career/229177/My-System-Design-Template)",
+      "count": 1,
+      "chapters": [
+        "interview-approach"
+      ]
+    },
+    {
+      "id": "cap-video",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "[The CAP theorem]",
+      "before": "* [CAP FAQ](https://github.com/henryr/cap-faq)",
+      "after": "* [CAP FAQ](https://github.com/henryr/cap-faq)\n* [CAP 定理视频](https://www.youtube.com/watch?v=k-Yaq8AHlFA)",
+      "count": 1,
+      "chapters": [
+        "availability-consistency"
+      ]
+    },
+    {
+      "id": "security-checklist",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "[API security checklist]",
+      "before": "* [为开发者准备的安全引导]",
+      "after": "* [API 安全检查清单](https://github.com/shieldfy/API-Security-Checklist)\n* [为开发者准备的安全引导]",
+      "count": 1,
+      "chapters": [
+        "security"
+      ]
+    },
+    {
+      "id": "encryption-at-rest",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "Encrypt in transit and at rest.",
+      "before": "* 在运输和等待过程中加密",
+      "after": "* 对传输中的数据和静态存储的数据进行加密。",
+      "count": 1,
+      "chapters": [
+        "security"
+      ]
+    },
+    {
+      "id": "strong-consistency-transactions",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "Strong consistency works well in systems that need transactions.",
+      "before": "强一致性在需要记录的系统中运作良好。",
+      "after": "强一致性适用于需要事务的系统。",
+      "count": 1,
+      "chapters": [
+        "consistency-patterns"
+      ]
+    },
+    {
+      "id": "microservice-process",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "Each service runs a unique process",
+      "before": "每个服务运行在一个独立的线程中",
+      "after": "每个服务运行在一个独立的进程中",
+      "count": 1,
+      "chapters": [
+        "application-layer"
+      ]
+    },
+    {
+      "id": "consistency-definition",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "Every read receives the most recent write or an error",
+      "before": "每次访问都能获得最新数据但可能会收到错误响应",
+      "after": "每次读取返回最近一次写入的数据，或返回错误",
+      "count": 2,
+      "chapters": [
+        "availability-consistency",
+        "consistency-patterns"
+      ]
+    },
+    {
+      "id": "cap-partition-heals",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "when the partition is resolved",
+      "before": "当分区解析完后",
+      "after": "当网络分区恢复后",
+      "count": 1,
+      "chapters": [
+        "availability-consistency"
+      ]
+    },
+    {
+      "id": "cdn-cost-tradeoff",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "although this should be weighed with additional costs you would incur not using a CDN.",
+      "before": "* CDN 成本可能因流量而异，可能在权衡之后你将不会使用 CDN。",
+      "after": "* CDN 成本可能随流量显著增加，但应与不使用 CDN 时产生的额外成本一并权衡。",
+      "count": 1,
+      "chapters": [
+        "cdn"
+      ]
+    },
+    {
+      "id": "service-health-check",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "help verify service integrity and are often done using an [HTTP]",
+      "before": "[Health checks](https://www.consul.io/intro/getting-started/checks.html) 可以帮助确认服务的完整性和是否经常使用一个 [HTTP](#超文本传输协议http) 路径。",
+      "after": "[健康检查](https://www.consul.io/intro/getting-started/checks.html) 用于验证服务是否正常，通常通过一个 [HTTP](#超文本传输协议http) 端点执行。",
+      "count": 1,
+      "chapters": [
+        "application-layer"
+      ]
+    },
+    {
+      "id": "stock-exchange-and-rate-limiter",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "| Design a Stock Exchange (like NASDAQ or Binance)",
+      "before": "| 添加更多的系统设计问题",
+      "after": "| 设计 API 限流器 | [Stripe：限流器设计](https://stripe.com/blog/rate-limiters) |\n| 设计证券或数字资产交易所（如 NASDAQ、Binance） | [Jane Street 讲座](https://youtu.be/b1e4t2k2KJY)<br/>[Go 交易引擎实现](https://around25.com/blog/building-a-trading-engine-for-a-crypto-exchange/)<br/>[Go 限价订单簿实现](http://bhomnick.net/building-a-simple-limit-order-in-go/) |\n| 添加更多的系统设计问题",
+      "count": 1,
+      "chapters": [
+        "appendix"
+      ]
+    },
+    {
+      "id": "netflix-architecture",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "| Netflix |",
+      "before": "| Pinterest      |",
+      "after": "| Netflix | [Netflix 全栈架构概览](http://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html)<br/>[按下播放键后发生了什么](http://highscalability.com/blog/2017/12/11/netflix-what-happens-when-you-press-play.html) |\n| Pinterest      |",
+      "count": 1,
+      "chapters": [
+        "appendix"
+      ]
+    },
+    {
+      "id": "facebook-live",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "How Facebook Live Streams To 800,000 Simultaneous Viewers",
+      "before": "[Facebook 的图片存储](https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf)",
+      "after": "[Facebook 的图片存储](https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf)<br/>[Facebook Live 如何同时向 80 万观众直播](http://highscalability.com/blog/2016/6/27/how-facebook-live-streams-to-800000-simultaneous-viewers.html)",
+      "count": 1,
+      "chapters": [
+        "appendix"
+      ]
+    },
+    {
+      "id": "twitter-images",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "How Twitter Handles 3,000 Images Per Second",
+      "before": "[Twitter 的行为：规模超过 1 亿用户](https://www.youtube.com/watch?v=z8LU0Cj6BOU)",
+      "after": "[Twitter 运维：扩展到超过 1 亿用户](https://www.youtube.com/watch?v=z8LU0Cj6BOU)<br/>[Twitter 如何每秒处理 3,000 张图片](http://highscalability.com/blog/2016/4/20/how-twitter-handles-3000-images-per-second.html)",
+      "count": 1,
+      "chapters": [
+        "appendix"
+      ]
+    },
+    {
+      "id": "uber-growth",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "Lessons Learned From Scaling Uber To 2000 Engineers",
+      "before": "[Uber 如何扩展自己的实时化市场](http://highscalability.com/blog/2015/9/14/how-uber-scales-their-real-time-market-platform.html)",
+      "after": "[Uber 如何扩展自己的实时化市场](http://highscalability.com/blog/2015/9/14/how-uber-scales-their-real-time-market-platform.html)<br/>[Uber 扩展到 2,000 名工程师、1,000 个服务与 8,000 个 Git 仓库的经验](http://highscalability.com/blog/2016/10/12/lessons-learned-from-scaling-uber-to-2000-engineers-1000-ser.html)",
+      "count": 1,
+      "chapters": [
+        "appendix"
+      ]
+    },
+    {
+      "id": "redis-design-resources",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "ikvs-implementing-a-key-value-store-table-of-contents",
+      "before": "| 设计类似 Redis 的键值存储        | [slideshare.net](http://www.slideshare.net/dvirsky/introduction-to-redis) |",
+      "after": "| 设计类似 Redis 的键值存储        | [实现键值存储系列](http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/)<br/>[Amazon Dynamo 论文](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) |",
+      "count": 1,
+      "chapters": [
+        "appendix"
+      ]
+    },
+    {
+      "id": "twitter-firehose",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "a 22 MB/S firehose",
+      "before": "22 MB/S 的防火墙",
+      "after": "22 MB/s 的数据流",
+      "count": 1,
+      "chapters": [
+        "appendix"
+      ]
+    },
+    {
+      "id": "reference-url-0",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://robertgreiner.com/cap-theorem-revisited",
+      "before": "http://robertgreiner.com/2014/08/cap-theorem-revisited",
+      "after": "https://robertgreiner.com/cap-theorem-revisited",
+      "count": 2,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-1",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://figshare.com/articles/Globally_distributed_content_delivery/6605972",
+      "before": "http://repository.cmu.edu/cgi/viewcontent.cgi?article=2112&context=compsci",
+      "after": "https://figshare.com/articles/Globally_distributed_content_delivery/6605972",
+      "count": 2,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-2",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://www.geeksforgeeks.org/system-design/pull-cdn-vs-push-cdn/",
+      "before": "http://www.travelblogadvice.com/technical/the-differences-between-push-and-pull-cdns/",
+      "after": "https://www.geeksforgeeks.org/system-design/pull-cdn-vs-push-cdn/",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-3",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://www.g33kinfo.com/info/round-robin-vs-weighted-round-robin-lb",
+      "before": "http://g33kinfo.com/info/archives/2657",
+      "after": "https://www.g33kinfo.com/info/round-robin-vs-weighted-round-robin-lb",
+      "count": 2,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-4",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://www.youtube.com/watch?v=kKjm4ehYiMs",
+      "before": "https://www.youtube.com/watch?v=w95murBkYmU",
+      "after": "https://www.youtube.com/watch?v=kKjm4ehYiMs",
+      "count": 4,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-5",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "http://aiddroid.com/10-tips-optimizing-mysql-queries-dont-suck/",
+      "before": "http://20bits.com/article/10-tips-for-optimizing-mysql-queries-that-dont-suck",
+      "after": "http://aiddroid.com/10-tips-optimizing-mysql-queries-dont-suck/",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-6",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://dev.mysql.com/doc/refman/5.7/en/query-cache.html",
+      "before": "http://dev.mysql.com/doc/refman/5.7/en/query-cache",
+      "after": "https://dev.mysql.com/doc/refman/5.7/en/query-cache.html",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-7",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://www.percona.com/blog/2016/10/12/mysql-5-7-performance-tuning-immediately-after-installation/",
+      "before": "https://www.percona.com/blog/2014/01/28/10-mysql-performance-tuning-settings-after-installation/",
+      "after": "https://www.percona.com/blog/2016/10/12/mysql-5-7-performance-tuning-immediately-after-installation/",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-9",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://web.archive.org/web/20170406065247/http://tech.hulu.com/blog/2011/09/19/recommendation-system.html",
+      "before": "http://tech.hulu.com/blog/2011/09/19/recommendation-system.html",
+      "after": "https://web.archive.org/web/20170406065247/http://tech.hulu.com/blog/2011/09/19/recommendation-system.html",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-10",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://www.cs.ucsb.edu/sites/default/files/documents/2005-23.pdf",
+      "before": "https://icmi.cs.ucsb.edu/research/tech_reports/reports/2005-23.pdf",
+      "after": "https://www.cs.ucsb.edu/sites/default/files/documents/2005-23.pdf",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-11",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html",
+      "before": "https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html",
+      "after": "http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-12",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "http://blog.cloudera.com/",
+      "before": "http://blog.cloudera.com/blog/",
+      "after": "http://blog.cloudera.com/",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-13",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://www.quora.com/q/quoraengineering",
+      "before": "http://engineering.quora.com/",
+      "after": "https://www.quora.com/q/quoraengineering",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-15",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://medium.com/@Pinterest_Engineering",
+      "before": "http://engineering.pinterest.com/",
+      "after": "https://medium.com/@Pinterest_Engineering",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "reference-url-16",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://blog.twitter.com/engineering/",
+      "before": "https://engineering.twitter.com/",
+      "after": "https://blog.twitter.com/engineering/",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "queue-product-Redis",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://redis.io/",
+      "before": "**Redis**",
+      "after": "**[Redis](https://redis.io/)**",
+      "count": 2,
+      "chapters": [
+        "asynchronism"
+      ]
+    },
+    {
+      "id": "queue-product-RabbitMQ",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://www.rabbitmq.com/",
+      "before": "**RabbitMQ**",
+      "after": "**[RabbitMQ](https://www.rabbitmq.com/)**",
+      "count": 1,
+      "chapters": [
+        "asynchronism"
+      ]
+    },
+    {
+      "id": "queue-product-Amazon SQS",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://aws.amazon.com/sqs/",
+      "before": "**Amazon SQS**",
+      "after": "**[Amazon SQS](https://aws.amazon.com/sqs/)**",
+      "count": 1,
+      "chapters": [
+        "asynchronism"
+      ]
+    },
+    {
+      "id": "queue-product-Celery",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://docs.celeryproject.org/en/stable/",
+      "before": "**Celery**",
+      "after": "**[Celery](https://docs.celeryproject.org/en/stable/)**",
+      "count": 1,
+      "chapters": [
+        "asynchronism"
+      ]
+    },
+    {
+      "id": "license-notice",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "Copyright 2017 Donne Martin",
+      "before": "## 许可\n",
+      "after": "## 许可\n\n> 依据英文版补译：本仓库的代码与资源由 Donne Martin 以开源许可提供。这是其个人仓库，许可来自作者本人，而非其雇主 Facebook。\n\nCopyright 2017 Donne Martin\n",
+      "count": 1,
+      "chapters": [
+        "license"
+      ]
+    },
+    {
+      "id": "mint-cdn",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "* [CDN]",
+      "before": "* [DNS](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#域名系统)",
+      "after": "* [DNS](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#域名系统)\n* [CDN](/system-design/cdn/)",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "twitter-cdn",
+      "source": "solutions/system_design/twitter/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/twitter/README.md",
+      "evidence": "* [CDN]",
+      "before": "* [DNS](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#域名系统)",
+      "after": "* [DNS](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#域名系统)\n* [CDN](/system-design/cdn/)",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "sales_rank-cdn",
+      "source": "solutions/system_design/sales_rank/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/sales_rank/README.md",
+      "evidence": "* [CDN]",
+      "before": "* [DNS](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#域名系统)",
+      "after": "* [DNS](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#域名系统)\n* [CDN](/system-design/cdn/)",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "twitter-search-estimate",
+      "source": "solutions/system_design/twitter/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/twitter/README.md",
+      "evidence": "10 billion searches per month",
+      "before": "* 每秒 4000 次搜索请求",
+      "after": "* 每秒 4000 次搜索请求\n    * 每月 100 亿次搜索 ×（每秒 400 次请求 / 每月 10 亿次请求）",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "twitter-conversion-unit",
+      "source": "solutions/system_design/twitter/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/twitter/README.md",
+      "evidence": "400 requests per second / 1 billion requests per month",
+      "before": "每秒 400 次请求 / 每月 10 次请求",
+      "after": "每秒 400 次请求 / 每月 10 亿次请求",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "twitter-correct-diagram",
+      "source": "solutions/system_design/twitter/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/twitter/README.md",
+      "evidence": "![Imgur](http://i.imgur.com/jrUBAF7.png)",
+      "before": "![Imgur](http://i.imgur.com/MzExP06.png)",
+      "after": "![Imgur](http://i.imgur.com/jrUBAF7.png)",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "social-request-hop",
+      "source": "solutions/system_design/social_graph/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/social_graph/README.md",
+      "evidence": "* The **Web Server** forwards the request to the **Search API** server",
+      "before": "* **搜索 API** 服务器向 **用户图服务** 转发请求",
+      "after": "* **Web 服务器** 将请求转发给 **搜索 API** 服务器\n* **搜索 API** 服务器向 **用户图服务** 转发请求",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "social-error-handling",
+      "source": "solutions/system_design/social_graph/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/social_graph/README.md",
+      "evidence": "Error handling is excluded below for simplicity.",
+      "before": "**注释**：简易版错误处理执行如下。询问你是否需要编写适当的错误处理方法。",
+      "after": "**说明**：为简化示例，以下代码省略了错误处理。请向面试官确认是否需要补充。",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "pastebin-interview-code",
+      "source": "solutions/system_design/pastebin/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/pastebin/README.md",
+      "evidence": "**Clarify with your interviewer how much code you are expected to write**.",
+      "before": "因为实时分析不是必须的，所以我们可以简单的 **MapReduce** **Web Server** 的日志，用来生成点击次数。",
+      "after": "因为实时分析不是必须的，所以我们可以简单的 **MapReduce** **Web Server** 的日志，用来生成点击次数。\n\n**向面试官确认需要编写多少代码。**",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "pastebin-shell-example",
+      "source": "solutions/system_design/pastebin/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/pastebin/README.md",
+      "evidence": "expiration_length_in_minutes",
+      "before": "$ curl -X POST --data '{\"expiration_length_in_minutes\":\"60\", \\\"paste_contents\":\"Hello World!\"}' https://pastebin.com/api/v1/paste",
+      "after": "$ curl -X POST --data '{\"expiration_length_in_minutes\":\"60\",\"paste_contents\":\"Hello World!\"}' https://pastebin.com/api/v1/paste",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mint-read-throughput",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "200 *average* read requests per second",
+      "before": "每秒 *平均* 2000 次读请求数",
+      "after": "每秒 *平均* 200 次读请求数",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mint-write-throughput",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "2,000 *average* transaction writes per second",
+      "before": "*平均* 200 次交易写入每秒",
+      "after": "*平均* 2000 次交易写入每秒",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mint-latency-unit",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "250 microseconds",
+      "before": "大约250毫秒",
+      "after": "大约 250 微秒",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mint-constructor",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "def __init__(self, seller_category_map, seller_category_crowd_overrides_map):",
+      "before": "def __init__(self, seller_category_map, self.seller_category_crowd_overrides_map):",
+      "after": "def __init__(self, seller_category_map, seller_category_crowd_overrides_map):",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mint-timestamp",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "self.created_at = created_at",
+      "before": "self.timestamp = timestamp",
+      "after": "self.created_at = created_at",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mint-budget-housing",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "DefaultCategories.HOUSING: self.income * .4,",
+      "before": "'DefaultCategories.HOUSING': income * .4,",
+      "after": "DefaultCategories.HOUSING: self.income * .4,",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mint-budget-food",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "DefaultCategories.FOOD: self.income * .2,",
+      "before": "'DefaultCategories.FOOD': income * .2",
+      "after": "DefaultCategories.FOOD: self.income * .2,",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mint-budget-gas",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "DefaultCategories.GAS: self.income * .1,",
+      "before": "'DefaultCategories.GAS': income * .1,",
+      "after": "DefaultCategories.GAS: self.income * .1,",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mint-budget-shopping",
+      "source": "solutions/system_design/mint/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/mint/README.md",
+      "evidence": "DefaultCategories.SHOPPING: self.income * .2,",
+      "before": "'DefaultCategories.SHOPPING': income * .2",
+      "after": "DefaultCategories.SHOPPING: self.income * .2,",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "mapreduce-shuffle-meaning",
+      "source": "solutions/system_design/sales_rank/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/sales_rank/README.md",
+      "evidence": "distributed sort on the keys",
+      "before": "MapReduce 的随机排序步骤会将键\n        值的排序打乱，变成下面这样：",
+      "after": "MapReduce 的 shuffle/sort 步骤会对键进行\n        分布式排序，得到如下结果：",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "latency-hdd-seek",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "HDD seek",
+      "before": "Disk seek                           10,000,000",
+      "after": "HDD seek                            10,000,000",
+      "count": 1,
+      "chapters": [
+        "appendix"
+      ]
+    },
+    {
+      "id": "latency-hdd-read",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "Read 1 MB sequentially from HDD",
+      "before": "Read 1 MB sequentially from disk",
+      "after": "Read 1 MB sequentially from HDD",
+      "count": 1,
+      "chapters": [
+        "appendix"
+      ]
+    },
+    {
+      "id": "dns-weighted-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://www.jscape.com/blog/load-balancing-algorithms",
+      "before": "[加权轮询调度](https://www.g33kinfo.com/info/round-robin-vs-weighted-round-robin-lb)",
+      "after": "[加权轮询调度](https://www.jscape.com/blog/load-balancing-algorithms)",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "dns-latency-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html",
+      "before": "* 基于延迟路由",
+      "after": "* [基于延迟路由](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html)",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "dns-geo-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geo.html",
+      "before": "* 基于地理位置路由",
+      "after": "* [基于地理位置路由](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geo.html)",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "hbase-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://www.edureka.co/blog/hbase-architecture/",
+      "before": "https://www.mapr.com/blog/in-depth-look-hbase-architecture",
+      "after": "https://www.edureka.co/blog/hbase-architecture/",
+      "count": 2,
+      "chapters": []
+    },
+    {
+      "id": "cassandra-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html",
+      "before": "http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html",
+      "after": "http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html",
+      "count": 2,
+      "chapters": []
+    },
+    {
+      "id": "lru-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)",
+      "before": "https://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used",
+      "after": "https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "game-network-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://gafferongames.com/post/udp_vs_tcp/",
+      "before": "http://gafferongames.com/networking-for-game-programmers/udp-vs-tcp/",
+      "after": "https://gafferongames.com/post/udp_vs_tcp/",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "box-blog-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://blog.box.com/blog/category/engineering",
+      "before": "https://www.box.com/blog/engineering/",
+      "after": "https://blog.box.com/blog/category/engineering",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "paypal-blog-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://developer.paypal.com/community/blog/",
+      "before": "https://devblog.paypal.com/category/engineering/",
+      "after": "https://developer.paypal.com/community/blog/",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "cap-reference-slash",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "http://ksat.me/a-plain-english-introduction-to-cap-theorem",
+      "before": "http://ksat.me/a-plain-english-introduction-to-cap-theorem/",
+      "after": "http://ksat.me/a-plain-english-introduction-to-cap-theorem",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "blog-contribution-guidance",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "To avoid duplicating work",
+      "before": "#### 来源及延伸阅读\n\n* [kilimchoi/engineering-blogs]",
+      "after": "#### 来源及延伸阅读\n\n想添加工程博客？为避免重复维护，可以考虑将公司博客加入下面的仓库：\n\n* [kilimchoi/engineering-blogs]",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "nat-archived-reference",
+      "source": "README-zh-Hans.md",
+      "englishSource": "README.md",
+      "evidence": "https://web.archive.org/web/20240117134735/https://www.nginx.com/resources/glossary/layer-4-load-balancing/",
+      "before": "[网络地址转换（NAT）](https://www.nginx.com/resources/glossary/layer-4-load-balancing/)",
+      "after": "[网络地址转换（NAT）](https://web.archive.org/web/20240117134735/https://www.nginx.com/resources/glossary/layer-4-load-balancing/)",
+      "count": 1,
+      "chapters": []
+    },
+    {
+      "id": "aws-async-reference",
+      "source": "solutions/system_design/scaling_aws/README-zh-Hans.md",
+      "englishSource": "solutions/system_design/scaling_aws/README.md",
+      "evidence": "with **Queues** and **Workers**",
+      "before": "通过 Queues 和 Workers 异步完成",
+      "after": "通过队列（Queues）和工作进程（Workers）[异步完成](/system-design/asynchronism/)",
+      "count": 1,
+      "chapters": []
+    }
+  ]
+}

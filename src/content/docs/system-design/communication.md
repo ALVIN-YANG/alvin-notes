@@ -99,7 +99,7 @@ UDP 可靠性更低但适合用在网络电话、视频聊天，流媒体和实�
 
 #### 来源及延伸阅读：TCP 与 UDP
 
-* [游戏编程的网络](http://gafferongames.com/networking-for-game-programmers/udp-vs-tcp/)
+* [游戏编程的网络](https://gafferongames.com/post/udp_vs_tcp/)
 * [TCP 与 UDP 的关键区别](http://www.cyberciti.biz/faq/key-differences-between-tcp-and-udp-protocols/)
 * [TCP 与 UDP 的不同](http://stackoverflow.com/questions/5970383/difference-between-tcp-and-udp)
 * [传输控制协议](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)

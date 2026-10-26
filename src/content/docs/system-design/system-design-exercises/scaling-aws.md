@@ -344,7 +344,7 @@ SQL 扩展模型包括：
 
 为了进一步处理高读和写请求，我们还应该考虑将适当的数据移动到一个 [**NoSQL数据库**](https://github.com/donnemartin/system-design-primer#nosql) ，例如 DynamoDB。
 
-我们可以进一步分离我们的 [**应用服务器**](https://github.com/donnemartin/system-design-primer#application-layer) 以允许独立扩展。不需要实时完成的批处理任务和计算可以通过 Queues 和 Workers 异步完成：
+我们可以进一步分离我们的 [**应用服务器**](https://github.com/donnemartin/system-design-primer#application-layer) 以允许独立扩展。不需要实时完成的批处理任务和计算可以通过队列（Queues）和工作进程（Workers）[异步完成](/system-design/asynchronism/)：
 
 * 以照片服务为例，照片上传和缩略图的创建可以分开进行
     * **客户端** 上传图片

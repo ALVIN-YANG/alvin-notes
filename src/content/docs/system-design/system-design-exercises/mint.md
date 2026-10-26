@@ -130,7 +130,7 @@ PRIMARY KEY(id)
 FOREIGN KEY(user_id) REFERENCES users(id)
 ```
 
-我们将在`id`，`user_id`和`created_at`等字段上创建一个[索引](https://github.com/donnemartin/system-design-primer#use-good-indices)以加速查找（对数时间而不是扫描整个表）并保持数据在内存中。从内存中顺序读取 1 MB数据花费大约250毫秒，而从SSD读取是其4倍，从磁盘读取是其80倍。<sup><a href="https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know">1</a></sup>
+我们将在`id`，`user_id`和`created_at`等字段上创建一个[索引](https://github.com/donnemartin/system-design-primer#use-good-indices)以加速查找（对数时间而不是扫描整个表）并保持数据在内存中。从内存中顺序读取 1 MB数据花费大约 250 微秒，而从SSD读取是其4倍，从磁盘读取是其80倍。<sup><a href="https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know">1</a></sup>
 
 我们将使用公开的[**REST API**](https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest):
 
@@ -222,7 +222,7 @@ seller_category_map['Target'] = DefaultCategories.SHOPPING
 ```python
 class Categorizer(object):
 
-    def __init__(self, seller_category_map, self.seller_category_crowd_overrides_map):
+    def __init__(self, seller_category_map, seller_category_crowd_overrides_map):
         self.seller_category_map = seller_category_map
         self.seller_category_crowd_overrides_map = \
             seller_category_crowd_overrides_map
@@ -243,7 +243,7 @@ class Categorizer(object):
 class Transaction(object):
 
     def __init__(self, created_at, seller, amount):
-        self.timestamp = timestamp
+        self.created_at = created_at
         self.seller = seller
         self.amount = amount
 ```
@@ -262,10 +262,10 @@ class Budget(object):
 
     def create_budget_template(self):
         return {
-            'DefaultCategories.HOUSING': income * .4,
-            'DefaultCategories.FOOD': income * .2
-            'DefaultCategories.GAS': income * .1,
-            'DefaultCategories.SHOPPING': income * .2
+            DefaultCategories.HOUSING: self.income * .4,
+            DefaultCategories.FOOD: self.income * .2,
+            DefaultCategories.GAS: self.income * .1,
+            DefaultCategories.SHOPPING: self.income * .2,
             ...
         }
 
@@ -360,6 +360,7 @@ class SpendingByCategory(MRJob):
 **为了避免重复讨论**，请参考[系统设计主题索引](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#系统设计主题的索引)相关部分来了解其要点、方案的权衡取舍以及可选的替代方案。
 
 * [DNS](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#域名系统)
+* [CDN](/system-design/cdn/)
 * [负载均衡器](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#负载均衡器)
 * [水平拓展](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#水平扩展)
 * [反向代理（web 服务器）](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#反向代理web-服务器)
@@ -392,9 +393,9 @@ class SpendingByCategory(MRJob):
 
 我们可能只想在数据库中存储一个月的`交易`数据，而将其余数据存储在数据仓库或者 **对象存储区** 中。**对象存储区** （如Amazon S3) 能够舒服地解决每月 250 GB新内容的限制。
 
-为了解决每秒 *平均* 2000 次读请求数（峰值时更高），受欢迎的内容的流量应由 **内存缓存** 而不是数据库来处理。 **内存缓存** 也可用于处理不均匀分布的流量和流量尖峰。 只要副本不陷入重复写入的困境，**SQL 读副本** 应该能够处理高速缓存未命中。
+为了解决每秒 *平均* 200 次读请求数（峰值时更高），受欢迎的内容的流量应由 **内存缓存** 而不是数据库来处理。 **内存缓存** 也可用于处理不均匀分布的流量和流量尖峰。 只要副本不陷入重复写入的困境，**SQL 读副本** 应该能够处理高速缓存未命中。
 
-*平均* 200 次交易写入每秒（峰值时更高）对于单个 **SQL 写入主-从服务** 来说可能是棘手的。我们可能需要考虑其它的 SQL 性能拓展技术：
+*平均* 2000 次交易写入每秒（峰值时更高）对于单个 **SQL 写入主-从服务** 来说可能是棘手的。我们可能需要考虑其它的 SQL 性能拓展技术：
 
 * [联合](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#联合)
 * [分片](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#分片)

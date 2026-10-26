@@ -83,4 +83,5 @@
 * [怎样通过一个系统设计的面试](https://web.archive.org/web/20210505130322/https://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/)
 * [系统设计的面试](http://www.hiredintech.com/system-design)
 * [系统架构与设计的面试简介](https://www.youtube.com/watch?v=ZgdS0EUmn70)
+* [系统设计面试模板](https://leetcode.com/discuss/career/229177/My-System-Design-Template)
 

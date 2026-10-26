@@ -96,10 +96,11 @@
 * 每秒需要处理 10 万次读取请求
     * 每个月需要处理 2500 亿次请求 * (每秒 400 次请求 / 每月 10 亿次请求)
 * 每秒发布 6000 条推特
-    * 每月发布 150 亿条推特 * (每秒 400 次请求 / 每月 10 次请求)
+    * 每月发布 150 亿条推特 * (每秒 400 次请求 / 每月 10 亿次请求)
 * 每秒推送 6 万条推特
     * 每月推送 1500 亿条推特 * (每秒 400 次请求 / 每月 10 亿次请求)
 * 每秒 4000 次搜索请求
+    * 每月 100 亿次搜索 ×（每秒 400 次请求 / 每月 10 亿次请求）
 
 便利换算指南：
 
@@ -242,7 +243,7 @@ $ curl https://twitter.com/api/v1/search?query=hello+world
 
 > 根据限制条件，找到并解决瓶颈。
 
-![Imgur](http://i.imgur.com/MzExP06.png)
+![Imgur](http://i.imgur.com/jrUBAF7.png)
 
 **重要提示：不要从最初设计直接跳到最终设计中！**
 
@@ -255,6 +256,7 @@ $ curl https://twitter.com/api/v1/search?query=hello+world
 **为了避免重复讨论**，请参考[系统设计主题索引](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#系统设计主题的索引)相关部分来了解其要点、方案的权衡取舍以及可选的替代方案。
 
 * [DNS](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#域名系统)
+* [CDN](/system-design/cdn/)
 * [负载均衡器](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#负载均衡器)
 * [水平拓展](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#水平扩展)
 * [反向代理（web 服务器）](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#反向代理web-服务器)

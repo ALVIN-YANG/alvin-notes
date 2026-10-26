@@ -122,6 +122,7 @@ class Graph(Graph):
 我们不能在同一台机器上满足所有用户，我们需要通过 **人员服务器** [拆分](https://github.com/donnemartin/system-design-primer#sharding) 用户并且通过 **查询服务** 访问。
 
 * **客户端** 向 **服务器** 发送请求，**服务器** 作为 [反向代理](https://github.com/donnemartin/system-design-primer#reverse-proxy-web-server)
+* **Web 服务器** 将请求转发给 **搜索 API** 服务器
 * **搜索 API** 服务器向 **用户图服务** 转发请求
 * **用户图服务** 有以下功能：
     * 使用 **查询服务** 找到当前用户信息存储的 **人员服务器**
@@ -132,7 +133,7 @@ class Graph(Graph):
 
 **和你的面试官说清你应该写的代码量**
 
-**注释**：简易版错误处理执行如下。询问你是否需要编写适当的错误处理方法。
+**说明**：为简化示例，以下代码省略了错误处理。请向面试官确认是否需要补充。
 
 **查询服务** 实现：
 

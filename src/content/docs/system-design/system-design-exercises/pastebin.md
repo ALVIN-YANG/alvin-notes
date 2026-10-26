@@ -169,7 +169,7 @@ url = base_encode(md5(ip_address+timestamp))[:URL_LENGTH]
 我们将会用一个公开的 [**REST 风格接口**](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#表述性状态转移rest)：
 
 ```shell
-$ curl -X POST --data '{"expiration_length_in_minutes":"60", \"paste_contents":"Hello World!"}' https://pastebin.com/api/v1/paste
+$ curl -X POST --data '{"expiration_length_in_minutes":"60","paste_contents":"Hello World!"}' https://pastebin.com/api/v1/paste
 ```
 
 Response:
@@ -210,6 +210,8 @@ Response:
 ### 用例： 服务跟踪分析页面
 
 因为实时分析不是必须的，所以我们可以简单的 **MapReduce** **Web Server** 的日志，用来生成点击次数。
+
+**向面试官确认需要编写多少代码。**
 
 ```python
 class HitCounts(MRJob):

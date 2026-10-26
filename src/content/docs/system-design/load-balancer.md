@@ -46,13 +46,13 @@
 * 随机
 * 最少负载
 * Session/cookie
-* [轮询调度或加权轮询调度算法](http://g33kinfo.com/info/archives/2657)
+* [轮询调度或加权轮询调度算法](https://www.g33kinfo.com/info/round-robin-vs-weighted-round-robin-lb)
 * [四层负载均衡](#四层负载均衡)
 * [七层负载均衡](#七层负载均衡)
 
 ### 四层负载均衡
 
-四层负载均衡根据监看[传输层](#通讯)的信息来决定如何分发请求。通常，这会涉及来源，目标 IP 地址和请求头中的端口，但不包括数据包（报文）内容。四层负载均衡执行[网络地址转换（NAT）](https://www.nginx.com/resources/glossary/layer-4-load-balancing/)来向上游服务器转发网络数据包。
+四层负载均衡根据监看[传输层](#通讯)的信息来决定如何分发请求。通常，这会涉及来源，目标 IP 地址和请求头中的端口，但不包括数据包（报文）内容。四层负载均衡执行[网络地址转换（NAT）](https://web.archive.org/web/20240117134735/https://www.nginx.com/resources/glossary/layer-4-load-balancing/)来向上游服务器转发网络数据包。
 
 ### 七层负载均衡器
 

@@ -14,7 +14,7 @@
     "fonts:update": "node scripts/update-font-subsets.mjs",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/sync-system-design.mjs --check && astro build && node scripts/verify-build-output.mjs",
+    "build": "node scripts/sync-system-design.mjs --check && node scripts/check-system-design-english.mjs && astro build && node scripts/verify-build-output.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "news:daily": "node scripts/fetch-ai-news.mjs --daily",
@@ -26,7 +26,8 @@
     "model-arena:check": "node scripts/fetch-model-arena.mjs --check",
     "model-arena:verify": "node scripts/verify-model-arena.mjs",
     "system-design:sync": "node scripts/sync-system-design.mjs",
-    "system-design:check": "node scripts/sync-system-design.mjs --check"
+    "system-design:check": "node scripts/sync-system-design.mjs --check",
+    "system-design:english-check": "node scripts/check-system-design-english.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.1.2",

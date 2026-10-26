@@ -37,6 +37,8 @@
 
 当你服务器上内容发生变动时，推送 CDN 接受新内容。直接推送给 CDN 并重写 URL 地址以指向你的内容的 CDN 地址。你可以配置内容到期时间及何时更新。内容只有在更改或新增是才推送，流量最小化，但储存最大化。
 
+流量较小，或内容不经常更新的网站，适合使用推送 CDN。内容只需放到 CDN 上一次，不必按固定间隔重新拉取。
+
 ### CDN 拉取（pull）
 
 CDN 拉取是当第一个用户请求该资源时，从服务器上拉取资源。你将内容留在自己的服务器上并重写 URL 指向 CDN 地址。直到内容被缓存在 CDN 上为止，这样请求只会更慢，
@@ -47,13 +49,13 @@ CDN 拉取是当第一个用户请求该资源时，从服务器上拉取资源�
 
 ### 缺陷：CDN
 
-* CDN 成本可能因流量而异，可能在权衡之后你将不会使用 CDN。
+* CDN 成本可能随流量显著增加，但应与不使用 CDN 时产生的额外成本一并权衡。
 * 如果在 TTL 过期之前更新内容，CDN 缓存内容可能会过时。
 * CDN 需要更改静态内容的 URL 地址以指向 CDN。
 
 ### 来源及延伸阅读
 
-* [全球性内容分发网络](http://repository.cmu.edu/cgi/viewcontent.cgi?article=2112&context=compsci)
-* [CDN 拉取和 CDN 推送的区别](http://www.travelblogadvice.com/technical/the-differences-between-push-and-pull-cdns/)
+* [全球性内容分发网络](https://figshare.com/articles/Globally_distributed_content_delivery/6605972)
+* [CDN 拉取和 CDN 推送的区别](https://www.geeksforgeeks.org/system-design/pull-cdn-vs-push-cdn/)
 * [Wikipedia](https://en.wikipedia.org/wiki/Content_delivery_network)
 

@@ -2,6 +2,7 @@
 import manifest from '../../vendor/system-design-primer/manifest.json';
 const document = manifest.supplements.find(doc => doc.url === Astro.url.pathname);
 const source = `${manifest.repo}/blob/${manifest.commit}/${document?.sourcePath || 'README-zh-Hans.md'}`;
+const englishSource = !document?.translated && !document?.siteSupplement ? `${manifest.repo}/blob/${manifest.commit}/${(document?.sourcePath || 'README-zh-Hans.md').replace('README-zh-Hans.md', 'README.md')}` : null;
 ---
 <aside class="primer-source" aria-label="文档来源" data-pagefind-ignore data-reader-ignore>
   {document?.siteSupplement ? (<>
@@ -9,7 +10,7 @@ const source = `${manifest.repo}/blob/${manifest.commit}/${document?.sourcePath 
     <p><a href="/system-design/object-oriented-design/">返回题目总览</a></p>
   </>) : (<>
   <p>原著 Donne Martin · {document?.translated ? '本页说明由本站译自英文 Notebook，代码与输出保留原样。' : <>译文来自掘金翻译计划，译者署名见<a href="/system-design/">首章</a>。</>}</p>
-  <p><a href={source}>{document?.translated ? 'Notebook 原文' : '中文原文'}</a> · <a href={`${manifest.repo}/blob/${manifest.commit}/LICENSE.txt`}>CC BY 4.0</a> · 版本 {manifest.commit.slice(0, 7)}。本站仅做拆章、链接修复与阅读展示适配。</p>
+  <p><a href={source}>{document?.translated ? 'Notebook 原文' : '中文原文'}</a> · <a href={`${manifest.repo}/blob/${manifest.commit}/LICENSE.txt`}>CC BY 4.0</a> · 版本 {manifest.commit.slice(0, 7)}。{englishSource ? <>本站依据同版本<a href={englishSource}>英文原文</a>补译与校订，保留原始译文快照。</> : '本站仅做拆章、链接修复与阅读展示适配。'}</p>
   </>)}
 </aside>
 <script>

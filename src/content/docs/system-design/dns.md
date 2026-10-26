@@ -37,12 +37,12 @@
 
 [CloudFlare](https://www.cloudflare.com/dns/) 和 [Route 53](https://aws.amazon.com/route53/) 等平台提供管理 DNS 的功能。某些 DNS 服务通过集中方式来路由流量:
 
-* [加权轮询调度](http://g33kinfo.com/info/archives/2657)
+* [加权轮询调度](https://www.jscape.com/blog/load-balancing-algorithms)
     * 防止流量进入维护中的服务器
     * 在不同大小集群间负载均衡
     * A/B 测试
-* 基于延迟路由
-* 基于地理位置路由
+* [基于延迟路由](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-latency.html)
+* [基于地理位置路由](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geo.html)
 
 ### 缺陷:DNS
 

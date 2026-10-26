@@ -169,8 +169,8 @@ class SalesRanker(MRJob):
         (category2, 7), product3
         (category1, 1), product4
 
-        MapReduce 的随机排序步骤会将键
-        值的排序打乱，变成下面这样：
+        MapReduce 的 shuffle/sort 步骤会对键进行
+        分布式排序，得到如下结果：
 
         (category1, 1), product4
         (category1, 2), product1
@@ -273,6 +273,7 @@ $ curl https://amazon.com/api/v1/popular?category_id=1234
 **为了避免重复讨论**，请参考[系统设计主题索引](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#系统设计主题的索引)相关部分来了解其要点、方案的权衡取舍以及可选的替代方案。
 
 * [DNS](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#域名系统)
+* [CDN](/system-design/cdn/)
 * [负载均衡器](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#负载均衡器)
 * [水平拓展](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#水平扩展)
 * [反向代理（web 服务器）](https://github.com/donnemartin/system-design-primer/blob/master/README-zh-Hans.md#反向代理web-服务器)

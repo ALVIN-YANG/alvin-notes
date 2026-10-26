@@ -25,12 +25,12 @@
 <p align="center">
   <img src="images/bgLMI2u.png">
   <br/>
-  <strong><a href="http://robertgreiner.com/2014/08/cap-theorem-revisited">来源：再看 CAP 理论</a></strong>
+  <strong><a href="https://robertgreiner.com/cap-theorem-revisited">来源：再看 CAP 理论</a></strong>
 </p>
 
 在一个分布式计算系统中，只能同时满足下列的两点:
 
-* **一致性** ─ 每次访问都能获得最新数据但可能会收到错误响应
+* **一致性** ─ 每次读取返回最近一次写入的数据，或返回错误
 * **可用性** ─ 每次访问都能收到非错响应，但不保证获取到最新数据
 * **分区容错性** ─ 在任意分区网络故障的情况下系统仍能继续运行
 
@@ -42,13 +42,14 @@
 
 #### AP ─ 可用性与分区容错性
 
-响应节点上可用数据的最近版本可能并不是最新的。当分区解析完后，写入（操作）可能需要一些时间来传播。
+响应节点上可用数据的最近版本可能并不是最新的。当网络分区恢复后，写入（操作）可能需要一些时间来传播。
 
 如果业务需求允许[最终一致性](#最终一致性)，或当有外部故障时要求系统继续运行，AP 是一个不错的选择。
 
 ### 来源及延伸阅读
 
-* [再看 CAP 理论](http://robertgreiner.com/2014/08/cap-theorem-revisited/)
-* [通俗易懂地介绍 CAP 理论](http://ksat.me/a-plain-english-introduction-to-cap-theorem/)
+* [再看 CAP 理论](https://robertgreiner.com/cap-theorem-revisited/)
+* [通俗易懂地介绍 CAP 理论](http://ksat.me/a-plain-english-introduction-to-cap-theorem)
 * [CAP FAQ](https://github.com/henryr/cap-faq)
+* [CAP 定理视频](https://www.youtube.com/watch?v=k-Yaq8AHlFA)
 

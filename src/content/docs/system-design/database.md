@@ -23,7 +23,7 @@
 <p align="center">
   <img src="images/Xkm5CXz.png">
   <br/>
-  <strong><a href="https://www.youtube.com/watch?v=w95murBkYmU">资料来源：扩展你的用户数到第一个一千万</a></strong>
+  <strong><a href="https://www.youtube.com/watch?v=kKjm4ehYiMs">资料来源：扩展你的用户数到第一个一千万</a></strong>
 </p>
 
 ### 关系型数据库管理系统（RDBMS）
@@ -94,7 +94,7 @@
 <p align="center">
   <img src="images/U3qV33e.png">
   <br/>
-  <strong><a href="https://www.youtube.com/watch?v=w95murBkYmU">资料来源：扩展你的用户数到第一个一千万</a></strong>
+  <strong><a href="https://www.youtube.com/watch?v=kKjm4ehYiMs">资料来源：扩展你的用户数到第一个一千万</a></strong>
 </p>
 
 联合（或按功能划分）将数据库按对应功能分割。例如，你可以有三个数据库：**论坛**、**用户**和**产品**，而不仅是一个单体数据库，从而减少每个数据库的读取和写入流量，减少复制延迟。较小的数据库意味着更多适合放入内存的数据，进而意味着更高的缓存命中几率。没有只能串行写入的中心化主库，你可以并行写入，提高负载能力。
@@ -109,7 +109,7 @@
 
 ##### 来源及延伸阅读：联合
 
-- [扩展你的用户数到第一个一千万](https://www.youtube.com/watch?v=w95murBkYmU)
+- [扩展你的用户数到第一个一千万](https://www.youtube.com/watch?v=kKjm4ehYiMs)
 
 #### 分片
 
@@ -198,11 +198,11 @@ SQL 调优是一个范围很广的话题，有很多相关的[书](https://www.a
 
 ##### 调优查询缓存
 
-- 在某些情况下，[查询缓存](http://dev.mysql.com/doc/refman/5.7/en/query-cache)可能会导致[性能问题](https://www.percona.com/blog/2014/01/28/10-mysql-performance-tuning-settings-after-installation/)。
+- 在某些情况下，[查询缓存](https://dev.mysql.com/doc/refman/5.7/en/query-cache.html)可能会导致[性能问题](https://www.percona.com/blog/2016/10/12/mysql-5-7-performance-tuning-immediately-after-installation/)。
 
 ##### 来源及延伸阅读
 
-- [MySQL 查询优化小贴士](http://20bits.com/article/10-tips-for-optimizing-mysql-queries-that-dont-suck)
+- [MySQL 查询优化小贴士](http://aiddroid.com/10-tips-optimizing-mysql-queries-dont-suck/)
 - [为什么 VARCHAR(255) 很常见？](http://stackoverflow.com/questions/1217466/is-there-a-good-reason-i-see-varchar255-used-so-often-as-opposed-to-another-l)
 - [Null 值是如何影响数据库性能的？](http://stackoverflow.com/questions/1017239/how-do-null-values-affect-performance-in-a-database-search)
 - [慢查询日志](http://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)
@@ -267,7 +267,7 @@ MongoDB 和 CouchDB 等一些文档类型存储还提供了类似 SQL 语言的�
 
 类型存储的基本数据单元是列（名／值对）。列可以在列族（类似于 SQL 的数据表）中被分组。超级列族再分组普通列族。你可以使用行键独立访问每一列，具有相同行键值的列组成一行。每个值都包含版本的时间戳用于解决版本冲突。
 
-Google 发布了第一个列型存储数据库 [Bigtable](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)，它影响了 Hadoop 生态系统中活跃的开源数据库 [HBase](https://www.mapr.com/blog/in-depth-look-hbase-architecture) 和 Facebook 的 [Cassandra](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html)。像 BigTable，HBase 和 Cassandra 这样的存储系统将键以字母顺序存储，可以高效地读取键列。
+Google 发布了第一个列型存储数据库 [Bigtable](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)，它影响了 Hadoop 生态系统中活跃的开源数据库 [HBase](https://www.edureka.co/blog/hbase-architecture/) 和 Facebook 的 [Cassandra](http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html)。像 BigTable，HBase 和 Cassandra 这样的存储系统将键以字母顺序存储，可以高效地读取键列。
 
 列型存储具备高可用性和高可扩展性。通常被用于大数据相关存储。
 
@@ -275,8 +275,8 @@ Google 发布了第一个列型存储数据库 [Bigtable](http://www.read.seas.h
 
 - [SQL 与 NoSQL 简史](http://blog.grio.com/2015/11/sql-nosql-a-brief-history.html)
 - [BigTable 架构](http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/chang06bigtable.pdf)
-- [Hbase 架构](https://www.mapr.com/blog/in-depth-look-hbase-architecture)
-- [Cassandra 架构](http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/architecture/architectureIntro_c.html)
+- [Hbase 架构](https://www.edureka.co/blog/hbase-architecture/)
+- [Cassandra 架构](http://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archIntro.html)
 
 #### 图数据库
 
@@ -344,5 +344,5 @@ Google 发布了第一个列型存储数据库 [Bigtable](http://www.read.seas.h
 
 ##### 来源及延伸阅读：SQL 或 NoSQL
 
-- [扩展你的用户数到第一个千万](https://www.youtube.com/watch?v=w95murBkYmU)
+- [扩展你的用户数到第一个千万](https://www.youtube.com/watch?v=kKjm4ehYiMs)
 - [SQL 和 NoSQL 的不同](https://www.sitepoint.com/sql-vs-nosql-differences/)

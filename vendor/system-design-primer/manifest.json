@@ -1,4 +1,395 @@
 {
+  "englishRevision": {
+    "commit": "ae9bbd7b02d90b9866215de185217d33f39ab733",
+    "patches": [
+      {
+        "id": "availability-numbers",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "availability-index",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "push-cdn-use-cases",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "interview-template",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "cap-video",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "security-checklist",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "encryption-at-rest",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "strong-consistency-transactions",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "microservice-process",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "consistency-definition",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "cap-partition-heals",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "cdn-cost-tradeoff",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "service-health-check",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "stock-exchange-and-rate-limiter",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "netflix-architecture",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "facebook-live",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "twitter-images",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "uber-growth",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "redis-design-resources",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "twitter-firehose",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-0",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-1",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-2",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-3",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-4",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-5",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-6",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-7",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-9",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-10",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-11",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-12",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-13",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-15",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "reference-url-16",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "queue-product-Redis",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "queue-product-RabbitMQ",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "queue-product-Amazon SQS",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "queue-product-Celery",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "license-notice",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "mint-cdn",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "twitter-cdn",
+        "source": "solutions/system_design/twitter/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/twitter/README.md"
+      },
+      {
+        "id": "sales_rank-cdn",
+        "source": "solutions/system_design/sales_rank/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/sales_rank/README.md"
+      },
+      {
+        "id": "twitter-search-estimate",
+        "source": "solutions/system_design/twitter/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/twitter/README.md"
+      },
+      {
+        "id": "twitter-conversion-unit",
+        "source": "solutions/system_design/twitter/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/twitter/README.md"
+      },
+      {
+        "id": "twitter-correct-diagram",
+        "source": "solutions/system_design/twitter/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/twitter/README.md"
+      },
+      {
+        "id": "social-request-hop",
+        "source": "solutions/system_design/social_graph/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/social_graph/README.md"
+      },
+      {
+        "id": "social-error-handling",
+        "source": "solutions/system_design/social_graph/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/social_graph/README.md"
+      },
+      {
+        "id": "pastebin-interview-code",
+        "source": "solutions/system_design/pastebin/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/pastebin/README.md"
+      },
+      {
+        "id": "pastebin-shell-example",
+        "source": "solutions/system_design/pastebin/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/pastebin/README.md"
+      },
+      {
+        "id": "mint-read-throughput",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "mint-write-throughput",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "mint-latency-unit",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "mint-constructor",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "mint-timestamp",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "mint-budget-housing",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "mint-budget-food",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "mint-budget-gas",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "mint-budget-shopping",
+        "source": "solutions/system_design/mint/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/mint/README.md"
+      },
+      {
+        "id": "mapreduce-shuffle-meaning",
+        "source": "solutions/system_design/sales_rank/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/sales_rank/README.md"
+      },
+      {
+        "id": "latency-hdd-seek",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "latency-hdd-read",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "dns-weighted-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "dns-latency-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "dns-geo-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "hbase-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "cassandra-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "lru-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "game-network-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "box-blog-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "paypal-blog-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "cap-reference-slash",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "blog-contribution-guidance",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "nat-archived-reference",
+        "source": "README-zh-Hans.md",
+        "englishSource": "README.md"
+      },
+      {
+        "id": "aws-async-reference",
+        "source": "solutions/system_design/scaling_aws/README-zh-Hans.md",
+        "englishSource": "solutions/system_design/scaling_aws/README.md"
+      }
+    ],
+    "sources": {
+      "README.md": "390a8cad315d703c10cfbdf6832c2f320882bd4c3feaf2cea78c820995903cf1",
+      "solutions/system_design/pastebin/README.md": "9e77c7997300cc009fb175c5a178bc4cae771046ac4591be5cc8298fc5c34372",
+      "solutions/system_design/twitter/README.md": "ee03a433502b3501811fc49c23d5efc49ad3fbad8adc546e2cef575b337404e1",
+      "solutions/system_design/web_crawler/README.md": "cdbc3c01be7027cac705ce6da3a232757de399d8d5126cfc7be457670480f96e",
+      "solutions/system_design/mint/README.md": "c3a9267dd059f72e13eb0f11c1fdfa53ca6bc95d4ba3d2c72dec34f683b82768",
+      "solutions/system_design/social_graph/README.md": "f07805ca9ffcdd1570e494148330e3e5e2f8d4c66d827b9238257d0d9dcf2fc8",
+      "solutions/system_design/query_cache/README.md": "1424db62039cc01361e272270e7f5645b7ed733f219b050797bb042f632bc48f",
+      "solutions/system_design/sales_rank/README.md": "cc0ba10c65f81d39c37478a5a1f9c5837cb81861c58122cc54a8a52bbbec1827",
+      "solutions/system_design/scaling_aws/README.md": "be202b534f45b93f7b829e192eeaee8f29e7bc6dc9574bdbd1c12d4dc07ecb4f"
+    }
+  },
   "downloads": {
     "resources/flash_cards/System Design.apkg": {
       "url": "/downloads/system-design/System%20Design.apkg",
@@ -97,85 +488,85 @@
           "title": "用例：用户输入一个 paste 的 url 后可以看到它存储的内容",
           "depth": 3,
           "id": "用例用户输入一个-paste-的-url-后可以看到它存储的内容",
-          "start": 4448,
-          "end": 4487
+          "start": 4446,
+          "end": 4485
         },
         {
           "title": "用例： 服务跟踪分析页面",
           "depth": 3,
           "id": "用例-服务跟踪分析页面",
-          "start": 4926,
-          "end": 4944
+          "start": 4924,
+          "end": 4942
         },
         {
           "title": "用例： 服务删除过期的 pastes",
           "depth": 3,
           "id": "用例-服务删除过期的-pastes",
-          "start": 5799,
-          "end": 5823
+          "start": 5818,
+          "end": 5842
         },
         {
           "title": "第四步：扩展这个设计",
           "depth": 2,
           "id": "第四步扩展这个设计",
-          "start": 5909,
-          "end": 5924
+          "start": 5928,
+          "end": 5943
         },
         {
           "title": "额外的话题",
           "depth": 2,
           "id": "额外的话题",
-          "start": 8508,
-          "end": 8518
+          "start": 8527,
+          "end": 8537
         },
         {
           "title": "NoSQL",
           "depth": 3,
           "id": "nosql",
-          "start": 8551,
-          "end": 8562
+          "start": 8570,
+          "end": 8581
         },
         {
           "title": "缓存",
           "depth": 3,
           "id": "缓存",
-          "start": 9067,
-          "end": 9075
+          "start": 9086,
+          "end": 9094
         },
         {
           "title": "异步和微服务",
           "depth": 3,
           "id": "异步和微服务",
-          "start": 10220,
-          "end": 10232
+          "start": 10239,
+          "end": 10251
         },
         {
           "title": "通信",
           "depth": 3,
           "id": "通信",
-          "start": 10615,
-          "end": 10623
+          "start": 10634,
+          "end": 10642
         },
         {
           "title": "安全",
           "depth": 3,
           "id": "安全",
-          "start": 10981,
-          "end": 10989
+          "start": 11000,
+          "end": 11008
         },
         {
           "title": "延迟数字",
           "depth": 3,
           "id": "延迟数字",
-          "start": 11084,
-          "end": 11094
+          "start": 11103,
+          "end": 11113
         },
         {
           "title": "持续进行",
           "depth": 3,
           "id": "持续进行",
-          "start": 11212,
-          "end": 11222
+          "start": 11231,
+          "end": 11241
         }
       ],
       "anchors": {
@@ -266,106 +657,106 @@
           "title": "第二步：概要设计",
           "depth": 2,
           "id": "第二步概要设计",
-          "start": 1551,
-          "end": 1564
+          "start": 1597,
+          "end": 1610
         },
         {
           "title": "第三步：设计核心组件",
           "depth": 2,
           "id": "第三步设计核心组件",
-          "start": 1626,
-          "end": 1641
+          "start": 1672,
+          "end": 1687
         },
         {
           "title": "用例：用户发表了一篇推特",
           "depth": 3,
           "id": "用例用户发表了一篇推特",
-          "start": 1657,
-          "end": 1675
+          "start": 1703,
+          "end": 1721
         },
         {
           "title": "用例：用户浏览主页时间轴",
           "depth": 3,
           "id": "用例用户浏览主页时间轴",
-          "start": 3776,
-          "end": 3794
+          "start": 3822,
+          "end": 3840
         },
         {
           "title": "用例：用户浏览用户时间轴",
           "depth": 3,
           "id": "用例用户浏览用户时间轴",
-          "start": 4400,
-          "end": 4418
+          "start": 4446,
+          "end": 4464
         },
         {
           "title": "用例：用户搜索关键词",
           "depth": 3,
           "id": "用例用户搜索关键词",
-          "start": 4571,
-          "end": 4587
+          "start": 4617,
+          "end": 4633
         },
         {
           "title": "第四步：架构扩展",
           "depth": 2,
           "id": "第四步架构扩展",
-          "start": 5141,
-          "end": 5154
+          "start": 5187,
+          "end": 5200
         },
         {
           "title": "其它要点",
           "depth": 2,
           "id": "其它要点",
-          "start": 7873,
-          "end": 7882
+          "start": 7948,
+          "end": 7957
         },
         {
           "title": "NoSQL",
           "depth": 4,
           "id": "nosql",
-          "start": 7914,
-          "end": 7926
+          "start": 7989,
+          "end": 8001
         },
         {
           "title": "缓存",
           "depth": 3,
           "id": "缓存",
-          "start": 8434,
-          "end": 8442
+          "start": 8509,
+          "end": 8517
         },
         {
           "title": "异步与微服务",
           "depth": 3,
           "id": "异步与微服务",
-          "start": 9611,
-          "end": 9623
+          "start": 9686,
+          "end": 9698
         },
         {
           "title": "通信",
           "depth": 3,
           "id": "通信",
-          "start": 10006,
-          "end": 10014
+          "start": 10081,
+          "end": 10089
         },
         {
           "title": "安全性",
           "depth": 3,
           "id": "安全性",
-          "start": 10376,
-          "end": 10385
+          "start": 10451,
+          "end": 10460
         },
         {
           "title": "延迟数值",
           "depth": 3,
           "id": "延迟数值",
-          "start": 10485,
-          "end": 10495
+          "start": 10560,
+          "end": 10570
         },
         {
           "title": "持续探讨",
           "depth": 3,
           "id": "持续探讨",
-          "start": 10617,
-          "end": 10627
+          "start": 10692,
+          "end": 10702
         }
       ],
       "anchors": {
@@ -675,85 +1066,85 @@
           "title": "用例：服务从账户中提取交易",
           "depth": 3,
           "id": "用例服务从账户中提取交易",
-          "start": 2930,
-          "end": 2949
+          "start": 2932,
+          "end": 2951
         },
         {
           "title": "分类服务",
           "depth": 4,
           "id": "分类服务",
-          "start": 4329,
-          "end": 4340
+          "start": 4331,
+          "end": 4342
         },
         {
           "title": "用例：服务推荐预算",
           "depth": 3,
           "id": "用例服务推荐预算",
-          "start": 5740,
-          "end": 5755
+          "start": 5739,
+          "end": 5754
         },
         {
           "title": "第四步：设计扩展",
           "depth": 2,
           "id": "第四步设计扩展",
-          "start": 8043,
-          "end": 8056
+          "start": 8056,
+          "end": 8069
         },
         {
           "title": "其它要点",
           "depth": 2,
           "id": "其它要点",
-          "start": 11217,
-          "end": 11226
+          "start": 11259,
+          "end": 11268
         },
         {
           "title": "NoSQL",
           "depth": 4,
           "id": "nosql",
-          "start": 11258,
-          "end": 11270
+          "start": 11300,
+          "end": 11312
         },
         {
           "title": "缓存",
           "depth": 3,
           "id": "缓存",
-          "start": 11778,
-          "end": 11786
+          "start": 11820,
+          "end": 11828
         },
         {
           "title": "异步与微服务",
           "depth": 3,
           "id": "异步与微服务",
-          "start": 12955,
-          "end": 12967
+          "start": 12997,
+          "end": 13009
         },
         {
           "title": "通信",
           "depth": 3,
           "id": "通信",
-          "start": 13350,
-          "end": 13358
+          "start": 13392,
+          "end": 13400
         },
         {
           "title": "安全性",
           "depth": 3,
           "id": "安全性",
-          "start": 13720,
-          "end": 13729
+          "start": 13762,
+          "end": 13771
         },
         {
           "title": "延迟数值",
           "depth": 3,
           "id": "延迟数值",
-          "start": 13829,
-          "end": 13839
+          "start": 13871,
+          "end": 13881
         },
         {
           "title": "持续探讨",
           "depth": 3,
           "id": "持续探讨",
-          "start": 13961,
-          "end": 13971
+          "start": 14003,
+          "end": 14013
         }
       ],
       "anchors": {
@@ -858,71 +1249,71 @@
           "title": "第 4 步：扩展设计",
           "depth": 2,
           "id": "第-4-步扩展设计",
-          "start": 6383,
-          "end": 6398
+          "start": 6420,
+          "end": 6435
         },
         {
           "title": "额外的话题",
           "depth": 2,
           "id": "额外的话题",
-          "start": 8415,
-          "end": 8425
+          "start": 8452,
+          "end": 8462
         },
         {
           "title": "SQL 扩展模式",
           "depth": 3,
           "id": "sql-扩展模式",
-          "start": 8454,
-          "end": 8468
+          "start": 8491,
+          "end": 8505
         },
         {
           "title": "NoSQL",
           "depth": 4,
           "id": "nosql",
-          "start": 8849,
-          "end": 8861
+          "start": 8886,
+          "end": 8898
         },
         {
           "title": "缓存",
           "depth": 3,
           "id": "缓存",
-          "start": 9257,
-          "end": 9265
+          "start": 9294,
+          "end": 9302
         },
         {
           "title": "异步性和微服务",
           "depth": 3,
           "id": "异步性和微服务",
-          "start": 10244,
-          "end": 10257
+          "start": 10281,
+          "end": 10294
         },
         {
           "title": "沟通",
           "depth": 3,
           "id": "沟通",
-          "start": 10560,
-          "end": 10568
+          "start": 10597,
+          "end": 10605
         },
         {
           "title": "安全性",
           "depth": 3,
           "id": "安全性",
-          "start": 10889,
-          "end": 10898
+          "start": 10926,
+          "end": 10935
         },
         {
           "title": "延迟数字指标",
           "depth": 3,
           "id": "延迟数字指标",
-          "start": 10971,
-          "end": 10983
+          "start": 11008,
+          "end": 11020
         },
         {
           "title": "正在进行",
           "depth": 3,
           "id": "正在进行",
-          "start": 11100,
-          "end": 11110
+          "start": 11137,
+          "end": 11147
         }
       ],
       "anchors": {
@@ -1221,71 +1612,71 @@
           "title": "用例：用户需要根据分类浏览上周中最受欢迎的商品",
           "depth": 3,
           "id": "用例用户需要根据分类浏览上周中最受欢迎的商品",
-          "start": 4969,
-          "end": 4998
+          "start": 4980,
+          "end": 5009
         },
         {
           "title": "第四步：架构扩展",
           "depth": 2,
           "id": "第四步架构扩展",
-          "start": 5845,
-          "end": 5858
+          "start": 5856,
+          "end": 5869
         },
         {
           "title": "其它要点",
           "depth": 2,
           "id": "其它要点",
-          "start": 8342,
-          "end": 8351
+          "start": 8382,
+          "end": 8391
         },
         {
           "title": "NoSQL",
           "depth": 4,
           "id": "nosql",
-          "start": 8383,
-          "end": 8395
+          "start": 8423,
+          "end": 8435
         },
         {
           "title": "缓存",
           "depth": 3,
           "id": "缓存",
-          "start": 8903,
-          "end": 8911
+          "start": 8943,
+          "end": 8951
         },
         {
           "title": "异步与微服务",
           "depth": 3,
           "id": "异步与微服务",
-          "start": 10080,
-          "end": 10092
+          "start": 10120,
+          "end": 10132
         },
         {
           "title": "通信",
           "depth": 3,
           "id": "通信",
-          "start": 10475,
-          "end": 10483
+          "start": 10515,
+          "end": 10523
         },
         {
           "title": "安全性",
           "depth": 3,
           "id": "安全性",
-          "start": 10845,
-          "end": 10854
+          "start": 10885,
+          "end": 10894
         },
         {
           "title": "延迟数值",
           "depth": 3,
           "id": "延迟数值",
-          "start": 10954,
-          "end": 10964
+          "start": 10994,
+          "end": 11004
         },
         {
           "title": "持续探讨",
           "depth": 3,
           "id": "持续探讨",
-          "start": 11086,
-          "end": 11096
+          "start": 11126,
+          "end": 11136
         }
       ],
       "anchors": {
@@ -1577,64 +1968,64 @@
           "title": "额外的话题",
           "depth": 2,
           "id": "额外的话题",
-          "start": 8462,
-          "end": 8472
+          "start": 8500,
+          "end": 8510
         },
         {
           "title": "SQL 扩展模式",
           "depth": 3,
           "id": "sql-扩展模式",
-          "start": 8501,
-          "end": 8515
+          "start": 8539,
+          "end": 8553
         },
         {
           "title": "NoSQL",
           "depth": 4,
           "id": "nosql",
-          "start": 8896,
-          "end": 8908
+          "start": 8934,
+          "end": 8946
         },
         {
           "title": "缓存",
           "depth": 3,
           "id": "缓存",
-          "start": 9304,
-          "end": 9312
+          "start": 9342,
+          "end": 9350
         },
         {
           "title": "异步性和微服务",
           "depth": 3,
           "id": "异步性和微服务",
-          "start": 10291,
-          "end": 10304
+          "start": 10329,
+          "end": 10342
         },
         {
           "title": "沟通",
           "depth": 3,
           "id": "沟通",
-          "start": 10607,
-          "end": 10615
+          "start": 10645,
+          "end": 10653
         },
         {
           "title": "安全性",
           "depth": 3,
           "id": "安全性",
-          "start": 10936,
-          "end": 10945
+          "start": 10974,
+          "end": 10983
         },
         {
           "title": "延迟数字指标",
           "depth": 3,
           "id": "延迟数字指标",
-          "start": 11018,
-          "end": 11030
+          "start": 11056,
+          "end": 11068
         },
         {
           "title": "正在进行",
           "depth": 3,
           "id": "正在进行",
-          "start": 11147,
-          "end": 11157
+          "start": 11185,
+          "end": 11195
         }
       ],
       "anchors": {
@@ -2082,6 +2473,7 @@
   "commit": "ae9bbd7b02d90b9866215de185217d33f39ab733",
   "source": "README-zh-Hans.md",
   "sha256": "8a58512b70b6c8680cea860bcfe15c3b92d2814e5f0004781a3b17b7ff078760",
+  "renderedSha256": "846d8f6476f6d74eeb4714beee6f9972bb65e65293318ca091609e60a0fe1b96",
   "omittedNavigation": "*[English](README.md) ∙ [日本語](README-ja.md) ∙ [简体中文](README-zh-Hans.md) ∙ [繁體中文](README-zh-TW.md) | [العَرَبِيَّة‎](https://github.com/donnemartin/system-design-primer/issues/170) ∙ [বাংলা](https://github.com/donnemartin/system-design-primer/issues/220) ∙ [Português do Brasil](https://github.com/donnemartin/system-design-primer/issues/40) ∙ [Deutsch](https://github.com/donnemartin/system-design-primer/issues/186) ∙ [ελληνικά](https://github.com/donnemartin/system-design-primer/issues/130) ∙ [עברית](https://github.com/donnemartin/system-design-primer/issues/272) ∙ [Italiano](https://github.com/donnemartin/system-design-primer/issues/104) ∙ [한국어](https://github.com/donnemartin/system-design-primer/issues/102) ∙ [فارسی](https://github.com/donnemartin/system-design-primer/issues/110) ∙ [Polski](https://github.com/donnemartin/system-design-primer/issues/68) ∙ [русский язык](https://github.com/donnemartin/system-design-primer/issues/87) ∙ [Español](https://github.com/donnemartin/system-design-primer/issues/136) ∙ [ภาษาไทย](https://github.com/donnemartin/system-design-primer/issues/187) ∙ [Türkçe](https://github.com/donnemartin/system-design-primer/issues/39) ∙ [tiếng Việt](https://github.com/donnemartin/system-design-primer/issues/127) ∙ [Français](https://github.com/donnemartin/system-design-primer/issues/250) | [Add Translation](https://github.com/donnemartin/system-design-primer/issues/28)*",
   "aliases": {
     "如何处理一个系统设计面试题": "如何处理一个系统设计的面试题",
@@ -2141,6 +2533,10 @@
     "缺陷故障切换": "/system-design/availability-patterns/#缺陷故障切换",
     "复制": "/system-design/availability-patterns/#复制",
     "主从复制和主主复制": "/system-design/availability-patterns/#主从复制和主主复制",
+    "可用率的量化": "/system-design/availability-patterns/#可用率的量化",
+    "999-可用率三个-9": "/system-design/availability-patterns/#999-可用率三个-9",
+    "9999-可用率四个-9": "/system-design/availability-patterns/#9999-可用率四个-9",
+    "串联与并联组件的可用率": "/system-design/availability-patterns/#串联与并联组件的可用率",
     "域名系统": "/system-design/dns/#_top",
     "缺陷dns": "/system-design/dns/#缺陷dns",
     "来源及延伸阅读-4": "/system-design/dns/#来源及延伸阅读-4",
@@ -2500,11 +2896,11 @@
       "height": 1032,
       "sha256": "f658301956e39993fc16ae1df8e6e245d5329f8e2575b5ab98695c89b2c5f02e"
     },
-    "http://i.imgur.com/MzExP06.png": {
-      "src": "/images/system-design/MzExP06.png",
-      "width": 924,
-      "height": 1376,
-      "sha256": "b8db8707b6e52e4b89aeb118c3dd3f8c2634d4be3bc0bc60a3d58e8b69146428"
+    "http://i.imgur.com/jrUBAF7.png": {
+      "src": "/images/system-design/jrUBAF7.png",
+      "width": 1348,
+      "height": 1390,
+      "sha256": "c3a14a67452816f4eebb9f506324b3977810887900948a37558d8dac047db287"
     },
     "http://i.imgur.com/xjdAAUv.png": {
       "src": "/images/system-design/xjdAAUv.png",
@@ -2559,6 +2955,12 @@
       "width": 692,
       "height": 864,
       "sha256": "e826f36a2e6f5b10a46c3489f04144553e547d5d5a1e8d149b6321d289d200c0"
+    },
+    "http://i.imgur.com/MzExP06.png": {
+      "src": "/images/system-design/MzExP06.png",
+      "width": 924,
+      "height": 1376,
+      "sha256": "b8db8707b6e52e4b89aeb118c3dd3f8c2634d4be3bc0bc60a3d58e8b69146428"
     },
     "http://i.imgur.com/B8LDKD7.png": {
       "src": "/images/system-design/B8LDKD7.png",
@@ -2664,65 +3066,65 @@
       "slug": "topic-index",
       "url": "/system-design/topic-index/",
       "start": 3448,
-      "end": 5603,
+      "end": 5702,
       "headings": []
     },
     {
       "title": "学习指引",
       "slug": "study-guide",
       "url": "/system-design/study-guide/",
-      "start": 5603,
-      "end": 6724,
+      "start": 5702,
+      "end": 6823,
       "headings": []
     },
     {
       "title": "如何处理一个系统设计的面试题",
       "slug": "interview-approach",
       "url": "/system-design/interview-approach/",
-      "start": 6724,
-      "end": 8096,
+      "start": 6823,
+      "end": 8278,
       "headings": [
         {
           "title": "第一步：描述使用场景，约束和假设",
           "depth": 3,
           "id": "第一步描述使用场景约束和假设",
-          "start": 6847,
-          "end": 6869
+          "start": 6946,
+          "end": 6968
         },
         {
           "title": "第二步：创造一个高层级的设计",
           "depth": 3,
           "id": "第二步创造一个高层级的设计",
-          "start": 7021,
-          "end": 7041
+          "start": 7120,
+          "end": 7140
         },
         {
           "title": "第三步：设计核心组件",
           "depth": 3,
           "id": "第三步设计核心组件",
-          "start": 7088,
-          "end": 7104
+          "start": 7187,
+          "end": 7203
         },
         {
           "title": "第四步：扩展设计",
           "depth": 3,
           "id": "第四步扩展设计",
-          "start": 7434,
-          "end": 7448
+          "start": 7533,
+          "end": 7547
         },
         {
           "title": "预估计算量",
           "depth": 3,
           "id": "预估计算量",
-          "start": 7575,
-          "end": 7586
+          "start": 7674,
+          "end": 7685
         },
         {
           "title": "相关资源和延伸阅读",
           "depth": 3,
           "id": "相关资源和延伸阅读",
-          "start": 7806,
-          "end": 7821
+          "start": 7905,
+          "end": 7920
         }
       ]
     },
@@ -2730,64 +3132,64 @@
       "title": "系统设计的面试题和解答",
       "slug": "system-design-exercises",
       "url": "/system-design/system-design-exercises/",
-      "start": 8096,
-      "end": 10125,
+      "start": 8278,
+      "end": 10307,
       "headings": [
         {
           "title": "设计 Pastebin.com (或者 Bit.ly)",
           "depth": 3,
           "id": "设计-pastebincom-或者-bitly",
-          "start": 9226,
-          "end": 9259
+          "start": 9408,
+          "end": 9441
         },
         {
           "title": "设计 Twitter 时间线和搜索 (或者 Facebook feed 和搜索)",
           "depth": 3,
           "id": "设计-twitter-时间线和搜索-或者-facebook-feed-和搜索",
-          "start": 9344,
-          "end": 9390
+          "start": 9526,
+          "end": 9572
         },
         {
           "title": "设计一个网页爬虫",
           "depth": 3,
           "id": "设计一个网页爬虫",
-          "start": 9474,
-          "end": 9488
+          "start": 9656,
+          "end": 9670
         },
         {
           "title": "设计 Mint.com",
           "depth": 3,
           "id": "设计-mintcom",
-          "start": 9576,
-          "end": 9593
+          "start": 9758,
+          "end": 9775
         },
         {
           "title": "为一个社交网络设计数据结构",
           "depth": 3,
           "id": "为一个社交网络设计数据结构",
-          "start": 9674,
-          "end": 9693
+          "start": 9856,
+          "end": 9875
         },
         {
           "title": "为搜索引擎设计一个 key-value 储存",
           "depth": 3,
           "id": "为搜索引擎设计一个-key-value-储存",
-          "start": 9782,
-          "end": 9810
+          "start": 9964,
+          "end": 9992
         },
         {
           "title": "设计按类别分类的 Amazon 销售排名",
           "depth": 3,
           "id": "设计按类别分类的-amazon-销售排名",
-          "start": 9898,
-          "end": 9924
+          "start": 10080,
+          "end": 10106
         },
         {
           "title": "在 AWS 上设计一个百万用户级别的系统",
           "depth": 3,
           "id": "在-aws-上设计一个百万用户级别的系统",
-          "start": 10011,
-          "end": 10037
+          "start": 10193,
+          "end": 10219
         }
       ]
     },
@@ -2795,37 +3197,37 @@
       "title": "面向对象设计的面试问题及解答",
       "slug": "object-oriented-design",
       "url": "/system-design/object-oriented-design/",
-      "start": 10125,
-      "end": 10982,
+      "start": 10307,
+      "end": 11164,
       "headings": []
     },
     {
       "title": "系统设计主题：从这里开始",
       "slug": "getting-started",
       "url": "/system-design/getting-started/",
-      "start": 10982,
-      "end": 12067,
+      "start": 11164,
+      "end": 12249,
       "headings": [
         {
           "title": "第一步：回顾可扩展性（scalability）的视频讲座",
           "depth": 3,
           "id": "第一步回顾可扩展性scalability的视频讲座",
-          "start": 11049,
-          "end": 11083
+          "start": 11231,
+          "end": 11265
         },
         {
           "title": "第二步：回顾可扩展性文章",
           "depth": 3,
           "id": "第二步回顾可扩展性文章",
-          "start": 11254,
-          "end": 11272
+          "start": 11436,
+          "end": 11454
         },
         {
           "title": "接下来的步骤",
           "depth": 3,
           "id": "接下来的步骤",
-          "start": 11926,
-          "end": 11938
+          "start": 12108,
+          "end": 12120
         }
       ]
     },
@@ -2833,15 +3235,15 @@
       "title": "性能与可扩展性",
       "slug": "performance-scalability",
       "url": "/system-design/performance-scalability/",
-      "start": 12067,
-      "end": 12547,
+      "start": 12249,
+      "end": 12729,
       "headings": [
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读",
-          "start": 12349,
-          "end": 12362
+          "start": 12531,
+          "end": 12544
         }
       ]
     },
@@ -2849,15 +3251,15 @@
       "title": "延迟与吞吐量",
       "slug": "latency-throughput",
       "url": "/system-design/latency-throughput/",
-      "start": 12547,
-      "end": 12768,
+      "start": 12729,
+      "end": 12950,
       "headings": [
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读-1",
-          "start": 12647,
-          "end": 12660
+          "start": 12829,
+          "end": 12842
         }
       ]
     },
@@ -2865,36 +3267,36 @@
       "title": "可用性与一致性",
       "slug": "availability-consistency",
       "url": "/system-design/availability-consistency/",
-      "start": 12768,
-      "end": 13547,
+      "start": 12950,
+      "end": 13772,
       "headings": [
         {
           "title": "CAP 理论",
           "depth": 3,
           "id": "cap-理论",
-          "start": 12780,
-          "end": 12792
+          "start": 12962,
+          "end": 12974
         },
         {
           "title": "CP ─ 一致性和分区容错性",
           "depth": 4,
           "id": "cp--一致性和分区容错性",
-          "start": 13139,
-          "end": 13160
+          "start": 13313,
+          "end": 13334
         },
         {
           "title": "AP ─ 可用性与分区容错性",
           "depth": 4,
           "id": "ap--可用性与分区容错性",
-          "start": 13208,
-          "end": 13229
+          "start": 13382,
+          "end": 13403
         },
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读-2",
-          "start": 13335,
-          "end": 13348
+          "start": 13510,
+          "end": 13523
         }
       ]
     },
@@ -2902,36 +3304,36 @@
       "title": "一致性模式",
       "slug": "consistency-patterns",
       "url": "/system-design/consistency-patterns/",
-      "start": 13547,
-      "end": 14091,
+      "start": 13772,
+      "end": 14312,
       "headings": [
         {
           "title": "弱一致性",
           "depth": 3,
           "id": "弱一致性",
-          "start": 13654,
-          "end": 13664
+          "start": 13878,
+          "end": 13888
         },
         {
           "title": "最终一致性",
           "depth": 3,
           "id": "最终一致性",
-          "start": 13809,
-          "end": 13820
+          "start": 14033,
+          "end": 14044
         },
         {
           "title": "强一致性",
           "depth": 3,
           "id": "强一致性",
-          "start": 13900,
-          "end": 13910
+          "start": 14124,
+          "end": 14134
         },
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读-3",
-          "start": 13980,
-          "end": 13993
+          "start": 14201,
+          "end": 14214
         }
       ]
     },
@@ -2939,50 +3341,78 @@
       "title": "可用性模式",
       "slug": "availability-patterns",
       "url": "/system-design/availability-patterns/",
-      "start": 14091,
-      "end": 14634,
+      "start": 14312,
+      "end": 15801,
       "headings": [
         {
           "title": "故障切换",
           "depth": 3,
           "id": "故障切换",
-          "start": 14157,
-          "end": 14167
+          "start": 14378,
+          "end": 14388
         },
         {
           "title": "工作到备用切换（Active-passive）",
           "depth": 4,
           "id": "工作到备用切换active-passive",
-          "start": 14167,
-          "end": 14197
+          "start": 14388,
+          "end": 14418
         },
         {
           "title": "双工作切换（Active-active）",
           "depth": 4,
           "id": "双工作切换active-active",
-          "start": 14345,
-          "end": 14372
+          "start": 14566,
+          "end": 14593
         },
         {
           "title": "缺陷：故障切换",
           "depth": 3,
           "id": "缺陷故障切换",
-          "start": 14468,
-          "end": 14481
+          "start": 14689,
+          "end": 14702
         },
         {
           "title": "复制",
           "depth": 3,
           "id": "复制",
-          "start": 14547,
-          "end": 14555
+          "start": 14768,
+          "end": 14776
         },
         {
           "title": "主─从复制和主─主复制",
           "depth": 4,
           "id": "主从复制和主主复制",
-          "start": 14555,
-          "end": 14573
+          "start": 14776,
+          "end": 14794
+        },
+        {
+          "title": "可用率的量化",
+          "depth": 3,
+          "id": "可用率的量化",
+          "start": 14855,
+          "end": 14867
+        },
+        {
+          "title": "99.9% 可用率：三个 9",
+          "depth": 4,
+          "id": "999-可用率三个-9",
+          "start": 14970,
+          "end": 14991
+        },
+        {
+          "title": "99.99% 可用率：四个 9",
+          "depth": 4,
+          "id": "9999-可用率四个-9",
+          "start": 15110,
+          "end": 15132
+        },
+        {
+          "title": "串联与并联组件的可用率",
+          "depth": 4,
+          "id": "串联与并联组件的可用率",
+          "start": 15350,
+          "end": 15368
         }
       ]
     },
@@ -2990,22 +3420,22 @@
       "title": "域名系统",
       "slug": "dns",
       "url": "/system-design/dns/",
-      "start": 14634,
-      "end": 16024,
+      "start": 15801,
+      "end": 17380,
       "headings": [
         {
           "title": "缺陷:DNS",
           "depth": 3,
           "id": "缺陷dns",
-          "start": 15502,
-          "end": 15514
+          "start": 16858,
+          "end": 16870
         },
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读-4",
-          "start": 15806,
-          "end": 15819
+          "start": 17162,
+          "end": 17175
         }
       ]
     },
@@ -3013,36 +3443,36 @@
       "title": "内容分发网络（CDN）",
       "slug": "cdn",
       "url": "/system-design/cdn/",
-      "start": 16024,
-      "end": 17226,
+      "start": 17380,
+      "end": 18628,
       "headings": [
         {
           "title": "CDN 推送（push）",
           "depth": 3,
           "id": "cdn-推送push",
-          "start": 16424,
-          "end": 16442
+          "start": 17780,
+          "end": 17798
         },
         {
           "title": "CDN 拉取（pull）",
           "depth": 3,
           "id": "cdn-拉取pull",
-          "start": 16552,
-          "end": 16570
+          "start": 17965,
+          "end": 17983
         },
         {
           "title": "缺陷：CDN",
           "depth": 3,
           "id": "缺陷cdn",
-          "start": 16830,
-          "end": 16842
+          "start": 18243,
+          "end": 18255
         },
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读-5",
-          "start": 16943,
-          "end": 16956
+          "start": 18364,
+          "end": 18377
         }
       ]
     },
@@ -3050,50 +3480,50 @@
       "title": "负载均衡器",
       "slug": "load-balancer",
       "url": "/system-design/load-balancer/",
-      "start": 17226,
-      "end": 19472,
+      "start": 18628,
+      "end": 20947,
       "headings": [
         {
           "title": "四层负载均衡",
           "depth": 3,
           "id": "四层负载均衡",
-          "start": 18005,
-          "end": 18017
+          "start": 19437,
+          "end": 19449
         },
         {
           "title": "七层负载均衡器",
           "depth": 3,
           "id": "七层负载均衡器",
-          "start": 18195,
-          "end": 18208
+          "start": 19670,
+          "end": 19683
         },
         {
           "title": "水平扩展",
           "depth": 3,
           "id": "水平扩展",
-          "start": 18415,
-          "end": 18425
+          "start": 19890,
+          "end": 19900
         },
         {
           "title": "缺陷：水平扩展",
           "depth": 4,
           "id": "缺陷水平扩展",
-          "start": 18523,
-          "end": 18537
+          "start": 19998,
+          "end": 20012
         },
         {
           "title": "缺陷：负载均衡器",
           "depth": 3,
           "id": "缺陷负载均衡器",
-          "start": 18712,
-          "end": 18726
+          "start": 20187,
+          "end": 20201
         },
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读-6",
-          "start": 18830,
-          "end": 18843
+          "start": 20305,
+          "end": 20318
         }
       ]
     },
@@ -3101,29 +3531,29 @@
       "title": "反向代理（web 服务器）",
       "slug": "reverse-proxy",
       "url": "/system-design/reverse-proxy/",
-      "start": 19472,
-      "end": 20744,
+      "start": 20947,
+      "end": 22219,
       "headings": [
         {
           "title": "负载均衡器与反向代理",
           "depth": 3,
           "id": "负载均衡器与反向代理",
-          "start": 20127,
-          "end": 20143
+          "start": 21602,
+          "end": 21618
         },
         {
           "title": "不利之处：反向代理",
           "depth": 3,
           "id": "不利之处反向代理",
-          "start": 20285,
-          "end": 20300
+          "start": 21760,
+          "end": 21775
         },
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读-7",
-          "start": 20414,
-          "end": 20428
+          "start": 21889,
+          "end": 21903
         }
       ]
     },
@@ -3131,36 +3561,36 @@
       "title": "应用层",
       "slug": "application-layer",
       "url": "/system-design/application-layer/",
-      "start": 20744,
-      "end": 22301,
+      "start": 22219,
+      "end": 23765,
       "headings": [
         {
           "title": "微服务",
           "depth": 3,
           "id": "微服务",
-          "start": 21105,
-          "end": 21114
+          "start": 22580,
+          "end": 22589
         },
         {
           "title": "服务发现",
           "depth": 3,
           "id": "服务发现",
-          "start": 21380,
-          "end": 21390
+          "start": 22855,
+          "end": 22865
         },
         {
           "title": "不利之处：应用层",
           "depth": 3,
           "id": "不利之处应用层",
-          "start": 21788,
-          "end": 21802
+          "start": 23252,
+          "end": 23266
         },
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读-8",
-          "start": 21872,
-          "end": 21885
+          "start": 23336,
+          "end": 23349
         }
       ]
     },
@@ -3168,253 +3598,253 @@
       "title": "数据库",
       "slug": "database",
       "url": "/system-design/database/",
-      "start": 22301,
-      "end": 32754,
+      "start": 23765,
+      "end": 34154,
       "headings": [
         {
           "title": "关系型数据库管理系统（RDBMS）",
           "depth": 3,
           "id": "关系型数据库管理系统rdbms",
-          "start": 22472,
-          "end": 22495
+          "start": 23936,
+          "end": 23959
         },
         {
           "title": "主从复制",
           "depth": 4,
           "id": "主从复制",
-          "start": 23051,
-          "end": 23062
+          "start": 24515,
+          "end": 24526
         },
         {
           "title": "不利之处：主从复制",
           "depth": 5,
           "id": "不利之处主从复制",
-          "start": 23164,
-          "end": 23181
+          "start": 24628,
+          "end": 24645
         },
         {
           "title": "主主复制",
           "depth": 4,
           "id": "主主复制",
-          "start": 23443,
-          "end": 23454
+          "start": 24907,
+          "end": 24918
         },
         {
           "title": "不利之处： 主主复制",
           "depth": 5,
           "id": "不利之处-主主复制",
-          "start": 23504,
-          "end": 23522
+          "start": 24968,
+          "end": 24986
         },
         {
           "title": "不利之处：复制",
           "depth": 5,
           "id": "不利之处复制",
-          "start": 23681,
-          "end": 23697
+          "start": 25145,
+          "end": 25161
         },
         {
           "title": "来源及延伸阅读",
           "depth": 5,
           "id": "来源及延伸阅读-9",
-          "start": 23883,
-          "end": 23899
+          "start": 25347,
+          "end": 25363
         },
         {
           "title": "联合",
           "depth": 4,
           "id": "联合",
-          "start": 24062,
-          "end": 24071
+          "start": 25526,
+          "end": 25535
         },
         {
           "title": "不利之处：联合",
           "depth": 5,
           "id": "不利之处联合",
-          "start": 24395,
-          "end": 24411
+          "start": 25859,
+          "end": 25875
         },
         {
           "title": "来源及延伸阅读：联合",
           "depth": 5,
           "id": "来源及延伸阅读联合",
-          "start": 24643,
-          "end": 24661
+          "start": 26107,
+          "end": 26125
         },
         {
           "title": "分片",
           "depth": 4,
           "id": "分片",
-          "start": 24726,
-          "end": 24735
+          "start": 26190,
+          "end": 26199
         },
         {
           "title": "不利之处：分片",
           "depth": 5,
           "id": "不利之处分片",
-          "start": 25178,
-          "end": 25193
+          "start": 26642,
+          "end": 26657
         },
         {
           "title": "来源及延伸阅读：分片",
           "depth": 4,
           "id": "来源及延伸阅读分片",
-          "start": 25435,
-          "end": 25452
+          "start": 26899,
+          "end": 26916
         },
         {
           "title": "非规范化",
           "depth": 4,
           "id": "非规范化",
-          "start": 25728,
-          "end": 25739
+          "start": 27192,
+          "end": 27203
         },
         {
           "title": "不利之处：非规范化",
           "depth": 5,
           "id": "不利之处非规范化",
-          "start": 26097,
-          "end": 26114
+          "start": 27561,
+          "end": 27578
         },
         {
           "title": "来源及延伸阅读：非规范化",
           "depth": 5,
           "id": "来源及延伸阅读非规范化",
-          "start": 26193,
-          "end": 26213
+          "start": 27657,
+          "end": 27677
         },
         {
           "title": "SQL 调优",
           "depth": 4,
           "id": "sql-调优",
-          "start": 26270,
-          "end": 26283
+          "start": 27734,
+          "end": 27747
         },
         {
           "title": "改进模式",
           "depth": 5,
           "id": "改进模式",
-          "start": 26653,
-          "end": 26665
+          "start": 28117,
+          "end": 28129
         },
         {
           "title": "使用正确的索引",
           "depth": 5,
           "id": "使用正确的索引",
-          "start": 27186,
-          "end": 27201
+          "start": 28650,
+          "end": 28665
         },
         {
           "title": "避免高成本的联结操作",
           "depth": 5,
           "id": "避免高成本的联结操作",
-          "start": 27440,
-          "end": 27458
+          "start": 28904,
+          "end": 28922
         },
         {
           "title": "分割数据表",
           "depth": 5,
           "id": "分割数据表",
-          "start": 27477,
-          "end": 27490
+          "start": 28941,
+          "end": 28954
         },
         {
           "title": "调优查询缓存",
           "depth": 5,
           "id": "调优查询缓存",
-          "start": 27518,
-          "end": 27532
+          "start": 28982,
+          "end": 28996
         },
         {
           "title": "来源及延伸阅读",
           "depth": 5,
           "id": "来源及延伸阅读-10",
-          "start": 27711,
-          "end": 27726
+          "start": 29185,
+          "end": 29200
         },
         {
           "title": "NoSQL",
           "depth": 3,
           "id": "nosql",
-          "start": 28168,
-          "end": 28179
+          "start": 29628,
+          "end": 29639
         },
         {
           "title": "键-值存储",
           "depth": 4,
           "id": "键-值存储",
-          "start": 28608,
-          "end": 28620
+          "start": 30068,
+          "end": 30080
         },
         {
           "title": "来源及延伸阅读",
           "depth": 4,
           "id": "来源及延伸阅读-11",
-          "start": 28886,
-          "end": 28900
+          "start": 30346,
+          "end": 30360
         },
         {
           "title": "文档类型存储",
           "depth": 4,
           "id": "文档类型存储",
-          "start": 29239,
-          "end": 29252
+          "start": 30699,
+          "end": 30712
         },
         {
           "title": "来源及延伸阅读：文档类型存储",
           "depth": 4,
           "id": "来源及延伸阅读文档类型存储",
-          "start": 29576,
-          "end": 29597
+          "start": 31036,
+          "end": 31057
         },
         {
           "title": "列型存储",
           "depth": 4,
           "id": "列型存储",
-          "start": 29897,
-          "end": 29908
+          "start": 31357,
+          "end": 31368
         },
         {
           "title": "来源及延伸阅读：列型存储",
           "depth": 5,
           "id": "来源及延伸阅读列型存储",
-          "start": 30694,
-          "end": 30714
+          "start": 32124,
+          "end": 32144
         },
         {
           "title": "图数据库",
           "depth": 4,
           "id": "图数据库",
-          "start": 31079,
-          "end": 31090
+          "start": 32479,
+          "end": 32490
         },
         {
           "title": "相关资源和延伸阅读：图",
           "depth": 5,
           "id": "相关资源和延伸阅读图",
-          "start": 31439,
-          "end": 31457
+          "start": 32839,
+          "end": 32857
         },
         {
           "title": "来源及延伸阅读：NoSQL",
           "depth": 4,
           "id": "来源及延伸阅读nosql",
-          "start": 31606,
-          "end": 31626
+          "start": 33006,
+          "end": 33026
         },
         {
           "title": "SQL 还是 NoSQL",
           "depth": 3,
           "id": "sql-还是-nosql",
-          "start": 32102,
-          "end": 32120
+          "start": 33502,
+          "end": 33520
         },
         {
           "title": "来源及延伸阅读：SQL 或 NoSQL",
           "depth": 5,
           "id": "来源及延伸阅读sql-或-nosql",
-          "start": 32591,
-          "end": 32618
+          "start": 33991,
+          "end": 34018
         }
       ]
     },
@@ -3422,134 +3852,134 @@
       "title": "缓存",
       "slug": "cache",
       "url": "/system-design/cache/",
-      "start": 32754,
-      "end": 37324,
+      "start": 34154,
+      "end": 38740,
       "headings": [
         {
           "title": "客户端缓存",
           "depth": 3,
           "id": "客户端缓存",
-          "start": 33107,
-          "end": 33118
+          "start": 34507,
+          "end": 34518
         },
         {
           "title": "CDN 缓存",
           "depth": 3,
           "id": "cdn-缓存",
-          "start": 33169,
-          "end": 33181
+          "start": 34569,
+          "end": 34581
         },
         {
           "title": "Web 服务器缓存",
           "depth": 3,
           "id": "web-服务器缓存",
-          "start": 33210,
-          "end": 33225
+          "start": 34610,
+          "end": 34625
         },
         {
           "title": "数据库缓存",
           "depth": 3,
           "id": "数据库缓存",
-          "start": 33344,
-          "end": 33355
+          "start": 34744,
+          "end": 34755
         },
         {
           "title": "应用缓存",
           "depth": 3,
           "id": "应用缓存",
-          "start": 33415,
-          "end": 33425
+          "start": 34815,
+          "end": 34825
         },
         {
           "title": "数据库查询级别的缓存",
           "depth": 3,
           "id": "数据库查询级别的缓存",
-          "start": 33867,
-          "end": 33883
+          "start": 35283,
+          "end": 35299
         },
         {
           "title": "对象级别的缓存",
           "depth": 3,
           "id": "对象级别的缓存",
-          "start": 33994,
-          "end": 34007
+          "start": 35410,
+          "end": 35423
         },
         {
           "title": "何时更新缓存",
           "depth": 3,
           "id": "何时更新缓存",
-          "start": 34172,
-          "end": 34184
+          "start": 35588,
+          "end": 35600
         },
         {
           "title": "缓存模式",
           "depth": 4,
           "id": "缓存模式",
-          "start": 34226,
-          "end": 34237
+          "start": 35642,
+          "end": 35653
         },
         {
           "title": "缓存的缺点：",
           "depth": 5,
           "id": "缓存的缺点",
-          "start": 34973,
-          "end": 34987
+          "start": 36389,
+          "end": 36403
         },
         {
           "title": "直写模式",
           "depth": 4,
           "id": "直写模式",
-          "start": 35130,
-          "end": 35141
+          "start": 36546,
+          "end": 36557
         },
         {
           "title": "直写模式的缺点：",
           "depth": 5,
           "id": "直写模式的缺点",
-          "start": 35694,
-          "end": 35710
+          "start": 37110,
+          "end": 37126
         },
         {
           "title": "回写模式",
           "depth": 4,
           "id": "回写模式",
-          "start": 35808,
-          "end": 35819
+          "start": 37224,
+          "end": 37235
         },
         {
           "title": "回写模式的缺点：",
           "depth": 5,
           "id": "回写模式的缺点",
-          "start": 36068,
-          "end": 36084
+          "start": 37484,
+          "end": 37500
         },
         {
           "title": "刷新",
           "depth": 4,
           "id": "刷新",
-          "start": 36129,
-          "end": 36138
+          "start": 37545,
+          "end": 37554
         },
         {
           "title": "刷新的缺点：",
           "depth": 5,
           "id": "刷新的缺点",
-          "start": 36423,
-          "end": 36437
+          "start": 37839,
+          "end": 37853
         },
         {
           "title": "缓存的缺点：",
           "depth": 3,
           "id": "缓存的缺点-1",
-          "start": 36472,
-          "end": 36484
+          "start": 37888,
+          "end": 37900
         },
         {
           "title": "相关资源和延伸阅读",
           "depth": 3,
           "id": "相关资源和延伸阅读-1",
-          "start": 36635,
-          "end": 36650
+          "start": 38051,
+          "end": 38066
         }
       ]
     },
@@ -3557,43 +3987,43 @@
       "title": "异步",
       "slug": "asynchronism",
       "url": "/system-design/asynchronism/",
-      "start": 37324,
-      "end": 38858,
+      "start": 38740,
+      "end": 40400,
       "headings": [
         {
           "title": "消息队列",
           "depth": 3,
           "id": "消息队列",
-          "start": 37587,
-          "end": 37597
+          "start": 39003,
+          "end": 39013
         },
         {
           "title": "任务队列",
           "depth": 3,
           "id": "任务队列",
-          "start": 37952,
-          "end": 37962
+          "start": 39449,
+          "end": 39459
         },
         {
           "title": "背压",
           "depth": 3,
           "id": "背压",
-          "start": 38053,
-          "end": 38061
+          "start": 39595,
+          "end": 39603
         },
         {
           "title": "异步的缺点：",
           "depth": 3,
           "id": "异步的缺点",
-          "start": 38363,
-          "end": 38375
+          "start": 39905,
+          "end": 39917
         },
         {
           "title": "相关资源和延伸阅读",
           "depth": 3,
           "id": "相关资源和延伸阅读-2",
-          "start": 38422,
-          "end": 38437
+          "start": 39964,
+          "end": 39979
         }
       ]
     },
@@ -3601,85 +4031,85 @@
       "title": "通讯",
       "slug": "communication",
       "url": "/system-design/communication/",
-      "start": 38858,
-      "end": 46729,
+      "start": 40400,
+      "end": 48245,
       "headings": [
         {
           "title": "超文本传输协议（HTTP）",
           "depth": 3,
           "id": "超文本传输协议http",
-          "start": 39013,
-          "end": 39032
+          "start": 40555,
+          "end": 40574
         },
         {
           "title": "来源及延伸阅读：HTTP",
           "depth": 4,
           "id": "来源及延伸阅读http",
-          "start": 39681,
-          "end": 39700
+          "start": 41223,
+          "end": 41242
         },
         {
           "title": "传输控制协议（TCP）",
           "depth": 3,
           "id": "传输控制协议tcp",
-          "start": 40097,
-          "end": 40114
+          "start": 41639,
+          "end": 41656
         },
         {
           "title": "用户数据报协议（UDP）",
           "depth": 3,
           "id": "用户数据报协议udp",
-          "start": 41173,
-          "end": 41191
+          "start": 42715,
+          "end": 42733
         },
         {
           "title": "来源及延伸阅读：TCP 与 UDP",
           "depth": 4,
           "id": "来源及延伸阅读tcp-与-udp",
-          "start": 41731,
-          "end": 41755
+          "start": 43273,
+          "end": 43297
         },
         {
           "title": "远程过程调用协议（RPC）",
           "depth": 3,
           "id": "远程过程调用协议rpc",
-          "start": 42273,
-          "end": 42292
+          "start": 43789,
+          "end": 43808
         },
         {
           "title": "缺点：RPC",
           "depth": 4,
           "id": "缺点rpc",
-          "start": 43326,
-          "end": 43339
+          "start": 44842,
+          "end": 44855
         },
         {
           "title": "表述性状态转移（REST）",
           "depth": 3,
           "id": "表述性状态转移rest",
-          "start": 43620,
-          "end": 43639
+          "start": 45136,
+          "end": 45155
         },
         {
           "title": "缺点：REST",
           "depth": 4,
           "id": "缺点rest",
-          "start": 44323,
-          "end": 44337
+          "start": 45839,
+          "end": 45853
         },
         {
           "title": "RPC 与 REST 比较",
           "depth": 3,
           "id": "rpc-与-rest-比较",
-          "start": 44760,
-          "end": 44779
+          "start": 46276,
+          "end": 46295
         },
         {
           "title": "来源及延伸阅读：REST 与 RPC",
           "depth": 4,
           "id": "来源及延伸阅读rest-与-rpc",
-          "start": 45994,
-          "end": 46019
+          "start": 47510,
+          "end": 47535
         }
       ]
     },
@@ -3687,15 +4117,15 @@
       "title": "安全",
       "slug": "security",
       "url": "/system-design/security/",
-      "start": 46729,
-      "end": 47248,
+      "start": 48245,
+      "end": 48840,
       "headings": [
         {
           "title": "来源及延伸阅读",
           "depth": 3,
           "id": "来源及延伸阅读-12",
-          "start": 47079,
-          "end": 47092
+          "start": 48604,
+          "end": 48617
         }
       ]
     },
@@ -3703,78 +4133,78 @@
       "title": "附录",
       "slug": "appendix",
       "url": "/system-design/appendix/",
-      "start": 47248,
-      "end": 64715,
+      "start": 48840,
+      "end": 67562,
       "headings": [
         {
           "title": "2 的次方表",
           "depth": 3,
           "id": "2-的次方表",
-          "start": 47456,
-          "end": 47468
+          "start": 49048,
+          "end": 49060
         },
         {
           "title": "来源及延伸阅读",
           "depth": 4,
           "id": "来源及延伸阅读-13",
-          "start": 48043,
-          "end": 48057
+          "start": 49635,
+          "end": 49649
         },
         {
           "title": "每个程序员都应该知道的延迟数",
           "depth": 3,
           "id": "每个程序员都应该知道的延迟数",
-          "start": 48112,
-          "end": 48132
+          "start": 49704,
+          "end": 49724
         },
         {
           "title": "延迟数可视化",
           "depth": 4,
           "id": "延迟数可视化",
-          "start": 49591,
-          "end": 49604
+          "start": 51182,
+          "end": 51195
         },
         {
           "title": "来源及延伸阅读",
           "depth": 4,
           "id": "来源及延伸阅读-14",
-          "start": 49743,
-          "end": 49757
+          "start": 51334,
+          "end": 51348
         },
         {
           "title": "其它的系统设计面试题",
           "depth": 3,
           "id": "其它的系统设计面试题",
-          "start": 50124,
-          "end": 50140
+          "start": 51715,
+          "end": 51731
         },
         {
           "title": "真实架构",
           "depth": 3,
           "id": "真实架构",
-          "start": 54587,
-          "end": 54597
+          "start": 56664,
+          "end": 56674
         },
         {
           "title": "公司的系统架构",
           "depth": 3,
           "id": "公司的系统架构",
-          "start": 57982,
-          "end": 57995
+          "start": 60110,
+          "end": 60123
         },
         {
           "title": "公司工程博客",
           "depth": 3,
           "id": "公司工程博客",
-          "start": 62051,
-          "end": 62063
+          "start": 64839,
+          "end": 64851
         },
         {
           "title": "来源及延伸阅读",
           "depth": 4,
           "id": "来源及延伸阅读-15",
-          "start": 64620,
-          "end": 64634
+          "start": 67432,
+          "end": 67446
         }
       ]
     },
@@ -3782,32 +4212,32 @@
       "title": "正在完善中",
       "slug": "work-in-progress",
       "url": "/system-design/work-in-progress/",
-      "start": 64715,
-      "end": 64825,
+      "start": 67562,
+      "end": 67672,
       "headings": []
     },
     {
       "title": "致谢",
       "slug": "credits",
       "url": "/system-design/credits/",
-      "start": 64825,
-      "end": 65592,
+      "start": 67672,
+      "end": 68439,
       "headings": []
     },
     {
       "title": "联系方式",
       "slug": "contact",
       "url": "/system-design/contact/",
-      "start": 65592,
-      "end": 65683,
+      "start": 68439,
+      "end": 68530,
       "headings": []
     },
     {
       "title": "许可",
       "slug": "license",
       "url": "/system-design/license/",
-      "start": 65683,
-      "end": 65810,
+      "start": 68530,
+      "end": 68762,
       "headings": []
     }
   ]

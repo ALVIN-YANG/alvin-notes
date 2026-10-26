@@ -6,6 +6,7 @@ import Slugger from 'github-slugger';
 import sharp from 'sharp';
 import { JSDOM } from 'jsdom';
 import { buildSolutions, referenceAliases } from './system-design-solutions.mjs';
+import { applyEnglishUpdates, englishRevision, englishSourcePaths } from './system-design-english-updates.mjs';
 
 const root = new URL('../', import.meta.url);
 const vendor = new URL('vendor/system-design-primer/', root);
@@ -25,9 +26,10 @@ async function download(path) {
 }
 for (const dir of [vendor, output, images]) await mkdir(dir, { recursive: true });
 if (update) {
-  for (const file of ['README-zh-Hans.md', 'LICENSE.txt']) await writeFile(new URL(file, vendor), await download(file));
+  for (const file of ['README-zh-Hans.md', 'LICENSE.txt', ...englishSourcePaths]) await writeFile(new URL(file, vendor), await download(file));
 }
-const source = await readFile(new URL('README-zh-Hans.md', vendor), 'utf8');
+const upstreamSource = await readFile(new URL('README-zh-Hans.md', vendor), 'utf8');
+const source = applyEnglishUpdates('README-zh-Hans.md', upstreamSource);
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 const tokens = marked.lexer(source);
 let offset = 0;
@@ -92,7 +94,7 @@ for (const asset of assets) {
 }
 const solutions = await buildSolutions({ check, update, download, images: imageManifest });
 const documents = chapters.flatMap(chapter => [chapter, ...solutions.supplements.filter(s => s.parent === chapter.slug)]);
-const manifest = { downloads: solutions.downloads, supplements: solutions.supplements.map(({body,...doc})=>doc), solutionPaths: solutions.paths, solutionSources: solutions.sources, referenceAliases, repo, commit, source: 'README-zh-Hans.md', sha256: sha256(source), omittedNavigation: languageLine, aliases, anchors, images: imageManifest, chapters: chapters.map(({ body, ...chapter }) => chapter) };
+const manifest = { englishRevision: englishRevision(commit), downloads: solutions.downloads, supplements: solutions.supplements.map(({body,...doc})=>doc), solutionPaths: solutions.paths, solutionSources: solutions.sources, referenceAliases, repo, commit, source: 'README-zh-Hans.md', sha256: sha256(upstreamSource), renderedSha256: sha256(source), omittedNavigation: languageLine, aliases, anchors, images: imageManifest, chapters: chapters.map(({ body, ...chapter }) => chapter) };
 async function emit(path, content) {
   if (check) {
     if (await readFile(path, 'utf8').catch(() => null) !== content) throw new Error(`Out of date: ${path.pathname}`);
@@ -107,7 +109,7 @@ for (const [index, chapter] of documents.entries()) {
     chapter.body = chapter.body.replace(row, '$1[本站补充解答](/system-design/object-oriented-design/circular-array/)');
   }
   // Frontmatter parsing trims leading indentation; fence the original indented license block.
-  const renderedBody = chapter.slug === 'license' ? '```text\n' + chapter.body.replace(/^ {4}/gm, '') + '\n```\n' : chapter.body;
+  const renderedBody = chapter.slug === 'license' ? chapter.body.replace(/^ {4}Creative Commons[\s\S]*$/, block => '```text\n' + block.replace(/^ {4}/gm, '').trimEnd() + '\n```\n') : chapter.body;
   // JSON is valid YAML: source punctuation cannot accidentally become frontmatter syntax.
   if (!check && chapter.slug.includes('/')) await mkdir(new URL(chapter.slug.slice(0,chapter.slug.lastIndexOf('/'))+'/', output), {recursive:true});
   await emit(new URL(`${chapter.slug}.md`, output), `---\n${JSON.stringify(frontmatter, null, 2)}\n---\n${renderedBody.replace(/<a href=([^\s"'<>]+)\s*>/g, '<a href="$1">')}`);
