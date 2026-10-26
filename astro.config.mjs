@@ -3,16 +3,19 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import remarkStaticMermaid from './src/plugins/remark-static-mermaid.mjs';
+import remarkSystemDesign from './src/plugins/remark-system-design.mjs';
 import { buildInterviewSidebar } from './src/lib/interview-sidebar.mjs';
+import { buildSystemDesignSidebar } from './src/lib/system-design-sidebar.mjs';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blog.mlxb.cc',
   prefetch: true,
   markdown: {
-    remarkPlugins: [remarkStaticMermaid],
+    remarkPlugins: [remarkSystemDesign, remarkStaticMermaid],
   },
   redirects: {
+    '/system-design-knowledge': '/system-design/',
     '/interview/infra-roadmap': '/interview/',
     '/ai/prompt-engineering': '/ai-workflow/16-prompt-task-contract-practice/',
     '/ai/1-prompt-engineering': '/ai-workflow/16-prompt-task-contract-practice/',
@@ -78,6 +81,7 @@ export default defineConfig({
         ThemeSelect: './src/components/ThemeToggle.astro',
       },
       sidebar: [
+        { label: '系统设计入门', items: buildSystemDesignSidebar() },
         {
           label: 'AI 工程问答',
           items: [

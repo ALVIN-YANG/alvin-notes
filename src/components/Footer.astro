@@ -3,6 +3,7 @@ import EditLink from 'virtual:starlight/components/EditLink';
 import LastUpdated from 'virtual:starlight/components/LastUpdated';
 import Pagination from 'virtual:starlight/components/Pagination';
 import Comments from './Comments.astro';
+import SystemDesignReader from './SystemDesignReader.astro';
 
 const { entry, slug } = Astro.locals.starlightRoute;
 const commentsEnabled = (entry.data as typeof entry.data & { comments?: boolean }).comments !== false;
@@ -15,6 +16,7 @@ const showComments = commentsEnabled && slug !== '' && entry.body.trim().length 
     <LastUpdated />
   </div>
   {showComments && <Comments />}
+  {Astro.url.pathname.startsWith('/system-design/') && <SystemDesignReader />}
   <Pagination />
   <div class="custom-footer">
     <span>Built by Alvin Yang</span>

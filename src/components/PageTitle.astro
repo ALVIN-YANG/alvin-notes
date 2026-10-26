@@ -4,7 +4,8 @@ import ArticleReader from './ArticleReader.astro';
 
 const { entry, slug } = Astro.locals.starlightRoute;
 const hidePageTitle = (entry.data as typeof entry.data & { hidePageTitle?: boolean }).hidePageTitle === true;
-const showViewCount = !hidePageTitle && slug !== '' && slug !== 'about' && slug !== 'projects';
+const isSystemDesign = Astro.url.pathname.startsWith('/system-design/');
+const showViewCount = !isSystemDesign && !hidePageTitle && slug !== '' && slug !== 'about' && slug !== 'projects';
 
 const body = entry.body || '';
 const toPlainText = (value: string) => value
@@ -40,7 +41,8 @@ const updatedLabel = updatedDate
   hidePageTitle ? (
     <span class="page-title-placeholder" aria-hidden="true"></span>
   ) : (
-    <header class="article-heading">
+    <header class:list={["article-heading", { "primer-heading": isSystemDesign }]}>
+      {isSystemDesign && <a class="primer-book-label" href="/system-design/">系统设计入门 · 中文文档</a>}
       <h1 id="_top">{entry.data.title}</h1>
       {
         (updatedDate || showReadingTime || showViewCount) && (

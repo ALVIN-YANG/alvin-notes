@@ -1,0 +1,3736 @@
+{
+  "downloads": {
+    "resources/flash_cards/System Design.apkg": {
+      "url": "/downloads/system-design/System%20Design.apkg",
+      "sha256": "bb98767862cbd92f62c4f60f42d49d17d82b84a5f74d4301a2ea8940dc9badf8"
+    },
+    "resources/flash_cards/System Design Exercises.apkg": {
+      "url": "/downloads/system-design/System%20Design%20Exercises.apkg",
+      "sha256": "1c5c1f34f2aa9d740d95499e18a323f7f918947120ac117c242c76f3b2364de0"
+    },
+    "resources/flash_cards/OO Design.apkg": {
+      "url": "/downloads/system-design/OO%20Design.apkg",
+      "sha256": "b3eefdd3169038660e07c2744b07d4690a0fcb8c21408d91bef447756f5c7cfc"
+    }
+  },
+  "supplements": [
+    {
+      "title": "设计 Pastebin.com (或者 Bit.ly)",
+      "slug": "system-design-exercises/pastebin",
+      "url": "/system-design/system-design-exercises/pastebin/",
+      "parent": "system-design-exercises",
+      "sourcePath": "solutions/system_design/pastebin/README-zh-Hans.md",
+      "translated": false,
+      "headings": [
+        {
+          "title": "第一步：概述用例和约束",
+          "depth": 2,
+          "id": "第一步概述用例和约束",
+          "start": 262,
+          "end": 278
+        },
+        {
+          "title": "用例",
+          "depth": 3,
+          "id": "用例",
+          "start": 356,
+          "end": 364
+        },
+        {
+          "title": "我们将问题的范畴限定在如下用例",
+          "depth": 4,
+          "id": "我们将问题的范畴限定在如下用例",
+          "start": 364,
+          "end": 386
+        },
+        {
+          "title": "超出范畴的用例",
+          "depth": 4,
+          "id": "超出范畴的用例",
+          "start": 598,
+          "end": 612
+        },
+        {
+          "title": "约束和假设",
+          "depth": 3,
+          "id": "约束和假设",
+          "start": 721,
+          "end": 732
+        },
+        {
+          "title": "状态假设",
+          "depth": 4,
+          "id": "状态假设",
+          "start": 732,
+          "end": 743
+        },
+        {
+          "title": "计算使用",
+          "depth": 4,
+          "id": "计算使用",
+          "start": 868,
+          "end": 879
+        },
+        {
+          "title": "第二步：创建一个高层次设计",
+          "depth": 2,
+          "id": "第二步创建一个高层次设计",
+          "start": 1370,
+          "end": 1388
+        },
+        {
+          "title": "第三步：设计核心组件",
+          "depth": 2,
+          "id": "第三步设计核心组件",
+          "start": 1453,
+          "end": 1468
+        },
+        {
+          "title": "用例：用户输入一段文本，然后得到一个随机生成的链接",
+          "depth": 3,
+          "id": "用例用户输入一段文本然后得到一个随机生成的链接",
+          "start": 1484,
+          "end": 1515
+        },
+        {
+          "title": "用例：用户输入一个 paste 的 url 后可以看到它存储的内容",
+          "depth": 3,
+          "id": "用例用户输入一个-paste-的-url-后可以看到它存储的内容",
+          "start": 4448,
+          "end": 4487
+        },
+        {
+          "title": "用例： 服务跟踪分析页面",
+          "depth": 3,
+          "id": "用例-服务跟踪分析页面",
+          "start": 4926,
+          "end": 4944
+        },
+        {
+          "title": "用例： 服务删除过期的 pastes",
+          "depth": 3,
+          "id": "用例-服务删除过期的-pastes",
+          "start": 5799,
+          "end": 5823
+        },
+        {
+          "title": "第四步：扩展这个设计",
+          "depth": 2,
+          "id": "第四步扩展这个设计",
+          "start": 5909,
+          "end": 5924
+        },
+        {
+          "title": "额外的话题",
+          "depth": 2,
+          "id": "额外的话题",
+          "start": 8508,
+          "end": 8518
+        },
+        {
+          "title": "NoSQL",
+          "depth": 3,
+          "id": "nosql",
+          "start": 8551,
+          "end": 8562
+        },
+        {
+          "title": "缓存",
+          "depth": 3,
+          "id": "缓存",
+          "start": 9067,
+          "end": 9075
+        },
+        {
+          "title": "异步和微服务",
+          "depth": 3,
+          "id": "异步和微服务",
+          "start": 10220,
+          "end": 10232
+        },
+        {
+          "title": "通信",
+          "depth": 3,
+          "id": "通信",
+          "start": 10615,
+          "end": 10623
+        },
+        {
+          "title": "安全",
+          "depth": 3,
+          "id": "安全",
+          "start": 10981,
+          "end": 10989
+        },
+        {
+          "title": "延迟数字",
+          "depth": 3,
+          "id": "延迟数字",
+          "start": 11084,
+          "end": 11094
+        },
+        {
+          "title": "持续进行",
+          "depth": 3,
+          "id": "持续进行",
+          "start": 11212,
+          "end": 11222
+        }
+      ],
+      "anchors": {
+        "设计-pastebincom-或者-bitly": "/system-design/system-design-exercises/pastebin/#_top",
+        "第一步概述用例和约束": "/system-design/system-design-exercises/pastebin/#第一步概述用例和约束",
+        "用例": "/system-design/system-design-exercises/pastebin/#用例",
+        "我们将问题的范畴限定在如下用例": "/system-design/system-design-exercises/pastebin/#我们将问题的范畴限定在如下用例",
+        "超出范畴的用例": "/system-design/system-design-exercises/pastebin/#超出范畴的用例",
+        "约束和假设": "/system-design/system-design-exercises/pastebin/#约束和假设",
+        "状态假设": "/system-design/system-design-exercises/pastebin/#状态假设",
+        "计算使用": "/system-design/system-design-exercises/pastebin/#计算使用",
+        "第二步创建一个高层次设计": "/system-design/system-design-exercises/pastebin/#第二步创建一个高层次设计",
+        "第三步设计核心组件": "/system-design/system-design-exercises/pastebin/#第三步设计核心组件",
+        "用例用户输入一段文本然后得到一个随机生成的链接": "/system-design/system-design-exercises/pastebin/#用例用户输入一段文本然后得到一个随机生成的链接",
+        "用例用户输入一个-paste-的-url-后可以看到它存储的内容": "/system-design/system-design-exercises/pastebin/#用例用户输入一个-paste-的-url-后可以看到它存储的内容",
+        "用例-服务跟踪分析页面": "/system-design/system-design-exercises/pastebin/#用例-服务跟踪分析页面",
+        "用例-服务删除过期的-pastes": "/system-design/system-design-exercises/pastebin/#用例-服务删除过期的-pastes",
+        "第四步扩展这个设计": "/system-design/system-design-exercises/pastebin/#第四步扩展这个设计",
+        "额外的话题": "/system-design/system-design-exercises/pastebin/#额外的话题",
+        "nosql": "/system-design/system-design-exercises/pastebin/#nosql",
+        "缓存": "/system-design/system-design-exercises/pastebin/#缓存",
+        "异步和微服务": "/system-design/system-design-exercises/pastebin/#异步和微服务",
+        "通信": "/system-design/system-design-exercises/pastebin/#通信",
+        "安全": "/system-design/system-design-exercises/pastebin/#安全",
+        "延迟数字": "/system-design/system-design-exercises/pastebin/#延迟数字",
+        "持续进行": "/system-design/system-design-exercises/pastebin/#持续进行"
+      }
+    },
+    {
+      "title": "设计推特时间轴与搜索功能",
+      "slug": "system-design-exercises/twitter",
+      "url": "/system-design/system-design-exercises/twitter/",
+      "parent": "system-design-exercises",
+      "sourcePath": "solutions/system_design/twitter/README-zh-Hans.md",
+      "translated": false,
+      "headings": [
+        {
+          "title": "第一步：简述用例与约束条件",
+          "depth": 2,
+          "id": "第一步简述用例与约束条件",
+          "start": 250,
+          "end": 268
+        },
+        {
+          "title": "用例",
+          "depth": 3,
+          "id": "用例",
+          "start": 346,
+          "end": 354
+        },
+        {
+          "title": "我们将把问题限定在仅处理以下用例的范围中",
+          "depth": 4,
+          "id": "我们将把问题限定在仅处理以下用例的范围中",
+          "start": 354,
+          "end": 381
+        },
+        {
+          "title": "不在用例范围内的有",
+          "depth": 4,
+          "id": "不在用例范围内的有",
+          "start": 517,
+          "end": 533
+        },
+        {
+          "title": "限制条件与假设",
+          "depth": 3,
+          "id": "限制条件与假设",
+          "start": 634,
+          "end": 647
+        },
+        {
+          "title": "提出假设",
+          "depth": 4,
+          "id": "提出假设",
+          "start": 647,
+          "end": 658
+        },
+        {
+          "title": "计算用量",
+          "depth": 4,
+          "id": "计算用量",
+          "start": 983,
+          "end": 994
+        },
+        {
+          "title": "第二步：概要设计",
+          "depth": 2,
+          "id": "第二步概要设计",
+          "start": 1551,
+          "end": 1564
+        },
+        {
+          "title": "第三步：设计核心组件",
+          "depth": 2,
+          "id": "第三步设计核心组件",
+          "start": 1626,
+          "end": 1641
+        },
+        {
+          "title": "用例：用户发表了一篇推特",
+          "depth": 3,
+          "id": "用例用户发表了一篇推特",
+          "start": 1657,
+          "end": 1675
+        },
+        {
+          "title": "用例：用户浏览主页时间轴",
+          "depth": 3,
+          "id": "用例用户浏览主页时间轴",
+          "start": 3776,
+          "end": 3794
+        },
+        {
+          "title": "用例：用户浏览用户时间轴",
+          "depth": 3,
+          "id": "用例用户浏览用户时间轴",
+          "start": 4400,
+          "end": 4418
+        },
+        {
+          "title": "用例：用户搜索关键词",
+          "depth": 3,
+          "id": "用例用户搜索关键词",
+          "start": 4571,
+          "end": 4587
+        },
+        {
+          "title": "第四步：架构扩展",
+          "depth": 2,
+          "id": "第四步架构扩展",
+          "start": 5141,
+          "end": 5154
+        },
+        {
+          "title": "其它要点",
+          "depth": 2,
+          "id": "其它要点",
+          "start": 7873,
+          "end": 7882
+        },
+        {
+          "title": "NoSQL",
+          "depth": 4,
+          "id": "nosql",
+          "start": 7914,
+          "end": 7926
+        },
+        {
+          "title": "缓存",
+          "depth": 3,
+          "id": "缓存",
+          "start": 8434,
+          "end": 8442
+        },
+        {
+          "title": "异步与微服务",
+          "depth": 3,
+          "id": "异步与微服务",
+          "start": 9611,
+          "end": 9623
+        },
+        {
+          "title": "通信",
+          "depth": 3,
+          "id": "通信",
+          "start": 10006,
+          "end": 10014
+        },
+        {
+          "title": "安全性",
+          "depth": 3,
+          "id": "安全性",
+          "start": 10376,
+          "end": 10385
+        },
+        {
+          "title": "延迟数值",
+          "depth": 3,
+          "id": "延迟数值",
+          "start": 10485,
+          "end": 10495
+        },
+        {
+          "title": "持续探讨",
+          "depth": 3,
+          "id": "持续探讨",
+          "start": 10617,
+          "end": 10627
+        }
+      ],
+      "anchors": {
+        "设计推特时间轴与搜索功能": "/system-design/system-design-exercises/twitter/#_top",
+        "第一步简述用例与约束条件": "/system-design/system-design-exercises/twitter/#第一步简述用例与约束条件",
+        "用例": "/system-design/system-design-exercises/twitter/#用例",
+        "我们将把问题限定在仅处理以下用例的范围中": "/system-design/system-design-exercises/twitter/#我们将把问题限定在仅处理以下用例的范围中",
+        "不在用例范围内的有": "/system-design/system-design-exercises/twitter/#不在用例范围内的有",
+        "限制条件与假设": "/system-design/system-design-exercises/twitter/#限制条件与假设",
+        "提出假设": "/system-design/system-design-exercises/twitter/#提出假设",
+        "计算用量": "/system-design/system-design-exercises/twitter/#计算用量",
+        "第二步概要设计": "/system-design/system-design-exercises/twitter/#第二步概要设计",
+        "第三步设计核心组件": "/system-design/system-design-exercises/twitter/#第三步设计核心组件",
+        "用例用户发表了一篇推特": "/system-design/system-design-exercises/twitter/#用例用户发表了一篇推特",
+        "用例用户浏览主页时间轴": "/system-design/system-design-exercises/twitter/#用例用户浏览主页时间轴",
+        "用例用户浏览用户时间轴": "/system-design/system-design-exercises/twitter/#用例用户浏览用户时间轴",
+        "用例用户搜索关键词": "/system-design/system-design-exercises/twitter/#用例用户搜索关键词",
+        "第四步架构扩展": "/system-design/system-design-exercises/twitter/#第四步架构扩展",
+        "其它要点": "/system-design/system-design-exercises/twitter/#其它要点",
+        "nosql": "/system-design/system-design-exercises/twitter/#nosql",
+        "缓存": "/system-design/system-design-exercises/twitter/#缓存",
+        "异步与微服务": "/system-design/system-design-exercises/twitter/#异步与微服务",
+        "通信": "/system-design/system-design-exercises/twitter/#通信",
+        "安全性": "/system-design/system-design-exercises/twitter/#安全性",
+        "延迟数值": "/system-design/system-design-exercises/twitter/#延迟数值",
+        "持续探讨": "/system-design/system-design-exercises/twitter/#持续探讨"
+      }
+    },
+    {
+      "title": "设计一个网页爬虫",
+      "slug": "system-design-exercises/web-crawler",
+      "url": "/system-design/system-design-exercises/web-crawler/",
+      "parent": "system-design-exercises",
+      "sourcePath": "solutions/system_design/web_crawler/README-zh-Hans.md",
+      "translated": false,
+      "headings": [
+        {
+          "title": "第一步：简述用例与约束条件",
+          "depth": 2,
+          "id": "第一步简述用例与约束条件",
+          "start": 192,
+          "end": 210
+        },
+        {
+          "title": "用例",
+          "depth": 3,
+          "id": "用例",
+          "start": 298,
+          "end": 306
+        },
+        {
+          "title": "我们把问题限定在仅处理以下用例的范围中",
+          "depth": 4,
+          "id": "我们把问题限定在仅处理以下用例的范围中",
+          "start": 306,
+          "end": 332
+        },
+        {
+          "title": "无需考虑",
+          "depth": 4,
+          "id": "无需考虑",
+          "start": 527,
+          "end": 538
+        },
+        {
+          "title": "限制条件与假设",
+          "depth": 3,
+          "id": "限制条件与假设",
+          "start": 563,
+          "end": 576
+        },
+        {
+          "title": "提出假设",
+          "depth": 4,
+          "id": "提出假设",
+          "start": 576,
+          "end": 587
+        },
+        {
+          "title": "计算用量",
+          "depth": 4,
+          "id": "计算用量",
+          "start": 954,
+          "end": 965
+        },
+        {
+          "title": "第二步： 概要设计",
+          "depth": 2,
+          "id": "第二步-概要设计",
+          "start": 1191,
+          "end": 1205
+        },
+        {
+          "title": "第三步：设计核心组件",
+          "depth": 2,
+          "id": "第三步设计核心组件",
+          "start": 1267,
+          "end": 1282
+        },
+        {
+          "title": "用例：爬虫服务抓取一系列网页",
+          "depth": 3,
+          "id": "用例爬虫服务抓取一系列网页",
+          "start": 1304,
+          "end": 1324
+        },
+        {
+          "title": "处理重复内容",
+          "depth": 3,
+          "id": "处理重复内容",
+          "start": 4459,
+          "end": 4471
+        },
+        {
+          "title": "抓取结果更新策略",
+          "depth": 3,
+          "id": "抓取结果更新策略",
+          "start": 5054,
+          "end": 5068
+        },
+        {
+          "title": "用例：用户输入搜索词后，可以看到相关的搜索结果列表，列表每一项都包含由网页爬虫生成的页面标题及摘要",
+          "depth": 3,
+          "id": "用例用户输入搜索词后可以看到相关的搜索结果列表列表每一项都包含由网页爬虫生成的页面标题及摘要",
+          "start": 5291,
+          "end": 5346
+        },
+        {
+          "title": "第四步：架构扩展",
+          "depth": 2,
+          "id": "第四步架构扩展",
+          "start": 6386,
+          "end": 6399
+        },
+        {
+          "title": "其它要点",
+          "depth": 2,
+          "id": "其它要点",
+          "start": 8553,
+          "end": 8562
+        },
+        {
+          "title": "SQL 扩展模式",
+          "depth": 3,
+          "id": "sql-扩展模式",
+          "start": 8594,
+          "end": 8608
+        },
+        {
+          "title": "NoSQL",
+          "depth": 4,
+          "id": "nosql",
+          "start": 9090,
+          "end": 9102
+        },
+        {
+          "title": "缓存",
+          "depth": 3,
+          "id": "缓存",
+          "start": 9611,
+          "end": 9619
+        },
+        {
+          "title": "异步与微服务",
+          "depth": 3,
+          "id": "异步与微服务",
+          "start": 10788,
+          "end": 10800
+        },
+        {
+          "title": "通信",
+          "depth": 3,
+          "id": "通信",
+          "start": 11183,
+          "end": 11191
+        },
+        {
+          "title": "安全性",
+          "depth": 3,
+          "id": "安全性",
+          "start": 11551,
+          "end": 11560
+        },
+        {
+          "title": "延迟数值",
+          "depth": 3,
+          "id": "延迟数值",
+          "start": 11657,
+          "end": 11667
+        },
+        {
+          "title": "持续探讨",
+          "depth": 3,
+          "id": "持续探讨",
+          "start": 11787,
+          "end": 11797
+        }
+      ],
+      "anchors": {
+        "设计一个网页爬虫": "/system-design/system-design-exercises/web-crawler/#_top",
+        "第一步简述用例与约束条件": "/system-design/system-design-exercises/web-crawler/#第一步简述用例与约束条件",
+        "用例": "/system-design/system-design-exercises/web-crawler/#用例",
+        "我们把问题限定在仅处理以下用例的范围中": "/system-design/system-design-exercises/web-crawler/#我们把问题限定在仅处理以下用例的范围中",
+        "无需考虑": "/system-design/system-design-exercises/web-crawler/#无需考虑",
+        "限制条件与假设": "/system-design/system-design-exercises/web-crawler/#限制条件与假设",
+        "提出假设": "/system-design/system-design-exercises/web-crawler/#提出假设",
+        "计算用量": "/system-design/system-design-exercises/web-crawler/#计算用量",
+        "第二步-概要设计": "/system-design/system-design-exercises/web-crawler/#第二步-概要设计",
+        "第三步设计核心组件": "/system-design/system-design-exercises/web-crawler/#第三步设计核心组件",
+        "用例爬虫服务抓取一系列网页": "/system-design/system-design-exercises/web-crawler/#用例爬虫服务抓取一系列网页",
+        "处理重复内容": "/system-design/system-design-exercises/web-crawler/#处理重复内容",
+        "抓取结果更新策略": "/system-design/system-design-exercises/web-crawler/#抓取结果更新策略",
+        "用例用户输入搜索词后可以看到相关的搜索结果列表列表每一项都包含由网页爬虫生成的页面标题及摘要": "/system-design/system-design-exercises/web-crawler/#用例用户输入搜索词后可以看到相关的搜索结果列表列表每一项都包含由网页爬虫生成的页面标题及摘要",
+        "第四步架构扩展": "/system-design/system-design-exercises/web-crawler/#第四步架构扩展",
+        "其它要点": "/system-design/system-design-exercises/web-crawler/#其它要点",
+        "sql-扩展模式": "/system-design/system-design-exercises/web-crawler/#sql-扩展模式",
+        "nosql": "/system-design/system-design-exercises/web-crawler/#nosql",
+        "缓存": "/system-design/system-design-exercises/web-crawler/#缓存",
+        "异步与微服务": "/system-design/system-design-exercises/web-crawler/#异步与微服务",
+        "通信": "/system-design/system-design-exercises/web-crawler/#通信",
+        "安全性": "/system-design/system-design-exercises/web-crawler/#安全性",
+        "延迟数值": "/system-design/system-design-exercises/web-crawler/#延迟数值",
+        "持续探讨": "/system-design/system-design-exercises/web-crawler/#持续探讨"
+      }
+    },
+    {
+      "title": "设计 Mint.com",
+      "slug": "system-design-exercises/mint",
+      "url": "/system-design/system-design-exercises/mint/",
+      "parent": "system-design-exercises",
+      "sourcePath": "solutions/system_design/mint/README-zh-Hans.md",
+      "translated": false,
+      "headings": [
+        {
+          "title": "第一步：简述用例与约束条件",
+          "depth": 2,
+          "id": "第一步简述用例与约束条件",
+          "start": 194,
+          "end": 212
+        },
+        {
+          "title": "用例",
+          "depth": 3,
+          "id": "用例",
+          "start": 290,
+          "end": 298
+        },
+        {
+          "title": "我们将把问题限定在仅处理以下用例的范围中",
+          "depth": 4,
+          "id": "我们将把问题限定在仅处理以下用例的范围中",
+          "start": 298,
+          "end": 325
+        },
+        {
+          "title": "非用例范围",
+          "depth": 4,
+          "id": "非用例范围",
+          "start": 507,
+          "end": 519
+        },
+        {
+          "title": "限制条件与假设",
+          "depth": 3,
+          "id": "限制条件与假设",
+          "start": 542,
+          "end": 555
+        },
+        {
+          "title": "提出假设",
+          "depth": 4,
+          "id": "提出假设",
+          "start": 555,
+          "end": 566
+        },
+        {
+          "title": "计算用量",
+          "depth": 4,
+          "id": "计算用量",
+          "start": 875,
+          "end": 886
+        },
+        {
+          "title": "第二步：概要设计",
+          "depth": 2,
+          "id": "第二步概要设计",
+          "start": 1323,
+          "end": 1336
+        },
+        {
+          "title": "第三步：设计核心组件",
+          "depth": 2,
+          "id": "第三步设计核心组件",
+          "start": 1398,
+          "end": 1413
+        },
+        {
+          "title": "用例：用户连接到一个财务账户",
+          "depth": 3,
+          "id": "用例用户连接到一个财务账户",
+          "start": 1429,
+          "end": 1449
+        },
+        {
+          "title": "用例：服务从账户中提取交易",
+          "depth": 3,
+          "id": "用例服务从账户中提取交易",
+          "start": 2930,
+          "end": 2949
+        },
+        {
+          "title": "分类服务",
+          "depth": 4,
+          "id": "分类服务",
+          "start": 4329,
+          "end": 4340
+        },
+        {
+          "title": "用例：服务推荐预算",
+          "depth": 3,
+          "id": "用例服务推荐预算",
+          "start": 5740,
+          "end": 5755
+        },
+        {
+          "title": "第四步：设计扩展",
+          "depth": 2,
+          "id": "第四步设计扩展",
+          "start": 8043,
+          "end": 8056
+        },
+        {
+          "title": "其它要点",
+          "depth": 2,
+          "id": "其它要点",
+          "start": 11217,
+          "end": 11226
+        },
+        {
+          "title": "NoSQL",
+          "depth": 4,
+          "id": "nosql",
+          "start": 11258,
+          "end": 11270
+        },
+        {
+          "title": "缓存",
+          "depth": 3,
+          "id": "缓存",
+          "start": 11778,
+          "end": 11786
+        },
+        {
+          "title": "异步与微服务",
+          "depth": 3,
+          "id": "异步与微服务",
+          "start": 12955,
+          "end": 12967
+        },
+        {
+          "title": "通信",
+          "depth": 3,
+          "id": "通信",
+          "start": 13350,
+          "end": 13358
+        },
+        {
+          "title": "安全性",
+          "depth": 3,
+          "id": "安全性",
+          "start": 13720,
+          "end": 13729
+        },
+        {
+          "title": "延迟数值",
+          "depth": 3,
+          "id": "延迟数值",
+          "start": 13829,
+          "end": 13839
+        },
+        {
+          "title": "持续探讨",
+          "depth": 3,
+          "id": "持续探讨",
+          "start": 13961,
+          "end": 13971
+        }
+      ],
+      "anchors": {
+        "设计-mintcom": "/system-design/system-design-exercises/mint/#_top",
+        "第一步简述用例与约束条件": "/system-design/system-design-exercises/mint/#第一步简述用例与约束条件",
+        "用例": "/system-design/system-design-exercises/mint/#用例",
+        "我们将把问题限定在仅处理以下用例的范围中": "/system-design/system-design-exercises/mint/#我们将把问题限定在仅处理以下用例的范围中",
+        "非用例范围": "/system-design/system-design-exercises/mint/#非用例范围",
+        "限制条件与假设": "/system-design/system-design-exercises/mint/#限制条件与假设",
+        "提出假设": "/system-design/system-design-exercises/mint/#提出假设",
+        "计算用量": "/system-design/system-design-exercises/mint/#计算用量",
+        "第二步概要设计": "/system-design/system-design-exercises/mint/#第二步概要设计",
+        "第三步设计核心组件": "/system-design/system-design-exercises/mint/#第三步设计核心组件",
+        "用例用户连接到一个财务账户": "/system-design/system-design-exercises/mint/#用例用户连接到一个财务账户",
+        "用例服务从账户中提取交易": "/system-design/system-design-exercises/mint/#用例服务从账户中提取交易",
+        "分类服务": "/system-design/system-design-exercises/mint/#分类服务",
+        "用例服务推荐预算": "/system-design/system-design-exercises/mint/#用例服务推荐预算",
+        "第四步设计扩展": "/system-design/system-design-exercises/mint/#第四步设计扩展",
+        "其它要点": "/system-design/system-design-exercises/mint/#其它要点",
+        "nosql": "/system-design/system-design-exercises/mint/#nosql",
+        "缓存": "/system-design/system-design-exercises/mint/#缓存",
+        "异步与微服务": "/system-design/system-design-exercises/mint/#异步与微服务",
+        "通信": "/system-design/system-design-exercises/mint/#通信",
+        "安全性": "/system-design/system-design-exercises/mint/#安全性",
+        "延迟数值": "/system-design/system-design-exercises/mint/#延迟数值",
+        "持续探讨": "/system-design/system-design-exercises/mint/#持续探讨"
+      }
+    },
+    {
+      "title": "为社交网络设计数据结构",
+      "slug": "system-design-exercises/social-graph",
+      "url": "/system-design/system-design-exercises/social-graph/",
+      "parent": "system-design-exercises",
+      "sourcePath": "solutions/system_design/social_graph/README-zh-Hans.md",
+      "translated": false,
+      "headings": [
+        {
+          "title": "第 1 步：用例和约束概要",
+          "depth": 2,
+          "id": "第-1-步用例和约束概要",
+          "start": 162,
+          "end": 180
+        },
+        {
+          "title": "用例",
+          "depth": 3,
+          "id": "用例",
+          "start": 251,
+          "end": 259
+        },
+        {
+          "title": "我们就处理以下用例审视这一问题",
+          "depth": 4,
+          "id": "我们就处理以下用例审视这一问题",
+          "start": 259,
+          "end": 281
+        },
+        {
+          "title": "约束和假设",
+          "depth": 3,
+          "id": "约束和假设",
+          "start": 323,
+          "end": 334
+        },
+        {
+          "title": "状态假设",
+          "depth": 4,
+          "id": "状态假设",
+          "start": 334,
+          "end": 345
+        },
+        {
+          "title": "计算使用",
+          "depth": 4,
+          "id": "计算使用",
+          "start": 542,
+          "end": 553
+        },
+        {
+          "title": "第 2 步：创建高级设计方案",
+          "depth": 2,
+          "id": "第-2-步创建高级设计方案",
+          "start": 731,
+          "end": 750
+        },
+        {
+          "title": "第 3 步：设计核心组件",
+          "depth": 2,
+          "id": "第-3-步设计核心组件",
+          "start": 810,
+          "end": 827
+        },
+        {
+          "title": "用例： 用户搜索某人并查看到被搜人的最短路径",
+          "depth": 3,
+          "id": "用例-用户搜索某人并查看到被搜人的最短路径",
+          "start": 843,
+          "end": 871
+        },
+        {
+          "title": "第 4 步：扩展设计",
+          "depth": 2,
+          "id": "第-4-步扩展设计",
+          "start": 6383,
+          "end": 6398
+        },
+        {
+          "title": "额外的话题",
+          "depth": 2,
+          "id": "额外的话题",
+          "start": 8415,
+          "end": 8425
+        },
+        {
+          "title": "SQL 扩展模式",
+          "depth": 3,
+          "id": "sql-扩展模式",
+          "start": 8454,
+          "end": 8468
+        },
+        {
+          "title": "NoSQL",
+          "depth": 4,
+          "id": "nosql",
+          "start": 8849,
+          "end": 8861
+        },
+        {
+          "title": "缓存",
+          "depth": 3,
+          "id": "缓存",
+          "start": 9257,
+          "end": 9265
+        },
+        {
+          "title": "异步性和微服务",
+          "depth": 3,
+          "id": "异步性和微服务",
+          "start": 10244,
+          "end": 10257
+        },
+        {
+          "title": "沟通",
+          "depth": 3,
+          "id": "沟通",
+          "start": 10560,
+          "end": 10568
+        },
+        {
+          "title": "安全性",
+          "depth": 3,
+          "id": "安全性",
+          "start": 10889,
+          "end": 10898
+        },
+        {
+          "title": "延迟数字指标",
+          "depth": 3,
+          "id": "延迟数字指标",
+          "start": 10971,
+          "end": 10983
+        },
+        {
+          "title": "正在进行",
+          "depth": 3,
+          "id": "正在进行",
+          "start": 11100,
+          "end": 11110
+        }
+      ],
+      "anchors": {
+        "为社交网络设计数据结构": "/system-design/system-design-exercises/social-graph/#_top",
+        "第-1-步用例和约束概要": "/system-design/system-design-exercises/social-graph/#第-1-步用例和约束概要",
+        "用例": "/system-design/system-design-exercises/social-graph/#用例",
+        "我们就处理以下用例审视这一问题": "/system-design/system-design-exercises/social-graph/#我们就处理以下用例审视这一问题",
+        "约束和假设": "/system-design/system-design-exercises/social-graph/#约束和假设",
+        "状态假设": "/system-design/system-design-exercises/social-graph/#状态假设",
+        "计算使用": "/system-design/system-design-exercises/social-graph/#计算使用",
+        "第-2-步创建高级设计方案": "/system-design/system-design-exercises/social-graph/#第-2-步创建高级设计方案",
+        "第-3-步设计核心组件": "/system-design/system-design-exercises/social-graph/#第-3-步设计核心组件",
+        "用例-用户搜索某人并查看到被搜人的最短路径": "/system-design/system-design-exercises/social-graph/#用例-用户搜索某人并查看到被搜人的最短路径",
+        "第-4-步扩展设计": "/system-design/system-design-exercises/social-graph/#第-4-步扩展设计",
+        "额外的话题": "/system-design/system-design-exercises/social-graph/#额外的话题",
+        "sql-扩展模式": "/system-design/system-design-exercises/social-graph/#sql-扩展模式",
+        "nosql": "/system-design/system-design-exercises/social-graph/#nosql",
+        "缓存": "/system-design/system-design-exercises/social-graph/#缓存",
+        "异步性和微服务": "/system-design/system-design-exercises/social-graph/#异步性和微服务",
+        "沟通": "/system-design/system-design-exercises/social-graph/#沟通",
+        "安全性": "/system-design/system-design-exercises/social-graph/#安全性",
+        "延迟数字指标": "/system-design/system-design-exercises/social-graph/#延迟数字指标",
+        "正在进行": "/system-design/system-design-exercises/social-graph/#正在进行"
+      }
+    },
+    {
+      "title": "设计一个键-值缓存来存储最近 web 服务查询的结果",
+      "slug": "system-design-exercises/query-cache",
+      "url": "/system-design/system-design-exercises/query-cache/",
+      "parent": "system-design-exercises",
+      "sourcePath": "solutions/system_design/query_cache/README-zh-Hans.md",
+      "translated": false,
+      "headings": [
+        {
+          "title": "第一步：简述用例与约束条件",
+          "depth": 2,
+          "id": "第一步简述用例与约束条件",
+          "start": 210,
+          "end": 228
+        },
+        {
+          "title": "用例",
+          "depth": 3,
+          "id": "用例",
+          "start": 306,
+          "end": 314
+        },
+        {
+          "title": "我们将把问题限定在仅处理以下用例的范围中",
+          "depth": 4,
+          "id": "我们将把问题限定在仅处理以下用例的范围中",
+          "start": 314,
+          "end": 341
+        },
+        {
+          "title": "限制条件与假设",
+          "depth": 3,
+          "id": "限制条件与假设",
+          "start": 402,
+          "end": 415
+        },
+        {
+          "title": "提出假设",
+          "depth": 4,
+          "id": "提出假设",
+          "start": 415,
+          "end": 426
+        },
+        {
+          "title": "计算用量",
+          "depth": 4,
+          "id": "计算用量",
+          "start": 591,
+          "end": 602
+        },
+        {
+          "title": "第二步：概要设计",
+          "depth": 2,
+          "id": "第二步概要设计",
+          "start": 993,
+          "end": 1006
+        },
+        {
+          "title": "第三步：设计核心组件",
+          "depth": 2,
+          "id": "第三步设计核心组件",
+          "start": 1068,
+          "end": 1083
+        },
+        {
+          "title": "用例：用户发送了一次请求，命中了缓存",
+          "depth": 3,
+          "id": "用例用户发送了一次请求命中了缓存",
+          "start": 1099,
+          "end": 1123
+        },
+        {
+          "title": "缓存的实现",
+          "depth": 4,
+          "id": "缓存的实现",
+          "start": 2079,
+          "end": 2091
+        },
+        {
+          "title": "何时更新缓存",
+          "depth": 4,
+          "id": "何时更新缓存",
+          "start": 4494,
+          "end": 4507
+        },
+        {
+          "title": "第四步：架构扩展",
+          "depth": 2,
+          "id": "第四步架构扩展",
+          "start": 4855,
+          "end": 4868
+        },
+        {
+          "title": "将内存缓存扩大到多台机器",
+          "depth": 3,
+          "id": "将内存缓存扩大到多台机器",
+          "start": 6222,
+          "end": 6240
+        },
+        {
+          "title": "其它要点",
+          "depth": 2,
+          "id": "其它要点",
+          "start": 6698,
+          "end": 6707
+        },
+        {
+          "title": "SQL 缩放模式",
+          "depth": 3,
+          "id": "sql-缩放模式",
+          "start": 6739,
+          "end": 6753
+        },
+        {
+          "title": "NoSQL",
+          "depth": 4,
+          "id": "nosql",
+          "start": 7235,
+          "end": 7247
+        },
+        {
+          "title": "缓存",
+          "depth": 3,
+          "id": "缓存",
+          "start": 7755,
+          "end": 7763
+        },
+        {
+          "title": "异步与微服务",
+          "depth": 3,
+          "id": "异步与微服务",
+          "start": 8932,
+          "end": 8944
+        },
+        {
+          "title": "通信",
+          "depth": 3,
+          "id": "通信",
+          "start": 9327,
+          "end": 9335
+        },
+        {
+          "title": "安全性",
+          "depth": 3,
+          "id": "安全性",
+          "start": 9697,
+          "end": 9706
+        },
+        {
+          "title": "延迟数值",
+          "depth": 3,
+          "id": "延迟数值",
+          "start": 9806,
+          "end": 9816
+        },
+        {
+          "title": "持续探讨",
+          "depth": 3,
+          "id": "持续探讨",
+          "start": 9938,
+          "end": 9948
+        }
+      ],
+      "anchors": {
+        "设计一个键-值缓存来存储最近-web-服务查询的结果": "/system-design/system-design-exercises/query-cache/#_top",
+        "第一步简述用例与约束条件": "/system-design/system-design-exercises/query-cache/#第一步简述用例与约束条件",
+        "用例": "/system-design/system-design-exercises/query-cache/#用例",
+        "我们将把问题限定在仅处理以下用例的范围中": "/system-design/system-design-exercises/query-cache/#我们将把问题限定在仅处理以下用例的范围中",
+        "限制条件与假设": "/system-design/system-design-exercises/query-cache/#限制条件与假设",
+        "提出假设": "/system-design/system-design-exercises/query-cache/#提出假设",
+        "计算用量": "/system-design/system-design-exercises/query-cache/#计算用量",
+        "第二步概要设计": "/system-design/system-design-exercises/query-cache/#第二步概要设计",
+        "第三步设计核心组件": "/system-design/system-design-exercises/query-cache/#第三步设计核心组件",
+        "用例用户发送了一次请求命中了缓存": "/system-design/system-design-exercises/query-cache/#用例用户发送了一次请求命中了缓存",
+        "缓存的实现": "/system-design/system-design-exercises/query-cache/#缓存的实现",
+        "何时更新缓存": "/system-design/system-design-exercises/query-cache/#何时更新缓存",
+        "第四步架构扩展": "/system-design/system-design-exercises/query-cache/#第四步架构扩展",
+        "将内存缓存扩大到多台机器": "/system-design/system-design-exercises/query-cache/#将内存缓存扩大到多台机器",
+        "其它要点": "/system-design/system-design-exercises/query-cache/#其它要点",
+        "sql-缩放模式": "/system-design/system-design-exercises/query-cache/#sql-缩放模式",
+        "nosql": "/system-design/system-design-exercises/query-cache/#nosql",
+        "缓存": "/system-design/system-design-exercises/query-cache/#缓存",
+        "异步与微服务": "/system-design/system-design-exercises/query-cache/#异步与微服务",
+        "通信": "/system-design/system-design-exercises/query-cache/#通信",
+        "安全性": "/system-design/system-design-exercises/query-cache/#安全性",
+        "延迟数值": "/system-design/system-design-exercises/query-cache/#延迟数值",
+        "持续探讨": "/system-design/system-design-exercises/query-cache/#持续探讨"
+      }
+    },
+    {
+      "title": "为 Amazon 设计分类售卖排行",
+      "slug": "system-design-exercises/sales-rank",
+      "url": "/system-design/system-design-exercises/sales-rank/",
+      "parent": "system-design-exercises",
+      "sourcePath": "solutions/system_design/sales_rank/README-zh-Hans.md",
+      "translated": false,
+      "headings": [
+        {
+          "title": "第一步：简述用例与约束条件",
+          "depth": 2,
+          "id": "第一步简述用例与约束条件",
+          "start": 201,
+          "end": 219
+        },
+        {
+          "title": "用例",
+          "depth": 3,
+          "id": "用例",
+          "start": 297,
+          "end": 305
+        },
+        {
+          "title": "我们将把问题限定在仅处理以下用例的范围中",
+          "depth": 4,
+          "id": "我们将把问题限定在仅处理以下用例的范围中",
+          "start": 305,
+          "end": 332
+        },
+        {
+          "title": "不在用例范围内的有",
+          "depth": 4,
+          "id": "不在用例范围内的有",
+          "start": 402,
+          "end": 418
+        },
+        {
+          "title": "限制条件与假设",
+          "depth": 3,
+          "id": "限制条件与假设",
+          "start": 447,
+          "end": 460
+        },
+        {
+          "title": "提出假设",
+          "depth": 4,
+          "id": "提出假设",
+          "start": 460,
+          "end": 471
+        },
+        {
+          "title": "计算用量",
+          "depth": 4,
+          "id": "计算用量",
+          "start": 650,
+          "end": 661
+        },
+        {
+          "title": "第二步：概要设计",
+          "depth": 2,
+          "id": "第二步概要设计",
+          "start": 1156,
+          "end": 1169
+        },
+        {
+          "title": "第三步：设计核心组件",
+          "depth": 2,
+          "id": "第三步设计核心组件",
+          "start": 1231,
+          "end": 1246
+        },
+        {
+          "title": "用例：服务需要根据分类计算上周最受欢迎的商品",
+          "depth": 3,
+          "id": "用例服务需要根据分类计算上周最受欢迎的商品",
+          "start": 1262,
+          "end": 1290
+        },
+        {
+          "title": "用例：用户需要根据分类浏览上周中最受欢迎的商品",
+          "depth": 3,
+          "id": "用例用户需要根据分类浏览上周中最受欢迎的商品",
+          "start": 4969,
+          "end": 4998
+        },
+        {
+          "title": "第四步：架构扩展",
+          "depth": 2,
+          "id": "第四步架构扩展",
+          "start": 5845,
+          "end": 5858
+        },
+        {
+          "title": "其它要点",
+          "depth": 2,
+          "id": "其它要点",
+          "start": 8342,
+          "end": 8351
+        },
+        {
+          "title": "NoSQL",
+          "depth": 4,
+          "id": "nosql",
+          "start": 8383,
+          "end": 8395
+        },
+        {
+          "title": "缓存",
+          "depth": 3,
+          "id": "缓存",
+          "start": 8903,
+          "end": 8911
+        },
+        {
+          "title": "异步与微服务",
+          "depth": 3,
+          "id": "异步与微服务",
+          "start": 10080,
+          "end": 10092
+        },
+        {
+          "title": "通信",
+          "depth": 3,
+          "id": "通信",
+          "start": 10475,
+          "end": 10483
+        },
+        {
+          "title": "安全性",
+          "depth": 3,
+          "id": "安全性",
+          "start": 10845,
+          "end": 10854
+        },
+        {
+          "title": "延迟数值",
+          "depth": 3,
+          "id": "延迟数值",
+          "start": 10954,
+          "end": 10964
+        },
+        {
+          "title": "持续探讨",
+          "depth": 3,
+          "id": "持续探讨",
+          "start": 11086,
+          "end": 11096
+        }
+      ],
+      "anchors": {
+        "为-amazon-设计分类售卖排行": "/system-design/system-design-exercises/sales-rank/#_top",
+        "第一步简述用例与约束条件": "/system-design/system-design-exercises/sales-rank/#第一步简述用例与约束条件",
+        "用例": "/system-design/system-design-exercises/sales-rank/#用例",
+        "我们将把问题限定在仅处理以下用例的范围中": "/system-design/system-design-exercises/sales-rank/#我们将把问题限定在仅处理以下用例的范围中",
+        "不在用例范围内的有": "/system-design/system-design-exercises/sales-rank/#不在用例范围内的有",
+        "限制条件与假设": "/system-design/system-design-exercises/sales-rank/#限制条件与假设",
+        "提出假设": "/system-design/system-design-exercises/sales-rank/#提出假设",
+        "计算用量": "/system-design/system-design-exercises/sales-rank/#计算用量",
+        "第二步概要设计": "/system-design/system-design-exercises/sales-rank/#第二步概要设计",
+        "第三步设计核心组件": "/system-design/system-design-exercises/sales-rank/#第三步设计核心组件",
+        "用例服务需要根据分类计算上周最受欢迎的商品": "/system-design/system-design-exercises/sales-rank/#用例服务需要根据分类计算上周最受欢迎的商品",
+        "用例用户需要根据分类浏览上周中最受欢迎的商品": "/system-design/system-design-exercises/sales-rank/#用例用户需要根据分类浏览上周中最受欢迎的商品",
+        "第四步架构扩展": "/system-design/system-design-exercises/sales-rank/#第四步架构扩展",
+        "其它要点": "/system-design/system-design-exercises/sales-rank/#其它要点",
+        "nosql": "/system-design/system-design-exercises/sales-rank/#nosql",
+        "缓存": "/system-design/system-design-exercises/sales-rank/#缓存",
+        "异步与微服务": "/system-design/system-design-exercises/sales-rank/#异步与微服务",
+        "通信": "/system-design/system-design-exercises/sales-rank/#通信",
+        "安全性": "/system-design/system-design-exercises/sales-rank/#安全性",
+        "延迟数值": "/system-design/system-design-exercises/sales-rank/#延迟数值",
+        "持续探讨": "/system-design/system-design-exercises/sales-rank/#持续探讨"
+      }
+    },
+    {
+      "title": "在 AWS 上设计支持百万级到千万级用户的系统",
+      "slug": "system-design-exercises/scaling-aws",
+      "url": "/system-design/system-design-exercises/scaling-aws/",
+      "parent": "system-design-exercises",
+      "sourcePath": "solutions/system_design/scaling_aws/README-zh-Hans.md",
+      "translated": false,
+      "headings": [
+        {
+          "title": "第 1 步：用例和约束概要",
+          "depth": 2,
+          "id": "第-1-步用例和约束概要",
+          "start": 174,
+          "end": 192
+        },
+        {
+          "title": "用例",
+          "depth": 3,
+          "id": "用例",
+          "start": 263,
+          "end": 271
+        },
+        {
+          "title": "我们就处理以下用例讨论这一问题",
+          "depth": 4,
+          "id": "我们就处理以下用例讨论这一问题",
+          "start": 453,
+          "end": 475
+        },
+        {
+          "title": "约束和假设",
+          "depth": 3,
+          "id": "约束和假设",
+          "start": 601,
+          "end": 612
+        },
+        {
+          "title": "状态假设",
+          "depth": 4,
+          "id": "状态假设",
+          "start": 612,
+          "end": 623
+        },
+        {
+          "title": "计算使用",
+          "depth": 4,
+          "id": "计算使用",
+          "start": 822,
+          "end": 833
+        },
+        {
+          "title": "第 2 步：创建高级设计方案",
+          "depth": 2,
+          "id": "第-2-步创建高级设计方案",
+          "start": 1093,
+          "end": 1112
+        },
+        {
+          "title": "第 3 步：设计核心组件",
+          "depth": 2,
+          "id": "第-3-步设计核心组件",
+          "start": 1172,
+          "end": 1189
+        },
+        {
+          "title": "用例：用户进行读写请求",
+          "depth": 3,
+          "id": "用例用户进行读写请求",
+          "start": 1205,
+          "end": 1222
+        },
+        {
+          "title": "目标",
+          "depth": 4,
+          "id": "目标",
+          "start": 1222,
+          "end": 1231
+        },
+        {
+          "title": "以单台服务器开始",
+          "depth": 4,
+          "id": "以单台服务器开始",
+          "start": 1306,
+          "end": 1321
+        },
+        {
+          "title": "自 SQL 开始，但认真考虑 NoSQL",
+          "depth": 4,
+          "id": "自-sql-开始但认真考虑-nosql",
+          "start": 1756,
+          "end": 1783
+        },
+        {
+          "title": "分配公共静态 IP",
+          "depth": 4,
+          "id": "分配公共静态-ip",
+          "start": 2072,
+          "end": 2088
+        },
+        {
+          "title": "使用 DNS 服务",
+          "depth": 4,
+          "id": "使用-dns-服务",
+          "start": 2141,
+          "end": 2157
+        },
+        {
+          "title": "安全的 Web 服务器",
+          "depth": 4,
+          "id": "安全的-web-服务器",
+          "start": 2374,
+          "end": 2392
+        },
+        {
+          "title": "第 4 步：扩展设计",
+          "depth": 2,
+          "id": "第-4-步扩展设计",
+          "start": 2615,
+          "end": 2630
+        },
+        {
+          "title": "用户+",
+          "depth": 3,
+          "id": "用户",
+          "start": 2651,
+          "end": 2660
+        },
+        {
+          "title": "假设",
+          "depth": 4,
+          "id": "假设",
+          "start": 2702,
+          "end": 2711
+        },
+        {
+          "title": "目标",
+          "depth": 4,
+          "id": "目标-1",
+          "start": 2904,
+          "end": 2913
+        },
+        {
+          "title": "独立保存静态内容",
+          "depth": 4,
+          "id": "独立保存静态内容",
+          "start": 3130,
+          "end": 3145
+        },
+        {
+          "title": "迁移 MySQL 数据库到独立机器上",
+          "depth": 4,
+          "id": "迁移-mysql-数据库到独立机器上",
+          "start": 3272,
+          "end": 3297
+        },
+        {
+          "title": "系统安全",
+          "depth": 4,
+          "id": "系统安全",
+          "start": 3372,
+          "end": 3383
+        },
+        {
+          "title": "用户+++",
+          "depth": 3,
+          "id": "用户-1",
+          "start": 3644,
+          "end": 3655
+        },
+        {
+          "title": "假设",
+          "depth": 4,
+          "id": "假设-1",
+          "start": 3697,
+          "end": 3706
+        },
+        {
+          "title": "目标",
+          "depth": 4,
+          "id": "目标-2",
+          "start": 3811,
+          "end": 3820
+        },
+        {
+          "title": "用户+++",
+          "depth": 3,
+          "id": "用户-2",
+          "start": 5020,
+          "end": 5031
+        },
+        {
+          "title": "假设",
+          "depth": 4,
+          "id": "假设-2",
+          "start": 5102,
+          "end": 5111
+        },
+        {
+          "title": "目标",
+          "depth": 4,
+          "id": "目标-3",
+          "start": 5180,
+          "end": 5189
+        },
+        {
+          "title": "添加 MySQL 读取副本",
+          "depth": 4,
+          "id": "添加-mysql-读取副本",
+          "start": 5904,
+          "end": 5924
+        },
+        {
+          "title": "用户++++",
+          "depth": 3,
+          "id": "用户-3",
+          "start": 6238,
+          "end": 6250
+        },
+        {
+          "title": "假设",
+          "depth": 4,
+          "id": "假设-3",
+          "start": 6292,
+          "end": 6301
+        },
+        {
+          "title": "目标",
+          "depth": 4,
+          "id": "目标-4",
+          "start": 6434,
+          "end": 6443
+        },
+        {
+          "title": "添加自动扩展",
+          "depth": 4,
+          "id": "添加自动扩展",
+          "start": 6770,
+          "end": 6783
+        },
+        {
+          "title": "用户+++++",
+          "depth": 3,
+          "id": "用户-4",
+          "start": 7121,
+          "end": 7134
+        },
+        {
+          "title": "假设",
+          "depth": 4,
+          "id": "假设-4",
+          "start": 7204,
+          "end": 7213
+        },
+        {
+          "title": "目标",
+          "depth": 4,
+          "id": "目标-5",
+          "start": 7277,
+          "end": 7286
+        },
+        {
+          "title": "额外的话题",
+          "depth": 2,
+          "id": "额外的话题",
+          "start": 8462,
+          "end": 8472
+        },
+        {
+          "title": "SQL 扩展模式",
+          "depth": 3,
+          "id": "sql-扩展模式",
+          "start": 8501,
+          "end": 8515
+        },
+        {
+          "title": "NoSQL",
+          "depth": 4,
+          "id": "nosql",
+          "start": 8896,
+          "end": 8908
+        },
+        {
+          "title": "缓存",
+          "depth": 3,
+          "id": "缓存",
+          "start": 9304,
+          "end": 9312
+        },
+        {
+          "title": "异步性和微服务",
+          "depth": 3,
+          "id": "异步性和微服务",
+          "start": 10291,
+          "end": 10304
+        },
+        {
+          "title": "沟通",
+          "depth": 3,
+          "id": "沟通",
+          "start": 10607,
+          "end": 10615
+        },
+        {
+          "title": "安全性",
+          "depth": 3,
+          "id": "安全性",
+          "start": 10936,
+          "end": 10945
+        },
+        {
+          "title": "延迟数字指标",
+          "depth": 3,
+          "id": "延迟数字指标",
+          "start": 11018,
+          "end": 11030
+        },
+        {
+          "title": "正在进行",
+          "depth": 3,
+          "id": "正在进行",
+          "start": 11147,
+          "end": 11157
+        }
+      ],
+      "anchors": {
+        "在-aws-上设计支持百万级到千万级用户的系统": "/system-design/system-design-exercises/scaling-aws/#_top",
+        "第-1-步用例和约束概要": "/system-design/system-design-exercises/scaling-aws/#第-1-步用例和约束概要",
+        "用例": "/system-design/system-design-exercises/scaling-aws/#用例",
+        "我们就处理以下用例讨论这一问题": "/system-design/system-design-exercises/scaling-aws/#我们就处理以下用例讨论这一问题",
+        "约束和假设": "/system-design/system-design-exercises/scaling-aws/#约束和假设",
+        "状态假设": "/system-design/system-design-exercises/scaling-aws/#状态假设",
+        "计算使用": "/system-design/system-design-exercises/scaling-aws/#计算使用",
+        "第-2-步创建高级设计方案": "/system-design/system-design-exercises/scaling-aws/#第-2-步创建高级设计方案",
+        "第-3-步设计核心组件": "/system-design/system-design-exercises/scaling-aws/#第-3-步设计核心组件",
+        "用例用户进行读写请求": "/system-design/system-design-exercises/scaling-aws/#用例用户进行读写请求",
+        "目标": "/system-design/system-design-exercises/scaling-aws/#目标",
+        "以单台服务器开始": "/system-design/system-design-exercises/scaling-aws/#以单台服务器开始",
+        "自-sql-开始但认真考虑-nosql": "/system-design/system-design-exercises/scaling-aws/#自-sql-开始但认真考虑-nosql",
+        "分配公共静态-ip": "/system-design/system-design-exercises/scaling-aws/#分配公共静态-ip",
+        "使用-dns-服务": "/system-design/system-design-exercises/scaling-aws/#使用-dns-服务",
+        "安全的-web-服务器": "/system-design/system-design-exercises/scaling-aws/#安全的-web-服务器",
+        "第-4-步扩展设计": "/system-design/system-design-exercises/scaling-aws/#第-4-步扩展设计",
+        "用户": "/system-design/system-design-exercises/scaling-aws/#用户",
+        "假设": "/system-design/system-design-exercises/scaling-aws/#假设",
+        "目标-1": "/system-design/system-design-exercises/scaling-aws/#目标-1",
+        "独立保存静态内容": "/system-design/system-design-exercises/scaling-aws/#独立保存静态内容",
+        "迁移-mysql-数据库到独立机器上": "/system-design/system-design-exercises/scaling-aws/#迁移-mysql-数据库到独立机器上",
+        "系统安全": "/system-design/system-design-exercises/scaling-aws/#系统安全",
+        "用户-1": "/system-design/system-design-exercises/scaling-aws/#用户-1",
+        "假设-1": "/system-design/system-design-exercises/scaling-aws/#假设-1",
+        "目标-2": "/system-design/system-design-exercises/scaling-aws/#目标-2",
+        "用户-2": "/system-design/system-design-exercises/scaling-aws/#用户-2",
+        "假设-2": "/system-design/system-design-exercises/scaling-aws/#假设-2",
+        "目标-3": "/system-design/system-design-exercises/scaling-aws/#目标-3",
+        "添加-mysql-读取副本": "/system-design/system-design-exercises/scaling-aws/#添加-mysql-读取副本",
+        "用户-3": "/system-design/system-design-exercises/scaling-aws/#用户-3",
+        "假设-3": "/system-design/system-design-exercises/scaling-aws/#假设-3",
+        "目标-4": "/system-design/system-design-exercises/scaling-aws/#目标-4",
+        "添加自动扩展": "/system-design/system-design-exercises/scaling-aws/#添加自动扩展",
+        "用户-4": "/system-design/system-design-exercises/scaling-aws/#用户-4",
+        "假设-4": "/system-design/system-design-exercises/scaling-aws/#假设-4",
+        "目标-5": "/system-design/system-design-exercises/scaling-aws/#目标-5",
+        "额外的话题": "/system-design/system-design-exercises/scaling-aws/#额外的话题",
+        "sql-扩展模式": "/system-design/system-design-exercises/scaling-aws/#sql-扩展模式",
+        "nosql": "/system-design/system-design-exercises/scaling-aws/#nosql",
+        "缓存": "/system-design/system-design-exercises/scaling-aws/#缓存",
+        "异步性和微服务": "/system-design/system-design-exercises/scaling-aws/#异步性和微服务",
+        "沟通": "/system-design/system-design-exercises/scaling-aws/#沟通",
+        "安全性": "/system-design/system-design-exercises/scaling-aws/#安全性",
+        "延迟数字指标": "/system-design/system-design-exercises/scaling-aws/#延迟数字指标",
+        "正在进行": "/system-design/system-design-exercises/scaling-aws/#正在进行"
+      }
+    },
+    {
+      "title": "设计 hash map",
+      "slug": "object-oriented-design/hash-table",
+      "url": "/system-design/object-oriented-design/hash-table/",
+      "parent": "object-oriented-design",
+      "sourcePath": "solutions/object_oriented_design/hash_table/hash_map.ipynb",
+      "translated": true,
+      "headings": [
+        {
+          "title": "约束与假设",
+          "depth": 2,
+          "id": "约束与假设",
+          "start": 151,
+          "end": 161
+        },
+        {
+          "title": "解答",
+          "depth": 2,
+          "id": "解答",
+          "start": 307,
+          "end": 314
+        },
+        {
+          "title": "原 Notebook 输出",
+          "depth": 3,
+          "id": "原-notebook-输出",
+          "start": 1432,
+          "end": 1451
+        }
+      ],
+      "anchors": {
+        "设计-hash-map": "/system-design/object-oriented-design/hash-table/#_top",
+        "约束与假设": "/system-design/object-oriented-design/hash-table/#约束与假设",
+        "解答": "/system-design/object-oriented-design/hash-table/#解答",
+        "原-notebook-输出": "/system-design/object-oriented-design/hash-table/#原-notebook-输出"
+      }
+    },
+    {
+      "title": "设计 LRU 缓存",
+      "slug": "object-oriented-design/lru-cache",
+      "url": "/system-design/object-oriented-design/lru-cache/",
+      "parent": "object-oriented-design",
+      "sourcePath": "solutions/object_oriented_design/lru_cache/lru_cache.ipynb",
+      "translated": true,
+      "headings": [
+        {
+          "title": "约束与假设",
+          "depth": 2,
+          "id": "约束与假设",
+          "start": 149,
+          "end": 159
+        },
+        {
+          "title": "解答",
+          "depth": 2,
+          "id": "解答",
+          "start": 251,
+          "end": 258
+        },
+        {
+          "title": "原 Notebook 输出",
+          "depth": 3,
+          "id": "原-notebook-输出",
+          "start": 2249,
+          "end": 2268
+        }
+      ],
+      "anchors": {
+        "设计-lru-缓存": "/system-design/object-oriented-design/lru-cache/#_top",
+        "约束与假设": "/system-design/object-oriented-design/lru-cache/#约束与假设",
+        "解答": "/system-design/object-oriented-design/lru-cache/#解答",
+        "原-notebook-输出": "/system-design/object-oriented-design/lru-cache/#原-notebook-输出"
+      }
+    },
+    {
+      "title": "设计呼叫中心",
+      "slug": "object-oriented-design/call-center",
+      "url": "/system-design/object-oriented-design/call-center/",
+      "parent": "object-oriented-design",
+      "sourcePath": "solutions/object_oriented_design/call_center/call_center.ipynb",
+      "translated": true,
+      "headings": [
+        {
+          "title": "约束与假设",
+          "depth": 2,
+          "id": "约束与假设",
+          "start": 146,
+          "end": 156
+        },
+        {
+          "title": "解答",
+          "depth": 2,
+          "id": "解答",
+          "start": 434,
+          "end": 441
+        },
+        {
+          "title": "原 Notebook 输出",
+          "depth": 3,
+          "id": "原-notebook-输出",
+          "start": 3721,
+          "end": 3740
+        }
+      ],
+      "anchors": {
+        "设计呼叫中心": "/system-design/object-oriented-design/call-center/#_top",
+        "约束与假设": "/system-design/object-oriented-design/call-center/#约束与假设",
+        "解答": "/system-design/object-oriented-design/call-center/#解答",
+        "原-notebook-输出": "/system-design/object-oriented-design/call-center/#原-notebook-输出"
+      }
+    },
+    {
+      "title": "设计一副牌",
+      "slug": "object-oriented-design/deck-of-cards",
+      "url": "/system-design/object-oriented-design/deck-of-cards/",
+      "parent": "object-oriented-design",
+      "sourcePath": "solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb",
+      "translated": true,
+      "headings": [
+        {
+          "title": "约束与假设",
+          "depth": 2,
+          "id": "约束与假设",
+          "start": 145,
+          "end": 155
+        },
+        {
+          "title": "解答",
+          "depth": 2,
+          "id": "解答",
+          "start": 291,
+          "end": 298
+        },
+        {
+          "title": "原 Notebook 输出",
+          "depth": 3,
+          "id": "原-notebook-输出",
+          "start": 2837,
+          "end": 2856
+        }
+      ],
+      "anchors": {
+        "设计一副牌": "/system-design/object-oriented-design/deck-of-cards/#_top",
+        "约束与假设": "/system-design/object-oriented-design/deck-of-cards/#约束与假设",
+        "解答": "/system-design/object-oriented-design/deck-of-cards/#解答",
+        "原-notebook-输出": "/system-design/object-oriented-design/deck-of-cards/#原-notebook-输出"
+      }
+    },
+    {
+      "title": "设计停车场",
+      "slug": "object-oriented-design/parking-lot",
+      "url": "/system-design/object-oriented-design/parking-lot/",
+      "parent": "object-oriented-design",
+      "sourcePath": "solutions/object_oriented_design/parking_lot/parking_lot.ipynb",
+      "translated": true,
+      "headings": [
+        {
+          "title": "约束与假设",
+          "depth": 2,
+          "id": "约束与假设",
+          "start": 145,
+          "end": 155
+        },
+        {
+          "title": "解答",
+          "depth": 2,
+          "id": "解答",
+          "start": 313,
+          "end": 320
+        },
+        {
+          "title": "原 Notebook 输出",
+          "depth": 3,
+          "id": "原-notebook-输出",
+          "start": 3389,
+          "end": 3408
+        }
+      ],
+      "anchors": {
+        "设计停车场": "/system-design/object-oriented-design/parking-lot/#_top",
+        "约束与假设": "/system-design/object-oriented-design/parking-lot/#约束与假设",
+        "解答": "/system-design/object-oriented-design/parking-lot/#解答",
+        "原-notebook-输出": "/system-design/object-oriented-design/parking-lot/#原-notebook-输出"
+      }
+    },
+    {
+      "title": "设计在线聊天服务",
+      "slug": "object-oriented-design/online-chat",
+      "url": "/system-design/object-oriented-design/online-chat/",
+      "parent": "object-oriented-design",
+      "sourcePath": "solutions/object_oriented_design/online_chat/online_chat.ipynb",
+      "translated": true,
+      "headings": [
+        {
+          "title": "约束与假设",
+          "depth": 2,
+          "id": "约束与假设",
+          "start": 148,
+          "end": 158
+        },
+        {
+          "title": "解答",
+          "depth": 2,
+          "id": "解答",
+          "start": 470,
+          "end": 477
+        },
+        {
+          "title": "原 Notebook 输出",
+          "depth": 3,
+          "id": "原-notebook-输出",
+          "start": 2853,
+          "end": 2872
+        }
+      ],
+      "anchors": {
+        "设计在线聊天服务": "/system-design/object-oriented-design/online-chat/#_top",
+        "约束与假设": "/system-design/object-oriented-design/online-chat/#约束与假设",
+        "解答": "/system-design/object-oriented-design/online-chat/#解答",
+        "原-notebook-输出": "/system-design/object-oriented-design/online-chat/#原-notebook-输出"
+      }
+    }
+  ],
+  "solutionPaths": {
+    "solutions/system_design/pastebin/README-zh-Hans.md": "/system-design/system-design-exercises/pastebin/",
+    "solutions/system_design/pastebin/README.md": "/system-design/system-design-exercises/pastebin/",
+    "solutions/system_design/twitter/README-zh-Hans.md": "/system-design/system-design-exercises/twitter/",
+    "solutions/system_design/twitter/README.md": "/system-design/system-design-exercises/twitter/",
+    "solutions/system_design/web_crawler/README-zh-Hans.md": "/system-design/system-design-exercises/web-crawler/",
+    "solutions/system_design/web_crawler/README.md": "/system-design/system-design-exercises/web-crawler/",
+    "solutions/system_design/mint/README-zh-Hans.md": "/system-design/system-design-exercises/mint/",
+    "solutions/system_design/mint/README.md": "/system-design/system-design-exercises/mint/",
+    "solutions/system_design/social_graph/README-zh-Hans.md": "/system-design/system-design-exercises/social-graph/",
+    "solutions/system_design/social_graph/README.md": "/system-design/system-design-exercises/social-graph/",
+    "solutions/system_design/query_cache/README-zh-Hans.md": "/system-design/system-design-exercises/query-cache/",
+    "solutions/system_design/query_cache/README.md": "/system-design/system-design-exercises/query-cache/",
+    "solutions/system_design/sales_rank/README-zh-Hans.md": "/system-design/system-design-exercises/sales-rank/",
+    "solutions/system_design/sales_rank/README.md": "/system-design/system-design-exercises/sales-rank/",
+    "solutions/system_design/scaling_aws/README-zh-Hans.md": "/system-design/system-design-exercises/scaling-aws/",
+    "solutions/system_design/scaling_aws/README.md": "/system-design/system-design-exercises/scaling-aws/",
+    "solutions/object_oriented_design/hash_table/hash_map.ipynb": "/system-design/object-oriented-design/hash-table/",
+    "solutions/object_oriented_design/hash_table/hash_map.py": "/system-design/object-oriented-design/hash-table/#解答",
+    "solutions/object_oriented_design/lru_cache/lru_cache.ipynb": "/system-design/object-oriented-design/lru-cache/",
+    "solutions/object_oriented_design/lru_cache/lru_cache.py": "/system-design/object-oriented-design/lru-cache/#解答",
+    "solutions/object_oriented_design/call_center/call_center.ipynb": "/system-design/object-oriented-design/call-center/",
+    "solutions/object_oriented_design/call_center/call_center.py": "/system-design/object-oriented-design/call-center/#解答",
+    "solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb": "/system-design/object-oriented-design/deck-of-cards/",
+    "solutions/object_oriented_design/deck_of_cards/deck_of_cards.py": "/system-design/object-oriented-design/deck-of-cards/#解答",
+    "solutions/object_oriented_design/parking_lot/parking_lot.ipynb": "/system-design/object-oriented-design/parking-lot/",
+    "solutions/object_oriented_design/parking_lot/parking_lot.py": "/system-design/object-oriented-design/parking-lot/#解答",
+    "solutions/object_oriented_design/online_chat/online_chat.ipynb": "/system-design/object-oriented-design/online-chat/",
+    "solutions/object_oriented_design/online_chat/online_chat.py": "/system-design/object-oriented-design/online-chat/#解答"
+  },
+  "solutionSources": {
+    "solutions/system_design/pastebin/README-zh-Hans.md": "a4ee8b59739415482deeec4404ba31577c0d2d36a5ebb86fc14afa079537b0d0",
+    "solutions/system_design/twitter/README-zh-Hans.md": "2a493571b8e45c4d016738feb7440d9e57187fdeaaf86cf6d59b8c0aa225e440",
+    "solutions/system_design/web_crawler/README-zh-Hans.md": "87cb0a425ef0b94a3fa165fc9dcbfe8694cc93a0103d137e826ce36c92ff6326",
+    "solutions/system_design/mint/README-zh-Hans.md": "f796f4f092bd1ec0f548350244777748645e3fd1948868683648decffdb3b9fd",
+    "solutions/system_design/social_graph/README-zh-Hans.md": "95069696ef3d3d1eb4238a852d08f0c2585835bff208093c31ce15588ebd13ca",
+    "solutions/system_design/query_cache/README-zh-Hans.md": "4a3560b5440319a06c0e9db34c61bb4522518cbf0e57333df10c3afe275743c2",
+    "solutions/system_design/sales_rank/README-zh-Hans.md": "ffd2611b33fd68eb8b978771b7209caec66c721a7738b20c368ce1e440811779",
+    "solutions/system_design/scaling_aws/README-zh-Hans.md": "74c794fc021226a89ad5297a4e10a8297f44d476b2c952d366bc73779777295d",
+    "solutions/object_oriented_design/hash_table/hash_map.ipynb": "f0940496c720b3489c307aac6a8d0f044e73b94915e35acee287183b3c8be8d7",
+    "solutions/object_oriented_design/lru_cache/lru_cache.ipynb": "2b0b2f76ebdc7cfcb5e48e522db6627daacb556ffe39566978cb6caa3f08a5a8",
+    "solutions/object_oriented_design/call_center/call_center.ipynb": "63868054cca6d3327b77c743720f29ad45f927b5d1c870d98336dee7dd59a437",
+    "solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb": "7811560f5be0fee28e6dc65cd74934b65e8ebc72968e4f01ffbccabdf43718db",
+    "solutions/object_oriented_design/parking_lot/parking_lot.ipynb": "f8a38f493fa001b2d36d212f6e6913e6c9fff401d75a8e44549604cde4ca8bd9",
+    "solutions/object_oriented_design/online_chat/online_chat.ipynb": "498497ff64e00bb22117e4e468ef13df13da5fb8bd215447bb73a0f0bffd894f",
+    "translations/object-oriented.zh.json": "f1fcaf2b981b8dbf40e3e2d096c2f10981909a0e5b70d95382b2d803413d8e84"
+  },
+  "referenceAliases": {
+    "index-of-system-design-topics": "系统设计主题的索引",
+    "系统设计主题索引": "系统设计主题的索引",
+    "SQL调优": "sql-调优",
+    "active-active": "双工作切换active-active",
+    "active-passive": "工作到备用切换active-passive",
+    "application-caching": "应用缓存",
+    "application-layer": "应用层",
+    "asynchronism": "异步",
+    "availability-patterns": "可用性模式",
+    "back-pressure": "背压",
+    "cache": "缓存",
+    "cache-aside": "缓存模式",
+    "caching-at-the-database-query-level": "数据库查询级别的缓存",
+    "caching-at-the-object-level": "对象级别的缓存",
+    "cdn-caching": "cdn-缓存",
+    "client-caching": "客户端缓存",
+    "consistency-patterns": "一致性模式",
+    "content-delivery-network": "内容分发网络cdn",
+    "database-caching": "数据库缓存",
+    "denormalization": "非规范化",
+    "document-store": "文档类型存储",
+    "domain-name-system": "域名系统",
+    "federation": "联合",
+    "graph-database": "图数据库",
+    "horizontal-scaling": "水平扩展",
+    "key-value-store": "键-值存储",
+    "latency-numbers-every-programmer-should-know": "每个程序员都应该知道的延迟数",
+    "load-balancer": "负载均衡器",
+    "master-slave-replication": "主从复制",
+    "message-queues": "消息队列",
+    "microservices": "微服务",
+    "nosql": "nosql",
+    "refresh-ahead": "刷新",
+    "relational-database-management-system-rdbms": "关系型数据库管理系统rdbms",
+    "remote-procedure-call-rpc": "远程过程调用协议rpc",
+    "representational-state-transfer-rest": "表述性状态转移rest",
+    "reverse-proxy-web-server": "反向代理web-服务器",
+    "security": "安全",
+    "service-discovery": "服务发现",
+    "sharding": "分片",
+    "sql-or-nosql": "sql-还是-nosql",
+    "sql-tuning": "sql-调优",
+    "task-queues": "任务队列",
+    "under-development": "正在完善中",
+    "use-good-indices": "使用正确的索引",
+    "web-server-caching": "web-服务器缓存",
+    "when-to-update-the-cache": "何时更新缓存",
+    "wide-column-store": "列型存储",
+    "write-behind-write-back": "回写模式",
+    "write-through": "直写模式"
+  },
+  "repo": "https://github.com/donnemartin/system-design-primer",
+  "commit": "ae9bbd7b02d90b9866215de185217d33f39ab733",
+  "source": "README-zh-Hans.md",
+  "sha256": "8a58512b70b6c8680cea860bcfe15c3b92d2814e5f0004781a3b17b7ff078760",
+  "omittedNavigation": "*[English](README.md) ∙ [日本語](README-ja.md) ∙ [简体中文](README-zh-Hans.md) ∙ [繁體中文](README-zh-TW.md) | [العَرَبِيَّة‎](https://github.com/donnemartin/system-design-primer/issues/170) ∙ [বাংলা](https://github.com/donnemartin/system-design-primer/issues/220) ∙ [Português do Brasil](https://github.com/donnemartin/system-design-primer/issues/40) ∙ [Deutsch](https://github.com/donnemartin/system-design-primer/issues/186) ∙ [ελληνικά](https://github.com/donnemartin/system-design-primer/issues/130) ∙ [עברית](https://github.com/donnemartin/system-design-primer/issues/272) ∙ [Italiano](https://github.com/donnemartin/system-design-primer/issues/104) ∙ [한국어](https://github.com/donnemartin/system-design-primer/issues/102) ∙ [فارسی](https://github.com/donnemartin/system-design-primer/issues/110) ∙ [Polski](https://github.com/donnemartin/system-design-primer/issues/68) ∙ [русский язык](https://github.com/donnemartin/system-design-primer/issues/87) ∙ [Español](https://github.com/donnemartin/system-design-primer/issues/136) ∙ [ภาษาไทย](https://github.com/donnemartin/system-design-primer/issues/187) ∙ [Türkçe](https://github.com/donnemartin/system-design-primer/issues/39) ∙ [tiếng Việt](https://github.com/donnemartin/system-design-primer/issues/127) ∙ [Français](https://github.com/donnemartin/system-design-primer/issues/250) | [Add Translation](https://github.com/donnemartin/system-design-primer/issues/28)*",
+  "aliases": {
+    "如何处理一个系统设计面试题": "如何处理一个系统设计的面试题",
+    "七层负载均衡": "七层负载均衡器",
+    "memcached": "应用缓存"
+  },
+  "anchors": {
+    "系统设计入门": "/system-design/#_top",
+    "目的": "/system-design/#目的",
+    "学习如何设计大型系统": "/system-design/#学习如何设计大型系统",
+    "从开源社区学习": "/system-design/#从开源社区学习",
+    "为系统设计的面试做准备": "/system-design/#为系统设计的面试做准备",
+    "抽认卡": "/system-design/flash-cards/#_top",
+    "代码资源互动式编程挑战": "/system-design/flash-cards/#代码资源互动式编程挑战",
+    "贡献": "/system-design/contributing/#_top",
+    "系统设计主题的索引": "/system-design/topic-index/#_top",
+    "学习指引": "/system-design/study-guide/#_top",
+    "如何处理一个系统设计的面试题": "/system-design/interview-approach/#_top",
+    "第一步描述使用场景约束和假设": "/system-design/interview-approach/#第一步描述使用场景约束和假设",
+    "第二步创造一个高层级的设计": "/system-design/interview-approach/#第二步创造一个高层级的设计",
+    "第三步设计核心组件": "/system-design/interview-approach/#第三步设计核心组件",
+    "第四步扩展设计": "/system-design/interview-approach/#第四步扩展设计",
+    "预估计算量": "/system-design/interview-approach/#预估计算量",
+    "相关资源和延伸阅读": "/system-design/interview-approach/#相关资源和延伸阅读",
+    "系统设计的面试题和解答": "/system-design/system-design-exercises/#_top",
+    "设计-pastebincom-或者-bitly": "/system-design/system-design-exercises/#设计-pastebincom-或者-bitly",
+    "设计-twitter-时间线和搜索-或者-facebook-feed-和搜索": "/system-design/system-design-exercises/#设计-twitter-时间线和搜索-或者-facebook-feed-和搜索",
+    "设计一个网页爬虫": "/system-design/system-design-exercises/#设计一个网页爬虫",
+    "设计-mintcom": "/system-design/system-design-exercises/#设计-mintcom",
+    "为一个社交网络设计数据结构": "/system-design/system-design-exercises/#为一个社交网络设计数据结构",
+    "为搜索引擎设计一个-key-value-储存": "/system-design/system-design-exercises/#为搜索引擎设计一个-key-value-储存",
+    "设计按类别分类的-amazon-销售排名": "/system-design/system-design-exercises/#设计按类别分类的-amazon-销售排名",
+    "在-aws-上设计一个百万用户级别的系统": "/system-design/system-design-exercises/#在-aws-上设计一个百万用户级别的系统",
+    "面向对象设计的面试问题及解答": "/system-design/object-oriented-design/#_top",
+    "系统设计主题从这里开始": "/system-design/getting-started/#_top",
+    "第一步回顾可扩展性scalability的视频讲座": "/system-design/getting-started/#第一步回顾可扩展性scalability的视频讲座",
+    "第二步回顾可扩展性文章": "/system-design/getting-started/#第二步回顾可扩展性文章",
+    "接下来的步骤": "/system-design/getting-started/#接下来的步骤",
+    "性能与可扩展性": "/system-design/performance-scalability/#_top",
+    "来源及延伸阅读": "/system-design/performance-scalability/#来源及延伸阅读",
+    "延迟与吞吐量": "/system-design/latency-throughput/#_top",
+    "来源及延伸阅读-1": "/system-design/latency-throughput/#来源及延伸阅读-1",
+    "可用性与一致性": "/system-design/availability-consistency/#_top",
+    "cap-理论": "/system-design/availability-consistency/#cap-理论",
+    "cp--一致性和分区容错性": "/system-design/availability-consistency/#cp--一致性和分区容错性",
+    "ap--可用性与分区容错性": "/system-design/availability-consistency/#ap--可用性与分区容错性",
+    "来源及延伸阅读-2": "/system-design/availability-consistency/#来源及延伸阅读-2",
+    "一致性模式": "/system-design/consistency-patterns/#_top",
+    "弱一致性": "/system-design/consistency-patterns/#弱一致性",
+    "最终一致性": "/system-design/consistency-patterns/#最终一致性",
+    "强一致性": "/system-design/consistency-patterns/#强一致性",
+    "来源及延伸阅读-3": "/system-design/consistency-patterns/#来源及延伸阅读-3",
+    "可用性模式": "/system-design/availability-patterns/#_top",
+    "故障切换": "/system-design/availability-patterns/#故障切换",
+    "工作到备用切换active-passive": "/system-design/availability-patterns/#工作到备用切换active-passive",
+    "双工作切换active-active": "/system-design/availability-patterns/#双工作切换active-active",
+    "缺陷故障切换": "/system-design/availability-patterns/#缺陷故障切换",
+    "复制": "/system-design/availability-patterns/#复制",
+    "主从复制和主主复制": "/system-design/availability-patterns/#主从复制和主主复制",
+    "域名系统": "/system-design/dns/#_top",
+    "缺陷dns": "/system-design/dns/#缺陷dns",
+    "来源及延伸阅读-4": "/system-design/dns/#来源及延伸阅读-4",
+    "内容分发网络cdn": "/system-design/cdn/#_top",
+    "cdn-推送push": "/system-design/cdn/#cdn-推送push",
+    "cdn-拉取pull": "/system-design/cdn/#cdn-拉取pull",
+    "缺陷cdn": "/system-design/cdn/#缺陷cdn",
+    "来源及延伸阅读-5": "/system-design/cdn/#来源及延伸阅读-5",
+    "负载均衡器": "/system-design/load-balancer/#_top",
+    "四层负载均衡": "/system-design/load-balancer/#四层负载均衡",
+    "七层负载均衡器": "/system-design/load-balancer/#七层负载均衡器",
+    "水平扩展": "/system-design/load-balancer/#水平扩展",
+    "缺陷水平扩展": "/system-design/load-balancer/#缺陷水平扩展",
+    "缺陷负载均衡器": "/system-design/load-balancer/#缺陷负载均衡器",
+    "来源及延伸阅读-6": "/system-design/load-balancer/#来源及延伸阅读-6",
+    "反向代理web-服务器": "/system-design/reverse-proxy/#_top",
+    "负载均衡器与反向代理": "/system-design/reverse-proxy/#负载均衡器与反向代理",
+    "不利之处反向代理": "/system-design/reverse-proxy/#不利之处反向代理",
+    "来源及延伸阅读-7": "/system-design/reverse-proxy/#来源及延伸阅读-7",
+    "应用层": "/system-design/application-layer/#_top",
+    "微服务": "/system-design/application-layer/#微服务",
+    "服务发现": "/system-design/application-layer/#服务发现",
+    "不利之处应用层": "/system-design/application-layer/#不利之处应用层",
+    "来源及延伸阅读-8": "/system-design/application-layer/#来源及延伸阅读-8",
+    "数据库": "/system-design/database/#_top",
+    "关系型数据库管理系统rdbms": "/system-design/database/#关系型数据库管理系统rdbms",
+    "主从复制": "/system-design/database/#主从复制",
+    "不利之处主从复制": "/system-design/database/#不利之处主从复制",
+    "主主复制": "/system-design/database/#主主复制",
+    "不利之处-主主复制": "/system-design/database/#不利之处-主主复制",
+    "不利之处复制": "/system-design/database/#不利之处复制",
+    "来源及延伸阅读-9": "/system-design/database/#来源及延伸阅读-9",
+    "联合": "/system-design/database/#联合",
+    "不利之处联合": "/system-design/database/#不利之处联合",
+    "来源及延伸阅读联合": "/system-design/database/#来源及延伸阅读联合",
+    "分片": "/system-design/database/#分片",
+    "不利之处分片": "/system-design/database/#不利之处分片",
+    "来源及延伸阅读分片": "/system-design/database/#来源及延伸阅读分片",
+    "非规范化": "/system-design/database/#非规范化",
+    "不利之处非规范化": "/system-design/database/#不利之处非规范化",
+    "来源及延伸阅读非规范化": "/system-design/database/#来源及延伸阅读非规范化",
+    "sql-调优": "/system-design/database/#sql-调优",
+    "改进模式": "/system-design/database/#改进模式",
+    "使用正确的索引": "/system-design/database/#使用正确的索引",
+    "避免高成本的联结操作": "/system-design/database/#避免高成本的联结操作",
+    "分割数据表": "/system-design/database/#分割数据表",
+    "调优查询缓存": "/system-design/database/#调优查询缓存",
+    "来源及延伸阅读-10": "/system-design/database/#来源及延伸阅读-10",
+    "nosql": "/system-design/database/#nosql",
+    "键-值存储": "/system-design/database/#键-值存储",
+    "来源及延伸阅读-11": "/system-design/database/#来源及延伸阅读-11",
+    "文档类型存储": "/system-design/database/#文档类型存储",
+    "来源及延伸阅读文档类型存储": "/system-design/database/#来源及延伸阅读文档类型存储",
+    "列型存储": "/system-design/database/#列型存储",
+    "来源及延伸阅读列型存储": "/system-design/database/#来源及延伸阅读列型存储",
+    "图数据库": "/system-design/database/#图数据库",
+    "相关资源和延伸阅读图": "/system-design/database/#相关资源和延伸阅读图",
+    "来源及延伸阅读nosql": "/system-design/database/#来源及延伸阅读nosql",
+    "sql-还是-nosql": "/system-design/database/#sql-还是-nosql",
+    "来源及延伸阅读sql-或-nosql": "/system-design/database/#来源及延伸阅读sql-或-nosql",
+    "缓存": "/system-design/cache/#_top",
+    "客户端缓存": "/system-design/cache/#客户端缓存",
+    "cdn-缓存": "/system-design/cache/#cdn-缓存",
+    "web-服务器缓存": "/system-design/cache/#web-服务器缓存",
+    "数据库缓存": "/system-design/cache/#数据库缓存",
+    "应用缓存": "/system-design/cache/#应用缓存",
+    "数据库查询级别的缓存": "/system-design/cache/#数据库查询级别的缓存",
+    "对象级别的缓存": "/system-design/cache/#对象级别的缓存",
+    "何时更新缓存": "/system-design/cache/#何时更新缓存",
+    "缓存模式": "/system-design/cache/#缓存模式",
+    "缓存的缺点": "/system-design/cache/#缓存的缺点",
+    "直写模式": "/system-design/cache/#直写模式",
+    "直写模式的缺点": "/system-design/cache/#直写模式的缺点",
+    "回写模式": "/system-design/cache/#回写模式",
+    "回写模式的缺点": "/system-design/cache/#回写模式的缺点",
+    "刷新": "/system-design/cache/#刷新",
+    "刷新的缺点": "/system-design/cache/#刷新的缺点",
+    "缓存的缺点-1": "/system-design/cache/#缓存的缺点-1",
+    "相关资源和延伸阅读-1": "/system-design/cache/#相关资源和延伸阅读-1",
+    "异步": "/system-design/asynchronism/#_top",
+    "消息队列": "/system-design/asynchronism/#消息队列",
+    "任务队列": "/system-design/asynchronism/#任务队列",
+    "背压": "/system-design/asynchronism/#背压",
+    "异步的缺点": "/system-design/asynchronism/#异步的缺点",
+    "相关资源和延伸阅读-2": "/system-design/asynchronism/#相关资源和延伸阅读-2",
+    "通讯": "/system-design/communication/#_top",
+    "超文本传输协议http": "/system-design/communication/#超文本传输协议http",
+    "来源及延伸阅读http": "/system-design/communication/#来源及延伸阅读http",
+    "传输控制协议tcp": "/system-design/communication/#传输控制协议tcp",
+    "用户数据报协议udp": "/system-design/communication/#用户数据报协议udp",
+    "来源及延伸阅读tcp-与-udp": "/system-design/communication/#来源及延伸阅读tcp-与-udp",
+    "远程过程调用协议rpc": "/system-design/communication/#远程过程调用协议rpc",
+    "缺点rpc": "/system-design/communication/#缺点rpc",
+    "表述性状态转移rest": "/system-design/communication/#表述性状态转移rest",
+    "缺点rest": "/system-design/communication/#缺点rest",
+    "rpc-与-rest-比较": "/system-design/communication/#rpc-与-rest-比较",
+    "来源及延伸阅读rest-与-rpc": "/system-design/communication/#来源及延伸阅读rest-与-rpc",
+    "安全": "/system-design/security/#_top",
+    "来源及延伸阅读-12": "/system-design/security/#来源及延伸阅读-12",
+    "附录": "/system-design/appendix/#_top",
+    "2-的次方表": "/system-design/appendix/#2-的次方表",
+    "来源及延伸阅读-13": "/system-design/appendix/#来源及延伸阅读-13",
+    "每个程序员都应该知道的延迟数": "/system-design/appendix/#每个程序员都应该知道的延迟数",
+    "延迟数可视化": "/system-design/appendix/#延迟数可视化",
+    "来源及延伸阅读-14": "/system-design/appendix/#来源及延伸阅读-14",
+    "其它的系统设计面试题": "/system-design/appendix/#其它的系统设计面试题",
+    "真实架构": "/system-design/appendix/#真实架构",
+    "公司的系统架构": "/system-design/appendix/#公司的系统架构",
+    "公司工程博客": "/system-design/appendix/#公司工程博客",
+    "来源及延伸阅读-15": "/system-design/appendix/#来源及延伸阅读-15",
+    "正在完善中": "/system-design/work-in-progress/#_top",
+    "致谢": "/system-design/credits/#_top",
+    "联系方式": "/system-design/contact/#_top",
+    "许可": "/system-design/license/#_top",
+    "如何处理一个系统设计面试题": "/system-design/interview-approach/#_top",
+    "七层负载均衡": "/system-design/load-balancer/#七层负载均衡器",
+    "memcached": "/system-design/cache/#应用缓存"
+  },
+  "images": {
+    "images/jj3A5N8.png": {
+      "src": "/images/system-design/jj3A5N8.png",
+      "width": 1234,
+      "height": 1666,
+      "sha256": "963c16b9d49f788d04bbe0ed2d74de50e438a47426e37fe9393a416121970686"
+    },
+    "images/zdCAkB3.png": {
+      "src": "/images/system-design/zdCAkB3.png",
+      "width": 2880,
+      "height": 2560,
+      "sha256": "4f33f4578d9f4b7dbe874ea17790fa8911b108c5f70e2f20fa429c6728465762"
+    },
+    "images/b4YtAEN.png": {
+      "src": "/images/system-design/b4YtAEN.png",
+      "width": 2926,
+      "height": 2560,
+      "sha256": "823f173ce3a3312a71cf1007febb9df318872529b6ad8a9450a274acb7aea66f"
+    },
+    "images/jrUBAF7.png": {
+      "src": "/images/system-design/jrUBAF7.png",
+      "width": 1348,
+      "height": 1390,
+      "sha256": "c3a14a67452816f4eebb9f506324b3977810887900948a37558d8dac047db287"
+    },
+    "images/OfVllex.png": {
+      "src": "/images/system-design/OfVllex.png",
+      "width": 1128,
+      "height": 906,
+      "sha256": "5ab30ea6f0265eafbcc16b5863d65ad79792328c61682fcc9f3ad10bcc51ef9b"
+    },
+    "images/4edXG0T.png": {
+      "src": "/images/system-design/4edXG0T.png",
+      "width": 936,
+      "height": 1360,
+      "sha256": "a978d3792ad7088935f8fff137cc38392ee6f547b5e7c06f0bc4e99e0cd6fcc0"
+    },
+    "images/bWxPtQA.png": {
+      "src": "/images/system-design/bWxPtQA.png",
+      "width": 1078,
+      "height": 1304,
+      "sha256": "e7cf3121a4e1da52df5d78cca8ef75a0f6d95d23fef8b3bc9faf90b6d8886c4a"
+    },
+    "images/V5q57vU.png": {
+      "src": "/images/system-design/V5q57vU.png",
+      "width": 1308,
+      "height": 1332,
+      "sha256": "a17f30f093921f143d53115fdce50ecf18c6c7888ed7614b110b0b8536521ed3"
+    },
+    "images/cdCv5g7.png": {
+      "src": "/images/system-design/cdCv5g7.png",
+      "width": 774,
+      "height": 1042,
+      "sha256": "3ddaad49d0e6f990a85005d48d1bac2f7f3a0b669398fe6730f2831310def2eb"
+    },
+    "images/4j99mhe.png": {
+      "src": "/images/system-design/4j99mhe.png",
+      "width": 542,
+      "height": 1096,
+      "sha256": "0add63466555e5b378d54b0a223b010dd35930a0b536b93ceb73dee80cb334e0"
+    },
+    "images/MzExP06.png": {
+      "src": "/images/system-design/MzExP06.png",
+      "width": 924,
+      "height": 1376,
+      "sha256": "b8db8707b6e52e4b89aeb118c3dd3f8c2634d4be3bc0bc60a3d58e8b69146428"
+    },
+    "images/bgLMI2u.png": {
+      "src": "/images/system-design/bgLMI2u.png",
+      "width": 500,
+      "height": 303,
+      "sha256": "6e2f3dbae2f0a3ccef4c10ac61de24337cefa111a7f7ca481e0b4aaf75e39bfa"
+    },
+    "images/IOyLj4i.jpg": {
+      "src": "/images/system-design/IOyLj4i.jpg",
+      "width": 638,
+      "height": 449,
+      "sha256": "4376ed66c93b2261534f41394b0c51bab8a5287fd036160e011368df79b613a6"
+    },
+    "images/h9TAuGI.jpg": {
+      "src": "/images/system-design/h9TAuGI.jpg",
+      "width": 1000,
+      "height": 555,
+      "sha256": "cdfefab29aa6779051209ac1cb1696b6b2ce5634fd9f09e7f76a5cac34c0cd20"
+    },
+    "images/h81n9iK.png": {
+      "src": "/images/system-design/h81n9iK.png",
+      "width": 1019,
+      "height": 681,
+      "sha256": "6d9d7104fcf2f1a673133040203d84f9a4bf81295d2f46964262b20bf5a6fe8e"
+    },
+    "images/n41Azff.png": {
+      "src": "/images/system-design/n41Azff.png",
+      "width": 421,
+      "height": 161,
+      "sha256": "ad98e630b154f666cbf52d731e230bfa1c9d4f7450b8e572a9eb164466272523"
+    },
+    "images/yB5SYwm.png": {
+      "src": "/images/system-design/yB5SYwm.png",
+      "width": 1000,
+      "height": 300,
+      "sha256": "7ad1157d587eeb590e7a7935df3d29d5ac34b28ccc6e1f344b8b359c0abb7515"
+    },
+    "images/Xkm5CXz.png": {
+      "src": "/images/system-design/Xkm5CXz.png",
+      "width": 2184,
+      "height": 1276,
+      "sha256": "f40c78739f67aa3b4c8d22443a5f80a88f3c110d5c811da293c3c458173b4fdb"
+    },
+    "images/C9ioGtn.png": {
+      "src": "/images/system-design/C9ioGtn.png",
+      "width": 1246,
+      "height": 839,
+      "sha256": "e2fab6ed9801ad600df87083e668f2f67817bd5fddb465234875f8c2ac82f538"
+    },
+    "images/krAHLGg.png": {
+      "src": "/images/system-design/krAHLGg.png",
+      "width": 1028,
+      "height": 610,
+      "sha256": "58667ada7347b168cdec7b0f1a384dcd9a3dc31b4640f5d4e8ae1604eb6010f3"
+    },
+    "images/U3qV33e.png": {
+      "src": "/images/system-design/U3qV33e.png",
+      "width": 594,
+      "height": 768,
+      "sha256": "19b6a7aa257fcffb784601ec0e7b6c2f7b3c5219f42af2ee4e86e80914ee4e26"
+    },
+    "images/wU8x5Id.png": {
+      "src": "/images/system-design/wU8x5Id.png",
+      "width": 642,
+      "height": 728,
+      "sha256": "a16bc2d5f5fdcc72b887e8d48e1915abfcbd53c2ad2c48d34f6db3012185cd9d"
+    },
+    "images/n16iOGk.png": {
+      "src": "/images/system-design/n16iOGk.png",
+      "width": 581,
+      "height": 231,
+      "sha256": "8fa7530e6fa08b12dd1ca13e84fcec1c10db4453aae225231b54eaf57a574de0"
+    },
+    "images/fNcl65g.png": {
+      "src": "/images/system-design/fNcl65g.png",
+      "width": 616,
+      "height": 436,
+      "sha256": "a7e3445cb70756d849a845c044aea3bff030b748082386331018427cb87a31e8"
+    },
+    "images/wXGqG5f.png": {
+      "src": "/images/system-design/wXGqG5f.png",
+      "width": 553,
+      "height": 316,
+      "sha256": "41fedb1ed08709f189616a75c900157a101b78ad9ffb4cad316f235abb3a9a30"
+    },
+    "images/Q6z24La.png": {
+      "src": "/images/system-design/Q6z24La.png",
+      "width": 1032,
+      "height": 596,
+      "sha256": "c35d7c17f875b8045f12ee1f2b64db192d2a23e1c25fd53a5582473a3e277219"
+    },
+    "images/ONjORqk.png": {
+      "src": "/images/system-design/ONjORqk.png",
+      "width": 1290,
+      "height": 494,
+      "sha256": "f8baa030832f403c4b4a9d91c7b8c404b02a8e0e5c3aa4078d141c0f4ce58ace"
+    },
+    "images/0vBc0hN.png": {
+      "src": "/images/system-design/0vBc0hN.png",
+      "width": 514,
+      "height": 728,
+      "sha256": "7f42296d6c314a3c12fae2460d004970ff04a4427564ff06937a55a813a51705"
+    },
+    "images/rgSrvjG.png": {
+      "src": "/images/system-design/rgSrvjG.png",
+      "width": 786,
+      "height": 728,
+      "sha256": "af90c715a18871045382df81e6fa9c012e415aa5355c728f17eee259d4571dd4"
+    },
+    "images/kxtjqgE.png": {
+      "src": "/images/system-design/kxtjqgE.png",
+      "width": 1290,
+      "height": 296,
+      "sha256": "920751970586291bddd8db82ffb37f40447fd7fd81e4a1b54d1e37e10b14b1c9"
+    },
+    "images/54GYsSx.png": {
+      "src": "/images/system-design/54GYsSx.png",
+      "width": 1000,
+      "height": 228,
+      "sha256": "b975ef346a0935ca296e6efdb06b77f96b0499bab50e6d394105f340789e39fa"
+    },
+    "images/5KeocQs.jpg": {
+      "src": "/images/system-design/5KeocQs.jpg",
+      "width": 710,
+      "height": 619,
+      "sha256": "fbd67a9febe6b55a01fc738e63766d24ffe219826804ec49e82d87f832c488d6"
+    },
+    "images/JdAsdvG.jpg": {
+      "src": "/images/system-design/JdAsdvG.jpg",
+      "width": 495,
+      "height": 188,
+      "sha256": "dca499936e7eb6e8a153f29f54942a8738d6e6b562cc8a5935f8f017251fc447"
+    },
+    "images/yzDrJtA.jpg": {
+      "src": "/images/system-design/yzDrJtA.jpg",
+      "width": 495,
+      "height": 173,
+      "sha256": "b424404dc63dfde3481e297f114739af5f60d2123fa41f3e474079ed10952e03"
+    },
+    "images/iF4Mkb5.png": {
+      "src": "/images/system-design/iF4Mkb5.png",
+      "width": 762,
+      "height": 294,
+      "sha256": "ec17fdedbc6778b36b4b6115b90b5cd2161f6ea0958bb34065ae6a9906e9c511"
+    },
+    "https://camo.githubusercontent.com/77f72259e1eb58596b564d1ad823af1853bc60a3/687474703a2f2f692e696d6775722e636f6d2f6b307431652e706e67": {
+      "src": "/images/system-design/external-88690ebe4fb2.png",
+      "width": 1024,
+      "height": 512,
+      "sha256": "5516da0a747f6b7b043cc4c8349815dcf462d748a2f5d1fa35c06637bef075ef"
+    },
+    "images/TcUo2fw.png": {
+      "src": "/images/system-design/TcUo2fw.png",
+      "width": 1475,
+      "height": 1101,
+      "sha256": "687fb2dc2a94cd167ff2fa327ff2bfd9942499f0585b6eb24ccd7c426e2e2286"
+    },
+    "http://i.imgur.com/BKsBnmG.png": {
+      "src": "/images/system-design/BKsBnmG.png",
+      "width": 848,
+      "height": 934,
+      "sha256": "64cfcc1b99fa41050fc9c8cc6e59cb028f253c2364ec668f7f4ec97c43563af6"
+    },
+    "http://i.imgur.com/4edXG0T.png": {
+      "src": "/images/system-design/4edXG0T.png",
+      "width": 936,
+      "height": 1360,
+      "sha256": "a978d3792ad7088935f8fff137cc38392ee6f547b5e7c06f0bc4e99e0cd6fcc0"
+    },
+    "http://i.imgur.com/48tEA2j.png": {
+      "src": "/images/system-design/48tEA2j.png",
+      "width": 1222,
+      "height": 1032,
+      "sha256": "f658301956e39993fc16ae1df8e6e245d5329f8e2575b5ab98695c89b2c5f02e"
+    },
+    "http://i.imgur.com/MzExP06.png": {
+      "src": "/images/system-design/MzExP06.png",
+      "width": 924,
+      "height": 1376,
+      "sha256": "b8db8707b6e52e4b89aeb118c3dd3f8c2634d4be3bc0bc60a3d58e8b69146428"
+    },
+    "http://i.imgur.com/xjdAAUv.png": {
+      "src": "/images/system-design/xjdAAUv.png",
+      "width": 1014,
+      "height": 912,
+      "sha256": "9daa3a44c81d51bff2fb16bb17d4ab5cffb7d1173714849aea14c4a0e2a1633b"
+    },
+    "http://i.imgur.com/bWxPtQA.png": {
+      "src": "/images/system-design/bWxPtQA.png",
+      "width": 1078,
+      "height": 1304,
+      "sha256": "e7cf3121a4e1da52df5d78cca8ef75a0f6d95d23fef8b3bc9faf90b6d8886c4a"
+    },
+    "http://i.imgur.com/E8klrBh.png": {
+      "src": "/images/system-design/E8klrBh.png",
+      "width": 978,
+      "height": 912,
+      "sha256": "93123bfb16cd645cf1057c1b179f4b306402079b2a684f3844ac8061ba8b48ca"
+    },
+    "http://i.imgur.com/V5q57vU.png": {
+      "src": "/images/system-design/V5q57vU.png",
+      "width": 1308,
+      "height": 1332,
+      "sha256": "a17f30f093921f143d53115fdce50ecf18c6c7888ed7614b110b0b8536521ed3"
+    },
+    "http://i.imgur.com/wxXyq2J.png": {
+      "src": "/images/system-design/wxXyq2J.png",
+      "width": 734,
+      "height": 594,
+      "sha256": "b099a33d602e32b624afaf51e55b9e095b0ce3abb3c1e663b73aa9fc8884d869"
+    },
+    "http://i.imgur.com/cdCv5g7.png": {
+      "src": "/images/system-design/cdCv5g7.png",
+      "width": 774,
+      "height": 1042,
+      "sha256": "3ddaad49d0e6f990a85005d48d1bac2f7f3a0b669398fe6730f2831310def2eb"
+    },
+    "http://i.imgur.com/KqZ3dSx.png": {
+      "src": "/images/system-design/KqZ3dSx.png",
+      "width": 490,
+      "height": 812,
+      "sha256": "2c037135cc611650a12ffc6ad8e1f275e882a9a40871bbc638b242b5664f184d"
+    },
+    "http://i.imgur.com/4j99mhe.png": {
+      "src": "/images/system-design/4j99mhe.png",
+      "width": 542,
+      "height": 1096,
+      "sha256": "0add63466555e5b378d54b0a223b010dd35930a0b536b93ceb73dee80cb334e0"
+    },
+    "http://i.imgur.com/vwMa1Qu.png": {
+      "src": "/images/system-design/vwMa1Qu.png",
+      "width": 692,
+      "height": 864,
+      "sha256": "e826f36a2e6f5b10a46c3489f04144553e547d5d5a1e8d149b6321d289d200c0"
+    },
+    "http://i.imgur.com/B8LDKD7.png": {
+      "src": "/images/system-design/B8LDKD7.png",
+      "width": 494,
+      "height": 354,
+      "sha256": "aea041245649a04d0551760a348504b6ebabd69dbe02063135df436489f5fb89"
+    },
+    "http://i.imgur.com/rrfjMXB.png": {
+      "src": "/images/system-design/rrfjMXB.png",
+      "width": 494,
+      "height": 524,
+      "sha256": "fcc27a244313dedf4fabebc5cdba691a96e64412bace8161f54ed315b78a9d2a"
+    },
+    "http://i.imgur.com/raoFTXM.png": {
+      "src": "/images/system-design/raoFTXM.png",
+      "width": 488,
+      "height": 1098,
+      "sha256": "702e9006bda2f01b740f9f2cdeee77059f495e1b380f3558aeffc35631cb45a2"
+    },
+    "http://i.imgur.com/OZCxJr0.png": {
+      "src": "/images/system-design/OZCxJr0.png",
+      "width": 636,
+      "height": 1322,
+      "sha256": "67c846a1b3ebb758802ec58f66baf3160997060810b24b9070860bd519e63b45"
+    },
+    "http://i.imgur.com/3X8nmdL.png": {
+      "src": "/images/system-design/3X8nmdL.png",
+      "width": 680,
+      "height": 1322,
+      "sha256": "1ed021d166c31a24f845645733fcd51a1054d674441c9d268aa03155154f892b"
+    },
+    "http://i.imgur.com/jj3A5N8.png": {
+      "src": "/images/system-design/jj3A5N8.png",
+      "width": 1234,
+      "height": 1666,
+      "sha256": "963c16b9d49f788d04bbe0ed2d74de50e438a47426e37fe9393a416121970686"
+    }
+  },
+  "chapters": [
+    {
+      "title": "系统设计入门",
+      "slug": "index",
+      "url": "/system-design/",
+      "start": 0,
+      "end": 2548,
+      "headings": [
+        {
+          "title": "目的",
+          "depth": 2,
+          "id": "目的",
+          "start": 2043,
+          "end": 2050
+        },
+        {
+          "title": "学习如何设计大型系统",
+          "depth": 3,
+          "id": "学习如何设计大型系统",
+          "start": 2082,
+          "end": 2098
+        },
+        {
+          "title": "从开源社区学习",
+          "depth": 3,
+          "id": "从开源社区学习",
+          "start": 2214,
+          "end": 2227
+        },
+        {
+          "title": "为系统设计的面试做准备",
+          "depth": 3,
+          "id": "为系统设计的面试做准备",
+          "start": 2263,
+          "end": 2280
+        }
+      ]
+    },
+    {
+      "title": "抽认卡",
+      "slug": "flash-cards",
+      "url": "/system-design/flash-cards/",
+      "start": 2548,
+      "end": 3261,
+      "headings": [
+        {
+          "title": "代码资源：互动式编程挑战",
+          "depth": 3,
+          "id": "代码资源互动式编程挑战",
+          "start": 2881,
+          "end": 2899
+        }
+      ]
+    },
+    {
+      "title": "贡献",
+      "slug": "contributing",
+      "url": "/system-design/contributing/",
+      "start": 3261,
+      "end": 3448,
+      "headings": []
+    },
+    {
+      "title": "系统设计主题的索引",
+      "slug": "topic-index",
+      "url": "/system-design/topic-index/",
+      "start": 3448,
+      "end": 5603,
+      "headings": []
+    },
+    {
+      "title": "学习指引",
+      "slug": "study-guide",
+      "url": "/system-design/study-guide/",
+      "start": 5603,
+      "end": 6724,
+      "headings": []
+    },
+    {
+      "title": "如何处理一个系统设计的面试题",
+      "slug": "interview-approach",
+      "url": "/system-design/interview-approach/",
+      "start": 6724,
+      "end": 8096,
+      "headings": [
+        {
+          "title": "第一步：描述使用场景，约束和假设",
+          "depth": 3,
+          "id": "第一步描述使用场景约束和假设",
+          "start": 6847,
+          "end": 6869
+        },
+        {
+          "title": "第二步：创造一个高层级的设计",
+          "depth": 3,
+          "id": "第二步创造一个高层级的设计",
+          "start": 7021,
+          "end": 7041
+        },
+        {
+          "title": "第三步：设计核心组件",
+          "depth": 3,
+          "id": "第三步设计核心组件",
+          "start": 7088,
+          "end": 7104
+        },
+        {
+          "title": "第四步：扩展设计",
+          "depth": 3,
+          "id": "第四步扩展设计",
+          "start": 7434,
+          "end": 7448
+        },
+        {
+          "title": "预估计算量",
+          "depth": 3,
+          "id": "预估计算量",
+          "start": 7575,
+          "end": 7586
+        },
+        {
+          "title": "相关资源和延伸阅读",
+          "depth": 3,
+          "id": "相关资源和延伸阅读",
+          "start": 7806,
+          "end": 7821
+        }
+      ]
+    },
+    {
+      "title": "系统设计的面试题和解答",
+      "slug": "system-design-exercises",
+      "url": "/system-design/system-design-exercises/",
+      "start": 8096,
+      "end": 10125,
+      "headings": [
+        {
+          "title": "设计 Pastebin.com (或者 Bit.ly)",
+          "depth": 3,
+          "id": "设计-pastebincom-或者-bitly",
+          "start": 9226,
+          "end": 9259
+        },
+        {
+          "title": "设计 Twitter 时间线和搜索 (或者 Facebook feed 和搜索)",
+          "depth": 3,
+          "id": "设计-twitter-时间线和搜索-或者-facebook-feed-和搜索",
+          "start": 9344,
+          "end": 9390
+        },
+        {
+          "title": "设计一个网页爬虫",
+          "depth": 3,
+          "id": "设计一个网页爬虫",
+          "start": 9474,
+          "end": 9488
+        },
+        {
+          "title": "设计 Mint.com",
+          "depth": 3,
+          "id": "设计-mintcom",
+          "start": 9576,
+          "end": 9593
+        },
+        {
+          "title": "为一个社交网络设计数据结构",
+          "depth": 3,
+          "id": "为一个社交网络设计数据结构",
+          "start": 9674,
+          "end": 9693
+        },
+        {
+          "title": "为搜索引擎设计一个 key-value 储存",
+          "depth": 3,
+          "id": "为搜索引擎设计一个-key-value-储存",
+          "start": 9782,
+          "end": 9810
+        },
+        {
+          "title": "设计按类别分类的 Amazon 销售排名",
+          "depth": 3,
+          "id": "设计按类别分类的-amazon-销售排名",
+          "start": 9898,
+          "end": 9924
+        },
+        {
+          "title": "在 AWS 上设计一个百万用户级别的系统",
+          "depth": 3,
+          "id": "在-aws-上设计一个百万用户级别的系统",
+          "start": 10011,
+          "end": 10037
+        }
+      ]
+    },
+    {
+      "title": "面向对象设计的面试问题及解答",
+      "slug": "object-oriented-design",
+      "url": "/system-design/object-oriented-design/",
+      "start": 10125,
+      "end": 10982,
+      "headings": []
+    },
+    {
+      "title": "系统设计主题：从这里开始",
+      "slug": "getting-started",
+      "url": "/system-design/getting-started/",
+      "start": 10982,
+      "end": 12067,
+      "headings": [
+        {
+          "title": "第一步：回顾可扩展性（scalability）的视频讲座",
+          "depth": 3,
+          "id": "第一步回顾可扩展性scalability的视频讲座",
+          "start": 11049,
+          "end": 11083
+        },
+        {
+          "title": "第二步：回顾可扩展性文章",
+          "depth": 3,
+          "id": "第二步回顾可扩展性文章",
+          "start": 11254,
+          "end": 11272
+        },
+        {
+          "title": "接下来的步骤",
+          "depth": 3,
+          "id": "接下来的步骤",
+          "start": 11926,
+          "end": 11938
+        }
+      ]
+    },
+    {
+      "title": "性能与可扩展性",
+      "slug": "performance-scalability",
+      "url": "/system-design/performance-scalability/",
+      "start": 12067,
+      "end": 12547,
+      "headings": [
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读",
+          "start": 12349,
+          "end": 12362
+        }
+      ]
+    },
+    {
+      "title": "延迟与吞吐量",
+      "slug": "latency-throughput",
+      "url": "/system-design/latency-throughput/",
+      "start": 12547,
+      "end": 12768,
+      "headings": [
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读-1",
+          "start": 12647,
+          "end": 12660
+        }
+      ]
+    },
+    {
+      "title": "可用性与一致性",
+      "slug": "availability-consistency",
+      "url": "/system-design/availability-consistency/",
+      "start": 12768,
+      "end": 13547,
+      "headings": [
+        {
+          "title": "CAP 理论",
+          "depth": 3,
+          "id": "cap-理论",
+          "start": 12780,
+          "end": 12792
+        },
+        {
+          "title": "CP ─ 一致性和分区容错性",
+          "depth": 4,
+          "id": "cp--一致性和分区容错性",
+          "start": 13139,
+          "end": 13160
+        },
+        {
+          "title": "AP ─ 可用性与分区容错性",
+          "depth": 4,
+          "id": "ap--可用性与分区容错性",
+          "start": 13208,
+          "end": 13229
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读-2",
+          "start": 13335,
+          "end": 13348
+        }
+      ]
+    },
+    {
+      "title": "一致性模式",
+      "slug": "consistency-patterns",
+      "url": "/system-design/consistency-patterns/",
+      "start": 13547,
+      "end": 14091,
+      "headings": [
+        {
+          "title": "弱一致性",
+          "depth": 3,
+          "id": "弱一致性",
+          "start": 13654,
+          "end": 13664
+        },
+        {
+          "title": "最终一致性",
+          "depth": 3,
+          "id": "最终一致性",
+          "start": 13809,
+          "end": 13820
+        },
+        {
+          "title": "强一致性",
+          "depth": 3,
+          "id": "强一致性",
+          "start": 13900,
+          "end": 13910
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读-3",
+          "start": 13980,
+          "end": 13993
+        }
+      ]
+    },
+    {
+      "title": "可用性模式",
+      "slug": "availability-patterns",
+      "url": "/system-design/availability-patterns/",
+      "start": 14091,
+      "end": 14634,
+      "headings": [
+        {
+          "title": "故障切换",
+          "depth": 3,
+          "id": "故障切换",
+          "start": 14157,
+          "end": 14167
+        },
+        {
+          "title": "工作到备用切换（Active-passive）",
+          "depth": 4,
+          "id": "工作到备用切换active-passive",
+          "start": 14167,
+          "end": 14197
+        },
+        {
+          "title": "双工作切换（Active-active）",
+          "depth": 4,
+          "id": "双工作切换active-active",
+          "start": 14345,
+          "end": 14372
+        },
+        {
+          "title": "缺陷：故障切换",
+          "depth": 3,
+          "id": "缺陷故障切换",
+          "start": 14468,
+          "end": 14481
+        },
+        {
+          "title": "复制",
+          "depth": 3,
+          "id": "复制",
+          "start": 14547,
+          "end": 14555
+        },
+        {
+          "title": "主─从复制和主─主复制",
+          "depth": 4,
+          "id": "主从复制和主主复制",
+          "start": 14555,
+          "end": 14573
+        }
+      ]
+    },
+    {
+      "title": "域名系统",
+      "slug": "dns",
+      "url": "/system-design/dns/",
+      "start": 14634,
+      "end": 16024,
+      "headings": [
+        {
+          "title": "缺陷:DNS",
+          "depth": 3,
+          "id": "缺陷dns",
+          "start": 15502,
+          "end": 15514
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读-4",
+          "start": 15806,
+          "end": 15819
+        }
+      ]
+    },
+    {
+      "title": "内容分发网络（CDN）",
+      "slug": "cdn",
+      "url": "/system-design/cdn/",
+      "start": 16024,
+      "end": 17226,
+      "headings": [
+        {
+          "title": "CDN 推送（push）",
+          "depth": 3,
+          "id": "cdn-推送push",
+          "start": 16424,
+          "end": 16442
+        },
+        {
+          "title": "CDN 拉取（pull）",
+          "depth": 3,
+          "id": "cdn-拉取pull",
+          "start": 16552,
+          "end": 16570
+        },
+        {
+          "title": "缺陷：CDN",
+          "depth": 3,
+          "id": "缺陷cdn",
+          "start": 16830,
+          "end": 16842
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读-5",
+          "start": 16943,
+          "end": 16956
+        }
+      ]
+    },
+    {
+      "title": "负载均衡器",
+      "slug": "load-balancer",
+      "url": "/system-design/load-balancer/",
+      "start": 17226,
+      "end": 19472,
+      "headings": [
+        {
+          "title": "四层负载均衡",
+          "depth": 3,
+          "id": "四层负载均衡",
+          "start": 18005,
+          "end": 18017
+        },
+        {
+          "title": "七层负载均衡器",
+          "depth": 3,
+          "id": "七层负载均衡器",
+          "start": 18195,
+          "end": 18208
+        },
+        {
+          "title": "水平扩展",
+          "depth": 3,
+          "id": "水平扩展",
+          "start": 18415,
+          "end": 18425
+        },
+        {
+          "title": "缺陷：水平扩展",
+          "depth": 4,
+          "id": "缺陷水平扩展",
+          "start": 18523,
+          "end": 18537
+        },
+        {
+          "title": "缺陷：负载均衡器",
+          "depth": 3,
+          "id": "缺陷负载均衡器",
+          "start": 18712,
+          "end": 18726
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读-6",
+          "start": 18830,
+          "end": 18843
+        }
+      ]
+    },
+    {
+      "title": "反向代理（web 服务器）",
+      "slug": "reverse-proxy",
+      "url": "/system-design/reverse-proxy/",
+      "start": 19472,
+      "end": 20744,
+      "headings": [
+        {
+          "title": "负载均衡器与反向代理",
+          "depth": 3,
+          "id": "负载均衡器与反向代理",
+          "start": 20127,
+          "end": 20143
+        },
+        {
+          "title": "不利之处：反向代理",
+          "depth": 3,
+          "id": "不利之处反向代理",
+          "start": 20285,
+          "end": 20300
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读-7",
+          "start": 20414,
+          "end": 20428
+        }
+      ]
+    },
+    {
+      "title": "应用层",
+      "slug": "application-layer",
+      "url": "/system-design/application-layer/",
+      "start": 20744,
+      "end": 22301,
+      "headings": [
+        {
+          "title": "微服务",
+          "depth": 3,
+          "id": "微服务",
+          "start": 21105,
+          "end": 21114
+        },
+        {
+          "title": "服务发现",
+          "depth": 3,
+          "id": "服务发现",
+          "start": 21380,
+          "end": 21390
+        },
+        {
+          "title": "不利之处：应用层",
+          "depth": 3,
+          "id": "不利之处应用层",
+          "start": 21788,
+          "end": 21802
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读-8",
+          "start": 21872,
+          "end": 21885
+        }
+      ]
+    },
+    {
+      "title": "数据库",
+      "slug": "database",
+      "url": "/system-design/database/",
+      "start": 22301,
+      "end": 32754,
+      "headings": [
+        {
+          "title": "关系型数据库管理系统（RDBMS）",
+          "depth": 3,
+          "id": "关系型数据库管理系统rdbms",
+          "start": 22472,
+          "end": 22495
+        },
+        {
+          "title": "主从复制",
+          "depth": 4,
+          "id": "主从复制",
+          "start": 23051,
+          "end": 23062
+        },
+        {
+          "title": "不利之处：主从复制",
+          "depth": 5,
+          "id": "不利之处主从复制",
+          "start": 23164,
+          "end": 23181
+        },
+        {
+          "title": "主主复制",
+          "depth": 4,
+          "id": "主主复制",
+          "start": 23443,
+          "end": 23454
+        },
+        {
+          "title": "不利之处： 主主复制",
+          "depth": 5,
+          "id": "不利之处-主主复制",
+          "start": 23504,
+          "end": 23522
+        },
+        {
+          "title": "不利之处：复制",
+          "depth": 5,
+          "id": "不利之处复制",
+          "start": 23681,
+          "end": 23697
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 5,
+          "id": "来源及延伸阅读-9",
+          "start": 23883,
+          "end": 23899
+        },
+        {
+          "title": "联合",
+          "depth": 4,
+          "id": "联合",
+          "start": 24062,
+          "end": 24071
+        },
+        {
+          "title": "不利之处：联合",
+          "depth": 5,
+          "id": "不利之处联合",
+          "start": 24395,
+          "end": 24411
+        },
+        {
+          "title": "来源及延伸阅读：联合",
+          "depth": 5,
+          "id": "来源及延伸阅读联合",
+          "start": 24643,
+          "end": 24661
+        },
+        {
+          "title": "分片",
+          "depth": 4,
+          "id": "分片",
+          "start": 24726,
+          "end": 24735
+        },
+        {
+          "title": "不利之处：分片",
+          "depth": 5,
+          "id": "不利之处分片",
+          "start": 25178,
+          "end": 25193
+        },
+        {
+          "title": "来源及延伸阅读：分片",
+          "depth": 4,
+          "id": "来源及延伸阅读分片",
+          "start": 25435,
+          "end": 25452
+        },
+        {
+          "title": "非规范化",
+          "depth": 4,
+          "id": "非规范化",
+          "start": 25728,
+          "end": 25739
+        },
+        {
+          "title": "不利之处：非规范化",
+          "depth": 5,
+          "id": "不利之处非规范化",
+          "start": 26097,
+          "end": 26114
+        },
+        {
+          "title": "来源及延伸阅读：非规范化",
+          "depth": 5,
+          "id": "来源及延伸阅读非规范化",
+          "start": 26193,
+          "end": 26213
+        },
+        {
+          "title": "SQL 调优",
+          "depth": 4,
+          "id": "sql-调优",
+          "start": 26270,
+          "end": 26283
+        },
+        {
+          "title": "改进模式",
+          "depth": 5,
+          "id": "改进模式",
+          "start": 26653,
+          "end": 26665
+        },
+        {
+          "title": "使用正确的索引",
+          "depth": 5,
+          "id": "使用正确的索引",
+          "start": 27186,
+          "end": 27201
+        },
+        {
+          "title": "避免高成本的联结操作",
+          "depth": 5,
+          "id": "避免高成本的联结操作",
+          "start": 27440,
+          "end": 27458
+        },
+        {
+          "title": "分割数据表",
+          "depth": 5,
+          "id": "分割数据表",
+          "start": 27477,
+          "end": 27490
+        },
+        {
+          "title": "调优查询缓存",
+          "depth": 5,
+          "id": "调优查询缓存",
+          "start": 27518,
+          "end": 27532
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 5,
+          "id": "来源及延伸阅读-10",
+          "start": 27711,
+          "end": 27726
+        },
+        {
+          "title": "NoSQL",
+          "depth": 3,
+          "id": "nosql",
+          "start": 28168,
+          "end": 28179
+        },
+        {
+          "title": "键-值存储",
+          "depth": 4,
+          "id": "键-值存储",
+          "start": 28608,
+          "end": 28620
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 4,
+          "id": "来源及延伸阅读-11",
+          "start": 28886,
+          "end": 28900
+        },
+        {
+          "title": "文档类型存储",
+          "depth": 4,
+          "id": "文档类型存储",
+          "start": 29239,
+          "end": 29252
+        },
+        {
+          "title": "来源及延伸阅读：文档类型存储",
+          "depth": 4,
+          "id": "来源及延伸阅读文档类型存储",
+          "start": 29576,
+          "end": 29597
+        },
+        {
+          "title": "列型存储",
+          "depth": 4,
+          "id": "列型存储",
+          "start": 29897,
+          "end": 29908
+        },
+        {
+          "title": "来源及延伸阅读：列型存储",
+          "depth": 5,
+          "id": "来源及延伸阅读列型存储",
+          "start": 30694,
+          "end": 30714
+        },
+        {
+          "title": "图数据库",
+          "depth": 4,
+          "id": "图数据库",
+          "start": 31079,
+          "end": 31090
+        },
+        {
+          "title": "相关资源和延伸阅读：图",
+          "depth": 5,
+          "id": "相关资源和延伸阅读图",
+          "start": 31439,
+          "end": 31457
+        },
+        {
+          "title": "来源及延伸阅读：NoSQL",
+          "depth": 4,
+          "id": "来源及延伸阅读nosql",
+          "start": 31606,
+          "end": 31626
+        },
+        {
+          "title": "SQL 还是 NoSQL",
+          "depth": 3,
+          "id": "sql-还是-nosql",
+          "start": 32102,
+          "end": 32120
+        },
+        {
+          "title": "来源及延伸阅读：SQL 或 NoSQL",
+          "depth": 5,
+          "id": "来源及延伸阅读sql-或-nosql",
+          "start": 32591,
+          "end": 32618
+        }
+      ]
+    },
+    {
+      "title": "缓存",
+      "slug": "cache",
+      "url": "/system-design/cache/",
+      "start": 32754,
+      "end": 37324,
+      "headings": [
+        {
+          "title": "客户端缓存",
+          "depth": 3,
+          "id": "客户端缓存",
+          "start": 33107,
+          "end": 33118
+        },
+        {
+          "title": "CDN 缓存",
+          "depth": 3,
+          "id": "cdn-缓存",
+          "start": 33169,
+          "end": 33181
+        },
+        {
+          "title": "Web 服务器缓存",
+          "depth": 3,
+          "id": "web-服务器缓存",
+          "start": 33210,
+          "end": 33225
+        },
+        {
+          "title": "数据库缓存",
+          "depth": 3,
+          "id": "数据库缓存",
+          "start": 33344,
+          "end": 33355
+        },
+        {
+          "title": "应用缓存",
+          "depth": 3,
+          "id": "应用缓存",
+          "start": 33415,
+          "end": 33425
+        },
+        {
+          "title": "数据库查询级别的缓存",
+          "depth": 3,
+          "id": "数据库查询级别的缓存",
+          "start": 33867,
+          "end": 33883
+        },
+        {
+          "title": "对象级别的缓存",
+          "depth": 3,
+          "id": "对象级别的缓存",
+          "start": 33994,
+          "end": 34007
+        },
+        {
+          "title": "何时更新缓存",
+          "depth": 3,
+          "id": "何时更新缓存",
+          "start": 34172,
+          "end": 34184
+        },
+        {
+          "title": "缓存模式",
+          "depth": 4,
+          "id": "缓存模式",
+          "start": 34226,
+          "end": 34237
+        },
+        {
+          "title": "缓存的缺点：",
+          "depth": 5,
+          "id": "缓存的缺点",
+          "start": 34973,
+          "end": 34987
+        },
+        {
+          "title": "直写模式",
+          "depth": 4,
+          "id": "直写模式",
+          "start": 35130,
+          "end": 35141
+        },
+        {
+          "title": "直写模式的缺点：",
+          "depth": 5,
+          "id": "直写模式的缺点",
+          "start": 35694,
+          "end": 35710
+        },
+        {
+          "title": "回写模式",
+          "depth": 4,
+          "id": "回写模式",
+          "start": 35808,
+          "end": 35819
+        },
+        {
+          "title": "回写模式的缺点：",
+          "depth": 5,
+          "id": "回写模式的缺点",
+          "start": 36068,
+          "end": 36084
+        },
+        {
+          "title": "刷新",
+          "depth": 4,
+          "id": "刷新",
+          "start": 36129,
+          "end": 36138
+        },
+        {
+          "title": "刷新的缺点：",
+          "depth": 5,
+          "id": "刷新的缺点",
+          "start": 36423,
+          "end": 36437
+        },
+        {
+          "title": "缓存的缺点：",
+          "depth": 3,
+          "id": "缓存的缺点-1",
+          "start": 36472,
+          "end": 36484
+        },
+        {
+          "title": "相关资源和延伸阅读",
+          "depth": 3,
+          "id": "相关资源和延伸阅读-1",
+          "start": 36635,
+          "end": 36650
+        }
+      ]
+    },
+    {
+      "title": "异步",
+      "slug": "asynchronism",
+      "url": "/system-design/asynchronism/",
+      "start": 37324,
+      "end": 38858,
+      "headings": [
+        {
+          "title": "消息队列",
+          "depth": 3,
+          "id": "消息队列",
+          "start": 37587,
+          "end": 37597
+        },
+        {
+          "title": "任务队列",
+          "depth": 3,
+          "id": "任务队列",
+          "start": 37952,
+          "end": 37962
+        },
+        {
+          "title": "背压",
+          "depth": 3,
+          "id": "背压",
+          "start": 38053,
+          "end": 38061
+        },
+        {
+          "title": "异步的缺点：",
+          "depth": 3,
+          "id": "异步的缺点",
+          "start": 38363,
+          "end": 38375
+        },
+        {
+          "title": "相关资源和延伸阅读",
+          "depth": 3,
+          "id": "相关资源和延伸阅读-2",
+          "start": 38422,
+          "end": 38437
+        }
+      ]
+    },
+    {
+      "title": "通讯",
+      "slug": "communication",
+      "url": "/system-design/communication/",
+      "start": 38858,
+      "end": 46729,
+      "headings": [
+        {
+          "title": "超文本传输协议（HTTP）",
+          "depth": 3,
+          "id": "超文本传输协议http",
+          "start": 39013,
+          "end": 39032
+        },
+        {
+          "title": "来源及延伸阅读：HTTP",
+          "depth": 4,
+          "id": "来源及延伸阅读http",
+          "start": 39681,
+          "end": 39700
+        },
+        {
+          "title": "传输控制协议（TCP）",
+          "depth": 3,
+          "id": "传输控制协议tcp",
+          "start": 40097,
+          "end": 40114
+        },
+        {
+          "title": "用户数据报协议（UDP）",
+          "depth": 3,
+          "id": "用户数据报协议udp",
+          "start": 41173,
+          "end": 41191
+        },
+        {
+          "title": "来源及延伸阅读：TCP 与 UDP",
+          "depth": 4,
+          "id": "来源及延伸阅读tcp-与-udp",
+          "start": 41731,
+          "end": 41755
+        },
+        {
+          "title": "远程过程调用协议（RPC）",
+          "depth": 3,
+          "id": "远程过程调用协议rpc",
+          "start": 42273,
+          "end": 42292
+        },
+        {
+          "title": "缺点：RPC",
+          "depth": 4,
+          "id": "缺点rpc",
+          "start": 43326,
+          "end": 43339
+        },
+        {
+          "title": "表述性状态转移（REST）",
+          "depth": 3,
+          "id": "表述性状态转移rest",
+          "start": 43620,
+          "end": 43639
+        },
+        {
+          "title": "缺点：REST",
+          "depth": 4,
+          "id": "缺点rest",
+          "start": 44323,
+          "end": 44337
+        },
+        {
+          "title": "RPC 与 REST 比较",
+          "depth": 3,
+          "id": "rpc-与-rest-比较",
+          "start": 44760,
+          "end": 44779
+        },
+        {
+          "title": "来源及延伸阅读：REST 与 RPC",
+          "depth": 4,
+          "id": "来源及延伸阅读rest-与-rpc",
+          "start": 45994,
+          "end": 46019
+        }
+      ]
+    },
+    {
+      "title": "安全",
+      "slug": "security",
+      "url": "/system-design/security/",
+      "start": 46729,
+      "end": 47248,
+      "headings": [
+        {
+          "title": "来源及延伸阅读",
+          "depth": 3,
+          "id": "来源及延伸阅读-12",
+          "start": 47079,
+          "end": 47092
+        }
+      ]
+    },
+    {
+      "title": "附录",
+      "slug": "appendix",
+      "url": "/system-design/appendix/",
+      "start": 47248,
+      "end": 64715,
+      "headings": [
+        {
+          "title": "2 的次方表",
+          "depth": 3,
+          "id": "2-的次方表",
+          "start": 47456,
+          "end": 47468
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 4,
+          "id": "来源及延伸阅读-13",
+          "start": 48043,
+          "end": 48057
+        },
+        {
+          "title": "每个程序员都应该知道的延迟数",
+          "depth": 3,
+          "id": "每个程序员都应该知道的延迟数",
+          "start": 48112,
+          "end": 48132
+        },
+        {
+          "title": "延迟数可视化",
+          "depth": 4,
+          "id": "延迟数可视化",
+          "start": 49591,
+          "end": 49604
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 4,
+          "id": "来源及延伸阅读-14",
+          "start": 49743,
+          "end": 49757
+        },
+        {
+          "title": "其它的系统设计面试题",
+          "depth": 3,
+          "id": "其它的系统设计面试题",
+          "start": 50124,
+          "end": 50140
+        },
+        {
+          "title": "真实架构",
+          "depth": 3,
+          "id": "真实架构",
+          "start": 54587,
+          "end": 54597
+        },
+        {
+          "title": "公司的系统架构",
+          "depth": 3,
+          "id": "公司的系统架构",
+          "start": 57982,
+          "end": 57995
+        },
+        {
+          "title": "公司工程博客",
+          "depth": 3,
+          "id": "公司工程博客",
+          "start": 62051,
+          "end": 62063
+        },
+        {
+          "title": "来源及延伸阅读",
+          "depth": 4,
+          "id": "来源及延伸阅读-15",
+          "start": 64620,
+          "end": 64634
+        }
+      ]
+    },
+    {
+      "title": "正在完善中",
+      "slug": "work-in-progress",
+      "url": "/system-design/work-in-progress/",
+      "start": 64715,
+      "end": 64825,
+      "headings": []
+    },
+    {
+      "title": "致谢",
+      "slug": "credits",
+      "url": "/system-design/credits/",
+      "start": 64825,
+      "end": 65592,
+      "headings": []
+    },
+    {
+      "title": "联系方式",
+      "slug": "contact",
+      "url": "/system-design/contact/",
+      "start": 65592,
+      "end": 65683,
+      "headings": []
+    },
+    {
+      "title": "许可",
+      "slug": "license",
+      "url": "/system-design/license/",
+      "start": 65683,
+      "end": 65810,
+      "headings": []
+    }
+  ]
+}

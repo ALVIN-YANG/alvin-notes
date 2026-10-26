@@ -1,11 +1,10 @@
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
+import { verifySystemDesign } from './verify-system-design.mjs';
 
 const outputDirectory = new URL('../dist/', import.meta.url);
 const contentDirectory = new URL('../src/content/docs/', import.meta.url);
 const fontManifestPath = new URL('./font-subset-codepoints.json', import.meta.url);
-const systemDesignCoveragePath = new URL('../src/data/system-design/primer-coverage.json', import.meta.url);
-const systemDesignOutputPath = new URL('../dist/system-design-knowledge/index.html', import.meta.url);
 const algorithmOutputPath = new URL('../dist/algorithm-knowledge/index.html', import.meta.url);
 const fontSourceDirectories = [
   new URL('../src/content/docs/', import.meta.url),
@@ -241,79 +240,7 @@ if (!algorithmDataMatch) {
   }
 }
 
-const systemDesignCoverage = JSON.parse(await readFile(systemDesignCoveragePath, 'utf8'));
-const systemDesignHtml = await readFile(systemDesignOutputPath, 'utf8');
-const systemDesignDataMatch = systemDesignHtml.match(
-  /<script type="application\/json" data-map-data>([\s\S]*?)<\/script>/,
-);
-
-if (!systemDesignDataMatch) {
-  problems.push('System design knowledge data is missing from the built page');
-} else {
-  const systemDesignData = JSON.parse(systemDesignDataMatch[1]);
-  const systemDesignPoints = systemDesignData.domains.flatMap((domain) => (
-    domain.groups.flatMap((group) => (
-      group.points.map((point) => ({ point, group, domain }))
-    ))
-  ));
-  const requiredCoverage = new Set(systemDesignCoverage.map((entry) => entry.id));
-  const coverageOwners = new Map();
-
-  for (const record of systemDesignPoints) {
-    for (const coverageId of record.point.coverage ?? []) {
-      const owners = coverageOwners.get(coverageId) ?? [];
-      owners.push(record.point.title);
-      coverageOwners.set(coverageId, owners);
-      if (!requiredCoverage.has(coverageId)) {
-        problems.push(`Unknown System Design Primer coverage id: ${coverageId}`);
-      }
-    }
-
-    const contentLength = record.point.content.reduce((total, block) => {
-      const frameLength = block.frames?.reduce((frameTotal, frame) => (
-        frameTotal
-        + frame.step.length
-        + frame.note.length
-        + frame.rows.reduce((rowTotal, row) => (
-          rowTotal
-          + (row.label?.length ?? 0)
-          + row.items.reduce((itemTotal, item) => itemTotal + item[0].length, 0)
-        ), 0)
-      ), 0) ?? 0;
-      return total
-        + (block.text?.length ?? 0)
-        + (block.caption?.length ?? 0)
-        + (block.label?.length ?? 0)
-        + (block.items?.join('').length ?? 0)
-        + frameLength;
-    }, 0);
-    const visualCount = record.point.content.filter((block) => block.type === 'visual').length;
-    const references = record.point.references ?? record.group.references ?? [];
-    const isSystemCase = (record.point.coverage ?? []).some((id) => id.startsWith('case.'));
-
-    if (record.point.content.length < 5 || contentLength < 220) {
-      problems.push(`System design card is too shallow: ${record.point.title}`);
-    }
-    if (visualCount < 1) {
-      problems.push(`System design card has no relevant visual: ${record.point.title}`);
-    }
-    if (isSystemCase && visualCount < 3) {
-      problems.push(`System design case needs capacity, architecture and flow visuals: ${record.point.title}`);
-    }
-    if (references.length === 0) {
-      problems.push(`System design card has no source: ${record.point.title}`);
-    }
-  }
-
-  for (const entry of systemDesignCoverage) {
-    const owners = coverageOwners.get(entry.id) ?? [];
-    if (owners.length === 0) {
-      problems.push(`System Design Primer topic is uncovered: ${entry.id} (${entry.label})`);
-    } else if (owners.length > 1) {
-      problems.push(`System Design Primer topic has multiple owners: ${entry.id} (${owners.join(', ')})`);
-    }
-  }
-}
+await verifySystemDesign().catch(error => problems.push(error.message));
 
 const homepageHtml = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
 if ((homepageHtml.match(/<h1\b/g) ?? []).length !== 1) {
@@ -351,6 +278,6 @@ if (problems.length > 0) {
   process.exitCode = 1;
 } else {
   console.log(
-    `Static build verified: no PWA or Mermaid runtime; ${outputDiagramCount} diagrams are inline SVG; 12 algorithm templates link to all ${algorithmProblemCount} CodeTop Top 30 practice cards; all ${systemDesignCoverage.length} System Design Primer topics are covered; MiSans ${fontManifest.version.miSans} and Sarasa Mono SC ${fontManifest.version.sarasaMono} subsets are current.`,
+    `Static build verified: no PWA or Mermaid runtime; ${outputDiagramCount} diagrams are inline SVG; 12 algorithm templates link to all ${algorithmProblemCount} CodeTop Top 30 practice cards; System Design Primer full text is preserved; MiSans ${fontManifest.version.miSans} and Sarasa Mono SC ${fontManifest.version.sarasaMono} subsets are current.`,
   );
 }

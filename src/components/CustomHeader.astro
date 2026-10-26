@@ -28,7 +28,7 @@ const navGroups = [
   {
     label: '工程基础',
     links: [
-      { label: '系统设计', href: '/system-design-knowledge/', match: '/system-design-knowledge/' },
+      { label: '系统设计', href: '/system-design/', match: '/system-design/' },
       { label: '算法', href: '/algorithm-knowledge/', match: '/algorithm-knowledge/' },
       { label: '网络', href: '/network/ai-agent-communication-protocols/', match: '/network/' },
       { label: '安全', href: '/security/1-zero-day-vulnerability-primer/', match: '/security/' },
@@ -60,8 +60,8 @@ function isActive(match: string): boolean {
       || currentPath.startsWith('/algorithms/')
       || currentPath.startsWith('/java/');
   }
-  if (match === '/system-design-knowledge/') {
-    return currentPath.startsWith('/system-design-knowledge/') || currentPath.startsWith('/architecture/');
+  if (match === '/system-design/') {
+    return currentPath.startsWith('/system-design/') || currentPath.startsWith('/architecture/');
   }
   if (match === '/agent-knowledge/') {
     return currentPath.startsWith('/agent-knowledge/')
@@ -129,7 +129,7 @@ function isActive(match: string): boolean {
     </nav>
   </div>
   <div class="sl-flex right-group">
-    <Search {...Astro.props} />
+    {currentPath.startsWith('/system-design/') ? <button type="button" class="primer-search-open" data-primer-search-trigger>搜索文档 <kbd>⌘ K</kbd></button> : <Search {...Astro.props} />}
     <div class="sl-flex social-icons">
       <SocialIcons {...Astro.props} />
     </div>

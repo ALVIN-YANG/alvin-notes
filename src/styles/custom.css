@@ -1978,3 +1978,50 @@ pre {
 @media (max-width: 480px) { .ac-detail { width: calc(100% - 24px); max-height: calc(100dvh - 32px); } }
 @media (max-width: 480px) { .ac-header { gap: 8px; } .ac-header nav { gap: 0; } .ac-header button { padding: 8px; } .ac-learn-entry { flex-direction: column; align-items: stretch; gap: 12px; padding: 18px; } .ac-learn-entry .ac-primary { width: 100%; } .ac-filters { flex-direction: column; gap: 10px; } .ac-dropdown { min-width: 0; } .ac-dropdown-options { width: max(100%, 180px); } .ac-grid { grid-template-columns: minmax(0,1fr); gap: 12px; } .ac-card-open { min-height: 180px; } .ac-detail-card { padding: 22px; } .ac-flashcard { padding: 30px 22px; } .ac-detail h2, .ac-review h2 { font-size: 26px; } .ac-footer-meta { flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { .ac-card { transition: none; } }
+
+/* System Design Primer: continuous book typography inside the existing Starlight shell. */
+body:has(.primer-heading) { --sl-content-width: 46rem; }
+.primer-book-label { display:inline-block; margin-bottom:.75rem; color:var(--sl-color-gray-2); font-size:.78rem; text-decoration:none; }
+.primer-heading h1 { letter-spacing:normal; }
+body:has(.primer-heading) .sl-markdown-content { line-height:1.85; overflow-wrap:anywhere; }
+body:has(.primer-heading) .sl-markdown-content :is(h2,h3,h4,h5) { letter-spacing:normal; }
+body:has(.primer-heading) .sl-markdown-content table { display:block; max-width:100%; overflow-x:auto; border-radius:0; font-size:.88rem; }
+body:has(.primer-heading) .sl-markdown-content :is(th,td) { min-width:12rem; }
+body:has(.primer-heading) .sl-markdown-content :is(th,td):first-child { min-width:8rem; }
+body:has(.primer-heading) .sl-markdown-content pre { max-width:100%; overflow-x:auto; }
+body:has(.primer-heading) .sl-markdown-content .primer-image { display:inline-block; max-width:100%; cursor:zoom-in; }
+body:has(.primer-heading) .sl-markdown-content img { max-width:100%; height:auto; background:#fff; }
+body:has(.primer-heading) .pagination-links a { border:0; box-shadow:none; padding-inline:0; }
+.primer-source { margin-top:2rem; padding-top:1rem; border-top:1px solid var(--sl-color-gray-5); color:var(--sl-color-gray-2); font-size:.75rem; line-height:1.85; }
+.primer-source p { margin:0; }
+.primer-source a { color:var(--sl-color-text-accent); }
+.primer-image-dialog { width:calc(100vw - 2rem); height:calc(100dvh - 2rem); max-width:none; max-height:none; margin:auto; padding:0; border:1px solid var(--sl-color-gray-5); border-radius:.5rem; background:var(--sl-color-bg); color:var(--sl-color-text); overflow:hidden; }
+.primer-image-dialog::backdrop { background:#121b27d9; }
+.primer-image-controls { display:flex; justify-content:flex-end; gap:.5rem; height:3.5rem; padding:.4rem .75rem; }
+.primer-image-controls button { min-width:4rem; min-height:2.5rem; padding:.25rem .75rem; border:1px solid var(--sl-color-gray-5); border-radius:.25rem; background:var(--sl-color-bg); color:var(--sl-color-text); font:inherit; font-size:.85rem; cursor:pointer; touch-action:manipulation; }
+.primer-image-controls button:focus-visible,.primer-image-canvas:focus-visible { outline:2px solid var(--sl-color-text-accent); outline-offset:-3px; }
+.primer-image-controls button:active { background:var(--sl-color-gray-6); }
+.primer-image-canvas { display:flex; height:calc(100% - 3.5rem); overflow:auto; overscroll-behavior:contain; padding:.75rem; }
+.primer-image-canvas img { display:block; flex-shrink:0; width:auto; height:auto; max-width:100%; max-height:100%; object-fit:contain; margin:auto; background:#fff; }
+.primer-image-expanded .primer-image-canvas img { max-width:none; max-height:none; margin:auto; }
+@media(max-width:30rem) { .primer-image-dialog { width:calc(100vw - 1rem); height:calc(100dvh - 1rem); } }
+body:has(.primer-heading) :is(main,.sl-markdown-content) { animation:none; }
+.primer-search-open { min-height:2.5rem; padding:.35rem .7rem; border:1px solid var(--sl-color-gray-5); border-radius:.35rem; background:var(--sl-color-bg); color:var(--sl-color-gray-2); font:inherit; font-size:.8rem; cursor:pointer; }
+.primer-search-open kbd { margin-left:.65rem; padding:.15rem .25rem; background:var(--sl-color-gray-6); font-size:.65rem; }
+.primer-search-dialog { width:min(44rem,calc(100vw - 2rem)); max-height:calc(100dvh - 3rem); margin:1.5rem auto; padding:1.2rem; border:1px solid var(--sl-color-gray-5); border-radius:.5rem; background:var(--sl-color-bg); color:var(--sl-color-text); overflow:auto; overscroll-behavior:contain; }
+.primer-search-dialog::backdrop { background:#121b2780; }
+.primer-search-bar { display:flex; gap:.65rem; align-items:center; }
+.primer-search-bar label { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+.primer-search-bar input { width:100%; min-width:0; padding:.6rem .7rem; border:1px solid var(--sl-color-gray-4); border-radius:.25rem; background:var(--sl-color-bg); color:inherit; font:inherit; font-size:1rem; }
+.primer-search-bar button { flex-shrink:0; min-height:2.75rem; padding:.4rem .65rem; border:0; border-radius:.25rem; color:inherit; background:var(--sl-color-gray-6); font:inherit; cursor:pointer; }
+.primer-search-status { margin-block:1rem; font-size:.8rem; color:var(--sl-color-gray-2); }
+.primer-search-results { list-style:none; padding:0; margin:0; }
+.primer-search-results li + li { border-top:1px solid var(--sl-color-gray-5); }
+.primer-search-results a { display:grid; gap:.4rem; padding:1rem .2rem; text-decoration:none; overflow-wrap:anywhere; }
+.primer-search-results strong { color:var(--sl-color-text-accent); font-size:.95rem; }
+.primer-search-results span { color:var(--sl-color-gray-2); font-size:.85rem; line-height:1.75; }
+primer-search :is(a,button,input):focus-visible { outline:2px solid var(--sl-color-text-accent); outline-offset:2px; }
+primer-search button:active { background:var(--sl-color-gray-5); }
+@media(max-width:30rem) { .primer-search-dialog { width:calc(100vw - 1rem); padding:.8rem; } .primer-search-open kbd { display:none; } }
+.sidebar-content primer-search { display:block; margin-bottom:1.25rem; }
+.sidebar-content primer-search > button { width:100%; text-align:left; }
