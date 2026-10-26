@@ -2,7 +2,7 @@
 {
   "title": "致谢",
   "sidebar": {
-    "order": 42
+    "order": 45
   },
   "tableOfContents": {
     "minHeadingLevel": 2,
@@ -11,8 +11,8 @@
   "editUrl": false,
   "comments": false,
   "prev": {
-    "link": "/system-design/work-in-progress/",
-    "label": "正在完善中"
+    "link": "/system-design/work-in-progress/scatter-gather/",
+    "label": "Scatter-gather：并行请求，再按规则汇总"
   },
   "next": {
     "link": "/system-design/contact/",

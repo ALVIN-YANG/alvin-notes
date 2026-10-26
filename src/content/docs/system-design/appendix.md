@@ -16,7 +16,7 @@
   },
   "next": {
     "link": "/system-design/work-in-progress/",
-    "label": "正在完善中"
+    "label": "进阶专题"
   }
 }
 ---

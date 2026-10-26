@@ -37,3 +37,9 @@ remark-system-design.mjs 在构建时处理链接、图片和两处旧格式兼�
 补译包含可用率量化、遗漏的 CDN 适用场景、题解步骤和参考资料；校订包含已核实的术语、单位、读写吞吐量、代码与配图差异。每条修改记录英文证据、中文匹配片段与预期次数。同步时如果上游证据或匹配目标改变，会停止并要求重新审阅。`manifest.sha256` 仍标识原始中文快照，`renderedSha256` 标识补译后的主文档，`englishRevision` 保存英文快照 hash 和校订清单。
 
 `npm run system-design:english-check` 检查 9 份英文文档中的参考入口覆盖、关键补译和计算；构建已包含这一检查。标题、图片、正文、代码、站内锚点和搜索仍由原有构建校验覆盖。允许的展示差异包括移除多语言切换、来源标记、明确注明的英文原文错误修正。详细范围见 `ENGLISH-COMPARISON.md`。
+
+## 本站进阶专题
+
+`src/data/system-design-supplements/` 新增 MapReduce、一致性哈希和 Scatter-gather 三篇参考章节，按原理、具体例子与取舍组织，并引用原始论文或官方资料。它们与环形数组一样使用 `siteSupplement`，不归入原作者译文。原“正在完善中”页面保留地址并作为“进阶专题”目录；原中文快照中把 Scatter-gather 译成 DMA 控制器的错误仅在展示入口纠正。
+
+`python3 scripts/check-system-design-supplements.py` 直接提取三篇文章的 Python 代码，检查分片汇总不变性、哈希环增删节点的映射范围、截止时间与重复回复处理，以及全局 Top K 的条件。示例为教学模型，不是分布式运行时或性能验收。MapReduce 和 Scatter-gather 的流程图在构建时编译为静态 SVG。

@@ -43,7 +43,7 @@ for (const token of tokens) {
 }
 const chapterSlugs = ['index', 'flash-cards', 'contributing', 'topic-index', 'study-guide', 'interview-approach', 'system-design-exercises', 'object-oriented-design', 'getting-started', 'performance-scalability', 'latency-throughput', 'availability-consistency', 'consistency-patterns', 'availability-patterns', 'dns', 'cdn', 'load-balancer', 'reverse-proxy', 'application-layer', 'database', 'cache', 'asynchronism', 'communication', 'security', 'appendix', 'work-in-progress', 'credits', 'contact', 'license'];
 const sections = headings.filter(h => h.depth === 2);
-if (sections.length !== chapterSlugs.length || (old && sections.some((section, index) => (index === 0 ? '系统设计入门' : section.title) !== old.chapters[index]?.title))) throw new Error('Upstream chapter structure changed: review chapterSlugs before importing');
+if (sections.length !== chapterSlugs.length || (old && sections.some((section, index) => (index === 0 ? '系统设计入门' : section.title) !== (old.chapters[index]?.sourceTitle || old.chapters[index]?.title)))) throw new Error('Upstream chapter structure changed: review chapterSlugs before importing');
 // The only omitted source line is GitHub's language switcher, not document prose.
 const languageLine = source.split('\n').find(line => line.startsWith('*[English](README.md)'));
 if (!languageLine) throw new Error('Cannot identify language navigation');
@@ -55,7 +55,7 @@ const chapters = sections.map((section, index) => {
   const raw = source.slice(start, end);
   const body = raw.replace(source.slice(removedHeading.start, removedHeading.end), '').replace(languageLine + '\n', '');
   const slug = chapterSlugs[index];
-  return { title, slug, url: slug === 'index' ? '/system-design/' : `/system-design/${slug}/`, start, end, body, headings: headings.filter(h => h.start >= start && h.start < end && h !== removedHeading) };
+  return { title: slug === 'work-in-progress' ? '进阶专题' : title, ...(slug === 'work-in-progress' ? {sourceTitle: title} : {}), slug, url: slug === 'index' ? '/system-design/' : `/system-design/${slug}/`, start, end, body, headings: headings.filter(h => h.start >= start && h.start < end && h !== removedHeading) };
 });
 const anchors = {};
 for (const heading of headings) {
@@ -108,6 +108,11 @@ for (const [index, chapter] of documents.entries()) {
     if (!row.test(chapter.body)) throw new Error('Review upstream circular-array row before supplementing');
     chapter.body = chapter.body.replace(row, '$1[本站补充解答](/system-design/object-oriented-design/circular-array/)');
   }
+  if (chapter.slug === 'work-in-progress') {
+    const original = '* 使用 MapReduce 进行分布式计算\n* 一致性哈希\n* 直接存储器访问（DMA）控制器';
+    if (!chapter.body.includes(original)) throw new Error('Review upstream unfinished-topic list');
+    chapter.body = chapter.body.replace(original, '**本站补充已完成**：下列三个主题提供独立章节。原英文列出的是 Scatter-gather，中文快照中的“DMA 控制器”属于误译，此处改正。\n\n* [MapReduce：原理、销售汇总示例与取舍（本站补充）](/system-design/work-in-progress/mapreduce/)\n* [一致性哈希：节点归属、扩缩容与取舍（本站补充）](/system-design/work-in-progress/consistent-hashing/)\n* [Scatter-gather：并行查询、截止时间与部分结果（本站补充）](/system-design/work-in-progress/scatter-gather/)');
+  }
   // Frontmatter parsing trims leading indentation; fence the original indented license block.
   const renderedBody = chapter.slug === 'license' ? chapter.body.replace(/^ {4}Creative Commons[\s\S]*$/, block => '```text\n' + block.replace(/^ {4}/gm, '').trimEnd() + '\n```\n') : chapter.body;
   // JSON is valid YAML: source punctuation cannot accidentally become frontmatter syntax.
@@ -121,8 +126,10 @@ for (const file of (await readdir(output, {recursive:true})).filter(file=>file.e
 }
 const searchRecords = headings.map((heading, index) => {
   const chapter = chapters.find(c => heading.start >= c.start && heading.start < c.end);
-  const text = JSDOM.fragment(marked.parse(source.slice(heading.end, headings[index + 1]?.start ?? source.length))).textContent.replace(/\s+/g, ' ').trim();
-  return { chapter: chapter.title, title: heading.title, url: anchors[heading.id], text };
+  const adaptedOverview = heading.depth === 2 && ['work-in-progress', 'object-oriented-design'].includes(chapter.slug);
+  const searchBody = adaptedOverview ? chapter.body : source.slice(heading.end, headings[index + 1]?.start ?? source.length);
+  const text = JSDOM.fragment(marked.parse(searchBody)).textContent.replace(/\s+/g, ' ').trim();
+  return { chapter: chapter.title, title: adaptedOverview ? chapter.title : heading.title, url: anchors[heading.id], text };
 });
 await emit(new URL('public/system-design-search.json', root), JSON.stringify([...searchRecords, ...solutions.search]) + '\n');
 await emit(new URL('manifest.json', vendor), JSON.stringify(manifest, null, 2) + '\n');

@@ -12,6 +12,12 @@ const vendor = new URL('vendor/system-design-primer/', root);
 const hash = data => createHash('sha256').update(data).digest('hex');
 const systems = ['pastebin','twitter','web_crawler','mint','social_graph','query_cache','sales_rank','scaling_aws'];
 const objects = ['hash_table','lru_cache','call_center','deck_of_cards','parking_lot','online_chat'];
+const siteTopics = {
+  circular_array: 'object-oriented-design',
+  mapreduce: 'work-in-progress',
+  consistent_hashing: 'work-in-progress',
+  scatter_gather: 'work-in-progress',
+};
 const objectFiles = { hash_table:'hash_map', ...Object.fromEntries(objects.slice(1).map(x=>[x,x])) };
 
 export async function buildSolutions({check, update, download, images}) {
@@ -24,11 +30,11 @@ export async function buildSolutions({check, update, download, images}) {
     sources[path] = hash(content);
     return content;
   }
-  for (const [kind, ids] of [['system_design',systems], ['object_oriented_design',objects], ['site',['circular_array']]]) {
+  for (const [kind, ids] of [['system_design',systems], ['object_oriented_design',objects], ['site',Object.keys(siteTopics)]]) {
     for (const id of ids) {
-      const parent = kind === 'system_design' ? 'system-design-exercises' : 'object-oriented-design';
+      const parent = kind === 'site' ? siteTopics[id] : kind === 'system_design' ? 'system-design-exercises' : 'object-oriented-design';
       const slug = `${parent}/${id.replaceAll('_','-')}`;
-      const sourcePath = kind === 'site' ? 'src/data/system-design-supplements/circular-array.md' : `solutions/${kind}/${id}/${kind === 'system_design' ? 'README-zh-Hans.md' : `${objectFiles[id]}.ipynb`}`;
+      const sourcePath = kind === 'site' ? `src/data/system-design-supplements/${id.replaceAll('_','-')}.md` : `solutions/${kind}/${id}/${kind === 'system_design' ? 'README-zh-Hans.md' : `${objectFiles[id]}.ipynb`}`;
       const original = kind === 'site' ? await readFile(new URL(sourcePath, root), 'utf8') : await sourceFile(sourcePath);
       if (kind === 'site') sources[sourcePath] = hash(original);
       let markdown = applyEnglishUpdates(sourcePath, original);

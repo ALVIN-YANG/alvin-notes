@@ -2366,6 +2366,184 @@
         "复杂度与取舍": "/system-design/object-oriented-design/circular-array/#复杂度与取舍",
         "检查重点": "/system-design/object-oriented-design/circular-array/#检查重点"
       }
+    },
+    {
+      "title": "MapReduce：按键组织分布式批处理",
+      "slug": "work-in-progress/mapreduce",
+      "url": "/system-design/work-in-progress/mapreduce/",
+      "parent": "work-in-progress",
+      "sourcePath": "src/data/system-design-supplements/mapreduce.md",
+      "translated": false,
+      "siteSupplement": true,
+      "headings": [
+        {
+          "title": "例子：统计各城市的销售额",
+          "depth": 2,
+          "id": "例子统计各城市的销售额",
+          "start": 417,
+          "end": 434
+        },
+        {
+          "title": "四个阶段各自负责什么",
+          "depth": 2,
+          "id": "四个阶段各自负责什么",
+          "start": 1035,
+          "end": 1050
+        },
+        {
+          "title": "一个可运行的缩小模型",
+          "depth": 2,
+          "id": "一个可运行的缩小模型",
+          "start": 1563,
+          "end": 1578
+        },
+        {
+          "title": "为什么平均值不能直接这样合并",
+          "depth": 3,
+          "id": "为什么平均值不能直接这样合并",
+          "start": 2409,
+          "end": 2429
+        },
+        {
+          "title": "失败、慢任务与重复执行",
+          "depth": 2,
+          "id": "失败慢任务与重复执行",
+          "start": 2685,
+          "end": 2701
+        },
+        {
+          "title": "最容易遇到的瓶颈与取舍",
+          "depth": 2,
+          "id": "最容易遇到的瓶颈与取舍",
+          "start": 2986,
+          "end": 3002
+        }
+      ],
+      "anchors": {
+        "mapreduce按键组织分布式批处理": "/system-design/work-in-progress/mapreduce/#_top",
+        "例子统计各城市的销售额": "/system-design/work-in-progress/mapreduce/#例子统计各城市的销售额",
+        "四个阶段各自负责什么": "/system-design/work-in-progress/mapreduce/#四个阶段各自负责什么",
+        "一个可运行的缩小模型": "/system-design/work-in-progress/mapreduce/#一个可运行的缩小模型",
+        "为什么平均值不能直接这样合并": "/system-design/work-in-progress/mapreduce/#为什么平均值不能直接这样合并",
+        "失败慢任务与重复执行": "/system-design/work-in-progress/mapreduce/#失败慢任务与重复执行",
+        "最容易遇到的瓶颈与取舍": "/system-design/work-in-progress/mapreduce/#最容易遇到的瓶颈与取舍"
+      }
+    },
+    {
+      "title": "一致性哈希：让扩缩容只影响部分键",
+      "slug": "work-in-progress/consistent-hashing",
+      "url": "/system-design/work-in-progress/consistent-hashing/",
+      "parent": "work-in-progress",
+      "sourcePath": "src/data/system-design-supplements/consistent-hashing.md",
+      "translated": false,
+      "siteSupplement": true,
+      "headings": [
+        {
+          "title": "例子：新增一个缓存节点",
+          "depth": 2,
+          "id": "例子新增一个缓存节点",
+          "start": 444,
+          "end": 460
+        },
+        {
+          "title": "用代码验证边界与绕回",
+          "depth": 2,
+          "id": "用代码验证边界与绕回",
+          "start": 1039,
+          "end": 1054
+        },
+        {
+          "title": "为什么需要虚拟节点",
+          "depth": 2,
+          "id": "为什么需要虚拟节点",
+          "start": 1831,
+          "end": 1845
+        },
+        {
+          "title": "节点归属改变后，数据不会自动出现",
+          "depth": 2,
+          "id": "节点归属改变后数据不会自动出现",
+          "start": 2233,
+          "end": 2254
+        },
+        {
+          "title": "故障、成员表与权衡",
+          "depth": 2,
+          "id": "故障成员表与权衡",
+          "start": 2546,
+          "end": 2560
+        }
+      ],
+      "anchors": {
+        "一致性哈希让扩缩容只影响部分键": "/system-design/work-in-progress/consistent-hashing/#_top",
+        "例子新增一个缓存节点": "/system-design/work-in-progress/consistent-hashing/#例子新增一个缓存节点",
+        "用代码验证边界与绕回": "/system-design/work-in-progress/consistent-hashing/#用代码验证边界与绕回",
+        "为什么需要虚拟节点": "/system-design/work-in-progress/consistent-hashing/#为什么需要虚拟节点",
+        "节点归属改变后数据不会自动出现": "/system-design/work-in-progress/consistent-hashing/#节点归属改变后数据不会自动出现",
+        "故障成员表与权衡": "/system-design/work-in-progress/consistent-hashing/#故障成员表与权衡"
+      }
+    },
+    {
+      "title": "Scatter-gather：并行请求，再按规则汇总",
+      "slug": "work-in-progress/scatter-gather",
+      "url": "/system-design/work-in-progress/scatter-gather/",
+      "parent": "work-in-progress",
+      "sourcePath": "src/data/system-design-supplements/scatter-gather.md",
+      "translated": false,
+      "siteSupplement": true,
+      "headings": [
+        {
+          "title": "例子：从三个搜索分片取前两名",
+          "depth": 2,
+          "id": "例子从三个搜索分片取前两名",
+          "start": 394,
+          "end": 413
+        },
+        {
+          "title": "先确定结束条件",
+          "depth": 2,
+          "id": "先确定结束条件",
+          "start": 1060,
+          "end": 1072
+        },
+        {
+          "title": "把缺失信息放进返回结果",
+          "depth": 2,
+          "id": "把缺失信息放进返回结果",
+          "start": 1596,
+          "end": 1612
+        },
+        {
+          "title": "用离线模型检查汇总规则",
+          "depth": 2,
+          "id": "用离线模型检查汇总规则",
+          "start": 1961,
+          "end": 1977
+        },
+        {
+          "title": "为什么扇出越大，尾延迟越突出",
+          "depth": 2,
+          "id": "为什么扇出越大尾延迟越突出",
+          "start": 3820,
+          "end": 3839
+        },
+        {
+          "title": "成本与选择",
+          "depth": 2,
+          "id": "成本与选择",
+          "start": 4185,
+          "end": 4195
+        }
+      ],
+      "anchors": {
+        "scatter-gather并行请求再按规则汇总": "/system-design/work-in-progress/scatter-gather/#_top",
+        "例子从三个搜索分片取前两名": "/system-design/work-in-progress/scatter-gather/#例子从三个搜索分片取前两名",
+        "先确定结束条件": "/system-design/work-in-progress/scatter-gather/#先确定结束条件",
+        "把缺失信息放进返回结果": "/system-design/work-in-progress/scatter-gather/#把缺失信息放进返回结果",
+        "用离线模型检查汇总规则": "/system-design/work-in-progress/scatter-gather/#用离线模型检查汇总规则",
+        "为什么扇出越大尾延迟越突出": "/system-design/work-in-progress/scatter-gather/#为什么扇出越大尾延迟越突出",
+        "成本与选择": "/system-design/work-in-progress/scatter-gather/#成本与选择"
+      }
     }
   ],
   "solutionPaths": {
@@ -2397,7 +2575,10 @@
     "solutions/object_oriented_design/parking_lot/parking_lot.py": "/system-design/object-oriented-design/parking-lot/#解答",
     "solutions/object_oriented_design/online_chat/online_chat.ipynb": "/system-design/object-oriented-design/online-chat/",
     "solutions/object_oriented_design/online_chat/online_chat.py": "/system-design/object-oriented-design/online-chat/#解答",
-    "src/data/system-design-supplements/circular-array.md": "/system-design/object-oriented-design/circular-array/"
+    "src/data/system-design-supplements/circular-array.md": "/system-design/object-oriented-design/circular-array/",
+    "src/data/system-design-supplements/mapreduce.md": "/system-design/work-in-progress/mapreduce/",
+    "src/data/system-design-supplements/consistent-hashing.md": "/system-design/work-in-progress/consistent-hashing/",
+    "src/data/system-design-supplements/scatter-gather.md": "/system-design/work-in-progress/scatter-gather/"
   },
   "solutionSources": {
     "solutions/system_design/pastebin/README-zh-Hans.md": "a4ee8b59739415482deeec4404ba31577c0d2d36a5ebb86fc14afa079537b0d0",
@@ -2415,6 +2596,9 @@
     "solutions/object_oriented_design/parking_lot/parking_lot.ipynb": "f8a38f493fa001b2d36d212f6e6913e6c9fff401d75a8e44549604cde4ca8bd9",
     "solutions/object_oriented_design/online_chat/online_chat.ipynb": "498497ff64e00bb22117e4e468ef13df13da5fb8bd215447bb73a0f0bffd894f",
     "src/data/system-design-supplements/circular-array.md": "d3a19f53292f5ac09547c20ce3f487676fe5e73495446c89309982cee89d4952",
+    "src/data/system-design-supplements/mapreduce.md": "38802a252f3301878507f96c30422142021fa096bae316131240036ebfc0dd8b",
+    "src/data/system-design-supplements/consistent-hashing.md": "6dab7005087d917562a16a267f5865707849a49bbc989ad8b4124ace5fbd58ef",
+    "src/data/system-design-supplements/scatter-gather.md": "b5edd01c441c6644ac95f94b239c5cb5fa2e1d5a6ab291d108ed5f2e83a0a186",
     "translations/object-oriented.zh.json": "f1fcaf2b981b8dbf40e3e2d096c2f10981909a0e5b70d95382b2d803413d8e84"
   },
   "referenceAliases": {
@@ -4209,7 +4393,8 @@
       ]
     },
     {
-      "title": "正在完善中",
+      "title": "进阶专题",
+      "sourceTitle": "正在完善中",
       "slug": "work-in-progress",
       "url": "/system-design/work-in-progress/",
       "start": 67562,

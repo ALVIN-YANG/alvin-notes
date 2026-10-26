@@ -22,15 +22,18 @@ export async function verifySystemDesign() {
     const source = await readFile(new URL(`../src/content/docs/system-design/${chapter.slug}.md`, import.meta.url), 'utf8');
     const body = source.replace(/^---\n[\s\S]*?\n---\n/, '');
     const expected = JSDOM.fragment(marked.parse(body));
+    const diagrams = [...expected.querySelectorAll('pre code.language-mermaid')];
+    if (content.querySelectorAll('[data-mermaid-static] svg').length !== diagrams.length) problems.push(`Missing static diagram in ${chapter.slug}`);
+    diagrams.forEach(node => node.parentElement.remove());
     const actual = content.cloneNode(true);
-    actual.querySelectorAll('.sl-anchor-link, .copy, .expressive-code .header, [data-pagefind-ignore]').forEach(node => node.remove());
+    actual.querySelectorAll('.sl-anchor-link, .copy, .expressive-code .header, [data-pagefind-ignore], [data-mermaid-static]').forEach(node => node.remove());
     if (normalize(actual.textContent) !== normalize(expected.textContent)) {
       const a = normalize(actual.textContent), b = normalize(expected.textContent);
       const i = [...b].findIndex((_, i) => a[i] !== b[i]);
       problems.push(`Rendered text differs in ${chapter.slug}: at ${i}, expected ${b.slice(Math.max(0, i - 20), i + 70)}, got ${a.slice(Math.max(0, i - 20), i + 70)}`);
     }
     for (const selector of ['img', 'table', 'pre']) {
-      if (content.querySelectorAll(selector).length !== expected.querySelectorAll(selector).length) problems.push(`Lost ${selector} in ${chapter.slug}`);
+      if (actual.querySelectorAll(selector).length !== expected.querySelectorAll(selector).length) problems.push(`Lost ${selector} in ${chapter.slug}`);
     }
     const actualCode = [...content.querySelectorAll('pre code')].map(node => {
       const lines = [...node.querySelectorAll('.ec-line .code')];
