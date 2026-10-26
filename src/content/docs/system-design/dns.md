@@ -2,7 +2,7 @@
 {
   "title": "域名系统",
   "sidebar": {
-    "order": 29
+    "order": 30
   },
   "tableOfContents": {
     "minHeadingLevel": 2,

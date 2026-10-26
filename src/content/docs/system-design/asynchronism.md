@@ -2,7 +2,7 @@
 {
   "title": "异步",
   "sidebar": {
-    "order": 36
+    "order": 37
   },
   "tableOfContents": {
     "minHeadingLevel": 2,

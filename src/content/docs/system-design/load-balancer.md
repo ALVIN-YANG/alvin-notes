@@ -2,7 +2,7 @@
 {
   "title": "负载均衡器",
   "sidebar": {
-    "order": 31
+    "order": 32
   },
   "tableOfContents": {
     "minHeadingLevel": 2,

@@ -2,7 +2,7 @@
 {
   "title": "内容分发网络（CDN）",
   "sidebar": {
-    "order": 30
+    "order": 31
   },
   "tableOfContents": {
     "minHeadingLevel": 2,

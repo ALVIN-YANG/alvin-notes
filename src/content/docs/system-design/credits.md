@@ -2,7 +2,7 @@
 {
   "title": "致谢",
   "sidebar": {
-    "order": 41
+    "order": 42
   },
   "tableOfContents": {
     "minHeadingLevel": 2,

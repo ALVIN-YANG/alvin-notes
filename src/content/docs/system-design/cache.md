@@ -2,7 +2,7 @@
 {
   "title": "缓存",
   "sidebar": {
-    "order": 35
+    "order": 36
   },
   "tableOfContents": {
     "minHeadingLevel": 2,

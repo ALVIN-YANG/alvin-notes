@@ -2,7 +2,7 @@
 {
   "title": "可用性与一致性",
   "sidebar": {
-    "order": 26
+    "order": 27
   },
   "tableOfContents": {
     "minHeadingLevel": 2,

@@ -2,7 +2,7 @@
 {
   "title": "许可",
   "sidebar": {
-    "order": 43
+    "order": 44
   },
   "tableOfContents": {
     "minHeadingLevel": 2,

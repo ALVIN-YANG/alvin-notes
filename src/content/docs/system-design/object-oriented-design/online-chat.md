@@ -15,8 +15,8 @@
     "label": "设计停车场"
   },
   "next": {
-    "link": "/system-design/getting-started/",
-    "label": "系统设计主题：从这里开始"
+    "link": "/system-design/object-oriented-design/circular-array/",
+    "label": "设计环形数组"
   }
 }
 ---

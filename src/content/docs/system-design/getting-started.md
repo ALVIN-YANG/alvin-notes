@@ -2,7 +2,7 @@
 {
   "title": "系统设计主题：从这里开始",
   "sidebar": {
-    "order": 23
+    "order": 24
   },
   "tableOfContents": {
     "minHeadingLevel": 2,
@@ -11,8 +11,8 @@
   "editUrl": false,
   "comments": false,
   "prev": {
-    "link": "/system-design/object-oriented-design/online-chat/",
-    "label": "设计在线聊天服务"
+    "link": "/system-design/object-oriented-design/circular-array/",
+    "label": "设计环形数组"
   },
   "next": {
     "link": "/system-design/performance-scalability/",

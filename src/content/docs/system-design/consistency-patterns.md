@@ -2,7 +2,7 @@
 {
   "title": "一致性模式",
   "sidebar": {
-    "order": 27
+    "order": 28
   },
   "tableOfContents": {
     "minHeadingLevel": 2,

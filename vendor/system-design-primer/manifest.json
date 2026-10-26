@@ -21,6 +21,7 @@
       "parent": "system-design-exercises",
       "sourcePath": "solutions/system_design/pastebin/README-zh-Hans.md",
       "translated": false,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "第一步：概述用例和约束",
@@ -210,6 +211,7 @@
       "parent": "system-design-exercises",
       "sourcePath": "solutions/system_design/twitter/README-zh-Hans.md",
       "translated": false,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "第一步：简述用例与约束条件",
@@ -399,6 +401,7 @@
       "parent": "system-design-exercises",
       "sourcePath": "solutions/system_design/web_crawler/README-zh-Hans.md",
       "translated": false,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "第一步：简述用例与约束条件",
@@ -596,6 +599,7 @@
       "parent": "system-design-exercises",
       "sourcePath": "solutions/system_design/mint/README-zh-Hans.md",
       "translated": false,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "第一步：简述用例与约束条件",
@@ -785,6 +789,7 @@
       "parent": "system-design-exercises",
       "sourcePath": "solutions/system_design/social_graph/README-zh-Hans.md",
       "translated": false,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "第 1 步：用例和约束概要",
@@ -950,6 +955,7 @@
       "parent": "system-design-exercises",
       "sourcePath": "solutions/system_design/query_cache/README-zh-Hans.md",
       "translated": false,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "第一步：简述用例与约束条件",
@@ -1139,6 +1145,7 @@
       "parent": "system-design-exercises",
       "sourcePath": "solutions/system_design/sales_rank/README-zh-Hans.md",
       "translated": false,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "第一步：简述用例与约束条件",
@@ -1312,6 +1319,7 @@
       "parent": "system-design-exercises",
       "sourcePath": "solutions/system_design/scaling_aws/README-zh-Hans.md",
       "translated": false,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "第 1 步：用例和约束概要",
@@ -1685,6 +1693,7 @@
       "parent": "object-oriented-design",
       "sourcePath": "solutions/object_oriented_design/hash_table/hash_map.ipynb",
       "translated": true,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "约束与假设",
@@ -1722,6 +1731,7 @@
       "parent": "object-oriented-design",
       "sourcePath": "solutions/object_oriented_design/lru_cache/lru_cache.ipynb",
       "translated": true,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "约束与假设",
@@ -1759,6 +1769,7 @@
       "parent": "object-oriented-design",
       "sourcePath": "solutions/object_oriented_design/call_center/call_center.ipynb",
       "translated": true,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "约束与假设",
@@ -1796,6 +1807,7 @@
       "parent": "object-oriented-design",
       "sourcePath": "solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb",
       "translated": true,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "约束与假设",
@@ -1833,6 +1845,7 @@
       "parent": "object-oriented-design",
       "sourcePath": "solutions/object_oriented_design/parking_lot/parking_lot.ipynb",
       "translated": true,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "约束与假设",
@@ -1870,6 +1883,7 @@
       "parent": "object-oriented-design",
       "sourcePath": "solutions/object_oriented_design/online_chat/online_chat.ipynb",
       "translated": true,
+      "siteSupplement": false,
       "headings": [
         {
           "title": "约束与假设",
@@ -1898,6 +1912,68 @@
         "约束与假设": "/system-design/object-oriented-design/online-chat/#约束与假设",
         "解答": "/system-design/object-oriented-design/online-chat/#解答",
         "原-notebook-输出": "/system-design/object-oriented-design/online-chat/#原-notebook-输出"
+      }
+    },
+    {
+      "title": "设计环形数组",
+      "slug": "object-oriented-design/circular-array",
+      "url": "/system-design/object-oriented-design/circular-array/",
+      "parent": "object-oriented-design",
+      "sourcePath": "src/data/system-design-supplements/circular-array.md",
+      "translated": false,
+      "siteSupplement": true,
+      "headings": [
+        {
+          "title": "约束与接口",
+          "depth": 2,
+          "id": "约束与接口",
+          "start": 271,
+          "end": 281
+        },
+        {
+          "title": "索引如何映射",
+          "depth": 2,
+          "id": "索引如何映射",
+          "start": 744,
+          "end": 755
+        },
+        {
+          "title": "Python 实现",
+          "depth": 2,
+          "id": "python-实现",
+          "start": 1161,
+          "end": 1175
+        },
+        {
+          "title": "运行示例",
+          "depth": 2,
+          "id": "运行示例",
+          "start": 2237,
+          "end": 2246
+        },
+        {
+          "title": "复杂度与取舍",
+          "depth": 2,
+          "id": "复杂度与取舍",
+          "start": 2693,
+          "end": 2704
+        },
+        {
+          "title": "检查重点",
+          "depth": 2,
+          "id": "检查重点",
+          "start": 3097,
+          "end": 3106
+        }
+      ],
+      "anchors": {
+        "设计环形数组": "/system-design/object-oriented-design/circular-array/#_top",
+        "约束与接口": "/system-design/object-oriented-design/circular-array/#约束与接口",
+        "索引如何映射": "/system-design/object-oriented-design/circular-array/#索引如何映射",
+        "python-实现": "/system-design/object-oriented-design/circular-array/#python-实现",
+        "运行示例": "/system-design/object-oriented-design/circular-array/#运行示例",
+        "复杂度与取舍": "/system-design/object-oriented-design/circular-array/#复杂度与取舍",
+        "检查重点": "/system-design/object-oriented-design/circular-array/#检查重点"
       }
     }
   ],
@@ -1929,7 +2005,8 @@
     "solutions/object_oriented_design/parking_lot/parking_lot.ipynb": "/system-design/object-oriented-design/parking-lot/",
     "solutions/object_oriented_design/parking_lot/parking_lot.py": "/system-design/object-oriented-design/parking-lot/#解答",
     "solutions/object_oriented_design/online_chat/online_chat.ipynb": "/system-design/object-oriented-design/online-chat/",
-    "solutions/object_oriented_design/online_chat/online_chat.py": "/system-design/object-oriented-design/online-chat/#解答"
+    "solutions/object_oriented_design/online_chat/online_chat.py": "/system-design/object-oriented-design/online-chat/#解答",
+    "src/data/system-design-supplements/circular-array.md": "/system-design/object-oriented-design/circular-array/"
   },
   "solutionSources": {
     "solutions/system_design/pastebin/README-zh-Hans.md": "a4ee8b59739415482deeec4404ba31577c0d2d36a5ebb86fc14afa079537b0d0",
@@ -1946,6 +2023,7 @@
     "solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb": "7811560f5be0fee28e6dc65cd74934b65e8ebc72968e4f01ffbccabdf43718db",
     "solutions/object_oriented_design/parking_lot/parking_lot.ipynb": "f8a38f493fa001b2d36d212f6e6913e6c9fff401d75a8e44549604cde4ca8bd9",
     "solutions/object_oriented_design/online_chat/online_chat.ipynb": "498497ff64e00bb22117e4e468ef13df13da5fb8bd215447bb73a0f0bffd894f",
+    "src/data/system-design-supplements/circular-array.md": "d3a19f53292f5ac09547c20ce3f487676fe5e73495446c89309982cee89d4952",
     "translations/object-oriented.zh.json": "f1fcaf2b981b8dbf40e3e2d096c2f10981909a0e5b70d95382b2d803413d8e84"
   },
   "referenceAliases": {

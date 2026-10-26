@@ -13,6 +13,10 @@ export async function verifySystemDesign() {
     const doc = new JSDOM(await readFile(path, 'utf8')).window.document;
     documents.set(chapter.url, doc);
     if (doc.querySelector('h1')?.textContent !== chapter.title) problems.push(`Wrong chapter title: ${chapter.slug}`);
+    if (chapter.siteSupplement) {
+      const attribution = doc.querySelector('.primer-source')?.textContent || '';
+      if (!attribution.includes('本站补充') || attribution.includes('原著 Donne Martin')) problems.push(`Incorrect local attribution: ${chapter.slug}`);
+    }
     const content = doc.querySelector('.sl-markdown-content');
     if (!content) { problems.push(`Missing chapter body: ${chapter.slug}`); continue; }
     const source = await readFile(new URL(`../src/content/docs/system-design/${chapter.slug}.md`, import.meta.url), 'utf8');

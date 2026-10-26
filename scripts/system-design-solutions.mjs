@@ -23,12 +23,13 @@ export async function buildSolutions({check, update, download, images}) {
     sources[path] = hash(content);
     return content;
   }
-  for (const [kind, ids] of [['system_design',systems], ['object_oriented_design',objects]]) {
+  for (const [kind, ids] of [['system_design',systems], ['object_oriented_design',objects], ['site',['circular_array']]]) {
     for (const id of ids) {
       const parent = kind === 'system_design' ? 'system-design-exercises' : 'object-oriented-design';
       const slug = `${parent}/${id.replaceAll('_','-')}`;
-      const sourcePath = `solutions/${kind}/${id}/${kind === 'system_design' ? 'README-zh-Hans.md' : `${objectFiles[id]}.ipynb`}`;
-      const original = await sourceFile(sourcePath);
+      const sourcePath = kind === 'site' ? 'src/data/system-design-supplements/circular-array.md' : `solutions/${kind}/${id}/${kind === 'system_design' ? 'README-zh-Hans.md' : `${objectFiles[id]}.ipynb`}`;
+      const original = kind === 'site' ? await readFile(new URL(sourcePath, root), 'utf8') : await sourceFile(sourcePath);
+      if (kind === 'site') sources[sourcePath] = hash(original);
       let markdown = original;
       if (kind === 'object_oriented_design') {
         const notebook = JSON.parse(original);
@@ -68,11 +69,11 @@ export async function buildSolutions({check, update, download, images}) {
         const {width,height}=await sharp(bytes).metadata();
         images[asset]={src:`/images/system-design/${filename}`,width,height,sha256:hash(bytes)};
       }
-      const document={title:titleHeading.title,slug,url,parent,sourcePath,translated:kind==='object_oriented_design',body,headings:headings.filter(h=>h!==titleHeading),anchors};
+      const document={title:titleHeading.title,slug,url,parent,sourcePath,translated:kind==='object_oriented_design',siteSupplement:kind==='site',body,headings:headings.filter(h=>h!==titleHeading),anchors};
       supplements.push(document);
       paths[sourcePath]=url;
       if(kind==='system_design')paths[sourcePath.replace('README-zh-Hans.md','README.md')]=url;
-      else paths[sourcePath.replace('.ipynb','.py')]=url+'#解答';
+      else if (kind==='object_oriented_design') paths[sourcePath.replace('.ipynb','.py')]=url+'#解答';
       headings.forEach((h,i)=>search.push({chapter:document.title,title:h.title,url:anchors[h.id],text:JSDOM.fragment(marked.parse(markdown.slice(h.end,headings[i+1]?.start??markdown.length))).textContent.replace(/\s+/g,' ').trim()}));
     }
   }

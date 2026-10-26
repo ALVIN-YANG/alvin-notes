@@ -34,6 +34,6 @@
 | 设计一副牌        | [解决方案](solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb) |
 | 设计一个停车场      | [解决方案](solutions/object_oriented_design/parking_lot/parking_lot.ipynb) |
 | 设计一个聊天服务     | [解决方案](solutions/object_oriented_design/online_chat/online_chat.ipynb) |
-| 设计一个环形数组     | [待解决](#贡献)                     |
+| 设计一个环形数组     | [本站补充解答](/system-design/object-oriented-design/circular-array/)                     |
 | 添加一个面向对象设计问题 | [待解决](#贡献)                     |
 

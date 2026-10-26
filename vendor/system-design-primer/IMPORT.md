@@ -22,9 +22,9 @@ remark-system-design.mjs 在构建时处理链接、图片和两处旧格式兼�
 
 ## 站内解答与多级目录
 
-站点包含原主文档的 29 章、8 篇上游已有中文解答，以及 6 篇面向对象 Notebook 的中文阅读版。题目目录可展开到每一篇解答，解答内部仍保留完整的步骤与小节。
+站点包含原主文档的 29 章、8 篇上游已有中文解答，以及 6 篇面向对象 Notebook 的中文阅读版，另有 1 篇明确署名的本站环形数组解答。题目目录可展开到每一篇解答，解答内部仍保留完整的步骤与小节。
 
-原始中文解答与英文 Notebook 存放在 `solutions/`，不直接编辑。`translations/object-oriented.zh.json` 仅保存 Notebook 说明的中文翻译；Notebook 代码、输出由脚本逐字保留，不执行。上游没有提供解答的环形数组题维持原状。
+原始中文解答与英文 Notebook 存放在 `solutions/`，不直接编辑。`translations/object-oriented.zh.json` 仅保存 Notebook 说明的中文翻译；Notebook 代码、输出由脚本逐字保留，不执行。环形数组由本站另行补充，源稿保存在 `src/data/system-design-supplements/circular-array.md`，以 `siteSupplement` 区分来源。上游快照不变；生成时仅将该题的待解决入口改成明确标注的本站解答链接。
 
 `scripts/system-design-solutions.mjs` 管理解答来源、图片、译文与路径映射。英文 README 链接优先指向对应站内中文解答；解答中的基础知识点引用与其他题目引用也指向站内。3 份 Anki 卡堆提供本站下载。GitHub 作者、版权来源、贡献与讨论入口，以及第三方延伸阅读保留外部链接。
 

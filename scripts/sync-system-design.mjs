@@ -100,6 +100,12 @@ async function emit(path, content) {
 }
 for (const [index, chapter] of documents.entries()) {
   const frontmatter = { title: chapter.title, sidebar: { order: index + 1 }, tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 4 }, editUrl: false, comments: false, prev: index ? { link: documents[index - 1].url, label: documents[index - 1].title } : false, next: index + 1 < documents.length ? { link: documents[index + 1].url, label: documents[index + 1].title } : false };
+  // Preserve the upstream snapshot, but make the explicitly labelled local answer reachable.
+  if (chapter.slug === 'object-oriented-design') {
+    const row = /^(\| 设计一个环形数组\s*\| )\[待解决\]\(#贡献\)/m;
+    if (!row.test(chapter.body)) throw new Error('Review upstream circular-array row before supplementing');
+    chapter.body = chapter.body.replace(row, '$1[本站补充解答](/system-design/object-oriented-design/circular-array/)');
+  }
   // Frontmatter parsing trims leading indentation; fence the original indented license block.
   const renderedBody = chapter.slug === 'license' ? '```text\n' + chapter.body.replace(/^ {4}/gm, '') + '\n```\n' : chapter.body;
   // JSON is valid YAML: source punctuation cannot accidentally become frontmatter syntax.

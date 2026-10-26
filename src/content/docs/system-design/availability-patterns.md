@@ -2,7 +2,7 @@
 {
   "title": "可用性模式",
   "sidebar": {
-    "order": 28
+    "order": 29
   },
   "tableOfContents": {
     "minHeadingLevel": 2,
