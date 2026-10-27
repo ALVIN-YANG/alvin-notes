@@ -1,0 +1,87 @@
+{
+  "title": "OpenClaw 流式语音优化：脱敏观察数据",
+  "observedDates": ["2026-10-23", "2026-10-26"],
+  "runtime": { "openclaw": "2026.10.3", "node": "24.18.0" },
+  "disclosure": "由项目实验记录摘录。已移除地址、凭据、用户、业务、会话与请求标识，不含对话正文。不是原始日志，也不是受控总体性能基准。",
+  "hello": {
+    "date": "2026-10-23",
+    "kind": "真实语音事件日志",
+    "start": "UI commit",
+    "end": "首次 HTMLMediaElement playing",
+    "totalMs": 7418,
+    "excludes": ["UI commit 之前的 VAD 判停", "声卡与扬声器实际声学输出"],
+    "segments": [
+      { "label": "ASR 收尾", "ms": 579, "approximate": false },
+      { "label": "ASR final → HTTP 发出", "ms": 3686, "approximate": true },
+      { "label": "HTTP 发出 → 首个正文", "ms": 2463, "approximate": true },
+      { "label": "首个正文 → playing", "ms": 690, "approximate": false }
+    ],
+    "agentRunToHttpMsApprox": 2338,
+    "method": "HTTP 发出时间由原生传输响应日志减去 elapsedMs 推算，其相邻分段为近似值。"
+  },
+  "earlyWarmup": {
+    "date": "2026-10-23",
+    "kind": "同设备隔离文本探针，早期取消方案，后被完整回环方案替代",
+    "dispatchToHttpMs": { "coldFirst": 5983, "preparedFirst": 1837 },
+    "limitation": "单轮观察，不是全链路播放耗时。"
+  },
+  "fullWarmup": {
+    "date": "2026-10-23",
+    "kind": "独立配置与会话副本下的原生文本链路",
+    "startupPreparationMs": 13489,
+    "externalModelCallsDuringPreparation": 0,
+    "temporarySessionsAfterCleanup": 0,
+    "mainSessionUnchanged": true,
+    "samples": [
+      { "condition": "启动预热后第一句", "inputToHttpMs": 1380, "inputToFirstTextMs": 3693 },
+      { "condition": "连续第二句", "inputToHttpMs": 1483, "inputToFirstTextMs": 3232 },
+      { "condition": "空闲 120 秒后第一句", "inputToHttpMs": 691, "inputToFirstTextMs": 2496 }
+    ],
+    "limitation": "各一轮；不含 VAD、ASR、TTS、浏览器播放与扬声器。"
+  },
+  "sse": {
+    "date": "2026-10-23",
+    "kind": "相同模型、固定短文任务、同一后端的不同网络路径探针",
+    "samples": [
+      { "condition": "修改前公网", "firstEventMs": 3271, "firstTextMs": 3271, "endMs": 3272 },
+      { "condition": "修改前直达后端", "firstEventMs": 528, "firstTextMs": 1692, "endMs": 3600 },
+      { "condition": "修改后公网", "firstEventMs": 502, "firstTextMs": 2253, "endMs": 4123 }
+    ],
+    "change": ["Cache-Control: no-store, no-transform", "X-Accel-Buffering: no"],
+    "limitation": "独立请求，模型耗时会波动；证据是分块集中到达变为连续到达，不是统计提速比例。未确认公网中间层具体产品。"
+  },
+  "tts": {
+    "date": "2026-10-23",
+    "start": "TTS 请求",
+    "end": "首音频包",
+    "beforeColdMs": 2172,
+    "beforeReusedMs": 184,
+    "afterObservedMs": [217, 205, 309, 185],
+    "overlappedConnectionPreparationMs": 1207,
+    "firstHeaderOnlyPacketBytes": 44,
+    "limitation": "不等于首个可解码帧或实际起播，不构成受控分布比较。"
+  },
+  "downloadPressure": {
+    "date": "2026-10-26",
+    "healthTimeoutMs": 2000,
+    "samples": [
+      { "condition": "旧实现隔离压力", "durationSeconds": 61.42, "guardStopped": true, "healthTimeoutCount": 10 },
+      { "condition": "修正版隔离压力", "durationSeconds": 279.01, "completedFiles": 34, "guardStopped": false, "healthTimeoutCount": 0, "maxHealthMs": 116.39 },
+      { "condition": "真实业务下载", "durationSeconds": 383.17, "healthTimeoutCount": 1 }
+    ],
+    "limitation": "负载规模、时长和运行配置不同，不能计算统一提速倍数；健康接口不代表语音链路。"
+  },
+  "upstreamTail": {
+    "date": "2026-10-26",
+    "kind": "下载压力期间的文本探针",
+    "clientFirstAudioPacketMs": 7546.51,
+    "backendUpstreamHeadersMs": 5341,
+    "backendAuthMs": 0,
+    "backendDnsMs": 0,
+    "backendConnectMs": 0,
+    "backendTlsMs": 0,
+    "ttsFirstPacketMs": 177,
+    "correlation": "按时间、顺序、相同模型与输出长度关联，尚无统一端到端请求标识。",
+    "limitation": "客户端与服务端计时起点不同，不直接相加。上游等待不能再细分为排队、推理或返回网络。"
+  }
+}
