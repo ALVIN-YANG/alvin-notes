@@ -82,7 +82,10 @@ test('重定向、鉴权错误、限流和网络错误不自动重试，不转�
   const retryCalls=[];await assert.rejects(callPublicCompletion(context(),{resolver,transport:transport([{status:400,body:'unsupported parameter max_tokens'},new Error(fakeKey)],retryCalls)}),error=>error.kind==='network'&&error.attempts===2);assert.equal(retryCalls.length,2);
 });
 
-test('DNS 等待也受截止时间约束，已取消的请求不会开始解析',async()=>{
+test('DNS 等待也受截止时间约束，已取消的请求不会开始解析',{timeout:1000},async(t)=>{
+  // AbortSignal.timeout() 不保持事件循环存活；模拟未完成的 DNS 时需要活动句柄。
+  const keepAlive=setTimeout(()=>{},2000);
+  t.after(()=>clearTimeout(keepAlive));
   await assert.rejects(callPublicCompletion(context(),{resolver:async()=>new Promise(()=>{}),timeoutMs:10}),error=>error.kind==='timeout');
   let resolved=false;const controller=new AbortController();controller.abort();
   await assert.rejects(callPublicCompletion({...context(),signal:controller.signal},{resolver:async()=>{resolved=true;return [];}}),error=>error.kind==='cancelled');assert.equal(resolved,false);
