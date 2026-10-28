@@ -3,6 +3,7 @@ import test from 'node:test';
 
 import {
   buildRefreshMetadata,
+  parseArenaTextDataset,
   parseArenaTextEntries,
   shouldWriteArenaOutput,
 } from '../scripts/model-arena-core.mjs';
@@ -11,6 +12,24 @@ function nextFlightHtml(entries) {
   const payload = `9:${JSON.stringify({ leaderboard: { entries } })}`;
   return `<script>self.__next_f.push([1,${JSON.stringify(payload)}])</script>`;
 }
+
+test('Arena official dataset uses only the latest overall snapshot and its publication date', () => {
+  const row = { rank: 1n, rating: 1517.17, vote_count: 10083, model_name: 'Example Model (High)', organization: 'Example', category: 'overall', leaderboard_publish_date: '2026-10-22' };
+  const board = parseArenaTextDataset([
+    { ...row, category: 'coding', rating: 9999 },
+    { ...row, leaderboard_publish_date: '2026-10-20', rating: 2000 },
+    row,
+  ]);
+  assert.equal(board.updatedAt, '2026-10-22T00:00:00.000Z');
+  assert.deepEqual(board.entries, [{ rank: 1, rating: 1517.17, votes: 10083, modelDisplayName: 'Example Model (High)', modelOrganization: 'Example' }]);
+});
+
+test('Arena official dataset rejects missing overall data, invalid dates and incomplete scores', () => {
+  const row = { rank: 1, rating: 1500, vote_count: 10, model_name: 'Example Model', organization: 'Example', category: 'overall', leaderboard_publish_date: '2026-10-22' };
+  for (const rows of [[], [{ ...row, category: 'coding' }], [{ ...row, leaderboard_publish_date: '' }], [{ ...row, rating: null }], [{ ...row, model_name: '' }]]) {
+    assert.throws(() => parseArenaTextDataset(rows), /Arena/);
+  }
+});
 
 test('Arena parser accepts the current entry shape with modelKey', () => {
   const entries = parseArenaTextEntries(nextFlightHtml([{

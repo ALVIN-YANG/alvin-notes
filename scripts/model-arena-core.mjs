@@ -101,6 +101,35 @@ export function parseArenaTextEntries(html) {
   return bestEntries;
 }
 
+export function parseArenaTextDataset(rows) {
+  const overall = rows.filter(row => row.category === 'overall');
+  if (!overall.length) throw new Error('Arena 官方数据集缺少 overall 分类');
+  const dates = overall.map(row => row.leaderboard_publish_date);
+  if (dates.some(date => typeof date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(date) || !Number.isFinite(Date.parse(date)))) {
+    throw new Error('Arena 官方数据集缺少有效的发布日期');
+  }
+  const latestDate = dates.sort().at(-1);
+  const latestRows = overall
+    .filter(row => row.leaderboard_publish_date === latestDate)
+    .map(row => ({ ...row, rank: typeof row.rank === 'bigint' ? Number(row.rank) : row.rank }));
+  if (latestRows.some(row =>
+    ![row.rank, row.rating, row.vote_count].every(value => typeof value === 'number' && Number.isFinite(value)) ||
+    !Number.isSafeInteger(row.rank) || row.rank < 1 || row.vote_count < 0 ||
+    typeof row.model_name !== 'string' || !row.model_name.trim() || typeof row.organization !== 'string'
+  )) throw new Error('Arena 官方数据集存在无效的模型成绩');
+
+  return {
+    updatedAt: `${latestDate}T00:00:00.000Z`,
+    entries: latestRows.map(row => ({
+      rank: row.rank,
+      rating: row.rating,
+      votes: row.vote_count,
+      modelDisplayName: row.model_name,
+      modelOrganization: row.organization,
+    })),
+  };
+}
+
 export function buildRefreshMetadata(existing, dataHash, checkedAtISO = new Date().toISOString()) {
   const hasStableUpdateTime = existing?.dataHash === dataHash && Number.isFinite(Date.parse(existing?.updatedAtISO || ''));
   const updatedAtISO = hasStableUpdateTime ? existing.updatedAtISO : checkedAtISO;

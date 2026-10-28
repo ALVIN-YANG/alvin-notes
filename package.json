@@ -40,6 +40,7 @@
     "astro": "^5.6.1",
     "fflate": "^0.8.2",
     "github-slugger": "^2.0.0",
+    "hyparquet": "^1.31.5",
     "marked": "^16.4.2",
     "remark-gfm": "^4.0.1",
     "remark-parse": "^11.0.0",

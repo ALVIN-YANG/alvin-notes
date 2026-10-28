@@ -9,8 +9,10 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { unzipSync, strFromU8 } from 'fflate';
+import { parquetReadObjects } from 'hyparquet';
 import {
   buildRefreshMetadata,
+  parseArenaTextDataset,
   parseArenaTextEntries,
   shouldWriteArenaOutput,
 } from './model-arena-core.mjs';
@@ -20,6 +22,9 @@ const EPOCH_BUNDLE_URL = 'https://epoch.ai/data/benchmark_data.zip';
 const ARTIFICIAL_ANALYSIS_URL = 'https://artificialanalysis.ai/api/v2/data/llms/models';
 const MAX_BOARD_ENTRIES = 60;
 const CACHE_MAX_AGE_MS = 72 * 60 * 60 * 1000;
+// Arena 官方数据集（CC BY 4.0）；官网默认使用 style control，避免混入原始分数。
+const ARENA_DATASET_URL = 'https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset';
+const ARENA_PARQUET_URL = `${ARENA_DATASET_URL}/resolve/main/text_style_control/latest-00000-of-00001.parquet`;
 
 const ARENA_URLS = [
   'https://arena.ai/leaderboard/text',
@@ -389,8 +394,8 @@ async function fetchEpochBoards(previousBoards) {
   });
 }
 
-function parseArenaTextData(html) {
-  return parseArenaTextEntries(html).map(entry => {
+function arenaTextEntriesToRows(entries) {
+  return entries.map(entry => {
     const modelKey = canonicalModelKey(entry.modelDisplayName);
     return {
       modelKey,
@@ -408,10 +413,14 @@ function parseArenaTextData(html) {
 async function fetchArenaTextBoard(previousBoard) {
   console.log('\n── Arena Text ──');
   let lastError;
-  for (const url of ARENA_URLS) {
+  for (const url of [ARENA_PARQUET_URL, ...ARENA_URLS]) {
     try {
-      const response = await fetchWithRetry(url, { headers: { Accept: 'text/html' } }, 2);
-      const parsed = parseArenaTextData(await response.text());
+      const isDataset = url === ARENA_PARQUET_URL;
+      const response = await fetchWithRetry(url, { headers: { Accept: isDataset ? 'application/octet-stream' : 'text/html' } }, 2);
+      const snapshot = isDataset
+        ? parseArenaTextDataset(await parquetReadObjects({ file: await response.arrayBuffer() }))
+        : { entries: parseArenaTextEntries(await response.text()), updatedAt: response.headers.get('last-modified') || nowISO() };
+      const parsed = arenaTextEntriesToRows(snapshot.entries);
       if (parsed.length === 0) throw new Error('页面中没有可识别的榜单数据');
 
       const bestByModel = new Map();
@@ -436,10 +445,10 @@ async function fetchArenaTextBoard(previousBoard) {
         operator: 'Arena',
         category: 'general',
         categoryLabel: CATEGORY_LABELS.general,
-        sourceUrl: 'https://arena.ai/leaderboard/text',
-        description: '匿名两两盲选形成的人类偏好排名，补充客观题库难以覆盖的回答体验。',
+        sourceUrl: isDataset ? ARENA_DATASET_URL : 'https://arena.ai/leaderboard/text',
+        description: '匿名两两盲选形成的人类偏好排名，补充客观题库难以覆盖的回答体验。' + (isDataset ? '采用 Arena 官方 text_style_control 数据集的 overall 分类，许可为 CC BY 4.0。' : ''),
         status: 'live',
-        updatedAt: response.headers.get('last-modified') || nowISO(),
+        updatedAt: snapshot.updatedAt,
         entries,
       }, previousBoard);
       console.log(`  ✓ ${board.label}: ${entries.length} 个模型`);
