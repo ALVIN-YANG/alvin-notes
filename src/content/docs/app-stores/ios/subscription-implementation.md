@@ -11,7 +11,7 @@ sidebar:
 
 **订阅交付从一笔已验证的 Apple 交易开始。** 客户端监听购买与更新，后端核对环境、商品、账号和有效期；重复上传与通知进入同一处理器，业务交付完成后才结束交易。通知先持久化，处理失败交给内部重试。
 
-这份实现参考对应[订阅与 Credits 总览](/architecture/ios-subscription-payment-backend-practice/)。REST 字段与商品额度是示例约定，Swift 片段需要接入项目的 API、状态类型和持久层，不能单独当成可编译运行的完整 App。发放与计量细节见[Credits 实现](/architecture/credits-metering-implementation/)。
+这份实现参考对应[订阅与 Credits 总览](/app-stores/ios/subscription-overview/)。REST 字段与商品额度是示例约定，Swift 片段需要接入项目的 API、状态类型和持久层，不能单独当成可编译运行的完整 App。发放与计量细节见[Credits 实现](/app-stores/billing/credits-metering/)。
 
 ## 开发前先定清商品和权益
 
@@ -89,7 +89,7 @@ Production 验证器需要 Bundle ID、App Apple ID 和 Production 环境。Sand
 
 ## 最小生产数据模型
 
-购买意图、Apple 交易和当前订阅状态分别保存。Credits 的账户与账单字段见[计量实现](/architecture/credits-metering-implementation/#credits-账户与账单)。
+购买意图、Apple 交易和当前订阅状态分别保存。Credits 的账户与账单字段见[计量实现](/app-stores/billing/credits-metering/#credits-账户与账单)。
 
 ### 商品表
 
@@ -726,7 +726,7 @@ Billing Grace Period 需要在 App Store Connect 主动配置。当前可选 3�
 
 ## 续费与业务额度
 
-每个 Apple 扣款周期使用新 `transactionId` 创建续费订单，订阅链沿用 `originalTransactionId`。业务月度额度的发放计划和唯一键见[续费与年付月度发放](/architecture/credits-metering-implementation/#自动续费订单和发放)。
+每个 Apple 扣款周期使用新 `transactionId` 创建续费订单，订阅链沿用 `originalTransactionId`。业务月度额度的发放计划和唯一键见[续费与年付月度发放](/app-stores/billing/credits-metering/#自动续费订单和发放)。
 
 ## 用户操作与界面结果
 

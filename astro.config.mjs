@@ -17,6 +17,11 @@ export default defineConfig({
     remarkPlugins: [remarkPhoenix, remarkSystemDesign, remarkStaticMermaid],
   },
   redirects: {
+    '/architecture/ios-subscription-payment-backend-practice': '/app-stores/ios/subscription-overview/',
+    '/architecture/ios-subscription-implementation': '/app-stores/ios/subscription-implementation/',
+    '/architecture/credits-metering-implementation': '/app-stores/billing/credits-metering/',
+    '/ops/google-play-sandbox-testing': '/app-stores/google-play/sandbox-testing/',
+
     '/system-design-knowledge': '/system-design/',
     '/interview/infra-roadmap': '/interview/',
     '/ai/prompt-engineering': '/ai-workflow/16-prompt-task-contract-practice/',
@@ -85,10 +90,10 @@ export default defineConfig({
       sidebar: [
         { label: 'App 商店实战', items: [
           { label: '手册目录', link: '/app-stores/' },
-          { label: 'iOS 订阅与额度', link: '/architecture/ios-subscription-payment-backend-practice/' },
-          { label: 'iOS 订阅实现', link: '/architecture/ios-subscription-implementation/' },
-          { label: 'Google Play 沙箱测试', link: '/ops/google-play-sandbox-testing/' },
-          { label: 'Credits 实现', link: '/architecture/credits-metering-implementation/' },
+          { label: 'iOS 订阅与额度', link: '/app-stores/ios/subscription-overview/' },
+          { label: 'iOS 订阅实现', link: '/app-stores/ios/subscription-implementation/' },
+          { label: 'Google Play 沙箱测试', link: '/app-stores/google-play/sandbox-testing/' },
+          { label: 'Credits 实现', link: '/app-stores/billing/credits-metering/' },
         ] },
         { label: '系统设计入门', items: buildSystemDesignSidebar() },
         { label: '凤凰架构', items: buildPhoenixSidebar() },

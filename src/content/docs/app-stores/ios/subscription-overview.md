@@ -11,7 +11,7 @@ sidebar:
 
 **iOS 订阅系统要分开确认三件事：Apple 是否产生有效交易、用户现在是否有订阅权益、业务额度是否已经发放和扣减。** 客户端用 StoreKit 2 发起购买，后端验证签名、计算权益，并通过唯一约束和数据库事务防止重复发放。客户端显示“付款成功”，还不能代表业务交付完成。
 
-下面以常规月付、年付自动续期订阅为例。商品与额度是参考设计；实现时要按产品约定确认套餐切换、退款和计费时机。完整字段、Swift 片段及异常矩阵分别放在[订阅实现](/architecture/ios-subscription-implementation/)和[Credits 实现](/architecture/credits-metering-implementation/)中，均直接展开。
+下面以常规月付、年付自动续期订阅为例。商品与额度是参考设计；实现时要按产品约定确认套餐切换、退款和计费时机。完整字段、Swift 片段及异常矩阵分别放在[订阅实现](/app-stores/ios/subscription-implementation/)和[Credits 实现](/app-stores/billing/credits-metering/)中，均直接展开。
 
 ## 一次购买怎样完成
 
@@ -85,8 +85,8 @@ flowchart TB
 
 | 需要解决的问题 | 对应实现说明 |
 | --- | --- |
-| 商品、订单、StoreKit、JWS、通知和订阅恢复 | [iOS 订阅实现](/architecture/ios-subscription-implementation/) |
-| 发放幂等、年付月发、实时扣减、日终结算与余额耗尽 | [Credits 发放与计量实现](/architecture/credits-metering-implementation/) |
+| 商品、订单、StoreKit、JWS、通知和订阅恢复 | [iOS 订阅实现](/app-stores/ios/subscription-implementation/) |
+| 发放幂等、年付月发、实时扣减、日终结算与余额耗尽 | [Credits 发放与计量实现](/app-stores/billing/credits-metering/) |
 
 ## 验收看完整证据链
 
