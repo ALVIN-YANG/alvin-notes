@@ -1,4 +1,5 @@
 ---
+import { isHandbookDocument } from '../lib/content-placement.mjs';
 import { getCollection } from 'astro:content';
 import { careerLibrary } from '../data/career-library';
 import CareerBookCover from './CareerBookCover.astro';
@@ -105,7 +106,7 @@ function getDocDate(doc: typeof allDocs[number]): number {
 
 function isArticle(doc: typeof allDocs[number]) {
   const id = doc.id;
-  return Boolean(id && !id.endsWith('index') && !id.includes('_category_') && id !== 'index.mdx');
+  return Boolean(id && !isHandbookDocument(id) && !id.endsWith('index') && !id.includes('_category_') && id !== 'index.mdx');
 }
 
 function getCategoryDocs(categoryIds: string[], count = 5) {

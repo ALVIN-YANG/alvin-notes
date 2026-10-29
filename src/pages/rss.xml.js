@@ -1,3 +1,4 @@
+import { isHandbookDocument } from '../lib/content-placement.mjs';
 import { getCollection } from 'astro:content';
 import { siteConfig } from '../config/site';
 
@@ -18,6 +19,7 @@ export async function GET() {
     const id = entry.id;
     return (
       Boolean(id)
+      && !isHandbookDocument(id)
       && !id.endsWith('index')
       && !id.includes('_category_')
       && id !== 'about'
