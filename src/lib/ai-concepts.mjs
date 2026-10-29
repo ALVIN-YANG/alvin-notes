@@ -52,12 +52,12 @@ export function createConceptSpeech(view, onState) {
   const synth = view?.speechSynthesis;
   synth?.getVoices?.();
   let generation = 0, current = null, active = null;
-  function stop(message = '') {
+  function stop(message = '', cancel = true) {
     generation++;
     const hadActive = active !== null;
     active = null;
     current = null;
-    if (hadActive) synth?.cancel();
+    if (hadActive && cancel) synth?.cancel();
     onState(null, message, false);
   }
   function toggle(term) {
@@ -80,7 +80,7 @@ export function createConceptSpeech(view, onState) {
     synth.resume();
     function next() {
       if (run !== generation) return;
-      if (index >= chunks.length) { stop('朗读结束'); return; }
+      if (index >= chunks.length) { stop('朗读结束', false); return; }
       const utterance = new view.SpeechSynthesisUtterance(chunks[index]);
       utterance.lang = (voice?.lang || 'en-US').replace(/_/gu, '-');
       if (voice) utterance.voice = voice;

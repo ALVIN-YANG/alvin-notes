@@ -159,6 +159,16 @@ test('term audio reads the English name only and cancelled callbacks cannot cont
   assert.equal(states.at(-1)[2], true);
 });
 
+test('finishing a term does not cancel its audio tail', () => {
+  let cancels = 0, utterance;
+  const view = { SpeechSynthesisUtterance: class { constructor(text) { this.text = text; } }, speechSynthesis: { getVoices: () => [], cancel() { cancels++; }, resume() {}, speak(value) { utterance = value; } } };
+  const speech = createConceptSpeech(view, () => {});
+  speech.toggle(term);
+  const beforeEnd = cancels;
+  utterance.onend();
+  assert.equal(cancels, beforeEnd, 'natural completion must not cancel the audio output');
+});
+
 test('English speech avoids Chinese defaults and novelty voices, and prefers natural voices when available', () => {
   const chinese = { name: 'Tingting', lang: 'zh-CN', default: true };
   const novelty = { name: 'Zarvox', lang: 'en-US', default: true };
