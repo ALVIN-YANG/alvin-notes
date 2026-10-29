@@ -2,12 +2,17 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import DevelopmentWorkflow from '../../components/DevelopmentWorkflow.astro';
 const frontmatter = {
-  title: 'AI 开发工作流',
-  description: '按任务选择流程，复制提示词，用业务结果验收。Codex 为主，其他 Agent 按需参与。',
-  template: 'splash' as const,
+  title: '管理 AI 开发',
+  description: '对齐上下文、审核方案、制定执行循环的目标与停止条件，再用真实结果验收。',
   hidePageTitle: true,
 };
 ---
-<StarlightPage frontmatter={frontmatter} sidebar={[]}>
+<StarlightPage frontmatter={frontmatter} headings={[
+  { depth: 2, slug: 'workflow-management-title', text: '管理职责' },
+  { depth: 2, slug: 'workflow-task-title', text: '任务模板' },
+  { depth: 2, slug: 'workflow-thinking-title', text: '思考方法' },
+  { depth: 2, slug: 'workflow-test-title', text: '验证环境' },
+  { depth: 2, slug: 'workflow-sources-title', text: '精选参考' },
+]}>
   <DevelopmentWorkflow />
 </StarlightPage>

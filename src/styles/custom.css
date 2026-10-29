@@ -2182,3 +2182,10 @@ body:has(.ai-concepts) .sl-container { max-width: 78rem; }
 
 .ai-concepts .ac-category-sidebar #_top { font-size: 1rem !important; font-weight: 600; line-height: 1.5; padding: 0 .7rem .8rem; margin: 0; }
 @media (max-width: 700px) { .ai-concepts .ac-category-sidebar #_top { padding: 0 0 .4rem; } }
+
+/* 管理 AI 开发沿用文档阅读布局，管理职责先于现有提示词工具。 */
+.workflow-management { margin-block: 1.4rem 2rem; }
+.workflow-management h2 { font-size: 1.15rem; margin-bottom: .8rem; }
+.workflow-management ol { padding-left: 1.3rem; }
+.workflow-management li { margin-block: .6rem; line-height: 1.8; }
+.workflow-management p { margin-top: .8rem; line-height: 1.8; }

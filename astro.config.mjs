@@ -38,6 +38,7 @@ export default defineConfig({
     '/architecture/credits-metering-implementation': '/app-stores/billing/credits-metering/',
     '/ops/google-play-sandbox-testing': '/app-stores/google-play/sandbox-testing/',
 
+    '/skills': '/ai-workflow/chapters/ay-skills/',
     '/system-design-knowledge': '/system-design/',
     '/interview/infra-roadmap': '/interview/',
     '/ai/prompt-engineering': '/ai-workflow/chapters/16-prompt-task-contract-practice/',
@@ -189,6 +190,7 @@ export default defineConfig({
           label: '管理 AI 开发',
           items: [
             { label: '目标、上下文与验收', link: '/ai-workflow/' },
+            { label: 'AY Skills 使用参考', link: '/ai-workflow/chapters/ay-skills/' },
             { label: '任务目标与验收标准', link: '/ai-workflow/chapters/16-prompt-task-contract-practice/' },
             { label: '上下文与成本控制', link: '/ai-workflow/chapters/13-context-engineering-effect-cost-notes/' },
             { label: '工程流程选择', link: '/ai-workflow/chapters/11-mattpocock-skills-deep-dive/' },

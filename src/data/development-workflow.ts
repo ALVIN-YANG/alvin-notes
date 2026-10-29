@@ -1,8 +1,8 @@
 export const workflowMeta = {
-  updatedAt: '2026-10-11',
-  summary: 'Codex 负责推进，其他 Agent 按需参与。按任务选路径，用业务结果验收。',
+  updatedAt: '2026-10-30',
+  summary: '对齐上下文、审核方案、设定 Loop 目标，再按真实结果验收。AI 在已确认的范围内执行。',
   source: { title: '黄同学h：AI 开发心得', href: 'https://x.com/huangtongxueh/status/2108577165306687938' },
-  changes: ['按任务选择最短路径', '补充方法论提示词与证据要求', '把自测、独立审查和人工验收分开'],
+  changes: ['明确上下文、方案、Loop 与验收的管理职责', '保留已有任务模板与验证工具', '增加 AY Skills 使用参考'],
 };
 
 export const workflowSteps = [
@@ -15,7 +15,7 @@ export const workflowSteps = [
     reference: { title: '任务说明模板', href: '/ai-workflow/chapters/16-prompt-task-contract-practice/' },
   },
   {
-    id: 'design', title: '定方案', actor: 'Codex', action: '从问题和证据出发，选择满足约束的简单方案。',
+    id: 'design', title: '方案与审核', actor: 'Codex 提案，你审核关键取舍', action: '从问题和证据出发，选择满足约束的简单方案。',
     inputs: ['确认后的任务', '现有实现与依赖', '影响取舍的证据'],
     outputs: ['推荐方案与关键理由', '需要先验证的假设'],
     prompt: '从目标、约束和当前证据出发，用第一性原理重新检查问题。优先复用现有实现、标准库和平台能力。对候选方案使用奥卡姆剃刀：说明每个新增机制解决什么已知问题，删除不必要的复杂度，但保留正确性、权限与恢复要求。有关键技术疑问时做最小验证，再决定实现。',
@@ -35,7 +35,7 @@ export const workflowSteps = [
     inputs: ['本轮目标', '修改范围与已有授权', '相关项目约定'],
     outputs: ['解决问题的最小改动', '相关检查结果'],
     prompt: '读取相关实现和项目约定，在已授权范围内完成当前任务。保留无关改动，优先复用现有能力，不为假设中的未来增加抽象、依赖或配置。只使用对这次改动有意义的测试与检查。复杂任务拆成可独立验收的小增量；只有真正独立且允许委派的部分才并行，主 Agent 负责集成和验证。',
-    note: '不要机械地先写完整计划、全部测试或安装整套 Skill。',
+    note: 'Loop 按实现 → 验证 → 必要修复推进。满足验收标准即结束；超出范围、达到预算或缺少必要条件时停下，不无休止重试。',
     reference: { title: 'Skills 按需使用', href: '/ai-workflow/chapters/ai-coding-skills-selection-guide/' },
   },
   {

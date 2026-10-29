@@ -6,12 +6,24 @@ const initialStep = workflowSteps.find(step => step.id === initialScenario.steps
 <development-workflow class="workflow-page not-content" aria-labelledby="workflow-title">
   <header class="workflow-intro">
     <div>
-      <h1 id="workflow-title">AI 开发工作流</h1>
-      <a href="/ai-workflow/chapters/">阅读配套章节 →</a>
+      <h1 id="workflow-title">管理 AI 开发</h1>
+      <a href="/ai-workflow/chapters/">实践文章 →</a>
       <p>{workflowMeta.summary}</p>
     </div>
     <p class="workflow-date">更新于 <time datetime={workflowMeta.updatedAt}>{workflowMeta.updatedAt}</time></p>
   </header>
+
+  <section class="workflow-management" aria-labelledby="workflow-management-title">
+    <h2 id="workflow-management-title">你管理目标和边界，AI 推进执行</h2>
+    <ol>
+      <li><strong>对齐上下文：</strong>给出目标、现状、约束和可观察的验收标准，允许 AI 先查明已有事实。</li>
+      <li><strong>审核方案：</strong>判断产品行为、架构取舍和修改范围。方向确认后，让 AI 在边界内继续。</li>
+      <li><strong>设定 Loop：</strong>写清每轮要完成什么、如何验证、何时停止；同时约定时间或费用预算。</li>
+      <li><strong>验收结果：</strong>看真实业务结果和证据。失败则定位原因、修复、重验；越界或缺少必要条件时停下。</li>
+    </ol>
+    <p>团队协作还要明确任务负责人、共享上下文与集成验收责任，避免多个 Agent 同时改动同一范围。</p>
+    <p><a href="/ai-workflow/chapters/ay-skills/">AY Skills：把执行边界和验收要求交给 Agent →</a></p>
+  </section>
 
   <section class="workflow-chooser" aria-labelledby="workflow-task-title">
     <div class="workflow-section-heading">
@@ -85,12 +97,12 @@ const initialStep = workflowSteps.find(step => step.id === initialScenario.steps
   </section>
 
   <footer class="workflow-sources">
-    <section><h2>参考与深入阅读</h2><ul>
+    <section><h2 id="workflow-sources-title">精选参考</h2><ul>
       <li><a href={workflowMeta.source.href} target="_blank" rel="noreferrer">{workflowMeta.source.title}</a></li>
       <li><a href="/ai/long-context-reliability-notes/">长上下文失效的处理方法</a></li>
       <li><a href="/ai/agent-evaluation-observability/">Agent 评测与结果验证</a></li>
       <li><a href="/ai-workflow/chapters/ai-coding-toolbox/">工具与安装速查</a></li>
-      <li><a href="/skills/">可按需选用的 Skills</a></li>
+      <li><a href="/ai-workflow/chapters/ay-skills/">AY Skills：执行边界与完成证据</a></li>
     </ul></section>
     <section><h2>这次更新</h2><p><time datetime={workflowMeta.updatedAt}>{workflowMeta.updatedAt}</time></p><ul>{workflowMeta.changes.map(change => <li>{change}</li>)}</ul></section>
   </footer>
