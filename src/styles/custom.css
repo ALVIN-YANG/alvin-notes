@@ -2096,3 +2096,19 @@ body:has(.career-library) .sl-container { max-width: 76rem; }
   .career-book h2 { font-size: .9rem; }
   .career-book > p { font-size: .7rem; }
 }
+
+/* Illustrated edition: full-bleed original art with accessible HTML titles. */
+.career-cover-illustrated { position: relative; overflow: hidden; isolation: isolate; padding: 4% 8%; background: #f3ead8; border-color: #62513b38; border-radius: 2px 6px 6px 2px; box-shadow: inset 3px 0 #ffffff35; }
+.career-cover-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; margin: 0 !important; border-radius: 0 !important; }
+.career-cover-illustrated .career-cover-top { border: 0; padding: 0; font-size: .6rem; color: #5b5140; }
+.career-cover-illustrated .career-cover-title { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.1; margin-top: .4rem; color: #292b27; letter-spacing: .015em; }
+.career-cover-illustrated .career-cover-bottom { position: absolute; inset: auto 0 0; border: 0; padding: .35rem .7rem; background: #f6efdfed; color: #504735; font-size: .6rem; }
+.career-book .career-book-description { color: var(--career-ink); font-size: .78rem; margin: .25rem 0; }
+@media (max-width: 650px) {
+  .career-cover-illustrated .career-cover-title { font-size: clamp(1rem, 4.5vw, 1.7rem); margin-top: .3rem; }
+  .career-cover-illustrated .career-cover-top { font-size: .5rem; }
+  .career-cover-illustrated .career-cover-bottom { font-size: .5rem; padding: .25rem .4rem; }
+  .career-book .career-book-description { font-size: .7rem; }
+}
+
+.career-cover-illustrated:is([data-art="sources"], [data-art="workflow"]) .career-cover-title { text-align: right; }

@@ -1,0 +1,66 @@
+{
+  "method": "Built-in image_gen",
+  "usage": "本站设计插画，不是原版书封。网页文字独立渲染。",
+  "covers": [
+    {
+      "id": "phoenix",
+      "file": "/images/career-covers/phoenix.webp",
+      "prompt": "Create a premium editorial illustration for a Chinese technical book jacket, NO TEXT anywhere. Portrait 3:4. Flat full-bleed artwork, not a physical book mockup. Theme: PHOENIX ARCHITECTURE, reliable distributed systems embodied by an intricate monumental terraced architectural structure, arches, stairs, interlocking towers and bridges, one rust-orange phoenix-shaped sculptural roof. Elegant 1960s architectural screenprint / fine engraved ink on visibly tactile cream paper. Restricted palette warm ivory, burnt sienna, charcoal, muted ochre. Composition: upper 35 percent mostly quiet warm cream blank paper reserved for real HTML title, lower 60 percent striking large architectural illustration, bottom 5 percent quiet. Precise architectural linework, editorial sophistication, readable silhouette at small size. No lettering, no symbols pretending to be text, no logos, no gradients, no glossy 3D, no floating generic tech icons. Distinctive designed art, not a simple diagram. Output image for website asset."
+    },
+    {
+      "id": "system-design",
+      "file": "/images/career-covers/system-design.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: SYSTEM DESIGN: a cutaway miniature city of interdependent buildings, reservoir, bridges and visible pipes distributing resources, isometric engraved systems atlas. Muted sage green, cream, ink black, brick accents. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "agent",
+      "file": "/images/career-covers/agent.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: AI AGENT: a beautiful brass mechanical navigator with articulated instrument arms, compass, lenses and small task cards arranged around a central reasoning mechanism. Dusty blue, cream, brass ochre, ink. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "infra",
+      "file": "/images/career-covers/infra.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: AI INFRASTRUCTURE: a dramatic perspective of precision compute racks with parallel copper conduits, organized memory blocks and cooling towers, industrial architectural etching. Navy blue, cream, copper, slate. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "rag",
+      "file": "/images/career-covers/rag.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: RETRIEVAL AUGMENTED GENERATION: a magnifying optical lens extracting a single red page from a vast orderly card library, focused beam rendered as fine straight ink lines, elegant scientific engraving. Cream, oxblood, charcoal, faded rose. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "algorithms",
+      "file": "/images/career-covers/algorithms.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: ALGORITHMS: an intricate sculptural maze with a single ochre path winding through stepped geometric blocks toward a small exit, top oblique view, mathematical woodcut. Forest green, parchment, ochre, charcoal. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "interview",
+      "file": "/images/career-covers/interview.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: ENGINEERING QUESTIONS: two sculptural conversation trumpets facing one another above a drafting table with interlocking logic pieces, architectural still life, intelligent dialogue visual metaphor. Burnt orange, cream, black, ochre. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "workflow",
+      "file": "/images/career-covers/workflow.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: AI WORKFLOW: a horizontal-to-diagonal paper-processing apparatus with rollers and conveyor stations transforming a blank sheet into a precise structured blueprint, industrial editorial woodcut. Golden yellow, cream, charcoal, rust. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "concepts",
+      "file": "/images/career-covers/concepts.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: AI CONCEPTS: a botanical cabinet of abstract scientific specimens, branching logic tree, geometric neural lattice and stacked information strata in distinct niches, scholarly natural-history engraving. Cream, sage green, navy, terracotta. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "skills",
+      "file": "/images/career-covers/skills.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: AGENT SKILLS: an open carefully organized craftsman toolbox holding unique precision instruments, interchangeable mechanical tools and small modular devices, richly detailed engraved still life. Dusty teal, cream, charcoal, brass. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "sources",
+      "file": "/images/career-covers/sources.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: INTERVIEW SOURCES: an elegant archival filing cabinet with tabbed folders, a magnifying glass and layered evidence papers, archival research editorial engraving. Dusty lavender, cream, charcoal, burgundy. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    },
+    {
+      "id": "app-stores",
+      "file": "/images/career-covers/app-stores.webp",
+      "prompt": "Create one premium illustrated technical book jacket background. Portrait 3:4 full-bleed flat artwork, NOT a book mockup. NO TEXT, LETTERS, NUMBERS OR LOGOS. Theme: APP STORE OPERATIONS: two sculptural mobile phones forming a gateway above a sequence of receipt, payment coin, inspection stamp and delivery parcel, independent publishing journey, editorial engraved still life. Midnight blue, warm cream, coral red, brass gold. No Apple or Google logos. Cohesive collectible library series: mid-century editorial screenprint, precise engraved ink, tactile warm paper grain, bold sophisticated composition, no glossy 3D, no gradients, no generic floating tech icons. Upper 35 percent quiet pale cream paper reserved for HTML typography, lower 60 percent large unique subject illustration, bottom 5 percent quiet. The subject should fill the lower area with a strong silhouette and meaningful detail visible at thumbnail size. Professional art direction, illustration not a diagram."
+    }
+  ]
+}
