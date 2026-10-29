@@ -51,19 +51,32 @@ const speechButton = (term, shortcut = '') => `<button type="button" class="ac-s
 export function createConceptSpeech(view, onState) {
   const synth = view?.speechSynthesis;
   synth?.getVoices?.();
-  let generation = 0, current = null, active = null;
+  const schedule = view?.setTimeout?.bind(view) || setTimeout;
+  const unschedule = view?.clearTimeout?.bind(view) || clearTimeout;
+  let generation = 0, current = null, active = null, pendingStart = null, restartAt = 0;
   function stop(message = '', cancel = true) {
     generation++;
+    if (pendingStart !== null) { unschedule(pendingStart); pendingStart = null; }
     const hadActive = active !== null;
     active = null;
     current = null;
-    if (hadActive && cancel) synth?.cancel();
+    if (hadActive && cancel) {
+      if (synth?.speaking || synth?.pending || synth?.paused) restartAt = Date.now() + 100;
+      synth?.cancel();
+    }
     onState(null, message, false);
   }
   function toggle(term) {
     if (!synth || !view.SpeechSynthesisUtterance) { onState(null, '此浏览器不支持朗读。可以使用 Chrome、Edge 或 Safari。', true); return; }
     if (active === term.id) { stop('已停止朗读'); return; }
+    const ownedPlayback = active !== null;
     stop();
+    // Do not reset an idle engine. Give an interrupted engine a task boundary
+    // before submitting another utterance, so cancellation cannot affect it.
+    if (!ownedPlayback && (synth.speaking || synth.pending || synth.paused)) {
+      synth.cancel();
+      restartAt = Date.now() + 100;
+    }
     active = term.id;
     const run = generation;
     const chunks = splitSpeechText(term.term);
@@ -76,8 +89,7 @@ export function createConceptSpeech(view, onState) {
     }
     let index = 0;
     onState(active, `正在朗读 ${term.term}`, false);
-    synth.cancel();
-    synth.resume();
+    if (synth.paused) synth.resume();
     function next() {
       if (run !== generation) return;
       if (index >= chunks.length) { stop('朗读结束', false); return; }
@@ -93,7 +105,9 @@ export function createConceptSpeech(view, onState) {
       };
       try { synth.speak(utterance); } catch { stop(); onState(null, '朗读暂不可用，请检查系统语音设置。', true); }
     }
-    next();
+    const delay = restartAt - Date.now();
+    if (delay > 0) pendingStart = schedule(() => { pendingStart = null; next(); }, delay);
+    else next();
   }
   return { toggle, stop };
 }

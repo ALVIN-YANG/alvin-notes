@@ -169,6 +169,46 @@ test('finishing a term does not cancel its audio tail', () => {
   assert.equal(cancels, beforeEnd, 'natural completion must not cancel the audio output');
 });
 
+test('an idle engine starts the complete phrase without cancelling or resuming it', () => {
+  const events = [];
+  const view = { SpeechSynthesisUtterance: class { constructor(text) { this.text = text; } }, speechSynthesis: {
+    speaking: false, pending: false, paused: false, getVoices: () => [],
+    cancel() { events.push('cancel'); }, resume() { events.push('resume'); }, speak(utterance) { events.push(utterance.text); },
+  } };
+  createConceptSpeech(view, () => {}).toggle({ ...term, term: 'Context Engineering' });
+  assert.deepEqual(events, ['Context Engineering']);
+});
+
+test('switching terms waits for cancellation and stopping clears a queued start', () => {
+  const calls = [], timers = new Map();
+  let nextTimer = 0;
+  const view = {
+    setTimeout(callback) { const id = ++nextTimer; timers.set(id, callback); return id; },
+    clearTimeout(id) { timers.delete(id); },
+    SpeechSynthesisUtterance: class { constructor(text) { this.text = text; } },
+    speechSynthesis: { speaking: false, pending: false, paused: false, getVoices: () => [],
+      cancel() { this.speaking = false; },
+      speak(utterance) { this.speaking = true; calls.push(utterance); },
+    },
+  };
+  const speech = createConceptSpeech(view, () => {});
+  speech.toggle(term);
+  const phrase = { ...term, id: 'contexteng', term: 'Context Engineering' };
+  speech.toggle(phrase);
+  assert.equal(calls.length, 1, 'the new phrase must not overlap cancellation');
+  const [id, start] = [...timers][0]; timers.delete(id); start();
+  assert.equal(calls[1].text, 'Context Engineering');
+  calls[0].onend();
+  assert.equal(calls.length, 2, 'a cancelled callback cannot restart speech');
+  speech.toggle(term);
+  assert.equal(timers.size, 1);
+  const stale = [...timers.values()][0];
+  speech.stop();
+  assert.equal(timers.size, 0);
+  stale();
+  assert.equal(calls.length, 2, 'a stopped delayed start must stay silent');
+});
+
 test('English speech avoids Chinese defaults and novelty voices, and prefers natural voices when available', () => {
   const chinese = { name: 'Tingting', lang: 'zh-CN', default: true };
   const novelty = { name: 'Zarvox', lang: 'en-US', default: true };
