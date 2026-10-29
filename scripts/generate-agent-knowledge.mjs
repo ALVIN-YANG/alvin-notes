@@ -24,10 +24,10 @@ const articleIndex = {
   ],
   'model-context': [
     { title: 'Context Engineering 怎么做', href: '/ai/context-engineering-guide/' },
-    { title: 'Prompt 怎样写成可执行任务', href: '/ai-workflow/16-prompt-task-contract-practice/' },
+    { title: 'Prompt 怎样写成可执行任务', href: '/ai-workflow/chapters/16-prompt-task-contract-practice/' },
   ],
   'knowledge-state': [
-    { title: 'RAG 技术全景与选型', href: '/ai/rag-primer/' },
+    { title: 'RAG 技术全景与选型', href: '/rag/chapters/rag-primer/' },
     { title: 'AI Agent 记忆系统设计', href: '/ai/agent-memory-system-design/' },
   ],
   'tools-environment': [
@@ -40,7 +40,7 @@ const articleIndex = {
   ],
   'evaluation-evolution': [
     { title: 'AI Agent 怎么做评测', href: '/ai/agent-evaluation-observability/' },
-    { title: 'RAG 元数据过滤与验证', href: '/ai/rag-metadata-filtering/' },
+    { title: 'RAG 元数据过滤与验证', href: '/rag/chapters/rag-metadata-filtering/' },
   ],
   'safety-governance': [
     { title: 'AI Agent 安全工程', href: '/ai/agent-security-engineering/' },

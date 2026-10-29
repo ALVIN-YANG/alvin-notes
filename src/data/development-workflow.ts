@@ -12,7 +12,7 @@ export const workflowSteps = [
     outputs: ['目标、范围与完成条件', '已确认事实与关键取舍'],
     prompt: '结合当前代码和已有材料，整理目标、范围、约束与可观察的验收标准。区分已确认事实、推断和缺失信息。先查能查明的事实，只问会改变实现方向或验收结果的问题；上下文足够时直接推进，不重复访谈。',
     note: '需求材料冲突时，先定位冲突。实现细节可以在读代码后决定。',
-    reference: { title: '任务说明模板', href: '/ai-workflow/16-prompt-task-contract-practice/' },
+    reference: { title: '任务说明模板', href: '/ai-workflow/chapters/16-prompt-task-contract-practice/' },
   },
   {
     id: 'design', title: '定方案', actor: 'Codex', action: '从问题和证据出发，选择满足约束的简单方案。',
@@ -20,7 +20,7 @@ export const workflowSteps = [
     outputs: ['推荐方案与关键理由', '需要先验证的假设'],
     prompt: '从目标、约束和当前证据出发，用第一性原理重新检查问题。优先复用现有实现、标准库和平台能力。对候选方案使用奥卡姆剃刀：说明每个新增机制解决什么已知问题，删除不必要的复杂度，但保留正确性、权限与恢复要求。有关键技术疑问时做最小验证，再决定实现。',
     note: '跨模块或跨会话的大任务，再把决定写成规格和可独立验收的小任务。',
-    reference: { title: '模块与流程选择', href: '/ai-workflow/11-mattpocock-skills-deep-dive/' },
+    reference: { title: '模块与流程选择', href: '/ai-workflow/chapters/11-mattpocock-skills-deep-dive/' },
   },
   {
     id: 'diagnose', title: '定位问题', actor: 'Codex', action: '先复现并缩小范围，再检验假设。',
@@ -28,7 +28,7 @@ export const workflowSteps = [
     outputs: ['可复现的失败', '支持根因判断的证据'],
     prompt: '先复现我描述的问题，再沿请求、状态和数据变化定位。区分事实与假设，每个假设都给出可证伪的观察，一次改变一个主要变量。不要靠随机改代码碰运气。确认根因后完成必要修复与回归验证；凭证和敏感内容不进入输出。',
     note: '无法复现时，交付已经排除的路径与具体缺口，不编造根因。',
-    reference: { title: '自测与证据路径', href: '/ai-workflow/13-context-engineering-effect-cost-notes/' },
+    reference: { title: '自测与证据路径', href: '/ai-workflow/chapters/13-context-engineering-effect-cost-notes/' },
   },
   {
     id: 'implement', title: '实现', actor: 'Codex', action: '一次交付一个可验证的改动，持续做到完成。',
@@ -36,7 +36,7 @@ export const workflowSteps = [
     outputs: ['解决问题的最小改动', '相关检查结果'],
     prompt: '读取相关实现和项目约定，在已授权范围内完成当前任务。保留无关改动，优先复用现有能力，不为假设中的未来增加抽象、依赖或配置。只使用对这次改动有意义的测试与检查。复杂任务拆成可独立验收的小增量；只有真正独立且允许委派的部分才并行，主 Agent 负责集成和验证。',
     note: '不要机械地先写完整计划、全部测试或安装整套 Skill。',
-    reference: { title: 'Skills 按需使用', href: '/ai-workflow/ai-coding-skills-selection-guide/' },
+    reference: { title: 'Skills 按需使用', href: '/ai-workflow/chapters/ai-coding-skills-selection-guide/' },
   },
   {
     id: 'verify', title: '验证结果', actor: 'Codex', action: '从真实入口走到预期结果，检查有意义的失败分支。',
@@ -60,7 +60,7 @@ export const workflowSteps = [
     outputs: ['可审查的交付说明', '对应授权下的发布结果'],
     prompt: '整理本次交付：解决了什么、改了哪里、哪些验收标准已经满足，分别附证据。突出关键业务逻辑、取舍和未验证项，不用长过程日志代替结论。提交、推送、部署和线上验收分别报告；有对应授权时继续完成，不把其中一步成功当成全部完成。',
     note: '重点看权限、状态与业务约束。需要合并或发布时，检查已有授权与目标环境。',
-    reference: { title: '人负责目标与验收', href: '/ai-workflow/12-vibe-coding-software-engineering-notes/' },
+    reference: { title: '人负责目标与验收', href: '/ai-workflow/chapters/12-vibe-coding-software-engineering-notes/' },
   },
   {
     id: 'handoff', title: '交接任务', actor: 'Codex → 接手 Agent', action: '让接手者能直接继续工作，保留约束和未完成事项。',

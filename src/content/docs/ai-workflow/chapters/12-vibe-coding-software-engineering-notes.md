@@ -49,7 +49,7 @@ Vibe Coding 常被用来泛指 AI 写代码，它最初的意思更窄。两个�
 
 领域里的术语更重要。同一个项目里，“客户”“账户”“订单”“任务”分别指什么必须保持稳定，领域驱动设计把这叫作通用语言。人和 agent 共用同一套词，数据库字段、类名、接口和文档才不容易各说各话。
 
-从需求到宣发的常见工程术语，我整理成了[术语速查](/ai-workflow/ai-engineering-glossary/)，不确定一个词时回查即可，不要一次塞进 prompt。
+从需求到宣发的常见工程术语，我整理成了[术语速查](/ai-workflow/chapters/ai-engineering-glossary/)，不确定一个词时回查即可，不要一次塞进 prompt。
 
 ## 反馈循环让错误尽早暴露
 
@@ -87,4 +87,4 @@ flowchart TB
 | 发布 | 让某项能力对用户可用 |
 | 上线 | 连着公告、渠道和运营动作的正式推出 |
 
-[把 Prompt 写成可执行任务的实践](/ai-workflow/16-prompt-task-contract-practice/)讲任务怎样写得更具体，[Matt Pocock Skills 拆解](/ai-workflow/11-mattpocock-skills-deep-dive/)讲怎样把术语、规格、TDD 和诊断流程固化成可执行的 Skills。我们少写了很多语法，仍然要理解自己正在建什么。
+[把 Prompt 写成可执行任务的实践](/ai-workflow/chapters/16-prompt-task-contract-practice/)讲任务怎样写得更具体，[Matt Pocock Skills 拆解](/ai-workflow/chapters/11-mattpocock-skills-deep-dive/)讲怎样把术语、规格、TDD 和诊断流程固化成可执行的 Skills。我们少写了很多语法，仍然要理解自己正在建什么。

@@ -334,4 +334,4 @@ LRU 要同时满足：
 
 继续练习：
 
-- [Java 进阶算法模式：前缀和、单调栈、二分答案与并查集](/algorithms/java-advanced-algorithm-patterns/)
+- [Java 进阶算法模式：前缀和、单调栈、二分答案与并查集](/algorithm-knowledge/chapters/java-advanced-algorithm-patterns/)

@@ -98,4 +98,4 @@ C2 → 给出数据库相关改动的 diff 检查结果。
 
 验证效果：固定模型与任务，多跑几次，比较**约束遗漏率、任务通过率、Token 和耗时**。
 
-相关笔记：[上下文工程](/ai/context-engineering-guide/)、[RAG 原理与实践](/ai/rag-primer/)。
+相关笔记：[上下文工程](/ai/context-engineering-guide/)、[RAG 原理与实践](/rag/chapters/rag-primer/)。

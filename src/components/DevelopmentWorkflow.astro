@@ -7,6 +7,7 @@ const initialStep = workflowSteps.find(step => step.id === initialScenario.steps
   <header class="workflow-intro">
     <div>
       <h1 id="workflow-title">AI 开发工作流</h1>
+      <a href="/ai-workflow/chapters/">阅读配套章节 →</a>
       <p>{workflowMeta.summary}</p>
     </div>
     <p class="workflow-date">更新于 <time datetime={workflowMeta.updatedAt}>{workflowMeta.updatedAt}</time></p>
@@ -88,7 +89,7 @@ const initialStep = workflowSteps.find(step => step.id === initialScenario.steps
       <li><a href={workflowMeta.source.href} target="_blank" rel="noreferrer">{workflowMeta.source.title}</a></li>
       <li><a href="/ai/long-context-reliability-notes/">长上下文失效的处理方法</a></li>
       <li><a href="/ai/agent-evaluation-observability/">Agent 评测与结果验证</a></li>
-      <li><a href="/ai-workflow/ai-coding-toolbox/">工具与安装速查</a></li>
+      <li><a href="/ai-workflow/chapters/ai-coding-toolbox/">工具与安装速查</a></li>
       <li><a href="/skills/">可按需选用的 Skills</a></li>
     </ul></section>
     <section><h2>这次更新</h2><p><time datetime={workflowMeta.updatedAt}>{workflowMeta.updatedAt}</time></p><ul>{workflowMeta.changes.map(change => <li>{change}</li>)}</ul></section>

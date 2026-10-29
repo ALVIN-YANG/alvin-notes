@@ -48,7 +48,7 @@
         },
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/rag-primer/"
+          "url": "https://blog.mlxb.cc/rag/chapters/rag-primer/"
         }
       ],
       "upstreamDefinition": "至少是一个具有大量参数的语言模型。更通俗地说,任何基于 Transformer 的语言模型,例如 Gemini 或 GPT。\n\n如需了解详情,请参阅机器学习速成课程中的大语言模型 (LLM)。",
@@ -77,7 +77,7 @@
         },
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/rag-primer/"
+          "url": "https://blog.mlxb.cc/rag/chapters/rag-primer/"
         }
       ],
       "upstreamDefinition": "在语言模型中,模型训练和进行预测的最小单位。令牌通常是以下各项之一:\n\n一个字词 - 例如,词组“dogs like cats”包含三个字词标记:“dogs”“like”和“cats”。 一个字符 - 例如,短语“bike fish”包含 9 个字符标记。(请注意,空格也算作一个令牌。) 子字词 - 其中,单个字词可以是单个 token,也可以是多个 token。 子字词由词根、前缀或后缀组成。例如,使用子字词作为词元的语言模型可能会将“dogs”一词视为两个词元(词根“dog”和复数后缀“s”)。同一语言模型可能会将单个字词“taller”视为两个子字词(词根“tall”和后缀“er”)。\n\n在语言模型之外的网域中,词元可以表示其他类型的原子单元。例如,在计算机视觉中,词元可能是图片的一部分。\n\n如需了解详情,请参阅机器学习速成课程中的大型语言模型。",
@@ -108,7 +108,7 @@
         },
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/rag-primer/"
+          "url": "https://blog.mlxb.cc/rag/chapters/rag-primer/"
         }
       ],
       "upstreamDefinition": "一种技术,利用模型训练后检索到的知识源进行接地,以改善大语言模型 (LLM) 的输出质量。RAG 通过为经过训练的 LLM 提供从可信知识库或文档中检索到的信息,提高了 LLM 回答的准确性。\n\n使用检索增强生成的常见动机包括:\n\n提高模型生成回答的事实准确性。 让模型能够访问其未经训练的知识。 更改模型使用的知识。 使模型能够引用来源。\n\n例如,假设某个化学应用使用 PaLM API 生成与用户查询相关的摘要。当应用的后端收到查询时,后端会执行以下操作:\n\n搜索(“检索”)与用户查询相关的数据。 将相关化学数据附加(“扩充”)到用户查询中。 指示 LLM 根据附加的数据创建摘要。",
@@ -170,7 +170,7 @@
         },
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/rag-primer/"
+          "url": "https://blog.mlxb.cc/rag/chapters/rag-primer/"
         }
       ],
       "upstreamDefinition": "对预训练模型执行的第二次特定任务训练,以针对特定应用场景优化其参数。例如,某些大型语言模型的完整训练序列如下所示:\n\n预训练:在海量通用数据集(例如所有英文版维基百科页面)上训练大语言模型。 微调:训练预训练模型以执行特定任务,例如回答医疗查询。微调通常涉及数百或数千个专注于特定任务的示例。\n\n再举一个例子,大型图片模型的完整训练序列如下所示:\n\n预训练:在庞大的通用图片数据集(例如 Wikimedia Commons 中的所有图片)上训练大型图片模型。 微调:训练预训练模型以执行特定任务,例如生成虎鲸的图片。\n\n微调可能需要采用以下策略的任意组合:\n\n修改预训练模型的所有现有参数。这有时称为“完全微调”。 仅修改预训练模型的部分现有参数(通常是离输出层最近的层),同时保持其他现有参数不变(通常是离输入层最近的层)。请参阅参数高效微调。 添加更多层,通常是在最接近输出层的现有层之上添加。",
@@ -544,7 +544,7 @@
       "sources": [
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/rag-primer/"
+          "url": "https://blog.mlxb.cc/rag/chapters/rag-primer/"
         }
       ],
       "scope": "通用概念",
@@ -567,7 +567,7 @@
       "sources": [
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/rag-primer/"
+          "url": "https://blog.mlxb.cc/rag/chapters/rag-primer/"
         }
       ],
       "scope": "通用概念",
@@ -590,7 +590,7 @@
       "sources": [
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/rag-primer/"
+          "url": "https://blog.mlxb.cc/rag/chapters/rag-primer/"
         }
       ],
       "scope": "通用概念",
@@ -781,7 +781,7 @@
         },
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/rag-primer/"
+          "url": "https://blog.mlxb.cc/rag/chapters/rag-primer/"
         }
       ],
       "upstreamDefinition": "生成式 AI 模型生成看似合理但实际上不正确的输出,并且声称对现实世界做出断言。例如,如果生成式 AI 模型声称巴拉克·奥巴马于 1865 年去世,则表示该模型出现了幻觉。",
@@ -810,7 +810,7 @@
         },
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/rag-primer/"
+          "url": "https://blog.mlxb.cc/rag/chapters/rag-primer/"
         }
       ],
       "upstreamDefinition": "根据从一个或多个可信来源检索到的信息来生成 LLM 的全部或部分回答的过程。 例如,假设用户提示 LLM 提供柏林今天的天气预报。LLM 可能会根据从欧洲中期天气预报中心收集的信息来生成回答。\n\n检索增强生成 (RAG) 是一种常用的接地技术。",

@@ -17,6 +17,22 @@ export default defineConfig({
     remarkPlugins: [remarkPhoenix, remarkSystemDesign, remarkStaticMermaid],
   },
   redirects: {
+    '/ai-workflow/11-mattpocock-skills-deep-dive': '/ai-workflow/chapters/11-mattpocock-skills-deep-dive/',
+    '/ai-workflow/12-vibe-coding-software-engineering-notes': '/ai-workflow/chapters/12-vibe-coding-software-engineering-notes/',
+    '/ai-workflow/13-context-engineering-effect-cost-notes': '/ai-workflow/chapters/13-context-engineering-effect-cost-notes/',
+    '/ai-workflow/14-codex-skill-creator-deep-dive': '/ai-workflow/chapters/14-codex-skill-creator-deep-dive/',
+    '/ai-workflow/15-codex-async-wait-token-cost': '/ai-workflow/chapters/15-codex-async-wait-token-cost/',
+    '/ai-workflow/16-prompt-task-contract-practice': '/ai-workflow/chapters/16-prompt-task-contract-practice/',
+    '/ai-workflow/4-ai-coding-remote-workstation-macos-tailscale-ssh-termux': '/ai-workflow/chapters/4-ai-coding-remote-workstation-macos-tailscale-ssh-termux/',
+    '/ai-workflow/ai-coding-skills-selection-guide': '/ai-workflow/chapters/ai-coding-skills-selection-guide/',
+    '/ai-workflow/ai-coding-toolbox': '/ai-workflow/chapters/ai-coding-toolbox/',
+    '/ai-workflow/ai-engineering-glossary': '/ai-workflow/chapters/ai-engineering-glossary/',
+    '/ai/rag-primer': '/rag/chapters/rag-primer/',
+    '/ai/rag-knowledge-base-component': '/rag/chapters/rag-knowledge-base-component/',
+    '/ai/rag-metadata-filtering': '/rag/chapters/rag-metadata-filtering/',
+    '/algorithms/java-advanced-algorithm-patterns': '/algorithm-knowledge/chapters/java-advanced-algorithm-patterns/',
+    '/algorithms/java-high-frequency-algorithm-patterns': '/algorithm-knowledge/chapters/java-high-frequency-algorithm-patterns/',
+
     '/architecture/ios-subscription-payment-backend-practice': '/app-stores/ios/subscription-overview/',
     '/architecture/ios-subscription-implementation': '/app-stores/ios/subscription-implementation/',
     '/architecture/credits-metering-implementation': '/app-stores/billing/credits-metering/',
@@ -24,20 +40,20 @@ export default defineConfig({
 
     '/system-design-knowledge': '/system-design/',
     '/interview/infra-roadmap': '/interview/',
-    '/ai/prompt-engineering': '/ai-workflow/16-prompt-task-contract-practice/',
-    '/ai/1-prompt-engineering': '/ai-workflow/16-prompt-task-contract-practice/',
-    '/ai-workflow/10-vibe-coding-prompt-engineering': '/ai-workflow/16-prompt-task-contract-practice/',
+    '/ai/prompt-engineering': '/ai-workflow/chapters/16-prompt-task-contract-practice/',
+    '/ai/1-prompt-engineering': '/ai-workflow/chapters/16-prompt-task-contract-practice/',
+    '/ai-workflow/10-vibe-coding-prompt-engineering': '/ai-workflow/chapters/16-prompt-task-contract-practice/',
     '/ai/production-ai-agent-engineering': '/agent-knowledge/',
     '/ai/durable-agent-task-runtime': '/ai/agent-context-persistence-recovery/',
     '/java/01-core/2-concurrent-programming-guide': '/java/01-core/1-java21-virtual-threads/',
     '/java/02-framework/spring-boot/2-mybatis-vs-jpa-2026': '/java/02-framework/mybatis/',
     '/java/04-architecture/2-distributed-transaction-seata': '/architecture/distributed-transaction/',
     '/java/02-framework/spring-boot/relaxed-binding': '/java/02-framework/mybatis/#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%8E%E9%85%8D%E7%BD%AE%E6%98%A0%E5%B0%84%E9%80%9F%E6%9F%A5',
-    '/ai-workflow/7-terminal-token-compression-tools': '/ai-workflow/ai-coding-toolbox/',
-    '/ai-workflow/8-kiro-spec-driven-development': '/ai-workflow/ai-coding-toolbox/',
-    '/ai-workflow/9-cc-switch-unified-manager': '/ai-workflow/ai-coding-toolbox/',
-    '/ai/1-提示词工程': '/ai-workflow/16-prompt-task-contract-practice/',
-    '/ai/2-RAG原理与实践': '/ai/rag-primer/',
+    '/ai-workflow/7-terminal-token-compression-tools': '/ai-workflow/chapters/ai-coding-toolbox/',
+    '/ai-workflow/8-kiro-spec-driven-development': '/ai-workflow/chapters/ai-coding-toolbox/',
+    '/ai-workflow/9-cc-switch-unified-manager': '/ai-workflow/chapters/ai-coding-toolbox/',
+    '/ai/1-提示词工程': '/ai-workflow/chapters/16-prompt-task-contract-practice/',
+    '/ai/2-RAG原理与实践': '/rag/chapters/rag-primer/',
     '/ai/3-Function-Call与Agent': '/ai/function-call-agent/',
     '/network/1-IPv4地址范围与作用': '/network/ipv4-address-ranges/',
     '/network/2-获取用户真实IP': '/network/client-real-ip/',
@@ -128,6 +144,14 @@ export default defineConfig({
             },
           ],
         },
+        { label: 'RAG 实战手册', items: [
+          { label: '实战速查', link: '/rag/' },
+          { label: '配套章节', autogenerate: { directory: 'rag/chapters' } },
+        ] },
+        { label: '算法手册', items: [
+          { label: '模板与高频题', link: '/algorithm-knowledge/' },
+          { label: '配套章节', autogenerate: { directory: 'algorithm-knowledge/chapters' } },
+        ] },
         {
           label: 'AI Infra',
           items: [
@@ -137,7 +161,10 @@ export default defineConfig({
         },
         {
           label: 'AI 工作流',
-          autogenerate: { directory: 'ai-workflow' }
+          items: [
+            { label: '工作流总览', link: '/ai-workflow/' },
+            { label: '配套章节', autogenerate: { directory: 'ai-workflow/chapters' } },
+          ]
         },
         {
           label: 'Architecture',
@@ -156,17 +183,8 @@ export default defineConfig({
           ],
         },
         {
-          label: '算法',
-          items: [
-            {
-              label: 'Java',
-              autogenerate: { directory: 'java' },
-            },
-            {
-              label: '算法题解',
-              autogenerate: { directory: 'algorithms' },
-            }
-          ],
+          label: 'Java',
+          autogenerate: { directory: 'java' },
           collapsed: true,
         },
         {

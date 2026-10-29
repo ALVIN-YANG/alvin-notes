@@ -7,6 +7,156 @@
   },
   "redirects": [
     {
+      "source": "/ai-workflow/11-mattpocock-skills-deep-dive",
+      "destination": "/ai-workflow/chapters/11-mattpocock-skills-deep-dive/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/11-mattpocock-skills-deep-dive/",
+      "destination": "/ai-workflow/chapters/11-mattpocock-skills-deep-dive/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/12-vibe-coding-software-engineering-notes",
+      "destination": "/ai-workflow/chapters/12-vibe-coding-software-engineering-notes/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/12-vibe-coding-software-engineering-notes/",
+      "destination": "/ai-workflow/chapters/12-vibe-coding-software-engineering-notes/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/13-context-engineering-effect-cost-notes",
+      "destination": "/ai-workflow/chapters/13-context-engineering-effect-cost-notes/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/13-context-engineering-effect-cost-notes/",
+      "destination": "/ai-workflow/chapters/13-context-engineering-effect-cost-notes/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/14-codex-skill-creator-deep-dive",
+      "destination": "/ai-workflow/chapters/14-codex-skill-creator-deep-dive/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/14-codex-skill-creator-deep-dive/",
+      "destination": "/ai-workflow/chapters/14-codex-skill-creator-deep-dive/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/15-codex-async-wait-token-cost",
+      "destination": "/ai-workflow/chapters/15-codex-async-wait-token-cost/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/15-codex-async-wait-token-cost/",
+      "destination": "/ai-workflow/chapters/15-codex-async-wait-token-cost/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/16-prompt-task-contract-practice",
+      "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/16-prompt-task-contract-practice/",
+      "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/4-ai-coding-remote-workstation-macos-tailscale-ssh-termux",
+      "destination": "/ai-workflow/chapters/4-ai-coding-remote-workstation-macos-tailscale-ssh-termux/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/4-ai-coding-remote-workstation-macos-tailscale-ssh-termux/",
+      "destination": "/ai-workflow/chapters/4-ai-coding-remote-workstation-macos-tailscale-ssh-termux/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/ai-coding-skills-selection-guide",
+      "destination": "/ai-workflow/chapters/ai-coding-skills-selection-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/ai-coding-skills-selection-guide/",
+      "destination": "/ai-workflow/chapters/ai-coding-skills-selection-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/ai-coding-toolbox",
+      "destination": "/ai-workflow/chapters/ai-coding-toolbox/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/ai-coding-toolbox/",
+      "destination": "/ai-workflow/chapters/ai-coding-toolbox/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/ai-engineering-glossary",
+      "destination": "/ai-workflow/chapters/ai-engineering-glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-workflow/ai-engineering-glossary/",
+      "destination": "/ai-workflow/chapters/ai-engineering-glossary/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/rag-primer",
+      "destination": "/rag/chapters/rag-primer/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/rag-primer/",
+      "destination": "/rag/chapters/rag-primer/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/rag-knowledge-base-component",
+      "destination": "/rag/chapters/rag-knowledge-base-component/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/rag-knowledge-base-component/",
+      "destination": "/rag/chapters/rag-knowledge-base-component/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/rag-metadata-filtering",
+      "destination": "/rag/chapters/rag-metadata-filtering/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/rag-metadata-filtering/",
+      "destination": "/rag/chapters/rag-metadata-filtering/",
+      "permanent": true
+    },
+    {
+      "source": "/algorithms/java-advanced-algorithm-patterns",
+      "destination": "/algorithm-knowledge/chapters/java-advanced-algorithm-patterns/",
+      "permanent": true
+    },
+    {
+      "source": "/algorithms/java-advanced-algorithm-patterns/",
+      "destination": "/algorithm-knowledge/chapters/java-advanced-algorithm-patterns/",
+      "permanent": true
+    },
+    {
+      "source": "/algorithms/java-high-frequency-algorithm-patterns",
+      "destination": "/algorithm-knowledge/chapters/java-high-frequency-algorithm-patterns/",
+      "permanent": true
+    },
+    {
+      "source": "/algorithms/java-high-frequency-algorithm-patterns/",
+      "destination": "/algorithm-knowledge/chapters/java-high-frequency-algorithm-patterns/",
+      "permanent": true
+    },
+    {
       "source": "/architecture/ios-subscription-payment-backend-practice",
       "destination": "/app-stores/ios/subscription-overview/",
       "permanent": true
@@ -48,12 +198,12 @@
     },
     {
       "source": "/ai/1-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B/",
-      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
       "permanent": true
     },
     {
       "source": "/ai/2-RAG%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5/",
-      "destination": "/ai/rag-primer/",
+      "destination": "/rag/chapters/rag-primer/",
       "permanent": true
     },
     {
@@ -83,32 +233,32 @@
     },
     {
       "source": "/ai/prompt-engineering/",
-      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
       "statusCode": 301
     },
     {
       "source": "/ai/prompt-engineering",
-      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
       "statusCode": 301
     },
     {
       "source": "/ai/1-prompt-engineering/",
-      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
       "statusCode": 301
     },
     {
       "source": "/ai/1-prompt-engineering",
-      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
       "statusCode": 301
     },
     {
       "source": "/ai-workflow/10-vibe-coding-prompt-engineering/",
-      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
       "statusCode": 301
     },
     {
       "source": "/ai-workflow/10-vibe-coding-prompt-engineering",
-      "destination": "/ai-workflow/16-prompt-task-contract-practice/",
+      "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
       "statusCode": 301
     },
     {
@@ -173,32 +323,32 @@
     },
     {
       "source": "/ai-workflow/7-terminal-token-compression-tools/",
-      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "destination": "/ai-workflow/chapters/ai-coding-toolbox/",
       "statusCode": 301
     },
     {
       "source": "/ai-workflow/7-terminal-token-compression-tools",
-      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "destination": "/ai-workflow/chapters/ai-coding-toolbox/",
       "statusCode": 301
     },
     {
       "source": "/ai-workflow/8-kiro-spec-driven-development/",
-      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "destination": "/ai-workflow/chapters/ai-coding-toolbox/",
       "statusCode": 301
     },
     {
       "source": "/ai-workflow/8-kiro-spec-driven-development",
-      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "destination": "/ai-workflow/chapters/ai-coding-toolbox/",
       "statusCode": 301
     },
     {
       "source": "/ai-workflow/9-cc-switch-unified-manager/",
-      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "destination": "/ai-workflow/chapters/ai-coding-toolbox/",
       "statusCode": 301
     },
     {
       "source": "/ai-workflow/9-cc-switch-unified-manager",
-      "destination": "/ai-workflow/ai-coding-toolbox/",
+      "destination": "/ai-workflow/chapters/ai-coding-toolbox/",
       "statusCode": 301
     }
   ],

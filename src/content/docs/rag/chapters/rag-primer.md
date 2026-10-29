@@ -1,7 +1,7 @@
 ---
 title: RAG 技术全景与选型
 description: 从数据解析、切块、Embedding、检索和重排讲到引用、评测、权限与高级 RAG，梳理常见技术词汇、方案差异和选型依据
-slug: ai/rag-primer
+slug: rag/chapters/rag-primer
 author: Alvin Yang
 date: 2025-12-27
 lastUpdated: 2026-10-11
@@ -14,7 +14,7 @@ tags:
 
 **RAG 先检索适用的资料，再让模型依据这些资料回答并提供引用。** 离线链路负责解析、切块和索引，在线链路负责召回、重排、生成与验证；权限、版本和来源定位要贯穿两条链路。向量数据库只是其中一种索引设施。
 
-文档问答适合从 RAG 起步；实时订单和余额应查询 SQL 或 API，固定资料也可以先比较长上下文方案。各环节按实际问题选技术，别一次加入所有高级模块。完整员工制度问答案例见[企业知识库落地记录](/ai/rag-knowledge-base-component/)。
+文档问答适合从 RAG 起步；实时订单和余额应查询 SQL 或 API，固定资料也可以先比较长上下文方案。各环节按实际问题选技术，别一次加入所有高级模块。完整员工制度问答案例见[企业知识库落地记录](/rag/chapters/rag-knowledge-base-component/)。
 
 ![RAG 流水线](/images/ai/rag-pipeline.svg)
 
@@ -396,7 +396,7 @@ RAG 会把外部内容送进模型，文档中的恶意指令可能形成 Indire
 
 ## 继续看实战
 
-[企业内部知识库的 RAG 落地记录](/ai/rag-knowledge-base-component/) 展开了一条具体落地路线，包括文件版本、权限过滤、混合检索、引用溯源、离线评测、异步索引和生产部署。阅读时可以用本文的选型框架继续追问。
+[企业内部知识库的 RAG 落地记录](/rag/chapters/rag-knowledge-base-component/) 展开了一条具体落地路线，包括文件版本、权限过滤、混合检索、引用溯源、离线评测、异步索引和生产部署。阅读时可以用本文的选型框架继续追问。
 
 | 实战里的选择 | 可以继续验证的方向 |
 | --- | --- |
