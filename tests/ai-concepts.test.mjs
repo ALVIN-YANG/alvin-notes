@@ -296,7 +296,7 @@ test('known non-English or novelty-only voice lists do not silently use the wron
   assert.equal(states.at(-1)[2], true);
 });
 
-function uiFixture(t, entry, blocked = false, { records, speech, withoutSearch = false } = {}) {
+function uiFixture(t, entry, blocked = false, { records, speech, withoutSearch = false, browseOnly = false } = {}) {
   const dom = new JSDOM(`<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button>
     <section data-browse><p data-learning-summary></p><button data-start-learning>开始学习</button><input data-search>
       <details data-filter="category"><summary><span data-filter-label>全部分类</span></summary><input type="hidden" data-category value="">
@@ -316,6 +316,7 @@ function uiFixture(t, entry, blocked = false, { records, speech, withoutSearch =
     dom.window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
   }
   const root = dom.window.document.querySelector('[data-concepts-root]');
+  if (browseOnly) { root.querySelector('[data-review]').remove(); root.querySelector('[data-progress]').remove(); }
   if (withoutSearch) { root.querySelector('[data-search]').remove(); root.querySelector('[data-category]').value = 'model'; }
   // JSDOM does not implement the browser's dialog lifecycle.
   const dialog = root.querySelector('[data-detail]');
@@ -503,4 +504,33 @@ test('category browsing works without a search field and starts in the selected 
   root.insertAdjacentHTML('afterbegin', '<button data-category-choice="retrieval">知识与检索</button>');
   root.querySelector('[data-category-choice]').click();
   assert.equal(root.querySelector('[data-open]').dataset.open, 'rag');
+});
+
+
+test('continuous category browsing renders more than one former page', t => {
+  const entries = Array.from({length: 30}, (_, index) => ({ ...term, id: `model-${index}`, category: 'model' }));
+  const root = uiFixture(t, entries, false, { withoutSearch: true });
+  assert.equal(root.querySelectorAll('[data-open]').length, 30);
+  assert.equal(root.querySelector('[data-pagination]').hidden, true);
+});
+
+test('display taxonomy splits fundamentals without changing source records', async () => {
+  const { displayCategory, categories } = await import('../src/lib/concept-categories.mjs');
+  for (const [name, expected] of [['matrix factorization','mathematics'],['quantile','statistics'],['neuron','neural'],['convex optimization','optimization'],['Q-learning','reinforcement'],['TPU chip','systems'],['decision tree','classical']]) {
+    const entry = {term:name,zh:'',category:'fundamentals'};
+    assert.equal(displayCategory(entry), expected);
+    assert.equal(entry.category, 'fundamentals');
+    assert(categories[expected]);
+  }
+  assert.equal(displayCategory({ ...term, category:'retrieval' }), 'retrieval');
+});
+
+
+test('browse-only view works without learning storage or practice controls', t => {
+  const root = uiFixture(t, term, true, { browseOnly:true });
+  assert.equal(root.querySelector('[data-count]').textContent, '1 个概念');
+  root.querySelector('[data-open]').click();
+  assert.equal(root.querySelector('[data-detail]').open, true);
+  assert.equal(root.querySelector('[data-practice]'), null);
+  assert.equal(root.querySelector('[data-status]').textContent, '');
 });

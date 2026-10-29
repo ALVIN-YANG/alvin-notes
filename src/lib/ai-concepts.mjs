@@ -4,7 +4,8 @@ import { chooseSpeechVoice } from './speech-voices.mjs';
 export const PROGRESS_KEY = 'alvin-ai-concepts-progress-v1';
 const DAY = 86400000;
 const intervals = [1, 3, 7, 14, 30, 60];
-export const categories = { model: '模型与生成', training: '训练与适配', retrieval: '知识与检索', context: '上下文与记忆', agent: 'Agent 与工具', quality: '评测与安全', multimodal: '多模态', data: '数据与学习', fundamentals: '基础与数学', research: '论文术语' };
+import { categories } from './concept-categories.mjs';
+export { categories };
 
 export function searchKey(text = '') {
   return text.normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
@@ -154,9 +155,9 @@ export function mountConcepts(root, data) {
   const find = selector => root.querySelector(selector);
   const browse = find('[data-browse]'), detail = find('[data-detail]'), review = find('[data-review]');
   const grid = find('[data-grid]'), search = find('[data-search]'), category = find('[data-category]'), sort = find('[data-sort]');
-  const status = find('[data-status]'), count = find('[data-count]'), pageLabel = find('[data-page-label]');
+  const status = find('[data-status]'), count = find('[data-count]');
   const dropdowns = [...root.querySelectorAll('[data-filter]')];
-  let progress = { version: 1, records: {} }, page = 0, mode = 'browse', queue = [], reviewIndex = 0, returnId = null;
+  let progress = { version: 1, records: {} }, mode = 'browse', queue = [], reviewIndex = 0, returnId = null;
   let reviewOriginals = new Map();
   const searchIndex = new Map(terms.map(term => [term.id, searchKey([term.term, term.zh, ...term.aliases, term.summary].join(' '))]));
   const events = new view.AbortController();
@@ -168,7 +169,7 @@ export function mountConcepts(root, data) {
       element.classList.toggle('ac-sr-only', !error);
     }
   }
-  try { const saved = view.localStorage.getItem(PROGRESS_KEY); if (saved) progress = readProgress(saved, terms); }
+  try { const saved = review ? view.localStorage.getItem(PROGRESS_KEY) : null; if (saved) progress = readProgress(saved, terms); }
   catch { announce('无法读取已保存的学习记录。本次仍可学习。', true); }
   function persist() {
     let saved = true;
@@ -178,6 +179,7 @@ export function mountConcepts(root, data) {
     return saved;
   }
   function updateProgress() {
+    if (!review) return;
     const reviewed = Object.keys(progress.records).length;
     const due = terms.filter(term => progress.records[term.id] && (progress.records[term.id].nextDue <= Date.now() || progress.records[term.id].revision !== revision(term))).length;
     find('[data-progress]').textContent = reviewed ? `已学 ${reviewed} 个 · 待巩固 ${due} 个` : '学习记录保存在此浏览器';
@@ -209,21 +211,17 @@ export function mountConcepts(root, data) {
     root.querySelectorAll('[data-category-choice]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.categoryChoice === category.value)));
     const groupTitle = find('[data-category-title]');
     if (groupTitle) groupTitle.textContent = categories[category.value] || '全部概念';
-    const pages = Math.max(1, Math.ceil(result.length / 12));
-    page = Math.min(page, pages - 1);
-    grid.innerHTML = result.slice(page * 12, page * 12 + 12).map(term => `<article class="ac-card">
+
+    grid.innerHTML = result.map(term => `<article class="ac-card">
       ${speechButton(term)}<button type="button" class="ac-card-open" data-open="${escapeHtml(term.id)}"><span class="ac-term">${escapeHtml(term.term)}</span><span class="ac-zh">${escapeHtml(term.zh)}</span><span class="ac-summary">${escapeHtml(term.summary)}</span><span class="ac-card-foot">${escapeHtml(term.scope === '论文术语' ? '论文术语' : categories[term.category])}<span aria-hidden="true">↗</span></span></button></article>`).join('');
     if (!result.length) grid.innerHTML = '<p class="ac-empty">没有匹配的词条。试试英文全称、缩写或中文名。</p>';
     count.textContent = `${result.length} 个概念`;
-    pageLabel.textContent = `${page + 1} / ${pages}`;
-    find('[data-prev]').disabled = page === 0;
-    find('[data-next]').disabled = page >= pages - 1;
-    find('[data-pagination]').hidden = pages <= 1;
+    if (find('[data-pagination]')) find('[data-pagination]').hidden = true;
     updateProgress();
   }
   function show(next) {
     closeTerm(); closeDropdowns(); mode = next;
-    browse.hidden = next !== 'browse'; review.hidden = next !== 'review';
+    browse.hidden = next !== 'browse'; if (review) review.hidden = next !== 'review';
     const sidebar = find('[data-category-sidebar]');
     if (sidebar) sidebar.hidden = next !== 'browse';
     root.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-current', button.dataset.mode === next ? 'page' : 'false'));
@@ -242,7 +240,7 @@ export function mountConcepts(root, data) {
       <div class="ac-definition">${term.definition.split('\n\n').map(text => `<p>${escapeHtml(text)}</p>`).join('')}</div>
       ${term.example ? `<section class="ac-note"><h3>一个例子</h3><p>${escapeHtml(term.example)}</p></section>` : ''}
       ${term.contrast ? `<section class="ac-note"><h3>别混淆</h3><p>${escapeHtml(term.contrast)}</p></section>` : ''}
-      <button type="button" class="ac-primary" data-practice="${escapeHtml(term.id)}">学习这个概念</button>
+${review ? `<button type="button" class="ac-primary" data-practice="${escapeHtml(term.id)}">学习这个概念</button>` : ''}
       <p class="ac-status ac-sr-only" data-detail-status role="status" aria-live="polite"></p>
       <details class="ac-term-sources"><summary>来源与原文</summary><div>${sources}</div>${term.upstreamDefinition ? `<p class="ac-upstream">Google 中文原文节选：${escapeHtml(term.upstreamDefinition)}</p>` : ''}</details>
     </article>`;
@@ -272,6 +270,7 @@ export function mountConcepts(root, data) {
     (review.querySelector('[data-restart]') || review.querySelector('h2')).focus({ preventScroll: true });
   }
   function startReview(id) {
+    if (!review) return;
     show('review'); queue = id ? [byId.get(id)] : reviewQueue(terms.filter(term => !category.value || term.category === category.value), progress.records);
     reviewOriginals = new Map(queue.map(term => [term.id, progress.records[term.id]]));
     reviewIndex = 0; renderReview();
@@ -345,12 +344,9 @@ export function mountConcepts(root, data) {
     if (button.dataset.practice) { startReview(button.dataset.practice); return; }
     if (button.hasAttribute('data-review-prev')) { previousReview(); return; }
     if (button.dataset.rate) { rateCurrent(button.dataset.rate === 'recalled'); return; }
-    if (button.hasAttribute('data-prev') || button.hasAttribute('data-next')) {
-      speech.stop(); page += button.hasAttribute('data-prev') ? -1 : 1; renderBrowse();
-      grid.querySelector('[data-open]')?.focus(); view.scrollTo({ top: browse.offsetTop, behavior: 'instant' });
-    }
+
   });
-  for (const [element, event] of [[search, 'input'], [category, 'change'], [sort, 'change']]) { if (element) listen(element, event, () => { speech.stop(); page = 0; renderBrowse(); }); }
+  for (const [element, event] of [[search, 'input'], [category, 'change'], [sort, 'change']]) { if (element) listen(element, event, () => { speech.stop(); renderBrowse(); }); }
   // A drag that starts inside the content must not dismiss the dialog.
   let backdropDown = false;
   const onBackdrop = event => {

@@ -2171,3 +2171,11 @@ body:has(.ai-concepts) .sl-container { max-width: 78rem; }
   .ac-main .ac-card .ac-summary { font-size: .73rem; }
   .ac-main .ac-card .ac-zh { font-size: .7rem; }
 }
+
+/* Compact continuous concept list. */
+.ac-main .ac-card-open { min-height: 140px; padding: 12px; }
+.ac-main .ac-grid { gap: .6rem; }
+.ac-main .ac-card .ac-summary { margin: .45rem 0 .6rem; -webkit-line-clamp: 2; }
+.ac-category-sidebar { max-height: calc(100dvh - var(--sl-nav-height) - 3rem); overflow-y: auto; scrollbar-width: thin; }
+@media (min-width: 1400px) { .ac-main .ac-grid { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+@media (max-width: 700px) { .ac-main .ac-card-open { min-height: 145px; padding: 10px; } .ac-category-sidebar { max-height: none; overflow: visible; } }
