@@ -1,4 +1,5 @@
 ---
+import CareerBookCover from '../../components/CareerBookCover.astro';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { careerLibrary, careerTopics } from '../../data/career-library';
 const kinds = [{key:'all',label:'全部内容'}, {key:'handbooks',label:'知识手册'}, {key:'resources',label:'精选资源'}];
@@ -13,11 +14,7 @@ const kinds = [{key:'all',label:'全部内容'}, {key:'handbooks',label:'知识�
     <div class="career-shelf">
       {careerLibrary.map((book,i)=><article class="career-book" data-book-kind={book.kind} data-book-topic={book.topic}>
         <a href={book.href} class="career-book-link" aria-label={`${book.title}，${book.note}`}>
-          <div class:list={["career-cover", `career-cover-${book.cover}`]} data-art={book.art} aria-hidden="true">
-            <div class="career-cover-title">{book.words.map(w=><span>{w}</span>)}</div>
-            <div class="career-cover-visual"><img class="career-cover-art" src={`/images/career-covers/${book.art}.webp`} alt="" width="720" height="960" loading={i<4?'eager':'lazy'} decoding="async" /></div>
-            <div class="career-cover-bottom">{book.author}</div>
-          </div>
+          <CareerBookCover book={book} eager={i<4} />
           <h2>{book.title}<span aria-hidden="true">{book.href.startsWith('https:')?'↗':'→'}</span></h2>
         </a>
         {book.href.startsWith('https:') && <p>原站阅读 ↗</p>}

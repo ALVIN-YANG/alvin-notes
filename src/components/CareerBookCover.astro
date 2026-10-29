@@ -1,0 +1,10 @@
+---
+import type { careerLibrary } from '../data/career-library';
+interface Props { book: (typeof careerLibrary)[number]; eager?: boolean }
+const { book, eager = false } = Astro.props;
+---
+<div class:list={['career-cover', `career-cover-${book.cover}`]} data-art={book.art} aria-hidden="true">
+  <div class="career-cover-title">{book.words.map(word => <span>{word}</span>)}</div>
+  <div class="career-cover-visual"><img class="career-cover-art" src={`/images/career-covers/${book.art}.webp`} alt="" width="720" height="960" loading={eager ? 'eager' : 'lazy'} decoding="async" /></div>
+  <div class="career-cover-bottom">{book.author}</div>
+</div>

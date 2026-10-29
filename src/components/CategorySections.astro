@@ -1,27 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
-import { bookStartUrl } from '../data/agent-book-links.mjs';
-
-const abilityMaps = [
-  { title: '职业手册 · 精选资源与知识手册', href: '/career/' },
-  { title: '凤凰架构', href: '/phoenix/' },
-  {
-    title: 'AI Infra',
-    href: '/ai-infra-knowledge/',
-  },
-  {
-    title: '算法',
-    href: '/algorithm-knowledge/',
-  },
-  {
-    title: '系统设计',
-    href: '/system-design/',
-  },
-  {
-    title: 'AI Agent 原书',
-    href: bookStartUrl,
-  },
-] as const;
+import { careerLibrary } from '../data/career-library';
+import CareerBookCover from './CareerBookCover.astro';
+const featuredBooks = ['phoenix', 'system-design', 'rag', 'app-stores'].map(id => careerLibrary.find(book => book.art === id)!);
+const handbookCount = careerLibrary.filter(book => book.kind === 'handbooks').length;
+const resourceCount = careerLibrary.filter(book => book.kind === 'resources').length;
 
 const categories = [
   {
@@ -164,20 +147,25 @@ function formatDate(doc: typeof allDocs[number]) {
 }
 ---
 
-<section class="ability-map-showcase" aria-labelledby="home-learning-title">
-  <div class="home-resource-group">
-    <h2 class="home-resource-heading" id="home-learning-title">学习入口</h2>
-    <nav class="ability-map-grid" aria-label="学习入口">
-      {abilityMaps.map((map) => <a href={map.href}>{map.title}</a>)}
+<section class="home-library not-content" aria-labelledby="home-library-title">
+  <div class="home-library-intro">
+    <h2 id="home-library-title"><a href="/career/">职业手册</a></h2>
+    <nav class="home-library-types" aria-label="手册分类">
+      <a href="/career/?type=handbooks">知识手册 <span>{handbookCount}</span></a>
+      <a href="/career/?type=resources">精选资源 <span>{resourceCount}</span></a>
     </nav>
+    <a class="home-library-all" href="/career/">浏览全部 {careerLibrary.length} 本 <span aria-hidden="true">→</span></a>
   </div>
-  <nav class="home-quick-links" aria-label="快捷查阅">
-    <a href="/ai-concepts/">AI 概念</a>
-    <a href="/companies/">公司观察</a>
-    <a href="/interview/">AI 工程问答</a>
-    <a href="/projects/game-guides/">游戏攻略</a>
+  <nav class="home-library-books" aria-label="精选手册">
+    {featuredBooks.map(book => <a class="home-library-book" href={book.href} aria-label={`阅读${book.title}`}><CareerBookCover book={book} eager /></a>)}
   </nav>
 </section>
+<nav class="home-library-shortcuts not-content" aria-label="快捷查阅">
+  <a href="/ai-concepts/">AI 概念</a>
+  <a href="/companies/">公司观察</a>
+  <a href="/interview/">AI 工程问答</a>
+  <a href="/projects/game-guides/">游戏攻略</a>
+</nav>
 
 <div class="home-sections" aria-label="文章分栏">
   {
