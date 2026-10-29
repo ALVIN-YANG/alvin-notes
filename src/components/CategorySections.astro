@@ -12,16 +12,9 @@ const categories = [
     id: 'ai',
     title: 'AI Agent',
     desc: '从 Prompt、RAG 到生产级 Agent 系统',
-    href: '/ai-workflow/16-prompt-task-contract-practice/',
+    href: '/ai/agent-context-persistence-recovery/',
     prefixes: ['ai', 'claw/openclaw'],
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>',
-  },
-  {
-    id: 'ai-workflow',
-    title: 'AI 工作流',
-    desc: 'AI Coding、Skills 与开发工具链',
-    href: '/ai-workflow/',
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>',
   },
   {
     id: 'architecture',
@@ -43,13 +36,6 @@ const categories = [
     desc: '并发、框架、中间件与架构实践',
     href: '/java/01-core/1-java21-virtual-threads/',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="10" y1="9" x2="16" y2="9"/><line x1="10" y1="13" x2="14" y2="13"/></svg>',
-  },
-  {
-    id: 'algorithms',
-    title: '算法',
-    desc: '用模式组织高频题，减少机械背题',
-    href: '/algorithms/java-high-frequency-algorithm-patterns/',
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h10M4 19h16"/><circle cx="17" cy="12" r="3"/></svg>',
   },
   {
     id: 'ops',
@@ -134,7 +120,7 @@ const sections = categories.map((cat) => {
     docs: getCategoryDocs(categoryIds),
     count: allDocs.filter(matchesCategory).length,
   };
-});
+}).filter(section => section.count > 0);
 
 const compactDateFormatter = new Intl.DateTimeFormat('zh-CN', {
   month: '2-digit',
