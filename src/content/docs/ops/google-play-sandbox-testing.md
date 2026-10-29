@@ -309,3 +309,5 @@ lastUpdated: 2026-10-29
 - **测试人员必做：** 接受内测邀请后安装；付款前核对测试卡和“不收费”提示。
 
 [Google 许可测试官方说明](https://developer.android.com/google/play/billing/test#license-testers) · [Google 内部测试官方说明](https://support.google.com/googleplay/android-developer/answer/9845334)
+
+[返回 App 商店实战手册](/app-stores/)

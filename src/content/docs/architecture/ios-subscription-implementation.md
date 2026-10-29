@@ -989,3 +989,5 @@ Apple 提供 Request a Test Notification。App Store Connect 通知地址配置�
 - [订阅计费与套餐切换](https://developer.apple.com/documentation/storekit/handling-subscriptions-billing)
 - [Sandbox 测试](https://developer.apple.com/documentation/storekit/testing-in-app-purchases-with-sandbox)
 - [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
+
+[返回 App 商店实战手册](/app-stores/)

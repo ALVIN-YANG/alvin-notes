@@ -177,3 +177,5 @@ GET /api/v1/credits/daily-bills?cursor=...
 日志沿用[订阅实现的字段与脱敏规则](/architecture/ios-subscription-implementation/#日志怎样记)，同时能定位费率版本、UTC 账单日、发放键、已累计用量和已扣金额。监控发放失败、负余额、未封账日期以及 `VERIFIED` 长时间未交付订单。人工调整使用唯一调整单号，保存操作人、原因、前后值和时间。
 
 实际验收时，核对账户、发放记录和账单项；数学公式正确不代表并发、重启和退款路径已经验证。完整[自动化测试](/architecture/ios-subscription-implementation/#自动化测试)与[Sandbox 验收场景](/architecture/ios-subscription-implementation/#sandbox-端到端验收)保留在订阅实现中。
+
+[返回 App 商店实战手册](/app-stores/)

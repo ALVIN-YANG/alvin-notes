@@ -93,3 +93,5 @@ flowchart TB
 订单存在 → Apple 交易验证通过 → 订阅状态正确 → Credits 只发一次 → 用量按费率扣减 → 异常能恢复。只看到购买成功页面或 HTTP 200，都不够。
 
 先验证本地 StoreKit 场景，再做 Sandbox 端到端联调，最后单独核验 Production 的商品、签名、通知与真实购买。每次应能串起订单、交易、通知、权益与额度变化。[Sandbox 测试](https://developer.apple.com/documentation/storekit/testing-in-app-purchases-with-sandbox)
+
+[返回 App 商店实战手册](/app-stores/)
