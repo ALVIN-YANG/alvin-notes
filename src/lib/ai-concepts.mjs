@@ -156,6 +156,9 @@ export function mountConcepts(root, data) {
   }
   function renderBrowse() {
     const result = filtered();
+    root.querySelectorAll('[data-category-choice]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.categoryChoice === category.value)));
+    const groupTitle = find('[data-category-title]');
+    if (groupTitle) groupTitle.textContent = categories[category.value] || '全部概念';
     const pages = Math.max(1, Math.ceil(result.length / 12));
     page = Math.min(page, pages - 1);
     grid.innerHTML = result.slice(page * 12, page * 12 + 12).map(term => `<article class="ac-card">
@@ -171,6 +174,8 @@ export function mountConcepts(root, data) {
   function show(next) {
     closeTerm(); closeDropdowns(); mode = next;
     browse.hidden = next !== 'browse'; review.hidden = next !== 'review';
+    const sidebar = find('[data-category-sidebar]');
+    if (sidebar) sidebar.hidden = next !== 'browse';
     root.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-current', button.dataset.mode === next ? 'page' : 'false'));
   }
   function closeTerm() {
@@ -267,6 +272,11 @@ export function mountConcepts(root, data) {
   listen(document, 'click', event => closeDropdowns(event.target.closest('[data-filter]')));
   listen(root, 'click', event => {
     const button = event.target.closest('button'); if (!button) return;
+    if (button.hasAttribute('data-category-choice')) {
+      category.value = button.dataset.categoryChoice;
+      category.dispatchEvent(new view.Event('change', { bubbles: true }));
+      return;
+    }
     if (button.hasAttribute('data-choice')) {
       const dropdown = button.closest('[data-filter]');
       const field = dropdown.dataset.filter === 'category' ? category : sort;

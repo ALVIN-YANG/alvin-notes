@@ -2129,3 +2129,45 @@ body:has(.career-library) .sl-container { max-width: 76rem; }
   .home-library .career-cover-title { font-size: 1.15rem; }
   .home-library-shortcuts { gap: .3rem 1rem; }
 }
+
+/* Concept directory: persistent categories and compact reading cards. */
+body:has(.ai-concepts) .sl-container { max-width: 78rem; }
+.ai-concepts { display: grid; grid-template-columns: 12rem minmax(0,1fr); gap: 2rem; align-items: start; }
+.ai-concepts:has([data-review]:not([hidden])) { grid-template-columns: minmax(0,1fr); }
+.ac-main { min-width: 0; }
+.ac-category-sidebar { position: sticky; top: calc(var(--sl-nav-height) + 1.5rem); padding: .5rem 1rem .5rem 0; border-right: 1px solid var(--ac-line); }
+.ac-category-sidebar h2 { font-size: .8rem; font-weight: 500; color: var(--ac-muted); padding: 0 .7rem .8rem; }
+.ac-category-sidebar nav { display: grid; gap: .2rem; }
+.ac-category-sidebar button { display: flex; align-items: center; justify-content: space-between; gap: .6rem; width: 100%; min-height: 44px; padding: .55rem .7rem; border: 0; border-radius: 5px; background: transparent; text-align: left; font-size: .82rem; }
+.ac-category-sidebar button small { font-size: .7rem; color: var(--ac-muted); font-variant-numeric: tabular-nums; }
+.ac-category-sidebar button[aria-pressed='true'] { background: var(--ac-wash); color: var(--ac-accent); font-weight: 600; }
+.ac-category-sidebar button:hover { background: var(--ac-wash); }
+.ac-category-sidebar button:active { transform: translateY(1px); }
+.ac-group-title { display: flex; align-items: baseline; gap: .7rem; }
+.ac-group-title h2 { font-size: 1rem; font-weight: 600; color: var(--ac-text); }
+.ac-main .ac-learn-entry { padding: .8rem 1rem; margin-bottom: 1rem; background: transparent; border-radius: 5px; }
+.ac-main .ac-learn-entry h2 { font-size: .9rem; }
+.ac-main .ac-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: .7rem; }
+.ac-main .ac-card { border-radius: 6px; }
+.ac-main .ac-card-open { min-height: 172px; padding: 14px; }
+.ac-main .ac-card .ac-term { font-size: 16px; line-height: 1.35; letter-spacing: 0; }
+.ac-main .ac-card .ac-zh { font-size: .75rem; margin-top: .3rem !important; }
+.ac-main .ac-card .ac-summary { font-size: .78rem; line-height: 1.65; margin: .65rem 0 .8rem; }
+.ac-main .ac-card-foot { font-size: .65rem; }
+.ac-main .ac-card > .ac-speak { right: 2px; top: 3px; }
+@media (max-width: 1100px) { .ai-concepts { grid-template-columns: 10.5rem minmax(0,1fr); gap: 1.2rem; } .ac-main .ac-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (max-width: 700px) {
+  .ai-concepts { display: flex; flex-direction: column; gap: 1rem; }
+  .ac-category-sidebar { position: static; width: 100%; padding: 0; border: 0; }
+  .ac-category-sidebar h2 { padding: 0 0 .3rem; }
+  .ac-category-sidebar nav { display: flex; overflow-x: auto; gap: .4rem; padding-bottom: .4rem; }
+  .ac-category-sidebar button { flex: 0 0 auto; width: auto; white-space: nowrap; }
+  .ac-main { width: 100%; }
+  .ac-main .ac-learn-entry { flex-direction: row; align-items: center; gap: .5rem; }
+  .ac-main .ac-learn-entry .ac-primary { width: auto; gap: .4rem; font-size: .75rem; }
+  .ac-main .ac-grid { gap: .5rem; }
+  .ac-main .ac-card-open { padding: 10px; min-height: 178px; }
+  .ac-main .ac-card .ac-term { font-size: 14px; }
+  .ac-main .ac-card .ac-summary { font-size: .73rem; }
+  .ac-main .ac-card .ac-zh { font-size: .7rem; }
+}

@@ -6,6 +6,13 @@ const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'A
 ---
 
 <div class="ai-concepts not-content" data-concepts-root>
+  <aside class="ac-category-sidebar" data-category-sidebar data-enhanced hidden aria-label="概念分类">
+    <h2>概念分类</h2>
+    <nav aria-label="选择概念分类">
+      <button type="button" data-category-choice="" aria-pressed="true"><span>全部概念</span><small>{data.terms.length}</small></button>
+      {Object.entries(categories).map(([key,label]) => <button type="button" data-category-choice={key} aria-pressed="false"><span>{label}</span><small>{data.terms.filter(term=>term.category===key).length}</small></button>)}
+    </nav>
+  </aside>
   <div class="ac-main">
   <header class="ac-header">
     <h1 id="_top">AI 概念</h1>
@@ -18,16 +25,9 @@ const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'A
       </section>
       <div class="ac-filters" data-enhanced hidden>
         <label class="ac-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><span class="ac-sr-only">搜索概念</span><input type="search" data-search placeholder="搜索术语、缩写或中文" autocomplete="off" /></label>
-        <details class="ac-dropdown" data-filter="category">
-          <summary><span class="ac-sr-only">按分类筛选：</span><span data-filter-label>全部分类</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></summary>
-          <input type="hidden" data-category value="" />
-          <div class="ac-dropdown-options" role="group" aria-label="分类选项">
-            <button type="button" data-choice="" aria-pressed="true">全部分类</button>
-            {Object.entries(categories).map(([key, label]) => <button type="button" data-choice={key} aria-pressed="false">{label}</button>)}
-          </div>
-        </details>
+        <input type="hidden" data-category value="" />
       </div>
-      <div class="ac-results" data-enhanced hidden><span data-count aria-live="polite">{data.terms.length} 个概念</span><details class="ac-dropdown ac-dropdown-sort" data-filter="sort">
+      <div class="ac-results" data-enhanced hidden><div class="ac-group-title"><h2 data-category-title>全部概念</h2><span data-count aria-live="polite">{data.terms.length} 个概念</span></div><details class="ac-dropdown ac-dropdown-sort" data-filter="sort">
         <summary><span class="ac-sr-only">排序方式：</span><span data-filter-label>常用优先</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></summary>
         <input type="hidden" data-sort value="common" />
         <div class="ac-dropdown-options" role="group" aria-label="排序选项"><button type="button" data-choice="common" aria-pressed="true">常用优先</button><button type="button" data-choice="latest" aria-pressed="false">最新收录</button><button type="button" data-choice="name" aria-pressed="false">英文排序</button></div>

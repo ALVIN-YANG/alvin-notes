@@ -375,3 +375,22 @@ test('review arrows navigate, pronounce and correct ratings without accumulating
   press('ArrowRight');
   assert.equal(records().rag.level, 3, 'going back and forward cannot advance another level');
 });
+
+test('sidebar category filters compose with search and scope learning sessions', t => {
+  const root = uiFixture(t, [{ ...term, id: 'token', term: 'Token', category: 'model' }, term]);
+  root.insertAdjacentHTML('afterbegin', '<aside data-category-sidebar><button data-category-choice="">全部概念</button><button data-category-choice="retrieval">知识与检索</button></aside><h2 data-category-title></h2>');
+  root.querySelector('[data-category-choice="retrieval"]').click();
+  assert.equal(root.querySelector('[data-category-title]').textContent, '知识与检索');
+  assert.equal(root.querySelector('[data-category-choice="retrieval"]').getAttribute('aria-pressed'), 'true');
+  assert.equal(root.querySelector('[data-count]').textContent, '1 个概念');
+  const search = root.querySelector('[data-search]'); search.value = 'Token';
+  search.dispatchEvent(new root.ownerDocument.defaultView.Event('input'));
+  assert.equal(root.querySelector('[data-count]').textContent, '0 个概念');
+  search.value = ''; search.dispatchEvent(new root.ownerDocument.defaultView.Event('input'));
+  root.querySelector('[data-start-learning]').click();
+  assert.equal(root.querySelector('[data-category-sidebar]').hidden, true);
+  assert.equal(root.querySelector('[data-review] h2').textContent, 'RAG');
+  root.querySelector('[data-mode="browse"]').click();
+  assert.equal(root.querySelector('[data-category-sidebar]').hidden, false);
+  assert.equal(root.querySelector('[data-count]').textContent, '1 个概念');
+});
