@@ -5,7 +5,7 @@ const kinds = [{key:'all',label:'全部内容'}, {key:'handbooks',label:'知识�
 ---
 <StarlightPage frontmatter={{title:'职业手册', description:'精选资源与知识手册，按主题查阅、学习与练习。', template:'splash', hidePageTitle:true}} sidebar={[]}>
   <section class="career-library not-content" aria-labelledby="_top">
-    <header class="career-heading"><div><span class="career-eyebrow">ALVIN'S LIBRARY</span><h1 id="_top">职业手册</h1></div><p>精选资源与知识手册，留在手边，随时翻阅。</p></header>
+    <header class="career-heading"><div><h1 id="_top">职业手册</h1></div></header>
     <div class="career-kinds" role="group" aria-label="内容类型">
       {kinds.map(k => <button type="button" data-kind={k.key} aria-pressed={k.key==='all'}>{k.label}<span>{k.key==='all'?careerLibrary.length:careerLibrary.filter(b=>b.kind===k.key).length}</span></button>)}
     </div>
@@ -13,16 +13,14 @@ const kinds = [{key:'all',label:'全部内容'}, {key:'handbooks',label:'知识�
     <div class="career-shelf">
       {careerLibrary.map((book,i)=><article class="career-book" data-book-kind={book.kind} data-book-topic={book.topic}>
         <a href={book.href} class="career-book-link" aria-label={`${book.title}，${book.note}`}>
-          <div class="career-cover career-cover-illustrated" data-art={book.art} aria-hidden="true">
-            <img class="career-cover-art" src={`/images/career-covers/${book.art}.webp`} alt="" width="720" height="960" loading={i<4?'eager':'lazy'} decoding="async" />
-            <div class="career-cover-top"><span>{book.kind==='handbooks'?'知识手册':'精选资源'}</span><span>{String(i+1).padStart(2,'0')}</span></div>
+          <div class:list={["career-cover", `career-cover-${book.cover}`]} data-art={book.art} aria-hidden="true">
             <div class="career-cover-title">{book.words.map(w=><span>{w}</span>)}</div>
+            <div class="career-cover-visual"><img class="career-cover-art" src={`/images/career-covers/${book.art}.webp`} alt="" width="720" height="960" loading={i<4?'eager':'lazy'} decoding="async" /></div>
             <div class="career-cover-bottom">{book.author}</div>
           </div>
           <h2>{book.title}<span aria-hidden="true">{book.href.startsWith('https:')?'↗':'→'}</span></h2>
         </a>
-        <p class="career-book-description">{book.subtitle}</p>
-        <p>{book.note}</p>
+        {book.href.startsWith('https:') && <p>原站阅读 ↗</p>}
       </article>)}
     </div>
     <p class="career-empty" hidden>这个分类下暂无内容，试试其他主题。</p>
