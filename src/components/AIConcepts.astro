@@ -1,7 +1,8 @@
 ---
+import { conceptLabels } from '../lib/concept-labels.mjs';
 import sourceData from '../data/ai-concepts.json';
 import { displayCategory } from '../lib/concept-categories.mjs';
-const data = { ...sourceData, terms: sourceData.terms.map(term => ({ ...term, category: displayCategory(term) })) };
+const data = { ...sourceData, terms: sourceData.terms.map(term => conceptLabels({ ...term, category: displayCategory(term) })) };
 import { categories } from '../lib/ai-concepts.mjs';
 const initialTerms = data.terms.filter(term => term.category === 'model');
 const serialized = JSON.stringify(data).replace(/</g, '\\u003c');
@@ -27,7 +28,7 @@ const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'A
         <div class="ac-dropdown-options" role="group" aria-label="排序选项"><button type="button" data-choice="common" aria-pressed="true">常用优先</button><button type="button" data-choice="latest" aria-pressed="false">最新收录</button><button type="button" data-choice="name" aria-pressed="false">英文排序</button></div>
       </details></div>
       <div class="ac-grid" data-grid>
-        {initialTerms.map(term => <article class="ac-card"><button type="button" class="ac-speak" data-speak={term.id} data-enhanced hidden aria-label={`朗读 ${term.term}`} aria-pressed="false" title="播放英文名词发音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg></button><button type="button" class="ac-card-open" data-open={term.id}><span class="ac-term">{term.term}</span><span class="ac-zh">{term.zh}</span><span class="ac-summary">{term.summary}</span><span class="ac-card-foot">{categories[term.category]}<span aria-hidden="true">↗</span></span></button></article>)}
+        {initialTerms.map(term => <article class="ac-card"><button type="button" class="ac-speak" data-speak={term.id} data-enhanced hidden aria-label={`朗读 ${term.term}`} aria-pressed="false" title="播放英文名词发音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg></button><button type="button" class="ac-card-open" data-open={term.id}><span class="ac-term">{term.displayTerm}</span><span class="ac-zh">{term.displayZh}</span><span class="ac-summary">{term.displaySummary}</span></button></article>)}
       </div>
       <noscript><p>启用 JavaScript 后可切换分类、查看详情和朗读。也可以直接阅读下方的官方词表。</p></noscript>
     </section>

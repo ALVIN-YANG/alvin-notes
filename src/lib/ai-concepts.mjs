@@ -1,3 +1,4 @@
+import { conceptLabels } from './concept-labels.mjs';
 import { splitSpeechText } from './article-speech.mjs';
 import { chooseSpeechVoice } from './speech-voices.mjs';
 
@@ -151,7 +152,7 @@ export function createConceptSpeech(view, onState) {
 
 export function mountConcepts(root, data) {
   const document = root.ownerDocument, view = document.defaultView;
-  const terms = data.terms, byId = new Map(terms.map(term => [term.id, term]));
+  const terms = data.terms.map(conceptLabels), byId = new Map(terms.map(term => [term.id, term]));
   const find = selector => root.querySelector(selector);
   const browse = find('[data-browse]'), detail = find('[data-detail]'), review = find('[data-review]');
   const grid = find('[data-grid]'), search = find('[data-search]'), category = find('[data-category]'), sort = find('[data-sort]');
@@ -213,7 +214,7 @@ export function mountConcepts(root, data) {
     if (groupTitle) groupTitle.textContent = categories[category.value] || '全部概念';
 
     grid.innerHTML = result.map(term => `<article class="ac-card">
-      ${speechButton(term)}<button type="button" class="ac-card-open" data-open="${escapeHtml(term.id)}"><span class="ac-term">${escapeHtml(term.term)}</span><span class="ac-zh">${escapeHtml(term.zh)}</span><span class="ac-summary">${escapeHtml(term.summary)}</span><span class="ac-card-foot">${escapeHtml(term.scope === '论文术语' ? '论文术语' : categories[term.category])}<span aria-hidden="true">↗</span></span></button></article>`).join('');
+      ${speechButton(term)}<button type="button" class="ac-card-open" data-open="${escapeHtml(term.id)}"><span class="ac-term">${escapeHtml(term.displayTerm)}</span><span class="ac-zh">${escapeHtml(term.displayZh)}</span><span class="ac-summary">${escapeHtml(term.displaySummary)}</span></button></article>`).join('');
     if (!result.length) grid.innerHTML = '<p class="ac-empty">没有匹配的词条。试试英文全称、缩写或中文名。</p>';
     count.textContent = `${result.length} 个概念`;
     if (find('[data-pagination]')) find('[data-pagination]').hidden = true;
@@ -236,7 +237,8 @@ export function mountConcepts(root, data) {
     returnId = id; speech.stop();
     const sources = term.sources.map(source => `<a href="${safeUrl(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.title)} ↗</a>`).join('');
     detail.innerHTML = `<article class="ac-detail-card">
-      <div class="ac-detail-head"><div><p class="ac-eyebrow">${escapeHtml(categories[term.category])} · ${escapeHtml(term.scope)}</p><h2 id="ac-detail-title" tabindex="-1">${escapeHtml(term.term)}</h2><p class="ac-zh">${escapeHtml(term.zh)}</p></div><div class="ac-detail-actions">${speechButton(term)}<button type="button" class="ac-close" data-close-detail aria-label="关闭概念详情" title="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div></div>
+      <div class="ac-detail-head"><div><p class="ac-eyebrow">${escapeHtml(categories[term.category])} · ${escapeHtml(term.scope)}</p><h2 id="ac-detail-title" tabindex="-1">${escapeHtml(term.displayTerm)}</h2><p class="ac-zh">${escapeHtml(term.displayZh)}</p></div><div class="ac-detail-actions">${speechButton(term)}<button type="button" class="ac-close" data-close-detail aria-label="关闭概念详情" title="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div></div>
+      ${term.parentheticalNote ? `<p class="ac-note">${escapeHtml(term.parentheticalNote)}</p>` : ''}
       <div class="ac-definition">${term.definition.split('\n\n').map(text => `<p>${escapeHtml(text)}</p>`).join('')}</div>
       ${term.example ? `<section class="ac-note"><h3>一个例子</h3><p>${escapeHtml(term.example)}</p></section>` : ''}
       ${term.contrast ? `<section class="ac-note"><h3>别混淆</h3><p>${escapeHtml(term.contrast)}</p></section>` : ''}

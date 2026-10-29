@@ -534,3 +534,24 @@ test('browse-only view works without learning storage or practice controls', t =
   assert.equal(root.querySelector('[data-practice]'), null);
   assert.equal(root.querySelector('[data-status]').textContent, '');
 });
+
+test('card names move parenthetical text into explanations without losing the original', async () => {
+  const { conceptLabels } = await import('../src/lib/concept-labels.mjs');
+  const input = { ...term, term:'Markov decision process (MDP)', zh:'马尔可夫决策过程（MDP）' };
+  const result = conceptLabels(input);
+  assert.equal(result.displayTerm, 'Markov decision process');
+  assert.equal(result.displayZh, '马尔可夫决策过程');
+  assert.equal(result.parentheticalNote, 'MDP');
+  assert(result.displaySummary.includes('MDP'));
+  assert.equal(result.term, input.term);
+  assert.equal(conceptLabels({...term,term:'node (network (hidden))'}).parentheticalNote,'network (hidden)');
+});
+
+test('cards omit footer arrows and put name qualifiers in the detail explanation', t => {
+  const root=uiFixture(t,{...term,term:'node (decision tree)',zh:'节点（决策树）'},false,{browseOnly:true});
+  assert.equal(root.querySelector('.ac-card-foot'),null);
+  assert.equal(root.querySelector('.ac-term').textContent,'node');
+  root.querySelector('[data-open]').click();
+  assert.equal(root.querySelector('#ac-detail-title').textContent,'node');
+  assert(root.querySelector('[data-detail]').textContent.includes('decision tree'));
+});
