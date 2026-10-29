@@ -54,9 +54,16 @@ export function createConceptSpeech(view, onState) {
   const schedule = view?.setTimeout?.bind(view) || setTimeout;
   const unschedule = view?.clearTimeout?.bind(view) || clearTimeout;
   let generation = 0, current = null, active = null, pendingStart = null, restartAt = 0;
+  let outputContext = null;
+  function releaseOutput() {
+    const context = outputContext;
+    outputContext = null;
+    try { context?.close()?.catch(() => {}); } catch { /* Output warm-up is optional. */ }
+  }
   function stop(message = '', cancel = true) {
     generation++;
     if (pendingStart !== null) { unschedule(pendingStart); pendingStart = null; }
+    releaseOutput();
     const hadActive = active !== null;
     active = null;
     current = null;
@@ -105,9 +112,38 @@ export function createConceptSpeech(view, onState) {
       };
       try { synth.speak(utterance); } catch { stop(); onState(null, '朗读暂不可用，请检查系统语音设置。', true); }
     }
-    const delay = restartAt - Date.now();
-    if (delay > 0) pendingStart = schedule(() => { pendingStart = null; next(); }, delay);
-    else next();
+    function startAfter(delay = 0) {
+      if (run !== generation) return;
+      if (pendingStart !== null) unschedule(pendingStart);
+      const wait = Math.max(delay, restartAt - Date.now());
+      if (wait > 0) pendingStart = schedule(() => { pendingStart = null; next(); }, wait);
+      else { pendingStart = null; next(); }
+    }
+    // Open the output stream before the first word. Bluetooth devices may
+    // otherwise spend that first word waking up their audio channel.
+    const AudioContext = view.AudioContext || view.webkitAudioContext;
+    if (!AudioContext) { startAfter(); return; }
+    let warming = true;
+    const fallback = () => {
+      if (!warming || run !== generation) return;
+      warming = false; releaseOutput(); startAfter();
+    };
+    try {
+      const context = outputContext = new AudioContext();
+      const silence = context.createBufferSource();
+      silence.buffer = context.createBuffer(1, context.sampleRate, context.sampleRate);
+      silence.loop = true;
+      silence.connect(context.destination);
+      silence.start();
+      // A blocked or failed warm-up must not disable pronunciation.
+      pendingStart = schedule(fallback, 1200);
+      Promise.resolve(context.resume()).then(() => {
+        if (!warming || run !== generation) return;
+        warming = false;
+        const latency = Number.isFinite(context.outputLatency) ? context.outputLatency * 1000 : 0;
+        startAfter(Math.min(800, Math.max(400, latency + 150)));
+      }, fallback);
+    } catch { fallback(); }
   }
   return { toggle, stop };
 }

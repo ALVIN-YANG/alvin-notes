@@ -179,6 +179,65 @@ test('an idle engine starts the complete phrase without cancelling or resuming i
   assert.deepEqual(events, ['Context Engineering']);
 });
 
+test('output warm-up precedes the full phrase and is released on completion or stop', async () => {
+  const timers = new Map(), calls = [], contexts = [];
+  let timerId = 0;
+  const view = {
+    setTimeout(callback, delay) { const id = ++timerId; timers.set(id, { callback, delay }); return id; },
+    clearTimeout(id) { timers.delete(id); },
+    AudioContext: class {
+      constructor() { this.sampleRate = 48000; this.outputLatency = .5; this.closed = false; contexts.push(this); }
+      createBuffer(channels, length, rate) { assert.deepEqual([channels, length, rate], [1, 48000, 48000]); return {}; }
+      createBufferSource() { return { connect() {}, start() {} }; }
+      resume() { return Promise.resolve(); }
+      close() { this.closed = true; return Promise.resolve(); }
+    },
+    SpeechSynthesisUtterance: class { constructor(text) { this.text = text; } },
+    speechSynthesis: { getVoices: () => [], cancel() {}, speak(utterance) { calls.push(utterance); } },
+  };
+  const phrase = { ...term, term: 'Context Engineering' };
+  const speech = createConceptSpeech(view, () => {});
+  speech.toggle(phrase);
+  await Promise.resolve();
+  assert.equal(calls.length, 0, 'speech must wait for the output channel');
+  assert.equal(timers.size, 1);
+  const [id, ready] = [...timers][0];
+  assert.equal(ready.delay, 650, 'warm-up accounts for reported output latency');
+  timers.delete(id); ready.callback();
+  assert.equal(calls[0].text, 'Context Engineering');
+  calls[0].onend();
+  assert.equal(contexts[0].closed, true);
+  speech.toggle(phrase);
+  speech.stop();
+  await Promise.resolve();
+  assert.equal(timers.size, 0);
+  assert.equal(calls.length, 1, 'stopping during warm-up must stay silent');
+  assert.equal(contexts[1].closed, true);
+});
+
+test('a blocked output warm-up falls back once and cannot replay after late resume', async () => {
+  const timers = new Map(), calls = [];
+  let resume, closed = 0;
+  const view = {
+    setTimeout(callback, delay) { timers.set(delay, callback); return delay; }, clearTimeout(id) { timers.delete(id); },
+    AudioContext: class {
+      sampleRate = 48000;
+      createBuffer() { return {}; }
+      createBufferSource() { return { connect() {}, start() {} }; }
+      resume() { return new Promise(resolve => { resume = resolve; }); }
+      close() { closed++; return Promise.resolve(); }
+    },
+    SpeechSynthesisUtterance: class { constructor(text) { this.text = text; } },
+    speechSynthesis: { getVoices: () => [], cancel() {}, speak(utterance) { calls.push(utterance); } },
+  };
+  createConceptSpeech(view, () => {}).toggle(term);
+  timers.get(1200)();
+  assert.equal(calls.length, 1);
+  assert.equal(closed, 1);
+  resume(); await Promise.resolve();
+  assert.equal(calls.length, 1);
+});
+
 test('switching terms waits for cancellation and stopping clears a queued start', () => {
   const calls = [], timers = new Map();
   let nextTimer = 0;
