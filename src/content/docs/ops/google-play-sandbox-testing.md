@@ -13,15 +13,15 @@ lastUpdated: 2026-10-29
 
 - Google 账号：登录手机 Play 商店和 Play Billing Lab。
 
-- 业务 账号：自行注册专用测试账号，登录 示例 App，接收订阅和 Credits。
+- 业务账号：自行注册专用测试账号，登录 示例 App，接收订阅和 Credits。
 
-把 Google 邮箱和 业务 注册邮箱 / 用户 ID 发给管理员，请管理员完成三项配置：
+把 Google 邮箱和 业务注册邮箱 / 用户 ID 发给管理员，请管理员完成三项配置：
 
 1. Play Console → Settings → License testing：加入 Google 邮箱。
 
 2. Play Console → 示例 App → Internal testing → Testers：加入同一 Google 邮箱。
 
-3. 业务 管理后台 → 计费中心 → Sandbox 白名单：加入 业务 账号并启用。
+3. 业务管理后台 → 计费中心 → Sandbox 白名单：加入 业务账号并启用。
 
 三项配置必须分别确认：
 
@@ -29,7 +29,7 @@ lastUpdated: 2026-10-29
 
 - 内部测试名单：允许 Google 账号下载 示例 App 内测版；仅加入这份名单，内购仍可能扣真钱。
 
-- 业务 沙箱白名单：允许 App 账号接收沙箱订阅和 Credits。
+- 业务沙箱白名单：允许 App 账号接收沙箱订阅和 Credits。
 
 > **必做：三项资格全部开通后，再接受内测邀请。**
 
@@ -55,7 +55,7 @@ lastUpdated: 2026-10-29
 
 4. 跳转 Play 商店，安装或更新 示例 App。应用可能显示为 com\.example\.app \(unreviewed\)。使用 管理员指定的测试版本或更新版本。
 
-5. 打开 App，点击 Log in，登录已开通沙箱权限的 业务 账号。
+5. 打开 App，点击 Log in，登录已开通沙箱权限的 业务账号。
 
 如果提示无法安装且原先装过调试 APK，联系开发人员确认签名冲突，备份后再决定是否卸载；不要直接清除数据。[内测安装说明](https://support.google.com/googleplay/android-developer/answer/9845334)
 
@@ -63,7 +63,7 @@ lastUpdated: 2026-10-29
 
 商品正常显示时可直接进入第 4 步。如果商品为空或提示不可购买，先用 Billing Lab 检查地区：
 
-1. 从 Play 商店安装 Google 官方 Play Billing Lab：https://play\.google\.com/store/apps/details?id=com\.google\.android\.apps\.play\.billingtestcompanion
+1. 从 Play 商店安装 Google 官方 Play Billing Lab：[Play Billing Lab](https://play.google.com/store/apps/details?id=com.google.android.apps.play.billingtestcompanion)
 
 2. 登录同一个已加入许可测试的 Google 账号。
 
@@ -111,7 +111,7 @@ lastUpdated: 2026-10-29
 
 本版套餐卡可能仍显示 $0/月和免费说明，这是已知显示缺陷；判断支付结果看套餐、Credits 与后台交易，不看这两处文案。
 
-测试使用生产服务，不需要选择“测试环境”；务必使用专用 业务 测试账号。
+测试使用生产服务，不需要选择“测试环境”；务必使用专用 业务测试账号。
 
 ## 6\. 测试场景与验收标准
 
@@ -135,7 +135,7 @@ lastUpdated: 2026-10-29
 
 - **判断依据**：时间是近似值；以 Google 返回的实际交易、到期时间和状态为准。Billing Lab 手动加速会改变观察节奏。
 
-- **Credits 验收**：核对实际成功的续订交易与对应发放流水；不能仅按每过 5 分钟判断应该发放。年付分批发放另按 业务 业务计划核对。
+- **Credits 验收**：核对实际成功的续订交易与对应发放流水；不能仅按每过 5 分钟判断应该发放。年付分批发放另按 业务计划核对。
 
 [Google 官方续订时间表](https://developer.android.com/google/play/billing/test#renewal-periods)
 
@@ -156,11 +156,11 @@ lastUpdated: 2026-10-29
 |同档月付/年付切换|在 App 选择同档另一付费周期；分别记录变更时和原续费日的结果|不因切换立即重复发额度；成功付款开启新周期后按后端规则发放|
 |年付分批|用独立样本购买年付；由管理员核对发放计划和后续批次|不一次发 12 倍月度额度；到期批次只发一次，不用 Google 加速续订时间替代业务分批规则|
 |退款/撤销|提供指定沙箱订单给管理员，由管理员执行约定的退款或撤销，再回 App 同步|按实际退款/撤销类型核对权益及流水；不误处理其他订单，普通退款与撤销分别记录|
-|换 业务 账号|同一 Google 购买后退出 App，登录另一个专用 业务 账号并同步|不把原购买重复绑定到另一账号，不给第二个账号重复发额度|
+|换 业务账号|同一 Google 购买后退出 App，登录另一个专用 业务账号并同步|不把原购买重复绑定到另一账号，不给第二个账号重复发额度|
 
 测试月付可能显示 US$10\.00/5 min，这是加速测试时间；以 Google 当前页面为准。续订会影响余额，记录时区分“同一笔重复恢复”和“新一期续订”。[官方订阅测试](https://developer.android.com/google/play/billing/test#test-subscriptions) [取消订阅操作](https://support.google.com/googleplay/answer/7018481)
 
-升降档、月年切换及 Credits 规则以 业务 当前业务约定验收；Google 平台状态参考[订阅生命周期](https://developer.android.com/google/play/billing/lifecycle/subscriptions)。
+升降档、月年切换及 Credits 规则以 当前业务约定验收；Google 平台状态参考[订阅生命周期](https://developer.android.com/google/play/billing/lifecycle/subscriptions)。
 
 测试结束后，若不再观察续订，到 Play 订阅页取消测试订阅。卸载 App 不会取消订阅。
 
@@ -175,7 +175,7 @@ lastUpdated: 2026-10-29
 |Google 成功但 App 未更新|切后台再回来；仍无权益则请管理员查履约和流水，不重新购买“补额度”|
 |没有测试卡或不收费提示|退出付款，让管理员检查许可测试资格和实际购买账号|
 
-报问题时附：Google 测试邮箱、业务 账号、App 版本、手机型号、北京时间、套餐、步骤、错误截图、购买前后 Credits。不要发密码、验证码或 token。[Google 错误说明](https://developer.android.com/google/play/billing/errors)
+报问题时附：Google 测试邮箱、业务账号、App 版本、手机型号、北京时间、套餐、步骤、错误截图、购买前后 Credits。不要发密码、验证码或 token。[Google 错误说明](https://developer.android.com/google/play/billing/errors)
 
 ## 操作截图
 
@@ -193,7 +193,7 @@ lastUpdated: 2026-10-29
 
 ## 8\. 管理员：开通三项测试资格
 
-**先收集两项信息：Google Play 登录邮箱、业务 注册邮箱或用户 ID。** 两者可以不同，不收集密码和验证码。
+**先收集两项信息：Google Play 登录邮箱、业务注册邮箱或用户 ID。** 两者可以不同，不收集密码和验证码。
 
 ### 8\.1 Google 许可测试：开通测试付款方式
 
@@ -251,7 +251,7 @@ lastUpdated: 2026-10-29
 
 ### 8\.3 业务 Sandbox 白名单：开通 App 账号沙箱权益
 
-**填写 业务 注册账号，不是直接填写 Google 邮箱。** 两个邮箱不同时，以 App 注册邮箱或用户 ID 为准。
+**填写 业务注册账号，不是直接填写 Google 邮箱。** 两个邮箱不同时，以 App 注册邮箱或用户 ID 为准。
 
 1. 确认测试人员已经注册 业务 App。未注册时先注册，不能只用一个 Google 邮箱创建白名单。
 
@@ -269,9 +269,9 @@ lastUpdated: 2026-10-29
 
 8. 点击 **新增并启用**。出现“Sandbox 白名单已更新”后，重新查询该账号。
 
-9. 核对 **邮箱、UID、状态已启用** 三项，再通知测试人员登录这个 业务 账号进行测试。
+9. 核对 **邮箱、UID、状态已启用** 三项，再通知测试人员登录这个 业务账号进行测试。
 
-> **搜不到用户：先核对是否已注册、是否用了另一个 业务 邮箱。不要将 Google 邮箱当成 业务 账号直接添加。**
+> **搜不到用户：先核对是否已注册、是否用了另一个 业务 邮箱。不要将 Google 邮箱当成 业务账号直接添加。**
 
 **成功标准：白名单记录对应正确的 业务 UID，状态为“已启用”。** 该白名单用于 Apple / Google Play 沙箱交易，不会赋予 Google 许可测试或内测下载资格。
 
@@ -290,7 +290,7 @@ lastUpdated: 2026-10-29
 
 ![原始操作截图，敏感信息已遮盖](/images/ops/google-play-sandbox/sandbox-form.png)
 
-**图 C：按 业务 注册邮箱搜索并选择用户**
+**图 C：按 业务注册邮箱搜索并选择用户**
 
 必须点击候选项，核对“名称 · 邮箱 · UID”，不能只输入邮箱。此截图仅演示搜索，未重复提交已有账号。
 
