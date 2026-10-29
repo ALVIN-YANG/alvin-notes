@@ -162,7 +162,7 @@ export function mountConcepts(root, data) {
     announce(message, error);
   });
   function filtered() {
-    const key = searchKey(search.value);
+    const key = searchKey(search?.value || '');
     const result = terms.filter(term => (!category.value || term.category === category.value) && (!key || searchIndex.get(term.id).includes(key)));
     if (sort.value === 'latest') result.sort((a, b) => b.firstSeenAt.localeCompare(a.firstSeenAt) || a.priority - b.priority);
     if (sort.value === 'name') result.sort((a, b) => a.term.localeCompare(b.term, 'en'));
@@ -314,7 +314,7 @@ export function mountConcepts(root, data) {
       grid.querySelector('[data-open]')?.focus(); view.scrollTo({ top: browse.offsetTop, behavior: 'instant' });
     }
   });
-  for (const [element, event] of [[search, 'input'], [category, 'change'], [sort, 'change']]) listen(element, event, () => { speech.stop(); page = 0; renderBrowse(); });
+  for (const [element, event] of [[search, 'input'], [category, 'change'], [sort, 'change']]) { if (element) listen(element, event, () => { speech.stop(); page = 0; renderBrowse(); }); }
   // A drag that starts inside the content must not dismiss the dialog.
   let backdropDown = false;
   const onBackdrop = event => {

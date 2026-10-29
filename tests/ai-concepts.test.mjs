@@ -237,7 +237,7 @@ test('known non-English or novelty-only voice lists do not silently use the wron
   assert.equal(states.at(-1)[2], true);
 });
 
-function uiFixture(t, entry, blocked = false, { records, speech } = {}) {
+function uiFixture(t, entry, blocked = false, { records, speech, withoutSearch = false } = {}) {
   const dom = new JSDOM(`<div data-concepts-root><button data-mode="browse"></button><button data-mode="review"></button>
     <section data-browse><p data-learning-summary></p><button data-start-learning>开始学习</button><input data-search>
       <details data-filter="category"><summary><span data-filter-label>全部分类</span></summary><input type="hidden" data-category value="">
@@ -257,6 +257,7 @@ function uiFixture(t, entry, blocked = false, { records, speech } = {}) {
     dom.window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
   }
   const root = dom.window.document.querySelector('[data-concepts-root]');
+  if (withoutSearch) { root.querySelector('[data-search]').remove(); root.querySelector('[data-category]').value = 'model'; }
   // JSDOM does not implement the browser's dialog lifecycle.
   const dialog = root.querySelector('[data-detail]');
   dialog.showModal = () => { dialog.open = true; };
@@ -433,4 +434,14 @@ test('sidebar category filters compose with search and scope learning sessions',
   root.querySelector('[data-mode="browse"]').click();
   assert.equal(root.querySelector('[data-category-sidebar]').hidden, false);
   assert.equal(root.querySelector('[data-count]').textContent, '1 个概念');
+});
+
+
+test('category browsing works without a search field and starts in the selected category', t => {
+  const root = uiFixture(t, [{ ...term, id: 'token', term: 'Token', category: 'model' }, term], false, { withoutSearch: true });
+  assert.equal(root.querySelector('[data-count]').textContent, '1 个概念');
+  assert.equal(root.querySelector('[data-open]').dataset.open, 'token');
+  root.insertAdjacentHTML('afterbegin', '<button data-category-choice="retrieval">知识与检索</button>');
+  root.querySelector('[data-category-choice]').click();
+  assert.equal(root.querySelector('[data-open]').dataset.open, 'rag');
 });

@@ -1,6 +1,7 @@
 ---
 import data from '../data/ai-concepts.json';
 import { categories } from '../lib/ai-concepts.mjs';
+const initialTerms = data.terms.filter(term => term.category === 'model');
 const serialized = JSON.stringify(data).replace(/</g, '\\u003c');
 const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' });
 ---
@@ -9,8 +10,7 @@ const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'A
   <aside class="ac-category-sidebar" data-category-sidebar data-enhanced hidden aria-label="概念分类">
     <h2>概念分类</h2>
     <nav aria-label="选择概念分类">
-      <button type="button" data-category-choice="" aria-pressed="true"><span>全部概念</span><small>{data.terms.length}</small></button>
-      {Object.entries(categories).map(([key,label]) => <button type="button" data-category-choice={key} aria-pressed="false"><span>{label}</span><small>{data.terms.filter(term=>term.category===key).length}</small></button>)}
+      {Object.entries(categories).map(([key,label]) => <button type="button" data-category-choice={key} aria-pressed={key === 'model'}><span>{label}</span><small>{data.terms.filter(term=>term.category===key).length}</small></button>)}
     </nav>
   </aside>
   <div class="ac-main">
@@ -23,19 +23,16 @@ const date = new Date(data.updatedAt).toLocaleDateString('zh-CN', { timeZone: 'A
         <div><h2 id="ac-learn-title">快速记概念</h2><p data-learning-summary>每组 10 个 · 到期词条优先</p></div>
         <button type="button" class="ac-primary" data-start-learning>开始学习 <span aria-hidden="true">→</span></button>
       </section>
-      <div class="ac-filters" data-enhanced hidden>
-        <label class="ac-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><span class="ac-sr-only">搜索概念</span><input type="search" data-search placeholder="搜索术语、缩写或中文" autocomplete="off" /></label>
-        <input type="hidden" data-category value="" />
-      </div>
-      <div class="ac-results" data-enhanced hidden><div class="ac-group-title"><h2 data-category-title>全部概念</h2><span data-count aria-live="polite">{data.terms.length} 个概念</span></div><details class="ac-dropdown ac-dropdown-sort" data-filter="sort">
+      <input type="hidden" data-category value="model" />
+      <div class="ac-results" data-enhanced hidden><div class="ac-group-title"><h2 data-category-title>模型与生成</h2><span data-count aria-live="polite">{initialTerms.length} 个概念</span></div><details class="ac-dropdown ac-dropdown-sort" data-filter="sort">
         <summary><span class="ac-sr-only">排序方式：</span><span data-filter-label>常用优先</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></summary>
         <input type="hidden" data-sort value="common" />
         <div class="ac-dropdown-options" role="group" aria-label="排序选项"><button type="button" data-choice="common" aria-pressed="true">常用优先</button><button type="button" data-choice="latest" aria-pressed="false">最新收录</button><button type="button" data-choice="name" aria-pressed="false">英文排序</button></div>
       </details></div>
       <div class="ac-grid" data-grid>
-        {data.terms.slice(0, 12).map(term => <article class="ac-card"><button type="button" class="ac-speak" data-speak={term.id} data-enhanced hidden aria-label={`朗读 ${term.term}`} aria-pressed="false" title="播放英文名词发音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg></button><button type="button" class="ac-card-open" data-open={term.id}><span class="ac-term">{term.term}</span><span class="ac-zh">{term.zh}</span><span class="ac-summary">{term.summary}</span><span class="ac-card-foot">{categories[term.category]}<span aria-hidden="true">↗</span></span></button></article>)}
+        {initialTerms.slice(0, 12).map(term => <article class="ac-card"><button type="button" class="ac-speak" data-speak={term.id} data-enhanced hidden aria-label={`朗读 ${term.term}`} aria-pressed="false" title="播放英文名词发音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 8a6 6 0 0 1 0 8M18 5a10 10 0 0 1 0 14"/></svg></button><button type="button" class="ac-card-open" data-open={term.id}><span class="ac-term">{term.term}</span><span class="ac-zh">{term.zh}</span><span class="ac-summary">{term.summary}</span><span class="ac-card-foot">{categories[term.category]}<span aria-hidden="true">↗</span></span></button></article>)}
       </div>
-      <noscript><p>启用 JavaScript 后可搜索全部词条、查看详情、朗读和学习。也可以直接阅读下方的官方词表。</p></noscript>
+      <noscript><p>启用 JavaScript 后可切换分类、查看详情、朗读和学习。也可以直接阅读下方的官方词表。</p></noscript>
       <nav class="ac-pagination" data-pagination data-enhanced hidden aria-label="卡片分页"><button type="button" data-prev aria-label="上一页">←</button><span data-page-label>1</span><button type="button" data-next aria-label="下一页">→</button></nav>
     </section>
     <dialog class="ac-detail" data-detail aria-labelledby="ac-detail-title"></dialog>
