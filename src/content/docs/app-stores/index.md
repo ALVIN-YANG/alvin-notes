@@ -1,5 +1,5 @@
 ---
-title: App 商店实战手册
+title: 产品交付：内购、测试与上架
 description: 汇总 iOS 与 Google Play 内购、测试、上架准备和审核相关资料。
 sidebar:
   order: 0

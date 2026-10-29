@@ -3,37 +3,32 @@ import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
 import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
 import Search from '@astrojs/starlight/components/Search.astro';
 import ThemeToggle from './ThemeToggle.astro';
-import { bookStartUrl } from '../data/agent-book-links.mjs';
 
 const navGroups = [
   {
     label: 'AI 工程',
     links: [
-      { label: 'AI Agent', href: bookStartUrl, match: '/agent-knowledge/' },
+      { label: 'AI Agent', href: '/agent-knowledge/', match: '/agent-knowledge/' },
       { label: 'AI Infra', href: '/ai-infra-knowledge/', match: '/ai-infra' },
-      { label: 'RAG 实战', href: '/rag/', match: '/rag/' },
-      { label: 'AI 概念', href: '/ai-concepts/', match: '/ai-concepts/' },
       { label: 'AI 工程问答', href: '/interview/', match: '/interview/' },
     ],
   },
   {
     label: '开发实践',
     links: [
-      { label: 'AI 工作流', href: '/ai-workflow/', match: '/ai-workflow/' },
-      { label: 'Skills', href: '/skills/', match: '/skills/' },
+      { label: '管理 AI 开发', href: '/ai-workflow/', match: '/ai-workflow/' },
+      { label: '产品交付', href: '/app-stores/', match: '/app-stores/' },
       { label: '工具箱', href: '/tools/', match: '/tools/' },
-      { label: '游戏攻略', href: '/projects/game-guides/', match: '/projects/game-guides/' },
     ],
   },
   {
     label: '工程基础',
     links: [
       { label: '系统设计', href: '/system-design/', match: '/system-design/' },
-      { label: '凤凰架构', href: '/phoenix/', match: '/phoenix/' },
-      { label: '算法', href: '/algorithm-knowledge/', match: '/algorithm-knowledge/' },
+      { label: '编程与算法', href: '/programming/', match: '/programming/' },
       { label: '网络', href: '/network/ai-agent-communication-protocols/', match: '/network/' },
       { label: '安全', href: '/security/1-zero-day-vulnerability-primer/', match: '/security/' },
-      { label: 'Ops', href: '/ops/k8s/kubernetes-practical-starter-guide/', match: '/ops/' },
+      { label: '运维', href: '/ops/k8s/kubernetes-practical-starter-guide/', match: '/ops/' },
     ],
   },
   {
@@ -57,18 +52,18 @@ const currentPath = Astro.url.pathname;
 
 function isActive(match: string): boolean {
   if (match === '/') return currentPath === '/';
-  if (match === '/algorithm-knowledge/') {
-    return currentPath.startsWith('/algorithm-knowledge/')
+  if (match === '/programming/') {
+    return currentPath.startsWith('/programming/') || currentPath.startsWith('/algorithm-knowledge/')
       || currentPath.startsWith('/algorithms/')
       || currentPath.startsWith('/java/');
   }
   if (match === '/system-design/') {
-    return currentPath.startsWith('/system-design/') || currentPath.startsWith('/architecture/');
+    return currentPath.startsWith('/system-design/') || currentPath.startsWith('/architecture/') || currentPath.startsWith('/phoenix/');
   }
   if (match === '/agent-knowledge/') {
     return currentPath.startsWith('/agent-knowledge/')
       || currentPath.startsWith('/ai/')
-      || currentPath.startsWith('/claw/');
+      || currentPath.startsWith('/claw/') || currentPath.startsWith('/rag/') || currentPath.startsWith('/ai-concepts/');
   }
   if (match === '/ai-workflow/') return currentPath.startsWith('/ai-workflow/');
   return currentPath.startsWith(match);

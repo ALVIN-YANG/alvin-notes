@@ -104,14 +104,18 @@ export default defineConfig({
         ThemeSelect: './src/components/ThemeToggle.astro',
       },
       sidebar: [
-        { label: 'App 商店实战', items: [
+        { label: '产品交付', items: [
           { label: '手册目录', link: '/app-stores/' },
           { label: 'iOS 订阅与额度', link: '/app-stores/ios/subscription-overview/' },
           { label: 'iOS 订阅实现', link: '/app-stores/ios/subscription-implementation/' },
           { label: 'Google Play 沙箱测试', link: '/app-stores/google-play/sandbox-testing/' },
           { label: 'Credits 实现', link: '/app-stores/billing/credits-metering/' },
         ] },
-        { label: '系统设计入门', items: buildSystemDesignSidebar() },
+        { label: '系统设计', items: [
+          { label: '凤凰架构（完整手册）', link: '/phoenix/' },
+          { label: '架构实践', collapsed: true, autogenerate: { directory: 'architecture' } },
+          ...buildSystemDesignSidebar(),
+        ] },
         { label: '凤凰架构', items: buildPhoenixSidebar() },
         {
           label: 'AI 工程问答',
@@ -132,23 +136,45 @@ export default defineConfig({
         {
           label: 'AI Agent',
           items: [
-            { label: 'AI 概念卡片', link: '/ai-concepts/' },
-            { label: 'RAG 实战速查', link: '/rag/' },
-            {
-              label: 'AI Agent',
-              autogenerate: { directory: 'ai' },
-            },
-            {
-              label: 'OpenClaw',
-              autogenerate: { directory: 'claw/openclaw' },
-            },
+            { label: 'Agent 开发概览', link: '/agent-knowledge/' },
+            { label: 'AI 概念速查', link: '/ai-concepts/' },
+            { label: '上下文与记忆', collapsed: true, items: [
+              { label: '上下文工程', link: '/ai/context-engineering-guide/' },
+              { label: '长上下文失效', link: '/ai/long-context-reliability-notes/' },
+              { label: 'RAG 实战速查', link: '/rag/' },
+              { label: 'RAG 原理与选型', link: '/rag/chapters/rag-primer/' },
+              { label: 'RAG 元数据过滤', link: '/rag/chapters/rag-metadata-filtering/' },
+              { label: 'RAG 知识库实战', link: '/rag/chapters/rag-knowledge-base-component/' },
+              { label: '记忆系统设计', link: '/ai/agent-memory-system-design/' },
+              { label: 'Hindsight 长期记忆', link: '/ai/hindsight-agent-memory/' },
+              { label: '环境感知与缓存', link: '/ai/agent-environment-awareness-llm-cache/' },
+            ] },
+            { label: '架构与执行', collapsed: true, items: [
+              { label: 'Agent 与 Workflow 选型', link: '/ai/when-not-to-use-ai-agent/' },
+              { label: 'Function Call、MCP 与 Skill', link: '/ai/function-call-agent/' },
+              { label: '工具设计', link: '/ai/production-agent-tool-design/' },
+              { label: '多 Agent 架构', link: '/ai/multi-agent-architecture-selection/' },
+              { label: '目标模式与执行循环', link: '/ai/harness-goal-controller/' },
+              { label: '运行环境选型', link: '/ai/agent-runtime-environments/' },
+              { label: '状态持久化与恢复', link: '/ai/agent-context-persistence-recovery/' },
+              { label: '实时语音 Agent', link: '/ai/realtime-voice-agent-engineering/' },
+              { label: '决策模型选型', link: '/ai/jev-decision-models/' },
+              { label: 'OpenClaw 插件', link: '/ai/openclaw-plugin-primer/' },
+              { label: 'OpenClaw 实践', collapsed: true, autogenerate: { directory: 'claw/openclaw' } },
+            ] },
+            { label: '评测与可靠性', collapsed: true, items: [
+              { label: 'Agent 评测', link: '/ai/agent-evaluation-observability/' },
+              { label: 'Langfuse 可观测性', link: '/ai/langfuse-overview/' },
+              { label: '安全与权限', link: '/ai/agent-security-engineering/' },
+              { label: 'Prompt Injection 防护', link: '/ai/agent-prompt-injection-defense/' },
+              { label: '流式语音延迟优化', link: '/ai/openclaw-streaming-voice-latency/' },
+              { label: '可靠项目的面试表达', link: '/ai/ai-engineering-interview-reliable-projects/' },
+            ] },
           ],
         },
-        { label: 'RAG 实战手册', items: [
-          { label: '实战速查', link: '/rag/' },
-          { label: '配套章节', autogenerate: { directory: 'rag/chapters' } },
-        ] },
-        { label: '算法手册', items: [
+        { label: '编程与算法', items: [
+          { label: '编程与算法概览', link: '/programming/' },
+          { label: 'Java', collapsed: true, autogenerate: { directory: 'java' } },
           { label: '模板与高频题', link: '/algorithm-knowledge/' },
           { label: '配套章节', autogenerate: { directory: 'algorithm-knowledge/chapters' } },
         ] },
@@ -160,15 +186,21 @@ export default defineConfig({
           ],
         },
         {
-          label: 'AI 工作流',
+          label: '管理 AI 开发',
           items: [
-            { label: '工作流总览', link: '/ai-workflow/' },
-            { label: '配套章节', autogenerate: { directory: 'ai-workflow/chapters' } },
+            { label: '目标、上下文与验收', link: '/ai-workflow/' },
+            { label: '任务目标与验收标准', link: '/ai-workflow/chapters/16-prompt-task-contract-practice/' },
+            { label: '上下文与成本控制', link: '/ai-workflow/chapters/13-context-engineering-effect-cost-notes/' },
+            { label: '工程流程选择', link: '/ai-workflow/chapters/11-mattpocock-skills-deep-dive/' },
+            { label: 'AI 开发中的人机分工', link: '/ai-workflow/chapters/12-vibe-coding-software-engineering-notes/' },
+            { label: 'Skill 编写', link: '/ai-workflow/chapters/14-codex-skill-creator-deep-dive/' },
+            { label: 'Skill 选择', link: '/ai-workflow/chapters/ai-coding-skills-selection-guide/' },
+            { label: '长任务等待与 Token 成本', link: '/ai-workflow/chapters/15-codex-async-wait-token-cost/' },
+            { label: '远程开发环境', link: '/ai-workflow/chapters/4-ai-coding-remote-workstation-macos-tailscale-ssh-termux/' },
+            { label: '开发工具速查', link: '/ai-workflow/chapters/ai-coding-toolbox/' },
+            { label: 'AI 工程术语', link: '/ai-workflow/chapters/ai-engineering-glossary/' },
+            { label: '实践文章总览', link: '/ai-workflow/chapters/' },
           ]
-        },
-        {
-          label: 'Architecture',
-          autogenerate: { directory: 'architecture' },
         },
         {
           label: 'AI News',
@@ -183,11 +215,6 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Java',
-          autogenerate: { directory: 'java' },
-          collapsed: true,
-        },
-        {
           label: '网络',
           autogenerate: { directory: 'network' },
         },
@@ -196,7 +223,7 @@ export default defineConfig({
           autogenerate: { directory: 'security' },
         },
         {
-          label: 'Ops',
+          label: '运维',
           items: [
             {
               label: '运维与基础设施',

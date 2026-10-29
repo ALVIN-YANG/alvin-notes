@@ -7,7 +7,6 @@ import { ragPractice as guide, ragPracticeMarkdown } from '../../data/rag-practi
 const frontmatter = {
   title: guide.title,
   description: guide.summary,
-  template: 'splash' as const,
   hidePageTitle: true,
 };
 const serializedMarkdown = JSON.stringify(ragPracticeMarkdown()).replace(/</g, '\\u003c');
@@ -15,7 +14,7 @@ const sample = guide.tokenizer.example;
 const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsWith(' ') ? `空格＋${token.slice(1)}` : token;
 ---
 
-<StarlightPage frontmatter={frontmatter} sidebar={[]}>
+<StarlightPage frontmatter={frontmatter} hasTableOfContents={false}>
   <RagOutline>
   <article class="rag-practice not-content" aria-labelledby="_top">
     <header class="rag-intro">
