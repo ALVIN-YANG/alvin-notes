@@ -1,5 +1,6 @@
 ---
 import { portfolio } from '../data/portfolio';
+import { aiCharacters, characterImageRoot } from '../data/ai-characters';
 ---
 
 <section class="portfolio-page not-content" aria-labelledby="_top">
@@ -40,6 +41,18 @@ import { portfolio } from '../data/portfolio';
       </article>
     ))}
   </div>
+
+  <section class="character-preview" aria-labelledby="character-preview-title">
+    <header>
+      <h2 id="character-preview-title"><a href="/projects/ai-characters/">AI 角色立绘 <span aria-hidden="true">→</span></a></h2>
+      <p>八位大模型拟人角色 · 电影写实</p>
+    </header>
+    <a class="character-preview-strip" href="/projects/ai-characters/" aria-label="浏览八位 AI 角色的完整立绘">
+      {aiCharacters.map((character) => (
+        <img src={`${characterImageRoot}/${character.id}-preview.webp`} alt="" width="512" height="768" loading="lazy" decoding="async" />
+      ))}
+    </a>
+  </section>
 
   <p class="portfolio-contact"><a href="/about/">关于我</a><span aria-hidden="true"> · </span><a href="https://github.com/ALVIN-YANG" target="_blank" rel="noreferrer">GitHub</a></p>
 </section>

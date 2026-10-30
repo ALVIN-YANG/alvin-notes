@@ -1,0 +1,54 @@
+---
+import { aiCharacters, characterImageRoot } from '../data/ai-characters';
+import DocumentImageZoom from './DocumentImageZoom.astro';
+---
+
+<section class="portfolio-page character-gallery not-content" aria-labelledby="_top">
+  <header class="portfolio-intro">
+    <a class="character-back" href="/projects/">← 作品集</a>
+    <h1 id="_top">AI 角色立绘</h1>
+    <p>八位大模型拟人角色，电影写实质感。点击立绘查看大图，可下载 PNG 原图。</p>
+  </header>
+
+  <div class="character-grid">
+    {aiCharacters.map((character) => (
+      <figure class="character-figure" id={character.id}>
+        <a
+          class="character-image"
+          href={`${characterImageRoot}/${character.id}.webp`}
+          data-primer-image
+          data-astro-prefetch="false"
+          aria-label={`查看 ${character.name} 的完整立绘`}
+        >
+          <img
+            src={`${characterImageRoot}/${character.id}-preview.webp`}
+            alt={`${character.name} 的写实全身立绘：${character.detail}`}
+            width="512"
+            height="768"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <figcaption>
+          <div class="character-caption">
+            <h2>{character.name}</h2>
+            <a
+              href={`${characterImageRoot}/${character.id}.png`}
+              download={`${character.id}-portrait.png`}
+              data-astro-prefetch="false"
+              aria-label={`下载 ${character.name} 的 PNG 原图`}
+            >原图 ↓</a>
+          </div>
+          <p>{character.detail}</p>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+
+  <footer class="character-credit">
+    <p>AI 生成作品，角色造型参考 <a href="https://fisharchive.cc/characters" target="_blank" rel="noreferrer">Fish Archive</a> 的同人设定，非官方形象。</p>
+    <p>PNG 原图为 1024 × 1536，保留完整人物、服装和配饰细节。</p>
+  </footer>
+</section>
+
+<DocumentImageZoom />

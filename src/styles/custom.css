@@ -604,6 +604,34 @@ nav.rag-outline-desktop .rag-outline-list a { display: block; padding: .3rem .5r
 	.portfolio-card-head { gap: .6rem; }
 }
 
+/* Character portraits: intact white studio frames on the site's warm paper. */
+.character-preview { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--sl-color-gray-5); }
+.character-preview > header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1rem; margin-bottom: .8rem; }
+.portfolio-page .character-preview h2 a { font-size: 1.25rem; }
+.portfolio-page .character-preview p { color: var(--sl-color-gray-2); font-size: .85rem; }
+.character-preview-strip { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: .35rem; }
+.character-preview-strip img { display: block; width: 100%; height: auto; background: #fff; }
+.portfolio-page .character-back { display: inline-flex; align-items: center; min-height: 2.5rem; margin-bottom: .6rem; font-weight: 400; }
+.character-gallery .portfolio-intro h1 { letter-spacing: normal; }
+.character-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.75rem 1rem; }
+.character-figure { min-width: 0; margin: 0; scroll-margin-top: calc(var(--sl-nav-height) + 1rem); }
+.character-image { display: block; background: #fff; cursor: zoom-in; }
+.character-image img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: contain; }
+.character-image, .character-preview-strip { outline: 1px solid var(--sl-color-gray-5); outline-offset: -1px; }
+.character-caption { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: .45rem; }
+.character-gallery .character-caption h2 { font-size: 1rem; font-weight: 600; line-height: 1.4; }
+.character-gallery .character-caption a { display: inline-flex; align-items: center; min-height: 2.5rem; font-size: .8rem; white-space: nowrap; font-weight: 400; }
+.character-gallery figcaption p { color: var(--sl-color-gray-2); font-size: .8rem; line-height: 1.7; }
+.character-credit { margin-top: 1.75rem; padding-top: 1rem; border-top: 1px solid var(--sl-color-gray-5); }
+.character-gallery .character-credit p, .character-gallery .character-credit a { font-size: .8rem; font-weight: 400; line-height: 1.85; }
+.character-gallery .character-credit p { color: var(--sl-color-gray-2); }
+.character-gallery a:focus-visible, .character-preview a:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 3px; }
+.character-gallery a:active, .character-preview a:active { transform: scale(.98); }
+@media (max-width: 48rem) {
+	.character-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem .75rem; }
+	.character-preview-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
 /*
  * Warm paper theme
  * Inspired by the quiet, editorial palette of tw93.fun.

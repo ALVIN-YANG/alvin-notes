@@ -23,6 +23,9 @@
     canvas.tabIndex = 0;
     canvas.setAttribute('aria-label', '图片，可滚动查看');
     const img = source.cloneNode() as HTMLImageElement;
+    img.src = link.href;
+    img.removeAttribute('srcset');
+    img.removeAttribute('sizes');
     img.loading = 'eager';
     canvas.append(img);
     dialog.append(controls, canvas);
