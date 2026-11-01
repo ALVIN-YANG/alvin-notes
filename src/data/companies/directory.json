@@ -2513,6 +2513,12 @@
           "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1jaT2QSSyYLABPnQL~026zVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B48%E6%9C%88%EF%BC%89",
           "asOf": "2026-10-15",
           "sourceId": "cac-13"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm",
+          "asOf": "2026-07-29",
+          "sourceId": "cac"
         }
       ]
     },
@@ -5535,6 +5541,12 @@
           "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1jaT2QSSyYLABPnQL~026zVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B48%E6%9C%88%EF%BC%89",
           "asOf": "2026-10-15",
           "sourceId": "cac-13"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm",
+          "asOf": "2026-08-24",
+          "sourceId": "cac"
         }
       ]
     },
@@ -5569,6 +5581,12 @@
           "url": "https://www.cac.gov.cn/cms/pub/interact/downloadfile.jsp?filepath=NUtqEIwGiCjGm2Bhl20cvGmT22KDqGR7FvHLiywcKRhvz0vHSSJ6sATU6DtmcGo1jaT2QSSyYLABPnQL~026zVAfqphfFn00jUfFRLdBE5I=&fText=%E7%94%9F%E6%88%90%E5%BC%8F%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%B7%B2%E5%A4%87%E6%A1%88%E5%92%8C%E5%B7%B2%E7%99%BB%E8%AE%B0%E4%BF%A1%E6%81%AF%EF%BC%882026%E5%B9%B48%E6%9C%88%EF%BC%89",
           "asOf": "2026-10-15",
           "sourceId": "cac-13"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm",
+          "asOf": "2026-08-18",
+          "sourceId": "cac"
         }
       ]
     },
@@ -5711,6 +5729,12 @@
           "url": "https://fireflyfusion.cn/terms-of-service",
           "asOf": "2026-10-15",
           "sourceId": "official"
+        },
+        {
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm",
+          "asOf": "2026-07-07",
+          "sourceId": "cac"
         }
       ]
     },
@@ -7276,14 +7300,14 @@
       "activity": {
         "kind": "active",
         "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
+        "asOf": "2026-11-01"
       },
-      "syncedAt": "2026-10-14",
+      "syncedAt": "2026-11-01",
       "sources": [
         {
           "title": "YC 公司档案",
           "url": "https://www.ycombinator.com/companies/checkr",
-          "asOf": "2026-10-14",
+          "asOf": "2026-11-01",
           "sourceId": "yc"
         }
       ],
@@ -7302,14 +7326,14 @@
       "activity": {
         "kind": "active",
         "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
+        "asOf": "2026-11-01"
       },
-      "syncedAt": "2026-10-14",
+      "syncedAt": "2026-11-01",
       "sources": [
         {
           "title": "YC 公司档案",
           "url": "https://www.ycombinator.com/companies/scale-ai",
-          "asOf": "2026-10-14",
+          "asOf": "2026-11-01",
           "sourceId": "yc"
         }
       ],
@@ -7328,19 +7352,851 @@
       "activity": {
         "kind": "active",
         "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
+        "asOf": "2026-11-01"
       },
-      "syncedAt": "2026-10-14",
+      "syncedAt": "2026-11-01",
       "sources": [
         {
           "title": "YC 公司档案",
           "url": "https://www.ycombinator.com/companies/leena-ai",
-          "asOf": "2026-10-14",
+          "asOf": "2026-11-01",
           "sourceId": "yc"
         }
       ],
       "sourceId": "yc",
       "sourceSummary": "We at Leena AI build a virtual assistant that answers employee's…"
+    },
+    {
+      "id": "yc-sendbird",
+      "name": "Sendbird",
+      "website": "https://sendbird.com/",
+      "category": "AI Agent",
+      "summary": "提供面向客户支持的 AI Agent。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/sendbird",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "The AI agent that doesn’t just support, it delights."
+    },
+    {
+      "id": "yc-miso",
+      "name": "Miso",
+      "website": "http://miso.kr/",
+      "category": "AI Agent",
+      "summary": "提供家庭服务预约平台。",
+      "location": "Seoul, Seoul, South Korea",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/miso",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "We make booking services as easy as buying products online."
+    },
+    {
+      "id": "yc-people-ai",
+      "name": "People.ai",
+      "website": "https://people.ai/",
+      "category": "行业应用",
+      "summary": "分析业务活动信息，辅助企业增长。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/people-ai",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Harnesses business activity to unlock growth."
+    },
+    {
+      "id": "yc-may-mobility",
+      "name": "May Mobility",
+      "website": "http://maymobility.com/",
+      "category": "行业应用",
+      "summary": "开发用于城市和乡村交通的自动驾驶服务。",
+      "location": "Ann Arbor, MI, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/may-mobility",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Transforming cities and rural areas through AV transit and technology"
+    },
+    {
+      "id": "yc-corgi-insurance",
+      "name": "Corgi Insurance",
+      "website": "https://corgi.com/",
+      "category": "基础设施",
+      "summary": "开发 AI 金融基础设施与保险服务。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/corgi-insurance",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Corgi is building an AI financial infrastructure company"
+    },
+    {
+      "id": "yc-qventus",
+      "name": "Qventus",
+      "website": "http://qventus.com/",
+      "category": "行业应用",
+      "summary": "自动化医院及医疗系统的运营流程。",
+      "location": "San Francisco, CA, USA; Remote",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/qventus",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "We automate operations for hospitals and health systems"
+    },
+    {
+      "id": "yc-gecko-robotics",
+      "name": "Gecko Robotics",
+      "website": "https://www.geckorobotics.com/",
+      "category": "基础设施",
+      "summary": "将 AI 与机器人用于基础设施等实体场景。",
+      "location": "Pittsburgh, PA, USA; Austin, TX, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/gecko-robotics",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "AI + Robotics for the Built World"
+    },
+    {
+      "id": "yc-fieldguide",
+      "name": "Fieldguide",
+      "website": "http://fieldguide.com/",
+      "category": "行业应用",
+      "summary": "为审计与咨询机构提供行业 AI 工具。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/fieldguide",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Vertical AI for Audit & Advisory Firms"
+    },
+    {
+      "id": "yc-mashgin",
+      "name": "Mashgin",
+      "website": "http://mashgin.com/",
+      "category": "行业应用",
+      "summary": "用计算机视觉实现自助结账。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/mashgin",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Self-Checkout using Computer Vision."
+    },
+    {
+      "id": "yc-ambient-ai",
+      "name": "Ambient.ai",
+      "website": "https://ambient.ai/",
+      "category": "基础设施",
+      "summary": "将 AI 用于企业实体安全管理。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/ambient-ai",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "AI company transforming enterprise physical security to prevent…"
+    },
+    {
+      "id": "yc-taktile",
+      "name": "Taktile",
+      "website": "http://www.taktile.com/",
+      "category": "基础设施",
+      "summary": "用 AI Agent 支持企业决策流程。",
+      "location": "Berlin, Berlin, Germany",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/taktile",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Transform your decision-making with reliable AI agents in weeks, not…"
+    },
+    {
+      "id": "yc-within",
+      "name": "Within",
+      "website": "http://within.ai/",
+      "category": "AI Agent",
+      "summary": "为员工和 Agent 提供企业知识与协作能力。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/within",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Company Brain for people and agents to work in harmony."
+    },
+    {
+      "id": "yc-pylon-2",
+      "name": "Pylon",
+      "website": "https://usepylon.com/",
+      "category": "AI Agent",
+      "summary": "提供面向 B2B 企业的 Agent 客服平台。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/pylon-2",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "The Agentic Support Platform purpose-built for B2B."
+    },
+    {
+      "id": "yc-community-phone-company",
+      "name": "Community Phone Company",
+      "website": "https://www.communityphone.org/",
+      "category": "行业应用",
+      "summary": "为家庭提供电话与通信服务。",
+      "location": "San Francisco, CA, USA; Remote",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/community-phone-company",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "The phone that gives families peace of mind about aging parents"
+    },
+    {
+      "id": "yc-eden-2",
+      "name": "Eden",
+      "website": "https://edenmed.com/",
+      "category": "基础设施",
+      "summary": "开发面向临床场景的 AI 工具。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/eden-2",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Building Clinical Superintelligence."
+    },
+    {
+      "id": "yc-broccoli-ai",
+      "name": "Broccoli AI",
+      "website": "https://www.broccoli.com/",
+      "category": "AI Agent",
+      "summary": "为家庭服务企业提供 AI 运营系统。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/broccoli-ai",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "AI-native operating system for home service businesses"
+    },
+    {
+      "id": "yc-promise",
+      "name": "Promise",
+      "website": "http://promise-pay.com/",
+      "category": "行业应用",
+      "summary": "为政府机构及其服务社区提供支付系统。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/promise",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Better payment systems for governments and the communities they serve."
+    },
+    {
+      "id": "yc-weekend-fmr-volley",
+      "name": "Weekend (fmr. Volley)",
+      "website": "https://weekend.com/",
+      "category": "行业应用",
+      "summary": "开发电视端 AI 游戏与娱乐产品。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/weekend-fmr-volley",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "AI games and entertainment on TV"
+    },
+    {
+      "id": "yc-onechronos",
+      "name": "OneChronos",
+      "website": "https://www.onechronos.com/",
+      "category": "基础设施",
+      "summary": "为机构投资者提供智能交易市场。",
+      "location": "New York City, NY, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/onechronos",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "The Smart Market for Institutional Investors"
+    },
+    {
+      "id": "yc-tavus",
+      "name": "Tavus",
+      "website": "https://www.tavus.io/",
+      "category": "生成工具",
+      "summary": "开发人与 AI 交互相关技术。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/tavus",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Building the human layer of AI"
+    },
+    {
+      "id": "yc-pump-co",
+      "name": "Pump.co",
+      "website": "https://www.pump.co/",
+      "category": "行业应用",
+      "summary": "提供云服务采购与成本管理工具。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/pump-co",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "The Costco for cloud is here 🔥🔥"
+    },
+    {
+      "id": "yc-veryfi-inc",
+      "name": "Veryfi, Inc.",
+      "website": "https://www.veryfi.com/",
+      "category": "基础设施",
+      "summary": "通过 API 提供文档 AI 处理能力。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/veryfi-inc",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Document AI. One API Call."
+    },
+    {
+      "id": "yc-vergesense",
+      "name": "VergeSense",
+      "website": "http://www.vergesense.com/",
+      "category": "行业应用",
+      "summary": "提供 AI 建筑与空间管理工具。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/vergesense",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "AI-Powered Building Management"
+    },
+    {
+      "id": "yc-assemblyai",
+      "name": "AssemblyAI",
+      "website": "https://www.assemblyai.com/",
+      "category": "语音技术",
+      "summary": "提供语音 AI 应用开发服务。",
+      "location": "New York City, NY, USA; Remote",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/assemblyai",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "The best way to build Voice AI apps"
+    },
+    {
+      "id": "yc-motion",
+      "name": "Motion",
+      "website": "https://www.usemotion.com/",
+      "category": "行业应用",
+      "summary": "提供人类员工与 AI 员工的工作管理平台。",
+      "location": "San Francisco, CA, USA; Remote",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/motion",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "The only work management platform for both Human and AI Employees"
+    },
+    {
+      "id": "yc-be-go",
+      "name": "BeGo",
+      "website": "http://www.bego.ai/",
+      "category": "行业应用",
+      "summary": "连接墨西哥及美国的货主与运输供应商。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/be-go",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "BeGo Connects cargo shippers with truck suppliers in Mexico and US"
+    },
+    {
+      "id": "yc-langdock",
+      "name": "Langdock",
+      "website": "https://langdock.com/",
+      "category": "AI Agent",
+      "summary": "为企业提供一体化 AI 平台。",
+      "location": "Berlin, Berlin, Germany",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/langdock",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "The all-in-one AI platform for companies."
+    },
+    {
+      "id": "yc-atomic-industries",
+      "name": "Atomic Industries",
+      "website": "http://atomic.industries/",
+      "category": "基础设施",
+      "summary": "用软件编排塑料产品的批量制造流程。",
+      "location": "Cleveland, OH, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/atomic-industries",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Software orchestrated mass production of plastics"
+    },
+    {
+      "id": "yc-popl",
+      "name": "Popl",
+      "website": "https://popl.co/",
+      "category": "行业应用",
+      "summary": "为线下活动提供 AI 获客与营销工具。",
+      "location": "New York City, NY, USA; Remote",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/popl",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "Your AI GTM platform for In-Person Events"
+    },
+    {
+      "id": "yc-cambio-2",
+      "name": "Cambio",
+      "website": "https://www.cambio.ai/",
+      "category": "基础设施",
+      "summary": "将 AI 用于商业地产运营。",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/cambio-2",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "AI-native commercial real estate operations"
+    },
+    {
+      "id": "yc-flagright",
+      "name": "Flagright",
+      "website": "https://flagright.com/",
+      "category": "行业应用",
+      "summary": "AI-native AML compliance platform for fintechs & banks",
+      "location": "San Francisco, CA, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/flagright",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "AI-native AML compliance platform for fintechs & banks"
+    },
+    {
+      "id": "yc-govdash",
+      "name": "GovDash",
+      "website": "https://govdash.com/",
+      "category": "行业应用",
+      "summary": "AI platform to win and run government contracts",
+      "location": "New York City, NY, USA",
+      "city": "",
+      "region": "国外",
+      "activity": {
+        "kind": "active",
+        "label": "YC 标记 Active",
+        "asOf": "2026-11-01"
+      },
+      "syncedAt": "2026-11-01",
+      "sources": [
+        {
+          "title": "YC 公司档案",
+          "url": "https://www.ycombinator.com/companies/govdash",
+          "asOf": "2026-11-01",
+          "sourceId": "yc"
+        }
+      ],
+      "sourceId": "yc",
+      "sourceSummary": "AI platform to win and run government contracts"
     },
     {
       "id": "yc-legora",
@@ -7369,396 +8225,6 @@
       "sourceSummary": "The AI workspace for lawyers"
     },
     {
-      "id": "yc-sendbird",
-      "name": "Sendbird",
-      "website": "https://sendbird.com/",
-      "category": "AI Agent",
-      "summary": "提供面向客户支持的 AI Agent。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/sendbird",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "The AI agent that doesn’t just support, it delights."
-    },
-    {
-      "id": "yc-miso",
-      "name": "Miso",
-      "website": "http://miso.kr/",
-      "category": "AI Agent",
-      "summary": "提供家庭服务预约平台。",
-      "location": "Seoul, Seoul, South Korea",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/miso",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "We make booking services as easy as buying products online."
-    },
-    {
-      "id": "yc-people-ai",
-      "name": "People.ai",
-      "website": "https://people.ai/",
-      "category": "行业应用",
-      "summary": "分析业务活动信息，辅助企业增长。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/people-ai",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Harnesses business activity to unlock growth."
-    },
-    {
-      "id": "yc-may-mobility",
-      "name": "May Mobility",
-      "website": "http://maymobility.com/",
-      "category": "行业应用",
-      "summary": "开发用于城市和乡村交通的自动驾驶服务。",
-      "location": "Ann Arbor, MI, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/may-mobility",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Transforming cities and rural areas through AV transit and technology"
-    },
-    {
-      "id": "yc-corgi-insurance",
-      "name": "Corgi Insurance",
-      "website": "https://corgi.com/",
-      "category": "基础设施",
-      "summary": "开发 AI 金融基础设施与保险服务。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/corgi-insurance",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Corgi is building an AI financial infrastructure company"
-    },
-    {
-      "id": "yc-qventus",
-      "name": "Qventus",
-      "website": "http://qventus.com/",
-      "category": "行业应用",
-      "summary": "自动化医院及医疗系统的运营流程。",
-      "location": "San Francisco, CA, USA; Remote",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/qventus",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "We automate operations for hospitals and health systems"
-    },
-    {
-      "id": "yc-gecko-robotics",
-      "name": "Gecko Robotics",
-      "website": "https://www.geckorobotics.com/",
-      "category": "基础设施",
-      "summary": "将 AI 与机器人用于基础设施等实体场景。",
-      "location": "Pittsburgh, PA, USA; Austin, TX, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/gecko-robotics",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "AI + Robotics for the Built World"
-    },
-    {
-      "id": "yc-fieldguide",
-      "name": "Fieldguide",
-      "website": "http://fieldguide.com/",
-      "category": "行业应用",
-      "summary": "为审计与咨询机构提供行业 AI 工具。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/fieldguide",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Vertical AI for Audit & Advisory Firms"
-    },
-    {
-      "id": "yc-mashgin",
-      "name": "Mashgin",
-      "website": "http://mashgin.com/",
-      "category": "行业应用",
-      "summary": "用计算机视觉实现自助结账。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/mashgin",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Self-Checkout using Computer Vision."
-    },
-    {
-      "id": "yc-ambient-ai",
-      "name": "Ambient.ai",
-      "website": "https://ambient.ai/",
-      "category": "基础设施",
-      "summary": "将 AI 用于企业实体安全管理。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/ambient-ai",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "AI company transforming enterprise physical security to prevent…"
-    },
-    {
-      "id": "yc-taktile",
-      "name": "Taktile",
-      "website": "http://www.taktile.com/",
-      "category": "基础设施",
-      "summary": "用 AI Agent 支持企业决策流程。",
-      "location": "Berlin, Berlin, Germany",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/taktile",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Transform your decision-making with reliable AI agents in weeks, not…"
-    },
-    {
-      "id": "yc-within",
-      "name": "Within",
-      "website": "http://within.ai/",
-      "category": "AI Agent",
-      "summary": "为员工和 Agent 提供企业知识与协作能力。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/within",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Company Brain for people and agents to work in harmony."
-    },
-    {
-      "id": "yc-pylon-2",
-      "name": "Pylon",
-      "website": "https://usepylon.com/",
-      "category": "AI Agent",
-      "summary": "提供面向 B2B 企业的 Agent 客服平台。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/pylon-2",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "The Agentic Support Platform purpose-built for B2B."
-    },
-    {
-      "id": "yc-community-phone-company",
-      "name": "Community Phone Company",
-      "website": "https://www.communityphone.org/",
-      "category": "行业应用",
-      "summary": "为家庭提供电话与通信服务。",
-      "location": "San Francisco, CA, USA; Remote",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/community-phone-company",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "The phone that gives families peace of mind about aging parents"
-    },
-    {
-      "id": "yc-eden-2",
-      "name": "Eden",
-      "website": "https://edenmed.com/",
-      "category": "基础设施",
-      "summary": "开发面向临床场景的 AI 工具。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/eden-2",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Building Clinical Superintelligence."
-    },
-    {
       "id": "yc-juicebox",
       "name": "Juicebox",
       "website": "https://juicebox.ai/",
@@ -7783,396 +8249,6 @@
       ],
       "sourceId": "yc",
       "sourceSummary": "AI Agents for Recruiting"
-    },
-    {
-      "id": "yc-broccoli-ai",
-      "name": "Broccoli AI",
-      "website": "https://www.broccoli.com/",
-      "category": "AI Agent",
-      "summary": "为家庭服务企业提供 AI 运营系统。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/broccoli-ai",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "AI-native operating system for home service businesses"
-    },
-    {
-      "id": "yc-promise",
-      "name": "Promise",
-      "website": "http://promise-pay.com/",
-      "category": "行业应用",
-      "summary": "为政府机构及其服务社区提供支付系统。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/promise",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Better payment systems for governments and the communities they serve."
-    },
-    {
-      "id": "yc-weekend-fmr-volley",
-      "name": "Weekend (fmr. Volley)",
-      "website": "https://weekend.com/",
-      "category": "行业应用",
-      "summary": "开发电视端 AI 游戏与娱乐产品。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/weekend-fmr-volley",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "AI games and entertainment on TV"
-    },
-    {
-      "id": "yc-onechronos",
-      "name": "OneChronos",
-      "website": "https://www.onechronos.com/",
-      "category": "基础设施",
-      "summary": "为机构投资者提供智能交易市场。",
-      "location": "New York City, NY, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/onechronos",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "The Smart Market for Institutional Investors"
-    },
-    {
-      "id": "yc-tavus",
-      "name": "Tavus",
-      "website": "https://www.tavus.io/",
-      "category": "生成工具",
-      "summary": "开发人与 AI 交互相关技术。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/tavus",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Building the human layer of AI"
-    },
-    {
-      "id": "yc-pump-co",
-      "name": "Pump.co",
-      "website": "https://www.pump.co/",
-      "category": "行业应用",
-      "summary": "提供云服务采购与成本管理工具。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/pump-co",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "The Costco for cloud is here 🔥🔥"
-    },
-    {
-      "id": "yc-veryfi-inc",
-      "name": "Veryfi, Inc.",
-      "website": "https://www.veryfi.com/",
-      "category": "基础设施",
-      "summary": "通过 API 提供文档 AI 处理能力。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/veryfi-inc",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Document AI. One API Call."
-    },
-    {
-      "id": "yc-vergesense",
-      "name": "VergeSense",
-      "website": "http://www.vergesense.com/",
-      "category": "行业应用",
-      "summary": "提供 AI 建筑与空间管理工具。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/vergesense",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "AI-Powered Building Management"
-    },
-    {
-      "id": "yc-assemblyai",
-      "name": "AssemblyAI",
-      "website": "https://www.assemblyai.com/",
-      "category": "语音技术",
-      "summary": "提供语音 AI 应用开发服务。",
-      "location": "New York City, NY, USA; Remote",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/assemblyai",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "The best way to build Voice AI apps"
-    },
-    {
-      "id": "yc-motion",
-      "name": "Motion",
-      "website": "https://www.usemotion.com/",
-      "category": "行业应用",
-      "summary": "提供人类员工与 AI 员工的工作管理平台。",
-      "location": "San Francisco, CA, USA; Remote",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/motion",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "The only work management platform for both Human and AI Employees"
-    },
-    {
-      "id": "yc-be-go",
-      "name": "BeGo",
-      "website": "http://www.bego.ai/",
-      "category": "行业应用",
-      "summary": "连接墨西哥及美国的货主与运输供应商。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/be-go",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "BeGo Connects cargo shippers with truck suppliers in Mexico and US"
-    },
-    {
-      "id": "yc-langdock",
-      "name": "Langdock",
-      "website": "https://langdock.com/",
-      "category": "AI Agent",
-      "summary": "为企业提供一体化 AI 平台。",
-      "location": "Berlin, Berlin, Germany",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/langdock",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "The all-in-one AI platform for companies."
-    },
-    {
-      "id": "yc-atomic-industries",
-      "name": "Atomic Industries",
-      "website": "http://atomic.industries/",
-      "category": "基础设施",
-      "summary": "用软件编排塑料产品的批量制造流程。",
-      "location": "Cleveland, OH, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/atomic-industries",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Software orchestrated mass production of plastics"
-    },
-    {
-      "id": "yc-popl",
-      "name": "Popl",
-      "website": "https://popl.co/",
-      "category": "行业应用",
-      "summary": "为线下活动提供 AI 获客与营销工具。",
-      "location": "New York City, NY, USA; Remote",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/popl",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "Your AI GTM platform for In-Person Events"
-    },
-    {
-      "id": "yc-cambio-2",
-      "name": "Cambio",
-      "website": "https://www.cambio.ai/",
-      "category": "基础设施",
-      "summary": "将 AI 用于商业地产运营。",
-      "location": "San Francisco, CA, USA",
-      "city": "",
-      "region": "国外",
-      "activity": {
-        "kind": "active",
-        "label": "YC 标记 Active",
-        "asOf": "2026-10-14"
-      },
-      "syncedAt": "2026-10-14",
-      "sources": [
-        {
-          "title": "YC 公司档案",
-          "url": "https://www.ycombinator.com/companies/cambio-2",
-          "asOf": "2026-10-14",
-          "sourceId": "yc"
-        }
-      ],
-      "sourceId": "yc",
-      "sourceSummary": "AI-native commercial real estate operations"
     }
   ]
 }

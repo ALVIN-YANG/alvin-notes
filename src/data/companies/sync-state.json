@@ -2,20 +2,53 @@
   "schemaVersion": 1,
   "sources": {
     "cac": {
-      "syncedAt": "2026-10-14",
+      "syncedAt": "2026-11-01",
       "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
-      "matches": [],
-      "count": 0,
+      "matches": [
+        {
+          "companyId": "luyun",
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm",
+          "asOf": "2026-07-29",
+          "syncedAt": "2026-11-01",
+          "sourceId": "cac"
+        },
+        {
+          "companyId": "qiuguo",
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm",
+          "asOf": "2026-08-24",
+          "syncedAt": "2026-11-01",
+          "sourceId": "cac"
+        },
+        {
+          "companyId": "chenlian",
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm",
+          "asOf": "2026-08-18",
+          "syncedAt": "2026-11-01",
+          "sourceId": "cac"
+        },
+        {
+          "companyId": "firefly",
+          "title": "生成式人工智能服务已备案和已登记信息（2026年8月）",
+          "url": "https://www.cac.gov.cn/2024-04/02/c_1713729983803145.htm",
+          "asOf": "2026-07-07",
+          "syncedAt": "2026-11-01",
+          "sourceId": "cac"
+        }
+      ],
+      "count": 4,
       "error": null
     },
     "yc": {
-      "syncedAt": "2026-10-14",
+      "syncedAt": "2026-11-01",
       "count": 35,
       "error": null
     }
   },
   "lastRun": {
-    "attemptedAt": "2026-10-14",
+    "attemptedAt": "2026-11-01",
     "status": "ok",
     "results": [
       {
