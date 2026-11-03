@@ -46,12 +46,12 @@ import { aiCharacters, characterImageRoot } from '../data/ai-characters';
   <section class="character-preview" aria-labelledby="character-preview-title">
     <header>
       <h2 id="character-preview-title">AI 角色立绘</h2>
-      <p>九位大模型拟人角色 · 点击查看原图</p>
+      <p>{aiCharacters.length} 位大模型拟人角色 · 点击查看原图</p>
     </header>
     <div class="character-preview-strip">
       {aiCharacters.map((character) => (
         <a class="character-image" href={`${characterImageRoot}/${character.id}.png`} data-primer-image data-astro-prefetch="false" aria-label={`查看 ${character.name} 原图`}>
-          <img src={`${characterImageRoot}/${character.id}-preview.webp`} alt={`${character.name}：${character.detail}`} width="512" height="768" loading="lazy" decoding="async" />
+          <img src={`${characterImageRoot}/${character.id}-display.webp`} alt={`${character.name}：${character.detail}`} width="1024" height="1536" loading="lazy" decoding="async" />
         </a>
       ))}
     </div>
