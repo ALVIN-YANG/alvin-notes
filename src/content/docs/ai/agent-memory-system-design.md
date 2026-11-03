@@ -100,3 +100,5 @@ Score = α × Similarity + β × Recency + γ × Importance
 保留几轮原文、何时压缩都按任务调整，不必每轮固定压缩。步骤、单动作重试与 token 预算设上限，超限后停止、降级或接管。
 
 先用状态表和一张带来源的偏好表解决真实需求。事件增多、有语义召回需求时再加向量索引；不需要跨会话复用的产品可能只需当前状态。评测检查召回是否相关、注入后是否改善任务、成本是否可接受，并覆盖偏好变化、跨租户、过期与删除。[Agent 评测](/ai/agent-evaluation-observability/)、[Hindsight 接入参考](/ai/hindsight-agent-memory/)
+
+具体实现可读 [OpenClaw 记忆系统深度拆解](/claw/openclaw/9-memory-system-deep-dive/)：用连续几天的发布场景，追踪记忆何时写入、怎样召回，以及模型与程序各自负责什么。
