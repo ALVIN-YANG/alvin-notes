@@ -7,7 +7,7 @@ import DocumentImageZoom from './DocumentImageZoom.astro';
   <header class="portfolio-intro">
     <a class="character-back" href="/projects/">← 作品集</a>
     <h1 id="_top">AI 角色立绘</h1>
-    <p>八位大模型拟人角色，电影写实质感。点击立绘查看大图，可下载 PNG 原图。</p>
+    <p>九位大模型拟人角色，电影写实质感。点击立绘查看大图，可下载 PNG 原图。</p>
   </header>
 
   <div class="character-grid">
@@ -15,7 +15,7 @@ import DocumentImageZoom from './DocumentImageZoom.astro';
       <figure class="character-figure" id={character.id}>
         <a
           class="character-image"
-          href={`${characterImageRoot}/${character.id}.webp`}
+          href={`${characterImageRoot}/${character.id}.png`}
           data-primer-image
           data-astro-prefetch="false"
           aria-label={`查看 ${character.name} 的完整立绘`}
