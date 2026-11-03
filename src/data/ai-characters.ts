@@ -8,6 +8,7 @@ export const aiCharacters = [
   { id: 'kimi', name: 'Kimi', detail: '银色卷发、月亮发饰与琴键裙摆。' },
   { id: 'qwen', name: 'Qwen', detail: '蓝色长辫、中式衣裙与折扇。' },
   { id: 'doubao', name: '豆包', detail: '深棕短发、红色围巾、黑色短裙与黑丝。' },
+  { id: 'minimax', name: 'MiniMax', detail: '黑色长发、红白衣裙与几何配饰。' },
 ] as const;
 
 export const characterImageRoot = '/images/projects/ai-characters';
