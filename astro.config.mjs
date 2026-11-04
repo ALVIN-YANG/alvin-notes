@@ -64,7 +64,7 @@ export default defineConfig({
   integrations: [
     sitemap(),
     starlight({
-      title: 'Alvin Yang',
+      title: 'ALVIN',
       favicon: '/favicon.png',
       description: '关于 AI Agent、软件架构与工程实践的技术文章',
       locales: {

@@ -1156,43 +1156,48 @@ main {
 .home-intro-copy { min-width: 0; }
 .home-intro .home-product-promo-link { height: 4.6rem; }
 
+.home-identity {
+  padding-block: .5rem 1rem;
+}
+.home-wordmark {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin: 0 0 1rem;
+  color: var(--sl-color-white);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  letter-spacing: .18em;
+}
+.home-wordmark > span {
+  color: #ed733c;
+  font-family: var(--sl-font-mono);
+  font-weight: 700;
+  letter-spacing: -.12em;
+}
 .home-title {
-	width: min(100%, 72rem);
-	margin: 0 auto 1rem;
-	font-family: var(--sl-font-heading);
-	font-size: clamp(1.4rem, 3vw, 1.8rem);
-	font-weight: 600;
-	line-height: 1.4;
-	color: var(--sl-color-white);
-	text-wrap: balance;
+  margin: 0;
+  color: var(--sl-color-white);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.3rem, 3.6vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -.045em;
+  line-height: 1.08;
+  text-wrap: balance;
 }
-
+.home-title > span { color: #ed733c; }
+.home-byline {
+  margin: .85rem 0 0;
+  color: var(--sl-color-gray-2);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(.95rem, 1.2vw, 1.1rem);
+  line-height: 1.6;
+}
+.home-byline > span { margin-inline: .35rem; }
 .home-avatar-hero {
-	display: grid;
-	grid-template-columns: 4.6rem minmax(0, 1fr);
-	position: relative;
-	padding-bottom: 4.75rem;
-	align-items: center;
-	gap: 1rem;
-	width: min(100%, 72rem);
-	margin: 0.7rem auto 0;
-}
-
-.home-avatar-note {
-	min-width: 0;
-}
-
-.home-avatar-note .programmer-aside {
-	position: static;
-	width: 100%;
-}
-
-.home-avatar-note .programmer-bubble {
-	position: absolute;
-	top: 5.2rem;
-	left: 0;
-	z-index: 2;
-	max-width: 100%;
+  width: 100%;
+  max-width: 25rem;
+  margin-top: .75rem;
 }
 
 .home-product-promo-link {
@@ -1245,47 +1250,6 @@ main {
 	font-weight: 600;
 	line-height: 1.2;
 }
-
-@media (max-width: 40rem) {
-	.home-avatar-hero {
-		grid-template-columns: 3.75rem minmax(0, 1fr);
-		gap: 0.75rem;
-		width: 100%;
-		margin-top: 0.55rem;
-		padding-bottom: 4.75rem;
-	}
-
-	.home-product-promo {
-		grid-column: 2;
-		grid-row: 1;
-		width: min(100%, 19.5rem);
-		justify-self: end;
-	}
-
-	.home-avatar-note {
-		grid-column: 1;
-		grid-row: 1;
-		align-self: stretch;
-	}
-
-	.home-avatar-note .programmer-aside {
-		height: 100%;
-	}
-
-	.home-avatar-note .programmer-bubble {
-		top: 5.2rem;
-		left: 0;
-		max-width: min(25rem, calc(100vw - 2rem));
-	}
-
-	.home-avatar-note .programmer-bubble::after {
-		top: -0.38rem;
-		left: 1.5rem;
-		transform: rotate(135deg);
-	}
-}
-
-.home-avatar-note .programmer-bubble::after { top: -.38rem; left: 1.5rem; transform: rotate(135deg); }
 
 /* Agent Runtime：按职责分区，固定路径，连续交接。 */
 .agent-execution {
@@ -1395,7 +1359,6 @@ main {
 }
 @media (max-width: 40rem) {
   .home-intro { grid-template-columns: minmax(0, 1fr); gap: .65rem; }
-  .home-avatar-note .programmer-aside { position: static; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ar-model::after { animation: none; }

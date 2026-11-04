@@ -1,6 +1,5 @@
 ---
 import DefaultHero from '@astrojs/starlight/components/Hero.astro';
-import ProgrammerAside from './ProgrammerAside.astro';
 import AgentExecution from './AgentExecution.astro';
 
 const isRootHome = Astro.url.pathname === '/';
@@ -12,11 +11,12 @@ const isRootHome = Astro.url.pathname === '/';
   isRootHome ? (
     <div class="home-intro">
       <div class="home-intro-copy">
-        <h1 class="home-title">AI Agent 与工程实践</h1>
+        <div class="home-identity">
+          <p class="home-wordmark"><span aria-hidden="true">&lt;/&gt;</span> ALVIN</p>
+          <h1 class="home-title">Ideas into reality<span>.</span></h1>
+          <p class="home-byline">Alvin Yang <span aria-hidden="true">/</span> AI Agent Engineer</p>
+        </div>
         <div class="home-avatar-hero">
-          <section class="home-avatar-note" aria-label="Alvin 的话">
-            <ProgrammerAside />
-          </section>
           <aside class="home-product-promo" aria-label="ClawStage 产品">
             <a
               class="home-product-promo-link"
