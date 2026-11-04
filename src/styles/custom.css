@@ -2267,11 +2267,7 @@ body:has(.reading-heading) .sl-markdown-content table { font-size: .95em; }
 }
 body:has(.reading-heading) .sl-markdown-content h2:not(:where(.not-content *)) {
   border-inline-start: 0;
-  text-decoration-line: underline;
-  text-decoration-color: color-mix(in srgb, #f0a126 35%, transparent);
-  text-decoration-thickness: .08em;
-  text-underline-offset: .12em;
-  text-decoration-skip-ink: auto;
+  text-decoration: none;
   padding-inline-start: 0;
   font-weight: 700;
   font-size: calc(var(--article-font-size) * 1.1875);
@@ -2281,19 +2277,19 @@ body:has(.reading-heading) .sl-markdown-content h2:not(:where(.not-content *)) {
 /* Starlight wraps headings: spacing and line metrics belong to that wrapper. */
 body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h2 {
   position: relative;
-  margin-block: 2rem .75rem;
-  padding-inline-start: .85rem;
+  margin-block: 28px 12px;
+  padding-inline-start: 17px;
   font-size: calc(var(--article-font-size) * 1.1875);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h2::before {
   content: '';
   position: absolute;
   inset-inline-start: 0;
-  top: .25em;
-  width: 3px;
-  height: 1em;
-  background: #f0a126;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #ffb020;
 }
 body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h3 {
   margin-block: 1.65rem .65rem;
@@ -2303,4 +2299,15 @@ body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h3 {
 body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper > :is(h2, h3) {
   margin: 0;
   line-height: inherit;
+}
+
+body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h2::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 17px;
+  inset-inline-end: 0;
+  bottom: -6px;
+  height: 1px;
+  background: linear-gradient(90deg, rgb(255 176 32 / .35), transparent 70%);
+  pointer-events: none;
 }
