@@ -65,7 +65,7 @@ export default defineConfig({
     sitemap(),
     starlight({
       title: 'ALVIN',
-      favicon: '/favicon.png',
+      favicon: '/favicon-alvin.png',
       description: '关于 AI Agent、软件架构与工程实践的技术文章',
       locales: {
         root: { label: '简体中文', lang: 'zh-CN' },
@@ -77,7 +77,7 @@ export default defineConfig({
       head: [
         {
           tag: 'link',
-          attrs: { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' },
+          attrs: { rel: 'apple-touch-icon', href: '/apple-touch-alvin.png', sizes: '180x180' },
         },
         {
           tag: 'meta',
