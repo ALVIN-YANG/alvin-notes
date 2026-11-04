@@ -2266,14 +2266,41 @@ body:has(.reading-heading) .sl-markdown-content table { font-size: .95em; }
   border-top: 1px dashed var(--sl-color-gray-5);
 }
 body:has(.reading-heading) .sl-markdown-content h2:not(:where(.not-content *)) {
-  border-inline-start: 3px solid #f0a126;
+  border-inline-start: 0;
   text-decoration-line: underline;
   text-decoration-color: color-mix(in srgb, #f0a126 35%, transparent);
-  text-decoration-thickness: .12em;
-  text-underline-offset: .16em;
+  text-decoration-thickness: .08em;
+  text-underline-offset: .12em;
   text-decoration-skip-ink: auto;
-  padding-inline-start: .85rem;
+  padding-inline-start: 0;
   font-weight: 700;
   font-size: calc(var(--article-font-size) * 1.1875);
   line-height: 1.45;
+}
+
+/* Starlight wraps headings: spacing and line metrics belong to that wrapper. */
+body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h2 {
+  position: relative;
+  margin-block: 2rem .75rem;
+  padding-inline-start: .85rem;
+  font-size: calc(var(--article-font-size) * 1.1875);
+  line-height: 1.5;
+}
+body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h2::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: .25em;
+  width: 3px;
+  height: 1em;
+  background: #f0a126;
+}
+body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h3 {
+  margin-block: 1.65rem .65rem;
+  font-size: calc(var(--article-font-size) * 1.1);
+  line-height: 1.55;
+}
+body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper > :is(h2, h3) {
+  margin: 0;
+  line-height: inherit;
 }
