@@ -2251,16 +2251,12 @@ body:has(.reading-heading) .sl-markdown-content table { font-size: .95em; }
 .article-font-size button:hover { color: var(--sl-color-accent-high); }
 .article-font-size button:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 2px; }
 
-/* Article title treatment inspired by the reference's quiet grid and section markers. */
+/* Article titles retain the site background and restrained section markers. */
 .article-heading.reading-heading {
   padding: clamp(1rem, 2.5vw, 1.75rem);
   border: 1px solid var(--sl-color-gray-5);
   border-radius: .8rem;
-  background-color: var(--sl-color-surface);
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--sl-color-gray-3) 8%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--sl-color-gray-3) 8%, transparent) 1px, transparent 1px);
-  background-size: 2.75rem 2.75rem;
+  background: transparent;
 }
 .article-heading.reading-heading #_top { font-weight: 700; line-height: 1.35 !important; }
 .article-heading.reading-heading .article-meta { margin-top: .75rem; }
@@ -2271,6 +2267,11 @@ body:has(.reading-heading) .sl-markdown-content table { font-size: .95em; }
 }
 body:has(.reading-heading) .sl-markdown-content h2:not(:where(.not-content *)) {
   border-inline-start: 3px solid #f0a126;
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, #f0a126 35%, transparent);
+  text-decoration-thickness: .12em;
+  text-underline-offset: .16em;
+  text-decoration-skip-ink: auto;
   padding-inline-start: .85rem;
   font-weight: 700;
   font-size: calc(var(--article-font-size) * 1.1875);
