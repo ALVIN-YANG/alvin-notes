@@ -20,10 +20,6 @@ const works = portfolio.filter((project) => project.featured);
 
     <div class="hero-grid">
       <div class="identity">
-        <div class="identity-mark">
-          <span class="identity-avatar" aria-hidden="true"></span>
-          <span>杨卢青</span>
-        </div>
         <h1>Alvin Yang</h1>
         <p class="positioning">AI Agent 开发工程师，做智能硬件的软件系统，也做自己的产品。</p>
         <p class="intro">
@@ -156,26 +152,6 @@ const works = portfolio.filter((project) => project.featured);
     gap: clamp(2.5rem, 6vw, 5rem);
     align-items: end;
     padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.75rem, 5vw, 4.25rem);
-  }
-
-  .identity-mark {
-    display: flex;
-    gap: 0.65rem;
-    align-items: center;
-    margin-bottom: 1rem;
-    color: var(--profile-muted);
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-  }
-
-  .identity-avatar {
-    display: block;
-    flex: 0 0 auto;
-    width: 1.8rem;
-    height: 1.8rem;
-    border-radius: 0.55rem;
-    background: #f8f5eb url('/images/brand/alvin-programmer.webp') center 28% / 220% auto no-repeat;
-    opacity: 0.92;
   }
 
   h1,
