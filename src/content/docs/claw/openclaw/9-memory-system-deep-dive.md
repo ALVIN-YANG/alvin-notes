@@ -20,7 +20,7 @@ OpenClaw 不会因为一段话出现在聊天里，就把它当成长期记忆�
 
 主模型只处理当前问题。没有程序强迫它为每句话写笔记，也没有后台逐句调用 `remember(text)`。工作区指令允许模型记录有持续价值的事实，但能否落盘要看它是否实际调用文件工具，不能凭一句“我记住了”判断。
 
-这次普通对话也不会仅因为安装了记忆插件就触发深度历史召回。默认 `escalate` 模式下，Active Memory 只有识别到回顾意图，且快速通道没有强命中时才升级；[`hasRecallIntent` 的决策函数](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/active-memory/escalation.ts#L92-L121)划定了这条边界。
+这次普通对话也不会仅因为安装了记忆插件就触发深度历史召回。在默认的 `escalate` 模式下（[官方模式说明](https://docs.openclaw.ai/concepts/memory-architecture#lane-2-escalation)），Active Memory 只有识别到回顾意图，且快速通道没有强命中时才升级；[`hasRecallIntent` 的决策函数](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/active-memory/escalation.ts#L92-L121)划定了这条边界。
 
 要判断一条信息处于什么状态，可以先看下面五层：
 
