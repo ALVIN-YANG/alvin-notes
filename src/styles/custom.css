@@ -2175,6 +2175,17 @@ body:has(.ai-concepts) .sl-container { max-width: 78rem; }
 }
 
 .character-image-dialog { background: transparent; border: 0; border-radius: 0; box-shadow: none; }
-.character-image-dialog::backdrop { background: rgb(0 0 0 / 4%); }
+.character-image-dialog::backdrop { background: rgb(0 0 0 / 50%); }
 .character-image-dialog .primer-image-canvas { background: transparent; }
 .character-image-dialog .primer-image-canvas img { background: transparent; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .character-image-dialog .primer-image-canvas img { animation: character-image-enter 220ms ease-out both; }
+  .character-image-dialog::backdrop { animation: character-mask-enter 220ms ease-out both; }
+  .character-image-dialog.is-closing .primer-image-canvas img { animation: character-image-exit 180ms ease-in both; }
+  .character-image-dialog.is-closing::backdrop { animation: character-mask-exit 180ms ease-in both; }
+}
+@keyframes character-image-enter { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
+@keyframes character-image-exit { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(.96); } }
+@keyframes character-mask-enter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes character-mask-exit { from { opacity: 1; } to { opacity: 0; } }

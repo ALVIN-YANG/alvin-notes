@@ -25,7 +25,13 @@
     canvas.tabIndex = 0;
     canvas.setAttribute('aria-label', '图片，可滚动查看');
     const img = source.cloneNode() as HTMLImageElement;
-    img.src = link.href;
+    if (isCharacter) {
+      const original = new Image();
+      original.src = link.href;
+      original.decode().then(() => { img.src = original.src; }).catch(() => {});
+    } else {
+      img.src = link.href;
+    }
     img.removeAttribute('srcset');
     img.removeAttribute('sizes');
     img.loading = 'eager';
@@ -37,10 +43,25 @@
       zoom.textContent = expanded ? '适应窗口' : '原始尺寸';
       canvas.scrollTo(0, 0);
     });
-    close.addEventListener('click', () => dialog.close());
+    let closing = false;
+    const closeDialog = () => {
+      if (closing) return;
+      closing = true;
+      if (!isCharacter || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        dialog.close();
+        return;
+      }
+      dialog.classList.add('is-closing');
+      window.setTimeout(() => dialog.close(), 180);
+    };
+    close.addEventListener('click', closeDialog);
+    dialog.addEventListener('cancel', e => {
+      e.preventDefault();
+      closeDialog();
+    });
     dialog.addEventListener('click', e => {
       if (e.target === dialog || (isCharacter && e.target instanceof Node && !img.contains(e.target) && !controls.contains(e.target))) {
-        dialog.close();
+        closeDialog();
       }
     });
     const previousOverflow = document.body.style.overflow;
