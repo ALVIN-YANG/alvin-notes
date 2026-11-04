@@ -8,24 +8,27 @@ sidebar:
   order: 9
 ---
 
-理解 OpenClaw 的记忆，可以按顺序问三个问题：**数据存在哪里？什么时候更新？什么时候被读回？**`MEMORY.md` 只保存一类长期记忆；原始对话、搜索索引、短期候选、用户偏好和未来提醒各有自己的存储位置与更新条件。
+理解 OpenClaw 的记忆，可以按顺序问三个问题：**数据存在哪里？什么时候更新？什么时候被读回？**原始对话、当天日记、长期经验、用户偏好和未来提醒分别保存；搜索索引和短期候选只是帮助查找与整理的辅助数据，不是另一类长期记忆。
 
 下文用“周末去杭州两日游”贯穿所有例子。版本固定为 [`f107fd67bfee9b290311317e120c54509b19554b`](https://github.com/openclaw/openclaw/tree/f107fd67bfee9b290311317e120c54509b19554b)，即 `2026.10.10` 收尾提交；默认讨论私有交互会话与 `memory-core`，需要额外配置的功能会单独标明。
 
-## 一、存储位置：不同记忆分别保存在哪里？
+## 一、存储位置：具体有哪些文件、数据库和表？
 
-| 存储位置 | 保存什么 | 杭州旅行案例 | 能否直接进入主模型的回复上下文 |
-| --- | --- | --- | --- |
-| 原始会话记录（transcript） | 对话原文、工具调用和完整工具结果 | 为什么改住西湖边、完整车次查询结果 | 当前会话按上下文窗口读取；其他会话需要检索 |
-| 搜索索引 | Markdown 或会话切片、关键词、向量、来源信息 | 用来搜索“湖景房”“返程车票”的索引 | 不直接注入；搜索工具读取索引后返回相关内容 |
-| 当天日记 `memory/YYYY-MM-DD.md` | 当天值得保留的过程和决定 | “最后改住西湖边，返程票未确认” | 裸 `/new` 或 `/reset` 时可附带当天和昨天的日记 |
-| 短期候选 | 日记片段、检索次数、查询来源、时间和分数 | 多次被检索的“行程应简短” | 不进入主回复；只供 Dreaming 整理 |
-| 长期经验 `MEMORY.md` | 可跨任务复用的经验和事实 | “用户偏好简短、结论优先的旅行方案” | 合格私有会话可加载；也可按 trigger 注入 |
-| 用户偏好 `USER.md` | 稳定的用户指令和偏好 | “先给推荐方案，再列每天预算” | 合格私有会话可加载；也可按 trigger 注入 |
-| 整理报告 `DREAMS.md` | Dreaming 的整理结果，供人检查 | 哪条经验被新增、合并或替代 | 不自动注入，也不作为下一轮整理语料 |
-| 未来动作 | 定时任务或条件提醒的状态 | “提到杭州时确认返程车票” | 计划时间到达或条件命中时才触发 |
+| 实际存储位置 | 里面保存的数据 | 用途 |
+| --- | --- | --- |
+| 工作区 `MEMORY.md` | 长期经验，例如“用户偏好简短、结论优先的旅行方案” | 跨会话复用经验 |
+| 工作区 `USER.md` | 稳定用户偏好，例如“先给推荐方案，再列每天预算” | 跨会话应用用户指令 |
+| 工作区 `memory/YYYY-MM-DD.md` | 当天日记，例如“改住西湖边，返程票未确认” | 保存当天值得留下的过程和决定 |
+| 工作区 `DREAMS.md` | Dreaming 的整理报告 | 供人检查新增、合并和替代，不自动进入模型上下文 |
+| Agent SQLite：session rows / transcripts | 原始会话记录（transcript），包括消息和工具结果 | 保存完整对话证据 |
+| Agent SQLite：派生索引表 | 文件或会话的切片、关键词、向量和来源信息 | 加快搜索；索引只是目录，不是新产生的记忆 |
+| Dreaming SQLite：plugin state | 短期候选，包括待整理片段、检索信号和分数 | 等 Deep 判断是否写入 `MEMORY.md`；不直接用于主回复 |
+| Agent SQLite：`standing_intents` 表 | 条件提醒及其状态，例如“提到杭州时确认返程车票” | 条件命中后触发提醒 |
+| OpenClaw 共享 SQLite 状态数据库：Automation jobs / runtime / history | 定时任务、运行状态和历史，例如“明早 9 点检查高铁票” | 计划时间到达后执行任务 |
 
-原始会话和搜索索引位于每个 agent 的 SQLite 数据库中；短期候选和 Standing Intents 也使用 SQLite。日记、长期经验和用户偏好则是工作区里的 Markdown 文件。官方分层见[记忆架构](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/memory-architecture.md#L53-L73)，存储边界见 [Agent workspace](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/agent-workspace.md#L105-L162)。
+这里的文件路径、数据库和表才是存储位置；长期经验、短期候选、搜索索引和未来提醒是这些位置中保存的数据或数据用途，不能与存储位置混为一谈。
+
+官方分层见[记忆架构](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/memory-architecture.md#L53-L73)，存储边界见 [Agent workspace](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/agent-workspace.md#L105-L162)。
 
 只查看 Markdown，无法判断一次对话是否已入库、能否被搜索，或者提醒是否仍然有效。反过来，SQLite 里有原始对话，也不代表 `MEMORY.md` 或 `USER.md` 已写入长期记忆。
 
