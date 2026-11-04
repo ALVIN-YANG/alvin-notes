@@ -12,14 +12,6 @@ const works = portfolio.filter((project) => project.featured);
 ---
 
 <div class="about-profile not-content">
-  <img class="about-studio-banner"
-    src="/images/about/ai-studio-anime.webp"
-    srcset="/images/about/ai-studio-anime-small.webp 800w, /images/about/ai-studio-anime.webp 1672w"
-    sizes="(max-width: 50rem) calc(100vw - 2rem), 1088px"
-    width="1672" height="941"
-    alt="戴智能墨镜的橘猫拿着 GOAL 任务板，与十位 AI 拟人角色一起在工作室协作"
-    fetchpriority="high" decoding="async"
-  />
   <header class="profile-head">
     <div class="profile-meta">
       <span>PROFILE / SINCE 2016</span>
@@ -67,6 +59,25 @@ const works = portfolio.filter((project) => project.featured);
       ))}
     </ol>
   </header>
+
+  <section class="about-working" aria-labelledby="about-working-title">
+    <div class="about-working-copy">
+      <h2 id="about-working-title">我定义目标，Agent 推进执行</h2>
+      <p>我负责提出问题、划定权限、判断取舍和验收结果，把能可靠交给 Agent 的检索、编码、测试与自动化交给它们。</p>
+    </div>
+    <figure class="about-working-scene">
+  <img class="about-studio-banner"
+    src="/images/about/ai-studio-anime.webp"
+    srcset="/images/about/ai-studio-anime-small.webp 800w, /images/about/ai-studio-anime.webp 1672w"
+    sizes="(max-width: 50rem) calc(100vw - 2rem), 1088px"
+    width="1672" height="941"
+    alt="戴智能墨镜的橘猫拿着 GOAL 任务板，与十位 AI 拟人角色一起在工作室协作"
+    loading="lazy" decoding="async"
+  />
+      <figcaption>图里的橘猫代表我，十位 AI 角色代表协作工具。这是我工作方式的插画表达。</figcaption>
+    </figure>
+    <a class="about-working-link" href="/ai-workflow/">查看我的 AI 开发工作流 <span aria-hidden="true">→</span></a>
+  </section>
 
   <section class="selected-work" id="selected-work" aria-labelledby="selected-work-title">
     <div class="section-head">
