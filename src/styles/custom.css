@@ -2240,8 +2240,8 @@ body:has(.reading-heading) .right-sidebar-panel starlight-toc a:hover { color: v
 :root[data-article-size='xlarge'] { --article-font-size: 1.25rem; }
 body:has(.reading-heading) .sl-markdown-content { font-size: var(--article-font-size); letter-spacing: .02em; }
 body:has(.reading-heading) .sl-markdown-content :is(pre, code) { letter-spacing: normal; }
-body:has(.reading-heading) .sl-markdown-content h2:not(:where(.not-content *)) { font-size: 1.25em; }
-body:has(.reading-heading) .sl-markdown-content h3:not(:where(.not-content *)) { font-size: 1.1em; }
+body:has(.reading-heading) .sl-markdown-content h2:not(:where(.not-content *)) { font-size: calc(var(--article-font-size) * 1.25); }
+body:has(.reading-heading) .sl-markdown-content h3:not(:where(.not-content *)) { font-size: calc(var(--article-font-size) * 1.1); }
 body:has(.reading-heading) .sl-markdown-content table { font-size: .95em; }
 .article-reading-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; margin-top: .8rem; }
 .article-reading-controls .article-reader { margin-top: 0; }
