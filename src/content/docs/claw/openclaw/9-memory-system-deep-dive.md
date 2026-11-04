@@ -223,17 +223,18 @@ export const DEFAULT_MEMORY_DEEP_DREAMING_MAX_PROMOTED_SNIPPET_TOKENS = 160;
 
 ### 第四步：写入文本、关键词和向量索引
 
-下面是帮助理解的逻辑结构，省略了当前版本的迁移、锁和运行字段：
+当前固定提交使用以下真实表名；这里省略迁移、锁和其他运行字段：
 
 ```text
-files           → 文件路径、来源、hash、修改信息
-chunks          → 文本、行范围、向量、来源、trigger、importance
-chunks_fts      → SQLite FTS5 关键词索引
-chunks_vec      → 可选 sqlite-vec 向量加速索引
-embedding_cache → 片段 hash 对应的向量缓存
+memory_index_sources     → 文件路径、来源、hash、修改信息
+memory_index_chunks      → 文本、行范围、向量及召回元数据
+memory_index_chunks_fts  → SQLite FTS5 正文关键词索引
+memory_index_paths_fts   → 文件名和路径索引
+memory_index_chunks_vec  → 可选 sqlite-vec 向量加速索引
+memory_embedding_cache   → provider、模型、片段 hash 对应的向量缓存
 ```
 
-sqlite-vec 不可用时，仍可用软件计算余弦相似度。合格的 PostgreSQL runtime 也可承担搜索，但其文本排名不是 SQLite BM25，分数和顺序可能不同。
+表结构可直接核对 [`memory-schema-base.ts`](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/packages/memory-host-sdk/src/host/memory-schema-base.ts)。sqlite-vec 不可用时，仍可用软件计算余弦相似度。合格的 PostgreSQL runtime 也可承担搜索，但其文本排名不是 SQLite BM25，分数和顺序可能不同。
 
 ```mermaid
 flowchart LR
@@ -248,7 +249,13 @@ flowchart LR
   T --> DB
 ```
 
-当前完整行为还包括增量保留未变片段、失败重试和完整重建时保留已发布索引，见[内置引擎的索引说明](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/memory-builtin.md)。
+### 第五步：复用管理器，安全重建索引
+
+`MemoryIndexManager` 负责一个 agent 的索引生命周期。`MemoryManagerRegistry` 按 agent、工作区、配置、provider 和用途复用管理器，避免重复打开同一套资源；入口见 [`manager.ts`](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/memory-core/src/memory/manager.ts)。
+
+完整重建会先写临时数据库，再原子发布记忆索引表。进行中的搜索继续读已发布索引；重建失败时，旧索引仍可使用。provider、模型、分块配置或来源范围变化时，系统会检查索引身份，必要时暂停语义搜索并要求重建，避免比较不同维度的向量。
+
+增量同步还会保留未变片段，并对失败任务重试。完整行为见[内置引擎的索引说明](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/memory-builtin.md)。
 
 ## 5. 检索：混合搜索不是简单的 70/30 相加
 
@@ -259,6 +266,8 @@ flowchart LR
 - **向量搜索**：即使笔记写“超出预算”，也能与“价格太高”这类表达匹配。
 - **关键词搜索**：精确找到“湖景房”“返程车票”等词。
 - **文件名搜索**：完整路径和文件名的精确匹配优先于部分匹配。
+
+中文、日文和韩文可使用 SQLite trigram 分词，不依赖空格切词。升级后如果中文关键词搜不到，可用 `openclaw memory index --force --agent <id>` 重建 FTS 索引。
 
 当前源码会先把每次查询的关键词分数与该查询最强的关键词、向量结果做缩放，再进行加权，不是把原始 BM25 分数直接乘 0.3：
 
@@ -486,7 +495,9 @@ memory flush 本身也是一次模型调用；Active Memory 深度召回还会�
 
 Memory Core 可以作为 dreaming sidecar 与另一个 memory provider 同时存在，但这不会让其他 provider 自动获得 Light/REM/Deep，也不会让它共用 Memory Core 的 SQLite 表。memory slot、context engine 和 compaction provider 是三个不同替换点。
 
-不要只问 Agent“你还记得吗”，应分别检查：
+可选的 `memory-wiki` 又是另一层：它把持续有用的内容整理成带 claims、证据、矛盾与新鲜度标记的 wiki vault，但不替换当前 memory provider；召回、长期提升和 Dreaming 仍由原插件负责。它适合需要人工维护知识库的场景，不是默认记忆流程的必经步骤。
+
+不要只问 Agent“你还记得吗”，应分别检查。`memory status --deep` 会报告 provider、模型、fallback、dirty、文件与片段数量，以及 FTS/vector 是否可用：
 
 ```bash
 # 1. 查看 provider、索引和降级状态
