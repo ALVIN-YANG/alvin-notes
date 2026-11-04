@@ -34,7 +34,7 @@ OpenClaw 不会因为一段话出现在聊天里，就把它当成长期记忆�
 
 工作区还有 `memory/YYYY-MM-DD.md` 日记和供人审阅的 `DREAMS.md`。日记保存阶段性证据，不是精简长期记忆；`DREAMS.md` 展示整理过程，不会成为下一轮提升的语料。官方分层见[记忆架构](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/memory-architecture.md#L53-L73)，物理存储边界见 [Agent workspace](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/agent-workspace.md#L105-L162)。
 
-这些层不能互相替代。长期知识文件虽然可读、可编辑，但会话、索引、候选和提醒状态同样是真实的 SQLite 数据。“模型没有隐藏状态”也不等于“系统只有 Markdown”。
+这些层不能互相替代。`MEMORY.md` 和 `USER.md` 是可读、可编辑的 Markdown 文件；原始会话、搜索索引、短期候选和提醒状态则保存在 SQLite 中。只查看 Markdown，无法判断一次对话是否已入库、能否被搜索，或者提醒是否仍然有效。
 
 ```mermaid
 flowchart TD
