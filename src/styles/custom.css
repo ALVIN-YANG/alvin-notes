@@ -2193,3 +2193,43 @@ body:has(.ai-concepts) .sl-container { max-width: 78rem; }
 /* Compact header brand; title scales within its own column. */
 .site-header .site-title { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; white-space: nowrap; }
 .brand-code-icon { width: 1.65rem; height: 1.3rem; flex: none; color: #ed733c; }
+
+/* Article reading layout: narrow prose, quiet navigation, clear heading rhythm. */
+body:has(.reading-heading) { --sl-content-width: 46rem; }
+body:has(.reading-heading) .content-panel + .content-panel { border-top: 0; padding-top: .5rem; }
+body:has(.reading-heading) #_top {
+  font-size: clamp(1.55rem, 2.2vw, 1.85rem) !important;
+  line-height: 1.4 !important;
+  text-wrap: pretty;
+}
+body:has(.reading-heading) .sl-markdown-content {
+  font-size: 1rem;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+body:has(.reading-heading) .sl-markdown-content p:not(:where(.not-content *)) {
+  margin-block: 0 1.15em;
+}
+body:has(.reading-heading) .sl-markdown-content h2:not(:where(.not-content *)) {
+  margin-top: 2.1rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+body:has(.reading-heading) .sl-markdown-content h3:not(:where(.not-content *)) {
+  margin-top: 1.65rem;
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+body:has(.reading-heading) .sl-markdown-content :is(ul, ol):not(:where(.not-content *)) { margin-block: .6rem 1.2rem; }
+body:has(.reading-heading) .sl-markdown-content li + li { margin-top: .3em; }
+body:has(.reading-heading) .sidebar-content a,
+body:has(.reading-heading) .right-sidebar-panel starlight-toc a { color: var(--sl-color-gray-2); }
+body:has(.reading-heading) .right-sidebar { border-inline-start-color: transparent; }
+body:has(.reading-heading) .right-sidebar-panel starlight-toc a[aria-current='true'] { color: var(--sl-color-accent-high); }
+body:has(.reading-heading) .sidebar-content a:hover,
+body:has(.reading-heading) .right-sidebar-panel starlight-toc a:hover { color: var(--sl-color-accent-high); }
+@media (max-width: 50rem) {
+  body:has(.reading-heading) .content-panel { padding-inline: 1rem; }
+}
