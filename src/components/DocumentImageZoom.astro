@@ -7,6 +7,8 @@
     event.preventDefault();
     const dialog = document.createElement('dialog');
     dialog.className = 'primer-image-dialog';
+    const isCharacter = link.classList.contains('character-image');
+    if (isCharacter) dialog.classList.add('character-image-dialog');
     dialog.setAttribute('aria-label', '查看原图');
     const controls = document.createElement('div');
     controls.className = 'primer-image-controls';
@@ -36,7 +38,11 @@
       canvas.scrollTo(0, 0);
     });
     close.addEventListener('click', () => dialog.close());
-    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('click', e => {
+      if (e.target === dialog || (isCharacter && e.target instanceof Node && !img.contains(e.target) && !controls.contains(e.target))) {
+        dialog.close();
+      }
+    });
     const previousOverflow = document.body.style.overflow;
     dialog.addEventListener('close', () => {
       dialog.remove();

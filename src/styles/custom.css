@@ -2166,10 +2166,15 @@ body:has(.ai-concepts) .sl-container { max-width: 78rem; }
 .workflow-management p { margin-top: .8rem; line-height: 1.8; }
 
 .character-image { overflow: hidden; }
-.character-image img { transition: transform 220ms ease; }
+.character-preview-strip > .character-image, .character-figure { position: relative; transition: transform 220ms ease; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .character-image:hover img { transform: scale(1.045); }
+  .character-preview-strip > .character-image:hover, .character-figure:hover { transform: scale(1.025); z-index: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .character-image img { transition: none; }
+  .character-preview-strip > .character-image, .character-figure { transition: none; }
 }
+
+.character-image-dialog { background: transparent; border: 0; border-radius: 0; box-shadow: none; }
+.character-image-dialog::backdrop { background: rgb(0 0 0 / 4%); }
+.character-image-dialog .primer-image-canvas { background: transparent; }
+.character-image-dialog .primer-image-canvas img { background: transparent; }
