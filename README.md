@@ -1,6 +1,5 @@
-<p align="center">
-  <img src="./assets/readme/hero.webp" width="100%" alt="alvin-notes — Alvin Yang 的个人技术站，记录 AI Agent、软件架构与工程实践">
-</p>
+# alvin-notes
+
 
 <p align="center">
   <a href="https://blog.mlxb.cc">访问站点</a> ·
