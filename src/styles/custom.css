@@ -2320,6 +2320,5 @@ body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h2::af
 .about-working-copy h2 { margin: 0; font-family: var(--sl-font-heading); font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 600; line-height: 1.5; }
 .about-working-copy p { margin: .65rem 0 0; color: var(--profile-muted); font-size: 1rem; line-height: 1.85; }
 .about-working-scene { margin: 0; }
-.about-working-scene figcaption { margin-top: .7rem; color: var(--profile-muted); font-size: .8rem; line-height: 1.7; }
 .about-working-link { display: inline-block; margin-top: .8rem; color: var(--profile-ink); font-size: .875rem; text-underline-offset: .2em; }
 .about-working-link:focus-visible { outline: 2px solid var(--profile-accent); outline-offset: 4px; }
