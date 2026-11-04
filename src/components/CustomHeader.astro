@@ -1,5 +1,4 @@
 ---
-import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
 import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
 import Search from '@astrojs/starlight/components/Search.astro';
 import ThemeToggle from './ThemeToggle.astro';
@@ -72,7 +71,10 @@ function isActive(match: string): boolean {
 
 <div class="site-header sl-flex">
   <div class="title-wrapper sl-flex">
-    <SiteTitle {...Astro.props} />
+    <a class="site-title sl-flex" href={Astro.locals.starlightRoute.siteTitleHref}>
+      <svg class="brand-code-icon" viewBox="0 0 32 24" fill="none" aria-hidden="true"><path d="m9 5-7 7 7 7M23 5l7 7-7 7M19 2l-6 20" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" /></svg>
+      <span translate="no">ALVIN</span>
+    </a>
   </div>
   <nav class="nav-links" aria-label="主导航">
     {navGroups.map(group => (
