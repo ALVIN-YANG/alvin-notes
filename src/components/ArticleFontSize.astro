@@ -1,0 +1,33 @@
+<article-font-size class="article-font-size" role="group" aria-label="正文字号">
+  <span>字号</span>
+  <button type="button" data-size="medium" aria-pressed="true" aria-label="中号字体">中</button>
+  <button type="button" data-size="large" aria-pressed="false" aria-label="大号字体">大</button>
+  <button type="button" data-size="xlarge" aria-pressed="false" aria-label="特大字体">特大</button>
+</article-font-size>
+
+<script>
+  class ArticleFontSize extends HTMLElement {
+    connectedCallback() {
+      this.update();
+      this.addEventListener('click', this.onClick);
+    }
+    disconnectedCallback() {
+      this.removeEventListener('click', this.onClick);
+    }
+    update() {
+      const size = document.documentElement.dataset.articleSize || 'medium';
+      this.querySelectorAll<HTMLButtonElement>('button[data-size]').forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.size === size));
+      });
+    }
+    onClick = (event: Event) => {
+      const button = (event.target as Element).closest<HTMLButtonElement>('button[data-size]');
+      if (!button || !this.contains(button)) return;
+      const size = button.dataset.size!;
+      document.documentElement.dataset.articleSize = size;
+      try { localStorage.setItem('alvin-article-size', size); } catch { /* Reading still works without storage. */ }
+      this.update();
+    };
+  }
+  if (!customElements.get('article-font-size')) customElements.define('article-font-size', ArticleFontSize);
+</script>

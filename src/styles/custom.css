@@ -2233,3 +2233,20 @@ body:has(.reading-heading) .right-sidebar-panel starlight-toc a:hover { color: v
 @media (max-width: 50rem) {
   body:has(.reading-heading) .content-panel { padding-inline: 1rem; }
 }
+
+/* Reader preferences affect article prose, not navigation or product pages. */
+:root { --article-font-size: 1rem; }
+:root[data-article-size='large'] { --article-font-size: 1.125rem; }
+:root[data-article-size='xlarge'] { --article-font-size: 1.25rem; }
+body:has(.reading-heading) .sl-markdown-content { font-size: var(--article-font-size); letter-spacing: .02em; }
+body:has(.reading-heading) .sl-markdown-content :is(pre, code) { letter-spacing: normal; }
+body:has(.reading-heading) .sl-markdown-content h2:not(:where(.not-content *)) { font-size: 1.25em; }
+body:has(.reading-heading) .sl-markdown-content h3:not(:where(.not-content *)) { font-size: 1.1em; }
+body:has(.reading-heading) .sl-markdown-content table { font-size: .95em; }
+.article-reading-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem 1rem; margin-top: .8rem; }
+.article-reading-controls .article-reader { margin-top: 0; }
+.article-font-size { display: inline-flex; align-items: center; gap: .25rem; font-family: var(--sl-font-utility); font-size: .875rem; color: var(--sl-color-gray-2); }
+.article-font-size > span { margin-right: .25rem; }
+.article-font-size button { min-width: 2.75rem; min-height: 2.75rem; padding: .3rem .65rem; border: 1px solid var(--sl-color-gray-5); border-radius: 5px; color: inherit; background: transparent; font: inherit; cursor: pointer; }
+.article-font-size button[aria-pressed='true'] { color: var(--sl-color-accent-high); border-color: var(--sl-color-accent); background: var(--sl-color-accent-low); }
+.article-font-size button:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 3px; }

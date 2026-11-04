@@ -16,6 +16,12 @@ const enableAds = !isPhoenix && Boolean(articleJsonLd)
 ---
 
 <StarlightHead />
+<script is:inline>
+  try {
+    const size = localStorage.getItem('alvin-article-size');
+    if (['medium', 'large', 'xlarge'].includes(size)) document.documentElement.dataset.articleSize = size;
+  } catch { /* Use the default size if storage is unavailable. */ }
+</script>
 {!isPhoenix && <meta name="google-adsense-account" content="ca-pub-5340951184052106" />}
 {enableAds && (
   <script

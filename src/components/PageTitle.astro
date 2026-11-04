@@ -1,6 +1,7 @@
 ---
 import PageViewCount from './PageViewCount.astro';
 import ArticleReader from './ArticleReader.astro';
+import ArticleFontSize from './ArticleFontSize.astro';
 
 const { entry, slug } = Astro.locals.starlightRoute;
 const hidePageTitle = (entry.data as typeof entry.data & { hidePageTitle?: boolean }).hidePageTitle === true;
@@ -66,7 +67,7 @@ const updatedLabel = updatedDate
           </p>
         )
       }
-      {showReader && <ArticleReader />}
+      {showReader && <div class="article-reading-controls"><ArticleReader /><ArticleFontSize /></div>}
     </header>
   )
 }
