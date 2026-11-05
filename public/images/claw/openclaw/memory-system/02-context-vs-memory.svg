@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 780" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">上下文与记忆的区别：只有被加载或检索的记忆才进入本次请求</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 27px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .chip { stroke-width: 2; rx: 10; }
+    </style>
+  </defs>
+  <rect width="1440" height="780" fill="#fbfaf6"/>
+
+  <text class="title" x="60" y="68">上下文 ≠ 记忆：只有被读回的记忆才进入本次请求</text>
+  <text class="sub" x="60" y="112">上下文每次请求重新组装、有容量上限；记忆留在磁盘，需要时才取回相关片段</text>
+
+  <!-- 左：本次模型请求 -->
+  <rect x="60" y="160" width="600" height="460" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2.5"/>
+  <text class="head" x="360" y="212" text-anchor="middle">本次模型请求（上下文）</text>
+  <text class="sub" x="360" y="248" text-anchor="middle">每次请求重新组装，有容量上限</text>
+
+  <rect class="chip" x="140" y="290" width="440" height="64" fill="#fffef9" stroke="#e0b48f"/>
+  <text class="body" x="360" y="332" text-anchor="middle">系统指令</text>
+  <rect class="chip" x="140" y="378" width="440" height="64" fill="#fffef9" stroke="#e0b48f"/>
+  <text class="body" x="360" y="420" text-anchor="middle">近期对话（窗口内原文 / 压缩摘要）</text>
+  <rect class="chip" x="140" y="466" width="440" height="64" fill="#fffef9" stroke="#e0b48f"/>
+  <text class="body" x="360" y="508" text-anchor="middle">工具定义（JSON Schema）</text>
+  <rect class="chip" x="140" y="554" width="440" height="64" fill="#d97745" stroke="#d97745"/>
+  <text class="body" x="360" y="596" text-anchor="middle" fill="#ffffff">本轮读回的记忆（少量相关片段）</text>
+
+  <!-- 右：磁盘持久数据 -->
+  <rect x="780" y="160" width="600" height="460" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2.5"/>
+  <text class="head" x="1080" y="212" text-anchor="middle">磁盘上的持久数据（记忆）</text>
+  <text class="sub" x="1080" y="248" text-anchor="middle">可跨会话保存，不等于本次一定能读到</text>
+
+  <rect class="chip" x="860" y="290" width="440" height="64" fill="#fffef9" stroke="#b9c6d4"/>
+  <text class="body" x="1080" y="332" text-anchor="middle">MEMORY.md / USER.md</text>
+  <rect class="chip" x="860" y="378" width="440" height="64" fill="#fffef9" stroke="#b9c6d4"/>
+  <text class="body" x="1080" y="420" text-anchor="middle">当天日记 memory/YYYY-MM-DD.md</text>
+  <rect class="chip" x="860" y="466" width="440" height="64" fill="#fffef9" stroke="#b9c6d4"/>
+  <text class="body" x="1080" y="508" text-anchor="middle">Agent SQLite（原始会话与索引）</text>
+
+  <!-- 读回箭头 -->
+  <line x1="856" y1="322" x2="592" y2="572" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="856" y1="410" x2="600" y2="580" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="856" y1="498" x2="608" y2="588" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="742" y="440" text-anchor="middle" font-size="25" font-weight="600" fill="#d97745">加载 / 检索</text>
+  <text x="742" y="474" text-anchor="middle" class="sub">只取相关片段</text>
+
+  <!-- 模型回答 -->
+  <line x1="360" y1="620" x2="360" y2="672" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="180" y="676" width="360" height="64" rx="12" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+  <text class="body" x="360" y="718" text-anchor="middle" font-weight="600">模型生成回答</text>
+
+  <text class="sub" x="60" y="772">记忆系统的作用：让旧信息留在磁盘，需要时只取回相关片段，而不是把所有历史塞进每次请求。</text>
+</svg>

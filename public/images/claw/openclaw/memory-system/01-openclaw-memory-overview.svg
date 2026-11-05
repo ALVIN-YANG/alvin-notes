@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 840" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">OpenClaw 记忆系统整体结构：同一 Agent 怎样跨渠道复用记忆</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8f98"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .note { font-size: 24px; fill: #6b6f76; }
+      .box { stroke-width: 2; rx: 12; }
+    </style>
+  </defs>
+  <rect width="1440" height="840" fill="#fbfaf6"/>
+
+  <text class="title" x="60" y="68">整体结构：同一 Agent 怎样跨渠道复用记忆</text>
+  <text class="sub" x="60" y="112">基于 OpenClaw 2026.10.10 固定提交 · 以单一 Gateway 的主流程为例，不展开高可用部署</text>
+
+  <!-- 主流程 -->
+  <rect class="box" x="60" y="190" width="230" height="250" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text class="head" x="175" y="234" text-anchor="middle">接入渠道</text>
+  <text class="body" x="175" y="300" text-anchor="middle">Telegram</text>
+  <text class="body" x="175" y="356" text-anchor="middle">Slack</text>
+  <text class="body" x="175" y="412" text-anchor="middle">CLI</text>
+
+  <line x1="290" y1="315" x2="346" y2="315" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect class="box" x="350" y="190" width="230" height="250" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text class="head" x="465" y="234" text-anchor="middle">Gateway</text>
+  <text class="body" x="465" y="300" text-anchor="middle">消息接入</text>
+  <text class="body" x="465" y="356" text-anchor="middle">协议适配</text>
+  <text class="body" x="465" y="412" text-anchor="middle">会话路由</text>
+
+  <line x1="580" y1="315" x2="636" y2="315" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect class="box" x="640" y="175" width="370" height="280" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text class="head" x="825" y="222" text-anchor="middle">Agent Runtime</text>
+  <text class="sub" x="825" y="260" text-anchor="middle">默认 memory-core 插件</text>
+  <text class="body" x="825" y="322" text-anchor="middle">上下文组装</text>
+  <text class="body" x="825" y="376" text-anchor="middle">工具调用</text>
+  <text class="body" x="825" y="430" text-anchor="middle">记忆加载与检索</text>
+
+  <line x1="1010" y1="315" x2="1066" y2="315" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect class="box" x="1070" y="190" width="310" height="250" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text class="head" x="1225" y="234" text-anchor="middle">模型与工具</text>
+  <text class="body" x="1225" y="300" text-anchor="middle">LLM API（外部）</text>
+  <text class="body" x="1225" y="356" text-anchor="middle">工具执行</text>
+  <text class="body" x="1225" y="404" text-anchor="middle">memory_search · memory_get</text>
+  <text class="body" x="1225" y="444" text-anchor="middle">intent 提醒</text>
+
+  <!-- 记忆层 -->
+  <line x1="760" y1="458" x2="598" y2="534" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
+  <line x1="890" y1="458" x2="1052" y2="534" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
+
+  <rect x="340" y="540" width="1040" height="232" rx="14" fill="none" stroke="#d97745" stroke-width="2.5" stroke-dasharray="10 8"/>
+  <text x="860" y="584" text-anchor="middle" font-size="27" font-weight="700" fill="#d97745">同一 Agent 的记忆 · 按授权与路由复用</text>
+
+  <rect class="box" x="380" y="606" width="430" height="150" fill="#fffef9" stroke="#c9c2b2"/>
+  <text class="head" x="595" y="646" text-anchor="middle">本地 Workspace</text>
+  <text class="sub" x="595" y="680" text-anchor="middle">~/.openclaw/workspace</text>
+  <text class="body" x="595" y="720" text-anchor="middle">MEMORY.md / USER.md</text>
+  <text class="body" x="595" y="752" text-anchor="middle">memory/*.md 当天日记</text>
+
+  <rect class="box" x="870" y="598" width="470" height="174" fill="#fffef9" stroke="#c9c2b2"/>
+  <text class="head" x="1105" y="634" text-anchor="middle">Agent SQLite 共享数据库</text>
+  <text class="sub" x="1105" y="668" text-anchor="middle">~/.openclaw/agents/&lt;agentId&gt;/agent/</text>
+  <text class="body" x="1105" y="704" text-anchor="middle">原始会话 sessions / transcripts</text>
+  <text class="body" x="1105" y="736" text-anchor="middle">memory_index_* 派生索引</text>
+  <text class="body" x="1105" y="764" text-anchor="middle" font-size="22">standing_intents 条件提醒</text>
+
+  <text class="note" x="60" y="820">注：Agent SQLite 还保存其他 agent 状态，直接删除它会同时丢失原始会话。</text>
+</svg>

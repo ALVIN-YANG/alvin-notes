@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">OpenClaw 每次模型输入的 Token 组成与额外模型调用</title>
+  <defs>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8f98"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .body { font-size: 25px; }
+      .op { font-size: 30px; font-weight: 700; fill: #8a8f98; }
+      .head { font-size: 25px; font-weight: 600; }
+    </style>
+  </defs>
+  <rect width="1440" height="800" fill="#fbfaf6"/>
+
+  <text class="title" x="60" y="68">Token 组成：记忆减少历史堆积，不等于请求更便宜</text>
+  <text class="sub" x="60" y="112">每次模型请求都包含下列内容；条段只示意组成，不代表真实比例</text>
+
+  <!-- 组成条 -->
+  <rect x="200" y="140" width="760" height="70" rx="10" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text class="body" x="232" y="184">系统指令与工作区文件</text>
+
+  <rect x="200" y="220" width="760" height="70" rx="10" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+  <text class="body" x="232" y="264">工具 JSON Schema</text>
+
+  <rect x="200" y="300" width="760" height="70" rx="10" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+  <text class="body" x="232" y="344">会话历史 / 压缩摘要</text>
+
+  <rect x="200" y="380" width="760" height="70" rx="10" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+  <text class="body" x="232" y="424">本轮注入的长期记忆（trigger 命中的少量条目）</text>
+
+  <rect x="200" y="460" width="760" height="70" rx="10" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text class="body" x="232" y="504">memory_search / memory_get 返回的片段</text>
+
+  <rect x="200" y="540" width="760" height="70" rx="10" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+  <text class="body" x="232" y="584">工具调用结果</text>
+
+  <text class="op" x="150" y="191" text-anchor="middle">+</text>
+  <text class="op" x="150" y="271" text-anchor="middle">+</text>
+  <text class="op" x="150" y="351" text-anchor="middle">+</text>
+  <text class="op" x="150" y="431" text-anchor="middle">+</text>
+  <text class="op" x="150" y="511" text-anchor="middle">+</text>
+  <text class="op" x="150" y="591" text-anchor="middle">+</text>
+
+  <!-- 合计 -->
+  <rect x="200" y="650" width="760" height="76" rx="10" fill="#d97745" stroke="#d97745" stroke-width="2"/>
+  <text x="232" y="698" font-size="27" font-weight="700" fill="#ffffff">本次模型输入</text>
+  <text class="op" x="150" y="702" text-anchor="middle">=</text>
+
+  <!-- 额外调用 -->
+  <line x1="964" y1="335" x2="1006" y2="306" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
+  <line x1="964" y1="495" x2="1006" y2="486" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
+
+  <rect x="1010" y="220" width="370" height="150" rx="12" fill="none" stroke="#d97745" stroke-width="2" stroke-dasharray="9 7"/>
+  <text class="head" x="1195" y="264" text-anchor="middle" fill="#b35c2e">额外模型调用 ①</text>
+  <text class="body" x="1195" y="304" text-anchor="middle">memory flush</text>
+  <text class="body" x="1195" y="340" text-anchor="middle" fill="#6b6f76">压缩前静默补记当天日记</text>
+
+  <rect x="1010" y="400" width="370" height="160" rx="12" fill="none" stroke="#d97745" stroke-width="2" stroke-dasharray="9 7"/>
+  <text class="head" x="1195" y="444" text-anchor="middle" fill="#b35c2e">额外模型调用 ②</text>
+  <text class="body" x="1195" y="484" text-anchor="middle">Active Memory 深度召回</text>
+  <text class="body" x="1195" y="520" text-anchor="middle" fill="#6b6f76">运行独立子代理</text>
+
+  <text x="720" y="770" text-anchor="middle" font-size="28" font-weight="700" fill="#b35c2e">结论：记忆让旧信息可找回，不保证每次请求更便宜</text>
+</svg>
