@@ -2,7 +2,7 @@
 title: "OpenClaw 记忆系统拆解：存储、写入、召回与遗忘"
 description: "基于 OpenClaw 2026.10.10 源码，用旅行案例、代码和 8 张流程图讲清记忆存储、更新、检索、冲突与遗忘。"
 date: 2026-11-03
-lastUpdated: 2026-11-05
+lastUpdated: 2026-11-06
 verifiedAgainst: "OpenClaw f107fd67bfee9b290311317e120c54509b19554b（2026.10.10）官方源码、测试与随仓库文档，2026-11-05"
 sidebar:
   order: 9
@@ -13,10 +13,6 @@ sidebar:
 答案不是把所有聊天记录塞进每一次模型请求。OpenClaw 把对话和笔记保存在本地，需要时再读回相关片段。它还要决定哪些内容值得长期保留，哪些只能作为原始证据，哪些网页文字不能被信任。
 
 ![OpenClaw 多渠道与本地记忆的整体关系](/images/claw/openclaw/memory-system/01-openclaw-memory-overview.svg)
-
-本文沿着一条数据往下看：消息先写到哪里，什么时候整理成记忆，文件怎样建立索引，提问时又怎样找回。最后再看改口、取消提醒、删除记忆和排查失败。
-
-版本固定为 OpenClaw `2026.10.10` 的[收尾提交](https://github.com/openclaw/openclaw/tree/f107fd67bfee9b290311317e120c54509b19554b)。默认讨论私有交互会话和 `memory-core`；需要额外配置的功能会单独说明。
 
 ## 1. 上下文是本次输入，记忆是磁盘上的数据
 
@@ -46,17 +42,25 @@ sidebar:
 
 这些文件都可以直接查看和编辑。官方分工见[记忆概览](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/memory.md)。
 
+### 记忆的延伸功能：Dreaming、条件提醒与定时任务
+
+先交代三个名字。它们都是记忆的延伸——各自消费记忆数据，但解决的问题不同：
+
+- **Dreaming（后台整理）**：定期回顾日记、会话和检索信号，把持续有用的内容整理进 `MEMORY.md`，整理报告写入 `DREAMS.md` 供人检查。第 3.4 节展开 Light/REM/Deep 三个阶段。
+- **Standing Intent（条件提醒）**：等待未来条件的可执行状态。用户说“后面有人提到杭州时提醒我确认返程车票”，程序把触发词、channel 和 sender 写入 SQLite；之后每轮先做关键词预筛，命中且状态合格才把提醒注入回复。它等的是“某件事发生”，不是某个固定时刻。
+- **Automation（定时任务）**：按确定时间执行的任务，例如“明早 9 点提醒我再看一眼高铁票”。任务定义、运行状态和历史由共享的 SQLite 状态数据库保存，到期由调度器执行，不依赖模型记得要提醒。
+
 ### SQLite 里的会话、索引和提醒
 
-当前默认索引位于：
+当前默认数据库位于：
 
 ```text
 ~/.openclaw/agents/<agentId>/agent/openclaw-agent.sqlite
 ```
 
-这里既有原始会话，也有 `memory_index_*` 派生索引和 `standing_intents` 条件提醒。Dreaming 的短期候选使用自己的 SQLite plugin state；Automation 的任务、运行状态和历史则保存在共享 SQLite 状态数据库中。
+这个文件里既有原始会话，也有 `memory_index_*` 派生搜索索引和 `standing_intents` 条件提醒；Dreaming 的短期候选存放在它自己的 SQLite plugin state 中，Automation 的任务状态则在共享的 SQLite 状态数据库里。
 
-短期候选、搜索索引和未来提醒是数据或用途，不是存储位置。索引只是已有内容的查找目录，可以根据源数据重建。
+提醒和索引是程序状态或用途，不是新的存储介质。索引只是已有内容的查找目录，可以根据源数据重建。
 
 不要为了“清空记忆索引”直接删除 `openclaw-agent.sqlite`，因为其中还有会话和其他 agent 状态。安全的重建方法见第 10 节。
 
@@ -72,7 +76,7 @@ sidebar:
 
 用户说“下午继续看杭州攻略”，程序先保存这条消息；Agent 查询车次后，工具调用和结果也进入会话记录。这一步不做重要性评分。
 
-早期文章常把会话画成独立 JSONL 文件。在这个版本里，sessions 和 transcripts 默认保存在 agent SQLite 数据库中，归档或导出文件不能代表主存储路径。
+早期文章常把会话画成独立 JSONL 文件。在这个版本里，每条消息以完整 JSON 事件的形式写入 agent SQLite（`transcript_events` 表，长事件可压缩存储），不是只保存路径和元数据；`sessions/*.jsonl` 只会作为删除归档或显式导出出现，不能代表主存储路径。
 
 执行 `/new` 或 `/reset` 时，附带的 session-memory hook 还可以把上一段会话整理成 `memory/YYYY-MM-DD-<slug>.md`。它生成的是可检索的会话笔记，不等于直接更新 `MEMORY.md`。
 
