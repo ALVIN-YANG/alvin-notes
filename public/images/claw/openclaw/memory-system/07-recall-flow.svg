@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="svgTitle">
-  <title id="svgTitle">OpenClaw 召回流程：trigger 快速通道未命中时升级 Active Memory 深度召回</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 860" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">新会话依次打开固定文件、匹配触发词，仍无答案时由子代理搜索旧笔记和会话</title>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
@@ -8,63 +8,64 @@
       text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
       .title { font-size: 38px; font-weight: 700; }
       .sub { font-size: 24px; fill: #6b6f76; }
-      .head { font-size: 26px; font-weight: 600; }
+      .head { font-size: 27px; font-weight: 600; }
       .body { font-size: 24px; }
-      .box { stroke-width: 2; rx: 12; }
+      .card { stroke-width: 2; rx: 14; }
     </style>
   </defs>
-  <rect width="1440" height="900" fill="#fbfaf6"/>
+  <rect width="1440" height="860" fill="#fbfaf6"/>
 
-  <text class="title" x="60" y="68">召回流程：“我们之前决定住哪家酒店？”</text>
-  <text class="sub" x="60" y="112">/new 新会话 · 杭州两日游案例 · Active Memory 默认 escalate 模式</text>
+  <text class="title" x="60" y="68">新会话怎样找到旧内容？</text>
+  <text class="sub" x="60" y="112">按成本从低到高三步：先打开固定文件 → 再匹配触发词 → 仍无答案才搜索旧笔记和会话</text>
 
-  <!-- 左链 -->
-  <rect class="box" x="60" y="150" width="560" height="90" fill="#e7edf3" stroke="#b9c6d4"/>
-  <text class="body" x="340" y="204" text-anchor="middle" font-weight="600">“我们之前决定住哪家酒店？”（回顾意图）</text>
+  <!-- 用户问题 -->
+  <rect x="210" y="140" width="580" height="80" rx="12" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text class="body" x="500" y="190" text-anchor="middle" font-weight="600">“我们之前决定住哪家酒店？”</text>
+  <line x1="500" y1="224" x2="500" y2="240" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <line x1="340" y1="244" x2="340" y2="274" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <!-- ① 打开固定文件 -->
+  <rect class="card" x="60" y="246" width="880" height="150" fill="#fffef9" stroke="#c9c2b2"/>
+  <text class="head" x="100" y="292"><tspan fill="#d97745">①</tspan> 打开固定文件</text>
+  <text class="body" x="100" y="332">USER.md / MEMORY.md 随启动进入上下文</text>
+  <text class="body" x="100" y="368" fill="#b35c2e">示例：“杭州住宿最后选择西湖边，没有订湖景房。”</text>
 
-  <rect class="box" x="60" y="280" width="560" height="110" fill="#fffef9" stroke="#c9c2b2"/>
-  <text class="head" x="340" y="322" text-anchor="middle">启动加载</text>
-  <text class="body" x="340" y="360" text-anchor="middle">合格私有会话：加载 USER.md / MEMORY.md</text>
-  <text class="body" x="340" y="392" text-anchor="middle" fill="#6b6f76">来源不合格与 untrusted 根文件排除</text>
+  <text x="170" y="424" font-size="24" font-weight="600" fill="#b35c2e">不能回答</text>
+  <line x1="150" y1="400" x2="150" y2="430" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <line x1="340" y1="394" x2="340" y2="414" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <!-- ② 匹配触发词 -->
+  <rect class="card" x="60" y="436" width="880" height="150" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text class="head" x="100" y="482"><tspan fill="#d97745">②</tspan> 匹配触发词</text>
+  <text class="body" x="100" y="522">问题里的“酒店”命中 trigger：杭州, 酒店, 湖景房</text>
+  <text class="body" x="100" y="558">强命中（阈值 0.65，每轮最多 3 条）就把该条目交给主模型</text>
 
-  <rect class="box" x="60" y="420" width="560" height="140" fill="#f9ecdf" stroke="#e0b48f"/>
-  <text class="head" x="340" y="464" text-anchor="middle">Lane 1 trigger 快速通道</text>
-  <text class="body" x="340" y="506" text-anchor="middle">长期条目 trigger 是否强命中？</text>
-  <text class="body" x="340" y="540" text-anchor="middle">阈值 0.65 · 每轮最多 3 条 · 项目须匹配</text>
+  <text x="170" y="614" font-size="24" font-weight="600" fill="#b35c2e">没有强命中</text>
+  <line x1="150" y1="590" x2="150" y2="620" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <text x="356" y="592" font-size="24" font-weight="600" fill="#b35c2e">否（默认 escalate）</text>
-  <line x1="340" y1="564" x2="340" y2="594" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <!-- ③ 子代理搜索 -->
+  <rect class="card" x="60" y="626" width="880" height="150" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text class="head" x="100" y="672"><tspan fill="#d97745">③</tspan> 仍无答案：子代理搜索旧笔记和会话</text>
+  <text class="body" x="100" y="712">默认 escalate，且识别到回顾意图才启动 Active Memory 子代理</text>
+  <text class="body" x="100" y="748">memory_search → memory_get，把相关摘录交给主模型</text>
 
-  <rect class="box" x="60" y="600" width="560" height="190" fill="#efe9f4" stroke="#c3b4d6"/>
-  <text class="head" x="340" y="642" text-anchor="middle">Active Memory 深度召回</text>
-  <text class="body" x="340" y="678" text-anchor="middle">识别到回顾意图，启动子代理</text>
-  <text class="body" x="340" y="710" text-anchor="middle">受限工具 + 父会话授权的可见范围</text>
-  <text class="body" x="340" y="742" text-anchor="middle">memory_search → memory_get</text>
-  <text class="body" x="340" y="772" text-anchor="middle" fill="#6b6f76">会话命中改走 sessions_search / history</text>
+  <!-- 三条横向箭头 -->
+  <text x="946" y="314" font-size="24" font-weight="600" fill="#b35c2e">能回答</text>
+  <line x1="944" y1="330" x2="1012" y2="342" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="946" y="504" font-size="24" font-weight="600" fill="#b35c2e">强命中</text>
+  <line x1="944" y1="520" x2="1012" y2="506" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="946" y="666" font-size="24" font-weight="600" fill="#b35c2e">摘录</text>
+  <line x1="944" y1="700" x2="1012" y2="662" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <!-- 右列 -->
-  <text x="648" y="336" font-size="24" font-weight="600" fill="#b35c2e">是</text>
-  <line x1="620" y1="462" x2="694" y2="244" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <!-- 统一终点 -->
+  <rect x="1020" y="246" width="360" height="530" rx="14" fill="#d97745" stroke="#d97745" stroke-width="2"/>
+  <text x="1200" y="308" text-anchor="middle" font-size="26" font-weight="700" fill="#ffffff">统一终点</text>
+  <text x="1200" y="348" text-anchor="middle" font-size="27" font-weight="700" fill="#ffffff">主模型回答</text>
+  <line x1="1070" y1="380" x2="1330" y2="380" stroke="#f2c4a6" stroke-width="2"/>
+  <text x="1200" y="440" text-anchor="middle" class="body" fill="#ffffff">“之前选择了西湖边的酒店，</text>
+  <text x="1200" y="478" text-anchor="middle" class="body" fill="#ffffff">没有订湖景房（超出预算）。”</text>
+  <text x="1200" y="560" text-anchor="middle" class="body" fill="#ffffff">每一步读到的内容</text>
+  <text x="1200" y="596" text-anchor="middle" class="body" fill="#ffffff">都交给主模型作答</text>
 
-  <rect class="box" x="700" y="150" width="680" height="110" fill="#e4ecdf" stroke="#a9c0a4"/>
-  <text class="head" x="1040" y="196" text-anchor="middle">强命中：注入最多 3 条长期条目</text>
-  <text class="body" x="1040" y="234" text-anchor="middle">trigger 条目直接进入主模型上下文</text>
-
-  <line x1="1040" y1="264" x2="1040" y2="594" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <text x="1064" y="440" class="sub">两条路径汇合</text>
-
-  <rect class="box" x="700" y="600" width="680" height="160" fill="#f9ecdf" stroke="#e0b48f"/>
-  <text class="head" x="1040" y="646" text-anchor="middle">主模型生成回答</text>
-  <text class="body" x="1040" y="684" text-anchor="middle">结合启动加载与读回的记忆作答</text>
-  <text class="body" x="1040" y="718" text-anchor="middle">召回失败、工具禁用或超时，主回复仍继续</text>
-  <text class="body" x="1040" y="748" text-anchor="middle" fill="#b35c2e">“没有找到”不能写成“历史上没有这件事”</text>
-
-  <line x1="620" y1="695" x2="694" y2="695" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-
-  <text class="sub" x="60" y="852">注：trigger 通道只接受 trusted 且 eligible 的 MEMORY.md / USER.md 条目；日记与原始会话不能走快速通道。</text>
-  <text class="sub" x="60" y="884">群聊、频道和当前会话不属于跨私有会话召回来源。</text>
+  <!-- 底部小注 -->
+  <text class="sub" x="60" y="824">注：trigger 是找旧记忆；Standing Intent 是执行之前创建的提醒，两者不要混淆。</text>
+  <text class="sub" x="60" y="856">召回失败、超时或返回空结果，主回复仍继续；“没有找到”不等于“历史上没有这件事”。</text>
 </svg>

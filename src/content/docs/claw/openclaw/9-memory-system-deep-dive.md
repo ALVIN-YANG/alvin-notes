@@ -2,7 +2,7 @@
 title: "OpenClaw 记忆系统拆解：存储、写入、召回与遗忘"
 description: "基于 OpenClaw 2026.10.10 源码，用旅行案例、代码和 8 张流程图讲清记忆存储、更新、检索、冲突与遗忘。"
 date: 2026-11-03
-lastUpdated: 2026-11-06
+lastUpdated: 2026-11-09
 verifiedAgainst: "OpenClaw f107fd67bfee9b290311317e120c54509b19554b（2026.10.10）官方源码、测试与随仓库文档，2026-11-05"
 sidebar:
   order: 9
@@ -300,45 +300,68 @@ Agent 需要查找旧信息时调用：
 
 如果命中的是 `sessions/...jsonl`，它只是会话搜索引用，不能交给 `memory_get`。应先用 `sessions_search` 定位，再用返回的 `sessionKey`、`messageId`、`sessionId` 调用 `sessions_history`，获取经过可见性检查的摘录，见[官方工具约束](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/memory.md#L191-L225)。
 
-## 6. 新会话怎样自动回忆？
+## 6. 新会话怎样找到旧内容？
 
-搜索工具只是召回方式之一。这个版本还会在会话启动时加载文件，在每轮回复前检查长期条目的 trigger，并在需要时启动 Active Memory 子代理。
+新会话不会把旧聊天完整读一遍。它按成本从低到高做三件事：**先打开固定文件，再看当前问题是否命中某条记忆的触发词，仍然没有答案时才搜索旧笔记和会话。**
 
-![从杭州旅行提问到主模型回答的完整召回流程](/images/claw/openclaw/memory-system/07-recall-flow.svg)
+![新会话依次加载文件、匹配触发词并搜索旧内容](/images/claw/openclaw/memory-system/07-recall-flow.svg)
 
-### 6.1 启动加载：先读少量核心文件
+### 6.1 第一步：打开固定文件
 
-用户执行 `/new`，问：“按我的格式做一份杭州两日游计划。”启动上下文会按会话类型、来源资格和预算选择 `USER.md`、`MEMORY.md`，模型无需先搜索全部历史就能读到行程偏好。
-
-当天和昨天的日记可在裸 `/new` 或 `/reset` 的启动阶段附带，包括对应 slug 文件；普通后续轮次不会加载全部日记。被判定为 untrusted 的根文件会排除，合格文件则可在后续轮次按预算刷新。
-
-### 6.2 快速通道：trigger 强命中就直接注入
-
-如果 Active Memory 已为该 agent 和私聊启用，快速通道还会检查长期条目的 trigger：
+执行 `/new` 后，合格私有会话会把 `USER.md` 和 `MEMORY.md` 放进启动上下文。比如模型直接看到：
 
 ```md
-- Prefer concise travel itineraries with a recommendation first. <!-- trigger: 旅行计划, 行程安排 --> <!-- importance: 8 -->
+USER.md：旅行计划先给推荐方案，再列每天预算。
+MEMORY.md：杭州住宿最后选择西湖边，没有订湖景房。
 ```
 
-只有 trusted、eligible 的 `MEMORY.md` 和 `USER.md` 条目可以自动注入，日记和原始会话不能走这条通道。强匹配阈值为 0.65，每轮最多三条，项目标签也必须属于当前活动项目，见 [selector](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/active-memory/trigger-recall.ts#L74-L105)。
+如果问题能由这些内容回答，就不需要搜索。当天和昨天的日记只会在裸 `/new` 或 `/reset` 的启动阶段附带，普通后续轮次不会加载全部日记。
 
-固定提交还有一个文档与源码差异：架构文档把 trigger prefilter 概括为“lexical and vector”，但当前 [native](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/active-memory/trigger-recall.ts#L210-L220) 与 legacy 路径都设置 `lexicalOnly: true`。分析这个版本时，应以代码中的词法匹配为准。
+文件还要通过来源检查和容量限制。被判定为 untrusted 的根文件会排除；合格文件在后续轮次也会按预算刷新。
 
-### 6.3 深度召回：有回顾意图且快速通道没答好
+### 6.2 第二步：当前问题命中触发词，就直接读那条记忆
 
-“我们之前决定住哪家酒店？”包含明确回顾意图。在默认 `escalate` 模式下（[官方模式说明](https://docs.openclaw.ai/concepts/memory-architecture#lane-2-escalation)），快速通道没有强命中时才启动 blocking deep recall；`off` 不启动，`always` 则每轮启动。
+长期条目可以写触发词：
 
-子代理使用受限工具和父会话授权的可见范围，只把整理后的上下文交给主模型。召回失败、工具被禁用、超时或返回 `NONE` 时，主回复仍继续；“没有找到”不能被写成“历史上没有这件事”。
+```md
+- 杭州住宿最后选择西湖边，没有订湖景房。 <!-- trigger: 杭州, 酒店, 湖景房 --> <!-- importance: 8 -->
+```
 
-语义会话索引默认不开启，需要 `memory.search.experimental.sessionMemory: true` 并把 `sessions` 加入 `memory.search.sources`。Active Memory 的跨私有会话召回还要求 `memory.search.rememberAcrossConversations: true`；群聊、频道和当前会话不属于这种跨会话来源，详见[启用边界](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/active-memory/enabling.md#L30-L57)。
+用户问“我们之前决定住哪家酒店？”，其中“酒店”命中这条记忆的触发词。匹配足够强时，程序把这条内容放进主模型上下文，不需要再启动一个子代理。
 
-### 6.4 条件提醒：关键词命中后还要检查状态
+这条快速通道只接受 trusted、eligible 的 `MEMORY.md` 和 `USER.md` 条目。阈值为 0.65，每轮最多三条，项目标签也要匹配，见 [selector](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/active-memory/trigger-recall.ts#L74-L105)。
 
-Standing Intent 先做 FTS 候选预筛，再检查触发词、channel/sender、状态、过期时间、cooldown、剩余次数和创建者身份。全部合格后，程序更新 `fire_count`、`last_fired_at` 和状态，再把提醒注入主回复；匹配过程不调用模型。
+固定提交的 [native](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/active-memory/trigger-recall.ts#L210-L220) 与 legacy 路径都设置 `lexicalOnly: true`。虽然架构文档还写着“lexical and vector”，这个版本的快速通道实际使用词法匹配。
+
+### 6.3 第三步：仍然找不到，才让子代理搜索
+
+如果固定文件和触发词都没有答案，程序再判断用户是不是在问过去。在默认 `escalate` 模式下（[官方模式说明](https://docs.openclaw.ai/concepts/memory-architecture#lane-2-escalation)），“我们之前决定……”属于回顾意图，同时快速通道没有强命中，才会启动 Active Memory 子代理。
+
+子代理相当于替主模型翻资料：
+
+```text
+memory_search("杭州 酒店 湖景房")
+→ 找到 memory/2026-11-03.md 第 12–15 行
+→ memory_get 读取这几行
+→ 把相关摘录交给主模型
+→ 主模型回答用户
+```
+
+`off` 会关闭这条路径，`always` 则每轮都启动。子代理只能使用受限工具，也只能查看父会话授权的范围。
+
+召回失败、超时或返回 `NONE` 时，主回复仍继续。此时只能说“没有找到相关记录”，不能说“历史上没有这件事”。
+
+语义会话索引默认不开启，需要 `memory.search.experimental.sessionMemory: true` 并把 `sessions` 加入 `memory.search.sources`。跨私有会话召回还要求 `memory.search.rememberAcrossConversations: true`；群聊、频道和当前会话不属于这种来源，详见[启用边界](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/active-memory/enabling.md#L30-L57)。
+
+### 6.4 不要和条件提醒混在一起
+
+上面的 trigger 用来**找到旧记忆**；Standing Intent 用来**执行之前创建的提醒**。例如“以后提到杭州时，提醒我确认返程车票”不是搜索旧答案，而是创建一个等待未来条件的任务。
+
+每个合格用户轮次，程序先筛选触发词，再检查 channel/sender、状态、过期时间、cooldown 和剩余次数。全部合格后才注入提醒并更新触发记录，匹配过程不调用模型。
 
 默认 cooldown 为 24 小时，最多触发 3 次，90 天过期。状态按 `armed → fired → done` 变化，也可能变为 `cancelled` 或 `expired`；cooldown 到期且仍有次数时可恢复 `armed`。注入最多 3 条、1,200 字符，详见[匹配实现](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/memory-core/src/standing-intents-kernel.ts#L194-L316)。
 
-这个版本的 `trigger_embedding` 为 `null`，实际要求关键词 token 全部出现，不是“意思相近就触发”。触发词应写得具体，并覆盖实际会出现的说法。
+这个版本的 `trigger_embedding` 为 `null`，实际要求关键词 token 全部出现，不是“意思相近就触发”。
 
 ## 7. 改口、重复、取消和删除分别怎么处理？
 
