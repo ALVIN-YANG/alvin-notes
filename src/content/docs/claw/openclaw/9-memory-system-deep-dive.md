@@ -492,6 +492,47 @@ openclaw memory index --agent <id>
 
 按这个顺序检查，就能定位问题发生在哪一步：原话是否保存、文件是否写入、索引是否更新、候选是否合格、内容是否进入上下文，以及提醒状态是否仍然有效。
 
+## 附录：写入与检索方式速查
+
+### 写入方式
+
+| 方式 | 触发条件 | 写入目标 | 默认／可选 |
+| --- | --- | --- | --- |
+| 原始会话记录 | 每条消息和工具结果产生时 | Agent SQLite 的 sessions / transcripts | 默认，程序执行 |
+| 模型主动记笔记 | 模型判断信息有持续价值 | 当天日记 | 默认工作流，但不保证每轮写入 |
+| session-memory hook | `/new` 或 `/reset` | `memory/YYYY-MM-DD-<slug>.md` | 附带 hook，不直接写 `MEMORY.md` |
+| 压缩前 memory flush | 上下文接近压缩条件 | 只追加当天日记 | 默认开启 |
+| 明确记住或修改偏好 | 用户提出稳定偏好或改口 | 主要是 `USER.md`，也可能是相关日记 | 提示词工作流，需检查实际写入 |
+| 手动编辑 | 用户直接修改文件 | `MEMORY.md`、`USER.md`、日记等 | 可用，后续由 watcher 更新索引 |
+| Dreaming 整理 | 周期任务发现通过门槛的候选 | `MEMORY.md` | 默认开启，Light/REM 不写长期文件 |
+| 历史回填 | 手动运行 `memory rem-backfill` | `DREAMS.md`；加 `--stage-short-term` 时写入短期候选 | 可选，不直接提升长期记忆 |
+| 外部记忆导入 | 在 Control UI 执行 Import Memory | `memory/imports/` 下的对应来源目录 | 可选，不合并进 bootstrap `MEMORY.md` |
+| 创建未来动作 | 用户明确要求定时或条件提醒 | Standing Intent 或 Automation | 取决于工具与身份权限 |
+| 其他 provider 持久化 | provider 的写入或 flush 流程被触发 | provider 自己的存储和工具 | 可选插件，不沿用 Memory Core 文件契约 |
+
+导入与回填的来源和限制见[记忆概览](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/memory.md)。
+
+### 检索与召回方式
+
+| 方式 | 触发条件 | 读取内容 | 默认／可选 |
+| --- | --- | --- | --- |
+| 当前会话上下文 | 每次生成当前会话回复 | 窗口内原文，或压缩摘要与近期原文 | 默认 |
+| 启动加载与轮次刷新 | 合格私有会话启动及后续轮次 | `USER.md`、`MEMORY.md` | 默认，受来源和预算限制 |
+| 最近日记加载 | 裸 `/new` 或 `/reset` | 当天、昨天的日期文件及对应 slug 文件 | 默认，不是每轮加载全部日记 |
+| trigger 快速通道 | 每个符合 Active Memory 条件的轮次 | 达到 `0.65` 的可信长期条目，最多 3 条 | 需启用 Active Memory |
+| `memory_search` | 主模型或子代理显式搜索，也可从 CLI 执行 | Markdown；开启会话索引后可包含会话片段 | Markdown 默认；sessions 可选 |
+| `memory_get` | 已知记忆路径，需要读取指定行段 | 允许范围内的记忆文件内容 | 默认工具 |
+| `sessions_search`＋`sessions_history` | 需要定位并回读具体会话消息 | 经过可见性检查的消息摘录 | 取决于会话工具权限 |
+| Active Memory 深度召回 | 默认 `escalate` 下，有回顾意图且快速通道无强命中 | 子代理整理后的相关证据 | 需启用并配置相应范围 |
+| Standing Intent | 每个合格用户轮次 | 关键词、身份、状态和预算全部合格的提醒 | 已创建且处于可触发状态 |
+| Automation | 计划时间到达 | 定时任务及其执行上下文 | 已创建任务 |
+| 项目范围召回 | 当前会话位于 Git 项目中 | 当前项目相关的长期条目和排序加权 | `memory-core` 项目记忆路径 |
+| `wiki_search`／`wiki_get` | 使用 Wiki 工具查询知识库 | 编译后的 Wiki 页面、claims 和证据 | 可选 `memory-wiki` |
+| 多模态 `memory_search` | 使用 Gemini 并配置允许的路径 | `extraPaths` 下的图片和音频 | 可选；默认记忆根仍是 Markdown |
+| provider 自定义检索 | provider 声明的检索流程被调用 | provider 自己的记录和工具 | 可选插件 |
+
+短期候选和 `DREAMS.md` 不进入主回复的自动召回。多模态索引的模型与路径限制见[记忆搜索文档](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/docs/concepts/memory-search.md)。
+
 ---
 
 本文的版本与史料范围限于上述固定 commit 的官方源码、测试和随仓库文档。其他 memory plugin、provider 特有的 compaction 和旧版 Commitments 的完整运行逻辑不在本文结论范围内。
