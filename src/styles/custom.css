@@ -962,8 +962,12 @@ code {
 	border-bottom: 1px solid var(--sl-color-gray-6);
 }
 
-.sl-markdown-content tr:nth-child(even) {
-	background: var(--sl-color-surface);
+.sl-markdown-content tr {
+	background: transparent;
+}
+
+.sl-markdown-content :is(th, td) + :is(th, td) {
+	border-left: 1px solid var(--sl-color-gray-5);
 }
 
 /* Keep the action names readable in the long-context note's narrow table. */
