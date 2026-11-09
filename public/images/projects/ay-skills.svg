@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<title id="title">AY Skills</title><desc id="desc">叠放的技能卡片和完成勾，表示独立可复用的 Skill。</desc>
+<rect width="128" height="128" rx="28" fill="#fff1df"/>
+<rect x="25" y="20" width="60" height="76" rx="12" fill="#f8d5ad"/>
+<rect x="34" y="27" width="60" height="76" rx="12" fill="#f5b576"/>
+<rect x="43" y="34" width="60" height="76" rx="12" fill="#db672f"/>
+<path d="m58 72 10 10 20-23" fill="none" stroke="#fffaf3" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

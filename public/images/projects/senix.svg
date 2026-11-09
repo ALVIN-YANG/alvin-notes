@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+<title id="title">Senix</title><desc id="desc">沿用 Senix 管理后台和公开 README 的绿色三柱标识。</desc>
+<rect width="128" height="128" rx="28" fill="#102b34"/>
+<g transform="translate(33 30) scale(1.35)">
+<rect y="23" width="10" height="28" rx="5" fill="#2d9c83" opacity=".5"/>
+<rect x="18" y="12" width="10" height="39" rx="5" fill="#2d9c83" opacity=".8"/>
+<rect x="36" width="10" height="51" rx="5" fill="#65d4b6"/>
+</g></svg>

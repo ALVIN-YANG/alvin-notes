@@ -80,7 +80,7 @@ export const portfolio: PortfolioProject[] = [
     summary: '网页双语、划词和独立文本翻译，支持多种翻译服务。',
     implementation: '保留网页格式，按可见区域逐步翻译，也支持动态页面。处理请求取消、并发与缓存；词义和例句可朗读，Key 留在扩展本地。',
     stack: ['Manifest V3', '多模型接入', '系统 TTS'],
-    mark: '译',
+    icon: '/images/projects/chrome-translate.webp',
     links: [
       { label: 'GitHub', href: 'https://github.com/ALVIN-YANG/chrome-translate' },
       { label: '安装包', href: 'https://github.com/ALVIN-YANG/chrome-translate/releases/latest' },
@@ -94,7 +94,7 @@ export const portfolio: PortfolioProject[] = [
     summary: '把产品、设计、开发、评审和写作中的工作方法做成独立 Skill。',
     implementation: '明确每个 Skill 的触发条件、职责和验收证据。可按需安装到 Codex、Claude Code 等工具，并用路由测试与工作流场景持续检查。',
     stack: ['Agent Skills', '工作流设计', '行为评测'],
-    mark: 'AY',
+    icon: '/images/projects/ay-skills.webp',
     featured: true,
     links: [
       { label: 'GitHub', href: 'https://github.com/ALVIN-YANG/ay-skills' },
@@ -109,7 +109,7 @@ export const portfolio: PortfolioProject[] = [
     summary: '一个二进制提供流量代理、管理后台和受限 MCP 工具。',
     implementation: '基于 Pingora，支持实例摘流、回接与诊断。配置变更经过差异检查和批准；MCP 按权限提供工具，调用时再次鉴权。',
     stack: ['Rust', 'Pingora', 'MCP', 'SQLite'],
-    mark: 'S',
+    icon: '/images/projects/senix.webp',
     featured: true,
     links: [
       { label: 'GitHub', href: 'https://github.com/ALVIN-YANG/senix' },
