@@ -59,6 +59,20 @@ export const portfolio: PortfolioProject[] = [
     ],
   },
   {
+    id: 'chimebuddy',
+    name: 'ChimeBuddy',
+    category: 'macOS · Codex 伙伴',
+    status: '原型 · 源码公开',
+    summary: '跟随 Codex 当前会话自动吐槽，也能和你直接聊天的桌面伙伴。',
+    implementation: '原生悬浮气泡，支持 GIF 形象、模型与推理档位选择。会话上下文隔离，跨会话只共享限长的用户画像和项目概况；单窗口本机会话原型。',
+    stack: ['Swift', 'AppKit', 'Codex CLI'],
+    mark: 'CB',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/ALVIN-YANG/ChimeBuddy' },
+      { label: '下载原型', href: 'https://github.com/ALVIN-YANG/ChimeBuddy/releases/tag/v0.1.0' },
+    ],
+  },
+  {
     id: 'chrome-translate',
     name: '翻译 · 多语言',
     category: 'Chrome 扩展',
