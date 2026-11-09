@@ -319,19 +319,44 @@ MEMORY.md：杭州住宿最后选择西湖边，没有订湖景房。
 
 文件还要通过来源检查和容量限制。被判定为 untrusted 的根文件会排除；合格文件在后续轮次也会按预算刷新。
 
-### 6.2 第二步：当前问题命中触发词，就直接读那条记忆
+### 6.2 第二步：按 trigger 的命中程度评分
 
-长期条目可以写触发词：
+长期条目可以写触发词。这里先用一个单词作例子：
 
 ```md
-- 杭州住宿最后选择西湖边，没有订湖景房。 <!-- trigger: 杭州, 酒店, 湖景房 --> <!-- importance: 8 -->
+- 杭州住宿最后选择西湖边，没有订湖景房。 <!-- trigger: 酒店 --> <!-- importance: 8 -->
 ```
 
-用户问“我们之前决定住哪家酒店？”，其中“酒店”命中这条记忆的触发词。匹配足够强时，程序把这条内容放进主模型上下文，不需要再启动一个子代理。
+程序先取两类候选：当前消息的词法搜索结果，以及已经写了 trigger 的长期条目。`lexicalOnly: true` 表示这一步不生成查询向量，所以它不是混合向量检索。
 
-这条快速通道只接受 trusted、eligible 的 `MEMORY.md` 和 `USER.md` 条目。阈值为 0.65，每轮最多三条，项目标签也要匹配，见 [selector](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/active-memory/trigger-recall.ts#L74-L105)。
+接下来，每条候选都会得到这样的分数：
 
-固定提交的 [native](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/active-memory/trigger-recall.ts#L210-L220) 与 legacy 路径都设置 `lexicalOnly: true`。虽然架构文档还写着“lexical and vector”，这个版本的快速通道实际使用词法匹配。
+```text
+matchScore = triggerScore × 0.8 + relevance × 0.2
+```
+
+`relevance` 是候选内容的词法检索相关性，限制在 `0～1`。它可能受到 BM25 的影响，但只占总分的 20%；真正决定 trigger 是否命中的主要还是 `triggerScore`。
+
+**如果 trigger 只有一个词**，例如“酒店”，消息里也包含这个词，`triggerScore = 0.85`；完全不包含则为 0。即使 `relevance = 0`：
+
+```text
+matchScore = 0.85 × 0.8 + 0 × 0.2 = 0.68
+0.68 ≥ 0.65，因此可以自动注入。
+```
+
+**如果一个触发短语有多个词**，例如“杭州 酒店”，分数先看覆盖了多少词：
+
+```text
+triggerScore =
+  命中词数 / 触发词总数 × 0.8
+  + min(1, 命中词数 / 2) × 0.2
+```
+
+只命中“酒店”时，`triggerScore = 0.5`；假设 `relevance = 0`，最终只有 `0.4`，不会注入。“杭州”和“酒店”都出现时，`triggerScore = 1`，才能直接进入强命中范围。
+
+最后，程序还会检查条目是否 trusted、eligible，项目标签是否属于当前活动项目，再按 `matchScore` 排序，最多注入三条。完整实现见 [`selectStrongTriggerMatches`](https://github.com/openclaw/openclaw/blob/f107fd67bfee9b290311317e120c54509b19554b/extensions/active-memory/trigger-recall.ts#L74-L105)。
+
+所以这条通道不是“包含关键词就命中”，也不是 BM25 或向量检索本身，而是**触发词覆盖率为主、词法相关性为辅的一套独立评分规则**。
 
 ### 6.3 第三步：仍然找不到，才让子代理搜索
 
