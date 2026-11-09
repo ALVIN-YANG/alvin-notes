@@ -921,45 +921,100 @@ code {
 	margin-bottom: 0;
 }
 
-/* ─── Inline Code ─── */
+/* ─── Code ─── */
+
+.sl-markdown-content {
+	--article-code-bg: #f4f1e9;
+	--article-code-text: #624b35;
+	--article-code-border: #ddd6c8;
+	--article-table-header: #f0ede4;
+}
+
+[data-theme='dark'] .sl-markdown-content {
+	--article-code-bg: #292d2b;
+	--article-code-text: #ead9bf;
+	--article-code-border: #484e49;
+	--article-table-header: #292d2b;
+}
 
 .sl-markdown-content :not(pre) > code {
-	background: #f0eee6;
-	color: #4e5948;
-	padding: 0.2em 0.5em;
-	border-radius: 4px;
-	font-size: 0.875em;
+	padding: 0.14em 0.42em;
+	border: 1px solid var(--article-code-border);
+	border-radius: 0.3rem;
+	background: var(--article-code-bg);
+	color: var(--article-code-text);
+	font-family: var(--sl-font-mono);
+	font-size: 0.9em;
 	font-weight: 500;
+	line-height: 1.55;
 	overflow-wrap: anywhere;
+}
+
+.sl-markdown-content .expressive-code {
+	margin: 1.75em 0;
+}
+
+.sl-markdown-content .expressive-code .frame {
+	overflow: hidden;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.65rem;
+	box-shadow: none;
+}
+
+.sl-markdown-content .expressive-code .frame > figcaption.header:not(:empty) {
+	border-bottom: 1px solid var(--sl-color-gray-5);
+	background: var(--article-table-header);
+	color: var(--sl-color-text);
+	font-size: 0.86em;
+	font-weight: 600;
+}
+
+.sl-markdown-content .expressive-code pre {
+	padding-block: 1.1em;
+	font-family: var(--sl-font-mono);
+	font-size: 0.92em;
+	line-height: 1.75;
+	tab-size: 2;
+}
+
+.sl-markdown-content .expressive-code .copy button {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 0.35rem;
 }
 
 /* ─── Tables ─── */
 
 .sl-markdown-content table {
-	border-collapse: collapse;
 	width: 100%;
 	margin: 1.5em 0;
-	border-radius: 8px;
 	overflow: hidden;
+	border: 1px solid var(--sl-color-gray-5);
+	border-collapse: collapse;
+	border-radius: 0.65rem;
+	background: var(--sl-color-bg);
 }
 
 .sl-markdown-content th {
-	font-weight: 600;
-	color: var(--sl-color-white);
-	text-align: left;
-	padding: 0.75em 1em;
-	background: #eeece4;
+	padding: 0.8em 1em;
 	border: none;
-}
-
-.sl-markdown-content th,
-.sl-markdown-content th code {
-	color: #343a35;
+	border-bottom: 1px solid var(--sl-color-gray-5);
+	background: var(--article-table-header);
+	color: var(--sl-color-text);
+	font-size: 0.94em;
+	font-weight: 600;
+	text-align: left;
 }
 
 .sl-markdown-content td {
-	padding: 0.75em 1em;
+	padding: 0.8em 1em;
 	border-bottom: 1px solid var(--sl-color-gray-6);
+	line-height: 1.7;
+	vertical-align: top;
+}
+
+.sl-markdown-content tbody tr:last-child td {
+	border-bottom: 0;
 }
 
 .sl-markdown-content tr {
@@ -968,6 +1023,18 @@ code {
 
 .sl-markdown-content :is(th, td) + :is(th, td) {
 	border-left: 1px solid var(--sl-color-gray-5);
+}
+
+.sl-markdown-content th code,
+.sl-markdown-content td code {
+	font-size: 0.88em;
+}
+
+@media (max-width: 40rem) {
+	.sl-markdown-content table {
+		display: block;
+		overflow-x: auto;
+	}
 }
 
 /* Keep the action names readable in the long-context note's narrow table. */
