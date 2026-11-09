@@ -924,40 +924,55 @@ code {
 /* ─── Code ─── */
 
 .sl-markdown-content {
-	--article-code-bg: #f4f1e9;
-	--article-code-text: #624b35;
-	--article-code-border: #ddd6c8;
-	--article-table-header: #f0ede4;
+	--article-code-bg: #eae8df;
+	--article-code-text: #414b3c;
+	--article-code-border: #dcd9ce;
+	--article-code-block-bg: #faf9f5;
+	--article-table-header: #eae8df;
+	--article-table-stripe: #f0efe8;
 }
 
 [data-theme='dark'] .sl-markdown-content {
-	--article-code-bg: #292d2b;
-	--article-code-text: #ead9bf;
-	--article-code-border: #484e49;
-	--article-table-header: #292d2b;
+	--article-code-bg: #30362f;
+	--article-code-text: #dce6d3;
+	--article-code-border: #454d42;
+	--article-code-block-bg: #222623;
+	--article-table-header: #30362f;
+	--article-table-stripe: #272c28;
 }
 
 .sl-markdown-content :not(pre) > code {
-	padding: 0.14em 0.42em;
-	border: 1px solid var(--article-code-border);
-	border-radius: 0.3rem;
+	padding: 0.16em 0.38em;
+	border: 0;
+	border-radius: 0.25rem;
 	background: var(--article-code-bg);
 	color: var(--article-code-text);
 	font-family: var(--sl-font-mono);
-	font-size: 0.9em;
-	font-weight: 500;
+	font-size: 0.96em;
+	font-weight: 600;
 	line-height: 1.55;
+	box-decoration-break: clone;
+	-webkit-box-decoration-break: clone;
 	overflow-wrap: anywhere;
 }
 
 .sl-markdown-content .expressive-code {
+	--ec-codeFontSize: 0.96em;
+	--ec-codeFontWg: 400;
+	--ec-codeLineHt: 1.8;
+	--ec-codePadInl: 1.25rem;
+	--ec-codeBg: var(--article-code-block-bg);
+	--ec-frm-edBg: var(--article-code-block-bg);
+	--ec-frm-trmBg: var(--article-code-block-bg);
+	--ec-brdCol: var(--article-code-border);
 	margin: 1.75em 0;
+	font-size: inherit;
 }
 
 .sl-markdown-content .expressive-code .frame {
 	overflow: hidden;
-	border: 1px solid var(--sl-color-gray-5);
-	border-radius: 0.65rem;
+	border: 1px solid var(--article-code-border);
+	border-radius: 0.5rem;
 	box-shadow: none;
 }
 
@@ -970,11 +985,19 @@ code {
 }
 
 .sl-markdown-content .expressive-code pre {
-	padding-block: 1.1em;
+	padding-block: 1.15rem;
+	border: 0;
+	border-radius: 0;
 	font-family: var(--sl-font-mono);
-	font-size: 0.92em;
-	line-height: 1.75;
+	font-size: var(--ec-codeFontSize);
+	line-height: var(--ec-codeLineHt);
 	tab-size: 2;
+}
+
+/* Expressive Code sets its own code size; inherit to avoid shrinking twice. */
+.sl-markdown-content .expressive-code pre > code {
+	font-size: inherit;
+	line-height: inherit;
 }
 
 .sl-markdown-content .expressive-code .copy button {
@@ -986,13 +1009,17 @@ code {
 /* ─── Tables ─── */
 
 .sl-markdown-content table {
+	display: table;
 	width: 100%;
 	margin: 1.5em 0;
-	overflow: hidden;
+	overflow: visible;
 	border: 1px solid var(--sl-color-gray-5);
-	border-collapse: collapse;
-	border-radius: 0.65rem;
+	border-collapse: separate;
+	border-spacing: 0;
+	border-radius: 0.5rem;
 	background: var(--sl-color-bg);
+	font-size: 0.95em;
+	line-height: 1.75;
 }
 
 .sl-markdown-content th {
@@ -1001,13 +1028,14 @@ code {
 	border-bottom: 1px solid var(--sl-color-gray-5);
 	background: var(--article-table-header);
 	color: var(--sl-color-text);
-	font-size: 0.94em;
+	font-size: inherit;
 	font-weight: 600;
 	text-align: left;
 }
 
 .sl-markdown-content td {
 	padding: 0.8em 1em;
+	border: 0;
 	border-bottom: 1px solid var(--sl-color-gray-6);
 	line-height: 1.7;
 	vertical-align: top;
@@ -1022,18 +1050,47 @@ code {
 }
 
 .sl-markdown-content :is(th, td) + :is(th, td) {
-	border-left: 1px solid var(--sl-color-gray-5);
+	border-left: 0;
 }
 
-.sl-markdown-content th code,
-.sl-markdown-content td code {
-	font-size: 0.88em;
+.sl-markdown-content thead tr:first-child th:first-child {
+	border-start-start-radius: 0.45rem;
+}
+
+.sl-markdown-content thead tr:first-child th:last-child {
+	border-start-end-radius: 0.45rem;
+}
+
+.sl-markdown-content tbody tr:nth-child(even) {
+	background: var(--article-table-stripe);
+}
+
+.sl-markdown-content tbody tr:last-child > :first-child {
+	border-end-start-radius: 0.45rem;
+}
+
+.sl-markdown-content tbody tr:last-child > :last-child {
+	border-end-end-radius: 0.45rem;
 }
 
 @media (max-width: 40rem) {
 	.sl-markdown-content table {
 		display: block;
 		overflow-x: auto;
+	}
+
+	.sl-markdown-content table:not([class]) :is(th, td) {
+		min-width: 10rem;
+	}
+
+	/* Keep identifiers intact while the table scrolls within the article. */
+	.sl-markdown-content table:not([class]) code {
+		white-space: nowrap;
+		overflow-wrap: normal;
+	}
+
+	.sl-markdown-content .expressive-code {
+		--ec-codePadInl: 1rem;
 	}
 }
 
@@ -1558,8 +1615,8 @@ button[aria-label='Menu'] {
 /* ─── Code Blocks ─── */
 
 pre {
-	border-radius: 8px !important;
-	border: 1px solid var(--sl-color-gray-6) !important;
+	border-radius: 8px;
+	border: 1px solid var(--sl-color-gray-6);
 	font-size: 0.9rem;
 	line-height: 1.7;
 }
