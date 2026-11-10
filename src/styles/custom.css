@@ -1,4 +1,5 @@
 @import './fonts.css';
+@import '@fontsource-variable/jetbrains-mono/wght.css';
 
 /* 工具箱与 AI 降智检测：输入、判分依据和请求错误保持可核对。 */
 .sl-container:has(.ai-probe-tool),.sl-container:has(.tool-directory) { max-width:58rem; }
@@ -924,32 +925,34 @@ code {
 /* ─── Code ─── */
 
 .sl-markdown-content {
-	--article-code-bg: #eae8df;
-	--article-code-text: #414b3c;
-	--article-code-border: #dcd9ce;
-	--article-code-block-bg: #faf9f5;
+	--article-font-mono: 'JetBrains Mono Variable', var(--sl-font-mono);
+	--article-code-bg: #eeede9;
+	--article-code-text: #292b2e;
+	--article-code-border: rgb(36 41 47 / 0.12);
+	--article-code-block-bg: #fdfcf9;
 	--article-table-header: #eae8df;
 	--article-table-stripe: #f0efe8;
 }
 
 [data-theme='dark'] .sl-markdown-content {
-	--article-code-bg: #30362f;
-	--article-code-text: #dce6d3;
-	--article-code-border: #454d42;
+	--article-code-bg: #303330;
+	--article-code-text: #e6e7e3;
+	--article-code-border: rgb(230 231 227 / 0.16);
 	--article-code-block-bg: #222623;
 	--article-table-header: #30362f;
 	--article-table-stripe: #272c28;
 }
 
 .sl-markdown-content :not(pre) > code {
-	padding: 0.16em 0.38em;
+	padding: 0.125em 0.45em;
 	border: 0;
-	border-radius: 0.25rem;
+	border-radius: 0.375rem;
 	background: var(--article-code-bg);
 	color: var(--article-code-text);
-	font-family: var(--sl-font-mono);
-	font-size: 0.96em;
-	font-weight: 600;
+	font-family: var(--article-font-mono);
+	font-size: 0.9375em;
+	font-weight: 500;
+	font-variant-ligatures: none;
 	line-height: 1.55;
 	box-decoration-break: clone;
 	-webkit-box-decoration-break: clone;
@@ -957,14 +960,18 @@ code {
 }
 
 .sl-markdown-content .expressive-code {
-	--ec-codeFontSize: 0.96em;
+	--ec-codeFontFml: var(--article-font-mono);
+	--ec-codeFontSize: 0.9375em;
 	--ec-codeFontWg: 400;
-	--ec-codeLineHt: 1.8;
+	--ec-codeLineHt: 1.75;
 	--ec-codePadInl: 1.25rem;
 	--ec-codeBg: var(--article-code-block-bg);
 	--ec-frm-edBg: var(--article-code-block-bg);
 	--ec-frm-trmBg: var(--article-code-block-bg);
 	--ec-brdCol: var(--article-code-border);
+	--ec-frm-edActTabBg: var(--article-code-block-bg);
+	--ec-frm-edTabBarBg: var(--article-code-block-bg);
+	--ec-frm-trmTtbBg: var(--article-code-block-bg);
 	margin: 1.75em 0;
 	font-size: inherit;
 }
@@ -972,23 +979,35 @@ code {
 .sl-markdown-content .expressive-code .frame {
 	overflow: hidden;
 	border: 1px solid var(--article-code-border);
-	border-radius: 0.5rem;
+	border-radius: 1rem;
 	box-shadow: none;
 }
 
 .sl-markdown-content .expressive-code .frame > figcaption.header:not(:empty) {
-	border-bottom: 1px solid var(--sl-color-gray-5);
-	background: var(--article-table-header);
+	border: 0;
+	border-bottom: 1px solid var(--article-code-border);
+	background: var(--article-code-block-bg);
 	color: var(--sl-color-text);
 	font-size: 0.86em;
-	font-weight: 600;
+	font-weight: 500;
+}
+
+/* Untitled shell snippets use the same quiet frame as other code blocks. */
+.sl-markdown-content .expressive-code .frame.is-terminal:not(.has-title) {
+	--button-spacing: 0.4rem;
+}
+
+.sl-markdown-content .expressive-code .frame.is-terminal:not(.has-title) > .header,
+.sl-markdown-content .expressive-code .frame.is-terminal > .header::before {
+	display: none;
 }
 
 .sl-markdown-content .expressive-code pre {
-	padding-block: 1.15rem;
+	padding-block: 1.25rem;
 	border: 0;
 	border-radius: 0;
-	font-family: var(--sl-font-mono);
+	font-family: var(--article-font-mono);
+	font-variant-ligatures: none;
 	font-size: var(--ec-codeFontSize);
 	line-height: var(--ec-codeLineHt);
 	tab-size: 2;
@@ -996,6 +1015,7 @@ code {
 
 /* Expressive Code sets its own code size; inherit to avoid shrinking twice. */
 .sl-markdown-content .expressive-code pre > code {
+	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
 }
