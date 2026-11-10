@@ -69,7 +69,7 @@
   <text data-svg-container="node-6" class="body" x="595" y="746" text-anchor="middle">MEMORY.md / USER.md</text>
   <text data-svg-container="node-6" class="body" x="595" y="790" text-anchor="middle">memory/*.md 当天日记</text>
 
-  <rect id="node-7" data-svg-box="" class="box" x="870" y="606" width="470" height="252" fill="#fffef9" stroke="#c9c2b2"/>
+  <rect id="node-7" data-svg-box="" class="box" x="840" y="606" width="530" height="252" fill="#fffef9" stroke="#c9c2b2"/>
   <text data-svg-container="node-7" class="head" x="1105" y="654" text-anchor="middle">Agent SQLite 共享数据库</text>
   <text data-svg-container="node-7" class="sub" x="1105" y="700" text-anchor="middle">~/.openclaw/agents/&lt;agentId&gt;/agent/</text>
   <text data-svg-container="node-7" class="body" x="1105" y="746" text-anchor="middle">原始会话 sessions / transcripts</text>

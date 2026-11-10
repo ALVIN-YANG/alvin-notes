@@ -91,15 +91,15 @@
       "mode": "legacy"
     },
     "public/images/claw/openclaw/memory-system/01-openclaw-memory-overview.svg": {
-      "sha256": "30205933f21f714ac4b71835a5d3661a34157de76d7b3f20184e23b2f7c377d1",
+      "sha256": "f732889a839ded0d244838c35ac61870fb5542a033ab9499835abe99ddd78fac",
       "mode": "checked"
     },
     "public/images/claw/openclaw/memory-system/02-context-vs-memory.svg": {
-      "sha256": "3c680728cba8c2fa39d97f5047c00b11dd9a12be457a3e670c1efb7eb7c7fad5",
+      "sha256": "b786b34dfd873f05bb8b13a898e2b5207637348f628800f9b397d1f146db49fd",
       "mode": "checked"
     },
     "public/images/claw/openclaw/memory-system/03-storage-layout.svg": {
-      "sha256": "c1f5fd2194ff9dfaf063e2989a5fa0b590e33f9808b27431c87a3402ddb6d387",
+      "sha256": "365029af17ee4c5a0cef92edb90e85b0d2900bfffac07d9981f3cdd9fd6d93fc",
       "mode": "checked"
     },
     "public/images/claw/openclaw/memory-system/04-write-pipeline.svg": {
@@ -107,7 +107,7 @@
       "mode": "checked"
     },
     "public/images/claw/openclaw/memory-system/05-indexing-pipeline.svg": {
-      "sha256": "62dca43317347f32addcf92dd70f274ae226ce6c60aec29ffe5d44f21ad98f62",
+      "sha256": "c9738ed96e6c6bb82378a881ab31a42f8f92b27e63e5b0dc6ba44bcabee7b282",
       "mode": "checked"
     },
     "public/images/claw/openclaw/memory-system/06-hybrid-search.svg": {

@@ -37,17 +37,17 @@
   <text data-svg-container="node-6" class="head" x="1110" y="212" text-anchor="middle">磁盘上的持久数据（记忆）</text>
   <text data-svg-container="node-6" class="sub" x="1110" y="248" text-anchor="middle">可跨会话保存，不等于本次一定能读到</text>
 
-  <rect id="node-7" data-svg-box="" class="chip" x="890" y="290" width="440" height="76" fill="#fffef9" stroke="#b9c6d4"/>
+  <rect id="node-7" data-svg-box="" class="chip" x="870" y="290" width="480" height="76" fill="#fffef9" stroke="#b9c6d4"/>
   <text data-svg-container="node-7" class="body" x="1110" y="332" text-anchor="middle">MEMORY.md / USER.md</text>
-  <rect id="node-8" data-svg-box="" class="chip" x="890" y="378" width="440" height="76" fill="#fffef9" stroke="#b9c6d4"/>
+  <rect id="node-8" data-svg-box="" class="chip" x="870" y="378" width="480" height="76" fill="#fffef9" stroke="#b9c6d4"/>
   <text data-svg-container="node-8" class="body" x="1110" y="420" text-anchor="middle">当天日记 memory/YYYY-MM-DD.md</text>
-  <rect id="node-9" data-svg-box="" class="chip" x="890" y="466" width="440" height="76" fill="#fffef9" stroke="#b9c6d4"/>
+  <rect id="node-9" data-svg-box="" class="chip" x="870" y="466" width="480" height="76" fill="#fffef9" stroke="#b9c6d4"/>
   <text data-svg-container="node-9" class="body" x="1110" y="508" text-anchor="middle">Agent SQLite（原始会话与索引）</text>
 
   <!-- 读回箭头 -->
-  <line x1="886" y1="322" x2="592" y2="572" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <line x1="886" y1="410" x2="600" y2="580" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <line x1="886" y1="498" x2="608" y2="588" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="866" y1="322" x2="592" y2="572" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="866" y1="410" x2="600" y2="580" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="866" y1="498" x2="608" y2="588" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
   <text data-svg-label="" x="742" y="260" text-anchor="middle" font-size="25" font-weight="600" fill="#d97745">加载 / 检索</text>
   <text data-svg-label="" x="742" y="294" text-anchor="middle" class="sub">只取相关片段</text>
 

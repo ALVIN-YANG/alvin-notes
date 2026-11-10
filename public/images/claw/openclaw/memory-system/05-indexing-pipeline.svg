@@ -23,28 +23,29 @@
   <text data-svg-label="" class="sub" x="60" y="112">默认索引 MEMORY.md、根 USER.md 与 memory/*.md；完整重建先写临时库再原子发布，期间已发布索引继续服务</text>
 
   <!-- 第一行 -->
-  <rect id="node-1" data-svg-box="" class="box" x="60" y="180" width="300" height="170" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <rect id="node-1" data-svg-box="" class="box" x="60" y="180" width="300" height="210" fill="#e4ecdf" stroke="#a9c0a4"/>
   <text data-svg-container="node-1" class="head" x="210" y="226" text-anchor="middle">① Markdown 变化</text>
-  <text data-svg-container="node-1" class="body" x="210" y="276" text-anchor="middle">MEMORY.md / USER.md</text>
-  <text data-svg-container="node-1" class="body" x="210" y="314" text-anchor="middle">memory/*.md</text>
+  <text data-svg-container="node-1" class="body" x="210" y="276" text-anchor="middle">MEMORY.md</text>
+  <text data-svg-container="node-1" class="body" x="210" y="314" text-anchor="middle">USER.md</text>
+  <text data-svg-container="node-1" class="body" x="210" y="352" text-anchor="middle">memory/*.md</text>
 
-  <line x1="364" y1="265" x2="420" y2="265" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="364" y1="285" x2="420" y2="285" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <rect id="node-2" data-svg-box="" class="box" x="426" y="180" width="310" height="170" fill="#f9ecdf" stroke="#e0b48f"/>
+  <rect id="node-2" data-svg-box="" class="box" x="426" y="180" width="310" height="210" fill="#f9ecdf" stroke="#e0b48f"/>
   <text data-svg-container="node-2" class="head" x="581" y="226" text-anchor="middle">② watcher 防抖</text>
   <text data-svg-container="node-2" class="body" x="581" y="276" text-anchor="middle">默认 1.5s debounce</text>
   <text data-svg-container="node-2" class="body" x="581" y="314" text-anchor="middle">hash 未变则跳过</text>
 
-  <line x1="740" y1="265" x2="796" y2="265" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="740" y1="285" x2="796" y2="285" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <rect id="node-3" data-svg-box="" class="box" x="802" y="180" width="320" height="170" fill="#e7edf3" stroke="#b9c6d4"/>
+  <rect id="node-3" data-svg-box="" class="box" x="802" y="180" width="320" height="210" fill="#e7edf3" stroke="#b9c6d4"/>
   <text data-svg-container="node-3" class="head" x="962" y="226" text-anchor="middle">③ 分块</text>
   <text data-svg-container="node-3" class="body" x="962" y="276" text-anchor="middle">约 400 tokens / 块</text>
   <text data-svg-container="node-3" class="body" x="962" y="314" text-anchor="middle">重叠 80 · 记录行号</text>
 
   <!-- 并行分支 -->
-  <line x1="900" y1="354" x2="615" y2="424" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
-  <line x1="1000" y1="354" x2="1065" y2="424" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
+  <line x1="900" y1="394" x2="615" y2="424" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
+  <line x1="1000" y1="394" x2="1065" y2="424" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
 
   <rect id="node-4" data-svg-box="" class="box" x="400" y="430" width="400" height="160" fill="#efe9f4" stroke="#c3b4d6"/>
   <text data-svg-container="node-4" class="head" x="600" y="474" text-anchor="middle">向量：先查缓存</text>

@@ -66,8 +66,9 @@
   <line x1="1052" y1="384" x2="1348" y2="384" stroke="#c3d0dd" stroke-width="2"/>
 
   <text data-svg-container="node-3" class="code" x="1052" y="452" fill="#3f5f7d">共享 SQLite 状态数据库</text>
-  <text data-svg-container="node-3" class="body" x="1052" y="488">Automation jobs / runtime</text>
-  <text data-svg-container="node-3" class="body" x="1052" y="522">计划到达后执行任务</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="488">Automation jobs</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="522">/ runtime</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="556">计划到达后执行任务</text>
 
   <text data-svg-container="node-3" class="body" x="1052" y="610" fill="#6b6f76">索引帮助查找；</text>
   <text data-svg-container="node-3" class="body" x="1052" y="644" fill="#6b6f76">候选等待整理；</text>
