@@ -69,3 +69,12 @@ npm run news:weekly   # node scripts/fetch-ai-news.mjs --weekly
 - **Deployment**: push to `main` on GitHub; Vercel auto-builds and deploys. `netlify.toml` also exists but is not the primary deploy target.
 
 ## Notes
+
+## SVG 图表生成与验收
+
+- 新增或修改 `public/` 下的 SVG，必须用真实浏览器检查布局。文字先分行，再按测量结果调整节点，优先扩大容器或调整布局，不能用裁切隐藏越界。
+- 每个文本容器使用 `<rect id="node-name" data-svg-box="">`，文字用 `data-svg-container="node-name"` 指明归属；画布标题、连线说明等框外文字使用 `data-svg-label=""`。默认内边距 16px，复杂图可显式设置 `data-svg-padding`，不得低于 12px。
+- 首次运行 `npx playwright install chromium --only-shell`。修改后运行 `npm run svg:check -- --update`，检查默认字体、MiSans 和 Sarasa 三种字体下的节点内边距、文字重叠、文字及图形的画布边界，再查看实际截图（包括窄屏文章中的图）。
+- 校验通过后，将 `scripts/svg-layout-record.json` 与 SVG 一起提交。`npm run build` 会拒绝缺失或过期的校验记录；禁止手工刷新哈希来绕过检查。历史 `legacy` 记录只允许原样保留，修改后必须补齐标注并通过检查。
+- 字体子集、浏览器版本或检查器变更后，也需要重新运行检查。浏览器回归用例单独运行 `npm run svg:test`，普通 `npm test` 不要求安装浏览器。自动更新字体的任务必须在提交前更新 SVG 校验记录。
+- 自动检查只覆盖可计算的布局约束，不能替代对箭头指向、视觉层级、文字含义、缩放后可读性的人工或 Agent 截图验收。第三方原样导入的 SVG 如需豁免，必须明确说明来源及原因，不得批量新增 legacy 记录。

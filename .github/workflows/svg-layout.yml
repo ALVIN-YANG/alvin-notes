@@ -1,0 +1,21 @@
+name: SVG layout
+on:
+  pull_request:
+    paths: ['public/**/*.svg', 'public/fonts/**', 'scripts/*svg*', 'tests/browser/svg-layout.mjs', 'package*.json', '.github/workflows/svg-layout.yml']
+  push:
+    branches: [main]
+    paths: ['public/**/*.svg', 'public/fonts/**', 'scripts/*svg*', 'tests/browser/svg-layout.mjs', 'package*.json', '.github/workflows/svg-layout.yml']
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium --only-shell
+      - run: npm run svg:test
+      - run: npm run svg:check
+      - run: node scripts/check-svg-layout.mjs --record-only

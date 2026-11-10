@@ -14,7 +14,7 @@
     "fonts:update": "node scripts/update-font-subsets.mjs",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/sync-system-design.mjs --check && node scripts/check-system-design-english.mjs && node scripts/sync-phoenix.mjs --check && astro build && node scripts/verify-build-output.mjs",
+    "build": "node scripts/check-svg-layout.mjs --record-only && node scripts/sync-system-design.mjs --check && node scripts/check-system-design-english.mjs && node scripts/sync-phoenix.mjs --check && astro build && node scripts/verify-build-output.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "news:daily": "node scripts/fetch-ai-news.mjs --daily",
@@ -29,7 +29,9 @@
     "system-design:check": "node scripts/sync-system-design.mjs --check",
     "system-design:english-check": "node scripts/check-system-design-english.mjs",
     "phoenix:sync": "node scripts/sync-phoenix.mjs",
-    "phoenix:check": "node scripts/sync-phoenix.mjs --check"
+    "phoenix:check": "node scripts/sync-phoenix.mjs --check",
+    "svg:check": "node scripts/check-svg-layout.mjs",
+    "svg:test": "node --test tests/browser/svg-layout.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.1.2",
@@ -50,6 +52,7 @@
   },
   "devDependencies": {
     "isomorphic-mermaid": "^0.1.1",
-    "jsdom": "^27.4.0"
+    "jsdom": "^27.4.0",
+    "playwright": "^1.65.0"
   }
 }
