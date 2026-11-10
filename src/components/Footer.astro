@@ -5,12 +5,14 @@ import Pagination from 'virtual:starlight/components/Pagination';
 import Comments from './Comments.astro';
 import PhoenixSource from './PhoenixSource.astro';
 import SystemDesignReader from './SystemDesignReader.astro';
+import CodeBlockActions from './CodeBlockActions.astro';
 
 const { entry, slug } = Astro.locals.starlightRoute;
 const commentsEnabled = (entry.data as typeof entry.data & { comments?: boolean }).comments !== false;
 const showComments = commentsEnabled && slug !== '' && entry.body.trim().length > 0;
 ---
 
+<CodeBlockActions />
 <footer class="sl-flex">
   <div class="meta sl-flex">
     <EditLink />

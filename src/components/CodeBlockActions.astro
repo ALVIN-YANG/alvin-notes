@@ -1,0 +1,72 @@
+<script>
+  import { renderCodeBlockImage } from '../lib/code-block-image';
+
+  function initCodeBlockActions() {
+    document.querySelectorAll<HTMLElement>('.sl-markdown-content .expressive-code .frame').forEach((frame) => {
+      if (frame.querySelector('.code-block-actions')) return;
+      const nativeCopy = frame.querySelector<HTMLButtonElement>('.copy button[data-code]');
+      if (!nativeCopy) return;
+      const actions = document.createElement('div');
+      actions.className = 'code-block-actions';
+      actions.setAttribute('role', 'group');
+      actions.setAttribute('aria-label', '复制代码');
+      const status = document.createElement('span');
+      status.className = 'code-block-copy-status';
+      status.setAttribute('role', 'status');
+      status.hidden = true;
+
+      for (const kind of ['text', 'image'] as const) {
+        const button = document.createElement('button');
+        const label = kind === 'text' ? '复制文本' : '复制图片';
+        button.type = 'button';
+        button.textContent = label;
+        button.dataset.copyKind = kind;
+        let timer: ReturnType<typeof setTimeout>;
+        button.addEventListener('click', async () => {
+          clearTimeout(timer);
+          status.hidden = true;
+          status.textContent = '';
+          button.disabled = true;
+          button.textContent = kind === 'image' ? '生成中…' : '复制中…';
+          try {
+            if (kind === 'image') {
+              if (!navigator.clipboard?.write || typeof ClipboardItem === 'undefined'
+                || (ClipboardItem.supports && !ClipboardItem.supports('image/png'))) {
+                throw new Error('当前浏览器不支持复制图片，请使用新版浏览器或复制文本。');
+              }
+              // Start the clipboard write during the click, retaining Safari user activation.
+              await navigator.clipboard.write([new ClipboardItem({
+                'image/png': renderCodeBlockImage(frame),
+              })]);
+            } else {
+              if (!navigator.clipboard?.writeText) {
+                throw new Error('当前浏览器不支持复制，请手动选择代码。');
+              }
+              await navigator.clipboard.writeText(nativeCopy.dataset.code!.replace(/\\u007f/g, '\n'));
+            }
+            button.textContent = '已复制';
+            status.textContent = kind === 'image' ? '代码图片已复制。' : '代码文本已复制。';
+            status.hidden = false;
+            delete status.dataset.error;
+          } catch (error) {
+            button.textContent = '复制失败';
+            const denied = error instanceof DOMException && error.name === 'NotAllowedError';
+            status.textContent = denied ? '浏览器未允许复制，请允许剪贴板访问后重试。'
+              : error instanceof Error ? error.message : '复制失败，请重试。';
+            status.dataset.error = '';
+            status.hidden = false;
+          } finally {
+            button.disabled = false;
+            timer = setTimeout(() => { button.textContent = label; }, 2500);
+          }
+        });
+        actions.append(button);
+      }
+      frame.prepend(actions, status);
+      frame.dataset.copyActions = '';
+    });
+  }
+
+  initCodeBlockActions();
+  document.addEventListener('astro:page-load', initCodeBlockActions);
+</script>
