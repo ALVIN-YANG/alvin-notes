@@ -69,7 +69,7 @@ export const portfolio: PortfolioProject[] = [
     icon: '/images/projects/chimebuddy-v2.webp',
     links: [
       { label: 'GitHub', href: 'https://github.com/ALVIN-YANG/ChimeBuddy' },
-      { label: '下载原型', href: 'https://github.com/ALVIN-YANG/ChimeBuddy/releases/tag/v0.2.0' },
+      { label: '下载原型', href: 'https://github.com/ALVIN-YANG/ChimeBuddy/releases/tag/v0.2.1' },
     ],
   },
   {
