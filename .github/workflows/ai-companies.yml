@@ -42,6 +42,8 @@ jobs:
         run: npm run companies:check
       - name: 安装字体工具
         run: sudo apt-get update && sudo apt-get install --yes libarchive-tools python3-venv
+      - name: 安装 SVG 检查浏览器
+        run: npx playwright install --with-deps chromium --only-shell
       - name: 构建并发布目录
         run: |
           set -euo pipefail
@@ -61,8 +63,9 @@ jobs:
             cp "$snapshot/"*.json src/data/companies/
             npm run companies:check
             npm run fonts:update
+            npm run svg:check -- --update
             npm run build
-            git add src/data/companies/{directory,sync-state}.json public/fonts/misans/ public/fonts/sarasa/ scripts/font-subset-codepoints.json
+            git add src/data/companies/{directory,sync-state}.json public/fonts/misans/ public/fonts/sarasa/ scripts/font-subset-codepoints.json scripts/svg-layout-record.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "同步 AI 公司目录与公开来源 $(date -u +%Y-%m-%d)"
             if git push origin HEAD:main; then exit 0; fi

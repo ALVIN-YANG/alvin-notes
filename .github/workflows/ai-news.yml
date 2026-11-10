@@ -84,11 +84,18 @@ jobs:
         if: steps.content-changes.outputs.changed == 'true'
         run: npm run fonts:update
 
+      - name: Validate SVG layout with updated fonts
+        if: steps.content-changes.outputs.changed == 'true'
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium --only-shell
+          npm run svg:check -- --update
+
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/content/docs/ai-news/ src/data/ai-news-daily/ public/fonts/ scripts/font-subset-codepoints.json
+          git add src/content/docs/ai-news/ src/data/ai-news-daily/ public/fonts/ scripts/font-subset-codepoints.json scripts/svg-layout-record.json
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "chore(ai-news): auto-generate $(date -u +%Y-%m-%d)"
           git push

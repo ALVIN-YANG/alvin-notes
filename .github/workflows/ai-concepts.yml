@@ -51,6 +51,9 @@ jobs:
       - name: 安装字体工具
         if: steps.changes.outputs.changed == 'true'
         run: sudo apt-get update && sudo apt-get install --yes libarchive-tools python3-venv
+      - name: 安装 SVG 检查浏览器
+        if: steps.changes.outputs.changed == 'true'
+        run: npx playwright install --with-deps chromium --only-shell
       - name: 构建并发布词库
         if: steps.changes.outputs.changed == 'true'
         run: |
@@ -68,8 +71,9 @@ jobs:
             cp "$RUNNER_TEMP/ai-concepts-hf-translations.json" src/data/ai-concepts-hf-translations.json
             npm run concepts:check
             npm run fonts:update
+            npm run svg:check -- --update
             npm run build
-            git add src/data/ai-concepts.json src/data/ai-concepts-hf-translations.json public/fonts/misans/ public/fonts/sarasa/ scripts/font-subset-codepoints.json
+            git add src/data/ai-concepts.json src/data/ai-concepts-hf-translations.json public/fonts/misans/ public/fonts/sarasa/ scripts/font-subset-codepoints.json scripts/svg-layout-record.json
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "更新 AI 概念词库 $(date -u +%Y-%m-%d)"
             if git push origin HEAD:main; then exit 0; fi
