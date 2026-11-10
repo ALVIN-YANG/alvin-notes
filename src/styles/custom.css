@@ -1034,25 +1034,32 @@ code {
 .sl-markdown-content .code-block-actions {
 	display: flex;
 	justify-content: flex-end;
-	gap: 0.35rem;
-	padding: 0.5rem 0.75rem 0;
+	gap: 0.25rem;
+	padding: 0.4rem 0.65rem 0;
 	background: var(--article-code-block-bg);
 }
 
 .sl-markdown-content .code-block-actions button {
-	min-width: 5.5rem;
-	min-height: 2.5rem;
-	padding: 0.35rem 0.6rem;
-	border: 1px solid var(--article-code-border);
-	border-radius: 0.5rem;
-	background: var(--article-code-block-bg);
-	color: var(--article-code-text);
-	font: 500 0.8125rem/1.4 var(--sl-font);
+	min-width: 4.25rem;
+	min-height: 1.75rem;
+	padding: 0.2rem 0.45rem;
+	border: 1px solid transparent;
+	border-radius: 0.375rem;
+	background: transparent;
+	color: var(--sl-color-gray-2);
+	font: 500 0.75rem/1.4 var(--sl-font);
 	cursor: pointer;
 }
 
 .sl-markdown-content .code-block-actions button:hover {
+	border-color: var(--article-code-border);
 	background: var(--article-code-bg);
+}
+
+@media (pointer: coarse) {
+	.sl-markdown-content .code-block-actions button {
+		min-height: 2.25rem;
+	}
 }
 
 .sl-markdown-content .code-block-actions button:focus-visible {
