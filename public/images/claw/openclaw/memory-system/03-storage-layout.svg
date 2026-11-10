@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="svgTitle">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" role="img" aria-labelledby="svgTitle">
   <title id="svgTitle">OpenClaw 记忆存储地图：工作区文件、Agent SQLite 与其他 SQLite 数据库</title>
   <defs>
     <style>
@@ -11,69 +11,71 @@
       .note { font-size: 24px; fill: #6b6f76; }
     </style>
   </defs>
-  <rect width="1440" height="900" fill="#fbfaf6"/>
+  <rect width="1440" height="980" fill="#fbfaf6"/>
 
-  <text class="title" x="60" y="68">存储地图：文件、数据库与表</text>
-  <text class="sub" x="60" y="112">默认私有交互会话 + memory-core · 以下路径为默认配置，实际可随 agent 配置变化</text>
+  <text data-svg-label="" class="title" x="60" y="68">存储地图：文件、数据库与表</text>
+  <text data-svg-label="" class="sub" x="60" y="112">默认私有交互会话 + memory-core · 以下路径为默认配置，实际可随 agent 配置变化</text>
 
   <!-- 列 A：工作区 -->
-  <rect x="60" y="150" width="400" height="600" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2.5"/>
-  <text class="head" x="260" y="196" text-anchor="middle">工作区（Markdown）</text>
-  <text class="sub" x="260" y="232" text-anchor="middle">~/.openclaw/workspace</text>
+  <rect id="node-1" data-svg-box="" x="60" y="150" width="400" height="600" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2.5"/>
+  <text data-svg-container="node-1" class="head" x="260" y="196" text-anchor="middle">工作区（Markdown）</text>
+  <text data-svg-container="node-1" class="sub" x="260" y="232" text-anchor="middle">~/.openclaw/workspace</text>
 
-  <text class="code" x="92" y="300">MEMORY.md</text>
-  <text class="body" x="92" y="334">长期经验与决定</text>
+  <text data-svg-container="node-1" class="code" x="92" y="300">MEMORY.md</text>
+  <text data-svg-container="node-1" class="body" x="92" y="334">长期经验与决定</text>
   <line x1="92" y1="362" x2="428" y2="362" stroke="#e3ddcf" stroke-width="2"/>
 
-  <text class="code" x="92" y="420">USER.md</text>
-  <text class="body" x="92" y="454">稳定用户偏好（小容量）</text>
+  <text data-svg-container="node-1" class="code" x="92" y="420">USER.md</text>
+  <text data-svg-container="node-1" class="body" x="92" y="454">稳定用户偏好（小容量）</text>
   <line x1="92" y1="482" x2="428" y2="482" stroke="#e3ddcf" stroke-width="2"/>
 
-  <text class="code" x="92" y="540">DREAMS.md</text>
-  <text class="body" x="92" y="574">Dreaming 整理报告，供人检查</text>
+  <text data-svg-container="node-1" class="code" x="92" y="540">DREAMS.md</text>
+  <text data-svg-container="node-1" class="body" x="92" y="574">Dreaming 整理报告，供人检查</text>
   <line x1="92" y1="602" x2="428" y2="602" stroke="#e3ddcf" stroke-width="2"/>
 
-  <text class="code" x="92" y="660">memory/YYYY-MM-DD.md</text>
-  <text class="body" x="92" y="694">当天日记，追加写入</text>
+  <text data-svg-container="node-1" class="code" x="92" y="660">memory/YYYY-MM-DD.md</text>
+  <text data-svg-container="node-1" class="body" x="92" y="694">当天日记，追加写入</text>
 
   <!-- 列 B：Agent SQLite -->
-  <rect x="520" y="150" width="440" height="600" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2.5"/>
-  <text class="head" x="740" y="196" text-anchor="middle">Agent SQLite 共享数据库</text>
-  <text class="sub" x="740" y="232" text-anchor="middle">~/.openclaw/agents/&lt;agentId&gt;/agent/</text>
-  <text class="sub" x="740" y="264" text-anchor="middle">openclaw-agent.sqlite</text>
+  <rect id="node-2" data-svg-box="" x="520" y="150" width="440" height="600" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2.5"/>
+  <text data-svg-container="node-2" class="head" x="740" y="196" text-anchor="middle">Agent SQLite 共享数据库</text>
+  <text data-svg-container="node-2" class="sub" x="740" y="232" text-anchor="middle">~/.openclaw/agents/</text>
+  <text data-svg-container="node-2" class="sub" x="740" y="264" text-anchor="middle">&lt;agentId&gt;/agent/</text>
+  <text data-svg-container="node-2" class="sub" x="740" y="296" text-anchor="middle">openclaw-agent.sqlite</text>
 
-  <text class="code" x="552" y="330">sessions / transcripts</text>
-  <text class="body" x="552" y="364">原始会话：消息与工具结果</text>
+  <text data-svg-container="node-2" class="code" x="552" y="350">sessions / transcripts</text>
+  <text data-svg-container="node-2" class="body" x="552" y="386">原始会话：消息与工具结果</text>
   <line x1="552" y1="392" x2="928" y2="392" stroke="#e8c8ab" stroke-width="2"/>
 
-  <text class="code" x="552" y="450">memory_index_* 派生索引表</text>
-  <text class="body" x="552" y="484">文件与会话切片、关键词、向量</text>
-  <text class="body" x="552" y="518">加快搜索，不产生另一份长期记忆</text>
+  <text data-svg-container="node-2" class="code" x="552" y="460">memory_index_* 派生索引表</text>
+  <text data-svg-container="node-2" class="body" x="552" y="496">文件与会话切片、关键词、向量</text>
+  <text data-svg-container="node-2" class="body" x="552" y="532">加快搜索，不产生另一份长期记忆</text>
   <line x1="552" y1="546" x2="928" y2="546" stroke="#e8c8ab" stroke-width="2"/>
 
-  <text class="code" x="552" y="604">standing_intents 表</text>
-  <text class="body" x="552" y="638">条件提醒及其 armed/fired 状态</text>
-  <text class="body" x="552" y="686" fill="#6b6f76">命中条件后注入提醒；取消只改状态</text>
+  <text data-svg-container="node-2" class="code" x="552" y="616">standing_intents 表</text>
+  <text data-svg-container="node-2" class="body" x="552" y="650">条件提醒及其 armed/fired 状态</text>
+  <text data-svg-container="node-2" class="body" x="552" y="716" fill="#6b6f76">命中条件后注入提醒；取消只改状态</text>
 
   <!-- 列 C：其他 SQLite -->
-  <rect x="1020" y="150" width="360" height="600" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2.5"/>
-  <text class="head" x="1200" y="196" text-anchor="middle">其他 SQLite 状态库</text>
+  <rect id="node-3" data-svg-box="" x="1020" y="150" width="360" height="600" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2.5"/>
+  <text data-svg-container="node-3" class="head" x="1200" y="196" text-anchor="middle">其他 SQLite 状态库</text>
 
-  <text class="code" x="1052" y="280" fill="#3f5f7d">Dreaming plugin state</text>
-  <text class="body" x="1052" y="316">短期候选、检索信号</text>
-  <text class="body" x="1052" y="350">与分数，等待 Deep 判断</text>
+  <text data-svg-container="node-3" class="code" x="1052" y="280" fill="#3f5f7d">Dreaming plugin state</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="316">短期候选、检索信号</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="350">与分数，等待 Deep 判断</text>
   <line x1="1052" y1="384" x2="1348" y2="384" stroke="#c3d0dd" stroke-width="2"/>
 
-  <text class="code" x="1052" y="452" fill="#3f5f7d">共享 SQLite 状态数据库</text>
-  <text class="body" x="1052" y="488">Automation jobs / runtime</text>
-  <text class="body" x="1052" y="522">计划到达后执行任务</text>
+  <text data-svg-container="node-3" class="code" x="1052" y="452" fill="#3f5f7d">共享 SQLite 状态数据库</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="488">Automation jobs / runtime</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="522">计划到达后执行任务</text>
 
-  <text class="body" x="1052" y="610" fill="#6b6f76">索引帮助查找；</text>
-  <text class="body" x="1052" y="644" fill="#6b6f76">候选等待整理；</text>
-  <text class="body" x="1052" y="678" fill="#6b6f76">提醒等待时间或条件命中。</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="610" fill="#6b6f76">索引帮助查找；</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="644" fill="#6b6f76">候选等待整理；</text>
+  <text data-svg-container="node-3" class="body" x="1052" y="678" fill="#6b6f76">提醒等待时间或条件命中。</text>
 
   <!-- 底部注释 -->
-  <rect x="60" y="790" width="1320" height="86" rx="12" fill="#f4efe4" stroke="#e0d8c2" stroke-width="2"/>
-  <text class="note" x="92" y="828">索引是派生数据：可按源文件重建（openclaw memory reset 后重新 index），不要直接删除 openclaw-agent.sqlite。</text>
-  <text class="note" x="92" y="862">它还保存原始会话和其他 agent 状态；MEMORY.md 与 USER.md 可直接用文本编辑器修改。</text>
+  <rect id="node-4" data-svg-box="" x="60" y="790" width="1320" height="160" rx="12" fill="#f4efe4" stroke="#e0d8c2" stroke-width="2"/>
+  <text data-svg-container="node-4" class="note" x="92" y="834">索引是派生数据：可按源文件重建（openclaw memory reset 后重新 index）。</text>
+  <text data-svg-container="node-4" class="note" x="92" y="874">不要直接删除 openclaw-agent.sqlite，它还保存原始会话和其他 agent 状态。</text>
+  <text data-svg-container="node-4" class="note" x="92" y="914">MEMORY.md 与 USER.md 可直接用文本编辑器修改。</text>
 </svg>

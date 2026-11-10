@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="svgTitle">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1130" role="img" aria-labelledby="svgTitle">
   <title id="svgTitle">新会话依次打开固定文件、按 trigger 评分，仍无答案时由子代理搜索旧笔记和会话</title>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
@@ -13,61 +13,63 @@
       .card { stroke-width: 2; rx: 14; }
     </style>
   </defs>
-  <rect width="1440" height="900" fill="#fbfaf6"/>
+  <rect width="1440" height="1130" fill="#fbfaf6"/>
 
-  <text class="title" x="60" y="68">新会话怎样找到旧内容？</text>
-  <text class="sub" x="60" y="112">按成本从低到高三步：先打开固定文件 → 再检查触发词 → 仍无答案才搜索旧笔记和会话</text>
+  <text data-svg-label="" class="title" x="60" y="68">新会话怎样找到旧内容？</text>
+  <text data-svg-label="" class="sub" x="60" y="112">按成本从低到高三步：先打开固定文件 → 再检查触发词 → 仍无答案才搜索旧笔记和会话</text>
 
   <!-- 用户问题 -->
-  <rect x="210" y="140" width="580" height="80" rx="12" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
-  <text class="body" x="500" y="190" text-anchor="middle" font-weight="600">“之前买了什么？为什么没买芒果？”</text>
+  <rect id="node-1" data-svg-box="" x="210" y="140" width="580" height="80" rx="12" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text data-svg-container="node-1" class="body" x="500" y="190" text-anchor="middle" font-weight="600">“之前买了什么？为什么没买芒果？”</text>
   <line x1="500" y1="224" x2="500" y2="240" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
   <!-- ① 打开固定文件 -->
-  <rect class="card" x="60" y="246" width="880" height="150" fill="#fffef9" stroke="#c9c2b2"/>
-  <text class="head" x="100" y="292"><tspan fill="#d97745">①</tspan> 打开固定文件：USER.md / MEMORY.md</text>
-  <text class="body" x="100" y="334">USER.md：“不要推荐芒果。”</text>
-  <text class="body" x="100" y="370" fill="#b35c2e">MEMORY.md：“2026-11-03：最后买了蓝莓，没有买芒果。”</text>
+  <rect id="node-2" data-svg-box="" class="card" x="60" y="246" width="880" height="150" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-2" class="head" x="100" y="292"><tspan fill="#d97745">①</tspan> 打开固定文件：USER.md / MEMORY.md</text>
+  <text data-svg-container="node-2" class="body" x="100" y="334">USER.md：“不要推荐芒果。”</text>
+  <text data-svg-container="node-2" class="body" x="100" y="370" fill="#b35c2e">MEMORY.md：“2026-11-03：最后买了蓝莓，没有买芒果。”</text>
 
-  <text x="170" y="424" font-size="24" font-weight="600" fill="#b35c2e">不能回答</text>
+  <text data-svg-label="" x="170" y="424" font-size="24" font-weight="600" fill="#b35c2e">不能回答</text>
   <line x1="150" y1="400" x2="150" y2="430" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
   <!-- ② 按 trigger 评分 -->
-  <rect class="card" x="60" y="436" width="880" height="170" fill="#f9ecdf" stroke="#e0b48f"/>
-  <text class="head" x="100" y="480"><tspan fill="#d97745">②</tspan> 按 trigger 的命中程度评分</text>
-  <text class="body" x="100" y="518">条目 trigger: 芒果；问题包含“芒果”，triggerScore = 0.85</text>
-  <text x="100" y="552" font-size="24" font-weight="600" fill="#b35c2e">matchScore = 0.85 × 0.8 + relevance × 0.2</text>
-  <text class="body" x="100" y="586">即使 relevance = 0，也有 0.68 ≥ 0.65：强命中，每轮最多 3 条</text>
+  <rect id="node-3" data-svg-box="" class="card" x="60" y="436" width="880" height="252" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-3" class="head" x="100" y="480"><tspan fill="#d97745">②</tspan> 按 trigger 的命中程度评分</text>
+  <text data-svg-container="node-3" class="body" x="100" y="524">条目 trigger: 芒果；问题包含“芒果”，triggerScore = 0.85</text>
+  <text data-svg-container="node-3" x="100" y="568" font-size="24" font-weight="600" fill="#b35c2e">matchScore = 0.85 × 0.8 + relevance × 0.2</text>
+  <text data-svg-container="node-3" class="body" x="100" y="612">即使 relevance = 0，也有 0.68 ≥ 0.65：强命中</text>
+  <text data-svg-container="node-3" class="body" x="100" y="652">每轮最多 3 条</text>
 
-  <text x="170" y="634" font-size="24" font-weight="600" fill="#b35c2e">没有强命中</text>
-  <line x1="150" y1="610" x2="150" y2="640" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <text data-svg-label="" x="170" y="716" font-size="24" font-weight="600" fill="#b35c2e">没有强命中</text>
+  <line x1="150" y1="694" x2="150" y2="720" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
   <!-- ③ 子代理搜索 -->
-  <rect class="card" x="60" y="646" width="880" height="150" fill="#efe9f4" stroke="#c3b4d6"/>
-  <text class="head" x="100" y="692"><tspan fill="#d97745">③</tspan> 仍无答案：子代理搜索旧笔记和会话</text>
-  <text class="body" x="100" y="732">memory_search("蓝莓 芒果 没买") → 找到 memory/2026-11-03.md 第 12–15 行</text>
-  <text class="body" x="100" y="768">memory_get 读取这几行 → 摘录交给主模型</text>
+  <rect id="node-4" data-svg-box="" class="card" x="60" y="726" width="880" height="210" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-4" class="head" x="100" y="772"><tspan fill="#d97745">③</tspan> 仍无答案：子代理搜索旧笔记和会话</text>
+  <text data-svg-container="node-4" class="body" x="100" y="812">memory_search("蓝莓 芒果 没买")</text>
+  <text data-svg-container="node-4" class="body" x="100" y="852">→ 找到 memory/2026-11-03.md 第 12–15 行</text>
+  <text data-svg-container="node-4" class="body" x="100" y="892">memory_get 读取这几行 → 摘录交给主模型</text>
 
   <!-- 三条横向箭头 -->
-  <text x="946" y="314" font-size="24" font-weight="600" fill="#b35c2e">能回答</text>
+  <text data-svg-label="" x="946" y="314" font-size="24" font-weight="600" fill="#b35c2e">能回答</text>
   <line x1="944" y1="330" x2="1012" y2="342" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <text x="946" y="504" font-size="24" font-weight="600" fill="#b35c2e">强命中</text>
+  <text data-svg-label="" x="946" y="504" font-size="24" font-weight="600" fill="#b35c2e">强命中</text>
   <line x1="944" y1="520" x2="1012" y2="506" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <text x="946" y="684" font-size="24" font-weight="600" fill="#b35c2e">摘录</text>
-  <line x1="944" y1="718" x2="1012" y2="682" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <text data-svg-label="" x="946" y="812" font-size="24" font-weight="600" fill="#b35c2e">摘录</text>
+  <line x1="944" y1="836" x2="1012" y2="836" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
   <!-- 统一终点 -->
-  <rect x="1020" y="246" width="360" height="530" rx="14" fill="#d97745" stroke="#d97745" stroke-width="2"/>
-  <text x="1200" y="308" text-anchor="middle" font-size="26" font-weight="700" fill="#ffffff">统一终点</text>
-  <text x="1200" y="348" text-anchor="middle" font-size="27" font-weight="700" fill="#ffffff">主模型回答</text>
+  <rect id="node-5" data-svg-box="" x="1020" y="246" width="360" height="690" rx="14" fill="#d97745" stroke="#d97745" stroke-width="2"/>
+  <text data-svg-container="node-5" x="1200" y="308" text-anchor="middle" font-size="26" font-weight="700" fill="#ffffff">统一终点</text>
+  <text data-svg-container="node-5" x="1200" y="348" text-anchor="middle" font-size="27" font-weight="700" fill="#ffffff">主模型回答</text>
   <line x1="1070" y1="380" x2="1330" y2="380" stroke="#f2c4a6" stroke-width="2"/>
-  <text x="1200" y="440" text-anchor="middle" class="body" fill="#ffffff">“买了蓝莓。没买芒果，</text>
-  <text x="1200" y="478" text-anchor="middle" class="body" fill="#ffffff">因为吃了不舒服。”</text>
-  <text x="1200" y="560" text-anchor="middle" class="body" fill="#ffffff">每一步读到的内容</text>
-  <text x="1200" y="596" text-anchor="middle" class="body" fill="#ffffff">都交给主模型作答</text>
+  <text data-svg-container="node-5" x="1200" y="440" text-anchor="middle" class="body" fill="#ffffff">“买了蓝莓。没买芒果，</text>
+  <text data-svg-container="node-5" x="1200" y="478" text-anchor="middle" class="body" fill="#ffffff">因为吃了不舒服。”</text>
+  <text data-svg-container="node-5" x="1200" y="560" text-anchor="middle" class="body" fill="#ffffff">每一步读到的内容</text>
+  <text data-svg-container="node-5" x="1200" y="596" text-anchor="middle" class="body" fill="#ffffff">都交给主模型作答</text>
 
   <!-- 底部小注 -->
-  <text class="sub" x="60" y="836">注：trigger 是找旧记忆；Standing Intent 是执行之前创建的未来提醒，两者不要混淆。</text>
-  <text class="sub" x="60" y="864">召回失败、超时或返回空结果，主回复仍继续；“没有找到”不等于“历史上没有这件事”。</text>
-  <text class="sub" x="60" y="892">多词 trigger 要看覆盖率；这一步是词法匹配，不是向量检索，也不是 BM25 原始分数。</text>
+  <text data-svg-label="" class="sub" x="60" y="1016">注：trigger 是找旧记忆；Standing Intent 是执行之前创建的未来提醒，两者不要混淆。</text>
+  <text data-svg-label="" class="sub" x="60" y="1056">召回失败、超时或返回空结果，主回复仍继续；“没有找到”不等于“历史上没有这件事”。</text>
+  <text data-svg-label="" class="sub" x="60" y="1096">多词 trigger 要看覆盖率；这一步是词法匹配，不是向量检索，也不是 BM25 原始分数。</text>
 </svg>

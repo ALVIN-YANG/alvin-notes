@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 880" role="img" aria-labelledby="svgTitle">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1150" role="img" aria-labelledby="svgTitle">
   <title id="svgTitle">OpenClaw 写入路径：一条消息怎样变成长期记忆</title>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
@@ -13,77 +13,78 @@
       .cell { stroke-width: 2; rx: 10; }
     </style>
   </defs>
-  <rect width="1440" height="880" fill="#fbfaf6"/>
+  <rect width="1440" height="1150" fill="#fbfaf6"/>
 
-  <text class="title" x="60" y="68">写入路径：不是每句话都会走完整个流程</text>
-  <text class="sub" x="60" y="112">不同数据有不同的更新触发器；标橙的两条限制来自 2026.10.10 固定版本源码</text>
+  <text data-svg-label="" class="title" x="60" y="68">写入路径：不是每句话都会走完整个流程</text>
+  <text data-svg-label="" class="sub" x="60" y="112">不同数据有不同的更新触发器；标橙的两条限制来自 2026.10.10 固定版本源码</text>
 
-  <text class="colhead" x="225" y="172" text-anchor="middle">触发方式</text>
-  <text class="colhead" x="680" y="172" text-anchor="middle">处理过程</text>
-  <text class="colhead" x="1170" y="172" text-anchor="middle">写入目标</text>
+  <text data-svg-label="" class="colhead" x="225" y="172" text-anchor="middle">触发方式</text>
+  <text data-svg-label="" class="colhead" x="680" y="172" text-anchor="middle">处理过程</text>
+  <text data-svg-label="" class="colhead" x="1170" y="172" text-anchor="middle">写入目标</text>
 
   <!-- R1 -->
-  <rect class="cell" x="60" y="190" width="330" height="100" fill="#e7edf3" stroke="#b9c6d4"/>
-  <text class="body" x="225" y="248" text-anchor="middle">每条用户消息 / 工具结果</text>
-  <line x1="394" y1="240" x2="462" y2="240" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="470" y="190" width="420" height="100" fill="#fffef9" stroke="#c9c2b2"/>
-  <text class="body" x="680" y="248" text-anchor="middle">程序直接保存，无需模型判断</text>
-  <line x1="894" y1="240" x2="962" y2="240" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="970" y="190" width="420" height="100" fill="#e7edf3" stroke="#b9c6d4"/>
-  <text class="body" x="1180" y="248" text-anchor="middle">Agent SQLite：原始会话</text>
+  <rect id="node-1" data-svg-box="" class="cell" x="60" y="190" width="330" height="128" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-1" class="body" x="225" y="264" text-anchor="middle">每条用户消息 / 工具结果</text>
+  <line x1="394" y1="254" x2="442" y2="254" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-2" data-svg-box="" class="cell" x="450" y="190" width="460" height="128" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-2" class="body" x="680" y="264" text-anchor="middle">程序直接保存，无需模型判断</text>
+  <line x1="914" y1="254" x2="962" y2="254" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-3" data-svg-box="" class="cell" x="970" y="190" width="420" height="128" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-3" class="body" x="1180" y="264" text-anchor="middle">Agent SQLite：原始会话</text>
 
   <!-- R2 -->
-  <rect class="cell" x="60" y="296" width="330" height="100" fill="#e4ecdf" stroke="#a9c0a4"/>
-  <text class="body" x="225" y="354" text-anchor="middle">模型主动记笔记</text>
-  <line x1="394" y1="346" x2="462" y2="346" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="470" y="296" width="420" height="100" fill="#fffef9" stroke="#c9c2b2"/>
-  <text class="body" x="680" y="354" text-anchor="middle">模型挑选持续有用的信息</text>
-  <line x1="894" y1="346" x2="962" y2="346" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="970" y="296" width="420" height="100" fill="#e4ecdf" stroke="#a9c0a4"/>
-  <text class="body" x="1180" y="354" text-anchor="middle">当天日记 memory/YYYY-MM-DD.md</text>
+  <rect id="node-4" data-svg-box="" class="cell" x="60" y="338" width="330" height="128" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-4" class="body" x="225" y="412" text-anchor="middle">模型主动记笔记</text>
+  <line x1="394" y1="402" x2="442" y2="402" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-5" data-svg-box="" class="cell" x="450" y="338" width="460" height="128" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-5" class="body" x="680" y="412" text-anchor="middle">模型挑选持续有用的信息</text>
+  <line x1="914" y1="402" x2="962" y2="402" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-6" data-svg-box="" class="cell" x="970" y="338" width="420" height="128" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-6" class="body" x="1180" y="388" text-anchor="middle">当天日记</text>
+  <text data-svg-container="node-6" class="body" x="1180" y="432" text-anchor="middle">memory/YYYY-MM-DD.md</text>
 
   <!-- R3 -->
-  <rect class="cell" x="60" y="402" width="330" height="100" fill="#e4ecdf" stroke="#a9c0a4"/>
-  <text class="body" x="225" y="460" text-anchor="middle">压缩前 memory flush</text>
-  <line x1="394" y1="452" x2="462" y2="452" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="470" y="402" width="420" height="100" fill="#f9ecdf" stroke="#e0b48f"/>
-  <text class="body" x="680" y="446" text-anchor="middle">静默补记，只追加当天日记</text>
-  <text class="body" x="680" y="482" text-anchor="middle" fill="#b35c2e">MEMORY.md 等保持只读</text>
-  <line x1="894" y1="452" x2="962" y2="452" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="970" y="402" width="420" height="100" fill="#e4ecdf" stroke="#a9c0a4"/>
-  <text class="body" x="1180" y="460" text-anchor="middle">当天日记（追加，不覆盖）</text>
+  <rect id="node-7" data-svg-box="" class="cell" x="60" y="486" width="330" height="128" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-7" class="body" x="225" y="560" text-anchor="middle">压缩前 memory flush</text>
+  <line x1="394" y1="550" x2="442" y2="550" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-8" data-svg-box="" class="cell" x="450" y="486" width="460" height="128" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-8" class="body" x="680" y="536" text-anchor="middle">静默补记，只追加当天日记</text>
+  <text data-svg-container="node-8" class="body" x="680" y="580" text-anchor="middle" fill="#b35c2e">MEMORY.md 等保持只读</text>
+  <line x1="914" y1="550" x2="962" y2="550" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-9" data-svg-box="" class="cell" x="970" y="486" width="420" height="128" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-9" class="body" x="1180" y="560" text-anchor="middle">当天日记（追加，不覆盖）</text>
 
   <!-- R4 -->
-  <rect class="cell" x="60" y="508" width="330" height="100" fill="#efe9f4" stroke="#c3b4d6"/>
-  <text class="body" x="225" y="566" text-anchor="middle">日记 / 会话 / 召回信号</text>
-  <line x1="394" y1="558" x2="462" y2="558" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="470" y="508" width="420" height="100" fill="#efe9f4" stroke="#c3b4d6"/>
-  <text class="body" x="680" y="548" text-anchor="middle">Light 去重 → REM 反思</text>
-  <text class="body" x="680" y="586" text-anchor="middle">Deep 门槛 0.75 · 召回 ≥3 · 查询 ≥3</text>
-  <line x1="894" y1="558" x2="962" y2="558" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="970" y="508" width="420" height="100" fill="#f9ecdf" stroke="#e0b48f"/>
-  <text class="body" x="1180" y="546" text-anchor="middle" font-weight="600">MEMORY.md</text>
-  <text class="body" x="1180" y="584" text-anchor="middle" fill="#b35c2e">Deep 唯一长期写入目标</text>
+  <rect id="node-10" data-svg-box="" class="cell" x="60" y="634" width="330" height="128" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-10" class="body" x="225" y="708" text-anchor="middle">日记 / 会话 / 召回信号</text>
+  <line x1="394" y1="698" x2="442" y2="698" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-11" data-svg-box="" class="cell" x="450" y="634" width="460" height="128" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-11" class="body" x="680" y="684" text-anchor="middle">Light 去重 → REM 反思</text>
+  <text data-svg-container="node-11" class="body" x="680" y="728" text-anchor="middle">Deep 门槛 0.75 · 召回 ≥3 · 查询 ≥3</text>
+  <line x1="914" y1="698" x2="962" y2="698" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-12" data-svg-box="" class="cell" x="970" y="634" width="420" height="128" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-12" class="body" x="1180" y="684" text-anchor="middle" font-weight="600">MEMORY.md</text>
+  <text data-svg-container="node-12" class="body" x="1180" y="728" text-anchor="middle" fill="#b35c2e">Deep 唯一长期写入目标</text>
 
   <!-- R5 -->
-  <rect class="cell" x="60" y="614" width="330" height="100" fill="#e7edf3" stroke="#b9c6d4"/>
-  <text class="body" x="225" y="672" text-anchor="middle">明确要求记住偏好</text>
-  <line x1="394" y1="664" x2="462" y2="664" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="470" y="614" width="420" height="100" fill="#fffef9" stroke="#c9c2b2"/>
-  <text class="body" x="680" y="672" text-anchor="middle">读取现有文件后调用文件工具</text>
-  <line x1="894" y1="664" x2="962" y2="664" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="970" y="614" width="420" height="100" fill="#e7edf3" stroke="#b9c6d4"/>
-  <text class="body" x="1180" y="672" text-anchor="middle">USER.md（稳定偏好）</text>
+  <rect id="node-13" data-svg-box="" class="cell" x="60" y="782" width="330" height="128" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-13" class="body" x="225" y="856" text-anchor="middle">明确要求记住偏好</text>
+  <line x1="394" y1="846" x2="442" y2="846" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-14" data-svg-box="" class="cell" x="450" y="782" width="460" height="128" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-14" class="body" x="680" y="856" text-anchor="middle">读取现有文件后调用文件工具</text>
+  <line x1="914" y1="846" x2="962" y2="846" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-15" data-svg-box="" class="cell" x="970" y="782" width="420" height="128" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-15" class="body" x="1180" y="856" text-anchor="middle">USER.md（稳定偏好）</text>
 
   <!-- R6 -->
-  <rect class="cell" x="60" y="720" width="330" height="100" fill="#e7edf3" stroke="#b9c6d4"/>
-  <text class="body" x="225" y="778" text-anchor="middle">明确要求未来提醒</text>
-  <line x1="394" y1="770" x2="462" y2="770" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="470" y="720" width="420" height="100" fill="#fffef9" stroke="#c9c2b2"/>
-  <text class="body" x="680" y="778" text-anchor="middle">校验 owner / channel / sender</text>
-  <line x1="894" y1="770" x2="962" y2="770" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
-  <rect class="cell" x="970" y="720" width="420" height="100" fill="#e7edf3" stroke="#b9c6d4"/>
-  <text class="body" x="1180" y="778" text-anchor="middle">Standing Intent / Automation</text>
+  <rect id="node-16" data-svg-box="" class="cell" x="60" y="930" width="330" height="128" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-16" class="body" x="225" y="1004" text-anchor="middle">明确要求未来提醒</text>
+  <line x1="394" y1="994" x2="442" y2="994" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-17" data-svg-box="" class="cell" x="450" y="930" width="460" height="128" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-17" class="body" x="680" y="1004" text-anchor="middle">校验 owner / channel / sender</text>
+  <line x1="914" y1="994" x2="962" y2="994" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="node-18" data-svg-box="" class="cell" x="970" y="930" width="420" height="128" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-18" class="body" x="1180" y="1004" text-anchor="middle">Standing Intent / Automation</text>
 
-  <text class="sub" x="60" y="862">注：flush 只追加当天日记；Deep 只写 MEMORY.md，不自动维护 USER.md——稳定偏好仍要靠明确要求并检查文件。</text>
+  <text data-svg-label="" class="sub" x="60" y="1118">注：flush 只追加当天日记；Deep 只写 MEMORY.md，不自动维护 USER.md——稳定偏好仍要靠明确要求并检查文件。</text>
 </svg>

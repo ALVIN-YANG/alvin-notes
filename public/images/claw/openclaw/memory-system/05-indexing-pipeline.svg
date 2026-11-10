@@ -19,53 +19,53 @@
   </defs>
   <rect width="1440" height="880" fill="#fbfaf6"/>
 
-  <text class="title" x="60" y="68">索引管线：文件变化怎样变得可搜索</text>
-  <text class="sub" x="60" y="112">默认索引 MEMORY.md、根 USER.md 与 memory/*.md；完整重建先写临时库再原子发布，期间已发布索引继续服务</text>
+  <text data-svg-label="" class="title" x="60" y="68">索引管线：文件变化怎样变得可搜索</text>
+  <text data-svg-label="" class="sub" x="60" y="112">默认索引 MEMORY.md、根 USER.md 与 memory/*.md；完整重建先写临时库再原子发布，期间已发布索引继续服务</text>
 
   <!-- 第一行 -->
-  <rect class="box" x="60" y="180" width="300" height="170" fill="#e4ecdf" stroke="#a9c0a4"/>
-  <text class="head" x="210" y="226" text-anchor="middle">① Markdown 变化</text>
-  <text class="body" x="210" y="276" text-anchor="middle">MEMORY.md / USER.md</text>
-  <text class="body" x="210" y="314" text-anchor="middle">memory/*.md</text>
+  <rect id="node-1" data-svg-box="" class="box" x="60" y="180" width="300" height="170" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-1" class="head" x="210" y="226" text-anchor="middle">① Markdown 变化</text>
+  <text data-svg-container="node-1" class="body" x="210" y="276" text-anchor="middle">MEMORY.md / USER.md</text>
+  <text data-svg-container="node-1" class="body" x="210" y="314" text-anchor="middle">memory/*.md</text>
 
   <line x1="364" y1="265" x2="420" y2="265" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <rect class="box" x="426" y="180" width="310" height="170" fill="#f9ecdf" stroke="#e0b48f"/>
-  <text class="head" x="581" y="226" text-anchor="middle">② watcher 防抖</text>
-  <text class="body" x="581" y="276" text-anchor="middle">默认 1.5s debounce</text>
-  <text class="body" x="581" y="314" text-anchor="middle">hash 未变则跳过</text>
+  <rect id="node-2" data-svg-box="" class="box" x="426" y="180" width="310" height="170" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="581" y="226" text-anchor="middle">② watcher 防抖</text>
+  <text data-svg-container="node-2" class="body" x="581" y="276" text-anchor="middle">默认 1.5s debounce</text>
+  <text data-svg-container="node-2" class="body" x="581" y="314" text-anchor="middle">hash 未变则跳过</text>
 
   <line x1="740" y1="265" x2="796" y2="265" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <rect class="box" x="802" y="180" width="320" height="170" fill="#e7edf3" stroke="#b9c6d4"/>
-  <text class="head" x="962" y="226" text-anchor="middle">③ 分块</text>
-  <text class="body" x="962" y="276" text-anchor="middle">约 400 tokens / 块</text>
-  <text class="body" x="962" y="314" text-anchor="middle">重叠 80 · 记录行号</text>
+  <rect id="node-3" data-svg-box="" class="box" x="802" y="180" width="320" height="170" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-3" class="head" x="962" y="226" text-anchor="middle">③ 分块</text>
+  <text data-svg-container="node-3" class="body" x="962" y="276" text-anchor="middle">约 400 tokens / 块</text>
+  <text data-svg-container="node-3" class="body" x="962" y="314" text-anchor="middle">重叠 80 · 记录行号</text>
 
   <!-- 并行分支 -->
   <line x1="900" y1="354" x2="615" y2="424" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
   <line x1="1000" y1="354" x2="1065" y2="424" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowGray)"/>
 
-  <rect class="box" x="400" y="430" width="400" height="160" fill="#efe9f4" stroke="#c3b4d6"/>
-  <text class="head" x="600" y="474" text-anchor="middle">向量：先查缓存</text>
-  <text class="code" x="600" y="518" text-anchor="middle">memory_embedding_cache</text>
-  <text class="body" x="600" y="556" text-anchor="middle">命中复用，未命中调 provider</text>
+  <rect id="node-4" data-svg-box="" class="box" x="400" y="430" width="400" height="160" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-4" class="head" x="600" y="474" text-anchor="middle">向量：先查缓存</text>
+  <text data-svg-container="node-4" class="code" x="600" y="518" text-anchor="middle">memory_embedding_cache</text>
+  <text data-svg-container="node-4" class="body" x="600" y="556" text-anchor="middle">命中复用，未命中调 provider</text>
 
-  <rect class="box" x="880" y="430" width="400" height="160" fill="#e7edf3" stroke="#b9c6d4"/>
-  <text class="head" x="1080" y="474" text-anchor="middle">关键词：FTS5 索引</text>
-  <text class="body" x="1080" y="518" text-anchor="middle">中日韩 trigram 分词</text>
-  <text class="body" x="1080" y="556" text-anchor="middle">正文 + 文件名 / 路径分列</text>
+  <rect id="node-5" data-svg-box="" class="box" x="880" y="430" width="400" height="160" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-5" class="head" x="1080" y="474" text-anchor="middle">关键词：FTS5 索引</text>
+  <text data-svg-container="node-5" class="body" x="1080" y="518" text-anchor="middle">中日韩 trigram 分词</text>
+  <text data-svg-container="node-5" class="body" x="1080" y="556" text-anchor="middle">正文 + 文件名 / 路径分列</text>
 
   <!-- 写入 -->
   <line x1="600" y1="594" x2="640" y2="674" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
   <line x1="1080" y1="594" x2="1040" y2="674" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <rect class="box" x="400" y="680" width="880" height="170" fill="#fffef9" stroke="#c9c2b2"/>
-  <text class="head" x="840" y="724" text-anchor="middle">④ 写入 Agent SQLite（固定提交真实表名）</text>
-  <text class="code" x="440" y="772">memory_index_sources</text>
-  <text class="code" x="440" y="806">memory_index_chunks</text>
-  <text class="code" x="440" y="840">memory_index_chunks_fts</text>
-  <text class="code" x="900" y="772">memory_index_paths_fts</text>
-  <text class="code" x="900" y="806">memory_index_chunks_vec</text>
-  <text class="code" x="900" y="840">memory_embedding_cache</text>
+  <rect id="node-6" data-svg-box="" class="box" x="400" y="680" width="880" height="200" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-6" class="head" x="840" y="724" text-anchor="middle">④ 写入 Agent SQLite（固定提交真实表名）</text>
+  <text data-svg-container="node-6" class="code" x="440" y="772">memory_index_sources</text>
+  <text data-svg-container="node-6" class="code" x="440" y="806">memory_index_chunks</text>
+  <text data-svg-container="node-6" class="code" x="440" y="840">memory_index_chunks_fts</text>
+  <text data-svg-container="node-6" class="code" x="900" y="772">memory_index_paths_fts</text>
+  <text data-svg-container="node-6" class="code" x="900" y="806">memory_index_chunks_vec</text>
+  <text data-svg-container="node-6" class="code" x="900" y="840">memory_embedding_cache</text>
 </svg>
