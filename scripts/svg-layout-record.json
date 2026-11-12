@@ -82,6 +82,14 @@
       "sha256": "c1350094d94c9251774b3cdfb10964dbae160b47218da50fc386e0e8368100f2",
       "mode": "legacy"
     },
+    "public/images/architecture/ipc-data-paths.svg": {
+      "sha256": "3fcbb0f4db3d69297a9cd14cc0749594216065999c57cb1723583e4accfd73b7",
+      "mode": "checked"
+    },
+    "public/images/architecture/ipc-selection-guide.svg": {
+      "sha256": "d02ac9b7680071f7b4d6f5c8a6ba1a79930f674af82e2dd78ceb996df6b03c9f",
+      "mode": "checked"
+    },
     "public/images/claw/gemini-native-signature-flow.svg": {
       "sha256": "9e1bb5377a40e9b5393dec256667a00cc7ec615bb517bd92aef36999c146614d",
       "mode": "legacy"
