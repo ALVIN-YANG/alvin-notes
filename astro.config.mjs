@@ -59,7 +59,6 @@ export default defineConfig({
     '/network/1-IPv4地址范围与作用': '/network/ipv4-address-ranges/',
     '/network/2-获取用户真实IP': '/network/client-real-ip/',
     '/network/3-Git 22端口被网络代理禁用': '/network/git-ssh-over-https/',
-    '/java/04-architecture/5-ddd-tactical-design-落地': '/java/04-architecture/5-ddd-tactical-design/',
   },
   integrations: [
     sitemap(),

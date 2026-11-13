@@ -227,11 +227,6 @@
       "permanent": true
     },
     {
-      "source": "/java/04-architecture/5-ddd-tactical-design-%E8%90%BD%E5%9C%B0/",
-      "destination": "/java/04-architecture/5-ddd-tactical-design/",
-      "permanent": true
-    },
-    {
       "source": "/ai/prompt-engineering/",
       "destination": "/ai-workflow/chapters/16-prompt-task-contract-practice/",
       "statusCode": 301
