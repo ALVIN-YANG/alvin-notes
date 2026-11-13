@@ -36,7 +36,6 @@ const articleIndex = {
   ],
   'runtime-orchestration': [
     { title: 'Agent 状态保存与恢复', href: '/ai/agent-context-persistence-recovery/' },
-    { title: '虚拟角色任务系统', href: '/architecture/virtual-character-workflow-task-system/' },
   ],
   'evaluation-evolution': [
     { title: 'AI Agent 怎么做评测', href: '/ai/agent-evaluation-observability/' },
