@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">IPC 选型决策树</title><desc id="desc">依次判断业务数据、持久化、跨机器、大数据、双向通信、消息边界和进程关系，得到通知、文件、TCP、共享内存、Unix 套接字、消息队列、匿名管道或 FIFO。</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#73809a"/></marker></defs>
+  <rect width="1200" height="900" rx="24" fill="#f7f8fc"/>
+  <g font-family="system-ui,-apple-system,'PingFang SC',sans-serif" fill="#17223b" text-anchor="middle">
+    <text x="40" y="48" font-size="30" font-weight="700" data-svg-label="" text-anchor="start">按硬约束逐级排除</text>
+    <rect id="q1" data-svg-box="" data-svg-padding="12" x="390" y="75" width="300" height="64" rx="16" fill="#17223b"/><text x="540" y="116" font-size="23" font-weight="700" fill="#fff" data-svg-container="q1">要传业务数据吗？</text>
+    <rect id="signal" data-svg-box="" data-svg-padding="12" x="55" y="180" width="270" height="64" rx="16" fill="#fff4e8"/><text x="190" y="220" font-size="22" font-weight="700" fill="#a45a17" data-svg-container="signal">信号 / eventfd</text>
+    <rect id="q2" data-svg-box="" data-svg-padding="12" x="390" y="180" width="300" height="64" rx="16" fill="#ffffff" stroke="#aab4c8" stroke-width="2"/><text x="540" y="220" font-size="23" font-weight="650" data-svg-container="q2">要持久化吗？</text>
+    <rect id="file" data-svg-box="" data-svg-padding="12" x="875" y="180" width="270" height="64" rx="16" fill="#eef1f5"/><text x="1010" y="220" font-size="22" font-weight="700" data-svg-container="file">文件 / 数据库</text>
+    <rect id="q3" data-svg-box="" data-svg-padding="12" x="390" y="285" width="300" height="64" rx="16" fill="#ffffff" stroke="#aab4c8" stroke-width="2"/><text x="540" y="325" font-size="23" font-weight="650" data-svg-container="q3">未来要跨机器吗？</text>
+    <rect id="tcp" data-svg-box="" data-svg-padding="12" x="875" y="285" width="270" height="64" rx="16" fill="#eef1f5"/><text x="1010" y="325" font-size="22" font-weight="700" data-svg-container="tcp">回环 TCP + RPC</text>
+    <rect id="q4" data-svg-box="" data-svg-padding="12" x="390" y="390" width="300" height="64" rx="16" fill="#ffffff" stroke="#aab4c8" stroke-width="2"/><text x="540" y="430" font-size="23" font-weight="650" data-svg-container="q4">大块且高频吗？</text>
+    <rect id="shm" data-svg-box="" data-svg-padding="12" x="875" y="390" width="270" height="64" rx="16" fill="#e9f7f3"/><text x="1010" y="430" font-size="22" font-weight="700" fill="#117d6b" data-svg-container="shm">共享内存 + 通知</text>
+    <rect id="q5" data-svg-box="" data-svg-padding="12" x="390" y="495" width="300" height="64" rx="16" fill="#ffffff" stroke="#aab4c8" stroke-width="2"/><text x="540" y="535" font-size="23" font-weight="650" data-svg-container="q5">双向请求响应吗？</text>
+    <rect id="uds" data-svg-box="" data-svg-padding="12" x="875" y="495" width="270" height="64" rx="16" fill="#5268d8"/><text x="1010" y="535" font-size="22" font-weight="700" fill="#fff" data-svg-container="uds">Unix 套接字</text>
+    <rect id="q6" data-svg-box="" data-svg-padding="12" x="390" y="600" width="300" height="64" rx="16" fill="#ffffff" stroke="#aab4c8" stroke-width="2"/><text x="540" y="640" font-size="23" font-weight="650" data-svg-container="q6">需要消息边界吗？</text>
+    <rect id="mq" data-svg-box="" data-svg-padding="12" x="875" y="600" width="270" height="64" rx="16" fill="#f1ecfa"/><text x="1010" y="640" font-size="22" font-weight="700" fill="#6d4ca7" data-svg-container="mq">消息队列 / UDS 数据报</text>
+    <rect id="q7" data-svg-box="" data-svg-padding="12" x="390" y="705" width="300" height="64" rx="16" fill="#ffffff" stroke="#aab4c8" stroke-width="2"/><text x="540" y="745" font-size="23" font-weight="650" data-svg-container="q7">有共同祖先吗？</text>
+    <rect id="pipe" data-svg-box="" data-svg-padding="12" x="875" y="705" width="270" height="64" rx="16" fill="#eef1ff"/><text x="1010" y="745" font-size="22" font-weight="700" fill="#4256c6" data-svg-container="pipe">匿名管道</text>
+    <rect id="fifo" data-svg-box="" data-svg-padding="12" x="55" y="705" width="270" height="64" rx="16" fill="#eef1ff"/><text x="190" y="745" font-size="22" font-weight="700" fill="#4256c6" data-svg-container="fifo">FIFO 命名管道</text>
+    <rect id="note" data-svg-box="" data-svg-padding="12" x="390" y="815" width="300" height="55" rx="14" fill="#fff4e8"/><text x="540" y="850" font-size="18" fill="#a45a17" data-svg-container="note">都要补背压、权限与恢复</text>
+  </g>
+  <g fill="none" stroke="#73809a" stroke-width="2.5" marker-end="url(#a)">
+    <path d="M390 107H190V164"/><path d="M540 139V164"/><path d="M690 212H859"/><path d="M540 244V269"/><path d="M690 317H859"/><path d="M540 349V374"/><path d="M690 422H859"/><path d="M540 454V479"/><path d="M690 527H859"/><path d="M540 559V584"/><path d="M690 632H859"/><path d="M540 664V689"/><path d="M690 737H859"/><path d="M390 737H190V689"/><path d="M540 769V799"/>
+  </g>
+  <g font-family="system-ui,-apple-system,'PingFang SC',sans-serif" font-size="16" fill="#667085">
+    <text x="310" y="98" data-svg-label="">否</text><text x="555" y="158" data-svg-label="">是</text><text x="760" y="202" data-svg-label="">是</text><text x="555" y="263" data-svg-label="">否</text><text x="760" y="307" data-svg-label="">是</text><text x="555" y="368" data-svg-label="">否</text><text x="760" y="412" data-svg-label="">是</text><text x="555" y="473" data-svg-label="">否</text><text x="760" y="517" data-svg-label="">是</text><text x="555" y="578" data-svg-label="">否</text><text x="760" y="622" data-svg-label="">是</text><text x="555" y="683" data-svg-label="">否</text><text x="760" y="727" data-svg-label="">是</text><text x="350" y="727" data-svg-label="">否</text>
+  </g>
+</svg>

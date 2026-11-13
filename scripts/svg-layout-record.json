@@ -82,12 +82,32 @@
       "sha256": "c1350094d94c9251774b3cdfb10964dbae160b47218da50fc386e0e8368100f2",
       "mode": "legacy"
     },
-    "public/images/architecture/ipc-data-paths.svg": {
-      "sha256": "3fcbb0f4db3d69297a9cd14cc0749594216065999c57cb1723583e4accfd73b7",
+    "public/images/architecture/ipc-decision-tree.svg": {
+      "sha256": "5e5fe3295bd7de02754b284727dad09389713160fdba39ecd91c2ad4d3d5b7e4",
       "mode": "checked"
     },
-    "public/images/architecture/ipc-selection-guide.svg": {
-      "sha256": "d02ac9b7680071f7b4d6f5c8a6ba1a79930f674af82e2dd78ceb996df6b03c9f",
+    "public/images/architecture/ipc-message-queue.svg": {
+      "sha256": "c3146bcde1519ebf2678615daf1a74f18123b8c2e248466e928ebede1a057525",
+      "mode": "checked"
+    },
+    "public/images/architecture/ipc-notification.svg": {
+      "sha256": "141a78169966d1810bed8cd811da2e5ba30ba1200de772b9ad526fa364b9c844",
+      "mode": "checked"
+    },
+    "public/images/architecture/ipc-overview.svg": {
+      "sha256": "263eb7e581478db3586c649d47abdc95b4af393aaa71b53a0fb652cf0c1b9a57",
+      "mode": "checked"
+    },
+    "public/images/architecture/ipc-pipe.svg": {
+      "sha256": "5fa2ced3b959dcd36b41b8dc9dfc49c98fe170a3b774b3781ff0b63454809093",
+      "mode": "checked"
+    },
+    "public/images/architecture/ipc-shared-memory.svg": {
+      "sha256": "c2f8a1c604c5de1533c98ac4ab9f68f31d45315c86f9013951013da75a348403",
+      "mode": "checked"
+    },
+    "public/images/architecture/ipc-unix-socket.svg": {
+      "sha256": "776d36f19caed7e6867c3956fd9888006f2b13264d2d6c66fd1e3c178810bbe1",
       "mode": "checked"
     },
     "public/images/claw/gemini-native-signature-flow.svg": {

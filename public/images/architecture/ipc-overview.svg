@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" role="img" aria-labelledby="title desc">
+  <title id="title">IPC 的三条基本通路</title><desc id="desc">两个独立进程可以通过内核转发、共享物理页或事件通知协作。</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#5268d8"/></marker></defs>
+  <rect width="1000" height="560" rx="24" fill="#f7f8fc"/>
+  <g font-family="system-ui,-apple-system,'PingFang SC',sans-serif" fill="#17223b">
+    <text x="40" y="58" font-size="32" font-weight="700" data-svg-label="">独立进程怎样协作？</text>
+    <rect id="oa" data-svg-box="" x="50" y="130" width="220" height="330" rx="22" fill="#ffffff" stroke="#dfe3ef" stroke-width="2"/>
+    <circle cx="160" cy="220" r="42" fill="#eef1ff"/><path d="M135 220h50M160 195v50" stroke="#5268d8" stroke-width="5" stroke-linecap="round"/>
+    <text x="160" y="310" text-anchor="middle" font-size="27" font-weight="700" data-svg-container="oa">进程 A</text>
+    <text x="160" y="350" text-anchor="middle" font-size="19" fill="#667085" data-svg-container="oa">独立地址空间</text>
+    <rect id="ob" data-svg-box="" x="730" y="130" width="220" height="330" rx="22" fill="#ffffff" stroke="#dfe3ef" stroke-width="2"/>
+    <circle cx="840" cy="220" r="42" fill="#e9f7f3"/><path d="M815 220h50M840 195v50" stroke="#14967f" stroke-width="5" stroke-linecap="round"/>
+    <text x="840" y="310" text-anchor="middle" font-size="27" font-weight="700" data-svg-container="ob">进程 B</text>
+    <text x="840" y="350" text-anchor="middle" font-size="19" fill="#667085" data-svg-container="ob">独立地址空间</text>
+    <rect id="ok" data-svg-box="" data-svg-padding="12" x="360" y="125" width="280" height="100" rx="18" fill="#5268d8"/>
+    <text x="500" y="166" text-anchor="middle" font-size="25" font-weight="700" fill="#fff" data-svg-container="ok">内核转发</text>
+    <text x="500" y="199" text-anchor="middle" font-size="18" fill="#e8ebff" data-svg-container="ok">写入 → 暂存 → 读取</text>
+    <rect id="om" data-svg-box="" data-svg-padding="12" x="360" y="265" width="280" height="100" rx="18" fill="#14967f"/>
+    <text x="500" y="306" text-anchor="middle" font-size="25" font-weight="700" fill="#fff" data-svg-container="om">共享物理页</text>
+    <text x="500" y="339" text-anchor="middle" font-size="18" fill="#e6fff8" data-svg-container="om">双方直接读写</text>
+    <rect id="oe" data-svg-box="" data-svg-padding="12" x="360" y="405" width="280" height="90" rx="18" fill="#fff4e8"/>
+    <text x="500" y="444" text-anchor="middle" font-size="24" font-weight="700" fill="#a45a17" data-svg-container="oe">信号 / eventfd</text>
+    <text x="500" y="475" text-anchor="middle" font-size="18" fill="#a45a17" data-svg-container="oe">只通知，不传业务数据</text>
+  </g>
+  <g fill="none" stroke="#5268d8" stroke-width="3" stroke-linecap="round" marker-end="url(#a)">
+    <path d="M270 175H344"/><path d="M640 175H714"/><path d="M270 315H344"/><path d="M640 315H714"/><path d="M270 450H344"/><path d="M640 450H714"/>
+  </g>
+</svg>
