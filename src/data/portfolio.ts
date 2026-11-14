@@ -31,6 +31,20 @@ export const portfolio: PortfolioProject[] = [
     ],
   },
   {
+    id: 'suishen-wuqu',
+    name: '随身舞曲',
+    category: 'iOS · 视频转音乐',
+    status: '已上架',
+    summary: '把广场舞视频转成 MP3，存进 U 盘带去跳舞。',
+    implementation: '支持试听、改名、裁剪与 U 盘复制，原文件保留；无需注册、无订阅，媒体在本机处理。已在中国大陆以外地区上架，U 盘需被系统识别并授权。',
+    stack: ['SwiftUI', 'AVFoundation', 'LAME'],
+    icon: '/images/projects/suishen-wuqu.webp',
+    links: [
+      { label: 'App Store', href: 'https://apps.apple.com/us/app/suishen-wuqu/id6832876354' },
+      { label: '产品网站', href: 'https://wuqu.mlxb.cc/' },
+    ],
+  },
+  {
     id: 'secondclick',
     name: 'SecondClick',
     category: 'macOS · Finder 扩展',
