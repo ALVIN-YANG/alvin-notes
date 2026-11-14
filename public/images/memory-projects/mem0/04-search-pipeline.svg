@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1000" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">search 的多信号检索：语义、BM25、实体、时间并行评分，过滤后返回 top_k 条</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="1000" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">search：多种信号一起找，再按范围过滤</text>
+  <text data-svg-label="" class="sub" x="60" y="112">语义、BM25 关键词、实体匹配并行评分并融合，时间推理区分当前、过去与未来</text>
+
+  <rect id="node-1" data-svg-box="" x="210" y="150" width="1020" height="80" rx="12" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text data-svg-container="node-1" class="body" x="720" y="200" text-anchor="middle" font-weight="600">问题：“现在该给我推荐什么水果？”</text>
+  <line x1="720" y1="234" x2="720" y2="276" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-2" data-svg-box="" class="card" x="60" y="280" width="315" height="190" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-2" class="head" x="217" y="324" text-anchor="middle">语义匹配</text>
+  <text data-svg-container="node-2" class="body" x="217" y="368" text-anchor="middle">蓝莓 ≈ 蓝色浆果</text>
+  <text data-svg-container="node-2" class="body" x="217" y="412" text-anchor="middle">意思相近也能找</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="405" y="280" width="315" height="190" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-3" class="head" x="562" y="324" text-anchor="middle">BM25 关键词</text>
+  <text data-svg-container="node-3" class="body" x="562" y="368" text-anchor="middle">精确匹配水果名</text>
+  <text data-svg-container="node-3" class="body" x="562" y="412" text-anchor="middle">订单号、配置项</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="750" y="280" width="315" height="190" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-4" class="head" x="907" y="324" text-anchor="middle">实体匹配</text>
+  <text data-svg-container="node-4" class="body" x="907" y="368" text-anchor="middle">同一实体的记忆</text>
+  <text data-svg-container="node-4" class="body" x="907" y="412" text-anchor="middle">互相关联可加分</text>
+
+  <rect id="node-5" data-svg-box="" class="card" x="1095" y="280" width="315" height="190" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-5" class="head" x="1252" y="324" text-anchor="middle">时间推理</text>
+  <text data-svg-container="node-5" class="body" x="1252" y="368" text-anchor="middle">当前 / 过去 / 未来</text>
+  <text data-svg-container="node-5" class="body" x="1252" y="412" text-anchor="middle">按问题选择日期</text>
+
+  <line x1="217" y1="474" x2="400" y2="536" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="562" y1="474" x2="640" y2="536" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="907" y1="474" x2="820" y2="536" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1252" y1="474" x2="1060" y2="536" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-6" data-svg-box="" class="card" x="260" y="540" width="920" height="110" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-6" class="head" x="720" y="584" text-anchor="middle">多信号融合评分，按 user_id 等条件过滤</text>
+  <text data-svg-container="node-6" class="body" x="720" y="620" text-anchor="middle">返回 top_k 条相关记忆</text>
+
+  <line x1="720" y1="654" x2="720" y2="716" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-7" data-svg-box="" class="card" x="260" y="720" width="920" height="110" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-7" class="head" x="720" y="764" text-anchor="middle">作为参考数据交给主模型</text>
+  <text data-svg-container="node-7" class="body" x="720" y="800" text-anchor="middle">不是系统指令，不直接决定当前偏好</text>
+
+  <text data-svg-label="" class="sub" x="60" y="900">注：BM25 与实体提取需安装 mem0ai[nlp] 及 spaCy 模型；混合检索建议更好的 embedding 模型。</text>
+  <text data-svg-label="" class="sub" x="60" y="940">找到相关记录，不证明内容真实，也不保证最新偏好排在最前。</text>
+</svg>

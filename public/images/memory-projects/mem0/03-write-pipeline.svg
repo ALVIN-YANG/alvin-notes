@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">add 的写入流程：单次 LLM 提取，ADD-only 只新增，实体链接后写入存储</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 27px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="980" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">add：一次提取，只新增，不覆盖</text>
+  <text data-svg-label="" class="sub" x="60" y="112">2026 年 4 月新算法 · 单次 LLM 提取，提取阶段不执行 UPDATE / DELETE</text>
+
+  <rect id="node-1" data-svg-box="" x="210" y="150" width="1020" height="80" rx="12" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text data-svg-container="node-1" class="body" x="720" y="200" text-anchor="middle" font-weight="600">对话：“我喜欢蓝莓，芒果吃了不舒服。”</text>
+  <line x1="720" y1="234" x2="720" y2="256" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-2" data-svg-box="" class="card" x="60" y="260" width="880" height="200" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="100" y="304"><tspan fill="#d97745">①</tspan> 单次 LLM 提取事实</text>
+  <text data-svg-container="node-2" class="body" x="100" y="348">提取事实：“用户喜欢蓝莓”“不要推荐芒果”</text>
+  <text data-svg-container="node-2" class="body" x="100" y="392">Agent 确认的动作也作为事实记录</text>
+  <text data-svg-container="node-2" class="body" x="100" y="436">一次 LLM 调用完成提取</text>
+
+  <line x1="150" y1="464" x2="150" y2="492" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-3" data-svg-box="" class="card" x="60" y="496" width="880" height="150" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-3" class="head" x="100" y="540"><tspan fill="#d97745">②</tspan> ADD-only：只新增</text>
+  <text data-svg-container="node-3" class="body" x="100" y="576">不执行 UPDATE / DELETE：旧记录保留，新事实追加</text>
+  <text data-svg-container="node-3" class="body" x="100" y="614">周三“以后只想买苹果”是新增一条，不是改写周一的记录</text>
+
+  <line x1="150" y1="650" x2="150" y2="678" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-4" data-svg-box="" class="card" x="60" y="682" width="880" height="160" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-4" class="head" x="100" y="726"><tspan fill="#d97745">③</tspan> 实体链接</text>
+  <text data-svg-container="node-4" class="body" x="100" y="766">实体：用户、蓝莓、芒果；生成向量并跨记忆关联</text>
+  <text data-svg-container="node-4" class="body" x="100" y="806">检索时用于实体匹配加分，不修改事实内容</text>
+
+  <line x1="944" y1="360" x2="1012" y2="360" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="944" y1="570" x2="1012" y2="570" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="944" y1="756" x2="1012" y2="756" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-5" data-svg-box="" class="card" x="1020" y="260" width="360" height="572" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-5" class="head" x="1200" y="312" text-anchor="middle">写入记忆存储</text>
+  <text data-svg-container="node-5" class="body" x="1200" y="380" text-anchor="middle">记忆文本 + 向量</text>
+  <text data-svg-container="node-5" class="body" x="1200" y="440" text-anchor="middle">元数据：user_id</text>
+  <text data-svg-container="node-5" class="body" x="1200" y="500" text-anchor="middle">时间与来源</text>
+  <text data-svg-container="node-5" class="body" x="1200" y="560" text-anchor="middle">实体关联</text>
+  <text data-svg-container="node-5" x="1200" y="660" text-anchor="middle" font-size="24" font-weight="600" fill="#b35c2e">旧记录仍在</text>
+  <text data-svg-container="node-5" class="body" x="1200" y="720" text-anchor="middle">供 search 使用</text>
+
+  <text data-svg-label="" class="sub" x="60" y="892">注：一次 add 会调用 LLM 提取和 embedding 服务，产生成本与延迟。</text>
+  <text data-svg-label="" class="sub" x="60" y="932">ADD-only 指提取阶段不覆盖旧记录；应用仍可显式删除或修正数据。</text>
+</svg>

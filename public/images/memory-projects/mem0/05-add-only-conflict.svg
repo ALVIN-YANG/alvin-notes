@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 850" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">ADD-only 的代价：两条偏好同时存在，Mem0 返回相关记录，应用判断当前偏好</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="850" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">ADD-only 的代价：两条偏好同时存在</text>
+  <text data-svg-label="" class="sub" x="60" y="112">周一和周三的记录都在存储里，周五检索时都可能返回</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="180" width="620" height="150" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-1" class="head" x="100" y="224">记忆 ① · 周一</text>
+  <text data-svg-container="node-1" class="body" x="100" y="260">“用户喜欢蓝莓，不要推荐芒果”</text>
+  <text data-svg-container="node-1" class="sub" x="100" y="300">仍然保留，未被覆盖</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="60" y="370" width="620" height="150" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-2" class="head" x="100" y="414">记忆 ② · 周三</text>
+  <text data-svg-container="node-2" class="body" x="100" y="450">“以后只想买苹果”</text>
+  <text data-svg-container="node-2" class="sub" x="100" y="490">新增记录，不与①合并</text>
+
+  <line x1="680" y1="255" x2="756" y2="255" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="680" y1="445" x2="756" y2="445" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-3" data-svg-box="" class="card" x="760" y="180" width="620" height="340" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-3" class="head" x="800" y="232">谁来决定现在推荐什么？</text>
+  <text data-svg-container="node-3" class="body" x="800" y="292">Mem0：返回相关记录与时间信息</text>
+  <text data-svg-container="node-3" class="body" x="800" y="348">应用：结合业务规则判断</text>
+  <text data-svg-container="node-3" class="body" x="800" y="404">例如：以最近一次明确表达为准</text>
+  <text data-svg-container="node-3" x="800" y="460" font-size="24" font-weight="600" fill="#b35c2e">结论：现在推荐苹果</text>
+
+  <text data-svg-label="" x="60" y="562" font-size="24" font-weight="600" fill="#b35c2e">两条记录都可能被 search 返回</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="60" y="600" width="1320" height="140" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-4" class="body" x="100" y="648">如果产品只有一个 preferred_fruit 字段，直接更新业务数据库更简单。</text>
+  <text data-svg-container="node-4" class="body" x="100" y="692">Mem0 更适合保留分散在对话里的偏好、原因和历史变化。</text>
+
+  <text data-svg-label="" class="sub" x="60" y="800">注：时间推理帮助区分当前、过去与未来，但不等于业务上的当前状态字段。</text>
+</svg>

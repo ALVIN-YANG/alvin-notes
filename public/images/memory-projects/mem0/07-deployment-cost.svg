@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">本地库、自托管、托管平台的取舍与每次调用的成本构成</title>
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="900" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">三种使用形态与真实成本</text>
+  <text data-svg-label="" class="sub" x="60" y="112">先看隐私和运维约束，再比较功能；官方基准成绩来自托管平台</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="180" width="420" height="340" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-1" class="head" x="270" y="224" text-anchor="middle">本地库</text>
+  <text data-svg-container="node-1" class="sub" x="270" y="268" text-anchor="middle">pip install mem0ai</text>
+  <text data-svg-container="node-1" class="body" x="270" y="322" text-anchor="middle">适合：验证接入</text>
+  <text data-svg-container="node-1" class="body" x="270" y="376" text-anchor="middle">自己管模型与向量库</text>
+  <text data-svg-container="node-1" class="body" x="270" y="430" text-anchor="middle">无内置认证</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="510" y="180" width="420" height="340" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-2" class="head" x="720" y="224" text-anchor="middle">自托管服务</text>
+  <text data-svg-container="node-2" class="sub" x="720" y="268" text-anchor="middle">docker compose up</text>
+  <text data-svg-container="node-2" class="body" x="720" y="322" text-anchor="middle">适合：自有基础设施</text>
+  <text data-svg-container="node-2" class="body" x="720" y="376" text-anchor="middle">要管认证与数据保留</text>
+  <text data-svg-container="node-2" class="body" x="720" y="430" text-anchor="middle">功能与平台有差异</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="960" y="180" width="420" height="340" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-3" class="head" x="1170" y="224" text-anchor="middle">托管平台</text>
+  <text data-svg-container="node-3" class="sub" x="1170" y="268" text-anchor="middle">app.mem0.ai</text>
+  <text data-svg-container="node-3" class="body" x="1170" y="322" text-anchor="middle">适合：少运维上线</text>
+  <text data-svg-container="node-3" class="body" x="1170" y="376" text-anchor="middle">数据传到外部服务</text>
+  <text data-svg-container="node-3" class="body" x="1170" y="430" text-anchor="middle">含开源版没有的优化</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="60" y="580" width="1320" height="200" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-4" class="head" x="100" y="624">每次调用的成本</text>
+  <text data-svg-container="node-4" class="body" x="100" y="668">add：一次 LLM 提取 + embedding 向量</text>
+  <text data-svg-container="node-4" class="body" x="100" y="712">search：向量检索 + 多信号评分与融合</text>
+  <text data-svg-container="node-4" class="body" x="100" y="756">返回的记忆同样占用上下文 token</text>
+
+  <text data-svg-label="" class="sub" x="60" y="840">注：官方 LoCoMo 92.5 等成绩含托管平台专有优化，开源版只有方向性参考。</text>
+</svg>

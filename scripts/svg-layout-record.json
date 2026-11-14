@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkerHash": "4b71474c80012a199a6f137bbad29d1a728f04ae378e5cd39f774ed13a10c3ea",
+  "checkerHash": "7403b9a28f93f7d7aa4f3dbcf861161c9c72dc0ad26dbf7f46d201a73423baa0",
   "files": {
     "public/images/ai/agent-memory-layers.svg": {
       "sha256": "11bf6d61f3239b42c4d284ac94c5218e2211089102c0919a0d00a2dbb4ed3b28",
@@ -153,6 +153,34 @@
     "public/images/claw/vertex-ai-protocols.svg": {
       "sha256": "edbacc711ac01358a0b54070b1dea745fd3a6e1fae1073979a0b89b10915a2e9",
       "mode": "legacy"
+    },
+    "public/images/memory-projects/mem0/01-mem0-overview.svg": {
+      "sha256": "75fb30c8f47591eae0f259f35be13a3e8a40bffd69ce02f0dd96bed96fb67adb",
+      "mode": "checked"
+    },
+    "public/images/memory-projects/mem0/02-concepts.svg": {
+      "sha256": "6f4e48d3fbfefb4b301aeec8fa1227b1e8d7389ab88477dc6b9ded0458d96e4e",
+      "mode": "checked"
+    },
+    "public/images/memory-projects/mem0/03-write-pipeline.svg": {
+      "sha256": "d428aae09d4c607adc660fde33ea3734bee585db97baa96a4ed1ef317d8375a1",
+      "mode": "checked"
+    },
+    "public/images/memory-projects/mem0/04-search-pipeline.svg": {
+      "sha256": "76417f0eaf2206853e406f8d1f476fefe0838fbb092a8b91abe6f7f799a83e4f",
+      "mode": "checked"
+    },
+    "public/images/memory-projects/mem0/05-add-only-conflict.svg": {
+      "sha256": "6c34e78bd1d862c6e5c5a32a26e2e2126477055db2d76e9737dfe83a71f4f16b",
+      "mode": "checked"
+    },
+    "public/images/memory-projects/mem0/06-user-isolation.svg": {
+      "sha256": "c89f51cb282b3663b3cde6fc93352b3842f31f578dfa4cf0c18a33459e981467",
+      "mode": "checked"
+    },
+    "public/images/memory-projects/mem0/07-deployment-cost.svg": {
+      "sha256": "c0ecacb43316bf41f80139137c08561ad75b41a79a7916728e3c4fec8a9a6944",
+      "mode": "checked"
     },
     "public/images/opencode/omo-architecture.svg": {
       "sha256": "cae7727fbcf62d7d9ac30b9ef647227ff84ccf117b0faa5812b6f59c5e5de8ab",

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 920" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">用户隔离：add、search、删除、导出使用同一边界，检索结果按不可信参考数据处理</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="920" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">user_id：记忆归属要在调用链里保证</text>
+  <text data-svg-label="" class="sub" x="60" y="112">写入、读取、删除、导出使用同一边界；检索结果按不可信参考数据处理</text>
+
+  <rect id="node-1" data-svg-box="" x="210" y="150" width="1020" height="80" rx="12" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text data-svg-container="node-1" class="body" x="720" y="200" text-anchor="middle" font-weight="600">登录身份 → 服务端生成 user_id，不接受客户端随意指定</text>
+
+  <line x1="400" y1="234" x2="400" y2="286" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1040" y1="234" x2="1040" y2="286" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-2" data-svg-box="" class="card" x="60" y="290" width="640" height="340" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-2" class="head" x="100" y="334">正确：同一归属边界</text>
+  <text data-svg-container="node-2" class="body" x="100" y="388">add：写入 alice 的记忆</text>
+  <text data-svg-container="node-2" class="body" x="100" y="442">search：只查 alice</text>
+  <text data-svg-container="node-2" class="body" x="100" y="496">删除、导出、缓存同样按用户</text>
+  <text data-svg-container="node-2" class="body" x="100" y="550">多 Agent 再用 agent_id 区分</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="740" y="290" width="640" height="340" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-3" class="head" x="780" y="334" fill="#b35c2e">危险：常见错误</text>
+  <text data-svg-container="node-3" class="body" x="780" y="388">让模型自己填 user_id</text>
+  <text data-svg-container="node-3" class="body" x="780" y="442">读取加过滤，写入却混用公共用户</text>
+  <text data-svg-container="node-3" class="body" x="780" y="496">把检索结果当成系统指令</text>
+  <text data-svg-container="node-3" class="body" x="780" y="550">缓存跨用户复用</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="60" y="690" width="1320" height="120" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-4" class="body" x="100" y="734">检索到的记忆是参考数据：可能有旧偏好或外部文本，不能当指令执行。</text>
+  <text data-svg-container="node-4" class="body" x="100" y="774">主模型结合当前问题使用，安全边界在归属判断和数据用法。</text>
+
+  <text data-svg-label="" class="sub" x="60" y="870">注：记忆也可能被注入恶意文本，与工具结果一样按不可信数据处理。</text>
+</svg>

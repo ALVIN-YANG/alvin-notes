@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 640" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">记忆记录、检索结果、当前偏好是三件不同的事</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .box { stroke-width: 2; rx: 12; }
+    </style>
+  </defs>
+  <rect width="1440" height="640" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">记忆记录、检索结果、当前偏好是三件事</text>
+  <text data-svg-label="" class="sub" x="60" y="112">保存过 ≠ 找得到 ≠ 现在应该照做</text>
+
+  <rect id="node-1" data-svg-box="" class="box" x="60" y="180" width="400" height="300" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-1" class="head" x="260" y="224" text-anchor="middle">① 记忆记录</text>
+  <text data-svg-container="node-1" class="body" x="260" y="280" text-anchor="middle">“用户喜欢蓝莓”</text>
+  <text data-svg-container="node-1" class="body" x="260" y="330" text-anchor="middle">“以后只想买苹果”</text>
+  <text data-svg-container="node-1" class="body" x="260" y="380" text-anchor="middle">随 add 累积，不覆盖</text>
+
+  <line x1="460" y1="330" x2="516" y2="330" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-2" data-svg-box="" class="box" x="520" y="180" width="400" height="300" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-2" class="head" x="720" y="224" text-anchor="middle">② 检索结果</text>
+  <text data-svg-container="node-2" class="body" x="720" y="280" text-anchor="middle">按相关度排序返回</text>
+  <text data-svg-container="node-2" class="body" x="720" y="330" text-anchor="middle">top_k 条 + 分数</text>
+  <text data-svg-container="node-2" class="body" x="720" y="380" text-anchor="middle">只是参考数据</text>
+
+  <line x1="920" y1="330" x2="976" y2="330" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-3" data-svg-box="" class="box" x="980" y="180" width="400" height="300" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-3" class="head" x="1180" y="224" text-anchor="middle">③ 当前偏好</text>
+  <text data-svg-container="node-3" class="body" x="1180" y="280" text-anchor="middle">应用结合规则判断</text>
+  <text data-svg-container="node-3" class="body" x="1180" y="330" text-anchor="middle">例如：现在推荐苹果</text>
+  <text data-svg-container="node-3" class="body" x="1180" y="380" text-anchor="middle">可写入业务数据库</text>
+
+  <text data-svg-label="" class="sub" x="60" y="560">注：检索到旧记录，不代表它仍是当前偏好；这层判断由应用完成，不是 Mem0 的存储字段。</text>
+</svg>
