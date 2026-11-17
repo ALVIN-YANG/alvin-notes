@@ -57,9 +57,11 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
       </figure>
       <div class="rag-explanation">
         <h3 class="rag-principle-heading">{guide.trigger.title}</h3>
-        <p>{guide.trigger.intro} <a href="#source-trigger-architecture">架构来源</a></p>
+        <p>{guide.trigger.intro}</p>
         <dl class="rag-definitions">{guide.trigger.modes.map((mode) => <div><dt>{mode.name}</dt><dd>{mode.text}</dd></div>)}</dl>
-        <p>{guide.trigger.reliability} <a href="#source-tool-calling">工具调用来源</a></p>
+        <h3 class="rag-principle-heading">{guide.trigger.reliabilityTitle}</h3>
+        <dl class="rag-definitions">{guide.trigger.reliability.map((rule) => <div><dt>{rule.title}</dt><dd>{rule.text}</dd></div>)}</dl>
+        <p><a href="#source-trigger-architecture">架构来源</a> · <a href="#source-tool-calling">工具调用来源</a></p>
         <p class="rag-section-note">{guide.trigger.boundary}</p>
       </div>
       <h3 class="rag-principle-heading">RAG 实现分两步</h3>
