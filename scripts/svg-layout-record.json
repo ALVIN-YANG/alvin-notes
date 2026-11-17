@@ -2,6 +2,26 @@
   "version": 1,
   "checkerHash": "9ed98b1283bbacd59f5eac36d9a3e23aced16d344cd82cc2acb62b0d8365b0d0",
   "files": {
+    "public/images/ai/agent-memory-landscape/01-landscape.svg": {
+      "sha256": "b066dbc95459b2a6f75ce6c91e9bfcd12c8321a5ba16c55b3d405434504c60db",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-landscape/02-claude-code.svg": {
+      "sha256": "84015405faf04e2bbc59ef3824c3e9778ee14872b7ea150b85421545252e3239",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-landscape/03-memory-services.svg": {
+      "sha256": "2b060a74d7930072e457e0367b7e61cb82853e75e926334adea0099f755b5436",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-landscape/04-selection.svg": {
+      "sha256": "e3ee614b56976a2a8e972014feadc1eaa28d80c4cd08812627b2c2f62b65cd2b",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-landscape/05-industry-matrix.svg": {
+      "sha256": "86b443f1feb8e7472f2fa10d51e96a783fc8b4ce5d0adcbd8a17f754c64a86a2",
+      "mode": "checked"
+    },
     "public/images/ai/agent-memory-layers.svg": {
       "sha256": "11bf6d61f3239b42c4d284ac94c5218e2211089102c0919a0d00a2dbb4ed3b28",
       "mode": "legacy"

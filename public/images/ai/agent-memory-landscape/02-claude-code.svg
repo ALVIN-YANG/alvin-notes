@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 920" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">Claude Code 的双记忆机制：你写的 CLAUDE.md 与 Claude 自己记的 Auto memory</title>
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="920" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">Claude Code：两套互补的记忆机制</text>
+  <text data-svg-label="" class="sub" x="60" y="112">CLAUDE.md 是你写的规则，Auto memory 是 Claude 自己记的笔记；都是上下文，不是强制配置</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="160" width="640" height="400" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-1" class="head" x="100" y="204">CLAUDE.md：你写规则</text>
+  <text data-svg-container="node-1" class="body" x="100" y="252">组织策略 / 用户 / 项目三级</text>
+  <text data-svg-container="node-1" class="body" x="100" y="296">AGENTS.md 可替代</text>
+  <text data-svg-container="node-1" class="body" x="100" y="340">.claude/rules 按路径生效</text>
+  <text data-svg-container="node-1" class="body" x="100" y="384">每次会话启动加载</text>
+  <text data-svg-container="node-1" class="body" x="100" y="428">根文件 /compact 后重读</text>
+  <text data-svg-container="node-1" class="body" x="100" y="472">适合：编码规范、项目约定</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="740" y="160" width="640" height="400" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="780" y="204">Auto memory：Claude 自己记</text>
+  <text data-svg-container="node-2" class="body" x="780" y="252">从纠正和偏好中学习</text>
+  <text data-svg-container="node-2" class="body" x="780" y="296">按仓库存放，worktree 共享</text>
+  <text data-svg-container="node-2" class="body" x="780" y="340">每会话前 200 行或 25KB</text>
+  <text data-svg-container="node-2" class="body" x="780" y="384">适合：偏好、踩过的坑</text>
+  <text data-svg-container="node-2" class="body" x="780" y="428">写错也会持续加载</text>
+  <text data-svg-container="node-2" class="body" x="780" y="472">要硬约束用 PreToolUse hook</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="60" y="630" width="1320" height="130" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-3" class="head" x="100" y="674">共同点与边界</text>
+  <text data-svg-container="node-3" class="body" x="100" y="718">启动加载的提示，不是强制执行；要禁止动作用 hook，不靠记忆</text>
+
+  <text data-svg-label="" class="sub" x="60" y="820">官方文档：code.claude.com/docs/en/memory。</text>
+  <text data-svg-label="" class="sub" x="60" y="860">Codex 用 AGENTS.md 链，Gemini CLI 用 GEMINI.md 层级，Cursor/Cline 见正文。</text>
+</svg>

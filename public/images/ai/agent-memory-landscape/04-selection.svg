@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1190" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">十个典型场景对应的记忆方案选择</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 12; }
+    </style>
+  </defs>
+  <rect width="1440" height="1190" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">场景选型：先看约束，再看实现</text>
+  <text data-svg-label="" class="sub" x="60" y="112">先看关系深度与数据敏感性，再看部署与成本约束</text>
+
+  <rect id="s1" data-svg-box="" class="card" x="60" y="150" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s1" class="body" x="340" y="198" text-anchor="middle">团队协作写代码</text>
+  <line x1="620" y1="190" x2="696" y2="190" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r1" data-svg-box="" class="card" x="700" y="150" width="680" height="80" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="r1" class="body" x="1040" y="198" text-anchor="middle">文件记忆：CLAUDE.md / AGENTS.md</text>
+
+  <rect id="s2" data-svg-box="" class="card" x="60" y="245" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s2" class="body" x="340" y="293" text-anchor="middle">自托管个人助理</text>
+  <line x1="620" y1="285" x2="696" y2="285" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r2" data-svg-box="" class="card" x="700" y="245" width="680" height="80" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="r2" class="body" x="1040" y="293" text-anchor="middle">OpenClaw / Hermes / DSH 插件</text>
+
+  <rect id="s3" data-svg-box="" class="card" x="60" y="340" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s3" class="body" x="340" y="388" text-anchor="middle">个人生活助理与陪伴</text>
+  <line x1="620" y1="380" x2="696" y2="380" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r3" data-svg-box="" class="card" x="700" y="340" width="680" height="80" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="r3" class="body" x="1040" y="388" text-anchor="middle">Muse / Dots / Grok Bot / Replika</text>
+
+  <rect id="s4" data-svg-box="" class="card" x="60" y="435" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s4" class="body" x="340" y="483" text-anchor="middle">做自己的产品，要跨会话个性化</text>
+  <line x1="620" y1="475" x2="696" y2="475" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r4" data-svg-box="" class="card" x="700" y="435" width="680" height="80" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="r4" class="body" x="1040" y="483" text-anchor="middle">Mem0 / Hindsight / Zep 等记忆服务</text>
+
+  <rect id="s5" data-svg-box="" class="card" x="60" y="530" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s5" class="body" x="340" y="578" text-anchor="middle">重点是用户画像与推理</text>
+  <line x1="620" y1="570" x2="696" y2="570" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r5" data-svg-box="" class="card" x="700" y="530" width="680" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="r5" class="body" x="1040" y="578" text-anchor="middle">Honcho / Memobase</text>
+
+  <rect id="s6" data-svg-box="" class="card" x="60" y="625" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s6" class="body" x="340" y="673" text-anchor="middle">只要任务断点恢复</text>
+  <line x1="620" y1="665" x2="696" y2="665" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r6" data-svg-box="" class="card" x="700" y="625" width="680" height="80" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="r6" class="body" x="1040" y="673" text-anchor="middle">框架运行时：checkpointer 等</text>
+
+  <rect id="s7" data-svg-box="" class="card" x="60" y="720" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s7" class="body" x="340" y="768" text-anchor="middle">游戏 NPC / 角色陪伴</text>
+  <line x1="620" y1="760" x2="696" y2="760" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r7" data-svg-box="" class="card" x="700" y="720" width="680" height="80" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="r7" class="body" x="1040" y="768" text-anchor="middle">记忆流 + 反思（Generative Agents）</text>
+
+  <rect id="s8" data-svg-box="" class="card" x="60" y="815" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s8" class="body" x="340" y="863" text-anchor="middle">企业 AI 员工</text>
+  <line x1="620" y1="855" x2="696" y2="855" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r8" data-svg-box="" class="card" x="700" y="815" width="680" height="80" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="r8" class="body" x="1040" y="863" text-anchor="middle">企业平台记忆：AgentRun 等</text>
+
+  <rect id="s9" data-svg-box="" class="card" x="60" y="910" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s9" class="body" x="340" y="958" text-anchor="middle">导游 / 医院 / 政务指引</text>
+  <line x1="620" y1="950" x2="696" y2="950" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r9" data-svg-box="" class="card" x="700" y="910" width="680" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="r9" class="body" x="1040" y="958" text-anchor="middle">RAG + 实时接口，克制记忆</text>
+
+  <rect id="s10" data-svg-box="" class="card" x="60" y="1005" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="s10" class="body" x="340" y="1053" text-anchor="middle">个人日常聊天，不做产品</text>
+  <line x1="620" y1="1045" x2="696" y2="1045" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect id="r10" data-svg-box="" class="card" x="700" y="1005" width="680" height="80" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="r10" class="body" x="1040" y="1053" text-anchor="middle">ChatGPT / Claude.ai 内置记忆</text>
+
+  <text data-svg-label="" class="sub" x="60" y="1150">同一应用可组合多个方向：文件记忆管项目约定，记忆服务管终端用户偏好。</text>
+</svg>

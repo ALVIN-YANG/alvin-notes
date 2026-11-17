@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1000" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">行业场景矩阵：关系深度与数据敏感性决定记忆策略</title>
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="1000" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">行业场景：关系深度与数据敏感性决定记忆策略</text>
+  <text data-svg-label="" class="sub" x="60" y="112">游戏要重仓记忆，企业要审计归属，指引类要克制；业务事实永远实时查</text>
+
+  <text data-svg-label="" class="sub" x="720" y="170" text-anchor="middle">数据敏感性：上高下低</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="120" y="200" width="580" height="220" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-1" class="head" x="150" y="244">医院 / 政务指引</text>
+  <text data-svg-container="node-1" class="body" x="150" y="288">克制记忆，只放低风险偏好</text>
+  <text data-svg-container="node-1" class="body" x="150" y="332">业务事实实时查接口</text>
+  <text data-svg-container="node-1" class="body" x="150" y="376">敏感数据最小化、可删除</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="740" y="200" width="580" height="220" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="770" y="244">企业 AI 员工</text>
+  <text data-svg-container="node-2" class="body" x="770" y="288">归属 + 审计 + 权限</text>
+  <text data-svg-container="node-2" class="body" x="770" y="332">AgentRun：版本历史与操作者</text>
+  <text data-svg-container="node-2" class="body" x="770" y="376">团队共享与个人记忆分开</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="120" y="460" width="580" height="220" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-3" class="head" x="150" y="504">一次性工具问答</text>
+  <text data-svg-container="node-3" class="body" x="150" y="548">轻记忆或不记</text>
+  <text data-svg-container="node-3" class="body" x="150" y="592">没有长期关系要维护</text>
+  <text data-svg-container="node-3" class="body" x="150" y="636">别为个性化增加泄露面</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="740" y="460" width="580" height="220" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-4" class="head" x="770" y="504">游戏 NPC / 陪伴</text>
+  <text data-svg-container="node-4" class="body" x="770" y="548">记忆是产品本体</text>
+  <text data-svg-container="node-4" class="body" x="770" y="592">记忆流 + 定期反思</text>
+  <text data-svg-container="node-4" class="body" x="770" y="636">人格一致性优先于数量</text>
+
+  <text data-svg-label="" class="sub" x="720" y="730" text-anchor="middle">关系深度：左一次性，右长期</text>
+
+  <rect id="node-5" data-svg-box="" class="card" x="60" y="760" width="1320" height="130" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-5" class="head" x="100" y="804">选型三约束</text>
+  <text data-svg-container="node-5" class="body" x="100" y="848">关系深度决定要不要记，数据敏感性决定能不能记，业务事实永远实时查</text>
+
+  <text data-svg-label="" class="sub" x="60" y="950">指引类场景上重型记忆系统通常是负收益：合规成本上升，个性化收益有限。</text>
+</svg>

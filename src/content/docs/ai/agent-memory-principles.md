@@ -126,6 +126,7 @@ M1 说喜欢蓝莓，M3 说只想买苹果。冲突怎么处理，是各系统�
 ### B. 深入阅读
 
 - [混合检索原理](/ai/hybrid-retrieval-principles/)：语义、BM25、实体、时间、融合评分、MMR、评估指标的手算拆解。
+- [记忆方案全景](/ai/agent-memory-landscape/)：六种产品方向与行业场景的主流实现对照。
 - [OpenClaw 记忆系统拆解](/claw/openclaw/9-memory-system-deep-dive/)、[Mem0 记忆层拆解](/memory-projects/mem0/)、[Hindsight 长期记忆](/ai/hindsight-agent-memory/)。
 - [Hermes 记忆系统源码解读](https://baoyu.io/blog/2026-04-29/manthanguptaa-2034849672985288957)：冻结快照与冷热分离的设计动机。
 

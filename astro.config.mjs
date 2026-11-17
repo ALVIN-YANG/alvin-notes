@@ -153,6 +153,7 @@ export default defineConfig({
               { label: '记忆系统设计', link: '/ai/agent-memory-system-design/' },
             { label: '混合检索原理', link: '/ai/hybrid-retrieval-principles/' },
             { label: 'Agent 记忆原理', link: '/ai/agent-memory-principles/' },
+            { label: '记忆方案全景', link: '/ai/agent-memory-landscape/' },
               { label: 'OpenClaw 记忆深度拆解', link: '/claw/openclaw/9-memory-system-deep-dive/' },
               { label: 'Hindsight 长期记忆', link: '/ai/hindsight-agent-memory/' },
               { label: '环境感知与缓存', link: '/ai/agent-environment-awareness-llm-cache/' },
