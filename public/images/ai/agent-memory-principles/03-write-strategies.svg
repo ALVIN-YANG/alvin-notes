@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">全量记录、提取筛选、整理策展三种写入策略，以及触发时机与来源信任</title>
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="900" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">写入：全量、提取、整理，三种策略可共存</text>
+  <text data-svg-label="" class="sub" x="60" y="112">写入规则决定记忆质量上限，检索只能在上限内发挥</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="160" width="420" height="340" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-1" class="head" x="270" y="204" text-anchor="middle">全量记录</text>
+  <text data-svg-container="node-1" class="body" x="270" y="252" text-anchor="middle">每条消息都存</text>
+  <text data-svg-container="node-1" class="body" x="270" y="296" text-anchor="middle">不判断重要性</text>
+  <text data-svg-container="node-1" class="body" x="270" y="340" text-anchor="middle">证据完整</text>
+  <text data-svg-container="node-1" class="body" x="270" y="384" text-anchor="middle">噪声也完整</text>
+  <text data-svg-container="node-1" class="body" x="270" y="432" text-anchor="middle">OpenClaw 原始会话</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="510" y="160" width="420" height="340" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="720" y="204" text-anchor="middle">提取筛选</text>
+  <text data-svg-container="node-2" class="body" x="720" y="252" text-anchor="middle">模型抽出事实</text>
+  <text data-svg-container="node-2" class="body" x="720" y="296" text-anchor="middle">Mem0：add 单次提取</text>
+  <text data-svg-container="node-2" class="body" x="720" y="340" text-anchor="middle">Hindsight：retain</text>
+  <text data-svg-container="node-2" class="body" x="720" y="384" text-anchor="middle">质量靠模型判断</text>
+  <text data-svg-container="node-2" class="body" x="720" y="432" text-anchor="middle">有提取调用成本</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="960" y="160" width="420" height="340" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-3" class="head" x="1170" y="204" text-anchor="middle">整理与策展</text>
+  <text data-svg-container="node-3" class="body" x="1170" y="252" text-anchor="middle">后台定期整理</text>
+  <text data-svg-container="node-3" class="body" x="1170" y="296" text-anchor="middle">OpenClaw：Dreaming</text>
+  <text data-svg-container="node-3" class="body" x="1170" y="340" text-anchor="middle">Hindsight：Observation</text>
+  <text data-svg-container="node-3" class="body" x="1170" y="384" text-anchor="middle">Hermes：容量内策展</text>
+  <text data-svg-container="node-3" class="body" x="1170" y="432" text-anchor="middle">重复与信号驱动</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="60" y="570" width="1320" height="170" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-4" class="head" x="100" y="614">写入前还要回答两个问题</text>
+  <text data-svg-container="node-4" class="body" x="100" y="658">何时触发：每条消息、会话结束、压缩前，还是后台定时</text>
+  <text data-svg-container="node-4" class="body" x="100" y="702">来源可信吗：用户原话、Agent 确认、网页文本，信任等级不同</text>
+
+  <text data-svg-label="" class="sub" x="60" y="800">低信任来源（网页、定时任务、子代理）不应直接变成长期偏好。</text>
+  <text data-svg-label="" class="sub" x="60" y="840">全量靠检索兜底，提取靠模型判断，整理靠时间与信号。</text>
+</svg>

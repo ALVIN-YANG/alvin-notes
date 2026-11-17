@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">记忆系统的六个环节：写入、存储、召回、冲突与遗忘、上下文组装、主模型回答</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="800" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">六个环节：主流记忆系统都在回答同一组问题</text>
+  <text data-svg-label="" class="sub" x="60" y="112">存哪里、写什么、怎么找、冲突怎么办、怎么忘、放多少进上下文</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="180" width="400" height="170" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-1" class="head" x="260" y="224" text-anchor="middle">① 写入</text>
+  <text data-svg-container="node-1" class="body" x="260" y="268" text-anchor="middle">全量 / 提取 / 整理</text>
+  <text data-svg-container="node-1" class="body" x="260" y="312" text-anchor="middle">来源信任决定上限</text>
+
+  <line x1="460" y1="265" x2="516" y2="265" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-2" data-svg-box="" class="card" x="520" y="180" width="400" height="170" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-2" class="head" x="720" y="224" text-anchor="middle">② 存储</text>
+  <text data-svg-container="node-2" class="body" x="720" y="268" text-anchor="middle">原始 · 长期 · 索引</text>
+  <text data-svg-container="node-2" class="body" x="720" y="312" text-anchor="middle">业务状态另算</text>
+
+  <line x1="920" y1="265" x2="976" y2="265" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-3" data-svg-box="" class="card" x="980" y="180" width="400" height="170" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-3" class="head" x="1180" y="224" text-anchor="middle">③ 召回</text>
+  <text data-svg-container="node-3" class="body" x="1180" y="268" text-anchor="middle">固定加载 + 按需检索</text>
+  <text data-svg-container="node-3" class="body" x="1180" y="312" text-anchor="middle">多信号 + 融合</text>
+
+  <line x1="1180" y1="354" x2="1180" y2="446" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-4" data-svg-box="" class="card" x="980" y="450" width="400" height="170" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-4" class="head" x="1180" y="494" text-anchor="middle">④ 冲突与遗忘</text>
+  <text data-svg-container="node-4" class="body" x="1180" y="538" text-anchor="middle">覆盖 / 累积 / 标记 / 挤出</text>
+  <text data-svg-container="node-4" class="body" x="1180" y="582" text-anchor="middle">删除派生数据</text>
+
+  <line x1="980" y1="535" x2="936" y2="535" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-5" data-svg-box="" class="card" x="520" y="450" width="400" height="170" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-5" class="head" x="720" y="494" text-anchor="middle">⑤ 上下文组装</text>
+  <text data-svg-container="node-5" class="body" x="720" y="538" text-anchor="middle">预算与 prompt 缓存</text>
+  <text data-svg-container="node-5" class="body" x="720" y="582" text-anchor="middle">只放相关片段</text>
+
+  <line x1="520" y1="535" x2="476" y2="535" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-6" data-svg-box="" class="card" x="60" y="450" width="400" height="170" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-6" class="head" x="260" y="494" text-anchor="middle">⑥ 主模型回答</text>
+  <text data-svg-container="node-6" class="body" x="260" y="538" text-anchor="middle">记忆是参考数据</text>
+  <text data-svg-container="node-6" class="body" x="260" y="582" text-anchor="middle">不是系统指令</text>
+
+  <text data-svg-label="" class="sub" x="60" y="700">六个环节普遍存在，产品差别在选择；③④ 决定有没有用，⑤ 决定成本。</text>
+  <text data-svg-label="" class="sub" x="60" y="740">检索算法细节见《混合检索原理》，各产品完整拆解见文末链接。</text>
+</svg>

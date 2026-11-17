@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 850" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">原始记录、长期记忆、索引、业务状态的分层关系</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="850" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">四种数据不要混为一谈</text>
+  <text data-svg-label="" class="sub" x="60" y="112">原始记录是证据，长期记忆是整理结果，索引是派生物，业务状态不归记忆系统管</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="160" width="640" height="170" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-1" class="head" x="100" y="204">原始记录</text>
+  <text data-svg-container="node-1" class="body" x="100" y="248">对话与工具结果，全量保存</text>
+  <text data-svg-container="node-1" class="body" x="100" y="292">OpenClaw / Hermes 会话库</text>
+
+  <line x1="700" y1="245" x2="736" y2="245" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-2" data-svg-box="" class="card" x="740" y="160" width="640" height="170" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="780" y="204">长期记忆</text>
+  <text data-svg-container="node-2" class="body" x="780" y="248">偏好、决定、经验</text>
+  <text data-svg-container="node-2" class="body" x="780" y="292">MEMORY.md · Mem0 · world fact</text>
+
+  <line x1="380" y1="334" x2="380" y2="376" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="780" y1="334" x2="640" y2="376" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-3" data-svg-box="" class="card" x="60" y="380" width="640" height="170" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-3" class="head" x="100" y="424">索引（派生物）</text>
+  <text data-svg-container="node-3" class="body" x="100" y="468">切片、向量、关键词表</text>
+  <text data-svg-container="node-3" class="body" x="100" y="512">丢失可重建，不是记忆本身</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="740" y="380" width="640" height="170" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-4" class="head" x="780" y="424">业务状态</text>
+  <text data-svg-container="node-4" class="body" x="780" y="468">当前设置、订单、在线状态</text>
+  <text data-svg-container="node-4" class="body" x="780" y="512">查询走业务数据库</text>
+
+  <rect id="node-5" data-svg-box="" class="card" x="60" y="620" width="1320" height="130" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-5" class="head" x="100" y="664">为什么要分开</text>
+  <text data-svg-container="node-5" class="body" x="100" y="708">只删长期记忆、留着原始记录，下次整理会恢复；当前状态查记忆会拿到旧值</text>
+
+  <text data-svg-label="" class="sub" x="60" y="810">注：混淆层次的典型后果：索引当备份、历史偏好当当前状态、删除后又被恢复。</text>
+</svg>

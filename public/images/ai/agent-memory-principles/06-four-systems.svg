@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1030" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">OpenClaw、Mem0、Hindsight、Hermes 的设计选择与适用场景</title>
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="1030" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">四个系统对号入座</text>
+  <text data-svg-label="" class="sub" x="60" y="112">同一组六环节问题，四种不同的回答；选择取决于写入信任、冲突策略与成本约束</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="160" width="640" height="330" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-1" class="head" x="100" y="204">OpenClaw：文件 + 后台整理</text>
+  <text data-svg-container="node-1" class="body" x="100" y="252">Markdown + SQLite</text>
+  <text data-svg-container="node-1" class="body" x="100" y="296">全量记录 + Dreaming 提升</text>
+  <text data-svg-container="node-1" class="body" x="100" y="340">固定加载 + trigger + 混合检索</text>
+  <text data-svg-container="node-1" class="body" x="100" y="384">superseded 标记替代</text>
+  <text data-svg-container="node-1" class="body" x="100" y="428">适合：自托管、要可解释</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="740" y="160" width="640" height="330" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="780" y="204">Mem0：现成记忆层</text>
+  <text data-svg-container="node-2" class="body" x="780" y="252">add / search 两个动作</text>
+  <text data-svg-container="node-2" class="body" x="780" y="296">ADD-only + 多信号融合</text>
+  <text data-svg-container="node-2" class="body" x="780" y="340">时间推理辅助排序</text>
+  <text data-svg-container="node-2" class="body" x="780" y="384">冲突交给应用判断</text>
+  <text data-svg-container="node-2" class="body" x="780" y="428">适合：快速接入现有 Agent</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="60" y="540" width="640" height="330" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-3" class="head" x="100" y="584">Hindsight：记忆服务</text>
+  <text data-svg-container="node-3" class="body" x="100" y="628">retain / recall / reflect</text>
+  <text data-svg-container="node-3" class="body" x="100" y="672">实体 + 时间 + 来源追溯</text>
+  <text data-svg-container="node-3" class="body" x="100" y="716">Observation 后台归纳</text>
+  <text data-svg-container="node-3" class="body" x="100" y="760">同来源修订可覆盖</text>
+  <text data-svg-container="node-3" class="body" x="100" y="804">适合：要解释变化原因</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="740" y="540" width="640" height="330" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-4" class="head" x="780" y="584">Hermes：冷热分离</text>
+  <text data-svg-container="node-4" class="body" x="780" y="628">两个小文件常驻提示词</text>
+  <text data-svg-container="node-4" class="body" x="780" y="672">冻结快照保 prompt 缓存</text>
+  <text data-svg-container="node-4" class="body" x="780" y="716">session_search 冷检索</text>
+  <text data-svg-container="node-4" class="body" x="780" y="760">容量上限迫使策展</text>
+  <text data-svg-container="node-4" class="body" x="780" y="804">适合：成本敏感的个人 Agent</text>
+
+  <text data-svg-label="" class="sub" x="60" y="930">OpenClaw 与 Hermes 是完整 Agent，Mem0 与 Hindsight 是接入 Agent 的记忆层/服务。</text>
+  <text data-svg-label="" class="sub" x="60" y="970">产品细节见各自拆解文章，检索细节见《混合检索原理》。</text>
+</svg>

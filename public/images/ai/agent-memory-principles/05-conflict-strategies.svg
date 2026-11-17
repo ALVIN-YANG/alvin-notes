@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 920" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">覆盖更新、只新增、标记替代、容量挤出四种冲突策略，以及遗忘要删派生数据</title>
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="920" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">冲突与遗忘：四种策略，四种取舍</text>
+  <text data-svg-label="" class="sub" x="60" y="112">M1 喜欢蓝莓、M3 只想买苹果：新旧并存时听哪条，是系统差异最大的地方</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="160" width="640" height="200" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-1" class="head" x="100" y="204">覆盖更新</text>
+  <text data-svg-container="node-1" class="body" x="100" y="248">同一来源修订，替换旧版本</text>
+  <text data-svg-container="node-1" class="body" x="100" y="292">Hindsight：同 document_id replace</text>
+  <text data-svg-container="node-1" class="body" x="100" y="336">代价：变化历史被抹掉</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="740" y="160" width="640" height="200" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="780" y="204">只新增（ADD-only）</text>
+  <text data-svg-container="node-2" class="body" x="780" y="248">Mem0：旧记录保留，新记录追加</text>
+  <text data-svg-container="node-2" class="body" x="780" y="292">历史完整，新旧并存</text>
+  <text data-svg-container="node-2" class="body" x="780" y="336">当前偏好由应用判断</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="60" y="410" width="640" height="200" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-3" class="head" x="100" y="454">标记替代</text>
+  <text data-svg-container="node-3" class="body" x="100" y="498">OpenClaw：旧条 superseded</text>
+  <text data-svg-container="node-3" class="body" x="100" y="542">新条 active，保留来源链</text>
+  <text data-svg-container="node-3" class="body" x="100" y="586">可审计哪条失效</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="740" y="410" width="640" height="200" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-4" class="head" x="780" y="454">容量挤出</text>
+  <text data-svg-container="node-4" class="body" x="780" y="498">Hermes：2200 / 1375 字符上限</text>
+  <text data-svg-container="node-4" class="body" x="780" y="542">写不下就必须合并或丢弃</text>
+  <text data-svg-container="node-4" class="body" x="780" y="586">迫使只留最重要的</text>
+
+  <rect id="node-5" data-svg-box="" class="card" x="60" y="680" width="1320" height="130" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-5" class="head" x="100" y="724">遗忘要删派生数据</text>
+  <text data-svg-container="node-5" class="body" x="100" y="768">删除来源后，索引、归纳摘要、检索缓存、备份都要处理，否则旧内容仍被召回</text>
+
+  <text data-svg-label="" class="sub" x="60" y="870">要历史选累积，要简洁选覆盖或挤出，要审计选标记替代。</text>
+</svg>

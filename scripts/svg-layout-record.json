@@ -6,6 +6,30 @@
       "sha256": "11bf6d61f3239b42c4d284ac94c5218e2211089102c0919a0d00a2dbb4ed3b28",
       "mode": "legacy"
     },
+    "public/images/ai/agent-memory-principles/01-overview.svg": {
+      "sha256": "a1d8f7e86585aa73023734d9673098eda4c1467f0020e38a33a58c02751ff335",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-principles/02-storage-layers.svg": {
+      "sha256": "9735c1074db8d0a1ccceaa021eb10f057ffb5e9b5ed6242e6689eb86cb8f6372",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-principles/03-write-strategies.svg": {
+      "sha256": "8723bd4d7e051f62d10a607c6f3823cc92c3911bdfe955c52889b9201d9d1d37",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-principles/04-recall-two-legs.svg": {
+      "sha256": "b5d190188853e0861ec152052b6d81cd9d97f835cd576cfcde5284c5f56d8f9f",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-principles/05-conflict-strategies.svg": {
+      "sha256": "f8259d0e4c470c0ee816c4626422c0375877e540ab9a80dc1626a7ad0d986315",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-principles/06-four-systems.svg": {
+      "sha256": "b8fba21a5287ef70056aec81778b3459ac5868c8fe1c9aa5a00c34d6cf3efa08",
+      "mode": "checked"
+    },
     "public/images/ai/fc-agent-react-loop.svg": {
       "sha256": "7e24bfc2ff6e886cc4b3c5c153d6d3ba83f1410e2fc8b8637af01025812e4341",
       "mode": "legacy"
