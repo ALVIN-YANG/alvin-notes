@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">检索的两个阶段：四种信号各自召回打分，融合后取 top_k 交给主模型</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="900" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">检索的两个阶段：先召回候选，再融合排序</text>
+  <text data-svg-label="" class="sub" x="60" y="112">找不到是召回问题，排错是排序问题；四种信号各投一票</text>
+
+  <rect id="node-1" data-svg-box="" x="210" y="150" width="1020" height="80" rx="12" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text data-svg-container="node-1" class="body" x="720" y="200" text-anchor="middle" font-weight="600">问题：“现在该给我推荐什么水果？”</text>
+  <line x1="720" y1="234" x2="720" y2="276" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-2" data-svg-box="" class="card" x="60" y="280" width="315" height="170" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-2" class="head" x="217" y="324" text-anchor="middle">语义匹配</text>
+  <text data-svg-container="node-2" class="body" x="217" y="368" text-anchor="middle">向量：意思相近</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="405" y="280" width="315" height="170" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-3" class="head" x="562" y="324" text-anchor="middle">BM25 关键词</text>
+  <text data-svg-container="node-3" class="body" x="562" y="368" text-anchor="middle">字面：精确命中</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="750" y="280" width="315" height="170" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-4" class="head" x="907" y="324" text-anchor="middle">实体匹配</text>
+  <text data-svg-container="node-4" class="body" x="907" y="368" text-anchor="middle">对象：显式关联</text>
+
+  <rect id="node-5" data-svg-box="" class="card" x="1095" y="280" width="315" height="170" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-5" class="head" x="1252" y="324" text-anchor="middle">时间推理</text>
+  <text data-svg-container="node-5" class="body" x="1252" y="368" text-anchor="middle">意图：何时的事</text>
+
+  <line x1="217" y1="454" x2="400" y2="516" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="562" y1="454" x2="640" y2="516" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="907" y1="454" x2="820" y2="516" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1252" y1="454" x2="1060" y2="516" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-6" data-svg-box="" class="card" x="260" y="520" width="920" height="110" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-6" class="head" x="720" y="564" text-anchor="middle">融合评分：加权求和或 RRF</text>
+  <text data-svg-container="node-6" class="body" x="720" y="600" text-anchor="middle">候选统一排序</text>
+
+  <line x1="720" y1="634" x2="720" y2="696" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-7" data-svg-box="" class="card" x="260" y="700" width="920" height="110" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-7" class="head" x="720" y="744" text-anchor="middle">top_k 条交给主模型</text>
+  <text data-svg-container="node-7" class="body" x="720" y="780" text-anchor="middle">找不到 → 查召回；排错 → 查排序与融合</text>
+
+  <text data-svg-label="" class="sub" x="60" y="880">注：语义、BM25、实体、时间是互补信号，不是四个串联过滤器。</text>
+</svg>

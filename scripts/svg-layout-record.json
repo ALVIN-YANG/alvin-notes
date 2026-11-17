@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkerHash": "6ca76c483a3809b46c5727ad39cf800f953318bf3dbf47755a8e995f67e67b7f",
+  "checkerHash": "e6a570e89a77291a1ec8ab265de2c18d9d66a80c42c5e369c54b792294487fb9",
   "files": {
     "public/images/ai/agent-memory-layers.svg": {
       "sha256": "11bf6d61f3239b42c4d284ac94c5218e2211089102c0919a0d00a2dbb4ed3b28",
@@ -41,6 +41,30 @@
     "public/images/ai/function-call-agent-stack.svg": {
       "sha256": "7340705d41e2e5e2a15acc82a117422e3d1a404de3c2a5450e51eb1a75aab4da",
       "mode": "legacy"
+    },
+    "public/images/ai/hybrid-retrieval/01-overview.svg": {
+      "sha256": "b38dd9235273ed051e392353ce1cf91e804568f2a190fbf61ff0f3e1b882cbfe",
+      "mode": "checked"
+    },
+    "public/images/ai/hybrid-retrieval/02-vector-search.svg": {
+      "sha256": "6d16f26c558d861cc8a7f8abd216ebf2dcdb3be43cbeb214983d6f8d31e87463",
+      "mode": "checked"
+    },
+    "public/images/ai/hybrid-retrieval/03-bm25.svg": {
+      "sha256": "23dc084aec1d21b58ae0717fe214ed08fe0a28b4bcdd9b9e80a41da4a2331b98",
+      "mode": "checked"
+    },
+    "public/images/ai/hybrid-retrieval/04-entity-matching.svg": {
+      "sha256": "dd670d0a109fdb94528a8eae11ffcfa3a0421aeccf831d89b232f4bf2b22a064",
+      "mode": "checked"
+    },
+    "public/images/ai/hybrid-retrieval/05-temporal-reasoning.svg": {
+      "sha256": "0ebb2fd030f78db7ae757b5505d802c123330928996b3b53b92dbd271911766e",
+      "mode": "checked"
+    },
+    "public/images/ai/hybrid-retrieval/06-fusion-scoring.svg": {
+      "sha256": "7457ac0787479e52ceec7caca86b4c76464b4acbba12cc4a9e57094fd11010e5",
+      "mode": "checked"
     },
     "public/images/ai/openclaw-plugin-spectrum.svg": {
       "sha256": "8759815589c558d172677d8f793c4afcc92fd88a61d97115bd454f497a3ad6d3",

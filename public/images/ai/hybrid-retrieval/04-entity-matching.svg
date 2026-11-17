@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">NER 抽取对象，实体链接统一写法，检索时按显式关联加分</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="900" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">实体匹配：把“蓝莓”当成确定对象</text>
+  <text data-svg-label="" class="sub" x="60" y="112">NER 找出对象，实体链接统一不同写法，检索时按显式关联加分</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="160" width="560" height="120" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-1" class="body" x="100" y="204" font-weight="600">记忆 M1：</text>
+  <text data-svg-container="node-1" class="body" x="100" y="248">“我喜欢蓝莓，芒果不舒服”</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="60" y="320" width="560" height="120" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-2" class="body" x="100" y="364" font-weight="600">记忆 M2：</text>
+  <text data-svg-container="node-2" class="body" x="100" y="408">“周二下单了 blueberry”</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="760" y="200" width="260" height="80" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-3" class="body" x="890" y="248" text-anchor="middle" font-weight="600">实体：蓝莓</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="760" y="340" width="260" height="80" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-4" class="body" x="890" y="388" text-anchor="middle" font-weight="600">实体：芒果</text>
+
+  <line x1="620" y1="220" x2="756" y2="236" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="620" y1="260" x2="756" y2="372" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="620" y1="360" x2="756" y2="252" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text data-svg-label="" class="sub" x="1060" y="248">不同写法指向同一实体 ID</text>
+
+  <rect id="node-5" data-svg-box="" class="card" x="60" y="560" width="1320" height="170" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-5" class="head" x="100" y="604">检索时怎么用</text>
+  <text data-svg-container="node-5" class="body" x="100" y="648">问题提到“蓝莓” → 挂接同一实体的 M1、M2 一起加分</text>
+  <text data-svg-container="node-5" class="body" x="100" y="692">显式符号匹配：不靠意思相近，但依赖抽取和链接正确</text>
+
+  <text data-svg-label="" class="sub" x="60" y="790">注：NER（命名实体识别）从句子里找出人、物、编号；实体链接统一写法。</text>
+  <text data-svg-label="" class="sub" x="60" y="830">实体关系可放图数据库，也可只是元数据字段，不是必须上图谱。</text>
+</svg>

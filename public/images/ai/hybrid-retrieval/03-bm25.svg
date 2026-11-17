@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1020" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">BM25 的 IDF 计算、TF 饱和与数值示例：芒果约 1.48 分，“的”约 0.05 分</title>
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="1020" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">BM25：常见的词少加分，稀有的词多加分</text>
+  <text data-svg-label="" class="sub" x="60" y="112">TF 词频 × IDF 逆文档频率，再做词频饱和与长度归一；示例库共 10 条记忆</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="160" width="640" height="300" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-1" class="head" x="100" y="204">① 这个词有多稀有（IDF）</text>
+  <text data-svg-container="node-1" class="body" x="100" y="260">10 条记忆里，2 条含“芒果”</text>
+  <text data-svg-container="node-1" class="body" x="100" y="310">IDF = ln(1 + (10−2+0.5)/(2+0.5))</text>
+  <text data-svg-container="node-1" class="body" x="100" y="360">= ln(4.4) ≈ 1.48</text>
+  <text data-svg-container="node-1" class="body" x="100" y="410">10 条都含“的”：IDF ≈ 0.05</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="740" y="160" width="640" height="300" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="780" y="204">② 出现几次、文档多长（TF）</text>
+  <text data-svg-container="node-2" class="body" x="780" y="260">同一文档出现多次会加分</text>
+  <text data-svg-container="node-2" class="body" x="780" y="310">但加得越来越少（k1 = 1.5）</text>
+  <text data-svg-container="node-2" class="body" x="780" y="360">长文档按长度归一（b = 0.75）</text>
+  <text data-svg-container="node-2" class="body" x="780" y="410">短而相关的内容更占优势</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="60" y="520" width="1320" height="120" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-3" class="body" x="100" y="564">score = Σ IDF(词) × [ tf×(k1+1) ] / [ tf + k1×(1−b + b×文档长度/平均长度) ]</text>
+  <text data-svg-container="node-3" class="body" x="100" y="608">tf=1、文档长度=平均长度时，TF 因子 = 1：“芒果”≈ 1.48，“的”≈ 0.05</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="60" y="700" width="1320" height="170" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-4" class="head" x="100" y="744">同一个问题：“哪种水果吃了不舒服”</text>
+  <text data-svg-container="node-4" class="body" x="100" y="788">字面命中“水果”“不舒服”的记录排前；完全同义但不同词的记录可能漏掉</text>
+  <text data-svg-container="node-4" class="body" x="100" y="832">BM25 负责“精确”，语义匹配负责“相近”，两者互补</text>
+
+  <text data-svg-label="" class="sub" x="60" y="930">注：公式是 Okapi BM25 的 Lucene 常用形式；k1=1.5、b=0.75 是常见默认值。</text>
+  <text data-svg-label="" class="sub" x="60" y="970">中文要先分词，分词方式会影响哪些词能命中。</text>
+</svg>

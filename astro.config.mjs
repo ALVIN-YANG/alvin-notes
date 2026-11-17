@@ -151,6 +151,7 @@ export default defineConfig({
               { label: 'RAG 元数据过滤', link: '/rag/chapters/rag-metadata-filtering/' },
               { label: 'RAG 知识库实战', link: '/rag/chapters/rag-knowledge-base-component/' },
               { label: '记忆系统设计', link: '/ai/agent-memory-system-design/' },
+            { label: '混合检索原理', link: '/ai/hybrid-retrieval-principles/' },
               { label: 'OpenClaw 记忆深度拆解', link: '/claw/openclaw/9-memory-system-deep-dive/' },
               { label: 'Hindsight 长期记忆', link: '/ai/hindsight-agent-memory/' },
               { label: '环境感知与缓存', link: '/ai/agent-environment-awareness-llm-cache/' },

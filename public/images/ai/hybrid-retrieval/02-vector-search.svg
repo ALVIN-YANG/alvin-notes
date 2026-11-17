@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">二维演示：蓝莓与蓝色浆果方向接近，余弦相似度约 0.99，与订单编号约 0.32</title>
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="980" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">语义匹配：文字变向量，再算夹角</text>
+  <text data-svg-label="" class="sub" x="60" y="112">真实向量有几百到几千维，这里用二维演示计算过程</text>
+
+  <line x1="100" y1="560" x2="520" y2="560" stroke="#8a8f98" stroke-width="2.5"/>
+  <line x1="100" y1="560" x2="100" y2="190" stroke="#8a8f98" stroke-width="2.5"/>
+  <text data-svg-label="" class="sub" x="450" y="604">维度 1</text>
+  <text data-svg-label="" class="sub" x="30" y="176">维度 2</text>
+
+  <line x1="100" y1="560" x2="460" y2="488" stroke="#d97745" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <line x1="100" y1="560" x2="140" y2="218" stroke="#8a8f98" stroke-width="2.5" stroke-dasharray="8 6"/>
+
+  <circle cx="460" cy="488" r="8" fill="#d97745"/>
+  <circle cx="440" cy="452" r="8" fill="#d97745"/>
+  <circle cx="140" cy="218" r="8" fill="#8a8f98"/>
+  <text data-svg-label="" x="478" y="494" font-size="24">A 蓝莓</text>
+  <text data-svg-label="" x="458" y="448" font-size="24">B 蓝色浆果</text>
+  <text data-svg-label="" x="156" y="214" font-size="24">C 订单编号</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="640" y="180" width="740" height="360" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-1" class="head" x="680" y="224">余弦相似度：只看方向，不看长度</text>
+  <text data-svg-container="node-1" class="body" x="680" y="280">cos(A,B) = (A·B) / (|A| × |B|)</text>
+  <text data-svg-container="node-1" class="body" x="680" y="330">A·B = 0.9×0.85 + 0.2×0.3 = 0.825</text>
+  <text data-svg-container="node-1" class="body" x="680" y="380">|A| ≈ 0.922，|B| ≈ 0.901</text>
+  <text data-svg-container="node-1" x="680" y="430" font-size="24" font-weight="600" fill="#b35c2e">cos(A,B) ≈ 0.99 → 意思相近</text>
+  <text data-svg-container="node-1" class="body" x="680" y="480">cos(A,C) ≈ 0.32 → 不是一回事</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="60" y="640" width="1320" height="220" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="100" y="684">向量擅长什么，漏掉什么</text>
+  <text data-svg-container="node-2" class="body" x="100" y="728">意思相近的文本向量靠近：“蓝莓”和“蓝色浆果”可以互相找到</text>
+  <text data-svg-container="node-2" class="body" x="100" y="772">盲区：精确编号、否定、时间。“不要芒果”和“要芒果”向量可能很近</text>
+  <text data-svg-container="node-2" class="body" x="100" y="816">真实向量由 embedding 模型生成，常用余弦相似度或点积</text>
+
+  <text data-svg-label="" class="sub" x="60" y="930">注：二维只是演示；几亿条向量时用 HNSW 等近似索引加速，见附录 B。</text>
+</svg>
