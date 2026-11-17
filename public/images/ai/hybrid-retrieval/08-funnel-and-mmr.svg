@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">候选漏斗、MMR 数值示例与 Recall@k、MRR、nDCG 三个评估指标</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="980" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">候选漏斗与多样性：先够多，再排准，再去重</text>
+  <text data-svg-label="" class="sub" x="60" y="112">召回预算决定 rerank 的上限；MMR 避免前三名讲同一件事</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="180" width="300" height="120" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-1" class="head" x="210" y="224" text-anchor="middle">全库记忆</text>
+  <text data-svg-container="node-1" class="body" x="210" y="264" text-anchor="middle">100,000 条</text>
+
+  <line x1="360" y1="240" x2="416" y2="240" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-2" data-svg-box="" class="card" x="420" y="180" width="300" height="120" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="head" x="570" y="224" text-anchor="middle">召回 top_200</text>
+  <text data-svg-container="node-2" class="body" x="570" y="264" text-anchor="middle">四种信号</text>
+
+  <line x1="720" y1="240" x2="776" y2="240" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-3" data-svg-box="" class="card" x="780" y="180" width="300" height="120" fill="#efe9f4" stroke="#c3b4d6"/>
+  <text data-svg-container="node-3" class="head" x="930" y="224" text-anchor="middle">精排 top_20</text>
+  <text data-svg-container="node-3" class="body" x="930" y="264" text-anchor="middle">融合 → rerank</text>
+
+  <line x1="1080" y1="240" x2="1136" y2="240" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-4" data-svg-box="" class="card" x="1140" y="180" width="240" height="120" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-4" class="head" x="1260" y="224" text-anchor="middle">top_3</text>
+  <text data-svg-container="node-4" class="body" x="1260" y="264" text-anchor="middle">交给主模型</text>
+
+  <rect id="node-5" data-svg-box="" class="card" x="60" y="370" width="1320" height="250" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-5" class="head" x="100" y="414">MMR：相关度高但重复，也要往后排</text>
+  <text data-svg-container="node-5" x="100" y="458" font-size="24" font-weight="600" fill="#b35c2e">MMR = 0.7×相关度 − 0.3×与已选内容的最大相似度</text>
+  <text data-svg-container="node-5" class="body" x="100" y="502">X：相关 0.90、重复 0.95 → 0.7×0.90 − 0.3×0.95 = 0.345</text>
+  <text data-svg-container="node-5" class="body" x="100" y="546">Y：相关 0.80、重复 0.10 → 0.7×0.80 − 0.3×0.10 = 0.530</text>
+  <text data-svg-container="node-5" class="body" x="100" y="590" font-weight="600">Y 胜：相关略低但提供新信息；λ 越小越看重多样性</text>
+
+  <rect id="node-6" data-svg-box="" class="card" x="60" y="680" width="1320" height="170" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-6" class="head" x="100" y="724">评估用固定问题集，看三个数</text>
+  <text data-svg-container="node-6" class="body" x="100" y="768">Recall@3：相关记忆有几条进了前三；MRR：第一条相关排第几（第 2 → 0.5）</text>
+  <text data-svg-container="node-6" class="body" x="100" y="812">nDCG：越相关越该靠前的整体排序分；改动前后对比，不凭手感</text>
+
+  <text data-svg-label="" class="sub" x="60" y="910">注：rerank 只能重排已召回的候选；召回漏掉的内容，精排救不回来。</text>
+</svg>

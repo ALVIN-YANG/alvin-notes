@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">查询改写、多路召回，以及 pre-filter 与 post-filter 的对比</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="980" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">检索之前：先把问题改写好，把范围限定对</text>
+  <text data-svg-label="" class="sub" x="60" y="112">改写补全指代与日期；pre-filter 先限定范围，post-filter 可能凑不够 top_k</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="150" width="560" height="80" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-1" class="body" x="340" y="198" text-anchor="middle" font-weight="600">原问题：“它周二买了什么？”</text>
+
+  <line x1="620" y1="190" x2="696" y2="190" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-2" data-svg-box="" class="card" x="700" y="150" width="680" height="80" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-2" class="body" x="1040" y="198" text-anchor="middle" font-weight="600">改写：它 = 蓝莓；周二 = 2026-11-10</text>
+
+  <line x1="340" y1="234" x2="340" y2="286" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1040" y1="234" x2="1040" y2="286" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-3" data-svg-box="" class="card" x="60" y="290" width="1320" height="110" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-3" class="head" x="100" y="334">多路召回：改写查询与原查询都查，不单独信改写</text>
+  <text data-svg-container="node-3" class="body" x="100" y="374">HyDE：先生成假设答案再取向量检索；多跳问题可拆成子问题分别查</text>
+
+  <line x1="400" y1="404" x2="400" y2="466" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1040" y1="404" x2="1040" y2="466" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-4" data-svg-box="" class="card" x="60" y="470" width="640" height="300" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-4" class="head" x="100" y="514">pre-filter：先限定再检索</text>
+  <text data-svg-container="node-4" class="body" x="100" y="568">WHERE user_id = alice</text>
+  <text data-svg-container="node-4" class="body" x="100" y="612">只在 alice 的范围内检索</text>
+  <text data-svg-container="node-4" class="body" x="100" y="656">top_k=3 能拿满 3 条</text>
+  <text data-svg-container="node-4" class="body" x="100" y="700">隔离由存储层保证</text>
+
+  <rect id="node-5" data-svg-box="" class="card" x="740" y="470" width="640" height="300" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-5" class="head" x="780" y="514" fill="#b35c2e">post-filter：先检索再丢弃</text>
+  <text data-svg-container="node-5" class="body" x="780" y="568">全库检索 top_k=3</text>
+  <text data-svg-container="node-5" class="body" x="780" y="612">可能 3 条都是别人的记忆</text>
+  <text data-svg-container="node-5" class="body" x="780" y="656">丢弃后只剩 0 条</text>
+  <text data-svg-container="node-5" x="780" y="700" font-size="24" font-weight="600" fill="#b35c2e">结果不足，还可能泄露</text>
+
+  <line x1="380" y1="774" x2="380" y2="826" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1060" y1="774" x2="1060" y2="826" stroke="#d97745" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect id="node-6" data-svg-box="" class="card" x="60" y="830" width="1320" height="80" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-6" class="body" x="720" y="878" text-anchor="middle" font-weight="600">硬边界用 pre-filter；相关性排序才交给融合与 rerank</text>
+
+  <text data-svg-label="" class="sub" x="60" y="956">注：改写会引入模型臆造，保留原查询一路更稳；归属、权限、时间范围都是硬边界。</text>
+</svg>

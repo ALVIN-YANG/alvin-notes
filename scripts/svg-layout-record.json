@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkerHash": "e6a570e89a77291a1ec8ab265de2c18d9d66a80c42c5e369c54b792294487fb9",
+  "checkerHash": "9ed98b1283bbacd59f5eac36d9a3e23aced16d344cd82cc2acb62b0d8365b0d0",
   "files": {
     "public/images/ai/agent-memory-layers.svg": {
       "sha256": "11bf6d61f3239b42c4d284ac94c5218e2211089102c0919a0d00a2dbb4ed3b28",
@@ -64,6 +64,14 @@
     },
     "public/images/ai/hybrid-retrieval/06-fusion-scoring.svg": {
       "sha256": "7457ac0787479e52ceec7caca86b4c76464b4acbba12cc4a9e57094fd11010e5",
+      "mode": "checked"
+    },
+    "public/images/ai/hybrid-retrieval/07-query-and-filter.svg": {
+      "sha256": "0b1068e40db69ef36b422c5c8c4b99726009e416efecaab717265c9f3dac0fc1",
+      "mode": "checked"
+    },
+    "public/images/ai/hybrid-retrieval/08-funnel-and-mmr.svg": {
+      "sha256": "4166922d563e14652238400a9ad42b49b15ff4b58a0ad9628986a6deb554eb49",
       "mode": "checked"
     },
     "public/images/ai/openclaw-plugin-spectrum.svg": {
