@@ -55,6 +55,13 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
         </a>
         <figcaption>{guide.diagrams.overview.caption} 点击图片查看大图。</figcaption>
       </figure>
+      <div class="rag-explanation">
+        <h3 class="rag-principle-heading">{guide.trigger.title}</h3>
+        <p>{guide.trigger.intro} <a href="#source-trigger-architecture">架构来源</a></p>
+        <dl class="rag-definitions">{guide.trigger.modes.map((mode) => <div><dt>{mode.name}</dt><dd>{mode.text}</dd></div>)}</dl>
+        <p>{guide.trigger.reliability} <a href="#source-tool-calling">工具调用来源</a></p>
+        <p class="rag-section-note">{guide.trigger.boundary}</p>
+      </div>
       <h3 class="rag-principle-heading">RAG 实现分两步</h3>
       <figure class="rag-diagram">
         <a href={guide.diagrams.implementation.src} target="_blank" rel="noreferrer" aria-label={`${guide.diagrams.implementation.title}，打开大图（新标签页）`}>

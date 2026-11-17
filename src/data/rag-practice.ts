@@ -3,7 +3,7 @@ import { ragRetrieval, ragRetrievalMarkdown } from './rag-retrieval';
 
 export const ragPractice = {
   title: 'RAG 实战速查',
-  updatedAt: '2026-10-12',
+  updatedAt: '2026-11-17',
   summary: 'RAG 让大模型根据外部资料回答：先整理资料并建立搜索索引，再找到用户有权查看的生效条款，按输入容量选取原文，交给模型组织答案和来源。适合制度、产品手册、内部知识库等问题。',
   diagrams: {
     tokenizer: {
@@ -65,6 +65,16 @@ export const ragPractice = {
     answer: '每晚最多报销 500 元。来源：差旅制度第 8 条。',
   },
   fit: '只有几页固定资料时，可以先直接交给 AI。资料多、经常更新，或不同用户能看的资料不同，再做检索。',
+  trigger: {
+    title: 'RAG 什么时候触发',
+    intro: '是否检索由应用程序决定，不是模型发现知识不足后自动启动。',
+    modes: [
+      { name: '固定 RAG', text: '公司制度、产品手册等知识库问答，收到请求后固定执行“权限与版本过滤 → 检索 → 生成”。检索不到时说明资料不足，不让模型凭记忆补答。' },
+      { name: 'Agentic RAG', text: '闲聊、翻译和知识问答共用一个入口时，可由路由或模型决定何时调用检索工具；涉及内部资料、私有数据或最新信息时必须检索。' },
+    ],
+    reliability: '要稳定触发，能由代码确定的路径就直接调用检索函数，不要只在 Prompt 里写“需要时请查询”。按需调用时，明确工具的用途、参数和禁用场景，记录路由与调用结果，并为空结果、超时和服务异常分别设置处理分支。',
+    boundary: '稳定触发只保证执行了检索，不代表找到了正确资料；必要条款是否召回，仍需通过固定问题集单独评测。',
+  },
   tokenizer: {
     title: 'Tokenizer：模型怎样读文本',
     definition: 'Tokenizer 按配套模型的规则，把文本拆成 token，并转换成词表中的整数编号（token ID）。模型接收这些编号，再进行计算。一个 token 可能是字、词的一部分、多个字、标点或空格；不能用字符数直接代替 token 数。',
@@ -241,6 +251,8 @@ export const ragPractice = {
 停止条件：资料缺失、权限来源不明或关键来源冲突时，说明具体缺口，不编造规则。`,
   sources: [
     ...ragRetrieval.sources,
+    { id: 'trigger-architecture', title: 'LangChain：固定、Agentic 与混合 RAG 架构', href: 'https://docs.langchain.com/oss/python/deepagents/retrieval', supports: '区分固定执行检索与 Agent 按需决定何时、怎样检索，以及混合架构中的检索验证。' },
+    { id: 'tool-calling', title: 'OpenAI：工具调用流程与函数定义', href: 'https://developers.openai.com/api/docs/guides/function-calling', supports: '说明应用执行工具调用并返回结果的流程，以及工具用途、参数和调用时机的定义方法。' },
     { id: 'embedding-training', title: 'Sentence Transformers：向量模型训练与相关配对', href: 'https://www.sbert.net/docs/sentence_transformer/training_overview.html', supports: '说明文本向量的聚合、训练资料与损失函数。相关配对训练是常见方法，不代表每种 Embedding 模型都用相同结构。' },
     { id: 'bpe-wordpiece', title: 'Hugging Face 课程：BPE 与 WordPiece 的训练和编码', href: 'https://huggingface.co/learn/llm-course/chapter6/5', supports: 'BPE 合并规则与优先级的教学说明；相邻的第 6 节说明 WordPiece 的最长子词匹配。本页 abab 为自定义玩具例子，真实词表用脚本输出核对。' },
     { id: 'tokenization', title: 'Hugging Face：tokenization pipeline', href: 'https://huggingface.co/docs/tokenizers/pipeline', supports: '说明规范化、预切分、子词与编号、特殊 token 等处理。具体规则以模型配套 tokenizer 配置为准。' },
@@ -280,6 +292,11 @@ export function ragPracticeMarkdown(): string {
     `${guide.example.note}：${guide.example.text}`,
     `问题：${guide.example.question}`,
     `期望回答：${guide.example.answer}`,
+    `### ${guide.trigger.title}`,
+    guide.trigger.intro,
+    ...guide.trigger.modes.map((mode) => `- **${mode.name}**：${mode.text}`),
+    guide.trigger.reliability,
+    guide.trigger.boundary,
     '## RAG 实现分两步',
     `![${guide.diagrams.implementation.alt}](https://blog.mlxb.cc${guide.diagrams.implementation.src})`,
     '### 导入资料时：准备可搜索的资料库',
