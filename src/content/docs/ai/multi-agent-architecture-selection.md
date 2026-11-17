@@ -166,4 +166,4 @@ Agent 会改文件或操作外部系统时，还要指定谁有写权限，没�
 
 如果 Centralized 只是报告变长了，这些检查一项没改善，那就不构成替换 SAS 的理由。如果它确实减少了关键遗漏但费用更高，就得说清这部分改善值不值多花的钱——只报成功率是不够的。
 
-继续阅读：[Agent 运行环境怎么选：本机、云端、边缘与沙箱](/ai/agent-runtime-environments/) · [AI Agent 记忆系统设计：短期、长期、情景记忆](/ai/agent-memory-system-design/)
+继续阅读：[Agent 运行环境怎么选：本机、云端、边缘与沙箱](/ai/agent-runtime-environments/) · [AI Agent 记忆系统设计：短期、长期、情景记忆](/ai/agent-memory-principles/)

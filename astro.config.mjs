@@ -139,10 +139,6 @@ export default defineConfig({
             { label: 'Agent 开发概览', link: '/agent-knowledge/' },
             { label: 'AI 概念速查', link: '/ai-concepts/' },
             { label: 'Agent 框架', collapsed: true, autogenerate: { directory: 'agent-frameworks' } },
-            { label: '记忆项目', collapsed: true, items: [
-              { label: '更多记忆项目', autogenerate: { directory: 'memory-projects' } },
-              { label: 'Hindsight 长期记忆', link: '/ai/hindsight-agent-memory/' },
-            ] },
             { label: '上下文与记忆', collapsed: true, items: [
               { label: '上下文工程', link: '/ai/context-engineering-guide/' },
               { label: '长上下文失效', link: '/ai/long-context-reliability-notes/' },
@@ -150,12 +146,11 @@ export default defineConfig({
               { label: 'RAG 原理与选型', link: '/rag/chapters/rag-primer/' },
               { label: 'RAG 元数据过滤', link: '/rag/chapters/rag-metadata-filtering/' },
               { label: 'RAG 知识库实战', link: '/rag/chapters/rag-knowledge-base-component/' },
-              { label: '记忆系统设计', link: '/ai/agent-memory-system-design/' },
-            { label: '混合检索原理', link: '/ai/hybrid-retrieval-principles/' },
-            { label: 'Agent 记忆原理', link: '/ai/agent-memory-principles/' },
-            { label: '记忆方案全景', link: '/ai/agent-memory-landscape/' },
+              { label: 'Agent 记忆原理', link: '/ai/agent-memory-principles/' },
+              { label: '混合检索原理', link: '/ai/hybrid-retrieval-principles/' },
+              { label: '记忆方案全景', link: '/ai/agent-memory-landscape/' },
               { label: 'OpenClaw 记忆深度拆解', link: '/claw/openclaw/9-memory-system-deep-dive/' },
-              { label: 'Hindsight 长期记忆', link: '/ai/hindsight-agent-memory/' },
+              { label: 'Mem0 记忆层拆解', link: '/memory-projects/mem0/' },
               { label: '环境感知与缓存', link: '/ai/agent-environment-awareness-llm-cache/' },
             ] },
             { label: '架构与执行', collapsed: true, items: [

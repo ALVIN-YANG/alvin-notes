@@ -9,7 +9,7 @@ Agent 开发需要处理三件事：为模型提供适用的信息，让工具�
 
 ## 上下文与记忆
 
-[上下文工程](/ai/context-engineering-guide/)负责当前输入，[RAG](/rag/)从外部资料中检索依据，[长期记忆](/ai/agent-memory-system-design/)保存可复用的信息。三者有交集，但不能用记忆检索代替真实执行记录。
+[上下文工程](/ai/context-engineering-guide/)负责当前输入，[RAG](/rag/)从外部资料中检索依据，[长期记忆](/ai/agent-memory-principles/)保存可复用的信息。三者有交集，但不能用记忆检索代替真实执行记录。
 
 ## 架构与执行
 

@@ -251,7 +251,7 @@ if ((homepageHtml.match(/<h1\b/g) ?? []).length !== 1) {
 
 const seoArticlePaths = [
   'ai/agent-context-persistence-recovery/',
-  'ai/agent-memory-system-design/',
+  'ai/agent-memory-principles/',
   'ai/agent-evaluation-observability/',
 ];
 for (const articlePath of seoArticlePaths) {

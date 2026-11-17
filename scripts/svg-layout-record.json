@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkerHash": "ab718f544966b5f482ddff2efe25ac7d2d3a08a177c7d3884ae4fdd746acd20b",
+  "checkerHash": "36b9c46cc7752a723d5d9e703cd5618c7283ae1811820cfcfe47b4906c7700f0",
   "files": {
     "public/images/ai/agent-memory-landscape/01-landscape.svg": {
       "sha256": "b066dbc95459b2a6f75ce6c91e9bfcd12c8321a5ba16c55b3d405434504c60db",
@@ -20,6 +20,10 @@
     },
     "public/images/ai/agent-memory-landscape/05-industry-matrix.svg": {
       "sha256": "86b443f1feb8e7472f2fa10d51e96a783fc8b4ce5d0adcbd8a17f754c64a86a2",
+      "mode": "checked"
+    },
+    "public/images/ai/agent-memory-landscape/06-memory-types.svg": {
+      "sha256": "eaf532dd99d62e8aaf110d1f325e529fc221b25720244ae21763bcbe868272b1",
       "mode": "checked"
     },
     "public/images/ai/agent-memory-layers.svg": {

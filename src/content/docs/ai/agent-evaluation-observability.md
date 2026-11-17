@@ -93,7 +93,7 @@ expect(trace.totalCostUsd).toBeLessThan(0.05);
 
 Trace 是一次执行记录。上面的数值是字段示例；实际记录需脱敏、限权并设置保留期限，不默认保存完整敏感输入和工具结果。
 
-验证中断恢复时，可以在工具结果保存后结束进程，检查新进程是否从下一步继续；再在工具执行后、结果保存前制造故障，检查业务动作是否被重复执行。故障位置和保存记录的分工见 [Agent 状态持久化与恢复](/ai/agent-context-persistence-recovery/)，跨会话偏好、过期与删除的测试范围见 [Agent 记忆系统设计](/ai/agent-memory-system-design/)。
+验证中断恢复时，可以在工具结果保存后结束进程，检查新进程是否从下一步继续；再在工具执行后、结果保存前制造故障，检查业务动作是否被重复执行。故障位置和保存记录的分工见 [Agent 状态持久化与恢复](/ai/agent-context-persistence-recovery/)，跨会话偏好、过期与删除的测试范围见 [Agent 记忆系统设计](/ai/agent-memory-principles/)。
 
 ## 评测怎样进入发布流程
 

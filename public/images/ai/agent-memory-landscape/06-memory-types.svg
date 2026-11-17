@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 860" role="img" aria-labelledby="svgTitle">
+  <title id="svgTitle">四种记忆内容：工作记忆、经历、事实、技能，各有不同的写入与召回方式</title>
+  <defs>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .title { font-size: 38px; font-weight: 700; }
+      .sub { font-size: 24px; fill: #6b6f76; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 24px; }
+      .card { stroke-width: 2; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1440" height="860" fill="#fbfaf6"/>
+
+  <text data-svg-label="" class="title" x="60" y="68">先分清四种记忆内容</text>
+  <text data-svg-label="" class="sub" x="60" y="112">经历是证据，事实是派生；技能是版本化文件，不该塞进向量库</text>
+
+  <rect id="node-1" data-svg-box="" class="card" x="60" y="160" width="640" height="250" fill="#e7edf3" stroke="#b9c6d4"/>
+  <text data-svg-container="node-1" class="head" x="100" y="204">Working：工作记忆</text>
+  <text data-svg-container="node-1" class="body" x="100" y="248">当前请求在想什么</text>
+  <text data-svg-container="node-1" class="body" x="100" y="292">上下文窗口、会话状态</text>
+  <text data-svg-container="node-1" class="body" x="100" y="336">每次请求重新组装</text>
+  <text data-svg-container="node-1" class="body" x="100" y="380">会话结束即消失</text>
+
+  <rect id="node-2" data-svg-box="" class="card" x="740" y="160" width="640" height="250" fill="#fffef9" stroke="#c9c2b2"/>
+  <text data-svg-container="node-2" class="head" x="780" y="204">Episodic：经历</text>
+  <text data-svg-container="node-2" class="body" x="780" y="248">具体发生过什么</text>
+  <text data-svg-container="node-2" class="body" x="780" y="292">对话、工具结果、任务日志</text>
+  <text data-svg-container="node-2" class="body" x="780" y="336">全量保存做证据</text>
+  <text data-svg-container="node-2" class="body" x="780" y="380">按需检索，支持重建</text>
+
+  <rect id="node-3" data-svg-box="" class="card" x="60" y="460" width="640" height="250" fill="#f9ecdf" stroke="#e0b48f"/>
+  <text data-svg-container="node-3" class="head" x="100" y="504">Semantic：事实</text>
+  <text data-svg-container="node-3" class="body" x="100" y="548">从经历整理出的结论</text>
+  <text data-svg-container="node-3" class="body" x="100" y="592">偏好、画像、知识图谱</text>
+  <text data-svg-container="node-3" class="body" x="100" y="636">提取或整理而来</text>
+  <text data-svg-container="node-3" class="body" x="100" y="680">会被修订和替代</text>
+
+  <rect id="node-4" data-svg-box="" class="card" x="740" y="460" width="640" height="250" fill="#e4ecdf" stroke="#a9c0a4"/>
+  <text data-svg-container="node-4" class="head" x="780" y="504">Procedural：技能</text>
+  <text data-svg-container="node-4" class="body" x="780" y="548">怎么做一件事</text>
+  <text data-svg-container="node-4" class="body" x="780" y="592">skills、SOP、工作流</text>
+  <text data-svg-container="node-4" class="body" x="780" y="636">版本化文件，可审查</text>
+  <text data-svg-container="node-4" class="body" x="780" y="680">按描述匹配后加载</text>
+
+  <text data-svg-label="" class="sub" x="60" y="770">选型混乱常因把“怎么做”当“事实”管；检索准确率 ≠ 身份连续性。</text>
+  <text data-svg-label="" class="sub" x="60" y="810">四分型参考 2026 年记忆系统综述与业界通用划分。</text>
+</svg>

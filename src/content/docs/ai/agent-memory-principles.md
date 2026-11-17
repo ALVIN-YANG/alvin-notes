@@ -90,7 +90,7 @@ M1 说喜欢蓝莓，M3 说只想买苹果。冲突怎么处理，是各系统�
 
 **Mem0：现成的记忆层。**`add` 和 `search` 两个动作接入现有 Agent，ADD-only 加多信号融合，时间推理辅助排序，冲突判断留给应用。适合快速接入，但要自己设计当前偏好和隔离规则。详见[Mem0 记忆层拆解](/memory-projects/mem0/)。
 
-**Hindsight：带解释能力的记忆服务。**`retain`、`recall`、`reflect` 三个 API，实体、时间和来源追溯完整，Observation 后台归纳，同一来源修订可覆盖。适合需要回答"偏好为什么变了"的场景；`reflect` 不是免费检索，只要事实时先用 `recall`。详见[Hindsight 长期记忆](/ai/hindsight-agent-memory/)。
+**Hindsight：带解释能力的记忆服务。**`retain`、`recall`、`reflect` 三个 API，实体、时间和来源追溯完整，Observation 后台归纳，同一来源修订可覆盖。适合需要回答"偏好为什么变了"的场景；`reflect` 不是免费检索，只要事实时先用 `recall`。详见[Hindsight 官方文档](https://hindsight.vectorize.io/)。
 
 **Hermes：冷热分离的个人 Agent。**两个有字符上限的小文件常驻提示词，冻结快照保住 prompt 缓存；会话历史进 SQLite，`session_search` 按需冷检索；更深用户建模交给可选外部服务。适合成本敏感、希望常驻提示词稳定的小而精方案。机制见[Hermes 记忆系统源码解读](https://baoyu.io/blog/2026-04-29/manthanguptaa-2034849672985288957)与[官方文档的学习机制说明](https://developer.aliyun.com/article/1777065)。
 
@@ -127,7 +127,7 @@ M1 说喜欢蓝莓，M3 说只想买苹果。冲突怎么处理，是各系统�
 
 - [混合检索原理](/ai/hybrid-retrieval-principles/)：语义、BM25、实体、时间、融合评分、MMR、评估指标的手算拆解。
 - [记忆方案全景](/ai/agent-memory-landscape/)：六种产品方向与行业场景的主流实现对照。
-- [OpenClaw 记忆系统拆解](/claw/openclaw/9-memory-system-deep-dive/)、[Mem0 记忆层拆解](/memory-projects/mem0/)、[Hindsight 长期记忆](/ai/hindsight-agent-memory/)。
+- [OpenClaw 记忆系统拆解](/claw/openclaw/9-memory-system-deep-dive/)、[Mem0 记忆层拆解](/memory-projects/mem0/)。
 - [Hermes 记忆系统源码解读](https://baoyu.io/blog/2026-04-29/manthanguptaa-2034849672985288957)：冻结快照与冷热分离的设计动机。
 
 ---
