@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
-import { ragPracticeMarkdown } from '../../data/rag-practice';
+import article from '../../content/docs/rag/index.md?raw';
 
-export const GET: APIRoute = () => new Response(ragPracticeMarkdown(), {
+const markdown = article.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '').trimStart();
+
+export const GET: APIRoute = () => new Response(markdown, {
   headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
 });
