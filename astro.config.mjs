@@ -33,6 +33,8 @@ export default defineConfig({
     '/rag/chapters/rag-primer': '/rag/',
     '/rag/chapters/rag-knowledge-base-component': '/rag/#architecture',
     '/rag/chapters/rag-metadata-filtering': '/rag/#metadata-filtering',
+    '/ai/long-context-reliability-notes': '/ai/context-engineering-guide/',
+    '/ai/agent-memory-landscape': '/ai/agent-memory-principles/',
     '/algorithms/java-advanced-algorithm-patterns': '/algorithm-knowledge/chapters/java-advanced-algorithm-patterns/',
     '/algorithms/java-high-frequency-algorithm-patterns': '/algorithm-knowledge/chapters/java-high-frequency-algorithm-patterns/',
 
@@ -144,11 +146,9 @@ export default defineConfig({
             { label: 'Agent 框架', collapsed: true, autogenerate: { directory: 'agent-frameworks' } },
             { label: '上下文与记忆', collapsed: true, items: [
               { label: '上下文工程', link: '/ai/context-engineering-guide/' },
-              { label: '长上下文失效', link: '/ai/long-context-reliability-notes/' },
-              { label: 'RAG 实战指南', link: '/rag/' },
-              { label: 'Agent 记忆原理', link: '/ai/agent-memory-principles/' },
-              { label: '混合检索原理', link: '/ai/hybrid-retrieval-principles/' },
-              { label: '记忆方案全景', link: '/ai/agent-memory-landscape/' },
+              { label: 'RAG 知识库工程', link: '/rag/' },
+              { label: 'Agent 记忆原理与选型', link: '/ai/agent-memory-principles/' },
+              { label: '混合检索算法', link: '/ai/hybrid-retrieval-principles/' },
               { label: 'OpenClaw 记忆深度拆解', link: '/claw/openclaw/9-memory-system-deep-dive/' },
               { label: 'Mem0 记忆层拆解', link: '/memory-projects/mem0/' },
               { label: '环境感知与缓存', link: '/ai/agent-environment-awareness-llm-cache/' },

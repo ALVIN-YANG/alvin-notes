@@ -27,8 +27,8 @@ const articleIndex = {
     { title: 'Prompt 怎样写成可执行任务', href: '/ai-workflow/chapters/16-prompt-task-contract-practice/' },
   ],
   'knowledge-state': [
-    { title: 'RAG 实战指南', href: '/rag/' },
-    { title: 'AI Agent 记忆系统设计', href: '/ai/agent-memory-system-design/' },
+    { title: 'RAG 知识库工程', href: '/rag/' },
+    { title: 'Agent 记忆系统：原理、方案与场景选型', href: '/ai/agent-memory-principles/' },
   ],
   'tools-environment': [
     { title: '生产级 Agent Tool 怎么设计', href: '/ai/production-agent-tool-design/' },
@@ -39,7 +39,7 @@ const articleIndex = {
   ],
   'evaluation-evolution': [
     { title: 'AI Agent 怎么做评测', href: '/ai/agent-evaluation-observability/' },
-    { title: 'RAG 实战指南：过滤与验证', href: '/rag/#metadata-filtering' },
+    { title: 'RAG 知识库工程：过滤与验证', href: '/rag/#metadata-filtering' },
   ],
   'safety-governance': [
     { title: 'AI Agent 安全工程', href: '/ai/agent-security-engineering/' },

@@ -88,16 +88,13 @@ const records = [...guide.example.records].sort((a, b) => b.cosine - a.cosine);
   </figure>
   <dl class="rag-definitions">{guide.ranking.methods.map((item) => <div><dt>{item.name}</dt><dd>{item.text}</dd></div>)}</dl>
   <p class="rag-section-note"><a href="#source-ranking">排序方法来源</a> · <a href="#source-cross-encoder">Cross-Encoder</a> · <a href="#source-text-analysis">全文检索分析器</a></p>
-  <h3 class="rag-principle-heading">倒排索引与 BM25 的具体过程</h3>
-  <dl class="rag-definitions">{guide.ranking.keyword.map((item) => <div><dt>{item.name}</dt><dd>{item.text}</dd></div>)}</dl>
-  <p class="rag-section-note"><a href="#source-inverted-index">倒排索引</a> · <a href="#source-bm25">BM25 参数</a></p>
+  <p class="rag-section-note">BM25 的 IDF、词频饱和、长度归一和中文分词，统一在<a href="/ai/hybrid-retrieval-principles/">混合检索算法</a>中推导；本页只保留它在知识库链路里的作用。<a href="#source-inverted-index">倒排索引</a> · <a href="#source-bm25">BM25 参数</a></p>
   <h3 class="rag-principle-heading">Reranker 与 Embedding 的区别</h3>
   <p>{guide.ranking.crossEncoder} <a href="#source-cross-encoder">配对评分来源</a></p>
   <div class="rag-explanation">
-    <h3 class="rag-principle-heading">把 RRF 分数算出来</h3>
-    <p class="rag-token-formula">{guide.ranking.rrfFormula}</p>
-    <p>{guide.ranking.rrfNote}</p>
-    <p><a href="#source-rrf">RRF 公式来源</a>。演练只计算排名融合，没有运行 BM25 或 reranker。</p>
+    <h3 class="rag-principle-heading">本例怎样融合两路排名</h3>
+    <p>本例用 RRF 按各路名次融合，不直接相加 BM25 分数和余弦相似度。演练输出的融合顺序为 A、D、E；它只计算排名，没有运行 BM25 或 reranker。RRF 公式、完整代入过程及加权求和的取舍见<a href="/ai/hybrid-retrieval-principles/">混合检索算法</a>。</p>
+    <p><a href="#source-rrf">RRF 方法来源</a></p>
   </div>
   <div class="rag-explanation">
     <h3 class="rag-principle-heading">多轮问题：先补全问意</h3>

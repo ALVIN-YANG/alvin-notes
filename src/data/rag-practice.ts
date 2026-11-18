@@ -3,7 +3,7 @@ import { ragRetrieval, ragRetrievalMarkdown } from './rag-retrieval';
 import { ragFitMarkdown, ragEngineeringMarkdown } from './rag-engineering';
 
 export const ragPractice = {
-  title: 'RAG 实战指南：从资料入库到可靠回答',
+  title: 'RAG 知识库工程：从文件入库到带引用的回答',
   updatedAt: '2026-11-18',
   summary: 'RAG 的难点不是接上向量数据库，而是让正确的人，在正确的版本范围内找全依据，再把完整条款交给模型。检索、权限、版本、引用和评测必须一起设计；只做向量 Top-K，得到的是演示，不是可靠知识库。',
   diagrams: {

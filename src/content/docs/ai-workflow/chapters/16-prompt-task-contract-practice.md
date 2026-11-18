@@ -112,6 +112,6 @@ intent 枚举为 query / complaint / other。
 | 失败恢复 | 临时错误有限重试；有副作用的操作超时后先查结果，避免重复执行；无法继续时交付已完成内容和具体缺口 |
 | 上下文 | 标明材料来源、时间与优先级，按需读取；保存当前进度，关键约束在验收时逐项核对 |
 
-风险和恢复条件属于任务定义。[Google Prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies) 长文装得下上下文，仍可能遗漏要求，具体做法见[长上下文失效笔记](/ai/long-context-reliability-notes/)。
+风险和恢复条件属于任务定义。[Google Prompt design strategies](https://ai.google.dev/gemini-api/docs/prompting-strategies) 长文装得下上下文，仍可能遗漏要求，具体做法见[上下文工程](/ai/context-engineering-guide/)。
 
 Prompt 有版本才好比较。固定一批真实输入和失败样例，每次改动用同一标准检查事实、约束、格式与工具动作；上线的新失败再加入测试集。别仅凭回答变长或看起来专业判断优化有效。[OpenAI Prompting](https://developers.openai.com/api/docs/guides/prompting)、[Evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices)

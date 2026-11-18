@@ -2,10 +2,6 @@
   "version": 1,
   "checkerHash": "bfe933ad28c51a79469f93d83024086143be83acfbb6a539073a1b689df40802",
   "files": {
-    "public/images/ai/agent-memory-landscape/01-landscape.svg": {
-      "sha256": "b066dbc95459b2a6f75ce6c91e9bfcd12c8321a5ba16c55b3d405434504c60db",
-      "mode": "checked"
-    },
     "public/images/ai/agent-memory-landscape/02-claude-code.svg": {
       "sha256": "84015405faf04e2bbc59ef3824c3e9778ee14872b7ea150b85421545252e3239",
       "mode": "checked"
@@ -48,10 +44,6 @@
     },
     "public/images/ai/agent-memory-principles/05-conflict-strategies.svg": {
       "sha256": "f8259d0e4c470c0ee816c4626422c0375877e540ab9a80dc1626a7ad0d986315",
-      "mode": "checked"
-    },
-    "public/images/ai/agent-memory-principles/06-four-systems.svg": {
-      "sha256": "b8fba21a5287ef70056aec81778b3459ac5868c8fe1c9aa5a00c34d6cf3efa08",
       "mode": "checked"
     },
     "public/images/ai/fc-agent-react-loop.svg": {

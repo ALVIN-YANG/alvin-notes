@@ -167,6 +167,26 @@
       "permanent": true
     },
     {
+      "source": "/ai/long-context-reliability-notes",
+      "destination": "/ai/context-engineering-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/long-context-reliability-notes/",
+      "destination": "/ai/context-engineering-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-memory-landscape",
+      "destination": "/ai/agent-memory-principles/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-memory-landscape/",
+      "destination": "/ai/agent-memory-principles/",
+      "permanent": true
+    },
+    {
       "source": "/algorithms/java-advanced-algorithm-patterns",
       "destination": "/algorithm-knowledge/chapters/java-advanced-algorithm-patterns/",
       "permanent": true
