@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">RAG 知识库的查询与入库架构</title>
+  <desc id="desc">API 处理认证、权限和查询，Worker 处理持久索引任务。新旧版本切换前，旧版本继续提供查询。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97745"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; fill: #24282f; }
+      .head { font-size: 26px; font-weight: 600; }
+      .body { font-size: 22px; }
+      .note { font-size: 23px; fill: #6b6f76; }
+      .arrow { fill: none; stroke: #d97745; stroke-width: 3; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1440" height="900" fill="#fbfaf6"/>
+  <text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">RAG 知识库：查询与入库分开，版本与权限共用</text>
+  <text x="60" y="112" class="note" data-svg-label="">API 回答当前问题；Worker 构建下一份可检索资料</text>
+
+  <rect id="panel-query" data-svg-box="" x="60" y="155" width="620" height="570" rx="14" fill="none" stroke="#d97745" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="88" y="198" class="head" data-svg-container="panel-query">每次提问：先确定可见范围，再检索</text>
+  <rect id="node-1" data-svg-box="" x="90" y="230" width="230" height="110" rx="12" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text x="116" y="276" class="head" data-svg-container="node-1">员工提问</text>
+  <text x="116" y="315" class="body" data-svg-container="node-1">住宿超额谁承担？</text>
+
+  <rect id="node-2" data-svg-box="" x="390" y="230" width="250" height="110" rx="12" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+  <text x="416" y="276" class="head" data-svg-container="node-2">API 服务</text>
+  <text x="416" y="315" class="body" data-svg-container="node-2">认证身份，接收问题</text>
+  <path d="M 320 285 H 385" class="arrow"/>
+
+  <rect id="node-3" data-svg-box="" x="390" y="400" width="250" height="120" rx="12" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+  <text x="416" y="446" class="head" data-svg-container="node-3">权限与版本范围</text>
+  <text x="416" y="485" class="body" data-svg-container="node-3">员工可见 · 生效版</text>
+  <path d="M 515 340 V 395" class="arrow"/>
+  <text x="535" y="376" class="note" data-svg-container="panel-query">服务端计算</text>
+
+  <rect id="node-4" data-svg-box="" x="90" y="400" width="230" height="120" rx="12" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+  <text x="116" y="446" class="head" data-svg-container="node-4">PostgreSQL</text>
+  <text x="116" y="485" class="body" data-svg-container="node-4">片段、向量、出处</text>
+  <path d="M 385 460 H 325" class="arrow"/>
+
+  <rect id="node-5" data-svg-box="" x="210" y="580" width="300" height="110" rx="12" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+  <text x="236" y="625" class="head" data-svg-container="node-5">回答模型与引用检查</text>
+  <text x="236" y="664" class="body" data-svg-container="node-5">完整条款进入本次输入</text>
+  <path d="M 205 520 V 548 H 330 V 575" class="arrow"/>
+
+  <rect id="panel-ingest" data-svg-box="" x="740" y="155" width="640" height="570" rx="14" fill="none" stroke="#d97745" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="768" y="198" class="head" data-svg-container="panel-ingest">文件更新：新版本完整后再切换</text>
+  <rect id="node-6" data-svg-box="" x="770" y="230" width="250" height="110" rx="12" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+  <text x="796" y="276" class="head" data-svg-container="node-6">上传原文件</text>
+  <text x="796" y="315" class="body" data-svg-container="node-6">保存不可变新版本</text>
+
+  <rect id="node-7" data-svg-box="" x="1100" y="230" width="240" height="110" rx="12" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+  <text x="1126" y="276" class="head" data-svg-container="node-7">持久任务表</text>
+  <text x="1126" y="315" class="body" data-svg-container="node-7">状态、租约、重试</text>
+  <path d="M 1020 285 H 1095" class="arrow"/>
+
+  <rect id="node-8" data-svg-box="" x="770" y="400" width="250" height="120" rx="12" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+  <text x="796" y="446" class="head" data-svg-container="node-8">对象存储</text>
+  <text x="796" y="485" class="body" data-svg-container="node-8">原件与解析产物</text>
+  <path d="M 895 340 V 395" class="arrow"/>
+
+  <rect id="node-9" data-svg-box="" x="1100" y="400" width="240" height="120" rx="12" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+  <text x="1126" y="446" class="head" data-svg-container="node-9">索引 Worker</text>
+  <text x="1126" y="485" class="body" data-svg-container="node-9">解析、切块、向量</text>
+  <path d="M 1220 340 V 395" class="arrow"/>
+  <text x="1080" y="375" class="note" data-svg-container="panel-ingest">领取</text>
+
+  <rect id="node-10" data-svg-box="" x="900" y="580" width="300" height="110" rx="12" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+  <text x="926" y="625" class="head" data-svg-container="node-10">校验后切换生效版本</text>
+  <text x="926" y="664" class="body" data-svg-container="node-10">失败则旧版继续服务</text>
+  <path d="M 1220 520 V 550 H 1090 V 575" class="arrow"/>
+  <path d="M 900 635 H 705 V 505 H 645" fill="none" stroke="#8a8f98" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arrow)"/>
+
+  <text x="60" y="785" class="note" data-svg-label="">上传成功 ≠ 已可检索；新版本必须完成解析、向量化和字段校验。</text>
+  <text x="60" y="828" class="note" data-svg-label="">撤权与删除先阻断读取，再清理索引和缓存；缓存不能绕过当前权限。</text>
+</svg>

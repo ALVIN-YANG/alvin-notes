@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkerHash": "36b9c46cc7752a723d5d9e703cd5618c7283ae1811820cfcfe47b4906c7700f0",
+  "checkerHash": "ce4bf0150dac5361e3889b5cfbb575bf92b1b1bc0c31ff1f6cbd245b19e78314",
   "files": {
     "public/images/ai/agent-memory-landscape/01-landscape.svg": {
       "sha256": "b066dbc95459b2a6f75ce6c91e9bfcd12c8321a5ba16c55b3d405434504c60db",
@@ -140,22 +140,6 @@
     },
     "public/images/ai/prompt-few-shot-pattern.svg": {
       "sha256": "4e55f43dd1b9886a9d1b53193c6976a70a13ed048d4256caa46c2c64ae300224",
-      "mode": "legacy"
-    },
-    "public/images/ai/rag-chunk-overlap.svg": {
-      "sha256": "afa0d6436efeb4a8c00f16650496a94b7607a5c4a635f52989e6aa4d837e7ed5",
-      "mode": "legacy"
-    },
-    "public/images/ai/rag-pipeline.svg": {
-      "sha256": "60116a984a1847551017c330a54984a4aa150b4090659e8d25792e3059265227",
-      "mode": "legacy"
-    },
-    "public/images/ai/rag-text-to-embedding.svg": {
-      "sha256": "0e51f8f114e7b6adc4ddee8ae3da5f8049a00b169c3c735cf94e23267b073276",
-      "mode": "legacy"
-    },
-    "public/images/ai/rag-topk-retrieval.svg": {
-      "sha256": "42b36d0dd09df94fafd9fffc4db7944a0ae011ab4748bc63c2a837b1d35ac8d9",
       "mode": "legacy"
     },
     "public/images/ai/rag-with-vs-without.svg": {
@@ -365,6 +349,10 @@
     "public/images/projects/senix.svg": {
       "sha256": "a3b38491b7a6cd28042ed9a885b5853ddccc9e836047e2c29c48cb108034967f",
       "mode": "legacy"
+    },
+    "public/images/rag/rag-production-architecture.svg": {
+      "sha256": "171d4ca920899b9fc1419ae51cedb9f7540f02c60744361e6f2b2cf3d6890c7c",
+      "mode": "checked"
     },
     "public/images/rag/rag-tokenizer.svg": {
       "sha256": "61a1bc04615366bb173d0734b018f635f6bb4da43dec02d21202073a9493d77d",

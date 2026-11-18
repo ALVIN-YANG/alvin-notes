@@ -1,8 +1,10 @@
 ---
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import RagRetrieval from '../../components/RagRetrieval.astro';
+import RagEngineering from '../../components/RagEngineering.astro';
 import RagOutline from '../../components/RagOutline.astro';
 import { ragPractice as guide, ragPracticeMarkdown } from '../../data/rag-practice';
+import { ragEngineering } from '../../data/rag-engineering';
 
 const frontmatter = {
   title: guide.title,
@@ -28,17 +30,18 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
       <div class="rag-meta-row">
         <nav class="rag-jump-links" aria-label="RAG 模块目录">
           <a href="#understand">看懂原理</a>
+          <a href="#fit">适用判断</a>
           <a href="#tokenizer">Tokenizer 与切块</a>
-          <a href="#vector-search">向量库 / Top-K</a>
-          <a href="#vector-index">向量索引</a>
-          <a href="#retrieval-ranking">混合检索 / 重排</a>
-          <a href="#knowledge-lifecycle">更新 / 评测</a>
-          <a href="#start">开始做</a>
-          <a href="#troubleshoot">查问题</a>
-          <a href="#verify">验证效果</a>
+          <a href="#vector-search">检索与重排</a>
+          <a href="#knowledge-lifecycle">更新与评测</a>
+          <a href="#architecture">生产架构</a>
+          <a href="#metadata-filtering">元数据过滤</a>
+          <a href="#technical-selection">技术选型</a>
+          <a href="#troubleshoot">排错与验证</a>
         </nav>
         <span class="rag-updated">更新于 <time datetime={guide.updatedAt}>{guide.updatedAt}</time></span>
       </div>
+      <p class="rag-intro-summary">{guide.summary}</p>
       <p class="rag-copy-status" data-rag-copy-status role="status" hidden></p>
     </header>
 
@@ -90,6 +93,16 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
       <h3 class="rag-principle-heading">文件先读对：扫描件、表格与出处</h3>
       <dl class="rag-definitions">{guide.principle.parsing.map((item) => <div><dt>{item.name}</dt><dd>{item.text}</dd></div>)}</dl>
       <p class="rag-section-note">{guide.fit} <a href="#source-retrieval">方法来源</a></p>
+    </section>
+
+    <section class="rag-section" id="fit" aria-labelledby="fit-title">
+      <h2 id="fit-title">{ragEngineering.fit.title}</h2>
+      <p>{ragEngineering.fit.intro}</p>
+      <table class="rag-table rag-failure-table">
+        <thead><tr><th scope="col">要做的事</th><th scope="col">优先选择</th><th scope="col">原因与改选条件</th></tr></thead>
+        <tbody>{ragEngineering.fit.rows.map((row) => <tr><th scope="row">{row.task}</th><td><span class="rag-mobile-label">优先选择：</span>{row.choice}</td><td><span class="rag-mobile-label">原因：</span>{row.reason}</td></tr>)}</tbody>
+      </table>
+      <p>{ragEngineering.fit.boundary} <a href="#source-lost-middle">长上下文限制</a></p>
     </section>
 
     <section class="rag-section" id="tokenizer" aria-labelledby="tokenizer-title">
@@ -178,6 +191,8 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
 
     <RagRetrieval />
 
+    <RagEngineering />
+
     <section class="rag-section" id="start" aria-labelledby="start-title">
       <h2 id="start-title">第一版按这五步做</h2>
       <table class="rag-table rag-build-table">
@@ -231,7 +246,7 @@ const visibleToken = (token: string) => token === ' ' ? '空格' : token.startsW
           <li><a href={tutorial.href} target="_blank" rel="noreferrer">{tutorial.title}</a><p>{tutorial.description} <a href={tutorial.start} target="_blank" rel="noreferrer">从这里开始</a></p></li>
         ))}</ul>
       </div>
-      <div class="rag-related"><span>配套章节：</span><a href="/rag/chapters/rag-primer/">RAG 技术选型</a><a href="/rag/chapters/rag-knowledge-base-component/">知识库落地</a><a href="/rag/chapters/rag-metadata-filtering/">资料过滤</a></div>
+      <div class="rag-related"><span>合并说明：</span>原“原理与选型”“元数据过滤”“知识库实战”已并入本页，旧链接会跳转到对应章节。</div>
     </footer>
     <script type="application/json" data-rag-markdown set:html={serializedMarkdown}></script>
   </article>

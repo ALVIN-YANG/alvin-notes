@@ -108,32 +108,62 @@
     },
     {
       "source": "/ai/rag-primer",
-      "destination": "/rag/chapters/rag-primer/",
+      "destination": "/rag/",
       "permanent": true
     },
     {
       "source": "/ai/rag-primer/",
-      "destination": "/rag/chapters/rag-primer/",
+      "destination": "/rag/",
       "permanent": true
     },
     {
       "source": "/ai/rag-knowledge-base-component",
-      "destination": "/rag/chapters/rag-knowledge-base-component/",
+      "destination": "/rag/#architecture",
       "permanent": true
     },
     {
       "source": "/ai/rag-knowledge-base-component/",
-      "destination": "/rag/chapters/rag-knowledge-base-component/",
+      "destination": "/rag/#architecture",
       "permanent": true
     },
     {
       "source": "/ai/rag-metadata-filtering",
-      "destination": "/rag/chapters/rag-metadata-filtering/",
+      "destination": "/rag/#metadata-filtering",
       "permanent": true
     },
     {
       "source": "/ai/rag-metadata-filtering/",
-      "destination": "/rag/chapters/rag-metadata-filtering/",
+      "destination": "/rag/#metadata-filtering",
+      "permanent": true
+    },
+    {
+      "source": "/rag/chapters/rag-primer",
+      "destination": "/rag/",
+      "permanent": true
+    },
+    {
+      "source": "/rag/chapters/rag-primer/",
+      "destination": "/rag/",
+      "permanent": true
+    },
+    {
+      "source": "/rag/chapters/rag-knowledge-base-component",
+      "destination": "/rag/#architecture",
+      "permanent": true
+    },
+    {
+      "source": "/rag/chapters/rag-knowledge-base-component/",
+      "destination": "/rag/#architecture",
+      "permanent": true
+    },
+    {
+      "source": "/rag/chapters/rag-metadata-filtering",
+      "destination": "/rag/#metadata-filtering",
+      "permanent": true
+    },
+    {
+      "source": "/rag/chapters/rag-metadata-filtering/",
+      "destination": "/rag/#metadata-filtering",
       "permanent": true
     },
     {
@@ -203,7 +233,7 @@
     },
     {
       "source": "/ai/2-RAG%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5/",
-      "destination": "/rag/chapters/rag-primer/",
+      "destination": "/rag/",
       "permanent": true
     },
     {

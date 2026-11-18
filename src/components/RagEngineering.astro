@@ -1,0 +1,105 @@
+---
+import { ragEngineering as guide } from '../data/rag-engineering';
+---
+
+<section class="rag-section" id="architecture" aria-labelledby="architecture-title">
+  <h2 id="architecture-title">{guide.architecture.title}</h2>
+  <p>{guide.architecture.intro}</p>
+  <dl class="rag-definitions">{guide.architecture.gates.map((gate) => <div><dt>{gate.name}</dt><dd>{gate.text}</dd></div>)}</dl>
+  <h3 class="rag-principle-heading">第一版需要哪些服务</h3>
+  <p>{guide.architecture.servicesIntro}</p>
+  <figure class="rag-diagram">
+    <a href="/images/rag/rag-production-architecture.svg" target="_blank" rel="noreferrer" aria-label="知识库生产架构，打开大图（新标签页）">
+      <img src="/images/rag/rag-production-architecture.svg" alt="浏览器请求先进入 API。API 根据认证和权限服务确定查询范围，从 PostgreSQL 与 pgvector 检索片段，再把证据交给回答模型。上传文件进入对象存储，并登记持久索引任务。独立 Worker 领取任务，完成解析、切块、向量化和校验，最后切换生效版本。" width="1440" height="900" loading="lazy" decoding="async" />
+    </a>
+    <figcaption>查询和入库是两条路径，共用同一份版本与权限记录。Worker 失败时，旧版本继续提供查询。点击图片查看大图。</figcaption>
+  </figure>
+  <dl class="rag-definitions">{guide.architecture.services.map((service) => <div><dt>{service.name}</dt><dd>{service.text}</dd></div>)}</dl>
+  <div class="rag-explanation">
+    <h3 class="rag-principle-heading">数据表先解决版本、权限和重试</h3>
+    <p>{guide.architecture.codeNote}</p>
+    <table class="rag-table rag-failure-table">
+      <thead><tr><th scope="col">表</th><th scope="col">职责</th></tr></thead>
+      <tbody>{guide.architecture.tables.map((row) => <tr><th scope="row"><code>{row.name}</code></th><td>{row.text}</td></tr>)}</tbody>
+    </table>
+    <pre><code>{guide.architecture.schema}</code></pre>
+    <p>{guide.architecture.schemaNote}</p>
+    <p>{guide.architecture.tableDesign} <a href="#source-pgvector">pgvector 与多租户边界</a></p>
+  </div>
+
+  <div class="rag-explanation" id="document-ingestion">
+    <h3 class="rag-principle-heading">{guide.ingestion.title}</h3>
+    <p>{guide.ingestion.intro}</p>
+    <pre><code>{guide.ingestion.upload}</code></pre>
+    <p>{guide.ingestion.uploadNote} <a href="#source-background-tasks">后台任务边界</a></p>
+    <p class="rag-token-formula">{guide.ingestion.states}</p>
+    <p>{guide.ingestion.jobs}</p>
+    <ol>{guide.ingestion.versionSteps.map((step) => <li>{step}</li>)}</ol>
+  </div>
+</section>
+
+<section class="rag-section" id="metadata-filtering" aria-labelledby="metadata-filtering-title">
+  <h2 id="metadata-filtering-title">{guide.metadata.title}</h2>
+  <p>{guide.metadata.intro}</p>
+  <p>{guide.metadata.example}</p>
+  <dl class="rag-definitions">{guide.metadata.conditions.map((condition) => <div><dt>{condition.name}</dt><dd>{condition.text}</dd></div>)}</dl>
+  <div class="rag-explanation">
+    <h3 class="rag-principle-heading">片段入库时保存适用范围</h3>
+    <pre><code>{guide.metadata.fields}</code></pre>
+    <p>{guide.metadata.fieldsNote}</p>
+    <h3 class="rag-principle-heading">过滤条件进入检索请求</h3>
+    <p>{guide.metadata.filterOrder}</p>
+    <pre><code>{guide.metadata.query}</code></pre>
+    <p>{guide.metadata.queryNote}</p>
+    <p>{guide.metadata.rls} <a href="#source-postgres-rls">PostgreSQL RLS 文档</a></p>
+    <p>{guide.metadata.evaluation} <a href="#rag-metrics">查看召回率与精确率</a></p>
+  </div>
+</section>
+
+<section class="rag-section" id="query-understanding" aria-labelledby="query-understanding-title">
+  <h2 id="query-understanding-title">{guide.query.title}</h2>
+  <p>{guide.query.intro}</p>
+  <table class="rag-table rag-failure-table">
+    <thead><tr><th scope="col">方法</th><th scope="col">怎样做</th><th scope="col">主要风险</th></tr></thead>
+    <tbody>{guide.query.rows.map((row) => <tr><th scope="row">{row.name}</th><td><span class="rag-mobile-label">怎样做：</span>{row.how}</td><td><span class="rag-mobile-label">风险：</span>{row.risk}</td></tr>)}</tbody>
+  </table>
+</section>
+
+<section class="rag-section" id="technical-selection" aria-labelledby="technical-selection-title">
+  <h2 id="technical-selection-title">{guide.selection.title}</h2>
+  <h3 class="rag-principle-heading">切块和解析怎样选</h3>
+  <p>{guide.selection.chunkingIntro}</p>
+  <table class="rag-table rag-failure-table">
+    <thead><tr><th scope="col">方案</th><th scope="col">适用资料</th><th scope="col">作用与限制</th></tr></thead>
+    <tbody>{guide.selection.chunkingRows.map((row) => <tr><th scope="row">{row.name}</th><td><span class="rag-mobile-label">适用资料：</span>{row.use}</td><td><span class="rag-mobile-label">限制：</span>{row.limit}</td></tr>)}</tbody>
+  </table>
+  <p class="rag-section-note"><a href="#source-contextual-retrieval">Contextual Retrieval</a> · <a href="#source-raptor">RAPTOR 论文</a></p>
+
+  <h3 class="rag-principle-heading">向量存储怎样选</h3>
+  <p>{guide.selection.storageIntro}</p>
+  <table class="rag-table rag-failure-table">
+    <thead><tr><th scope="col">现状</th><th scope="col">起步选择</th><th scope="col">重点检查</th></tr></thead>
+    <tbody>{guide.selection.storageRows.map((row) => <tr><th scope="row">{row.situation}</th><td><span class="rag-mobile-label">起步选择：</span>{row.start}</td><td><span class="rag-mobile-label">检查：</span>{row.check}</td></tr>)}</tbody>
+  </table>
+
+  <h3 class="rag-principle-heading">高级 RAG 什么时候才值得加</h3>
+  <p>{guide.selection.advancedIntro}</p>
+  <table class="rag-table rag-failure-table">
+    <thead><tr><th scope="col">方案</th><th scope="col">解决什么</th><th scope="col">新增成本与边界</th></tr></thead>
+    <tbody>{guide.selection.advancedRows.map((row) => <tr><th scope="row">{row.name}</th><td><span class="rag-mobile-label">解决问题：</span>{row.solve}</td><td><span class="rag-mobile-label">成本：</span>{row.cost}</td></tr>)}</tbody>
+  </table>
+  <p class="rag-section-note"><a href="#source-graph-rag">GraphRAG</a> · <a href="#source-self-rag">Self-RAG</a> · <a href="#source-crag">CRAG</a></p>
+
+  <h3 class="rag-principle-heading">不同场景的第一版和验收重点</h3>
+  <table class="rag-table rag-failure-table">
+    <thead><tr><th scope="col">场景</th><th scope="col">建议起点</th><th scope="col">首要验收</th></tr></thead>
+    <tbody>{guide.selection.scenarioRows.map((row) => <tr><th scope="row">{row.scene}</th><td><span class="rag-mobile-label">建议起点：</span>{row.start}</td><td><span class="rag-mobile-label">首要验收：</span>{row.metric}</td></tr>)}</tbody>
+  </table>
+</section>
+
+<section class="rag-section" id="release-gates" aria-labelledby="release-gates-title">
+  <h2 id="release-gates-title">{guide.release.title}</h2>
+  <p>{guide.release.intro}</p>
+  <ol>{guide.release.checks.map((check) => <li>{check}</li>)}</ol>
+  <p><strong>{guide.release.boundary}</strong></p>
+</section>

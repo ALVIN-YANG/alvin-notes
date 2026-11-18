@@ -457,6 +457,7 @@ nav.rag-outline-desktop .rag-outline-list a { display: block; padding: .3rem .5r
 .rag-meta-row { margin-top: .8rem; }
 .rag-jump-links { display: flex; gap: .4rem 1.2rem; flex-wrap: wrap; font-size: .85rem; }
 .rag-updated { color: var(--sl-color-gray-2); font-size: .78rem; }
+.rag-intro-summary { max-width: 55rem; margin-top: 1rem !important; font-size: 1rem; line-height: 1.8; }
 .rag-practice .rag-copy-status { margin-top: .5rem; font-size: .83rem; color: var(--sl-color-accent-high); }
 .rag-copy-status[hidden] { display: none; }
 .rag-section { margin-top: 1.8rem; scroll-margin-top: calc(var(--sl-nav-height) + 1rem); }

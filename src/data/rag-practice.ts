@@ -1,10 +1,11 @@
 import tokenizerExample from './rag-tokenizer-example.json';
 import { ragRetrieval, ragRetrievalMarkdown } from './rag-retrieval';
+import { ragFitMarkdown, ragEngineeringMarkdown } from './rag-engineering';
 
 export const ragPractice = {
-  title: 'RAG 实战速查',
-  updatedAt: '2026-11-17',
-  summary: 'RAG 让大模型根据外部资料回答：先整理资料并建立搜索索引，再找到用户有权查看的生效条款，按输入容量选取原文，交给模型组织答案和来源。适合制度、产品手册、内部知识库等问题。',
+  title: 'RAG 实战指南：从资料入库到可靠回答',
+  updatedAt: '2026-11-18',
+  summary: 'RAG 的难点不是接上向量数据库，而是让正确的人，在正确的版本范围内找全依据，再把完整条款交给模型。检索、权限、版本、引用和评测必须一起设计；只做向量 Top-K，得到的是演示，不是可靠知识库。',
   diagrams: {
     tokenizer: {
       src: '/images/rag/rag-tokenizer-cel.webp',
@@ -271,6 +272,14 @@ export const ragPractice = {
     { id: 'pgvector', title: 'pgvector：PostgreSQL 的向量搜索与过滤', href: 'https://github.com/pgvector/pgvector', supports: '说明向量搜索和过滤的实现方式。近似搜索叠加过滤可能减少结果，需要检查是否漏掉资料。' },
     { id: 'hybrid', title: 'Elastic：混合检索', href: 'https://www.elastic.co/docs/solutions/search/hybrid-search', supports: '说明怎样结合关键词与语义搜索。' },
     { id: 'evaluation', title: 'RAGAS 论文：分别评估检索和回答', href: 'https://aclanthology.org/2024.eacl-demo.16/', supports: '支持分别检查资料相关性、回答是否忠实使用资料和回答质量。' },
+    { id: 'background-tasks', title: 'FastAPI：后台任务与重计算任务边界', href: 'https://fastapi.tiangolo.com/tutorial/background-tasks/', supports: '说明响应后小任务与跨进程重计算任务的不同部署需求。' },
+    { id: 'postgres-rls', title: 'PostgreSQL：Row Security Policies', href: 'https://www.postgresql.org/docs/current/ddl-rowsecurity.html', supports: '说明行级安全策略、默认拒绝和高权限角色绕过边界。' },
+    { id: 'contextual-retrieval', title: 'Anthropic：Contextual Retrieval', href: 'https://www.anthropic.com/engineering/contextual-retrieval', supports: '说明为片段补充上下文后再建立关键词和向量索引的方法。' },
+    { id: 'raptor', title: 'RAPTOR 论文', href: 'https://proceedings.iclr.cc/paper_files/paper/2024/hash/8a2acd174940dbca361a6398a4f9df91-Abstract-Conference.html', supports: '说明递归聚类、摘要和树状检索。' },
+    { id: 'graph-rag', title: 'Microsoft GraphRAG 文档', href: 'https://microsoft.github.io/graphrag/', supports: '说明实体关系、社区摘要和图检索的适用方式。' },
+    { id: 'self-rag', title: 'Self-RAG 论文', href: 'https://proceedings.iclr.cc/paper_files/paper/2024/hash/25f7be9694d7b32d5cc670927b8091e1-Abstract-Conference.html', supports: '说明原方法包含训练与反思标记，不能与普通 Prompt 自检混称。' },
+    { id: 'crag', title: 'Corrective RAG 论文', href: 'https://arxiv.org/abs/2401.15884', supports: '说明检索评估和纠正流程。' },
+    { id: 'lost-middle', title: 'Lost in the Middle 论文', href: 'https://aclanthology.org/2024.tacl-1.9/', supports: '说明模型利用长上下文中不同位置信息的能力可能不均衡。' },
   ],
   tutorials: [
     { title: 'Datawhale All-in-RAG', href: 'https://github.com/datawhalechina/all-in-rag', start: 'https://github.com/datawhalechina/all-in-rag/blob/main/docs/chapter1/03_get_start_rag.md', description: '中文学习主线：先读第一章，再看“四步构建 RAG”的文档与代码。' },
@@ -289,6 +298,7 @@ export function ragPracticeMarkdown(): string {
   return [
     `# ${guide.title}`,
     `更新：${guide.updatedAt}。`,
+    guide.summary,
     '## RAG 是什么',
     guide.principle.definition,
     guide.principle.purpose,
@@ -317,6 +327,7 @@ export function ragPracticeMarkdown(): string {
     '### 文件先读对：扫描件、表格与出处',
     ...guide.principle.parsing.map((item) => `- **${item.name}**：${item.text}`),
     guide.fit,
+    ragFitMarkdown(),
     `## ${guide.tokenizer.title}`,
     guide.tokenizer.definition,
     guide.tokenizer.role,
@@ -361,6 +372,7 @@ export function ragPracticeMarkdown(): string {
     `完整脚本：https://blog.mlxb.cc/examples/rag-tokenizer-demo.py。使用 Python ${guide.tokenizer.example.versions.python}、tokenizers ${guide.tokenizer.example.versions.tokenizers}、tiktoken ${guide.tokenizer.example.versions.tiktoken}，BGE 修订 ${guide.tokenizer.example.versions.revision}。`,
     `按 ${guide.tokenizer.example.truncation.chunkLimit} token 上限切块后的长度：${guide.tokenizer.example.truncation.chunkTokenCounts.join('、')}；末尾规定保留。纯文本预算演练使用 ${guide.tokenizer.example.packing.window} 窗口、${guide.tokenizer.example.packing.outputReserve} 输出预留和 ${guide.tokenizer.example.packing.margin} 余量，选入 ${guide.tokenizer.example.packing.selectedSources.join('、')}，跳过 ${guide.tokenizer.example.packing.skippedSources.join('、')}，输入 ${guide.tokenizer.example.packing.inputTokens} token。选入结果只演示容量检查，未证明依据充分。`,
     ragRetrievalMarkdown(),
+    ragEngineeringMarkdown(),
     '## 第一版怎么做',
     table(['做什么', '具体做法', '检查结果'], guide.steps.map((step) => [step.title, step.action, step.check])),
     '### 给模型的回答要求',
