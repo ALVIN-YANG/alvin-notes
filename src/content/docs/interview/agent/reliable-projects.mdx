@@ -1,12 +1,21 @@
 ---
-title: "AI 工程面试：模型会犯错，项目怎么做可靠"
-description: "从家庭助手的一条空调控制请求讲起，讨论 AI 项目怎样起步、怎样处理模型和工具的错误、怎样比较效果，以及代码交给 Agent 后人还要负责什么。"
-date: 2026-10-09
+title: "家庭助手怎样做可靠：从设备控制到 Agent 验收"
+description: "用一组模拟面试追问，讲清自然语言控制中的权限、设备状态、超时、测试和 Agent 人机分工。"
 lastUpdated: 2026-10-09
-verifiedAgainst: "Google、Anthropic、Hamel Husain、Simon Willison 的原作者资料与 Home Assistant 官方文档，2026-10-09"
+interview:
+  track: agent
+  module: ai-agent
+  level: intermediate
+  order: 157
+  tags: [Agent 可靠性, 副作用, Evals, Home Assistant]
 sidebar:
-  order: 37
+  label: 家庭助手可靠性
+  order: 157
 ---
+
+import InterviewQuestion from '../../../../components/InterviewQuestion.astro';
+
+<InterviewQuestion>
 
 模型说“空调已经调好了”，不代表空调真的调好了。做可靠的 AI 系统，要把理解请求、执行操作、确认结果分开：模型把用户的话转成操作请求，程序检查设备、权限和参数，再调用接口；查到结果后，才能告诉用户完成了什么。程序检查也不能消除所有理解错误，选错设备、漏掉条件这些问题，仍然要通过测试和实际使用来发现。
 
@@ -148,3 +157,5 @@ Agent 可以据此编写测试，但测试是否检查了这些要求，需要�
 [^evals]: Anthropic：[Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)。参考任务、重复试验、评分器、执行记录和最终结果的区分。这里的家庭助手用例和数据是说明性示例。
 [^product]: Hamel Husain：[Your AI Product Needs Evals](https://hamel.dev/blog/posts/evals/)。参考产品级评测、执行记录分析，以及人工和模型评审的组合。
 [^coding]: Simon Willison：[Here’s how I use LLMs to help me write code](https://simonwillison.net/2025/Mar/11/using-llms-for-code/)。参考上下文提供、明确要求、运行验证和开发者责任。
+
+</InterviewQuestion>

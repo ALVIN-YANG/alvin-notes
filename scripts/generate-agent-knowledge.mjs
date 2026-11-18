@@ -19,8 +19,8 @@ const domainMeta = [
 
 const articleIndex = {
   foundations: [
-    { title: '什么时候不该用 AI Agent', href: '/ai/when-not-to-use-ai-agent/' },
-    { title: 'Function Call、Agent、MCP 与 Skill', href: '/ai/function-call-agent/' },
+    { title: 'Agent 架构与执行循环', href: '/ai/agent-architecture-execution-loop/' },
+    { title: 'Function Call、MCP 与 Skill 的边界', href: '/ai/agent-architecture-execution-loop/' },
   ],
   'model-context': [
     { title: 'Context Engineering 怎么做', href: '/ai/context-engineering-guide/' },
@@ -31,19 +31,19 @@ const articleIndex = {
     { title: 'Agent 记忆系统：原理、方案与场景选型', href: '/ai/agent-memory-principles/' },
   ],
   'tools-environment': [
-    { title: '生产级 Agent Tool 怎么设计', href: '/ai/production-agent-tool-design/' },
-    { title: 'Function Call、Agent、MCP 与 Skill', href: '/ai/function-call-agent/' },
+    { title: 'Agent 工具与运行环境', href: '/ai/agent-tools-runtime/' },
+    { title: 'Function Call、MCP 与 Skill 的边界', href: '/ai/agent-architecture-execution-loop/' },
   ],
   'runtime-orchestration': [
     { title: 'Agent 状态保存与恢复', href: '/ai/agent-context-persistence-recovery/' },
   ],
   'evaluation-evolution': [
-    { title: 'AI Agent 怎么做评测', href: '/ai/agent-evaluation-observability/' },
+    { title: 'Agent 评测、安全与发布', href: '/ai/agent-evaluation-security-release/' },
     { title: 'RAG 知识库工程：过滤与验证', href: '/rag/#metadata-filtering' },
   ],
   'safety-governance': [
-    { title: 'AI Agent 安全工程', href: '/ai/agent-security-engineering/' },
-    { title: 'Agent 怎样防 Prompt Injection', href: '/ai/agent-prompt-injection-defense/' },
+    { title: 'Agent 安全工程与 Prompt Injection', href: '/ai/agent-evaluation-security-release/#security' },
+    { title: 'Agent 评测与发布门槛', href: '/ai/agent-evaluation-security-release/' },
   ],
   'production-platform': [
     { title: '事件驱动架构怎么落地', href: '/architecture/event-driven-architecture-outbox-idempotency/' },
@@ -51,7 +51,7 @@ const articleIndex = {
   ],
   'interaction-collaboration': [
     { title: '实时语音 Agent 怎么做', href: '/ai/realtime-voice-agent-engineering/' },
-    { title: '多智能体架构选型', href: '/ai/multi-agent-architecture-selection/' },
+    { title: '多 Agent 通信与责任分工', href: '/ai/agent-architecture-execution-loop/' },
   ],
 };
 

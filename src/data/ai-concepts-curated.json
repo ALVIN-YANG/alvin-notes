@@ -118,7 +118,7 @@
     "sources": [
       {
         "title": "Alvin Yang：相关解释",
-        "url": "https://blog.mlxb.cc/ai/function-call-agent/"
+        "url": "https://blog.mlxb.cc/ai/agent-architecture-execution-loop/"
       }
     ]
   },
@@ -161,7 +161,7 @@
     "sources": [
       {
         "title": "Alvin Yang：相关解释",
-        "url": "https://blog.mlxb.cc/ai/function-call-agent/"
+        "url": "https://blog.mlxb.cc/ai/agent-architecture-execution-loop/"
       }
     ]
   },
@@ -481,7 +481,7 @@
     "sources": [
       {
         "title": "Alvin Yang：相关解释",
-        "url": "https://blog.mlxb.cc/ai/function-call-agent/"
+        "url": "https://blog.mlxb.cc/ai/agent-architecture-execution-loop/"
       }
     ]
   },
@@ -501,7 +501,7 @@
     "sources": [
       {
         "title": "Alvin Yang：相关解释",
-        "url": "https://blog.mlxb.cc/ai/agent-runtime-environments/"
+        "url": "https://blog.mlxb.cc/ai/agent-tools-runtime/"
       }
     ]
   },
@@ -521,7 +521,7 @@
     "sources": [
       {
         "title": "Alvin Yang：相关解释",
-        "url": "https://blog.mlxb.cc/ai/agent-evaluation-observability/"
+        "url": "https://blog.mlxb.cc/ai/agent-evaluation-security-release/"
       }
     ]
   },

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T03:34:40.242Z",
+  "updatedAt": "2026-11-18T10:02:11.724Z",
   "sources": [
     {
       "id": "google",
@@ -202,7 +202,7 @@
         },
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/function-call-agent/"
+          "url": "https://blog.mlxb.cc/ai/agent-architecture-execution-loop/"
         }
       ],
       "upstreamDefinition": "能够对用户输入进行推理,以便代表用户规划和执行操作的软件。\n\n在强化学习中,智能体是使用政策来最大限度提高从环境的状态转换中获得的预期回报的实体。",
@@ -251,7 +251,7 @@
       "sources": [
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/function-call-agent/"
+          "url": "https://blog.mlxb.cc/ai/agent-architecture-execution-loop/"
         }
       ],
       "scope": "通用概念",
@@ -696,7 +696,7 @@
       "sources": [
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/function-call-agent/"
+          "url": "https://blog.mlxb.cc/ai/agent-architecture-execution-loop/"
         }
       ],
       "scope": "通用概念",
@@ -719,7 +719,7 @@
       "sources": [
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/agent-runtime-environments/"
+          "url": "https://blog.mlxb.cc/ai/agent-tools-runtime/"
         }
       ],
       "scope": "通用概念",
@@ -750,7 +750,7 @@
         },
         {
           "title": "Alvin Yang：相关解释",
-          "url": "https://blog.mlxb.cc/ai/agent-evaluation-observability/"
+          "url": "https://blog.mlxb.cc/ai/agent-evaluation-security-release/"
         }
       ],
       "upstreamDefinition": "衡量模型质量或比较不同模型的过程。\n\n若要评估监督式机器学习模型,您通常需要根据验证集和测试集来判断模型的效果。评估 LLM 通常涉及更广泛的质量和安全性评估。",

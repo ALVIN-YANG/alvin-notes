@@ -187,6 +187,236 @@
       "permanent": true
     },
     {
+      "source": "/ai/when-not-to-use-ai-agent",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/when-not-to-use-ai-agent/",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/function-call-agent",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/function-call-agent/",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/3-function-call-agent",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/3-function-call-agent/",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/multi-agent-architecture-selection",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/multi-agent-architecture-selection/",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/harness-goal-controller",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/harness-goal-controller/",
+      "destination": "/ai/agent-architecture-execution-loop/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/production-agent-tool-design",
+      "destination": "/ai/agent-tools-runtime/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/production-agent-tool-design/",
+      "destination": "/ai/agent-tools-runtime/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-runtime-environments",
+      "destination": "/ai/agent-tools-runtime/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-runtime-environments/",
+      "destination": "/ai/agent-tools-runtime/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/jev-decision-models",
+      "destination": "/ai/agent-tools-runtime/#decision-models",
+      "permanent": true
+    },
+    {
+      "source": "/ai/jev-decision-models/",
+      "destination": "/ai/agent-tools-runtime/#decision-models",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/langgraph",
+      "destination": "/agent-frameworks/#langgraph",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/langgraph/",
+      "destination": "/agent-frameworks/#langgraph",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/autogen",
+      "destination": "/agent-frameworks/#autogen",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/autogen/",
+      "destination": "/agent-frameworks/#autogen",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/crewai",
+      "destination": "/agent-frameworks/#crewai",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/crewai/",
+      "destination": "/agent-frameworks/#crewai",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/google-adk",
+      "destination": "/agent-frameworks/#google-adk",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/google-adk/",
+      "destination": "/agent-frameworks/#google-adk",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/openai-agents-sdk",
+      "destination": "/agent-frameworks/#openai-agents-sdk",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/openai-agents-sdk/",
+      "destination": "/agent-frameworks/#openai-agents-sdk",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/claude-agent-sdk",
+      "destination": "/agent-frameworks/#claude-agent-sdk",
+      "permanent": true
+    },
+    {
+      "source": "/agent-frameworks/claude-agent-sdk/",
+      "destination": "/agent-frameworks/#claude-agent-sdk",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-evaluation-observability",
+      "destination": "/ai/agent-evaluation-security-release/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-evaluation-observability/",
+      "destination": "/ai/agent-evaluation-security-release/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/langfuse-overview",
+      "destination": "/ai/agent-evaluation-security-release/#langfuse",
+      "permanent": true
+    },
+    {
+      "source": "/ai/langfuse-overview/",
+      "destination": "/ai/agent-evaluation-security-release/#langfuse",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-security-engineering",
+      "destination": "/ai/agent-evaluation-security-release/#security",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-security-engineering/",
+      "destination": "/ai/agent-evaluation-security-release/#security",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-prompt-injection-defense",
+      "destination": "/ai/agent-evaluation-security-release/#security",
+      "permanent": true
+    },
+    {
+      "source": "/ai/agent-prompt-injection-defense/",
+      "destination": "/ai/agent-evaluation-security-release/#security",
+      "permanent": true
+    },
+    {
+      "source": "/ai/openclaw-streaming-voice-latency",
+      "destination": "/ai/realtime-voice-agent-engineering/#latency-case",
+      "permanent": true
+    },
+    {
+      "source": "/ai/openclaw-streaming-voice-latency/",
+      "destination": "/ai/realtime-voice-agent-engineering/#latency-case",
+      "permanent": true
+    },
+    {
+      "source": "/ai/openclaw-plugin-primer",
+      "destination": "/claw/openclaw/#plugins",
+      "permanent": true
+    },
+    {
+      "source": "/ai/openclaw-plugin-primer/",
+      "destination": "/claw/openclaw/#plugins",
+      "permanent": true
+    },
+    {
+      "source": "/claw/openclaw/7-production-deployment-checklist",
+      "destination": "/claw/openclaw/#deployment",
+      "permanent": true
+    },
+    {
+      "source": "/claw/openclaw/7-production-deployment-checklist/",
+      "destination": "/claw/openclaw/#deployment",
+      "permanent": true
+    },
+    {
+      "source": "/claw/openclaw/8-agent-input-queue-modes",
+      "destination": "/claw/openclaw/#queue",
+      "permanent": true
+    },
+    {
+      "source": "/claw/openclaw/8-agent-input-queue-modes/",
+      "destination": "/claw/openclaw/#queue",
+      "permanent": true
+    },
+    {
+      "source": "/ai/ai-engineering-interview-reliable-projects",
+      "destination": "/interview/agent/reliable-projects/",
+      "permanent": true
+    },
+    {
+      "source": "/ai/ai-engineering-interview-reliable-projects/",
+      "destination": "/interview/agent/reliable-projects/",
+      "permanent": true
+    },
+    {
       "source": "/algorithms/java-advanced-algorithm-patterns",
       "destination": "/algorithm-knowledge/chapters/java-advanced-algorithm-patterns/",
       "permanent": true
@@ -258,7 +488,7 @@
     },
     {
       "source": "/ai/3-Function-Call%E4%B8%8EAgent/",
-      "destination": "/ai/function-call-agent/",
+      "destination": "/ai/agent-architecture-execution-loop/",
       "permanent": true
     },
     {

@@ -50,4 +50,4 @@ Loop 是带反馈的执行循环，不等于无限重试。Skill 可以约束行
 
 - [AY Skills 中文说明](https://github.com/ALVIN-YANG/ay-skills/blob/main/README.zh-CN.md)：职责、使用方式与验证边界。
 - [如何选择 Skill](https://github.com/ALVIN-YANG/ay-skills/blob/main/docs/choosing-a-skill.zh-CN.md)：处理职责重叠与任务交接。
-- [Agent 目标模式与执行循环](/ai/harness-goal-controller/)：理解持续执行背后的运行机制。
+- [Agent 目标模式与执行循环](/ai/agent-architecture-execution-loop/)：理解持续执行背后的运行机制。

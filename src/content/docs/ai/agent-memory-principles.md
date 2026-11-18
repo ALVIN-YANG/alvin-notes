@@ -167,7 +167,7 @@ Mem0 用 `add` 和 `search` 两个动作接入现有 Agent，ADD-only 加多信�
 
 ### 7.5 框架运行时与托管产品：两个容易被误认的方向
 
-**框架运行时记忆解决执行状态，不是长期偏好。** LangGraph 的 checkpointer 让任务断点恢复，store 存跨线程数据；CrewAI 区分短期、长期与实体记忆。用户改口这类偏好冲突，框架不会替你处理。详见 [LangGraph](/agent-frameworks/langgraph/)、[CrewAI](/agent-frameworks/crewai/)、[OpenAI Agents SDK](/agent-frameworks/openai-agents-sdk/)、[Google ADK](/agent-frameworks/google-adk/)。
+**框架运行时记忆解决执行状态，不是长期偏好。** LangGraph 的 checkpointer 让任务断点恢复，store 存跨线程数据；CrewAI 区分短期、长期与实体记忆。用户改口这类偏好冲突，框架不会替你处理。详见 [LangGraph](/agent-frameworks/#langgraph)、[CrewAI](/agent-frameworks/#crewai)、[OpenAI Agents SDK](/agent-frameworks/#openai-agents-sdk)、[Google ADK](/agent-frameworks/#google-adk)。
 
 **托管产品的记忆要按“两层删除”理解。**[ChatGPT 官方 FAQ](https://help.openai.com/en/articles/8590148-memory-faq)：saved memories 独立于聊天存储，删原聊天不删记忆；删干净要同时处理记忆和原始聊天，日志可能保留至多 30 天。Claude.ai 以主题形式综合记忆，支持管理、无痕聊天，2026 年扩展到聊天与 Cowork 共享（[报道](https://www.engadget.com/2243753/claude-memory-now-works-across-both-chats-and-cowork-sessions/)）。个人使用没问题，但**不能当产品的记忆底座**：不可导出、不可移植、规则平台定。
 

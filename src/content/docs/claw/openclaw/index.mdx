@@ -1,21 +1,20 @@
 ---
-title: "OpenClaw 深度实践"
-description: "基于当前官方 CLI 与插件体系的 OpenClaw 使用入口，收录经过验证的配置、扩展和生产排障文章。"
+title: "OpenClaw 生产实践：插件、消息队列、部署与回滚"
+description: "从可信操作者边界出发，完成 OpenClaw 上手、插件开发、队列选择、权限、健康检查和升级验收。"
 date: 2026-05-21
-lastUpdated: 2026-08-13
-verifiedAgainst: "OpenClaw 2026.7.1-2 稳定版源码、随包文档与当前官方文档，2026-08-13"
+lastUpdated: 2026-11-18
+verifiedAgainst: "OpenClaw 2026.7.1-2 稳定版源码与随包文档；滚动文档差异单独注明"
 ---
 
-OpenClaw 是一个自托管的多渠道 AI Gateway。它把模型、会话、工具、Skills、插件和消息渠道组织在一个长期运行的 Gateway 中。
+**OpenClaw 生产部署先明确它代表谁、能做什么，再讨论插件和消息功能。** 一个 Gateway 默认对应一个可信操作者边界，不是对抗性多租户隔离层。Tool、Plugin、Channel 和 Cron 都能持续产生影响，权限、状态目录和恢复步骤必须与功能一起设计。
 
-这个专栏只保留两类内容：
+OpenClaw 是自托管的多渠道 AI Gateway，把模型、会话、工具、Skills、插件和消息渠道组织在长期运行的进程中。本文按“上手 → 扩展 → 队列 → 部署 → 升级”组织，固定机制注明版本；协议专项排障与记忆系统仍保留独立文章。
 
-- 能够按明确版本复现的使用和扩展方式；
-- 来自真实故障、包含证据链和验证结果的排障记录。
+<a id="quickstart"></a>
 
-## 当前版本的最短上手
+## 1. 最短上手：先记录版本，再跑通一次请求
 
-安装最新稳定版本：
+安装并检查版本：
 
 ```bash
 npm install -g openclaw@latest
@@ -28,19 +27,14 @@ openclaw --version
 openclaw onboard --install-daemon
 ```
 
-确认 Gateway：
+确认 Gateway，并发起一次 Agent 请求：
 
 ```bash
 openclaw gateway status
-```
-
-发起一次 Agent 请求：
-
-```bash
 openclaw agent --message "用三点总结当前工作区状态"
 ```
 
-命令和配置会随版本演进。复制任何示例前，都应先核对：
+复制后续示例前，先核对实际安装版本的命令和配置：
 
 ```bash
 openclaw --version
@@ -48,51 +42,290 @@ openclaw help
 openclaw doctor
 ```
 
-官方入口：
+不要只在文档里写 `latest`。教程和排障记录还应保存 Node.js、操作系统、模型 Provider、协议、关键配置、成功与失败输出及最后验证日期。
 
-- [OpenClaw 官方文档](https://docs.openclaw.ai/)
-- [OpenClaw 官方仓库](https://github.com/openclaw/openclaw)
-- [工具能力概览](https://docs.openclaw.ai/tools)
-- [插件文档](https://docs.openclaw.ai/plugins)
+<a id="plugins"></a>
 
-## Tool、Skill 和 Plugin 怎么分
+## 2. 先选扩展层级：Skill、Tool、Hook、Plugin 与 Slot
 
-| 能力 | 用途 |
-|---|---|
-| Tool | 让模型调用一个具体动作 |
-| Skill | 教 Agent 如何完成一类任务 |
-| Plugin | 向运行时注册 Tool、Hook、Channel、Provider、Service 或其他扩展 |
-| Hook | 在明确生命周期事件发生时执行逻辑 |
-| Slot | 替换 memory、context engine 等排他性核心能力 |
+![Skill、Tool、Plugin 与 Hook 的落点](/images/ai/openclaw-plugin-spectrum.svg)
 
-如果只是给 Agent 增加一套操作步骤，优先使用 Skill；如果只是增加一个可调用动作，优先使用 Tool；只有需要介入运行时生命周期或提供完整扩展包时，才使用 Plugin。
+| 机制 | 谁触发 | 适合什么 |
+| --- | --- | --- |
+| Skill | 构建上下文时加载 | 教 Agent 一类任务的流程、约束和领域知识 |
+| Tool | 模型按需调用 | 搜索、计算、文件处理、外部 API 等一个具体动作 |
+| Hook | 命令或生命周期事件发生 | `/new`、`/reset` 自动化和工作区级小脚本 |
+| Plugin | Gateway 运行时加载 | 生命周期干预、能力注册、配置 Schema 和打包分发 |
+| Slot | 替换排他性核心能力 | 接管 memory 或 contextEngine 等核心管线 |
 
-详细设计见：
+选择标准是“哪一层刚好覆盖需求”，不是 Plugin 更高级。只增加操作步骤用 Skill，只增加一个动作用 Tool，需要事件控制或完整扩展包才用 Plugin。
 
-- [OpenClaw 插件全解析：从 Tool、Hook 到 Slot](/ai/openclaw-plugin-primer/)
+**Plugin 运行在 Gateway 进程内，与 Gateway 共享权限。** 安装它就是引入代码，不是增加一个普通配置项。依赖树、来源、加载路径和 `allow / deny` 都要审查。
 
-## 运行机制
+## 3. 插件最小结构与注册能力
 
-- [面试官追问 OpenClaw，Agent 忙着时怎样处理新消息](/claw/openclaw/8-agent-input-queue-modes/)
+一个插件最小目录：
 
-## 当前保留的生产排障
+```text
+my-plugin/
+├── openclaw.plugin.json
+├── package.json
+└── index.ts
+```
 
+`openclaw.plugin.json` 声明插件身份与配置 Schema，`package.json` 声明入口，`index.ts` 注册实际能力。
+
+```json
+{
+  "id": "my-plugin",
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "apiKey": { "type": "string" }
+    }
+  }
+}
+```
+
+```json
+{
+  "name": "my-plugin",
+  "openclaw": {
+    "extensions": ["./index.ts"]
+  }
+}
+```
+
+配置校验可以基于 manifest 和 JSON Schema 完成，不必先执行插件代码。一个包的 `openclaw.extensions` 也可以导出多个入口，形成 plugin pack。插件 ID 是稳定接口：同一 ID 的冲突会影响配置归属、加载控制和排障。
+
+常用注册能力包括：
+
+| API | 用途 |
+| --- | --- |
+| `api.registerTool(...)` | 暴露给模型调用的函数 |
+| `api.on(...)` | 注册类型化 Agent 生命周期钩子 |
+| `api.registerService(...)` | 启动时初始化资源，关闭时释放，运行后台 watcher |
+| `api.registerHttpRoute(...)` | 注册 webhook 或插件私有 HTTP 接口，显式处理认证和冲突 |
+| `api.registerProvider(...)` / `api.registerChannel(...)` | 接入模型 Provider 或消息渠道 |
+
+下面组合了 Tool、Prompt 构建和 Service。它是固定版本文档的说明性示例，实际插件需按安装版本的 SDK 编译验证：
+
+```ts
+import { Type } from "@sinclair/typebox";
+
+export default function register(api) {
+  api.registerTool({
+    name: "say_hello",
+    label: "Say Hello",
+    description: "Return a greeting",
+    parameters: Type.Object({ name: Type.String() }),
+    async execute(_toolCallId, params) {
+      return {
+        content: [{ type: "text", text: `Hello, ${params.name}!` }],
+      };
+    },
+  }, { name: "say_hello" });
+
+  api.on("before_prompt_build", async () => ({
+    prependSystemContext: "Be concise and technical.",
+  }));
+
+  api.registerService({
+    id: "my-plugin-service",
+    start: (ctx) => ctx.logger.info("plugin started"),
+    stop: async (ctx) => ctx.logger.info("plugin stopped"),
+  });
+}
+```
+
+<a id="plugin-lifecycle"></a>
+
+### 生命周期顺序决定能否读到 messages
+
+| 钩子 | 时机 | 适合什么 |
+| --- | --- | --- |
+| `before_model_resolve` | session load 之前 | 按确定规则覆盖模型或 Provider |
+| `before_prompt_build` | session load 之后、模型调用前 | 根据当前消息动态拼接上下文 |
+| `before_agent_start` | legacy compatibility hook | 新逻辑应拆到上面两个，不当万能入口 |
+
+顺序是：
+
+```text
+before_model_resolve
+  → session load
+  → before_prompt_build
+  → legacy before_agent_start fallback
+  → 真正发起模型调用
+```
+
+`before_prompt_build` 可以使用 `prependSystemContext`、`appendSystemContext`、`systemPrompt` 等能力。它是高权限扩展点，运维侧可以限制单个插件的 Prompt 注入能力：
+
+```json5
+plugins.entries.<plugin-id>.hooks.allowPromptInjection: false
+```
+
+### Slot 只在你准备接管整条链路时使用
+
+普通插件是在旁边加能力，Slot Plugin 是替换核心实现：
+
+```json5
+{
+  "plugins": {
+    "slots": {
+      "memory": "memory-core",
+      "contextEngine": "legacy"
+    }
+  }
+}
+```
+
+`memory` 控制长期记忆插件，`contextEngine` 控制 session context 的 ingest、assembly 和 compaction。先写顺普通插件，确认默认实现哪里不够，再考虑替换；记忆系统的默认机制见[OpenClaw 记忆系统拆解](/claw/openclaw/9-memory-system-deep-dive/)。
+
+### 加载与运行验证不是一回事
+
+开发期可用 `plugins.load.paths` 指向本地目录，运行期应使用明确的包版本，并配置 `allow / deny`、`entries` 和 `slots`。
+
+冷态 `list / inspect` 只证明磁盘和配置层面发现了插件；带 `--runtime` 的 inspect 才能说明运行中的 Gateway 实际注册了什么。出现“列表里有但不生效”时，先区分发现、加载和注册三个阶段。
+
+<a id="queue"></a>
+
+## 4. Agent 忙着时，新消息按意图进入不同路径
+
+一个 session 同时只允许一个 run 执行。run 是从读取上下文、调用模型和工具到回复用户的完整过程。串行化是为了避免两边同时追加对话和交叉工具结果。
+
+```ts
+if (session.hasActiveRun) {
+  handleWithQueueMode(message)
+} else {
+  startNewRun(message)
+}
+```
+
+`hasActiveRun` 成立时，四种模式分别这样处理：
+
+| 用户意图 | 模式 | 新消息去向 |
+| --- | --- | --- |
+| 当前方向没错，只补充条件 | `steer` | 送进当前 run，改变后续判断 |
+| 当前完成后，每条消息单独回答 | `followup` | 当前 run 结束后，每条各开一轮 |
+| 连续补充同一件事的几段材料 | `collect` | 等安静窗口后合并，只开一轮 |
+| 当前任务已经错了，需要停止 | `interrupt` | 取消当前 run，再执行最新消息 |
+
+### steer 不会回滚已经开始的工具
+
+用户补一句“只读检查，别改文件”，`steer` 会在结构安全的位置把新消息写入上下文。模型发出 tool call 后，记录里必须出现对应的 tool result，不能简单把用户消息插在两者中间。
+
+固定到 OpenClaw `2026.7.1-2`，随包文档把注入点放在当前工具调用批次结束后；滚动文档已把检查推进到工具启动边界。两者共同的边界是：已经开始的工具不会被 `steer` 回滚，新消息会在下一次模型判断前出现。当前运行时不支持 steering 时，则等当前 run 结束后再执行。
+
+### followup 与 collect 的差别在 drain
+
+`followup` 一次从队列取一条，一条消息开一个 run；`collect` 默认再等 500ms 安静窗口，把同路由的连续消息合成一个 prompt，只开一个 run。
+
+所谓同路由，要比较 channel、thread、接收目标、账号和回复位置。不同投递目标不能合并，否则 A 线程的问题可能回到 B 线程。
+
+### interrupt 不是通用回滚
+
+`interrupt` 向当前 run 发出 abort，并清掉尚未开始的工作，当前 run 退出后再执行最新消息。已经修改的文件、发出的消息和提交的数据库事务不会自动恢复，工具需要自己支持取消检查、幂等或补偿。
+
+稳定版的默认队列上限为 20 条，默认 `drop:summarize` 只把被移除消息压成受长度限制的文本预览，不会额外调用模型。`/queue` 设置优先级为：会话内设置 > 渠道设置 > 全局设置。
+
+```text
+/queue steer
+/queue followup
+/queue collect debounce:0.5s cap:25 drop:summarize
+/queue interrupt
+/queue reset
+```
+
+稳定版 followup 队列保存在进程内 Map 中。**必须跨重启处理的业务消息，不能只依赖这个内存队列**，要在渠道接入层或业务层持久化。
+
+<a id="deployment"></a>
+
+## 5. 生产部署先收紧信任和暴露范围
+
+官方安全模型是个人助手信任模型：一个 Gateway 面向一个可信操作者边界。多个互不信任的用户共享 Tool-enabled Agent，也会共享 Agent 被授予的工具权限。
+
+多用户或多组织场景应拆成：
+
+```text
+独立 Gateway + 独立凭证 + 独立状态目录
++ 独立 OS 用户或主机 + 独立网络与资源限制
+```
+
+`sessionKey` 用于路由会话，不是授权令牌。
+
+### 网络与认证
+
+优先保持 loopback，通过 Tailscale Serve 或等价可信隧道远程访问。必须使用 `lan`、`tailnet` 或 `custom` 时，同时配置：
+
+- Gateway token 或 password；
+- 真实防火墙和来源限制；
+- Control UI allowed origins；
+- 不暴露无认证反向代理路径；
+- 不把 Canvas 与特权控制面放在不可信同源环境。
+
+修改网络、Channel 或 Tool 配置后运行：
+
+```bash
+openclaw security audit
+openclaw security audit --deep
+openclaw security audit --json
+```
+
+`--fix` 只应用官方定义的安全修复，执行前检查 diff，不能把它当成通用加固按钮。
+
+### Tool、凭证和持久化
+
+处理网页、邮件或陌生用户内容时，默认拒绝控制面敏感工具，再按任务开放。重点检查 Slash Command 发送者、Channel 通配符、`system.run`、Cron、跨会话工具、文件范围、Browser 与网络 egress，以及发信、付款和删除的审批。
+
+`.env`、认证 Profile 和 Gateway token 不进入 Git；文件权限限制到运行用户；容器升级保留状态目录；不要把宿主 Docker Socket 挂进 Agent Sandbox；日志开启脱敏并定期轮换长期凭证。
+
+### 健康检查分三层
+
+```bash
+curl -fsS http://127.0.0.1:18789/healthz
+curl -fsS http://127.0.0.1:18789/readyz
+openclaw health
+```
+
+探针通过只说明进程和服务状态。真正验收还要走通：
+
+```text
+Channel 收到消息
+→ Agent 正确路由
+→ Tool 在预期权限内执行
+→ 用户收到结果
+→ Trace 和日志可以还原过程
+```
+
+<a id="upgrade"></a>
+
+## 6. 升级与回滚都要验证状态格式
+
+升级前保存当前版本、配置校验和、插件与 Skill 版本、状态目录快照、镜像 digest 或安装包版本，以及一组最小验收任务。
+
+升级后依次验证：
+
+1. Gateway 启动；
+2. Security Audit；
+3. Channel 登录状态；
+4. 模型调用；
+5. 关键 Tool；
+6. 定时任务；
+7. 新消息队列模式；
+8. 重启后的状态恢复。
+
+回滚不能只降低二进制版本，还要确认配置和状态格式兼容。发布前至少确认：可信边界唯一、暴露范围明确、认证和防火墙启用、审计无未解释高风险项、Tool 与 Channel 使用 allowlist、凭证不入库、状态目录可恢复、真实业务验收通过、回滚已演练。
+
+## 专项深入
+
+- [OpenClaw 记忆系统拆解：存储、写入、召回与遗忘](/claw/openclaw/9-memory-system-deep-dive/)
 - [Gemini 双端点与 thought_signature：一次工具调用 400 的完整排障](/claw/openclaw/6-gemini-thought-signature/)
-- [OpenClaw 生产部署检查：Gateway、权限、隔离与回滚](/claw/openclaw/7-production-deployment-checklist/)
+- [OpenClaw 流式语音与实时语音 Agent 工程](/ai/realtime-voice-agent-engineering/)
 
-这些文章保留协议差异、失败表现、调查过程、生产边界和来源链接，也代表这个专栏后续文章的最低标准。
+## 主要资料
 
-## 发布前验证
-
-OpenClaw 相关教程必须记录：
-
-1. OpenClaw 版本；
-2. Node.js 与操作系统版本；
-3. 使用的模型 Provider 和协议；
-4. 完整可执行命令；
-5. 关键配置，但不包含真实密钥；
-6. 成功和失败输出；
-7. 官方文档或源码依据；
-8. 最后验证日期。
-
-无法提供这些证据时，文章应明确标注为“设计讨论”或“伪代码”，不能写成实测教程。
+- [OpenClaw 官方文档](https://docs.openclaw.ai/)、[官方仓库](https://github.com/openclaw/openclaw)
+- [插件文档](https://docs.openclaw.ai/tools/plugin)、[v2026.7.1-2 插件文档](https://github.com/openclaw/openclaw/blob/v2026.7.1-2/docs/tools/plugin.md)
+- [命令队列](https://docs.openclaw.ai/concepts/queue)、[Steering 队列](https://docs.openclaw.ai/concepts/queue-steering)、[Agent loop](https://docs.openclaw.ai/concepts/agent-loop)
+- [v2026.7.1-2 队列 drain](https://github.com/openclaw/openclaw/blob/v2026.7.1-2/src/auto-reply/reply/queue/drain.ts)、[入队](https://github.com/openclaw/openclaw/blob/v2026.7.1-2/src/auto-reply/reply/queue/enqueue.ts)、[session lane](https://github.com/openclaw/openclaw/blob/v2026.7.1-2/src/process/command-queue.ts)
+- [Install](https://docs.openclaw.ai/install)、[Docker](https://docs.openclaw.ai/install/docker)、[Gateway Security](https://docs.openclaw.ai/gateway/security)

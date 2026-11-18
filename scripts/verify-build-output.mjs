@@ -252,7 +252,7 @@ if ((homepageHtml.match(/<h1\b/g) ?? []).length !== 1) {
 const seoArticlePaths = [
   'ai/agent-context-persistence-recovery/',
   'ai/agent-memory-principles/',
-  'ai/agent-evaluation-observability/',
+  'ai/agent-evaluation-security-release/',
 ];
 for (const articlePath of seoArticlePaths) {
   const html = await readFile(new URL(`${articlePath}index.html`, outputDirectory), 'utf8');

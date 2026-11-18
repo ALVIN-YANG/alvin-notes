@@ -52,7 +52,7 @@ export const workflowSteps = [
     outputs: ['具体问题、影响与证据', '应修复项与未验证项'],
     prompt: '独立审查这份方案或改动。优先寻找能推翻核心假设的反例，沿业务路径检查权限、状态变化、并发、重试、数据一致性和恢复。每项问题给出位置、触发条件、影响与证据；检查新增机制是否必要。不要为找问题而制造问题，也不要因为作者给出的测试通过就预设实现正确。把发现交回主 Agent 修复并重新验证。',
     note: '关键方案、高风险改动或复杂问题再加入这一环；审查者不同时修改同一份代码。',
-    reference: { title: '多 Agent 怎样分工', href: '/ai/multi-agent-architecture-selection/' },
+    reference: { title: '多 Agent 怎样分工', href: '/ai/agent-architecture-execution-loop/' },
   },
   {
     id: 'deliver', title: '人工验收', actor: '你', action: '看业务结果、关键逻辑与证据，决定交付。',

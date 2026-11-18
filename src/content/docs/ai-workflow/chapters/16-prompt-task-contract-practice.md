@@ -79,7 +79,7 @@ intent 枚举为 query / complaint / other。
 
 推理模型通常已经会内部推理，不应统一追加“展示完整思维链”。更有用的要求是列出关键条件、结论依据和验证结果。[OpenAI 推理提示建议](https://developers.openai.com/api/docs/guides/reasoning-best-practices)、[Anthropic 提示建议](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices)
 
-结构化输出控制字段与语法，事实和权限另行校验。调用系统能力用 function calling，返回结构化答案用相应的 Schema 输出；还要处理拒绝、中断与校验失败。[Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)、[Function Call 与 Agent](/ai/function-call-agent/)
+结构化输出控制字段与语法，事实和权限另行校验。调用系统能力用 function calling，返回结构化答案用相应的 Schema 输出；还要处理拒绝、中断与校验失败。[Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs)、[Function Call 与 Agent](/ai/agent-architecture-execution-loop/)
 
 ## 编程 Prompt 再补环境和边界
 
