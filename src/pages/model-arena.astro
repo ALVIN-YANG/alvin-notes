@@ -168,10 +168,10 @@ function sourceTime(value: string) {
 
 <style>
   .arena-shell {
-    --ink: #252a2d;
-    --muted: #737a78;
-    --line: #deddd4;
-    --paper: rgba(255, 255, 252, 0.72);
+    --ink: var(--sl-color-white);
+    --muted: var(--sl-color-gray-2);
+    --line: var(--sl-color-gray-5);
+    --paper: color-mix(in srgb, var(--sl-color-surface) 72%, transparent);
     --live: #478576;
     --live-soft: #dfece6;
     --warm: #b66b48;
@@ -293,10 +293,10 @@ function sourceTime(value: string) {
   }
   .coverage-sample { display: flex; gap: 2px; }
   .coverage-sample i { width: 7px; height: 5px; background: var(--live); }
-  .coverage-sample i:nth-child(4), .coverage-sample i:nth-child(5) { background: #d9d8d0; }
+  .coverage-sample i:nth-child(4), .coverage-sample i:nth-child(5) { background: var(--line); }
 
   .board-panel[hidden] { display: none; }
-  .table-wrap { overflow-x: auto; border-block: 1px solid var(--line); background: rgba(255,255,252,.52); }
+  .table-wrap { overflow-x: auto; border-block: 1px solid var(--line); background: color-mix(in srgb, var(--sl-color-surface) 52%, transparent); }
   .model-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
   .model-table th {
     padding: 0.7rem 0.75rem;
@@ -327,7 +327,7 @@ function sourceTime(value: string) {
 
   .coverage-cell { white-space: nowrap; }
   .coverage-track { display: inline-flex; gap: 3px; vertical-align: middle; }
-  .coverage-track span { width: 1.35rem; height: 0.38rem; background: #d9d8d0; }
+  .coverage-track span { width: 1.35rem; height: 0.38rem; background: var(--line); }
   .coverage-track span.covered { background: var(--live); }
   .coverage-cell small { margin-left: 0.45rem; color: var(--muted); font-family: var(--sl-font-mono); font-size: 0.66rem; }
 

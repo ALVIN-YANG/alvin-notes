@@ -103,11 +103,11 @@ function formatDate(value) {
 
 <style>
   .news-home {
-    --news-ink: #292e2c;
-    --news-muted: #777d79;
-    --news-blue: #4776c5;
-    --news-blue-soft: #e8eef8;
-    --news-paper: rgba(255,255,252,.72);
+    --news-ink: var(--sl-color-white);
+    --news-muted: var(--sl-color-gray-2);
+    --news-blue: var(--sl-color-accent);
+    --news-blue-soft: var(--sl-color-accent-low);
+    --news-paper: color-mix(in srgb, var(--sl-color-surface) 72%, transparent);
     width: min(100%, 68rem);
     margin-inline: auto;
     padding-bottom: 4rem;
@@ -123,8 +123,8 @@ function formatDate(value) {
   .issue-total strong { color: var(--news-blue); font-family: var(--sl-font-mono); font-size: 2.3rem; line-height: 1; }
   .issue-total span { margin-top: .25rem; color: var(--news-muted); font-size: .7rem; }
 
-  .latest-report > a { position: relative; display: block; overflow: hidden; padding: 1.75rem 1.9rem; border-radius: 1.1rem; color: inherit; background: linear-gradient(115deg, var(--news-blue-soft), rgba(255,255,252,.92) 68%); box-shadow: var(--paper-shadow); text-decoration: none; }
-  .latest-report > a::after { content: ''; position: absolute; inset: auto -3rem -5rem auto; width: 12rem; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(71,118,197,.14), transparent 68%); }
+  .latest-report > a { position: relative; display: block; overflow: hidden; padding: 1.75rem 1.9rem; border-radius: 1.1rem; color: inherit; background: linear-gradient(115deg, var(--news-blue-soft), var(--sl-color-surface) 68%); box-shadow: var(--paper-shadow); text-decoration: none; }
+  .latest-report > a::after { content: ''; position: absolute; inset: auto -3rem -5rem auto; width: 12rem; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--news-blue) 14%, transparent), transparent 68%); }
   .latest-report > a:hover h2 { color: var(--news-blue); }
   .latest-meta { display: flex; gap: .8rem; color: var(--news-blue); font-family: var(--sl-font-mono); font-size: .66rem; letter-spacing: .07em; }
   .latest-report h2 { max-width: 42rem; margin: .7rem 0 .5rem; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 650; line-height: 1.35; text-wrap: balance; transition: color .16s ease; }

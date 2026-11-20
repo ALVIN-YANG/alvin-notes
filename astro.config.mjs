@@ -108,7 +108,7 @@ export default defineConfig({
         },
         {
           tag: 'meta',
-          attrs: { name: 'theme-color', content: '#f5f4ed' },
+          attrs: { name: 'theme-color', content: '#f4f7fc' },
         },
       ],
       customCss: [

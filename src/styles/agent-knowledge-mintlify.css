@@ -1,13 +1,13 @@
 .agent-map {
   --map-font: var(--font-sans);
-  --map-ink: #202631;
-  --map-text: #454d5a;
-  --map-muted: #77808d;
+  --map-ink: #17243a;
+  --map-text: #25354c;
+  --map-muted: #54647b;
   --map-faint: #a1a8b1;
-  --map-blue: #426fdd;
-  --map-blue-soft: #eaf0ff;
-  --map-surface: #f1f3f6;
-  --map-paper: #ffffff;
+  --map-blue: #3157a7;
+  --map-blue-soft: #e5edfc;
+  --map-surface: #f4f7fc;
+  --map-paper: #fcfdff;
   display: block;
   min-width: 0;
   color: var(--map-ink);
@@ -53,7 +53,7 @@
   grid-template-columns: minmax(220px, 1fr) minmax(300px, 440px) auto;
   min-height: 70px;
   padding: 11px clamp(18px, 2.5vw, 38px);
-  background: rgba(250, 251, 252, .94);
+  background: #f8fafe;
   box-shadow: 0 1px 0 rgba(45, 54, 68, .08), 0 10px 28px rgba(35, 43, 55, .04);
   backdrop-filter: blur(18px);
   align-items: center;
@@ -341,7 +341,7 @@
   background:
     radial-gradient(circle at 14% 8%, rgba(255, 255, 255, .92), transparent 28%),
     radial-gradient(circle at 88% 86%, rgba(222, 230, 242, .58), transparent 34%),
-    #edf0f4;
+    var(--map-surface);
 }
 
 .agent-map .map-canvas {

@@ -20,7 +20,7 @@ const ogImage = new URL('/images/brand/og-default.png', siteUrl).href;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f5f4ed" />
+    <meta name="theme-color" content="#f4f7fc" />
     <meta name="google-adsense-account" content="ca-pub-5340951184052106" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -52,6 +52,7 @@ const ogImage = new URL('/images/brand/og-default.png', siteUrl).href;
 <style is:global>
   :root {
     color-scheme: light;
+    --map-page-bg: #f4f7fc;
     --sl-font-utility: var(--font-sans);
     --sl-font-mono: var(--font-mono);
   }
@@ -60,14 +61,14 @@ const ogImage = new URL('/images/brand/og-default.png', siteUrl).href;
 
   html {
     min-width: 320px;
-    background: #f5f4ed;
+    background: var(--map-page-bg);
   }
 
   body {
     min-width: 320px;
     min-height: 100vh;
     margin: 0;
-    background: #f5f4ed;
+    background: var(--map-page-bg);
   }
 
   button,

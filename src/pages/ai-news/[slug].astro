@@ -167,13 +167,13 @@ function compactDate(value = '') {
 
 <style>
   .weekly-shell {
-    --report-ink: #282d2b;
-    --report-muted: #777d79;
-    --report-blue: #4776c5;
-    --report-blue-soft: #e9eef7;
-    --report-paper: rgba(255, 255, 252, 0.76);
-    --report-paper-strong: rgba(255, 255, 253, 0.94);
-    --report-line: #dfded5;
+    --report-ink: var(--sl-color-white);
+    --report-muted: var(--sl-color-gray-2);
+    --report-blue: var(--sl-color-accent);
+    --report-blue-soft: var(--sl-color-accent-low);
+    --report-paper: color-mix(in srgb, var(--sl-color-surface) 76%, transparent);
+    --report-paper-strong: var(--sl-color-surface);
+    --report-line: var(--sl-color-gray-5);
     display: grid;
     grid-template-columns: 9.5rem minmax(0, 48rem) 12.5rem;
     gap: 1.6rem;
@@ -199,7 +199,7 @@ function compactDate(value = '') {
 
   .report-column { min-width: 0; }
   .report-masthead { position: relative; overflow: hidden; margin-bottom: 1rem; padding: 2rem 2.1rem 1.7rem; border-radius: 1.15rem; background: var(--report-paper-strong); box-shadow: var(--paper-shadow); }
-  .report-masthead::after { content: ''; position: absolute; inset: auto -3.5rem -4.5rem auto; width: 11rem; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(71,118,197,.13), transparent 68%); pointer-events: none; }
+  .report-masthead::after { content: ''; position: absolute; inset: auto -3.5rem -4.5rem auto; width: 11rem; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--report-blue) 13%, transparent), transparent 68%); pointer-events: none; }
   .issue-line { display: flex; flex-wrap: wrap; gap: .65rem 1.1rem; }
   .report-masthead h1 { max-width: 35rem; margin: .85rem 0 .7rem; color: var(--report-ink); font-family: var(--sl-font-heading); font-size: clamp(1.85rem, 4vw, 2.65rem); font-weight: 650; letter-spacing: -.025em; line-height: 1.22; text-wrap: balance; }
   .report-meta { display: flex; flex-wrap: wrap; gap: .45rem 1rem; margin-top: 1.25rem; color: var(--report-muted); font-family: var(--sl-font-mono); font-size: .68rem; font-variant-numeric: tabular-nums; }
@@ -208,7 +208,7 @@ function compactDate(value = '') {
 
   .report-sections { display: grid; gap: 1rem; min-width: 0; }
   .report-section { min-width: 0; scroll-margin-top: calc(var(--sl-nav-height) + 1rem); padding: 1.55rem 1.65rem; border-radius: 1rem; background: var(--report-paper); box-shadow: 0 8px 28px rgba(39,43,41,.035); }
-  .report-section.is-mainline { background: linear-gradient(120deg, var(--report-blue-soft), rgba(255,255,252,.84) 72%); }
+  .report-section.is-mainline { background: linear-gradient(120deg, var(--report-blue-soft), var(--report-paper) 72%); }
   .section-heading { display: flex; align-items: baseline; gap: .7rem; margin-bottom: 1rem; }
   .section-heading > span { flex: 0 0 auto; color: var(--report-blue); font-family: var(--sl-font-mono); font-size: .7rem; font-weight: 700; }
   .section-heading h2 { margin: 0; color: var(--report-ink); font-family: var(--sl-font-heading); font-size: 1.23rem; font-weight: 650; letter-spacing: -.01em; }

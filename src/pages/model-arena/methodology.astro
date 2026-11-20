@@ -63,9 +63,9 @@ function formatTime(value: string) {
 </StarlightPage>
 
 <style>
-  .method-shell { --ink:#252a2d; --muted:#747a78; --line:#deddd4; --live:#478576; --warm:#b66b48; width:min(100%,68rem); margin-inline:auto; padding-bottom:3rem; color:var(--ink); }
+  .method-shell { --ink:var(--sl-color-white); --muted:var(--sl-color-gray-2); --line:var(--sl-color-gray-5); --live:#478576; --warm:#b66b48; width:min(100%,68rem); margin-inline:auto; padding-bottom:3rem; color:var(--ink); }
   .crumb { display:flex; gap:.5rem; margin-bottom:1rem; color:var(--muted); font-size:.75rem; }
-  .crumb a, .source-list a, .attribution a { color:#53665e; text-decoration:none; }
+  .crumb a, .source-list a, .attribution a { color:var(--sl-color-text-accent); text-decoration:none; }
   .crumb a:hover, .source-list a:hover, .attribution a:hover { text-decoration:underline; text-underline-offset:.2em; }
   .method-intro { display:grid; grid-template-columns:1fr auto; gap:2rem; align-items:center; padding:1.1rem; border-block:1px solid var(--line); background:linear-gradient(110deg,rgba(255,255,255,.65),transparent); }
   .method-intro > p { max-width:45rem; margin:0; color:#505653; font-size:.92rem; line-height:1.75; }
