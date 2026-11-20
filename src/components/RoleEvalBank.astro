@@ -14,10 +14,10 @@ const sections = [
 
 const sources = [
   { id: 'cei', name: '中文情感智能评测集', author: 'lu-xiaomiao', license: 'MIT', url: 'https://github.com/lu-xiaomiao/chinese-emotional-intelligence-eval/tree/89f5b6c44e562333657553477a850381fe44629f/questions', change: '七组三轮输入保留原文，角色卡与评分细则节编。“大学室友现在住哪儿”沿用老周的人设，另写了关系记忆追问。' },
-  { id: 'minimax', name: 'Role-Play Bench', author: 'MiniMaxAI', license: 'Apache 2.0', url: 'https://huggingface.co/datasets/MiniMaxAI/role-play-bench/blob/3c1be2a56afbcaab19ae6b40b8a24429eae792f5/data/zh/seeds.jsonl', change: '节编中文角色卡与开场，保留原始用户首句。两道同桌语音题沿用饼干情境，续说与静默台词、30秒观察期由本站编写。' },
+  { id: 'minimax', name: 'Role-Play Bench', author: 'MiniMaxAI', license: 'Apache 2.0', url: 'https://huggingface.co/datasets/MiniMaxAI/role-play-bench/blob/3c1be2a56afbcaab19ae6b40b8a24429eae792f5/data/zh/seeds.jsonl', change: '节编中文角色卡与开场。秦始皇、木鱼、同桌饼干三题保留原始首句。原题里的无声动作改写成可说可打的台词；苏清兰另设一题，检查角色会不会声称看见用户。两道同桌语音题沿用饼干情境，续说与静默台词、30秒观察期由本站编写。' },
   { id: 'longmem', name: 'LongMemEval-S 中文版', author: 'Di Wu 等，justis-xu 中文整理', license: 'MIT', url: 'https://huggingface.co/datasets/justis-xu/memory-eval-zh/tree/e209267490c686980b29c1bd9571a01edcde1877/longmemeval-s', change: '原题由英文译为中文。记忆题把相关历史压缩为手测台词，末轮保留译本问题，按数据中的答案核对。“分享一场跑步的小胜利”改用其中一条报喜消息评估情绪回应。' },
   { id: 'emo', name: 'EmoSupportBench 中文问题集', author: 'Yueyang Wang 等', license: 'CC BY 4.0', url: 'https://huggingface.co/datasets/YueyangWang/EmoSupportBench/tree/4c5873fc49fa6753b895d5e4de905c5059d8ddff/Question%20set', change: '将中文长题改写为适合口头复述的短对话，保留冲突和用户处境，逐题编写手测判据。' },
-  { id: 'humdial', name: 'HumDial-FDBench', author: 'ASLP-lab', license: 'Apache 2.0', url: 'https://huggingface.co/datasets/ASLP-lab/HumDial-FDBench/tree/ed1770a6265ffe9f0e5cd999290936ccab43482b', change: '采用中文测试分组 cn_test_nondev 的语音分段标注。台词按原文展示；停顿、插话和旁人发言按标注整理为现场操作步骤。' },
+  { id: 'humdial', name: 'HumDial-FDBench', author: 'ASLP-lab', license: 'Apache 2.0', url: 'https://huggingface.co/datasets/ASLP-lab/HumDial-FDBench/tree/ed1770a6265ffe9f0e5cd999290936ccab43482b', change: '采用中文测试分组 cn_test_nondev 的语音分段标注。停顿和插话按标注整理为现场步骤；两道旁人对话题增补了能听见的称呼，便于单麦克风复测。' },
 ];
 
 const filters = [{ id: 'all', name: '全部', count: cases.length }, ...sections.map(s => ({ ...s, count: s.rows.length }))];
@@ -26,7 +26,7 @@ const filters = [{ id: 'all', name: '全部', count: cases.length }, ...sections
 <section class="role-bank not-content" aria-labelledby="_top">
   <a class="rb-back" href="/agent-knowledge/">← AI Agent 开发</a>
   <h1 id="_top">中文 AI 角色评测集</h1>
-  <p class="rb-intro">选一道题，按前置步骤准备对话，逐句输入，再对照判分标准。语音题请在实时通话中测试。</p>
+  <p class="rb-intro">先把角色和已知情境告诉 AI，再逐句说出或输入台词。默认关闭摄像头，只依据语音和文字判分。实时语音专项在通话中测试。</p>
   <nav class="rb-filters" aria-label="按评测分类筛选" hidden>
     {filters.map(f => <button type="button" data-filter={f.id} aria-pressed={f.id === 'all'}>{f.name} <span>{f.count}</span></button>)}
   </nav>
