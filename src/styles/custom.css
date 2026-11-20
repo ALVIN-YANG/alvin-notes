@@ -2404,3 +2404,56 @@ body:has(.reading-heading) .sl-markdown-content .sl-heading-wrapper.level-h2::af
 .about-working-scene { margin: 0; }
 .about-working-link { display: inline-block; margin-top: .8rem; color: var(--profile-ink); font-size: .875rem; text-underline-offset: .2em; }
 .about-working-link:focus-visible { outline: 2px solid var(--profile-accent); outline-offset: 4px; }
+
+/* Chinese role dialogue test bank */
+body:has(.role-bank) .sl-container { max-width: 76rem; }
+body:has(.role-bank) .content-panel { border: 0; }
+.role-bank { margin-inline: auto; max-width: 72rem; color: var(--sl-color-white); line-height: 1.75; }
+.role-bank [hidden] { display: none !important; }
+.role-bank .rb-back { font-size: .88rem; color: var(--sl-color-gray-2); }
+.role-bank h1 { margin-block: .8rem .35rem; font-size: clamp(1.85rem, 4vw, 3rem); line-height: 1.25; }
+.role-bank .rb-intro { margin: 0 0 1.35rem; color: var(--sl-color-gray-2); }
+.rb-filters { display: flex; flex-wrap: wrap; gap: .45rem; }
+.rb-filters button, .rb-copy { font: inherit; cursor: pointer; }
+.rb-filters button {
+  color: var(--sl-color-gray-2); background: var(--sl-color-bg);
+  border: 1px solid var(--sl-color-hairline); border-radius: .35rem;
+  padding: .35rem .7rem; font-size: .88rem; line-height: 1.5;
+}
+.rb-filters button span { margin-inline-start: .18rem; font-variant-numeric: tabular-nums; }
+.rb-filters button[aria-pressed="true"] { background: var(--sl-color-text-accent); color: var(--sl-color-bg); border-color: transparent; }
+.role-bank :is(a, button, summary):focus-visible { outline: 2px solid var(--sl-color-text-accent); outline-offset: 3px; }
+.role-bank .rb-status { color: var(--sl-color-gray-2); font-size: .88rem; margin: .85rem 0; }
+.rb-section { margin-block: 1.25rem 3rem; }
+.rb-section h2 { font-size: 1.4rem; margin: 0 0 .75rem; line-height: 1.5; }
+.rb-section table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 1rem; }
+.rb-section :is(th, td) { text-align: start; padding: .85rem .9rem; vertical-align: top; overflow-wrap: anywhere; }
+.rb-section thead { background: var(--sl-color-bg-nav); }
+.rb-section th { border-block: 1px solid var(--sl-color-gray-4); font-size: .9rem; }
+.rb-section th:first-child { width: 25%; }
+.rb-section th:nth-child(2) { width: 39%; }
+.rb-section td { border-bottom: 1px solid var(--sl-color-hairline); }
+.rb-title { display: block; margin-block-end: .24rem; }
+.rb-section td p, .rb-inputs { padding: 0; margin: 0; }
+.rb-section td p + p { margin-block-start: .5rem; }
+.rb-section td b { color: var(--sl-color-gray-2); font-size: .82rem; }
+.rb-inputs { list-style: none; }
+.rb-inputs li + li { margin-block-start: .55rem; }
+.rb-order { font-size: .78rem; color: var(--sl-color-gray-2); font-variant-numeric: tabular-nums; margin-inline-end: .4rem; }
+.rb-copy { font-size: .76rem; margin-inline-start: .35rem; padding: .15rem .25rem; border: 0; background: transparent; color: var(--sl-color-text-accent); }
+.rb-copy:hover { text-decoration: underline; }
+.rb-mobile-label { display: none; }
+.rb-method { border-top: 1px solid var(--sl-color-hairline); padding-block: 1rem; color: var(--sl-color-gray-2); }
+.rb-method summary { cursor: pointer; color: var(--sl-color-white); font-weight: 600; }
+.rb-method p { margin-block: .6rem; }
+.rb-method ul { padding-inline-start: 1.3rem; }
+.rb-method small { overflow-wrap: anywhere; }
+.rb-credit { margin: 1.1rem 0; }
+@media (max-width: 48rem) {
+  .rb-section table, .rb-section tbody, .rb-section tr, .rb-section td { display: block; width: 100%; }
+  .rb-section thead { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+  .rb-section tbody tr { border-top: 1px solid var(--sl-color-gray-4); padding: .8rem .7rem 1.2rem; }
+  .rb-section td { padding: .28rem 0; border: 0; }
+  .rb-mobile-label { display: block; font-size: .78rem; color: var(--sl-color-gray-2); }
+  .rb-copy { min-height: 1.7rem; padding-inline: .4rem; }
+}

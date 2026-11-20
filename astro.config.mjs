@@ -176,6 +176,7 @@ export default defineConfig({
             { label: '混合检索算法', link: '/ai/hybrid-retrieval-principles/' },
             { label: '环境感知与缓存', link: '/ai/agent-environment-awareness-llm-cache/' },
             { label: '评测、安全与发布', link: '/ai/agent-evaluation-security-release/' },
+            { label: '中文 AI 角色评测集', link: '/ai/role-eval/' },
             { label: '实时语音 Agent 工程', link: '/ai/realtime-voice-agent-engineering/' },
             { label: 'OpenClaw 生产实践', link: '/claw/openclaw/' },
             { label: 'OpenClaw 记忆深度拆解', link: '/claw/openclaw/9-memory-system-deep-dive/' },

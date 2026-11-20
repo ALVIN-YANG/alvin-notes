@@ -14,6 +14,7 @@ Agent 开发需要处理三件事：为模型提供适用的信息，让工具�
 - [Agent 框架选型](/agent-frameworks/)：LangGraph、AutoGen、CrewAI 与三套 SDK 的执行结构对照。
 - [Agent 状态持久化与恢复](/ai/agent-context-persistence-recovery/)：检查点、恢复调度、租约与副作用未知。
 - [Agent 评测、安全与发布](/ai/agent-evaluation-security-release/)：真实结果、Trace、Prompt Injection 和发布门槛。
+- [中文 AI 角色评测集](/ai/role-eval/)：按分类挑题，逐句测试角色与语音对话。
 - [实时语音 Agent 工程](/ai/realtime-voice-agent-engineering/)：首句延迟、打断、字幕与断线恢复。
 - [OpenClaw 生产实践](/claw/openclaw/)：插件、消息队列、部署与回滚。
 

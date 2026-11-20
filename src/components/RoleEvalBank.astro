@@ -1,0 +1,115 @@
+---
+import cases from '../data/role-eval-cases.json';
+
+const sections = [
+  { id: 'persona', name: '角色一致性' },
+  { id: 'memory', name: '记忆与关系连续性' },
+  { id: 'interaction', name: '自然交流与主动性' },
+  { id: 'empathy', name: '情绪理解与支持' },
+  { id: 'judgment', name: '独立判断与不盲从' },
+  { id: 'boundaries', name: '关系边界与用户自主' },
+  { id: 'risk', name: '风险识别与危机应对' },
+  { id: 'voice', name: '实时语音专项' },
+].map(section => ({ ...section, rows: cases.filter(row => row.category === section.id) }));
+
+const sources = [
+  { id: 'cei', name: '中文情感智能评测集', author: 'lu-xiaomiao', license: 'MIT', url: 'https://github.com/lu-xiaomiao/chinese-emotional-intelligence-eval/tree/89f5b6c44e562333657553477a850381fe44629f/questions', change: '七组三轮输入保留原文，角色卡与评分细则节编。“大学室友现在住哪儿”沿用老周的人设，另写了关系记忆追问。' },
+  { id: 'minimax', name: 'Role-Play Bench', author: 'MiniMaxAI', license: 'Apache 2.0', url: 'https://huggingface.co/datasets/MiniMaxAI/role-play-bench/blob/3c1be2a56afbcaab19ae6b40b8a24429eae792f5/data/zh/seeds.jsonl', change: '节编中文角色卡与开场，保留原始用户首句。两道同桌语音题沿用饼干情境，续说与静默台词、30秒观察期由本站编写。' },
+  { id: 'longmem', name: 'LongMemEval-S 中文版', author: 'Di Wu 等，justis-xu 中文整理', license: 'MIT', url: 'https://huggingface.co/datasets/justis-xu/memory-eval-zh/tree/e209267490c686980b29c1bd9571a01edcde1877/longmemeval-s', change: '原题由英文译为中文。记忆题把相关历史压缩为手测台词，末轮保留译本问题，按数据中的答案核对。“分享一场跑步的小胜利”改用其中一条报喜消息评估情绪回应。' },
+  { id: 'emo', name: 'EmoSupportBench 中文问题集', author: 'Yueyang Wang 等', license: 'CC BY 4.0', url: 'https://huggingface.co/datasets/YueyangWang/EmoSupportBench/tree/4c5873fc49fa6753b895d5e4de905c5059d8ddff/Question%20set', change: '将中文长题改写为适合口头复述的短对话，保留冲突和用户处境，逐题编写手测判据。' },
+  { id: 'humdial', name: 'HumDial-FDBench', author: 'ASLP-lab', license: 'Apache 2.0', url: 'https://huggingface.co/datasets/ASLP-lab/HumDial-FDBench/tree/ed1770a6265ffe9f0e5cd999290936ccab43482b', change: '采用中文测试分组 cn_test_nondev 的语音分段标注。台词按原文展示；停顿、插话和旁人发言按标注整理为现场操作步骤。' },
+];
+
+const filters = [{ id: 'all', name: '全部', count: cases.length }, ...sections.map(s => ({ ...s, count: s.rows.length }))];
+---
+
+<section class="role-bank not-content" aria-labelledby="_top">
+  <a class="rb-back" href="/agent-knowledge/">← AI Agent 开发</a>
+  <h1 id="_top">中文 AI 角色评测集</h1>
+  <p class="rb-intro">选一道题，按前置步骤准备对话，逐句输入，再对照判分标准。语音题请在实时通话中测试。</p>
+  <nav class="rb-filters" aria-label="按评测分类筛选" hidden>
+    {filters.map(f => <button type="button" data-filter={f.id} aria-pressed={f.id === 'all'}>{f.name} <span>{f.count}</span></button>)}
+  </nav>
+  <p class="rb-status" aria-live="polite" aria-atomic="true">全部 · {cases.length} 道题</p>
+  {sections.map(section => (
+    <section class="rb-section" data-category={section.id} aria-labelledby={'section-' + section.id}>
+      <h2 id={'section-' + section.id}>{section.name}</h2>
+      <table role="table" aria-labelledby={'section-' + section.id}>
+        <thead role="rowgroup"><tr role="row">{['前置步骤', '测试输入', '判分标准'].map(label => <th role="columnheader" scope="col">{label}</th>)}</tr></thead>
+        <tbody role="rowgroup">{section.rows.map(row => (
+          <tr role="row">
+            <td role="cell"><span class="rb-mobile-label" aria-hidden="true">前置步骤</span><strong class="rb-title">{row.title}</strong>{row.setup}</td>
+            <td role="cell"><span class="rb-mobile-label" aria-hidden="true">测试输入</span>
+              <ol class="rb-inputs" role="list">{row.inputs.map((input, index) => (
+                <li>
+                  {row.inputs.length > 1 && <span class="rb-order" aria-hidden="true">{index + 1}</span>}
+                  <span class="rb-line">{input}</span>
+                  <button type="button" class="rb-copy" hidden aria-label={'复制「' + row.title + '」第' + (index + 1) + '句'}>复制</button>
+                </li>
+              ))}</ol>
+            </td>
+            <td role="cell"><span class="rb-mobile-label" aria-hidden="true">判分标准</span>
+              <p><b>通过</b> {row.passWhen}</p>
+              <p><b>失分</b> {row.failWhen}</p>
+            </td>
+          </tr>
+        ))}</tbody>
+      </table>
+    </section>
+  ))}
+  <details class="rb-method">
+    <summary>分类依据、题目出处与许可</summary>
+    <p>每道题按主要观察目标归类。表中的通过与失分描述供人工观察，保留不同合格表达；缩短后的对话不复现原数据集总分。</p>
+    <p>角色表现和多轮对话参考 <a href="https://aclanthology.org/2024.acl-long.638/">CharacterEval</a>、<a href="https://aclanthology.org/2026.findings-emnlp.689/">DynSess</a> 和 <a href="https://aclanthology.org/2026.findings-emnlp.602/">REMP</a>；陪伴、独立判断、关系边界和危机题分别参考 <a href="https://aclanthology.org/2021.acl-long.269/">ESConv</a>、<a href="https://doi.org/10.1126/science.aec8352">社会迎合研究</a>、<a href="https://proceedings.iclr.cc/paper_files/paper/2026/hash/05b12f103c9e613efc4c85674cdc9066-Abstract-Conference.html">INTIMA</a> 和 <a href="https://aclanthology.org/2026.eacl-long.73/">CRADLE</a>。语音题参考 <a href="https://aslp-lab.github.io/HumDial-Challenge/track2/description/">HumDial 全双工赛道</a>。</p>
+    {sources.map(source => <div class="rb-credit">
+      <p><a href={source.url}>{source.name}</a> · {source.author} · {source.license}</p>
+      <p>{source.change}</p>
+      <ul>{cases.filter(c => c.source === source.id).map(c => <li>{c.title} <small>{c.reference}</small></li>)}</ul>
+    </div>)}
+    <a href="/licenses/role-eval.txt">署名与许可文本</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/xiaowu0162/LongMemEval">LongMemEval 原项目</a>
+  </details>
+</section>
+
+<script>
+  const bank = document.querySelector<HTMLElement>('.role-bank');
+  if (bank) {
+    const filters = Array.from(bank.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+    const sections = Array.from(bank.querySelectorAll<HTMLElement>('[data-category]'));
+    const status = bank.querySelector<HTMLElement>('.rb-status')!;
+    function showFromURL() {
+      const requested = new URL(location.href).searchParams.get('category');
+      const active = filters.find(button => button.dataset.filter === requested) ?? filters[0];
+      for (const button of filters) button.setAttribute('aria-pressed', String(active === button));
+      for (const section of sections) section.hidden = active.dataset.filter !== 'all' && section.dataset.category !== active.dataset.filter;
+      const n = sections.filter(section => !section.hidden).reduce((sum, section) => sum + section.querySelectorAll('tbody tr').length, 0);
+      status.textContent = active.firstChild!.textContent!.trim() + ' · ' + n + ' 道题';
+    }
+    for (const button of filters) button.addEventListener('click', () => {
+      if (button.getAttribute('aria-pressed') === 'true') return;
+      const url = new URL(location.href);
+      if (button.dataset.filter === 'all') url.searchParams.delete('category');
+      else url.searchParams.set('category', button.dataset.filter!);
+      history.pushState(null, '', url);
+      showFromURL();
+    });
+    showFromURL();
+    window.addEventListener('popstate', showFromURL);
+    bank.querySelector<HTMLElement>('.rb-filters')!.hidden = false;
+
+    if (navigator.clipboard?.writeText) {
+      for (const button of bank.querySelectorAll<HTMLButtonElement>('.rb-copy')) {
+        button.hidden = false;
+        button.addEventListener('click', async () => {
+          const input = button.closest('li')!.querySelector('.rb-line')!.textContent!;
+          try {
+            await navigator.clipboard.writeText(input);
+            button.textContent = '已复制';
+          } catch {
+            button.textContent = '请选中复制';
+          }
+          window.setTimeout(() => { button.textContent = '复制'; }, 1800);
+        });
+      }
+    }
+  }
+</script>
