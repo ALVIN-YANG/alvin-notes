@@ -3,6 +3,8 @@ import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
 import Search from '@astrojs/starlight/components/Search.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
+const roleEvalPath = '/ai/role-eval/';
+
 const navGroups = [
   {
     label: 'AI 工程',
@@ -10,6 +12,7 @@ const navGroups = [
       { label: 'AI Agent', href: '/agent-knowledge/', match: '/agent-knowledge/' },
       { label: 'AI Infra', href: '/ai-infra-knowledge/', match: '/ai-infra' },
       { label: 'AI 工程问答', href: '/interview/', match: '/interview/' },
+      { label: '中文 AI 角色评测集', href: roleEvalPath, match: roleEvalPath },
     ],
   },
   {
@@ -50,6 +53,7 @@ const directLinks = [
 const currentPath = Astro.url.pathname;
 
 function isActive(match: string): boolean {
+  if (currentPath === roleEvalPath) return match === roleEvalPath;
   if (match === '/') return currentPath === '/';
   if (match === '/programming/') {
     return currentPath.startsWith('/programming/') || currentPath.startsWith('/algorithm-knowledge/')
