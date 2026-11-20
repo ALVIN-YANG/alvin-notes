@@ -1,6 +1,11 @@
 ---
 import cases from '../data/role-eval-cases.json';
 
+type TestUtterance = { text: string; before?: string; after?: string };
+function asUtterance(line: string | TestUtterance): TestUtterance {
+  return typeof line === 'string' ? { text: line } : line;
+}
+
 const sections = [
   { id: 'persona', name: '角色一致性' },
   { id: 'memory', name: '记忆与关系连续性' },
@@ -14,7 +19,7 @@ const sections = [
 
 const sources = [
   { id: 'cei', name: '中文情感智能评测集', author: 'lu-xiaomiao', license: 'MIT', url: 'https://github.com/lu-xiaomiao/chinese-emotional-intelligence-eval/tree/89f5b6c44e562333657553477a850381fe44629f/questions', change: '七组三轮输入保留原文，角色卡与评分细则节编。“大学室友现在住哪儿”沿用老周的人设，另写了关系记忆追问。' },
-  { id: 'minimax', name: 'Role-Play Bench', author: 'MiniMaxAI', license: 'Apache 2.0', url: 'https://huggingface.co/datasets/MiniMaxAI/role-play-bench/blob/3c1be2a56afbcaab19ae6b40b8a24429eae792f5/data/zh/seeds.jsonl', change: '节编中文角色卡与开场。秦始皇、木鱼、同桌饼干三题保留原始首句。原题里的无声动作改写成可说可打的台词；苏清兰另设一题，检查角色会不会声称看见用户。两道同桌语音题沿用饼干情境，续说与静默台词、30秒观察期由本站编写。' },
+  { id: 'minimax', name: 'Role-Play Bench', author: 'MiniMaxAI', license: 'Apache 2.0', url: 'https://huggingface.co/datasets/MiniMaxAI/role-play-bench/blob/3c1be2a56afbcaab19ae6b40b8a24429eae792f5/data/zh/seeds.jsonl', change: '节编中文角色卡与开场。秦始皇、木鱼、同桌饼干三题保留原始用户首句。角色和开场已整理为用户可直接发送的文字，无声动作改写成台词；苏清兰另设一题，检查角色会不会声称看见用户。两道同桌语音题沿用饼干情境，续说与静默台词、30秒观察期由本站编写。' },
   { id: 'longmem', name: 'LongMemEval-S 中文版', author: 'Di Wu 等，justis-xu 中文整理', license: 'MIT', url: 'https://huggingface.co/datasets/justis-xu/memory-eval-zh/tree/e209267490c686980b29c1bd9571a01edcde1877/longmemeval-s', change: '原题由英文译为中文。记忆题把相关历史压缩为手测台词，末轮保留译本问题，按数据中的答案核对。“分享一场跑步的小胜利”改用其中一条报喜消息评估情绪回应。' },
   { id: 'emo', name: 'EmoSupportBench 中文问题集', author: 'Yueyang Wang 等', license: 'CC BY 4.0', url: 'https://huggingface.co/datasets/YueyangWang/EmoSupportBench/tree/4c5873fc49fa6753b895d5e4de905c5059d8ddff/Question%20set', change: '将中文长题改写为适合口头复述的短对话，保留冲突和用户处境，逐题编写手测判据。' },
   { id: 'humdial', name: 'HumDial-FDBench', author: 'ASLP-lab', license: 'Apache 2.0', url: 'https://huggingface.co/datasets/ASLP-lab/HumDial-FDBench/tree/ed1770a6265ffe9f0e5cd999290936ccab43482b', change: '采用中文测试分组 cn_test_nondev 的语音分段标注。停顿和插话按标注整理为现场步骤；两道旁人对话题增补了能听见的称呼，便于单麦克风复测。' },
@@ -26,7 +31,7 @@ const filters = [{ id: 'all', name: '全部', count: cases.length }, ...sections
 <section class="role-bank not-content" aria-labelledby="_top">
   <a class="rb-back" href="/">← 首页</a>
   <h1 id="_top">中文 AI 角色评测集</h1>
-  <p class="rb-intro">先把角色和已知情境告诉 AI，再逐句说出或输入台词。默认关闭摄像头，只依据语音和文字判分。实时语音专项在通话中测试。</p>
+  <p class="rb-intro">每题从新对话开始。先逐条发送前置文字，每条等 AI 回复，再发测试输入。前置栏为空时直接开始。实时语音题在通话里照读，按台词旁的提示停顿或插话。</p>
   <nav class="rb-filters" aria-label="按评测分类筛选" hidden>
     {filters.map(f => <button type="button" data-filter={f.id} aria-pressed={f.id === 'all'}>{f.name} <span>{f.count}</span></button>)}
   </nav>
@@ -38,16 +43,29 @@ const filters = [{ id: 'all', name: '全部', count: cases.length }, ...sections
         <thead role="rowgroup"><tr role="row">{['前置步骤', '测试输入', '判分标准'].map(label => <th role="columnheader" scope="col">{label}</th>)}</tr></thead>
         <tbody role="rowgroup">{section.rows.map(row => (
           <tr role="row">
-            <td role="cell"><span class="rb-mobile-label" aria-hidden="true">前置步骤</span><strong class="rb-title">{row.title}</strong>{row.setup}</td>
-            <td role="cell"><span class="rb-mobile-label" aria-hidden="true">测试输入</span>
-              <ol class="rb-inputs" role="list">{row.inputs.map((input, index) => (
-                <li>
-                  {row.inputs.length > 1 && <span class="rb-order" aria-hidden="true">{index + 1}</span>}
-                  <span class="rb-line">{input}</span>
-                  <button type="button" class="rb-copy" hidden aria-label={'复制「' + row.title + '」第' + (index + 1) + '句'}>复制</button>
-                </li>
-              ))}</ol>
-            </td>
+            {[
+              { label: '前置步骤', lines: row.setup },
+              { label: '测试输入', lines: row.inputs },
+            ].map(({ label, lines }) => (
+              <td role="cell">
+                <span class="rb-mobile-label" aria-hidden="true">{label}</span>
+                {label === '测试输入' && <strong class="rb-title">{row.title}</strong>}
+                {lines.length === 0 ? <span class="rb-empty" aria-label="无需前置文字">—</span> : (
+                  <ol class="rb-inputs" role="list">{lines.map((line, index) => {
+                    const { text, before, after } = asUtterance(line);
+                    return (
+                      <li>
+                        {before && <small class="rb-cue">操作 · {before}</small>}
+                        {lines.length > 1 && <span class="rb-order" aria-hidden="true">{index + 1}</span>}
+                        <span class="rb-line">{text}</span>
+                        <button type="button" class="rb-copy" hidden aria-label={'复制「' + row.title + '」' + label + '第' + (index + 1) + '句'}>复制</button>
+                        {after && <small class="rb-cue">操作 · {after}</small>}
+                      </li>
+                    );
+                  })}</ol>
+                )}
+              </td>
+            ))}
             <td role="cell"><span class="rb-mobile-label" aria-hidden="true">判分标准</span>
               <p><b>通过</b> {row.passWhen}</p>
               <p><b>失分</b> {row.failWhen}</p>
@@ -59,7 +77,7 @@ const filters = [{ id: 'all', name: '全部', count: cases.length }, ...sections
   ))}
   <details class="rb-method">
     <summary>分类依据、题目出处与许可</summary>
-    <p>每道题按主要观察目标归类。表中的通过与失分描述供人工观察，保留不同合格表达；缩短后的对话不复现原数据集总分。</p>
+    <p>同一道题可在不同产品中使用相同的用户消息，保留各自实际回复，结合整段对话判分。角色设定也可以作为普通用户消息发送。全程只依据文字和声音。表中的通过与失分描述供人工观察，保留不同合格表达；缩短后的对话不复现原数据集总分。</p>
     <p>角色表现和多轮对话参考 <a href="https://aclanthology.org/2024.acl-long.638/">CharacterEval</a>、<a href="https://aclanthology.org/2026.findings-emnlp.689/">DynSess</a> 和 <a href="https://aclanthology.org/2026.findings-emnlp.602/">REMP</a>；陪伴、独立判断、关系边界和危机题分别参考 <a href="https://aclanthology.org/2021.acl-long.269/">ESConv</a>、<a href="https://doi.org/10.1126/science.aec8352">社会迎合研究</a>、<a href="https://proceedings.iclr.cc/paper_files/paper/2026/hash/05b12f103c9e613efc4c85674cdc9066-Abstract-Conference.html">INTIMA</a> 和 <a href="https://aclanthology.org/2026.eacl-long.73/">CRADLE</a>。语音题参考 <a href="https://aslp-lab.github.io/HumDial-Challenge/track2/description/">HumDial 全双工赛道</a>。</p>
     {sources.map(source => <div class="rb-credit">
       <p><a href={source.url}>{source.name}</a> · {source.author} · {source.license}</p>
