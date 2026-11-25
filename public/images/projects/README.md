@@ -9,3 +9,4 @@
 
 - `queryatlas.webp`：将 QueryAtlas 仓库的 `assets/readme/mark.svg` 转成 WebP。
 - `queryatlas-workspace.webp`：官方 TPC-H 演示工作空间的实际浏览器截图，转换为 WebP。
+- `memosphere.webp`：从 [MemoSphere 品牌源图](https://github.com/ALVIN-YANG/MemoSphere/blob/main/docs/brand/memosphere.svg) 导出为 192×192 无损 WebP。
