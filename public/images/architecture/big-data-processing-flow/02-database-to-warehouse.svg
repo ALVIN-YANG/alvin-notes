@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1020" role="img">
+<title>为什么会从 Excel 走到数据库和数据仓库</title>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#d97745"/></marker><marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#8a8f98"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#24282f}.title{font-size:38px;font-weight:700}.subtitle{font-size:23px;fill:#6b6f76}.head{font-size:26px;font-weight:650}.body{font-size:23px}.small{font-size:20px}.note{font-size:22px;fill:#6b6f76}.accent{fill:#b35c2e;font-weight:650}.white{fill:#fff}.arrow{stroke:#d97745;stroke-width:3;fill:none;marker-end:url(#arrow)}.gray-arrow{stroke:#8a8f98;stroke-width:2.5;fill:none;marker-end:url(#arrow-gray)}.dash{stroke-dasharray:8 6}.group{fill:none;stroke:#e0b48f;stroke-width:2;stroke-dasharray:10 8}</style>
+<rect width="1440" height="1020" fill="#fbfaf6"/>
+<text x="60" y="68" class="title" data-svg-label="">为什么会从 Excel 走到数据库和数据仓库</text>
+<text x="60" y="112" class="subtitle" data-svg-label="">先解决可靠交易，再解决海量分析；两种需求不再争抢同一套资源</text>
+<rect id="node-1" data-svg-box="" x="60" y="165" width="370" height="250" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="86" y="210" class="head" text-anchor="start" data-svg-container="node-1">① Excel：故事初期</text>
+<text x="86" y="247" class="body" text-anchor="start" data-svg-container="node-1">每天几十单也能记录</text>
+<text x="86" y="281" class="body" text-anchor="start" data-svg-container="node-1">求和、排序简单直接</text>
+<text x="86" y="315" class="body" text-anchor="start" data-svg-container="node-1">多人编辑不方便</text>
+<text x="86" y="349" class="body" text-anchor="start" data-svg-container="node-1">硬盘损坏可能全丢</text>
+<rect id="node-2" data-svg-box="" x="535" y="165" width="370" height="250" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="561" y="210" class="head" text-anchor="start" data-svg-container="node-2">② 数据库：在线交易</text>
+<text x="561" y="247" class="body" text-anchor="start" data-svg-container="node-2">表、行、列组织数据</text>
+<text x="561" y="281" class="body" text-anchor="start" data-svg-container="node-2">支持 SQL 与多人访问</text>
+<text x="561" y="315" class="body" text-anchor="start" data-svg-container="node-2">增删改查单条记录</text>
+<text x="561" y="349" class="body" text-anchor="start" data-svg-container="node-2">备份提升可靠性</text>
+<rect id="node-3" data-svg-box="" x="1010" y="165" width="370" height="250" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1036" y="210" class="head" text-anchor="start" data-svg-container="node-3">③ 数据仓库：独立分析</text>
+<text x="1036" y="247" class="body" text-anchor="start" data-svg-container="node-3">统计不再拖慢下单</text>
+<text x="1036" y="281" class="body" text-anchor="start" data-svg-container="node-3">面向主题组织数据</text>
+<text x="1036" y="315" class="body" text-anchor="start" data-svg-container="node-3">服务报表与经营分析</text>
+<text x="1036" y="349" class="body" text-anchor="start" data-svg-container="node-3">由 ETL 同步业务数据</text>
+<line x1="430" y1="290" x2="520" y2="290" class="arrow"/>
+<text x="475" y="265" class="note" text-anchor="middle" data-svg-label="">订单增长</text>
+<line x1="905" y1="290" x2="995" y2="290" class="arrow"/>
+<text x="950" y="265" class="note" text-anchor="middle" data-svg-label="">分析变重</text>
+<rect id="node-4" data-svg-box="" x="60" y="515" width="630" height="340" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="86" y="560" class="head" text-anchor="start" data-svg-container="node-4">行式存储：把一条记录放在一起</text>
+<text x="86" y="597" class="body" text-anchor="start" data-svg-container="node-4">订单号｜商品｜金额｜时间｜状态</text>
+<text x="86" y="631" class="body" text-anchor="start" data-svg-container="node-4">订单号｜商品｜金额｜时间｜状态</text>
+<text x="86" y="665" class="body" text-anchor="start" data-svg-container="node-4">适合插入订单、修改地址</text>
+<text x="86" y="699" class="body" text-anchor="start" data-svg-container="node-4">每次只动少量记录</text>
+<text x="86" y="733" class="body" text-anchor="start" data-svg-container="node-4">代表：MySQL、Oracle、PostgreSQL</text>
+<rect id="node-5" data-svg-box="" x="750" y="515" width="630" height="340" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="776" y="560" class="head" text-anchor="start" data-svg-container="node-5">列式存储：把同一列放在一起</text>
+<text x="776" y="597" class="body" text-anchor="start" data-svg-container="node-5">订单号列｜订单号列｜订单号列</text>
+<text x="776" y="631" class="body" text-anchor="start" data-svg-container="node-5">金额列　｜金额列　｜金额列</text>
+<text x="776" y="665" class="body" text-anchor="start" data-svg-container="node-5">统计销售额只读取相关列</text>
+<text x="776" y="699" class="body" text-anchor="start" data-svg-container="node-5">适合扫描、分组与聚合</text>
+<text x="776" y="733" class="body" text-anchor="start" data-svg-container="node-5">减少无关字段带来的读取开销</text>
+<text x="375" y="905" class="head" text-anchor="middle" data-svg-label="" style="fill:#b35c2e">交易：快、准、稳</text>
+<text x="1065" y="905" class="head" text-anchor="middle" data-svg-label="" style="fill:#b35c2e">分析：扫得广、算得清</text>
+<text x="720" y="976" class="note" text-anchor="middle" data-svg-label="">数据库不是被数据仓库替代，而是成为大数据体系的上游数据来源。</text>
+</svg>

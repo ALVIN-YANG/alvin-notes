@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 930" role="img">
+<title>大数据处理全流程：从数据产生到业务价值</title>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#d97745"/></marker><marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#8a8f98"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#24282f}.title{font-size:38px;font-weight:700}.subtitle{font-size:23px;fill:#6b6f76}.head{font-size:26px;font-weight:650}.body{font-size:23px}.small{font-size:20px}.note{font-size:22px;fill:#6b6f76}.accent{fill:#b35c2e;font-weight:650}.white{fill:#fff}.arrow{stroke:#d97745;stroke-width:3;fill:none;marker-end:url(#arrow)}.gray-arrow{stroke:#8a8f98;stroke-width:2.5;fill:none;marker-end:url(#arrow-gray)}.dash{stroke-dasharray:8 6}.group{fill:none;stroke:#e0b48f;stroke-width:2;stroke-dasharray:10 8}</style>
+<rect width="1440" height="930" fill="#fbfaf6"/>
+<text x="60" y="68" class="title" data-svg-label="">大数据处理全流程：从数据产生到业务价值</text>
+<text x="60" y="112" class="subtitle" data-svg-label="">一笔订单与一条行为日志，穿过“存、算、管、用”</text>
+<rect id="node-1" data-svg-box="" x="45" y="165" width="166" height="150" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="128.0" y="210" class="head" text-anchor="middle" data-svg-container="node-1">数据产生</text>
+<text x="128.0" y="247" class="body" text-anchor="middle" data-svg-container="node-1">订单、支付</text>
+<text x="128.0" y="281" class="body" text-anchor="middle" data-svg-container="node-1">日志、图片</text>
+<line x1="211" y1="240" x2="237" y2="240" class="arrow"/>
+<rect id="node-2" data-svg-box="" x="243" y="165" width="166" height="150" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="326.0" y="210" class="head" text-anchor="middle" data-svg-container="node-2">采集同步</text>
+<text x="326.0" y="247" class="body" text-anchor="middle" data-svg-container="node-2">批量 ETL</text>
+<text x="326.0" y="281" class="body" text-anchor="middle" data-svg-container="node-2">实时接入</text>
+<line x1="409" y1="240" x2="435" y2="240" class="arrow"/>
+<rect id="node-3" data-svg-box="" x="441" y="165" width="166" height="150" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="524.0" y="210" class="head" text-anchor="middle" data-svg-container="node-3">数据存储</text>
+<text x="524.0" y="247" class="body" text-anchor="middle" data-svg-container="node-3">数据库</text>
+<text x="524.0" y="281" class="body" text-anchor="middle" data-svg-container="node-3">湖与仓</text>
+<line x1="607" y1="240" x2="633" y2="240" class="arrow"/>
+<rect id="node-4" data-svg-box="" x="639" y="165" width="166" height="150" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="722.0" y="210" class="head" text-anchor="middle" data-svg-container="node-4">数据计算</text>
+<text x="722.0" y="247" class="body" text-anchor="middle" data-svg-container="node-4">MapReduce</text>
+<text x="722.0" y="281" class="body" text-anchor="middle" data-svg-container="node-4">Spark·Flink</text>
+<line x1="805" y1="240" x2="831" y2="240" class="arrow"/>
+<rect id="node-5" data-svg-box="" x="837" y="165" width="166" height="150" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="920.0" y="210" class="head" text-anchor="middle" data-svg-container="node-5">调度治理</text>
+<text x="920.0" y="247" class="body" text-anchor="middle" data-svg-container="node-5">依赖、质量</text>
+<text x="920.0" y="281" class="body" text-anchor="middle" data-svg-container="node-5">目录、权限</text>
+<line x1="1003" y1="240" x2="1029" y2="240" class="arrow"/>
+<rect id="node-6" data-svg-box="" x="1035" y="165" width="166" height="150" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1118.0" y="210" class="head" text-anchor="middle" data-svg-container="node-6">数据服务</text>
+<text x="1118.0" y="247" class="body" text-anchor="middle" data-svg-container="node-6">标签、指标</text>
+<text x="1118.0" y="281" class="body" text-anchor="middle" data-svg-container="node-6">模型与 API</text>
+<line x1="1201" y1="240" x2="1227" y2="240" class="arrow"/>
+<rect id="node-7" data-svg-box="" x="1233" y="165" width="166" height="150" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1316.0" y="210" class="head" text-anchor="middle" data-svg-container="node-7">业务应用</text>
+<text x="1316.0" y="247" class="body" text-anchor="middle" data-svg-container="node-7">报表、推荐</text>
+<text x="1316.0" y="281" class="body" text-anchor="middle" data-svg-container="node-7">风控、营销</text>
+<text x="60" y="382" class="head" text-anchor="start" data-svg-label="" style="fill:#b35c2e">离线链路：按一批数据处理</text>
+<rect id="group-8" data-svg-box="" x="50" y="405" width="1340" height="180" rx="18" class="group"/>
+<rect id="node-9" data-svg-box="" x="75" y="435" width="220" height="120" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="185.0" y="480" class="body" text-anchor="middle" data-svg-container="node-9">业务数据库</text>
+<text x="185.0" y="517" class="body" text-anchor="middle" data-svg-container="node-9">订单·用户·支付</text>
+<line x1="295" y1="495" x2="325" y2="495" class="arrow"/>
+<rect id="node-10" data-svg-box="" x="335" y="435" width="220" height="120" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="445.0" y="480" class="body" text-anchor="middle" data-svg-container="node-10">ETL</text>
+<text x="445.0" y="517" class="body" text-anchor="middle" data-svg-container="node-10">抽取、清洗、加载</text>
+<line x1="555" y1="495" x2="585" y2="495" class="arrow"/>
+<rect id="node-11" data-svg-box="" x="595" y="435" width="220" height="120" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="705.0" y="480" class="body" text-anchor="middle" data-svg-container="node-11">湖仓存储</text>
+<text x="705.0" y="517" class="body" text-anchor="middle" data-svg-container="node-11">原始 / 宽表</text>
+<line x1="815" y1="495" x2="845" y2="495" class="arrow"/>
+<rect id="node-12" data-svg-box="" x="855" y="435" width="220" height="120" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="965.0" y="480" class="body" text-anchor="middle" data-svg-container="node-12">批量计算</text>
+<text x="965.0" y="517" class="body" text-anchor="middle" data-svg-container="node-12">MR / Spark</text>
+<line x1="1075" y1="495" x2="1105" y2="495" class="arrow"/>
+<rect id="node-13" data-svg-box="" x="1115" y="435" width="220" height="120" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="1225.0" y="480" class="body" text-anchor="middle" data-svg-container="node-13">经营分析</text>
+<text x="1225.0" y="517" class="body" text-anchor="middle" data-svg-container="node-13">BI 报表 / 大屏</text>
+<text x="60" y="654" class="head" text-anchor="start" data-svg-label="" style="fill:#b35c2e">实时链路：事件持续到达、持续计算</text>
+<rect id="group-14" data-svg-box="" x="50" y="677" width="1340" height="170" rx="18" class="group"/>
+<rect id="node-15" data-svg-box="" x="75" y="702" width="220" height="118" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="185.0" y="747" class="body" text-anchor="middle" data-svg-container="node-15">行为事件</text>
+<text x="185.0" y="784" class="body" text-anchor="middle" data-svg-container="node-15">点击·停留·滑动</text>
+<line x1="295" y1="760" x2="325" y2="760" class="arrow"/>
+<rect id="node-16" data-svg-box="" x="335" y="702" width="220" height="118" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="445.0" y="747" class="body" text-anchor="middle" data-svg-container="node-16">实时接入</text>
+<text x="445.0" y="784" class="body" text-anchor="middle" data-svg-container="node-16">点击流与交易流</text>
+<line x1="555" y1="760" x2="585" y2="760" class="arrow"/>
+<rect id="node-17" data-svg-box="" x="595" y="702" width="220" height="118" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="705.0" y="747" class="body" text-anchor="middle" data-svg-container="node-17">流式计算</text>
+<text x="705.0" y="784" class="body" text-anchor="middle" data-svg-container="node-17">Flink 更新状态</text>
+<line x1="815" y1="760" x2="845" y2="760" class="arrow"/>
+<rect id="node-18" data-svg-box="" x="855" y="702" width="220" height="118" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="965.0" y="747" class="body" text-anchor="middle" data-svg-container="node-18">实时资产</text>
+<text x="965.0" y="784" class="body" text-anchor="middle" data-svg-container="node-18">画像 / 销售指标</text>
+<line x1="1075" y1="760" x2="1105" y2="760" class="arrow"/>
+<rect id="node-19" data-svg-box="" x="1115" y="702" width="220" height="118" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="1225.0" y="747" class="body" text-anchor="middle" data-svg-container="node-19">即时行动</text>
+<text x="1225.0" y="784" class="body" text-anchor="middle" data-svg-container="node-19">推荐 / 风控</text>
+<text x="720" y="897" class="note" text-anchor="middle" data-svg-label="">数据库支撑当下交易；湖仓保存历史；计算提炼价值；数据服务让价值复用。</text>
+</svg>

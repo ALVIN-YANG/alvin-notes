@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1100" role="img">
+<title>MapReduce：把大任务拆成并行的小任务</title>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#d97745"/></marker><marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#8a8f98"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#24282f}.title{font-size:38px;font-weight:700}.subtitle{font-size:23px;fill:#6b6f76}.head{font-size:26px;font-weight:650}.body{font-size:23px}.small{font-size:20px}.note{font-size:22px;fill:#6b6f76}.accent{fill:#b35c2e;font-weight:650}.white{fill:#fff}.arrow{stroke:#d97745;stroke-width:3;fill:none;marker-end:url(#arrow)}.gray-arrow{stroke:#8a8f98;stroke-width:2.5;fill:none;marker-end:url(#arrow-gray)}.dash{stroke-dasharray:8 6}.group{fill:none;stroke:#e0b48f;stroke-width:2;stroke-dasharray:10 8}</style>
+<rect width="1440" height="1100" fill="#fbfaf6"/>
+<text x="60" y="68" class="title" data-svg-label="">MapReduce：把大任务拆成并行的小任务</text>
+<text x="60" y="112" class="subtitle" data-svg-label="">示例：按商品统计销售额；Map 处理局部，Reduce 汇总全局</text>
+<rect id="node-1" data-svg-box="" x="55" y="165" width="250" height="150" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="180.0" y="210" class="head" text-anchor="middle" data-svg-container="node-1">输入分片 Split</text>
+<text x="180.0" y="247" class="body" text-anchor="middle" data-svg-container="node-1">1.28 TB 订单文件</text>
+<text x="180.0" y="281" class="body" text-anchor="middle" data-svg-container="node-1">切成可并行的小份</text>
+<rect id="node-2" data-svg-box="" x="55" y="390" width="250" height="300" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="81" y="435" class="head" text-anchor="start" data-svg-container="node-2">每条订单记录</text>
+<text x="81" y="472" class="body" text-anchor="start" data-svg-container="node-2">商品 A｜金额 20</text>
+<text x="81" y="506" class="body" text-anchor="start" data-svg-container="node-2">商品 B｜金额 10</text>
+<text x="81" y="540" class="body" text-anchor="start" data-svg-container="node-2">商品 A｜金额 30</text>
+<text x="81" y="574" class="body" text-anchor="start" data-svg-container="node-2">商品 C｜金额 8</text>
+<text x="81" y="608" class="body" text-anchor="start" data-svg-container="node-2">商品 A｜金额 5</text>
+<text x="390" y="190" class="head" text-anchor="start" data-svg-label="" style="fill:#b35c2e">① Map：逐行提取并做局部计算</text>
+<rect id="node-3" data-svg-box="" x="350" y="240" width="240" height="150" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="470.0" y="285" class="head" text-anchor="middle" data-svg-container="node-3">Map 1</text>
+<text x="470.0" y="322" class="body" text-anchor="middle" data-svg-container="node-3">(A, 20)</text>
+<text x="470.0" y="356" class="body" text-anchor="middle" data-svg-container="node-3">(B, 10)</text>
+<path d="M 305 535 C 325 535 310 315 335 315" class="arrow"/>
+<rect id="node-4" data-svg-box="" x="350" y="430" width="240" height="150" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="470.0" y="475" class="head" text-anchor="middle" data-svg-container="node-4">Map 2</text>
+<text x="470.0" y="512" class="body" text-anchor="middle" data-svg-container="node-4">(A, 30)</text>
+<text x="470.0" y="546" class="body" text-anchor="middle" data-svg-container="node-4">(C, 8)</text>
+<path d="M 305 535 C 325 535 310 505 335 505" class="arrow"/>
+<rect id="node-5" data-svg-box="" x="350" y="620" width="240" height="150" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="470.0" y="665" class="head" text-anchor="middle" data-svg-container="node-5">Map 3</text>
+<text x="470.0" y="702" class="body" text-anchor="middle" data-svg-container="node-5">(A, 5)</text>
+<text x="470.0" y="736" class="body" text-anchor="middle" data-svg-container="node-5">(B, 12)</text>
+<path d="M 305 535 C 325 535 310 695 335 695" class="arrow"/>
+<text x="785" y="190" class="head" text-anchor="start" data-svg-label="" style="fill:#b35c2e">② Shuffle：相同商品归到一起</text>
+<rect id="node-6" data-svg-box="" x="675" y="240" width="285" height="250" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="817.5" y="285" class="head" text-anchor="middle" data-svg-container="node-6">按 Key 分组</text>
+<text x="817.5" y="322" class="body" text-anchor="middle" data-svg-container="node-6">A → [20, 30, 5]</text>
+<text x="817.5" y="356" class="body" text-anchor="middle" data-svg-container="node-6">B → [10, 12]</text>
+<text x="817.5" y="390" class="body" text-anchor="middle" data-svg-container="node-6">C → [8]</text>
+<text x="817.5" y="424" class="body" text-anchor="middle" data-svg-container="node-6">跨节点交换中间结果</text>
+<line x1="590" y1="390" x2="660" y2="390" class="arrow"/>
+<text x="1170" y="190" class="head" text-anchor="start" data-svg-label="" style="fill:#b35c2e">③ Reduce：汇总</text>
+<rect id="node-7" data-svg-box="" x="1050" y="240" width="330" height="250" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1215.0" y="285" class="head" text-anchor="middle" data-svg-container="node-7">最终结果</text>
+<text x="1215.0" y="322" class="body" text-anchor="middle" data-svg-container="node-7">商品 A 销售额 = 55</text>
+<text x="1215.0" y="356" class="body" text-anchor="middle" data-svg-container="node-7">商品 B 销售额 = 22</text>
+<text x="1215.0" y="390" class="body" text-anchor="middle" data-svg-container="node-7">商品 C 销售额 = 8</text>
+<line x1="960" y1="390" x2="1035" y2="390" class="arrow"/>
+<rect id="node-8" data-svg-box="" x="350" y="790" width="1030" height="160" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="865.0" y="835" class="head" text-anchor="middle" data-svg-container="node-8">为什么它能成为通用框架</text>
+<text x="865.0" y="872" class="body" text-anchor="middle" data-svg-container="node-8">用户定义 Map 与 Reduce 的业务逻辑；框架负责分片、并行执行与结果汇总</text>
+<text x="865.0" y="906" class="body" text-anchor="middle" data-svg-container="node-8">同样可按用户性别等维度聚合消费金额，不必只统计商品销售额</text>
+<text x="720" y="1015" class="note" text-anchor="middle" data-svg-label="">代价：经典 MapReduce 的中间结果频繁落盘，磁盘 I/O 使其更适合离线批处理。</text>
+<text x="720" y="1060" class="note" text-anchor="middle" data-svg-label="">分片与多机并行解决“算不动”，但不自动解决任务资源分配。</text>
+</svg>

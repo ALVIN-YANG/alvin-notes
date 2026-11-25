@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1120" role="img">
+<title>批处理、流处理与在线读写不是一回事</title>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#d97745"/></marker><marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#8a8f98"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#24282f}.title{font-size:38px;font-weight:700}.subtitle{font-size:23px;fill:#6b6f76}.head{font-size:26px;font-weight:650}.body{font-size:23px}.small{font-size:20px}.note{font-size:22px;fill:#6b6f76}.accent{fill:#b35c2e;font-weight:650}.white{fill:#fff}.arrow{stroke:#d97745;stroke-width:3;fill:none;marker-end:url(#arrow)}.gray-arrow{stroke:#8a8f98;stroke-width:2.5;fill:none;marker-end:url(#arrow-gray)}.dash{stroke-dasharray:8 6}.group{fill:none;stroke:#e0b48f;stroke-width:2;stroke-dasharray:10 8}</style>
+<rect width="1440" height="1120" fill="#fbfaf6"/>
+<text x="60" y="68" class="title" data-svg-label="">批处理、流处理与在线读写不是一回事</text>
+<text x="60" y="112" class="subtitle" data-svg-label="">Spark、Flink、HBase 分别优化不同路径；延迟低不等于适合同一种业务</text>
+<rect id="node-1" data-svg-box="" x="60" y="160" width="410" height="300" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="265.0" y="205" class="head" text-anchor="middle" data-svg-container="node-1">MapReduce｜离线批处理</text>
+<text x="265.0" y="242" class="body" text-anchor="middle" data-svg-container="node-1">攒成一批再开始计算</text>
+<text x="265.0" y="276" class="body" text-anchor="middle" data-svg-container="node-1">中间结果频繁写磁盘</text>
+<text x="265.0" y="310" class="body" text-anchor="middle" data-svg-container="node-1">适合不强调秒级延迟</text>
+<text x="265.0" y="344" class="body" text-anchor="middle" data-svg-container="node-1">的离线统计任务</text>
+<rect id="node-2" data-svg-box="" x="515" y="160" width="410" height="300" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="720.0" y="205" class="head" text-anchor="middle" data-svg-container="node-2">Spark｜批量计算优化</text>
+<text x="720.0" y="242" class="body" text-anchor="middle" data-svg-container="node-2">中间结果优先利用内存</text>
+<text x="720.0" y="276" class="body" text-anchor="middle" data-svg-container="node-2">内存不足仍会溢写磁盘</text>
+<text x="720.0" y="310" class="body" text-anchor="middle" data-svg-container="node-2">可接 Hive on Spark</text>
+<text x="720.0" y="344" class="body" text-anchor="middle" data-svg-container="node-2">也可使用 Spark SQL</text>
+<rect id="node-3" data-svg-box="" x="970" y="160" width="410" height="300" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="1175.0" y="205" class="head" text-anchor="middle" data-svg-container="node-3">Flink｜持续流计算</text>
+<text x="1175.0" y="242" class="body" text-anchor="middle" data-svg-container="node-3">事件持续到达持续处理</text>
+<text x="1175.0" y="276" class="body" text-anchor="middle" data-svg-container="node-3">维护实时画像与指标</text>
+<text x="1175.0" y="310" class="body" text-anchor="middle" data-svg-container="node-3">适合实时大屏等场景</text>
+<text x="1175.0" y="344" class="body" text-anchor="middle" data-svg-container="node-3">面向处理而非在线查询</text>
+<text x="265" y="525" class="head" text-anchor="middle" data-svg-label="" style="fill:#b35c2e">昨晚订单 → 今天报表</text>
+<text x="720" y="525" class="head" text-anchor="middle" data-svg-label="" style="fill:#b35c2e">批量任务 → 更快完成</text>
+<text x="1175" y="525" class="head" text-anchor="middle" data-svg-label="" style="fill:#b35c2e">点击发生 → 指标更新</text>
+<rect id="node-4" data-svg-box="" x="120" y="640" width="1200" height="240" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="720.0" y="685" class="head" text-anchor="middle" data-svg-container="node-4">HBase｜海量数据上的在线随机读写</text>
+<text x="720.0" y="722" class="body" text-anchor="middle" data-svg-container="node-4">分析系统从海量数据取一两条记录，仍可能经过重型任务链路</text>
+<text x="720.0" y="756" class="body" text-anchor="middle" data-svg-container="node-4">HBase 面向高并发、低延迟在线读写，可服务毫秒级查询场景</text>
+<text x="720.0" y="790" class="body" text-anchor="middle" data-svg-container="node-4">Flink 负责持续计算；HBase 负责在线存取，两者不能互相替代</text>
+<text x="720" y="950" class="note" text-anchor="middle" data-svg-label="">Spark 也有流处理能力；这里沿用视频的对比重点，突出其常见批量计算优势。</text>
+<text x="720" y="995" class="note" text-anchor="middle" data-svg-label="">MongoDB 是文档数据库，解决数据模型与访问模式问题，不是这条处理链的必选项。</text>
+<text x="720" y="1060" class="note" text-anchor="middle" data-svg-label="">选型依据是业务访问方式、延迟、吞吐、数据规模和运维成本，而不是单纯比较名词。</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1040" role="img">
+<title>数据采集与 ETL：先把数据搬对，再谈分析</title>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#d97745"/></marker><marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#8a8f98"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#24282f}.title{font-size:38px;font-weight:700}.subtitle{font-size:23px;fill:#6b6f76}.head{font-size:26px;font-weight:650}.body{font-size:23px}.small{font-size:20px}.note{font-size:22px;fill:#6b6f76}.accent{fill:#b35c2e;font-weight:650}.white{fill:#fff}.arrow{stroke:#d97745;stroke-width:3;fill:none;marker-end:url(#arrow)}.gray-arrow{stroke:#8a8f98;stroke-width:2.5;fill:none;marker-end:url(#arrow-gray)}.dash{stroke-dasharray:8 6}.group{fill:none;stroke:#e0b48f;stroke-width:2;stroke-dasharray:10 8}</style>
+<rect width="1440" height="1040" fill="#fbfaf6"/>
+<text x="60" y="68" class="title" data-svg-label="">数据采集与 ETL：先把数据搬对，再谈分析</text>
+<text x="60" y="112" class="subtitle" data-svg-label="">Extract 抽取 → Transform 转换 → Load 加载；批量链路与实时链路可以并存</text>
+<rect id="node-1" data-svg-box="" x="60" y="170" width="275" height="430" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="197.5" y="215" class="head" text-anchor="middle" data-svg-container="node-1">数据来源</text>
+<text x="197.5" y="252" class="body" text-anchor="middle" data-svg-container="node-1">业务数据库</text>
+<text x="197.5" y="286" class="body" text-anchor="middle" data-svg-container="node-1">订单 / 用户 / 支付</text>
+<text x="197.5" y="320" class="body" text-anchor="middle" data-svg-container="node-1">行为日志</text>
+<text x="197.5" y="354" class="body" text-anchor="middle" data-svg-container="node-1">点击 / 停留 / 滑动</text>
+<text x="197.5" y="388" class="body" text-anchor="middle" data-svg-container="node-1">评论 / 图片 / 音频</text>
+<rect id="node-2" data-svg-box="" x="405" y="170" width="275" height="250" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="542.5" y="215" class="head" text-anchor="middle" data-svg-container="node-2">① Extract 抽取</text>
+<text x="542.5" y="252" class="body" text-anchor="middle" data-svg-container="node-2">通过标准查询接口</text>
+<text x="542.5" y="286" class="body" text-anchor="middle" data-svg-container="node-2">从业务库提取数据</text>
+<text x="542.5" y="320" class="body" text-anchor="middle" data-svg-container="node-2">也可接收日志事件</text>
+<text x="542.5" y="354" class="body" text-anchor="middle" data-svg-container="node-2">离线按计划批量执行</text>
+<rect id="node-3" data-svg-box="" x="750" y="170" width="275" height="360" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="887.5" y="215" class="head" text-anchor="middle" data-svg-container="node-3">② Transform 转换</text>
+<text x="887.5" y="252" class="body" text-anchor="middle" data-svg-container="node-3">统一日期格式</text>
+<text x="887.5" y="286" class="body" text-anchor="middle" data-svg-container="node-3">去除重复订单</text>
+<text x="887.5" y="320" class="body" text-anchor="middle" data-svg-container="node-3">缺失字段补默认值</text>
+<text x="887.5" y="354" class="body" text-anchor="middle" data-svg-container="node-3">清洗异常与脏数据</text>
+<text x="887.5" y="388" class="body" text-anchor="middle" data-svg-container="node-3">按统一口径加工</text>
+<rect id="node-4" data-svg-box="" x="1095" y="170" width="285" height="360" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1237.5" y="215" class="head" text-anchor="middle" data-svg-container="node-4">③ Load 加载</text>
+<text x="1237.5" y="252" class="body" text-anchor="middle" data-svg-container="node-4">写入湖或仓</text>
+<text x="1237.5" y="286" class="body" text-anchor="middle" data-svg-container="node-4">按主题与层次组织</text>
+<text x="1237.5" y="320" class="body" text-anchor="middle" data-svg-container="node-4">保留订单等维度表</text>
+<text x="1237.5" y="354" class="body" text-anchor="middle" data-svg-container="node-4">生成分析宽表</text>
+<text x="1237.5" y="388" class="body" text-anchor="middle" data-svg-container="node-4">供后续计算使用</text>
+<line x1="335" y1="300" x2="390" y2="300" class="arrow"/>
+<line x1="680" y1="300" x2="735" y2="300" class="arrow"/>
+<line x1="1025" y1="300" x2="1080" y2="300" class="arrow"/>
+<rect id="node-5" data-svg-box="" x="190" y="665" width="1060" height="220" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="720.0" y="710" class="head" text-anchor="middle" data-svg-container="node-5">销售主题宽表：把常用关联提前加工好</text>
+<text x="720.0" y="747" class="body" text-anchor="middle" data-svg-container="node-5">订单号｜商品名｜单价｜数量｜支付金额｜发货时间</text>
+<text x="720.0" y="781" class="body" text-anchor="middle" data-svg-container="node-5">订单 + 支付 + 商品 + 物流 → 一张可分析的宽表</text>
+<text x="720.0" y="815" class="body" text-anchor="middle" data-svg-container="node-5">统计商品销售额时，不必每次临时关联多张业务表</text>
+<text x="720" y="950" class="note" text-anchor="middle" data-svg-label="">实时通道不等待凌晨批处理：事件持续进入平台，交给流计算更新指标与画像。</text>
+<text x="720" y="995" class="note" text-anchor="middle" data-svg-label="">ETL 描述数据搬运与加工过程；具体同步工具可以不同。</text>
+</svg>

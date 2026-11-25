@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkerHash": "fd38b3d4243af074ef927c82b077e0b6b7496fd14d0273ead1225814d9ae0c04",
+  "checkerHash": "a0a0996f40af0507b5415207433cedf19afae1b8419bdf681572c2ddddb0e1d2",
   "files": {
     "public/images/ai/agent-memory-landscape/02-claude-code.svg": {
       "sha256": "84015405faf04e2bbc59ef3824c3e9778ee14872b7ea150b85421545252e3239",
@@ -137,6 +137,50 @@
     "public/images/ai/rag-with-vs-without.svg": {
       "sha256": "c1350094d94c9251774b3cdfb10964dbae160b47218da50fc386e0e8368100f2",
       "mode": "legacy"
+    },
+    "public/images/architecture/big-data-processing-flow/01-overview.svg": {
+      "sha256": "962b3074faa0294aaec612ef6b3405f98fb66295c8877bc2432d73c5284f90c2",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/02-database-to-warehouse.svg": {
+      "sha256": "8fe3343e27b58564ec48a1a8d50a8cb0d8199ae1b543b17e80ad9d8457d14cec",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/03-etl.svg": {
+      "sha256": "5f0efee6bca5aae1c65105c19dc67ef765fb3fc789822bc030ce64fafd75a77f",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/04-storage.svg": {
+      "sha256": "c0d3491c2bf6d7df3229f418bfb723d0fd2439fdf16572cc36934e4f245e0cab",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/05-hdfs.svg": {
+      "sha256": "35abfb94072d78f0419143fea1ce830cca1c2e7bbb683ae2b599bb1c9b3a99cb",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/06-mapreduce.svg": {
+      "sha256": "b9481dcf6ade2062064fca45ca1d46e7c1808dbc2ddffd2e0433bd2dcff75bf2",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/07-hive-yarn.svg": {
+      "sha256": "e43908424bf32a48677ea4520bb4b204b660910008c463e06bce5c0e6cff69bf",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/08-compute-serving.svg": {
+      "sha256": "f916dbce231c1c476f2ff677d80fd2b7f85e683c08f023535a3e9e2054267ec0",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/09-governance.svg": {
+      "sha256": "90743be8cc38c0d1b1559d699ff22ded2f2a5642852202a56747befe1a53ebfe",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/10-data-platform.svg": {
+      "sha256": "7fdd2e54f6ae26b0a6c5fb3788c073955505a270153d4082bfc9d4132135018b",
+      "mode": "checked"
+    },
+    "public/images/architecture/big-data-processing-flow/11-end-to-end.svg": {
+      "sha256": "be997958863a5ab3afd30ee1704c68ab265eae4ee4caa22098babd9c408c037a",
+      "mode": "checked"
     },
     "public/images/architecture/ipc-decision-tree.svg": {
       "sha256": "5e5fe3295bd7de02754b284727dad09389713160fdba39ecd91c2ad4d3d5b7e4",

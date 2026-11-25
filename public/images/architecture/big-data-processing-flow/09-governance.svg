@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1100" role="img">
+<title>“管”不只是调度：让任务按时跑，让数据可信</title>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#d97745"/></marker><marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#8a8f98"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#24282f}.title{font-size:38px;font-weight:700}.subtitle{font-size:23px;fill:#6b6f76}.head{font-size:26px;font-weight:650}.body{font-size:23px}.small{font-size:20px}.note{font-size:22px;fill:#6b6f76}.accent{fill:#b35c2e;font-weight:650}.white{fill:#fff}.arrow{stroke:#d97745;stroke-width:3;fill:none;marker-end:url(#arrow)}.gray-arrow{stroke:#8a8f98;stroke-width:2.5;fill:none;marker-end:url(#arrow-gray)}.dash{stroke-dasharray:8 6}.group{fill:none;stroke:#e0b48f;stroke-width:2;stroke-dasharray:10 8}</style>
+<rect width="1440" height="1100" fill="#fbfaf6"/>
+<text x="60" y="68" class="title" data-svg-label="">“管”不只是调度：让任务按时跑，让数据可信</text>
+<text x="60" y="112" class="subtitle" data-svg-label="">任务调度 + 资源管理 + 元数据 + 数据目录 + 质量 + 权限</text>
+<rect id="node-1" data-svg-box="" x="400" y="150" width="640" height="150" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="720.0" y="195" class="head" text-anchor="middle" data-svg-container="node-1">任务调度｜例如 Airflow</text>
+<text x="720.0" y="232" class="body" text-anchor="middle" data-svg-container="node-1">按时间触发任务，编排先后依赖</text>
+<text x="720.0" y="266" class="body" text-anchor="middle" data-svg-container="node-1">上游失败后，下游不能盲目继续</text>
+<rect id="node-2" data-svg-box="" x="55" y="380" width="270" height="130" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="190.0" y="425" class="head" text-anchor="middle" data-svg-container="node-2">原始数据</text>
+<text x="190.0" y="462" class="body" text-anchor="middle" data-svg-container="node-2">订单 / 日志</text>
+<line x1="325" y1="445" x2="385" y2="445" class="arrow"/>
+<rect id="node-3" data-svg-box="" x="400" y="380" width="270" height="130" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="535.0" y="425" class="head" text-anchor="middle" data-svg-container="node-3">清洗加工</text>
+<text x="535.0" y="462" class="body" text-anchor="middle" data-svg-container="node-3">去重 / 统一口径</text>
+<line x1="670" y1="445" x2="730" y2="445" class="arrow"/>
+<rect id="node-4" data-svg-box="" x="745" y="380" width="270" height="130" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="880.0" y="425" class="head" text-anchor="middle" data-svg-container="node-4">标准指标</text>
+<text x="880.0" y="462" class="body" text-anchor="middle" data-svg-container="node-4">销售额 / 留存</text>
+<line x1="1015" y1="445" x2="1075" y2="445" class="arrow"/>
+<rect id="node-5" data-svg-box="" x="1090" y="380" width="270" height="130" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="1225.0" y="425" class="head" text-anchor="middle" data-svg-container="node-5">数据服务</text>
+<text x="1225.0" y="462" class="body" text-anchor="middle" data-svg-container="node-5">报表 / API</text>
+<line x1="720" y1="315" x2="720" y2="365" class="arrow"/>
+<text x="805" y="340" class="note" text-anchor="middle" data-svg-label="">按依赖触发</text>
+<rect id="node-6" data-svg-box="" x="60" y="620" width="300" height="250" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="210.0" y="665" class="head" text-anchor="middle" data-svg-container="node-6">元数据与目录</text>
+<text x="210.0" y="702" class="body" text-anchor="middle" data-svg-container="node-6">记录有什么数据</text>
+<text x="210.0" y="736" class="body" text-anchor="middle" data-svg-container="node-6">存在哪里、什么意思</text>
+<text x="210.0" y="770" class="body" text-anchor="middle" data-svg-container="node-6">给数据分类打标签</text>
+<text x="210.0" y="804" class="body" text-anchor="middle" data-svg-container="node-6">避免 log1.txt 难辨</text>
+<rect id="node-7" data-svg-box="" x="400" y="620" width="300" height="250" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="550.0" y="665" class="head" text-anchor="middle" data-svg-container="node-7">数据质量</text>
+<text x="550.0" y="702" class="body" text-anchor="middle" data-svg-container="node-7">统一指标统计口径</text>
+<text x="550.0" y="736" class="body" text-anchor="middle" data-svg-container="node-7">发现重复与缺失</text>
+<text x="550.0" y="770" class="body" text-anchor="middle" data-svg-container="node-7">监控异常值</text>
+<text x="550.0" y="804" class="body" text-anchor="middle" data-svg-container="node-7">让不同部门算得一致</text>
+<rect id="node-8" data-svg-box="" x="740" y="620" width="300" height="250" rx="14" fill="#f8e8e2" stroke="#dfa794" stroke-width="2"/>
+<text x="890.0" y="665" class="head" text-anchor="middle" data-svg-container="node-8">权限与安全</text>
+<text x="890.0" y="702" class="body" text-anchor="middle" data-svg-container="node-8">细粒度访问控制</text>
+<text x="890.0" y="736" class="body" text-anchor="middle" data-svg-container="node-8">明确谁能看数据</text>
+<text x="890.0" y="770" class="body" text-anchor="middle" data-svg-container="node-8">降低误用与泄露风险</text>
+<text x="890.0" y="804" class="body" text-anchor="middle" data-svg-container="node-8">治理覆盖整个流程</text>
+<rect id="node-9" data-svg-box="" x="1080" y="620" width="300" height="250" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="1230.0" y="665" class="head" text-anchor="middle" data-svg-container="node-9">资源管理｜YARN</text>
+<text x="1230.0" y="702" class="body" text-anchor="middle" data-svg-container="node-9">管理 CPU 与内存</text>
+<text x="1230.0" y="736" class="body" text-anchor="middle" data-svg-container="node-9">协调任务运行资源</text>
+<text x="1230.0" y="770" class="body" text-anchor="middle" data-svg-container="node-9">与任务时间调度配合</text>
+<text x="1230.0" y="804" class="body" text-anchor="middle" data-svg-container="node-9">两者职责并不相同</text>
+<text x="720" y="955" class="note" text-anchor="middle" data-svg-label="">缺少管理的结果：数据孤岛、重复 SQL、同指标不同结果、文件无人敢删。</text>
+<text x="720" y="1000" class="note" text-anchor="middle" data-svg-label="">数据湖因此可能变成数据沼泽，企业也会重复开发同一批用户标签。</text>
+<text x="720" y="1060" class="note" text-anchor="middle" data-svg-label="">“管”的目标不是增加流程，而是让数据可找到、可理解、可信任、可安全使用。</text>
+</svg>

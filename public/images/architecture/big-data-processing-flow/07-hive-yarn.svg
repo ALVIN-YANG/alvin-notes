@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1120" role="img">
+<title>SQL 怎样变成集群任务，资源又由谁分配</title>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#d97745"/></marker><marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#8a8f98"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#24282f}.title{font-size:38px;font-weight:700}.subtitle{font-size:23px;fill:#6b6f76}.head{font-size:26px;font-weight:650}.body{font-size:23px}.small{font-size:20px}.note{font-size:22px;fill:#6b6f76}.accent{fill:#b35c2e;font-weight:650}.white{fill:#fff}.arrow{stroke:#d97745;stroke-width:3;fill:none;marker-end:url(#arrow)}.gray-arrow{stroke:#8a8f98;stroke-width:2.5;fill:none;marker-end:url(#arrow-gray)}.dash{stroke-dasharray:8 6}.group{fill:none;stroke:#e0b48f;stroke-width:2;stroke-dasharray:10 8}</style>
+<rect width="1440" height="1120" fill="#fbfaf6"/>
+<text x="60" y="68" class="title" data-svg-label="">SQL 怎样变成集群任务，资源又由谁分配</text>
+<text x="60" y="112" class="subtitle" data-svg-label="">Hive 降低分析门槛；YARN 管理 CPU、内存等集群资源</text>
+<rect id="node-1" data-svg-box="" x="55" y="155" width="310" height="220" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="81" y="200" class="body" text-anchor="start" data-svg-container="node-1">分析人员写 SQL</text>
+<text x="81" y="237" class="body" text-anchor="start" data-svg-container="node-1">SELECT product,</text>
+<text x="81" y="271" class="body" text-anchor="start" data-svg-container="node-1">SUM(amount)</text>
+<text x="81" y="305" class="body" text-anchor="start" data-svg-container="node-1">FROM orders</text>
+<text x="81" y="339" class="body" text-anchor="start" data-svg-container="node-1">GROUP BY product</text>
+<rect id="node-2" data-svg-box="" x="440" y="155" width="260" height="185" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="570.0" y="200" class="head" text-anchor="middle" data-svg-container="node-2">Hive</text>
+<text x="570.0" y="237" class="body" text-anchor="middle" data-svg-container="node-2">解析 SQL</text>
+<text x="570.0" y="271" class="body" text-anchor="middle" data-svg-container="node-2">生成计算任务</text>
+<text x="570.0" y="305" class="body" text-anchor="middle" data-svg-container="node-2">屏蔽手写函数</text>
+<rect id="node-3" data-svg-box="" x="775" y="155" width="270" height="185" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="910.0" y="200" class="head" text-anchor="middle" data-svg-container="node-3">计算框架</text>
+<text x="910.0" y="237" class="body" text-anchor="middle" data-svg-container="node-3">MapReduce</text>
+<text x="910.0" y="271" class="body" text-anchor="middle" data-svg-container="node-3">或 Spark</text>
+<text x="910.0" y="305" class="body" text-anchor="middle" data-svg-container="node-3">拆成集群任务</text>
+<rect id="node-4" data-svg-box="" x="1120" y="155" width="260" height="185" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1250.0" y="200" class="head" text-anchor="middle" data-svg-container="node-4">查询结果</text>
+<text x="1250.0" y="237" class="body" text-anchor="middle" data-svg-container="node-4">多节点计算</text>
+<text x="1250.0" y="271" class="body" text-anchor="middle" data-svg-container="node-4">汇总后返回</text>
+<line x1="365" y1="245" x2="425" y2="245" class="arrow"/>
+<line x1="700" y1="245" x2="760" y2="245" class="arrow"/>
+<line x1="1045" y1="245" x2="1105" y2="245" class="arrow"/>
+<rect id="group-5" data-svg-box="" x="100" y="500" width="1240" height="350" rx="18" class="group"/>
+<text x="130" y="485" class="head" text-anchor="start" data-svg-label="" style="fill:#b35c2e">YARN：Yet Another Resource Negotiator</text>
+<rect id="node-6" data-svg-box="" x="135" y="525" width="320" height="220" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="295.0" y="570" class="head" text-anchor="middle" data-svg-container="node-6">资源申请与协调</text>
+<text x="295.0" y="607" class="body" text-anchor="middle" data-svg-container="node-6">计算框架提出需求</text>
+<text x="295.0" y="641" class="body" text-anchor="middle" data-svg-container="node-6">YARN 分配 CPU、内存</text>
+<text x="295.0" y="675" class="body" text-anchor="middle" data-svg-container="node-6">任务获得 Container</text>
+<text x="295.0" y="709" class="body" text-anchor="middle" data-svg-container="node-6">再运行具体计算代码</text>
+<rect id="node-7" data-svg-box="" x="535" y="525" width="220" height="220" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="645.0" y="570" class="body" text-anchor="middle" data-svg-container="node-7">服务器节点 1</text>
+<text x="645.0" y="607" class="body" text-anchor="middle" data-svg-container="node-7">Container</text>
+<text x="645.0" y="641" class="body" text-anchor="middle" data-svg-container="node-7">CPU / 内存配额</text>
+<text x="645.0" y="675" class="body" text-anchor="middle" data-svg-container="node-7">运行任务进程</text>
+<rect id="node-8" data-svg-box="" x="790" y="525" width="220" height="220" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="900.0" y="570" class="body" text-anchor="middle" data-svg-container="node-8">服务器节点 2</text>
+<text x="900.0" y="607" class="body" text-anchor="middle" data-svg-container="node-8">Container</text>
+<text x="900.0" y="641" class="body" text-anchor="middle" data-svg-container="node-8">CPU / 内存配额</text>
+<text x="900.0" y="675" class="body" text-anchor="middle" data-svg-container="node-8">运行任务进程</text>
+<rect id="node-9" data-svg-box="" x="1045" y="525" width="220" height="220" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="1155.0" y="570" class="body" text-anchor="middle" data-svg-container="node-9">服务器节点 3</text>
+<text x="1155.0" y="607" class="body" text-anchor="middle" data-svg-container="node-9">Container</text>
+<text x="1155.0" y="641" class="body" text-anchor="middle" data-svg-container="node-9">CPU / 内存配额</text>
+<text x="1155.0" y="675" class="body" text-anchor="middle" data-svg-container="node-9">运行任务进程</text>
+<line x1="455" y1="635" x2="520" y2="635" class="arrow"/>
+<rect id="node-10" data-svg-box="" x="100" y="910" width="590" height="150" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="395.0" y="955" class="head" text-anchor="middle" data-svg-container="node-10">Hive on Spark</text>
+<text x="395.0" y="992" class="body" text-anchor="middle" data-svg-container="node-10">通过适配层让 Hive SQL</text>
+<text x="395.0" y="1026" class="body" text-anchor="middle" data-svg-container="node-10">转为 Spark 任务执行</text>
+<rect id="node-11" data-svg-box="" x="750" y="910" width="590" height="150" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1045.0" y="955" class="head" text-anchor="middle" data-svg-container="node-11">Spark SQL</text>
+<text x="1045.0" y="992" class="body" text-anchor="middle" data-svg-container="node-11">与 Spark 原生集成</text>
+<text x="1045.0" y="1026" class="body" text-anchor="middle" data-svg-container="node-11">提供另一类 SQL 入口</text>
+<text x="720" y="1090" class="note" text-anchor="middle" data-svg-label="">YARN 与 Kubernetes 都涉及资源管理，但抽象与生态不同；YARN Container 不等于 Docker 容器。</text>
+</svg>

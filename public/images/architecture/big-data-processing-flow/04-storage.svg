@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1150" role="img">
+<title>数据库、数据仓库、数据湖与湖仓一体</title>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#d97745"/></marker><marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#8a8f98"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#24282f}.title{font-size:38px;font-weight:700}.subtitle{font-size:23px;fill:#6b6f76}.head{font-size:26px;font-weight:650}.body{font-size:23px}.small{font-size:20px}.note{font-size:22px;fill:#6b6f76}.accent{fill:#b35c2e;font-weight:650}.white{fill:#fff}.arrow{stroke:#d97745;stroke-width:3;fill:none;marker-end:url(#arrow)}.gray-arrow{stroke:#8a8f98;stroke-width:2.5;fill:none;marker-end:url(#arrow-gray)}.dash{stroke-dasharray:8 6}.group{fill:none;stroke:#e0b48f;stroke-width:2;stroke-dasharray:10 8}</style>
+<rect width="1440" height="1150" fill="#fbfaf6"/>
+<text x="60" y="68" class="title" data-svg-label="">数据库、数据仓库、数据湖与湖仓一体</text>
+<text x="60" y="112" class="subtitle" data-svg-label="">区别不只在容量，更在数据形态、处理时机、访问方式与成本</text>
+<rect id="node-1" data-svg-box="" x="60" y="160" width="625" height="240" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="86" y="205" class="head" text-anchor="start" data-svg-container="node-1">数据库｜当下交易</text>
+<text x="86" y="242" class="body" text-anchor="start" data-svg-container="node-1">行式记录适合在线增删改查</text>
+<text x="86" y="276" class="body" text-anchor="start" data-svg-container="node-1">保存订单、库存等当前业务状态</text>
+<text x="86" y="310" class="body" text-anchor="start" data-svg-container="node-1">也是数仓与数据湖的上游来源</text>
+<rect id="node-2" data-svg-box="" x="755" y="160" width="625" height="240" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="781" y="205" class="head" text-anchor="start" data-svg-container="node-2">数据仓库｜规范分析</text>
+<text x="781" y="242" class="body" text-anchor="start" data-svg-container="node-2">先建模、清洗，再按主题组织</text>
+<text x="781" y="276" class="body" text-anchor="start" data-svg-container="node-2">列式读取适合报表与聚合</text>
+<text x="781" y="310" class="body" text-anchor="start" data-svg-container="node-2">查询可靠，但建模与存储有成本</text>
+<rect id="node-3" data-svg-box="" x="60" y="450" width="625" height="260" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="86" y="495" class="head" text-anchor="start" data-svg-container="node-3">数据湖｜保留原始与历史</text>
+<text x="86" y="532" class="body" text-anchor="start" data-svg-container="node-3">结构化、半结构化、非结构化都能存</text>
+<text x="86" y="566" class="body" text-anchor="start" data-svg-container="node-3">先存储，需要分析时再解析</text>
+<text x="86" y="600" class="body" text-anchor="start" data-svg-container="node-3">HDFS 或云对象存储可作底座</text>
+<text x="86" y="634" class="body" text-anchor="start" data-svg-container="node-3">评论等数据可留待未来训练模型</text>
+<rect id="node-4" data-svg-box="" x="755" y="450" width="625" height="260" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="781" y="495" class="head" text-anchor="start" data-svg-container="node-4">湖仓一体｜打通湖与仓</text>
+<text x="781" y="532" class="body" text-anchor="start" data-svg-container="node-4">原始数据统一入湖，再清洗转换</text>
+<text x="781" y="566" class="body" text-anchor="start" data-svg-container="node-4">Delta Lake、Apache Iceberg</text>
+<text x="781" y="600" class="body" text-anchor="start" data-svg-container="node-4">属于常见表格式实现</text>
+<text x="781" y="634" class="body" text-anchor="start" data-svg-container="node-4">支持湖仓数据互通与联合计算</text>
+<rect id="node-5" data-svg-box="" x="60" y="790" width="1320" height="190" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="835" class="head" text-anchor="middle" data-svg-container="node-5">冷热分层：把访问频度与存储成本放在一起考虑</text>
+<text x="720.0" y="872" class="body" text-anchor="middle" data-svg-container="node-5">故事示例：近三个月热订单放入数仓，保障高频查询</text>
+<text x="720.0" y="906" class="body" text-anchor="middle" data-svg-container="node-5">更冷的历史数据低成本归档在湖中；结果可写回仓或湖</text>
+<text x="90" y="1040" class="head" text-anchor="start" data-svg-label="" style="fill:#b35c2e">数据沼泽警告</text>
+<text x="90" y="1082" class="note" text-anchor="start" data-svg-label="">文件重名、无人知道含义、垃圾不敢删——缺少元数据、目录和权限，湖就会失控。</text>
+<text x="90" y="1122" class="note" text-anchor="start" data-svg-label="">云对象存储提供弹性扩容并减少自运维；迁移与否仍取决于成本、合规和现有架构。</text>
+</svg>

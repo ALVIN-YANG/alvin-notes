@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1120" role="img">
+<title>数据中台：把重复加工变成可复用的数据服务</title>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#d97745"/></marker><marker id="arrow-gray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L12,6 L0,12 Z" fill="#8a8f98"/></marker></defs>
+<style>text{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;fill:#24282f}.title{font-size:38px;font-weight:700}.subtitle{font-size:23px;fill:#6b6f76}.head{font-size:26px;font-weight:650}.body{font-size:23px}.small{font-size:20px}.note{font-size:22px;fill:#6b6f76}.accent{fill:#b35c2e;font-weight:650}.white{fill:#fff}.arrow{stroke:#d97745;stroke-width:3;fill:none;marker-end:url(#arrow)}.gray-arrow{stroke:#8a8f98;stroke-width:2.5;fill:none;marker-end:url(#arrow-gray)}.dash{stroke-dasharray:8 6}.group{fill:none;stroke:#e0b48f;stroke-width:2;stroke-dasharray:10 8}</style>
+<rect width="1440" height="1120" fill="#fbfaf6"/>
+<text x="60" y="68" class="title" data-svg-label="">数据中台：把重复加工变成可复用的数据服务</text>
+<text x="60" y="112" class="subtitle" data-svg-label="">它不是某一个软件，而是一套数据资产化、服务化的管理体系</text>
+<rect id="node-1" data-svg-box="" x="55" y="155" width="350" height="360" rx="14" fill="#f8e8e2" stroke="#dfa794" stroke-width="2"/>
+<text x="230.0" y="200" class="head" text-anchor="middle" data-svg-container="node-1">部门各自建设</text>
+<text x="230.0" y="237" class="body" text-anchor="middle" data-svg-container="node-1">市场与财务数据不通</text>
+<text x="230.0" y="271" class="body" text-anchor="middle" data-svg-container="node-1">同一指标结果不同</text>
+<text x="230.0" y="305" class="body" text-anchor="middle" data-svg-container="node-1">分析需求重复写 SQL</text>
+<text x="230.0" y="339" class="body" text-anchor="middle" data-svg-container="node-1">多业务重复开发标签</text>
+<text x="230.0" y="373" class="body" text-anchor="middle" data-svg-container="node-1">需求交付周期长</text>
+<rect id="node-2" data-svg-box="" x="545" y="155" width="350" height="360" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="720.0" y="200" class="head" text-anchor="middle" data-svg-container="node-2">标准化数据资产</text>
+<text x="720.0" y="237" class="body" text-anchor="middle" data-svg-container="node-2">统一用户标签</text>
+<text x="720.0" y="271" class="body" text-anchor="middle" data-svg-container="node-2">统一商品指标</text>
+<text x="720.0" y="305" class="body" text-anchor="middle" data-svg-container="node-2">统一订单模型</text>
+<text x="720.0" y="339" class="body" text-anchor="middle" data-svg-container="node-2">集中加工与维护</text>
+<text x="720.0" y="373" class="body" text-anchor="middle" data-svg-container="node-2">明确口径和责任人</text>
+<rect id="node-3" data-svg-box="" x="1035" y="155" width="350" height="360" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1210.0" y="200" class="head" text-anchor="middle" data-svg-container="node-3">封装为数据服务</text>
+<text x="1210.0" y="237" class="body" text-anchor="middle" data-svg-container="node-3">用户标签 API</text>
+<text x="1210.0" y="271" class="body" text-anchor="middle" data-svg-container="node-3">销售指标 API</text>
+<text x="1210.0" y="305" class="body" text-anchor="middle" data-svg-container="node-3">实时画像 API</text>
+<text x="1210.0" y="339" class="body" text-anchor="middle" data-svg-container="node-3">业务系统直接调用</text>
+<text x="1210.0" y="373" class="body" text-anchor="middle" data-svg-container="node-3">减少重复搬运加工</text>
+<line x1="405" y1="335" x2="530" y2="335" class="arrow"/>
+<text x="467" y="305" class="note" text-anchor="middle" data-svg-label="">资产化</text>
+<line x1="895" y1="335" x2="1020" y2="335" class="arrow"/>
+<text x="957" y="305" class="note" text-anchor="middle" data-svg-label="">服务化</text>
+<text x="60" y="605" class="head" text-anchor="start" data-svg-label="" style="fill:#b35c2e">同一套数据资产，服务不同业务出口</text>
+<rect id="node-4" data-svg-box="" x="55" y="650" width="270" height="200" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="190.0" y="695" class="body" text-anchor="middle" data-svg-container="node-4">BI 报表与大屏</text>
+<text x="190.0" y="732" class="body" text-anchor="middle" data-svg-container="node-4">销售、留存</text>
+<text x="190.0" y="766" class="body" text-anchor="middle" data-svg-container="node-4">经营指标</text>
+<path d="M 1210 515 C 1210 585 190 570 190 635" class="gray-arrow"/>
+<rect id="node-5" data-svg-box="" x="400" y="650" width="270" height="200" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="535.0" y="695" class="body" text-anchor="middle" data-svg-container="node-5">推荐系统</text>
+<text x="535.0" y="732" class="body" text-anchor="middle" data-svg-container="node-5">调用实时画像</text>
+<text x="535.0" y="766" class="body" text-anchor="middle" data-svg-container="node-5">推荐相关商品</text>
+<path d="M 1210 515 C 1210 585 535 570 535 635" class="gray-arrow"/>
+<rect id="node-6" data-svg-box="" x="745" y="650" width="270" height="200" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="880.0" y="695" class="body" text-anchor="middle" data-svg-container="node-6">风控系统</text>
+<text x="880.0" y="732" class="body" text-anchor="middle" data-svg-container="node-6">识别欺诈交易</text>
+<text x="880.0" y="766" class="body" text-anchor="middle" data-svg-container="node-6">减少业务损失</text>
+<path d="M 1210 515 C 1210 585 880 570 880 635" class="gray-arrow"/>
+<rect id="node-7" data-svg-box="" x="1090" y="650" width="270" height="200" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1225.0" y="695" class="body" text-anchor="middle" data-svg-container="node-7">精准营销</text>
+<text x="1225.0" y="732" class="body" text-anchor="middle" data-svg-container="node-7">筛选目标用户</text>
+<text x="1225.0" y="766" class="body" text-anchor="middle" data-svg-container="node-7">定向优惠券</text>
+<path d="M 1210 515 C 1210 585 1225 570 1225 635" class="gray-arrow"/>
+<rect id="node-8" data-svg-box="" x="170" y="930" width="1100" height="110" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="975" class="head" text-anchor="middle" data-svg-container="node-8">故事示例</text>
+<text x="720.0" y="1012" class="body" text-anchor="middle" data-svg-container="node-8">市场部筛选“近 30 天浏览过运动鞋但未下单”的用户，直接调用标签 API 投放优惠券。</text>
+<text x="720" y="1090" class="note" text-anchor="middle" data-svg-label="">视频中的“一周缩到一小时”“转化率提升 30%”是故事设定，不是通用效果承诺。</text>
+</svg>
