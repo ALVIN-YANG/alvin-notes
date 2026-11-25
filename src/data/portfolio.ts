@@ -61,7 +61,10 @@ export const portfolio: PortfolioProject[] = [
     implementation: '一段对话可以成为带出处的记忆。KoKo、Codex 和 Kimi Code 按授权读取；用户可以查看原话、纠正旧结论，或删除一条记忆。',
     stack: ['Go', 'SQLite', 'MCP'],
     mark: 'M',
-    links: [{ label: '记忆控制台', href: 'https://memosphere.mlxb.cc/' }],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/ALVIN-YANG/MemoSphere' },
+      { label: '记忆控制台', href: 'https://memosphere.mlxb.cc/' },
+    ],
   },
   {
     id: 'drophere',
