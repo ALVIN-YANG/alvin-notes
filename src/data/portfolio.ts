@@ -38,7 +38,7 @@ export const portfolio: PortfolioProject[] = [
     summary: '让多个 AI 助手在授权范围内记住同一件事，也知道你什么时候改了主意。',
     implementation: '一段对话可以成为带出处的记忆。Codex 和 Kimi Code 按授权读取；用户可以查看原话、纠正旧结论，或删除一条记忆。',
     stack: ['Go', 'SQLite', 'MCP'],
-    icon: '/images/projects/memosphere.webp',
+    icon: '/images/projects/memosphere-butterfly.webp',
     links: [
       { label: 'GitHub', href: 'https://github.com/ALVIN-YANG/MemoSphere' },
       { label: '记忆控制台', href: 'https://memosphere.mlxb.cc/' },
