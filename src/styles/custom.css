@@ -435,46 +435,6 @@ main:has(.interview-bank) > .content-panel:not(:has(.interview-bank)) { display:
 	scroll-margin-top: calc(var(--sl-nav-height) + 1rem);
 }
 .portfolio-card-copy { display: flex; flex: 1; min-width: 0; flex-direction: column; }
-.portfolio-card.portfolio-showcase {
-	grid-column: 1 / -1;
-	display: grid;
-	grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-	align-items: center;
-	gap: clamp(1rem, 3vw, 2rem);
-	padding: clamp(1rem, 2.7vw, 1.75rem);
-}
-.portfolio-showcase .portfolio-card-head h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); }
-.portfolio-evidence {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: .65rem;
-	margin-block: 0 1.05rem;
-}
-.portfolio-evidence > div {
-	display: flex;
-	flex-direction: column;
-	padding-top: .6rem;
-	border-top: 1px solid var(--sl-color-gray-5);
-}
-.portfolio-evidence dt { order: 1; color: var(--sl-color-gray-2); font-size: .76rem; line-height: 1.5; }
-.portfolio-evidence dd { margin: 0 0 .19rem; color: var(--sl-color-white); font-size: 1.3rem; font-weight: 700; letter-spacing: -.035em; }
-.portfolio-preview {
-	display: block;
-	padding: clamp(.6rem, 1.7vw, 1.12rem);
-	border-radius: .7rem;
-	background: linear-gradient(148deg, #ddd7f6, #edebfa 62%, #c7c0ec);
-}
-.portfolio-preview img {
-	display: block;
-	width: 100%;
-	height: auto;
-	border-radius: .35rem;
-	box-shadow: 0 .55rem 1.4rem #2a1d5930;
-}
-.portfolio-preview:focus-visible { outline: 2px solid var(--sl-color-accent-high); outline-offset: 3px; }
-@media (max-width: 48rem) {
-	.portfolio-card.portfolio-showcase { grid-template-columns: minmax(0, 1fr); }
-}
 .portfolio-card-head { display: flex; gap: .8rem; align-items: center; }
 .portfolio-card-head > div { min-width: 0; }
 .portfolio-card-head h2 { font-size: 1.25rem; font-weight: 650; letter-spacing: -.02em; line-height: 1.3; }
