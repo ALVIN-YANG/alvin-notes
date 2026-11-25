@@ -136,12 +136,3 @@ HDFS 本质仍是分布式文件系统。它有文件系统权限，但文件权
 ![在线交易、离线加工、实时计算、推荐、营销和长期模型训练组成的完整闭环](/images/architecture/big-data-processing-flow/11-end-to-end.svg)
 
 这条链路上，数据库负责当下在线交易，数据湖保留原始和历史数据，数据仓库支撑规范分析，大数据技术体系负责从海量数据中提炼价值，数据中台再把价值封装成可复用的服务。理解这一层分工，比背下任何一张“全家桶”名单都更重要。
-
-<details>
-<summary>视频知识点覆盖索引</summary>
-
-视频一：商城海量订单与行为数据、Hadoop 中间层与 API、大数据切分、HDFS／Block／DataNode／副本、MapReduce／Split／Map／Reduce、YARN／Container／资源调度、Hadoop 三核心组件、Hive SQL、Hive on Spark、Spark SQL、磁盘与内存中间结果、批处理与流处理、Flink 实时计算、HBase 高并发在线读写、完整读写示例、YARN 与 Kubernetes／Docker 的概念边界、MongoDB 的延伸问题。
-
-视频二：Excel 到数据库、行式存储、MySQL／Oracle／PostgreSQL、交易与分析分离、列式存储、ETL 三步、数据清洗、数仓主题分层与宽表、非结构化历史数据、数据湖与读取时解析、数据沼泽、湖仓一体、Delta Lake／Apache Iceberg、冷热分层、云对象存储、大数据“存算管用”、NameNode、数据目录与权限、MapReduce 销售统计、Spark、Flink、Airflow 任务调度、数据质量、BI／大屏／推荐／风控、数据孤岛与重复开发、数据中台资产化与服务化、标签 API、八步电商完整流程。
-
-</details>
