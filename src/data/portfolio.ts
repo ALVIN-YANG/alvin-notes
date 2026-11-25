@@ -25,6 +25,7 @@ export const portfolio: PortfolioProject[] = [
     stack: ['Python', 'StarRocks', 'LlamaIndex', 'React'],
     icon: '/images/projects/queryatlas.webp',
     links: [
+      { label: '看演示', href: '/projects/queryatlas-demo/' },
       { label: '查看源码', href: 'https://github.com/ALVIN-YANG/QueryAtlas-Public' },
       { label: '同步实测', href: 'https://github.com/ALVIN-YANG/QueryAtlas-Public/blob/main/deploy/etl/results/tpch-sf1-console-2026-11-25.json' },
     ],

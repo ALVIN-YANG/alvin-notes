@@ -2463,3 +2463,13 @@ body:has(.role-bank) .content-panel { border: 0; }
   .rb-mobile-label { display: block; font-size: .78rem; color: var(--sl-color-gray-2); }
   .rb-copy { min-height: 1.7rem; padding-inline: .4rem; }
 }
+
+.queryatlas-demo-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 60rem;
+  aspect-ratio: 16 / 9;
+  background: #101627;
+  border-radius: .65rem;
+}

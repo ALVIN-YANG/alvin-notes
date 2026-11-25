@@ -1,0 +1,35 @@
+---
+title: QueryAtlas 演示
+description: "QueryAtlas 真实环境录屏：MySQL 全量和增量同步、工作空间权限、TPC-H 数据问答与 PDF 页码引用。"
+date: 2026-11-25
+lastUpdated: false
+template: splash
+comments: false
+editUrl: false
+prev: false
+next: false
+---
+
+[← 返回作品集](/projects/#queryatlas)
+
+<video
+  className="queryatlas-demo-video"
+  controls
+  playsInline
+  preload="none"
+  poster="/videos/queryatlas-cover.webp"
+  width="1920"
+  height="1080"
+  aria-label="QueryAtlas 中文实录，含字幕和背景音乐"
+>
+  <source src="/videos/queryatlas-demo.mp4" type="video/mp4" />
+</video>
+
+视频使用实际部署的 QueryAtlas。订单和订单明细来自 StarRocks BenchmarkTool 的 TPC-H SF1，增量使用同版本 DBGEN 刷新集。文档引用使用随项目验收的演示 PDF。同步等待过程经过剪辑，实测耗时留在画面里。
+
+- **00:05**　配置 MySQL 数据源，发起全量同步，查看发布行数。
+- **00:23**　以查看者查看批次，源库应用官方刷新集后，操作员触发增量同步。
+- **00:47**　用大白话问有多少订单晚收货，核对图表、SQL 和 Query ID。
+- **01:06**　问样例手册里的保存期限，点击引用打开 PDF 第 2 页。
+
+[公开源码](https://github.com/ALVIN-YANG/QueryAtlas-Public) · [本片实测记录](https://github.com/ALVIN-YANG/QueryAtlas-Public/blob/main/deploy/etl/results/tpch-sf1-demo-video-2026-11-25.json) · [直接打开 MP4](/videos/queryatlas-demo.mp4)

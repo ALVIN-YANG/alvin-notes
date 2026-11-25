@@ -34,7 +34,7 @@ import { aiCharacters, characterImageRoot } from '../data/ai-characters';
             <p class="portfolio-stack" aria-label="技术与实现方向">{project.stack.join(' · ')}</p>
             <div class="portfolio-links">
               {project.links.map((link) => (
-                <a href={link.href} target="_blank" rel="noreferrer" aria-label={`${link.label}：${project.name}`}>
+                <a href={link.href} target={link.href.startsWith('/') ? undefined : '_blank'} rel={link.href.startsWith('/') ? undefined : 'noreferrer'} aria-label={`${link.label}：${project.name}`}>
                   {link.label}<span aria-hidden="true"> ↗</span>
                 </a>
               ))}
