@@ -9,12 +9,38 @@ export interface PortfolioProject {
   icon?: string;
   mark?: string;
   featured?: boolean;
+  preview?: { src: string; alt: string; width: number; height: number };
+  evidence?: { value: string; label: string }[];
   links: { label: string; href: string }[];
 }
 
 // App Store listings and the projects' public READMEs are the source of truth.
 // Keep shipped capabilities separate from newer work in the local checkouts.
 export const portfolio: PortfolioProject[] = [
+  {
+    id: 'queryatlas',
+    name: 'QueryAtlas',
+    category: '数据工程 · 企业问答',
+    status: '公开源码',
+    summary: '问订单能看 SQL，查文档能对照原文页码。',
+    implementation: 'MySQL 数据可从控制台同步到 StarRocks。工作空间分别管理数据、文档和权限，回答可追溯到实际执行的查询和数据批次。',
+    stack: ['Python', 'StarRocks', 'LlamaIndex', 'React'],
+    icon: '/images/projects/queryatlas.webp',
+    preview: {
+      src: '/images/projects/queryatlas-workspace.webp',
+      alt: 'QueryAtlas 实测界面，按订单优先级展示柱状图，右侧显示执行的 SQL',
+      width: 1360,
+      height: 945,
+    },
+    evidence: [
+      { value: '750 万行', label: 'MySQL 全量同步并对账' },
+      { value: '22 / 22', label: 'TPC-H 查询通过参考答案校验' },
+    ],
+    links: [
+      { label: '查看源码', href: 'https://github.com/ALVIN-YANG/QueryAtlas-Public' },
+      { label: '同步实测', href: 'https://github.com/ALVIN-YANG/QueryAtlas-Public/blob/main/deploy/etl/results/tpch-sf1-console-2026-11-25.json' },
+    ],
+  },
   {
     id: 'koko',
     name: 'KoKo',

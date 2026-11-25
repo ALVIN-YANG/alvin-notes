@@ -12,33 +12,50 @@ import { aiCharacters, characterImageRoot } from '../data/ai-characters';
 
   <div class="portfolio-grid">
     {portfolio.map((project) => (
-      <article class="portfolio-card" id={project.id} aria-labelledby={`${project.id}-title`}>
-        <header class="portfolio-card-head">
-          {project.icon ? (
-            <img class="portfolio-icon" src={project.icon} width="48" height="48" alt="" loading="lazy" />
-          ) : (
-            <span class="portfolio-mark" aria-hidden="true">{project.mark}</span>
+      <article class:list={['portfolio-card', { 'portfolio-showcase': project.preview }]} id={project.id} aria-labelledby={`${project.id}-title`}>
+        <div class="portfolio-card-copy">
+          <header class="portfolio-card-head">
+            {project.icon ? (
+              <img class="portfolio-icon" src={project.icon} width="48" height="48" alt="" loading="lazy" />
+            ) : (
+              <span class="portfolio-mark" aria-hidden="true">{project.mark}</span>
+            )}
+            <div>
+              <h2 id={`${project.id}-title`}>{project.name}</h2>
+              <p class="portfolio-category">{project.category}</p>
+            </div>
+            <span class="portfolio-status">{project.status}</span>
+          </header>
+
+          <p class="portfolio-summary">{project.summary}</p>
+          <p class="portfolio-detail">{project.implementation}</p>
+
+          {project.evidence && (
+            <dl class="portfolio-evidence">
+              {project.evidence.map((item) => (
+                <div><dt>{item.label}</dt><dd>{item.value}</dd></div>
+              ))}
+            </dl>
           )}
-          <div>
-            <h2 id={`${project.id}-title`}>{project.name}</h2>
-            <p class="portfolio-category">{project.category}</p>
-          </div>
-          <span class="portfolio-status">{project.status}</span>
-        </header>
 
-        <p class="portfolio-summary">{project.summary}</p>
-        <p class="portfolio-detail">{project.implementation}</p>
-
-        <footer class="portfolio-card-footer">
-          <p class="portfolio-stack" aria-label="技术与实现方向">{project.stack.join(' · ')}</p>
-          <div class="portfolio-links">
-            {project.links.map((link) => (
-              <a href={link.href} target="_blank" rel="noreferrer" aria-label={`${link.label}：${project.name}`}>
-                {link.label}<span aria-hidden="true"> ↗</span>
-              </a>
-            ))}
-          </div>
-        </footer>
+          <footer class="portfolio-card-footer">
+            <p class="portfolio-stack" aria-label="技术与实现方向">{project.stack.join(' · ')}</p>
+            <div class="portfolio-links">
+              {project.links.map((link) => (
+                <a href={link.href} target="_blank" rel="noreferrer" aria-label={`${link.label}：${project.name}`}>
+                  {link.label}<span aria-hidden="true"> ↗</span>
+                </a>
+              ))}
+            </div>
+          </footer>
+        </div>
+        {project.preview && (
+          <a class="portfolio-preview" href={project.preview.src} data-primer-image data-astro-prefetch="false"
+            aria-label={`放大 ${project.name} 实测界面`}>
+            <img src={project.preview.src} alt={project.preview.alt} width={project.preview.width}
+              height={project.preview.height} decoding="async" />
+          </a>
+        )}
       </article>
     ))}
   </div>

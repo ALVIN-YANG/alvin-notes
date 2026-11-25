@@ -8,3 +8,5 @@
 以上 WebP 均为 192×192，沿用现有作品卡片的 48×48 显示尺寸。其他已上架应用与 ChimeBuddy 图标保持原样。
 
 - `koko.webp`：KoKo iOS 应用的正式图标，取自 AppIcon 的 1024 像素版本。
+- `queryatlas.webp`：将 QueryAtlas 仓库的 `assets/readme/mark.svg` 转成 WebP。
+- `queryatlas-workspace.webp`：官方 TPC-H 演示工作空间的实际浏览器截图，转换为 WebP。
