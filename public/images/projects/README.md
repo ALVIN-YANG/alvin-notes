@@ -6,3 +6,5 @@
 - `ay-skills.svg` / `ay-skills.webp`：作品页使用的技能卡片标识，表达独立、可复用的技能与验证完成；原项目没有现成图标。这不是对 AY Skills 仓库品牌资源的替换。SVG 保留为可编辑来源。
 
 以上 WebP 均为 192×192，沿用现有作品卡片的 48×48 显示尺寸。其他已上架应用与 ChimeBuddy 图标保持原样。
+
+- `koko.webp`：KoKo iOS 应用的正式图标，取自 AppIcon 的 1024 像素版本。

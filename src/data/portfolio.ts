@@ -16,6 +16,28 @@ export interface PortfolioProject {
 // Keep shipped capabilities separate from newer work in the local checkouts.
 export const portfolio: PortfolioProject[] = [
   {
+    id: 'koko',
+    name: 'KoKo',
+    category: 'iPhone · 语音助手',
+    status: '个人项目',
+    summary: '在 iPhone 上说出任务，让 Mac 上的 Codex 接手。等结果时，还可以继续聊。',
+    implementation: '先说好要做什么，隔几轮再说“交给它”。KoKo 会找回原来的要求，缺资料就追问，收到 Codex 的执行回执后再播报结果。',
+    stack: ['SwiftUI', 'Go', 'Codex'],
+    icon: '/images/projects/koko.webp',
+    links: [],
+  },
+  {
+    id: 'memosphere',
+    name: 'MemoSphere',
+    category: 'AI 基础设施 · 长期记忆',
+    status: '已上线',
+    summary: '让多个 AI 助手在授权范围内记住同一件事，也知道你什么时候改了主意。',
+    implementation: '一段对话可以成为带出处的记忆。KoKo、Codex 和 Kimi Code 按授权读取；用户可以查看原话、纠正旧结论，或删除一条记忆。',
+    stack: ['Go', 'SQLite', 'MCP'],
+    mark: 'M',
+    links: [{ label: '记忆控制台', href: 'https://memosphere.mlxb.cc/' }],
+  },
+  {
     id: 'drophere',
     name: '丢这儿',
     category: 'iOS · macOS',
