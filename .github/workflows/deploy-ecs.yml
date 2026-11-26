@@ -1,0 +1,60 @@
+name: 博客发布到阿里云 ECS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_run:
+    workflows: [AI News, 实时模型榜, AI 公司目录每月同步, AI 概念周更]
+    branches: [main]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: blog-ecs-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: 发布静态文件
+        env:
+          BLOG_ECS_SSH_KEY: ${{ secrets.BLOG_ECS_SSH_KEY }}
+          BLOG_ECS_KNOWN_HOST: ${{ vars.BLOG_ECS_KNOWN_HOST }}
+        run: |
+          set -euo pipefail
+          umask 077
+          ssh_dir="$(mktemp -d)"
+          trap 'rm -rf "$ssh_dir"' EXIT
+          printf '%s\n' "$BLOG_ECS_SSH_KEY" > "$ssh_dir/key"
+          printf '%s\n' "$BLOG_ECS_KNOWN_HOST" > "$ssh_dir/known_hosts"
+          revision="$(git rev-parse HEAD)"
+          for attempt in 1 2 3; do
+            if tar -C dist -czf - . | timeout 150s ssh -T -i "$ssh_dir/key" \
+              -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=15 \
+              -o ServerAliveInterval=15 -o ServerAliveCountMax=2 \
+              -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$ssh_dir/known_hosts" \
+              blog-deploy@120.27.231.236 "deploy $revision"; then
+              exit 0
+            fi
+            echo "阿里云上传失败（第 $attempt 次）" >&2
+            sleep "$((attempt * 5))"
+          done
+          exit 1
