@@ -46,7 +46,15 @@ jobs:
           printf '%s\n' "$BLOG_ECS_SSH_KEY" > "$ssh_dir/key"
           printf '%s\n' "$BLOG_ECS_KNOWN_HOST" > "$ssh_dir/known_hosts"
           revision="$(git rev-parse HEAD)"
-          tar -C dist -czf - . | ssh -T -i "$ssh_dir/key" \
-            -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=15 \
-            -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$ssh_dir/known_hosts" \
-            blog-deploy@120.27.231.236 "deploy $revision"
+          for attempt in 1 2 3; do
+            if tar -C dist -czf - . | timeout 150s ssh -T -i "$ssh_dir/key" \
+              -o BatchMode=yes -o IdentitiesOnly=yes -o ConnectTimeout=15 \
+              -o ServerAliveInterval=15 -o ServerAliveCountMax=2 \
+              -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$ssh_dir/known_hosts" \
+              blog-deploy@120.27.231.236 "deploy $revision"; then
+              exit 0
+            fi
+            echo "阿里云上传失败（第 $attempt 次）" >&2
+            sleep "$((attempt * 5))"
+          done
+          exit 1
