@@ -134,6 +134,25 @@ test('限制同一客户端并发，窗口过期后允许新请求',async()=>{
   assert.equal((await limited(incoming())).status,429);clock=600001;assert.equal((await limited(incoming())).status,200);
 });
 
+test('ECS 回源保留独立客户端限额，只认可带正确代理凭证的地址', async () => {
+  const proxyToken = 'synthetic-proxy-token';
+  const handler = createProbeHandler({ proxyToken, complete: async () => success });
+  const request = (clientIp, token) => incoming(input, {
+    'X-Vercel-Forwarded-For': '192.0.2.1',
+    'X-Blog-Client-IP': clientIp,
+    'X-Blog-Proxy-Token': token,
+  });
+
+  for (let count = 0; count < 60; count++) {
+    assert.equal((await handler(request('192.0.2.10', proxyToken))).status, 200);
+    assert.equal((await handler(request('192.0.2.20', 'invalid'))).status, 200);
+  }
+  assert.equal((await handler(request('192.0.2.10', proxyToken))).status, 429);
+  assert.equal((await handler(request('192.0.2.11', proxyToken))).status, 200);
+  assert.equal((await handler(request('192.0.2.21', 'invalid'))).status, 429);
+  assert.equal((await handler(request('invalid', proxyToken))).status, 429);
+});
+
 test('报告只选取检测字段，不带 Key 或 URL 参数，代码围栏无法逃逸',()=>{
   const rows=PROBES.map(probe=>({probeId:probe.id,status:'passed',actual:'```\n# untrusted\n```',apiKey:fakeKey}));
   const report=createProbeReport({baseUrl:input.baseUrl+'?api-version=2026',model:input.model,startedAt:'2026-10-13T00:00:00Z',results:rows,apiKey:fakeKey});

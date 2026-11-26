@@ -1,4 +1,5 @@
-import { createHash } from 'node:crypto';
+import { createHash, timingSafeEqual } from 'node:crypto';
+import { isIP } from 'node:net';
 import { validateProbeInput, gradeAnswer, expectedAnswer, selectUsage } from '../src/lib/ai-probe.mjs';
 import { callPublicCompletion, ProbeRequestError } from '../src/server/ai-probe-upstream.mjs';
 
@@ -21,8 +22,22 @@ async function readInput(request) {
   try { return JSON.parse(Buffer.concat(chunks).toString('utf8')); } catch { throw new Error('检测参数不是有效 JSON。'); }
 }
 
+function rateLimitAddress(headers, proxyTokenHash) {
+  const proxyToken = headers.get('x-blog-proxy-token');
+  const clientIp = headers.get('x-blog-client-ip');
+  if (proxyTokenHash && proxyToken && clientIp && isIP(clientIp)) {
+    const presentedHash = createHash('sha256').update(proxyToken).digest();
+    if (timingSafeEqual(proxyTokenHash, presentedHash)) return clientIp;
+  }
+  return headers.get('x-vercel-forwarded-for') || headers.get('x-forwarded-for') || 'unknown';
+}
+
 // These limits are per function instance; no user data or keys are persisted.
-export function createProbeHandler({complete=callPublicCompletion,allowedOrigins=origins,now=Date.now}={}) {
+export function createProbeHandler({
+  complete = callPublicCompletion, allowedOrigins = origins, now = Date.now,
+  proxyToken = process.env.BLOG_ECS_PROXY_TOKEN,
+} = {}) {
+  const proxyTokenHash = proxyToken ? createHash('sha256').update(proxyToken).digest() : null;
   const clients=new Map();let active=0;
   return async request=>{
     if(request.method!=='POST') return json({error:'只支持 POST 请求。'},405);
@@ -30,7 +45,7 @@ export function createProbeHandler({complete=callPublicCompletion,allowedOrigins
     if(!/^application\/json(?:\s*;|$)/iu.test(request.headers.get('content-type')||'')) return json({error:'只接受 JSON 检测参数。'},415);
     let input;
     try { input=validateProbeInput(await readInput(request)); } catch(error) { return json({error:error.message},400); }
-    const at=now(), key=createHash('sha256').update(request.headers.get('x-vercel-forwarded-for')||request.headers.get('x-forwarded-for')||'unknown').digest('hex');
+    const at=now(), key=createHash('sha256').update(rateLimitAddress(request.headers, proxyTokenHash)).digest('hex');
     for(const [id,value] of clients) if(!value.active && at-value.since>600000) clients.delete(id);
     const client=clients.get(key)||{since:at,count:0,active:0};
     if(client.active>=2||active>=20||client.count>=60||(!clients.has(key)&&clients.size>=2000)) return json({error:'网站检测请求过于频繁，请稍后再试。',errorKind:'rate_limit'},429);
