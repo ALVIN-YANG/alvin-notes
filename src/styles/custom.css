@@ -1154,7 +1154,6 @@ a:hover {
 	background: var(--sl-color-accent-low) !important;
 	border-radius: 6px;
 	font-weight: 500 !important;
-	border-left: 2px solid var(--sl-color-accent);
 }
 
 .sidebar-content a,
