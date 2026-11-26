@@ -21,6 +21,13 @@ Personal tech site of Alvin Yang, built with Astro 5 + Starlight, deployed on Ve
 - 博客内容必须简洁、直白、高知识密度。删除套话、目录预告、重复结论和不增加事实或解释的文字。
 - 所有文章页不显示标题下的 description 摘要，也不自动摘取正文生成摘要；正文直接进入定义、核心结论或必要事实。
 
+## 文章日期与修订
+
+- 全站所有文章统一日期语义：`date` 是首次发布时间，创建后不得因修订、重写、迁移或重命名而改变；`lastUpdated` 是最后一次实质内容修订时间。
+- 编辑已有文章时，不得把 `date` 改成当前修改日。新增文章首次发布时，`date` 与 `lastUpdated` 使用同一天；纯排版、错字修正等轻微调整不刷新 `lastUpdated`。
+- 导入历史文章时回填真实首次发布和修订时间，不把导入日伪装成首次发布日。AI News 继续使用真实采集周期。
+- 提交内容修改前运行 `npm run content:dates`，检查已有文章的 `date` 未被修改、新文章日期完整，且 `lastUpdated` 不早于 `date` 或晚于当前日期。PR 会执行同一检查。
+
 ## Project
 
 - **Framework**: Astro 5.x (`astro`, ESM, `type: "module"`).

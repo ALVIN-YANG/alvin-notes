@@ -1,0 +1,22 @@
+name: Content dates
+on:
+  pull_request:
+    paths:
+      - 'src/content/docs/**'
+      - 'scripts/check-content-date-policy.mjs'
+      - 'tests/content-date-policy.test.mjs'
+      - '.github/workflows/content-dates.yml'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm run content:dates
+        env:
+          CONTENT_BASE_REF: origin/${{ github.base_ref }}
+      - run: node --test tests/content-date-policy.test.mjs

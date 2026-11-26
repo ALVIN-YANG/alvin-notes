@@ -8,6 +8,7 @@
   "scripts": {
     "concepts:sync": "node scripts/sync-ai-concepts.mjs",
     "concepts:check": "node scripts/sync-ai-concepts.mjs --check",
+    "content:dates": "node scripts/check-content-date-policy.mjs",
     "companies:sync": "node scripts/sync-ai-companies.mjs",
     "companies:check": "node scripts/sync-ai-companies.mjs --check",
     "test": "node --test",
