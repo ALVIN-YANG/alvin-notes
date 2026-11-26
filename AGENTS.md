@@ -1,6 +1,6 @@
 # alvin-notes — Agent Guide
 
-Personal tech site of Alvin Yang, built with Astro 5 + Starlight, deployed on Vercel (https://blog.mlxb.cc). Repo: https://github.com/ALVIN-YANG/alvin-notes.
+Personal tech site of Alvin Yang, built with Astro 5 + Starlight, served by Alibaba Cloud ECS (https://blog.mlxb.cc). Vercel continues to host the API and a standby build. Repo: https://github.com/ALVIN-YANG/alvin-notes.
 
 ## 文章作者视角
 
@@ -66,7 +66,7 @@ npm run news:weekly   # node scripts/fetch-ai-news.mjs --weekly
 - **Components**: override Starlight components via `astro.config.mjs` `components` map; custom Astro files live in `src/components/`.
 - **Mermaid**: keep authoring fenced `mermaid` blocks, but compile them to static SVG at build time. Do not ship the Mermaid rendering runtime to readers; `scripts/verify-build-output.mjs` enforces this.
 - **Gitignore**: never commit `dist/`, `.astro/`, `node_modules/`, `.env*`, `.idea/`, `.opencode/`, `run.log`, `dev.log`, or `/docs/` (root-local docs only; site content is `src/content/docs/`).
-- **Deployment**: push to `main` on GitHub; Vercel auto-builds and deploys. `netlify.toml` also exists but is not the primary deploy target.
+- **Deployment**: push to `main` on GitHub. `.github/workflows/deploy-ecs.yml` builds and publishes the static site to ECS, including updates from the scheduled content workflows. Nginx serves `/var/www/blog.mlxb.cc/site/current` and forwards the APIs and analytics to `blog-origin.mlxb.cc` on Vercel. The Vercel deployment is also available for DNS rollback.
 
 ## Notes
 
