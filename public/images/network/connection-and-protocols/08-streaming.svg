@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1040" role="img" aria-labelledby="t">
+<title id="t">流媒体与实时传输：推流、分发与点对点</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="1040" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">流媒体与实时传输：推流、分发与点对点</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">RTMP 推流、HTTP-FLV / HLS 拉流、RTSP + RTP 监控、WebRTC 实时通信</text>
+<rect id="node-1" data-svg-box="" x="60" y="160" width="220" height="110" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="170.0" y="206.9" font-size="24" font-weight="700" text-anchor="middle" data-svg-container="node-1">主播端</text>
+<text x="170.0" y="240.7" font-size="22" text-anchor="middle" data-svg-container="node-1">采集与编码</text>
+<line x1="288" y1="215" x2="432" y2="215" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<text x="360" y="195" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">RTMP 推流</text>
+<rect id="node-2" data-svg-box="" x="440" y="160" width="240" height="110" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="560.0" y="206.9" font-size="24" font-weight="700" text-anchor="middle" data-svg-container="node-2">流媒体服务器</text>
+<text x="560.0" y="240.7" font-size="22" text-anchor="middle" data-svg-container="node-2">转码 / 转封装</text>
+<line x1="688" y1="215" x2="852" y2="215" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<line x1="688" y1="250" x2="852" y2="370" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect id="node-3" data-svg-box="" x="860" y="150" width="520" height="130" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="878" y="192" font-size="24" font-weight="700" data-svg-container="node-3">HTTP-FLV 拉流</text>
+<text x="878" y="228" font-size="22" data-svg-container="node-3">延迟与 RTMP 同量级（1–3 秒）</text>
+<text x="878" y="258" font-size="22" data-svg-container="node-3">明显低于 HLS；依赖播放器支持</text>
+<rect id="node-4" data-svg-box="" x="860" y="300" width="520" height="160" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="878" y="342" font-size="24" font-weight="700" data-svg-container="node-4">HLS：TS 分片 + M3U8 索引</text>
+<text x="878" y="378" font-size="22" data-svg-container="node-4">普通 Web 服务器与 CDN 即可承载</text>
+<text x="878" y="408" font-size="22" data-svg-container="node-4">苹果原生支持；延迟常见 5–30 秒</text>
+<text x="878" y="438" font-size="22" data-svg-container="node-4">多码率二级索引 → 自适应码率</text>
+<rect id="node-5" data-svg-box="" x="60" y="320" width="740" height="230" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="362" font-size="24" font-weight="700" data-svg-container="node-5">RTMP 推流流程（TCP 1935，延迟 1–3 秒）</text>
+<text x="78" y="398" font-size="22" data-svg-container="node-5">TCP 握手 → C0/C1/C2 与 S0/S1/S2 同步版本和时间戳</text>
+<text x="78" y="428" font-size="22" data-svg-container="node-5">connect 建逻辑连接：消息不自描述，先建会话上下文</text>
+<text x="78" y="458" font-size="22" data-svg-container="node-5">createStream 申请流 → publish 带流名开始推</text>
+<text x="78" y="488" font-size="22" data-svg-container="node-5">消息切成默认 128 字节 chunk 交错发送，chunk 间复用头部</text>
+<rect id="node-6" data-svg-box="" x="60" y="590" width="640" height="260" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="78" y="634" font-size="26" font-weight="700" data-svg-container="node-6">监控 / IPTV：RTSP + RTP</text>
+<text x="78" y="672" font-size="23" data-svg-container="node-6">RTSP 是遥控器：只传信令（播放/暂停/关闭），走 TCP</text>
+<text x="78" y="706" font-size="23" data-svg-container="node-6">RTP 打包音视频：序列号抗乱序、时间戳音画同步</text>
+<text x="78" y="740" font-size="23" data-svg-container="node-6">SSRC 区分流；RTCP 只监测丢包率，不补救</text>
+<text x="78" y="774" font-size="23" data-svg-container="node-6">RTP 通常跑 UDP 换低延迟：画面丢了等下一帧</text>
+<text x="78" y="808" font-size="23" data-svg-container="node-6">也有 RTP over TCP：用延迟换 NAT 穿透与防火墙通过率</text>
+<rect id="node-7" data-svg-box="" x="740" y="590" width="640" height="260" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="758" y="634" font-size="26" font-weight="700" data-svg-container="node-7">WebRTC：浏览器点对点实时通信</text>
+<text x="758" y="672" font-size="23" data-svg-container="node-7">媒体采集编码 + 信令协商（走 HTTP/WebSocket）</text>
+<text x="758" y="706" font-size="23" data-svg-container="node-7">STUN/ICE/TURN 穿透 NAT：优先直连，失败走中继</text>
+<text x="758" y="740" font-size="23" data-svg-container="node-7">媒体走 SRTP（通常基于 UDP），延迟可到 1 秒内</text>
+<text x="758" y="774" font-size="23" data-svg-container="node-7">用于会议、连麦、云游戏</text>
+<text x="758" y="808" font-size="23" data-svg-container="node-7">大规模分发仍需媒体服务器转发</text>
+<rect id="node-8" data-svg-box="" x="60" y="890" width="1320" height="110" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="936.2" font-size="22" text-anchor="middle" data-svg-container="node-8">协议延迟 ≠ 端到端延迟：采集、转码、分发各段都在叠加</text>
+<text x="720.0" y="969.2" font-size="22" text-anchor="middle" data-svg-container="node-8">延迟量级：WebRTC ＜1 秒 ＜ RTMP / HTTP-FLV 1–3 秒 ＜ HLS 5–30 秒</text>
+</g></svg>

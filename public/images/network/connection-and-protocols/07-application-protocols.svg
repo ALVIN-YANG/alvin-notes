@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 970" role="img" aria-labelledby="t">
+<title id="t">应用协议的四种分工：RPC、gRPC、WebSocket、MQTT</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="970" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">应用协议的四种分工：RPC、gRPC、WebSocket、MQTT</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">内部调用、实时推送与物联网，各自匹配不同的通信模型</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="300" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="194" font-size="26" font-weight="700" data-svg-container="node-1">RPC：像调本地函数一样调远端</text>
+<text x="78" y="232" font-size="23" data-svg-container="node-1">一种思路而非具体协议，微服务内部常用</text>
+<text x="78" y="266" font-size="23" data-svg-container="node-1">与 HTTP 的差异：服务发现走注册中心而非 DNS</text>
+<text x="78" y="300" font-size="23" data-svg-container="node-1">连接管理用长连接池</text>
+<text x="78" y="334" font-size="23" data-svg-container="node-1">序列化用 Protobuf，比 JSON 紧凑</text>
+<text x="78" y="368" font-size="23" data-svg-container="node-1">对外接口仍普遍用 HTTP：生态、调试、网关成熟</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="300" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="758" y="194" font-size="26" font-weight="700" data-svg-container="node-2">gRPC：RPC 框架的事实标准之一</text>
+<text x="758" y="232" font-size="23" data-svg-container="node-2">HTTP/2 承载，Protobuf 编码</text>
+<text x="758" y="266" font-size="23" data-svg-container="node-2">四种调用模式：一元 / 服务端流 /</text>
+<text x="758" y="300" font-size="23" data-svg-container="node-2">客户端流 / 双向流</text>
+<text x="758" y="334" font-size="23" data-svg-container="node-2">适合内部高性能服务间调用与流式场景</text>
+<rect id="node-3" data-svg-box="" x="60" y="490" width="640" height="320" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="78" y="534" font-size="26" font-weight="700" data-svg-container="node-3">WebSocket：补 HTTP 主动推送的短板</text>
+<text x="78" y="572" font-size="23" data-svg-container="node-3">HTTP 里服务器无法主动开口 → 握手复用 HTTP</text>
+<text x="78" y="606" font-size="23" data-svg-container="node-3">请求头带 Upgrade: websocket，服务端回</text>
+<text x="78" y="640" font-size="23" data-svg-container="node-3">101 Switching Protocols，随后同一条 TCP</text>
+<text x="78" y="674" font-size="23" data-svg-container="node-3">切换为全双工轻量帧通道</text>
+<text x="78" y="708" font-size="23" data-svg-container="node-3">配 Ping/Pong 心跳，防中间设备清理空闲连接</text>
+<text x="78" y="742" font-size="23" data-svg-container="node-3">聊天、弹幕、行情、协同编辑；无实时需求别引入</text>
+<rect id="node-4" data-svg-box="" x="740" y="490" width="640" height="320" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="758" y="534" font-size="26" font-weight="700" data-svg-container="node-4">MQTT：为物联网而生</text>
+<text x="758" y="572" font-size="23" data-svg-container="node-4">发布订阅：设备只连 Broker，按 Topic 收发</text>
+<text x="758" y="606" font-size="23" data-svg-container="node-4">固定头部最小 2 字节，省电省流量</text>
+<text x="758" y="640" font-size="23" data-svg-container="node-4">QoS 三档：0 最多一次 / 1 至少一次 / 2 恰好一次</text>
+<text x="758" y="674" font-size="23" data-svg-container="node-4">遗嘱消息：异常掉线由 Broker 代发通知</text>
+<text x="758" y="708" font-size="23" data-svg-container="node-4">持久会话：离线期间消息暂存补发</text>
+<text x="758" y="742" font-size="23" data-svg-container="node-4">HTTP 每次带完整头部、只能轮询下发 → 结构性吃亏</text>
+<rect id="node-5" data-svg-box="" x="60" y="850" width="1320" height="80" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="897.7" font-size="22" text-anchor="middle" data-svg-container="node-5">不是 HTTP 不好，是它的岗位在服务人、不是服务设备——弱网低算力海量设备场景 MQTT 更匹配</text>
+</g></svg>

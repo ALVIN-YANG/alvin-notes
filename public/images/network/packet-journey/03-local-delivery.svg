@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1140" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">局域网交付：DNS 解析、ARP 与三张表接力</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="1140" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">名字与邻居：DNS、ARP 与三张表</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">客户端递归问 LocalDNS，LocalDNS 迭代问根、顶级域、权威；局域网内靠 ARP 与三张表完成交付</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="1320" height="290" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">DNS：一棵分层的树，根域之下是顶级域，再往下是具体域名</text>
+<rect id="node-2" data-svg-box="" x="100" y="244" width="170" height="70" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="185.0" y="288" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-2">客户端</text>
+<rect id="node-3" data-svg-box="" x="390" y="244" width="200" height="70" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="490.0" y="288" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-3">LocalDNS</text>
+<rect id="node-4" data-svg-box="" x="700" y="244" width="110" height="70" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="755.0" y="288" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-4">根</text>
+<rect id="node-5" data-svg-box="" x="850" y="244" width="130" height="70" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="915.0" y="288" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-5">顶级域</text>
+<rect id="node-6" data-svg-box="" x="1020" y="244" width="180" height="70" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="1110.0" y="288" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-6">权威服务器</text>
+<text x="330" y="230" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">递归查询：只要最终结果</text>
+<text x="950" y="230" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">迭代查询：每层不直接给答案，只告诉你下一个该问谁</text>
+<path d="M270 279L378 279" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M590 279L688 279" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M810 279L838 279" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M980 279L1008 279" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="88" y="366" font-size="22" fill="#5c626b" data-svg-container="node-1">客户端先查浏览器缓存、系统缓存、hosts 文件，未命中才问 LocalDNS；沿途每级都有缓存，过期才重走</text>
+<text x="88" y="406" font-size="22" fill="#5c626b" data-svg-container="node-1">根服务器只有 13 个地址（A–M）：早期 UDP 报文限 512 字节；任播让同一个 IP 在全球有超一千个镜像</text>
+<rect id="node-7" data-svg-box="" x="60" y="480" width="640" height="288" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="88" y="525" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-7">ARP：把 IP 翻译成 MAC</text>
+<text x="88" y="569" font-size="23" fill="#24282f" data-svg-container="node-7">发方广播：“谁是 192.168.1.1？”</text>
+<text x="88" y="611" font-size="23" fill="#24282f" data-svg-container="node-7">目标单播应答，结果写入 ARP 缓存表</text>
+<text x="88" y="656" font-size="22" fill="#5c626b" data-svg-container="node-7">条目几分钟到几十分钟不用就老化删除</text>
+<text x="88" y="696" font-size="22" fill="#5c626b" data-svg-container="node-7">伪造免费 ARP 可让全网把网关流量发给攻击者</text>
+<text x="88" y="737" font-size="22" fill="#5c626b" data-svg-container="node-7">防御：交换机 DAI 或静态绑定；IPv6 用 NDP 替代</text>
+<rect id="node-8" data-svg-box="" x="740" y="480" width="640" height="288" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="768" y="525" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-8">三种交付方式</text>
+<text x="768" y="569" font-size="23" fill="#24282f" data-svg-container="node-8">单播：一对一，日常网页与消息</text>
+<text x="768" y="611" font-size="23" fill="#24282f" data-svg-container="node-8">广播：一对所有，如 ARP 询问</text>
+<text x="768" y="653" font-size="23" fill="#24282f" data-svg-container="node-8">组播：一对一组，D 类 224.0.0.0/4，IGMP 加组</text>
+<text x="768" y="698" font-size="22" fill="#5c626b" data-svg-container="node-8">组播难落地：TCP 不支持、公网沿途路由器难全支持</text>
+<text x="768" y="738" font-size="22" fill="#5c626b" data-svg-container="node-8">百万级直播实际用 CDN 分发节点 + 单播实现</text>
+<rect id="node-9" data-svg-box="" x="60" y="800" width="1320" height="302" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="88" y="845" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-9">三张表接力：依据包上的四个地址（源/目的 IP、源/目的 MAC）</text>
+<rect id="node-10" data-svg-box="" x="88" y="884" width="400" height="156" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="108" y="926" font-size="23" font-weight="700" fill="#24282f" data-svg-container="node-10">ARP 表｜主机与路由器</text>
+<text x="108" y="966" font-size="22" fill="#24282f" data-svg-container="node-10">回答：IP 到了找谁</text>
+<text x="108" y="1007" font-size="22" fill="#5c626b" data-svg-container="node-10">记录 IP ↔ MAC 绑定</text>
+<rect id="node-11" data-svg-box="" x="520" y="884" width="400" height="156" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="540" y="926" font-size="23" font-weight="700" fill="#24282f" data-svg-container="node-11">MAC 表｜交换机</text>
+<text x="540" y="966" font-size="22" fill="#24282f" data-svg-container="node-11">回答：从哪个端口出去</text>
+<text x="540" y="1007" font-size="22" fill="#5c626b" data-svg-container="node-11">查不到就洪泛，回包时学习</text>
+<rect id="node-12" data-svg-box="" x="952" y="884" width="400" height="156" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="972" y="926" font-size="23" font-weight="700" fill="#24282f" data-svg-container="node-12">路由表｜路由器</text>
+<text x="972" y="966" font-size="22" fill="#24282f" data-svg-container="node-12">回答：跨网段下一跳交给谁</text>
+<text x="972" y="1007" font-size="22" fill="#5c626b" data-svg-container="node-12">直连、静态、OSPF/BGP 学习</text>
+<text x="88" y="1078" font-size="22" fill="#5c626b" data-svg-container="node-9">设备换了端口而 MAC 表项未老化，是“突然不通”的常见原因</text>
+</g>
+</svg>

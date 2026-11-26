@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 940" role="img" aria-labelledby="t">
+<title id="t">传输层怎么选：TCP、UDP 与 Socket</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="940" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">传输层怎么选：TCP、UDP 与 Socket</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">连接、可靠性、头部开销与交付边界四个维度，以及在其上自建可靠性的位置</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="250" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="194" font-size="26" font-weight="700" data-svg-container="node-1">TCP：面向连接的可靠字节流</text>
+<text x="78" y="232" font-size="23" data-svg-container="node-1">先握手再传输，双方维护连接状态</text>
+<text x="78" y="266" font-size="23" data-svg-container="node-1">确认、重传、排序：提供可靠传输</text>
+<text x="78" y="300" font-size="23" data-svg-container="node-1">自带流量控制与拥塞控制</text>
+<text x="78" y="334" font-size="23" data-svg-container="node-1">头部较大；按字节流交付，没有消息边界</text>
+<text x="78" y="368" font-size="23" data-svg-container="node-1">接收方要自行拆包——粘包问题的根源</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="250" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="758" y="194" font-size="26" font-weight="700" data-svg-container="node-2">UDP：无连接的轻量数据报</text>
+<text x="758" y="232" font-size="23" data-svg-container="node-2">不确认、不重传、不排序</text>
+<text x="758" y="266" font-size="23" data-svg-container="node-2">头部只有 8 字节</text>
+<text x="758" y="300" font-size="23" data-svg-container="node-2">独立数据报交付，天然保留消息边界</text>
+<text x="758" y="334" font-size="23" data-svg-container="node-2">大包依赖 IP 层分片：丢一片要重传整包</text>
+<text x="758" y="368" font-size="23" data-svg-container="node-2">早期 NFS 就在这个坑上吃过亏</text>
+<line x1="1060" y1="404" x2="1060" y2="436" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<text x="880" y="428" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">按需在其上补可靠性</text>
+<rect id="node-3" data-svg-box="" x="60" y="440" width="640" height="280" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="78" y="484" font-size="26" font-weight="700" data-svg-container="node-3">Socket：OS 暴露的编程接口</text>
+<text x="78" y="522" font-size="23" data-svg-container="node-3">不是协议：服务端 创建→绑定→监听→接受连接</text>
+<text x="78" y="556" font-size="23" data-svg-container="node-3">客户端创建后发起连接，随后收发、关闭</text>
+<text x="78" y="590" font-size="23" data-svg-container="node-3">一条 TCP 连接由四元组唯一标识：</text>
+<text x="78" y="624" font-size="23" data-svg-container="node-3">源 IP、源端口、目的 IP、目的端口</text>
+<text x="78" y="658" font-size="23" data-svg-container="node-3">端口 0–65535，其中 0–1023 为知名端口</text>
+<text x="78" y="692" font-size="23" data-svg-container="node-3">IPv6 没有 ARP，地址解析由 NDP 承担</text>
+<rect id="node-4" data-svg-box="" x="740" y="440" width="640" height="280" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="758" y="484" font-size="26" font-weight="700" data-svg-container="node-4">KCP / QUIC：UDP 之上自建可靠性</text>
+<text x="758" y="522" font-size="23" data-svg-container="node-4">KCP：更小的重传超时、可调阈值的快速重传</text>
+<text x="758" y="556" font-size="23" data-svg-container="node-4">可关闭的拥塞控制：多耗带宽换更低延迟</text>
+<text x="758" y="590" font-size="23" data-svg-container="node-4">常见于实时游戏与音视频</text>
+<text x="758" y="624" font-size="23" data-svg-container="node-4">QUIC 走同一条路，只是做到传输层的完整度</text>
+<rect id="node-5" data-svg-box="" x="60" y="760" width="1320" height="140" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="78" y="804" font-size="26" font-weight="700" data-svg-container="node-5">选型主线</text>
+<text x="78" y="840" font-size="22" data-svg-container="node-5">不能容忍错误和乱序（网页、文件、支付）→ 选可靠传输</text>
+<text x="78" y="870" font-size="22" data-svg-container="node-5">不能容忍卡顿（语音、直播、游戏）→ 允许丢包换实时</text>
+</g></svg>

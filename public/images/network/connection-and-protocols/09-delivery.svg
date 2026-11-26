@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 960" role="img" aria-labelledby="t">
+<title id="t">把协议跑在生产环境：微服务、容器与负载均衡</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="960" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">把协议跑在生产环境：微服务、容器与负载均衡</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">服务拆分与编排、LVS 四种模式、四层与七层的分层配合</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="280" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="194" font-size="26" font-weight="700" data-svg-container="node-1">微服务与容器编排</text>
+<text x="78" y="232" font-size="23" data-svg-container="node-1">单体拆成独立部署、独立扩容的服务</text>
+<text x="78" y="266" font-size="23" data-svg-container="node-1">服务间 RPC / HTTP 通信，注册中心做服务发现</text>
+<text x="78" y="300" font-size="23" data-svg-container="node-1">代价：超时、重试、熔断、链路追踪成必修课</text>
+<text x="78" y="334" font-size="23" data-svg-container="node-1">Docker：namespace + cgroups 打包应用与依赖</text>
+<text x="78" y="368" font-size="23" data-svg-container="node-1">Kubernetes：Pod 最小调度单元，Service 稳定入口</text>
+<text x="78" y="402" font-size="23" data-svg-container="node-1">控制器调度、扩缩容、故障自愈；CNI 负责跨节点网络</text>
+<rect id="node-2" data-svg-box="" x="60" y="470" width="640" height="280" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="78" y="514" font-size="26" font-weight="700" data-svg-container="node-2">LVS 四种模式（内核 IPVS）</text>
+<text x="78" y="552" font-size="23" data-svg-container="node-2">NAT：改写地址，进出都过调度器</text>
+<text x="78" y="586" font-size="23" data-svg-container="node-2">DR：只改 MAC，响应由后端直接回客户端，吞吐最高</text>
+<text x="78" y="620" font-size="23" data-svg-container="node-2">但 DR 要求调度器与后端同网段</text>
+<text x="78" y="654" font-size="23" data-svg-container="node-2">TUN：IP 隧道封装，可跨网段</text>
+<text x="78" y="688" font-size="23" data-svg-container="node-2">FULLNAT：同改源和目的地址</text>
+<text x="78" y="722" font-size="23" data-svg-container="node-2">牺牲性能换部署自由</text>
+<rect id="node-3" data-svg-box="" x="740" y="150" width="640" height="310" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="758" y="194" font-size="26" font-weight="700" data-svg-container="node-3">四层看连接，七层看请求</text>
+<text x="758" y="232" font-size="23" data-svg-container="node-3">四层：只看 IP 和端口转发，不解析应用内容</text>
+<text x="758" y="266" font-size="23" data-svg-container="node-3">性能高，适合大流量入口扛连接</text>
+<text x="758" y="300" font-size="23" data-svg-container="node-3">七层：Nginx / Envoy / HAProxy 终止 TLS</text>
+<text x="758" y="334" font-size="23" data-svg-container="node-3">解析 HTTP：按路径、域名、Header 路由</text>
+<text x="758" y="368" font-size="23" data-svg-container="node-3">能做灰度发布与限流</text>
+<text x="758" y="402" font-size="23" data-svg-container="node-3">代价：每个请求都走完应用层处理</text>
+<text x="758" y="436" font-size="23" data-svg-container="node-3">LVS 是四层代表；Nginx / Envoy 是七层代表</text>
+<rect id="node-4" data-svg-box="" x="740" y="500" width="640" height="220" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="758" y="544" font-size="26" font-weight="700" data-svg-container="node-4">与连接管理对齐</text>
+<text x="758" y="582" font-size="23" data-svg-container="node-4">健康检查、会话保持对齐 Keepalive 与超时</text>
+<text x="758" y="616" font-size="23" data-svg-container="node-4">中间层清了连接而端点不知道 → RST 经典来源</text>
+<text x="758" y="650" font-size="23" data-svg-container="node-4">七层终止 TLS：后端看到的是 LB 发起的连接</text>
+<text x="758" y="684" font-size="23" data-svg-container="node-4">灰度、限流、按路径 / 域名 / Header 路由都在七层</text>
+<rect id="node-5" data-svg-box="" x="60" y="800" width="255" height="104" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="187.5" y="844.7" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-5">客户端</text>
+<text x="187.5" y="875.5" font-size="20" text-anchor="middle" data-svg-container="node-5">App · Web</text>
+<line x1="319" y1="852" x2="411" y2="852" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect id="node-6" data-svg-box="" x="415" y="800" width="255" height="104" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="542.5" y="844.7" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-6">四层负载均衡</text>
+<text x="542.5" y="875.5" font-size="20" text-anchor="middle" data-svg-container="node-6">LVS 扛连接</text>
+<line x1="674" y1="852" x2="766" y2="852" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect id="node-7" data-svg-box="" x="770" y="800" width="255" height="104" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="897.5" y="844.7" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-7">七层负载均衡</text>
+<text x="897.5" y="875.5" font-size="20" text-anchor="middle" data-svg-container="node-7">路由 · 灰度 · 限流</text>
+<line x1="1029" y1="852" x2="1121" y2="852" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect id="node-8" data-svg-box="" x="1125" y="800" width="255" height="104" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="1252.5" y="844.7" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-8">微服务集群</text>
+<text x="1252.5" y="875.5" font-size="20" text-anchor="middle" data-svg-container="node-8">K8s 容器编排</text>
+<text x="720" y="936" font-size="22" fill="#24282f" text-anchor="middle" data-svg-label="">分层配合：大流量入口用四层扛连接，业务路由交给七层；超时与 Keepalive 配置全链路对齐</text>
+</g></svg>

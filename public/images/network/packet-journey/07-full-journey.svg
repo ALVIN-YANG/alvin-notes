@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1108" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">完整旅程：输入网址后一个数据包的一生</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="1108" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">输入网址到页面显示：一个数据包的一生</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">每一跳只做一件事：解析名字、找到下一跳、转发、翻译地址、送达进程；排障就是在这条链上定位断点</text>
+<rect id="node-1" data-svg-box="" x="60" y="160" width="1320" height="116" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<circle cx="112" cy="218" r="26" fill="#d97745"/>
+<text x="112" y="227" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle" data-svg-container="node-1">1</text>
+<text x="164" y="203" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-1">DNS 解析：缓存未命中再问 LocalDNS</text>
+<text x="164" y="244" font-size="22" fill="#5c626b" data-svg-container="node-1">浏览器缓存 → 系统缓存 → hosts 文件，都未命中时由 LocalDNS 递归解析出服务器 IP</text>
+<path d="M112 276L112 290" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<rect id="node-2" data-svg-box="" x="60" y="292" width="1320" height="116" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<circle cx="112" cy="350" r="26" fill="#d97745"/>
+<text x="112" y="359" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle" data-svg-container="node-2">2</text>
+<text x="164" y="335" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-2">传输层：写 TCP 头</text>
+<text x="164" y="376" font-size="22" fill="#5c626b" data-svg-container="node-2">源端口随机、目的端口 80 或 443；序号与窗口为可靠性服务</text>
+<path d="M112 408L112 422" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<rect id="node-3" data-svg-box="" x="60" y="424" width="1320" height="116" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<circle cx="112" cy="482" r="26" fill="#d97745"/>
+<text x="112" y="491" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle" data-svg-container="node-3">3</text>
+<text x="164" y="467" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-3">网络层：写 IP 头，选出口网卡</text>
+<text x="164" y="508" font-size="22" fill="#5c626b" data-svg-container="node-3">目的 IP 与路由表逐条做掩码与运算，决定从哪块网卡、用哪个源 IP 出去；都不匹配走默认路由</text>
+<path d="M112 540L112 554" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<rect id="node-4" data-svg-box="" x="60" y="556" width="1320" height="116" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<circle cx="112" cy="614" r="26" fill="#d97745"/>
+<text x="112" y="623" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle" data-svg-container="node-4">4</text>
+<text x="164" y="599" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-4">链路层：写 MAC 头，帧交给网卡</text>
+<text x="164" y="640" font-size="22" fill="#5c626b" data-svg-container="node-4">目的 MAC 填下一跳：查 ARP 缓存，没有再广播询问默认网关；网卡加前导码与 FCS 后发出</text>
+<path d="M112 672L112 686" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<rect id="node-5" data-svg-box="" x="60" y="688" width="1320" height="116" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<circle cx="112" cy="746" r="26" fill="#d97745"/>
+<text x="112" y="755" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle" data-svg-container="node-5">5</text>
+<text x="164" y="731" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-5">交换机与路由器：逐跳转发</text>
+<text x="164" y="772" font-size="22" fill="#5c626b" data-svg-container="node-5">交换机查 MAC 表定向或洪泛；路由器校验 FCS、TTL 减 1、最长匹配、重写 MAC，出私网时 NAT 改写地址端口</text>
+<path d="M112 804L112 818" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<rect id="node-6" data-svg-box="" x="60" y="820" width="1320" height="116" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<circle cx="112" cy="878" r="26" fill="#d97745"/>
+<text x="112" y="887" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle" data-svg-container="node-6">6</text>
+<text x="164" y="863" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-6">建立连接：TCP 三次握手，HTTPS 再加 TLS 1.3</text>
+<text x="164" y="904" font-size="22" fill="#5c626b" data-svg-container="node-6">SYN → SYN+ACK → ACK；TLS 1.3 用 ECDHE 临时密钥交换，一次往返完成并具备前向安全性</text>
+<path d="M112 936L112 950" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<rect id="node-7" data-svg-box="" x="60" y="952" width="1320" height="116" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<circle cx="112" cy="1010" r="26" fill="#d97745"/>
+<text x="112" y="1019" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle" data-svg-container="node-7">7</text>
+<text x="164" y="995" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-7">送达进程、响应返回与关闭</text>
+<text x="164" y="1036" font-size="22" fill="#5c626b" data-svg-container="node-7">服务器解封装、按端口交给 Web 进程；响应沿路返回未必同路；持久连接复用请求，最终四次挥手关闭</text>
+</g>
+</svg>

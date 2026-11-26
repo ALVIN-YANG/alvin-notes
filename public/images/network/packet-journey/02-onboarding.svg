@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1080" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">设备入网：DHCP 四步分配地址与 IPv4 地址结构</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="1080" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">设备连上网，第一个 IP 地址从哪来</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">DHCP 四步自动分配地址；子网掩码把 32 位地址切成网络位与主机位</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="1320" height="510" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">DHCP 四步（DORA）：基于 UDP，服务器监听 67 端口、客户端用 68 端口</text>
+<rect id="node-2" data-svg-box="" x="110" y="222" width="240" height="108" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="230" text-anchor="middle" y="265" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-2">客户端</text>
+<text x="230" text-anchor="middle" y="306" font-size="22" fill="#5c626b" data-svg-container="node-2">还没有地址</text>
+<rect id="node-3" data-svg-box="" x="1090" y="222" width="240" height="108" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1210" text-anchor="middle" y="265" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-3">DHCP 服务器</text>
+<text x="1210" text-anchor="middle" y="306" font-size="22" fill="#5c626b" data-svg-container="node-3">从地址池分配</text>
+<path d="M230 330L230 604" fill="none" stroke="#c9c2b2" stroke-width="2" stroke-dasharray="6 7"/>
+<path d="M1210 330L1210 604" fill="none" stroke="#c9c2b2" stroke-width="2" stroke-dasharray="6 7"/>
+<text x="720" y="348" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">① Discover 广播：源 0.0.0.0 → 255.255.255.255，寻找服务器</text>
+<path d="M230 360L1198 360" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="720" y="418" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">② Offer：空闲地址 + 子网掩码 + 网关 + DNS 服务器 + 租期</text>
+<path d="M1210 430L242 430" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="720" y="488" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">③ Request 广播：声明选中哪一份，其他服务器撤销预留</text>
+<path d="M230 500L1198 500" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="720" y="558" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">④ ACK：租约生效，地址可用</text>
+<path d="M1210 570L242 570" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="88" y="632" font-size="22" fill="#5c626b" data-svg-container="node-1">租期 50% 时单播续约，失败则 87.5% 改广播再试，100% 仍失败就停用地址重新申请；拿到地址后发无故 ARP 探测冲突</text>
+<rect id="node-4" data-svg-box="" x="60" y="690" width="640" height="360" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="88" y="735" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-4">IPv4 地址：32 位，点分十进制</text>
+<rect id="node-5" data-svg-box="" x="88" y="762" width="130" height="64" rx="8" fill="#ffffff" stroke="#b9c6d4" stroke-width="2"/>
+<text x="153.0" y="803" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-5">192</text>
+<rect id="node-6" data-svg-box="" x="224" y="762" width="130" height="64" rx="8" fill="#ffffff" stroke="#b9c6d4" stroke-width="2"/>
+<text x="289.0" y="803" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-6">168</text>
+<rect id="node-7" data-svg-box="" x="360" y="762" width="130" height="64" rx="8" fill="#ffffff" stroke="#b9c6d4" stroke-width="2"/>
+<text x="425.0" y="803" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-7">1</text>
+<rect id="node-8" data-svg-box="" x="496" y="762" width="130" height="64" rx="8" fill="#ffffff" stroke="#b9c6d4" stroke-width="2"/>
+<text x="561.0" y="803" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-8">10</text>
+<text x="88" y="862" font-size="22" fill="#5c626b" data-svg-container="node-4">每段 8 位，取值 0–255</text>
+<text x="88" y="903" font-size="23" fill="#24282f" data-svg-container="node-4">子网掩码是切分网络位与主机位的尺子</text>
+<rect id="node-9" data-svg-box="" x="88" y="928" width="340" height="62" rx="8" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="258.0" y="967" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-9">网络位（连续的 1）</text>
+<rect id="node-10" data-svg-box="" x="428" y="928" width="212" height="62" rx="8" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="534.0" y="967" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-10">主机位（0）</text>
+<text x="88" y="1024" font-size="22" fill="#5c626b" data-svg-container="node-4">全 0 网段地址、全 1 广播地址，/24 可分配 254 台</text>
+<rect id="node-11" data-svg-box="" x="740" y="690" width="640" height="360" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="768" y="735" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-11">RFC 1918 私网地址：内部自由使用</text>
+<text x="768" y="779" font-size="23" fill="#24282f" data-svg-container="node-11">10.0.0.0/8</text>
+<text x="768" y="821" font-size="23" fill="#24282f" data-svg-container="node-11">172.16.0.0/12（最容易被误当成公网）</text>
+<text x="768" y="863" font-size="23" fill="#24282f" data-svg-container="node-11">192.168.0.0/16</text>
+<text x="768" y="906" font-size="22" fill="#5c626b" data-svg-container="node-11">IPv4 地址池 2011 年已分完，私网 + NAT 延续至今</text>
+<text x="768" y="948" font-size="22" fill="#5c626b" data-svg-container="node-11">127.0.0.1 是本机回环；0.0.0.0 常表示任意地址</text>
+<text x="768" y="990" font-size="22" fill="#5c626b" data-svg-container="node-11">169.254.0.0/16 是 DHCP 失败时的链路本地地址</text>
+</g>
+</svg>

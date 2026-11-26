@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1000" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">分层模型与数据封装：一份数据在每层叫什么名字</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="1000" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">一份数据，在每层叫什么名字</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">OSI 七层与 TCP/IP 四层互相对应；每下一层多套一个头部，接收端按相反顺序拆开</text>
+<text x="60" y="162" font-size="24" font-weight="700" fill="#24282f" data-svg-label="">OSI 七层模型</text>
+<text x="380" y="162" font-size="24" font-weight="700" fill="#24282f" data-svg-label="">TCP/IP 四层模型</text>
+<text x="760" y="162" font-size="24" font-weight="700" fill="#24282f" data-svg-label="">数据在每层的名字与关键头部</text>
+<rect id="node-1" data-svg-box="" x="60" y="190" width="240" height="64" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="180.0" y="231" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-1">应用层</text>
+<rect id="node-2" data-svg-box="" x="60" y="262" width="240" height="64" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="180.0" y="303" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-2">表示层</text>
+<rect id="node-3" data-svg-box="" x="60" y="334" width="240" height="64" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="180.0" y="375" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-3">会话层</text>
+<rect id="node-4" data-svg-box="" x="60" y="406" width="240" height="64" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="180.0" y="447" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-4">传输层</text>
+<rect id="node-5" data-svg-box="" x="60" y="478" width="240" height="64" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="180.0" y="519" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-5">网络层</text>
+<rect id="node-6" data-svg-box="" x="60" y="550" width="240" height="64" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="180.0" y="591" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-6">链路层</text>
+<rect id="node-7" data-svg-box="" x="60" y="622" width="240" height="64" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="180.0" y="663" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-7">物理层</text>
+<rect id="node-8" data-svg-box="" x="380" y="190" width="300" height="208" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="530" text-anchor="middle" y="280" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-8">应用层</text>
+<text x="530" text-anchor="middle" y="321" font-size="22" fill="#5c626b" data-svg-container="node-8">合并 OSI 上三层</text>
+<rect id="node-9" data-svg-box="" x="380" y="406" width="300" height="64" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="530.0" y="447" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-9">传输层</text>
+<rect id="node-10" data-svg-box="" x="380" y="478" width="300" height="64" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="530.0" y="519" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-10">网际层</text>
+<rect id="node-11" data-svg-box="" x="380" y="550" width="300" height="136" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="530" text-anchor="middle" y="607" font-size="23" font-weight="700" fill="#24282f" data-svg-container="node-11">网络接口层</text>
+<text x="530" text-anchor="middle" y="645" font-size="20" fill="#5c626b" data-svg-container="node-11">五层画法把它拆回两层</text>
+<rect id="node-12" data-svg-box="" x="760" y="190" width="620" height="208" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="788" y="266" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-12">报文</text>
+<text x="788" y="308" font-size="23" fill="#24282f" data-svg-container="node-12">完整的一份数据，如一次 HTTP 请求</text>
+<text x="788" y="349" font-size="22" fill="#5c626b" data-svg-container="node-12">应用层协议举例：HTTP、DNS、DHCP</text>
+<rect id="node-13" data-svg-box="" x="760" y="406" width="620" height="64" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="788" y="447" font-size="23" fill="#24282f" data-svg-container="node-13">段：TCP 头含源/目的端口，决定交给哪个进程</text>
+<rect id="node-14" data-svg-box="" x="760" y="478" width="620" height="64" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="788" y="519" font-size="23" fill="#24282f" data-svg-container="node-14">包：IP 头含源/目的 IP，决定送到哪台机器</text>
+<rect id="node-15" data-svg-box="" x="760" y="550" width="620" height="136" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="788" y="608" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-15">帧</text>
+<text x="788" y="649" font-size="22" fill="#5c626b" data-svg-container="node-15">帧头 + FCS 校验，负责相邻设备之间的接力</text>
+<text x="60" y="716" font-size="22" fill="#5c626b" data-svg-label="">OSI 先有模型后有协议、标准厚重；TCP/IP 先有协议后有模型，随协议栈免费装进各类系统成为事实标准</text>
+<rect id="node-16" data-svg-box="" x="60" y="748" width="1320" height="216" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="88" y="793" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-16">封装：发送方逐层加头，接收方逐层拆开</text>
+<rect id="node-17" data-svg-box="" x="100" y="840" width="90" height="64" rx="8" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="145.0" y="880" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-17">帧头</text>
+<rect id="node-18" data-svg-box="" x="190" y="840" width="110" height="64" rx="8" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="245.0" y="880" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-18">IP 头</text>
+<rect id="node-19" data-svg-box="" x="300" y="840" width="110" height="64" rx="8" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="355.0" y="880" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-19">TCP 头</text>
+<rect id="node-20" data-svg-box="" x="410" y="840" width="760" height="64" rx="8" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="790.0" y="880" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-20">数据</text>
+<rect id="node-21" data-svg-box="" x="1170" y="840" width="90" height="64" rx="8" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="1215.0" y="880" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-21">FCS</text>
+<text x="88" y="940" font-size="22" fill="#5c626b" data-svg-container="node-16">传输层加 TCP 头（端口号）→ 网络层加 IP 头（源/目的 IP）→ 链路层加帧头与 FCS；每层只读写自己的头部</text>
+</g>
+</svg>

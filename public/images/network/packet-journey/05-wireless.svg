@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 952" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">无线接入：WiFi 频段取舍与物理层三件套</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="952" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">WiFi 三个频段怎么取舍，速率靠什么堆出来</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">2.4GHz 覆盖大但拥挤，5GHz 快但衰减大，6GHz 干净但覆盖最小；速率靠 QAM、OFDM、MIMO 堆出来</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="420" height="290" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="84" y="197" font-size="28" font-weight="700" fill="#24282f" data-svg-container="node-1">2.4GHz</text>
+<text x="84" y="237" font-size="22" fill="#5c626b" data-svg-container="node-1">覆盖优先</text>
+<text x="84" y="278" font-size="22" fill="#24282f" data-svg-container="node-1">波长 12.5cm，绕射能力强</text>
+<text x="84" y="318" font-size="22" fill="#24282f" data-svg-container="node-1">覆盖大，隔一堵墙仍可用</text>
+<text x="84" y="358" font-size="22" fill="#24282f" data-svg-container="node-1">但蓝牙、微波炉、邻居路由器</text>
+<text x="84" y="399" font-size="22" fill="#24282f" data-svg-container="node-1">全挤在这段免许可频谱里</text>
+<rect id="node-2" data-svg-box="" x="510" y="150" width="420" height="290" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="534" y="197" font-size="28" font-weight="700" fill="#24282f" data-svg-container="node-2">5GHz</text>
+<text x="534" y="237" font-size="22" fill="#5c626b" data-svg-container="node-2">速度优先</text>
+<text x="534" y="278" font-size="22" fill="#24282f" data-svg-container="node-2">波长约 6cm，信道多、干扰少</text>
+<text x="534" y="318" font-size="22" fill="#24282f" data-svg-container="node-2">同距离衰减比 2.4GHz</text>
+<text x="534" y="358" font-size="22" fill="#24282f" data-svg-container="node-2">多 6–8dB</text>
+<text x="534" y="399" font-size="22" fill="#24282f" data-svg-container="node-2">隔一堵承重墙就明显掉速</text>
+<rect id="node-3" data-svg-box="" x="960" y="150" width="420" height="290" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="984" y="197" font-size="28" font-weight="700" fill="#24282f" data-svg-container="node-3">6GHz</text>
+<text x="984" y="237" font-size="22" fill="#5c626b" data-svg-container="node-3">干净低延迟</text>
+<text x="984" y="278" font-size="22" fill="#24282f" data-svg-container="node-3">Wi-Fi 6E/7 引入</text>
+<text x="984" y="318" font-size="22" fill="#24282f" data-svg-container="node-3">频谱干净、信道宽、低延迟</text>
+<text x="984" y="358" font-size="22" fill="#24282f" data-svg-container="node-3">但覆盖最小</text>
+<text x="984" y="399" font-size="22" fill="#24282f" data-svg-container="node-3">且要求终端支持</text>
+<rect id="node-4" data-svg-box="" x="60" y="480" width="420" height="196" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="84" y="525" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-4">QAM：一个符号带更多比特</text>
+<text x="84" y="566" font-size="22" fill="#24282f" data-svg-container="node-4">相位 + 振幅分档</text>
+<text x="84" y="607" font-size="22" fill="#24282f" data-svg-container="node-4">Wi-Fi 4 用 64-QAM</text>
+<text x="84" y="647" font-size="22" fill="#24282f" data-svg-container="node-4">Wi-Fi 7 到 4096-QAM</text>
+<rect id="node-5" data-svg-box="" x="510" y="480" width="420" height="196" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="534" y="525" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-5">OFDM / OFDMA：子载波并行</text>
+<text x="534" y="566" font-size="22" fill="#24282f" data-svg-container="node-5">数据拆到大量正交子载波并行发送</text>
+<text x="534" y="607" font-size="22" fill="#24282f" data-svg-container="node-5">Wi-Fi 6 的 OFDMA 把子载波</text>
+<text x="534" y="647" font-size="22" fill="#24282f" data-svg-container="node-5">分给多台设备并发</text>
+<rect id="node-6" data-svg-box="" x="960" y="480" width="420" height="196" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="984" y="525" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-6">MIMO：多天线多空间流</text>
+<text x="984" y="566" font-size="22" fill="#24282f" data-svg-container="node-6">多天线经不同反射路径</text>
+<text x="984" y="607" font-size="22" fill="#24282f" data-svg-container="node-6">同时传多路空间流</text>
+<text x="984" y="647" font-size="22" fill="#24282f" data-svg-container="node-6">Wi-Fi 4 引入，逐代增加流数</text>
+<rect id="node-7" data-svg-box="" x="60" y="716" width="1320" height="200" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="88" y="761" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-7">WiFi 与蜂窝是分工，不是替代</text>
+<text x="88" y="805" font-size="23" fill="#24282f" data-svg-container="node-7">蜂窝：宏基站功率数十瓦、授权频谱、700/800/900MHz 低频绕射强、小区切换漫游 → 无处不在</text>
+<text x="88" y="847" font-size="23" fill="#24282f" data-svg-container="node-7">WiFi：免费频谱在局部提供大带宽；路由器功率受法规限制（约 100–200mW），摆放位置比换设备有效</text>
+<text x="88" y="890" font-size="22" fill="#5c626b" data-svg-container="node-7">Wi-Fi 8（预计 2028 年前后定稿）方向是可靠性：多 AP 协同降干扰、按设备能力切分子信道、先连新 AP 再断旧</text>
+</g>
+</svg>

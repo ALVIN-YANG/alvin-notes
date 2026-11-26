@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 940" role="img" aria-labelledby="t">
+<title id="t">HTTP：从一问一答到 HTTP/3</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="940" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">HTTP：从一问一答到 HTTP/3</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">报文模型、状态码与身份认证是地基，协议演进围绕连接效率</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="420" height="210" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="78" y="192" font-size="24" font-weight="700" data-svg-container="node-1">请求-响应模型</text>
+<text x="78" y="228" font-size="22" data-svg-container="node-1">请求行：方法 + 路径 + 版本</text>
+<text x="78" y="258" font-size="22" data-svg-container="node-1">响应：状态行 + 响应头 + 响应体</text>
+<text x="78" y="288" font-size="22" data-svg-container="node-1">方法表动作，路径表对象</text>
+<text x="78" y="318" font-size="22" data-svg-container="node-1">状态码表结果；一个网页 = 多次请求</text>
+<rect id="node-2" data-svg-box="" x="500" y="150" width="420" height="210" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="518" y="192" font-size="24" font-weight="700" data-svg-container="node-2">状态码速查</text>
+<text x="518" y="228" font-size="22" data-svg-container="node-2">2xx 成功：200 / 204 / 206 分片</text>
+<text x="518" y="258" font-size="22" data-svg-container="node-2">3xx：301 可能被缓存、302、304</text>
+<text x="518" y="288" font-size="22" data-svg-container="node-2">4xx 查请求：400 / 403 / 404 / 429</text>
+<text x="518" y="318" font-size="22" data-svg-container="node-2">5xx 查后端：500 / 502 / 503 / 504</text>
+<rect id="node-3" data-svg-box="" x="940" y="150" width="440" height="210" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="958" y="192" font-size="24" font-weight="700" data-svg-container="node-3">身份认证是补出来的</text>
+<text x="958" y="228" font-size="22" data-svg-container="node-3">Cookie 自动携带登录标记</text>
+<text x="958" y="258" font-size="22" data-svg-container="node-3">Session 挪到服务端，Redis 中心化</text>
+<text x="958" y="288" font-size="22" data-svg-container="node-3">JWT：Header / Payload / Signature</text>
+<text x="958" y="318" font-size="22" data-svg-container="node-3">Payload 只签名不加密；短过期 + 刷新</text>
+<rect id="node-4" data-svg-box="" x="60" y="430" width="400" height="300" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="474" font-size="26" font-weight="700" data-svg-container="node-4">HTTP/1.1</text>
+<text x="78" y="512" font-size="23" data-svg-container="node-4">持久连接：TCP 不再每请求都关</text>
+<text x="78" y="546" font-size="23" data-svg-container="node-4">但请求串行，应用层队头阻塞</text>
+<text x="78" y="580" font-size="23" data-svg-container="node-4">浏览器对每域名并行开多条连接</text>
+<text x="78" y="614" font-size="23" data-svg-container="node-4">（约 6 条是实现策略非协议规定）</text>
+<text x="78" y="648" font-size="23" data-svg-container="node-4">流水线响应须按序，名存实亡</text>
+<line x1="464" y1="580" x2="516" y2="580" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect id="node-5" data-svg-box="" x="520" y="430" width="400" height="300" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="538" y="474" font-size="26" font-weight="700" data-svg-container="node-5">HTTP/2（源自 SPDY）</text>
+<text x="538" y="512" font-size="23" data-svg-container="node-5">二进制帧，多流交错同连接传输</text>
+<text x="538" y="546" font-size="23" data-svg-container="node-5">多路复用解决 HTTP 层队头阻塞</text>
+<text x="538" y="580" font-size="23" data-svg-container="node-5">HPACK 头部压缩</text>
+<text x="538" y="614" font-size="23" data-svg-container="node-5">服务器推送浪费带宽，少有人启用</text>
+<text x="538" y="648" font-size="23" data-svg-container="node-5">但 TCP 层队头阻塞仍在：一个丢包</text>
+<text x="538" y="682" font-size="23" data-svg-container="node-5">卡住所有流；TCP 在内核里改不动</text>
+<line x1="924" y1="580" x2="976" y2="580" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect id="node-6" data-svg-box="" x="980" y="430" width="400" height="300" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="998" y="474" font-size="26" font-weight="700" data-svg-container="node-6">HTTP/3 = HTTP over QUIC</text>
+<text x="998" y="512" font-size="23" data-svg-container="node-6">QUIC 基于 UDP 重写可靠传输</text>
+<text x="998" y="546" font-size="23" data-svg-container="node-6">传输握手与 TLS 1.3 合并，1-RTT</text>
+<text x="998" y="580" font-size="23" data-svg-container="node-6">流相互独立，单流丢包不堵其他流</text>
+<text x="998" y="614" font-size="23" data-svg-container="node-6">消除 TCP 层队头阻塞</text>
+<text x="998" y="648" font-size="23" data-svg-container="node-6">连接 ID 标识：Wi-Fi 切换不断连</text>
+<text x="998" y="682" font-size="23" data-svg-container="node-6">工程上优先 HTTP/3，不通自动降级</text>
+<rect id="node-7" data-svg-box="" x="60" y="780" width="1320" height="120" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="831.2" font-size="22" text-anchor="middle" data-svg-container="node-7">演进逻辑：1.1 串行 → 2 在一条 TCP 上多路复用 → TCP 在内核改不动 → 3 在用户态基于 UDP 消除队头阻塞</text>
+<text x="720.0" y="864.2" font-size="22" text-anchor="middle" data-svg-container="node-7">另：HTTPDNS——App 走 HTTP/HTTPS 接口解析，防 UDP 53 明文劫持，按出口 IP 就近返回</text>
+</g></svg>

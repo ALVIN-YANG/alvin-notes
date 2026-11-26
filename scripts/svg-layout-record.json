@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkerHash": "a0a0996f40af0507b5415207433cedf19afae1b8419bdf681572c2ddddb0e1d2",
+  "checkerHash": "b345b71795e5d41e549543a76a8def0c71a4ac5875b7a7d09d23bd683108781c",
   "files": {
     "public/images/ai/agent-memory-landscape/02-claude-code.svg": {
       "sha256": "84015405faf04e2bbc59ef3824c3e9778ee14872b7ea150b85421545252e3239",
@@ -280,6 +280,70 @@
     },
     "public/images/memory-projects/mem0/07-deployment-cost.svg": {
       "sha256": "c0ecacb43316bf41f80139137c08561ad75b41a79a7916728e3c4fec8a9a6944",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/01-tcp-udp-socket.svg": {
+      "sha256": "d7ad3b49185f9f136fe2f51b9a35487944bc4f1555b689cec47f2d324c7e7a3b",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/02-tcp-lifecycle.svg": {
+      "sha256": "9a21e87b28aaafc021fda1a2824d20236d53f0b112db98c68ff15e969fa104e7",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/03-flow-congestion.svg": {
+      "sha256": "ffcb0d8ca74d0db635fe522d82c8b9570bc0b141a01f87a0a962835890fdd873",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/04-connection-management.svg": {
+      "sha256": "5673cf56167dd5781210d964a236bbfdd2e7ff62bb7c4787320b3640ca93f534",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/05-tls.svg": {
+      "sha256": "3fe8fc29d4e40678f097152071f5e1336c859c09bcee6b3bee5524dbfa79a327",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/06-http-evolution.svg": {
+      "sha256": "f9baa06e352c84d766e910eaa5cfd6454c19585a89b734e43ec4706696e35b8a",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/07-application-protocols.svg": {
+      "sha256": "33c657ea3137a290b2bea9e260d225509a57d848f952c85f681ac2a2585ee90a",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/08-streaming.svg": {
+      "sha256": "12bf658f4f159fdb8ed9979b82adb9a7c79b880a60f2af1d737155eb3ca305cc",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/09-delivery.svg": {
+      "sha256": "de63cbf741e259269655c1c0706115c4e655eb7caa0f26daaa3dff458ce89936",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/01-layers.svg": {
+      "sha256": "b2e50152578b217fe7add91acc1161ab3baaad740d12273a9b345cdaa016f780",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/02-onboarding.svg": {
+      "sha256": "5056665d65805f9078483b07ee95d667fe78ad811d2d2244dc08408fa7daf274",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/03-local-delivery.svg": {
+      "sha256": "a9ec7a8dca6d6509a2fa5872b42a2c5919191454a1a5080f81d0f05c67fd914b",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/04-routing-nat.svg": {
+      "sha256": "c194249469a1159cecd6d69d9c9bf8df90a2cf25b16396376c933af4411d4cf7",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/05-wireless.svg": {
+      "sha256": "9ba044b8b73b88d9d308007bc2d57a0f49894b75d5b093b52e5dc44ad1d8e1f9",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/06-security-cdn.svg": {
+      "sha256": "3ae7552d64c2187f2b33d529e7be2af5fe77a3c8a76e9b9c55ee4aaa367b2972",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/07-full-journey.svg": {
+      "sha256": "d22d82f43c5cb09ad379b379d80c006200b017249ba5f184fdfa21a4571aca3b",
       "mode": "checked"
     },
     "public/images/opencode/omo-architecture.svg": {
