@@ -36,6 +36,12 @@ test('修订日期不能早于首次发布或晚于当前日期', () => {
   }).some((error) => error.includes('晚于当前日期')));
 });
 
+test('迁移文件保留原首次发布日', () => {
+  assert.deepEqual(validateArticleDates({
+    status: 'R', path: 'ai/moved.md', currentSource: original, previousSource: original, today: '2026-02-02',
+  }), []);
+});
+
 test('已有文章可以把 lastUpdated 显式设为 false', () => {
   assert.deepEqual(validateArticleDates({
     status: 'M', path: 'article.md', currentSource: current.replace('2026-02-01', 'false'), previousSource: original, today: '2026-02-02',

@@ -87,6 +87,7 @@ export default defineConfig({
     '/network/1-IPv4地址范围与作用': '/network/ipv4-address-ranges/',
     '/network/2-获取用户真实IP': '/network/client-real-ip/',
     '/network/3-Git 22端口被网络代理禁用': '/network/git-ssh-over-https/',
+    '/network/mcp-2026-07-28-core-changes': '/ai/mcp-2026-07-28-core-changes/',
   },
   integrations: [
     sitemap(),
@@ -168,6 +169,7 @@ export default defineConfig({
             { label: 'AI 概念速查', link: '/ai-concepts/' },
             { label: '架构与执行循环', link: '/ai/agent-architecture-execution-loop/' },
             { label: '工具与运行环境', link: '/ai/agent-tools-runtime/' },
+            { label: 'MCP 2026-07-28 核心变化', link: '/ai/mcp-2026-07-28-core-changes/' },
             { label: 'Agent 框架选型', link: '/agent-frameworks/' },
             { label: '状态持久化与恢复', link: '/ai/agent-context-persistence-recovery/' },
             { label: '上下文工程', link: '/ai/context-engineering-guide/' },

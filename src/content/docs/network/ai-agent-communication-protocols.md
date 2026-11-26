@@ -74,7 +74,7 @@ service AgentService {
 
 它们定义应用层消息与交互规则，但各自只支持规范列出的传输绑定，不能理解为任选上面四种就能互通。
 
-**MCP（Model Context Protocol）** 规定 Agent（客户端）怎样接入工具、数据源和提示词模板（server 暴露 tools、resources、prompts 三类能力），传输可以是本地 stdio 或 Streamable HTTP。它回答的问题是“这个 Agent 能用什么工具、参数长什么样”，不处理 Agent 之间的协作。更深入的版本演进分析见 [《MCP 2026-07-28：从"有状态会话"走向可横向扩展的 Agent 协议》](/network/mcp-2026-07-28-core-changes/)。
+**MCP（Model Context Protocol）** 规定 Agent（客户端）怎样接入工具、数据源和提示词模板（server 暴露 tools、resources、prompts 三类能力），传输可以是本地 stdio 或 Streamable HTTP。它回答的问题是“这个 Agent 能用什么工具、参数长什么样”，不处理 Agent 之间的协作。更深入的版本演进分析见 [《MCP 2026-07-28：从"有状态会话"走向可横向扩展的 Agent 协议》](/ai/mcp-2026-07-28-core-changes/)。
 
 **A2A（Agent2Agent）** 规定 Agent 之间怎样互相发现和委派任务：每个 Agent 用 Agent Card 声明自己的能力，任务以 task/message/artifact 的模型推进，可以通过 HTTP + JSON-RPC 和 SSE 交互，具体绑定按双方支持的协议版本确定。它回答的问题是“这个任务该交给哪个 Agent、进展和产物怎么回来”。
 

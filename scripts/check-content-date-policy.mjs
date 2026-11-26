@@ -49,7 +49,7 @@ function git(args) {
 }
 
 export function checkContentDatePolicy({ baseRef = 'origin/main', today = new Date().toISOString().slice(0, 10) } = {}) {
-  const trackedChanges = git(['diff', '--name-status', baseRef, '--', 'src/content/docs'])
+  const trackedChanges = git(['diff', '--find-renames', '--name-status', baseRef, '--', 'src/content/docs'])
     .split('\n').filter(Boolean);
   const untrackedChanges = git(['ls-files', '--others', '--exclude-standard', '--', 'src/content/docs'])
     .split('\n').filter(Boolean).map((path) => `A\t${path}`);

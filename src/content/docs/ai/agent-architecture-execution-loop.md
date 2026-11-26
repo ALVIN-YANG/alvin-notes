@@ -67,7 +67,7 @@ verifiedAgainst: "OpenAI 与 Anthropic Agent 架构建议、MCP 2025-11-25 与 2
 
 模型只返回 `get_query_capabilities(database_id=...)` 的调用请求。Host 是运行 Agent 的应用，它必须再次检查数据库归属和只读权限，然后才真正执行并把结果交回模型。`strict: true` 或 JSON Schema 只能约束输出形状，不能证明这个 ID 可以访问，也不能证明业务判断正确。
 
-MCP 解决的是接入方式：Host 内的 Client 连接 MCP Server，Server 暴露 Tools、Resources 和 Prompts。它减少每个应用分别写适配器的成本，但 Server 返回的内容和动作仍要经过业务校验。MCP 的协议版本差异见[2026-07-28 核心变化](/network/mcp-2026-07-28-core-changes/)，不要把不同版本的连接生命周期混写。
+MCP 解决的是接入方式：Host 内的 Client 连接 MCP Server，Server 暴露 Tools、Resources 和 Prompts。它减少每个应用分别写适配器的成本，但 Server 返回的内容和动作仍要经过业务校验。MCP 的协议版本差异见[2026-07-28 核心变化](/ai/mcp-2026-07-28-core-changes/)，不要把不同版本的连接生命周期混写。
 
 Skill 则是另一层：它告诉 Agent 做迁移评估时先查版本、再核对查询能力、最后评估成本。即使不使用 MCP，也可以用本地函数执行工具；即使没有 Skill，Agent 仍能运行。
 
@@ -187,7 +187,7 @@ node harness-goal-loop.mjs status "$goal_demo_dir/goal.sqlite"
 - [Anthropic：Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
 - [OpenAI：A practical guide to building AI agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)
 - [OpenAI Function Calling](https://developers.openai.com/api/docs/guides/function-calling)
-- [MCP 2025-11-25 规范](https://modelcontextprotocol.io/specification/2025-11-25)与[本站 2026-07-28 协议变化](/network/mcp-2026-07-28-core-changes/)
+- [MCP 2025-11-25 规范](https://modelcontextprotocol.io/specification/2025-11-25)与[本站 2026-07-28 协议变化](/ai/mcp-2026-07-28-core-changes/)
 - [ReAct 论文](https://arxiv.org/abs/2210.03629)
 - [Codex 目标运行时，固定提交](https://github.com/openai/codex/blob/4daceea869704f9f35e0a3949fc34711ef978a4e/codex-rs/core/src/goals.rs)、[Claude Code Goal 评估](https://code.claude.com/docs/en/goal#how-evaluation-works)
 - [Towards a Science of Scaling Agent Systems v3](https://arxiv.org/html/2512.08296v3)
