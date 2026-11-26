@@ -43,5 +43,5 @@
 <text x="776" y="733" class="body" text-anchor="start" data-svg-container="node-5">减少无关字段带来的读取开销</text>
 <text x="375" y="905" class="head" text-anchor="middle" data-svg-label="" style="fill:#b35c2e">交易：快、准、稳</text>
 <text x="1065" y="905" class="head" text-anchor="middle" data-svg-label="" style="fill:#b35c2e">分析：扫得广、算得清</text>
-<text x="720" y="976" class="note" text-anchor="middle" data-svg-label="">数据库不是被数据仓库替代，而是成为大数据体系的上游数据来源。</text>
+<text x="720" y="976" class="note" text-anchor="middle" data-svg-label="">区别首先在工作负载与服务目标；列式是常见分析优化，不是数仓的定义条件。</text>
 </svg>

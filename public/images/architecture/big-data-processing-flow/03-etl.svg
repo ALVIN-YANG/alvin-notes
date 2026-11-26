@@ -22,8 +22,8 @@
 <text x="887.5" y="215" class="head" text-anchor="middle" data-svg-container="node-3">② Transform 转换</text>
 <text x="887.5" y="252" class="body" text-anchor="middle" data-svg-container="node-3">统一日期格式</text>
 <text x="887.5" y="286" class="body" text-anchor="middle" data-svg-container="node-3">去除重复订单</text>
-<text x="887.5" y="320" class="body" text-anchor="middle" data-svg-container="node-3">缺失字段补默认值</text>
-<text x="887.5" y="354" class="body" text-anchor="middle" data-svg-container="node-3">清洗异常与脏数据</text>
+<text x="887.5" y="320" class="body" text-anchor="middle" data-svg-container="node-3">按语义处理缺失</text>
+<text x="887.5" y="354" class="body" text-anchor="middle" data-svg-container="node-3">身份缺失待补全</text>
 <text x="887.5" y="388" class="body" text-anchor="middle" data-svg-container="node-3">按统一口径加工</text>
 <rect id="node-4" data-svg-box="" x="1095" y="170" width="285" height="360" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
 <text x="1237.5" y="215" class="head" text-anchor="middle" data-svg-container="node-4">③ Load 加载</text>
@@ -40,6 +40,6 @@
 <text x="720.0" y="747" class="body" text-anchor="middle" data-svg-container="node-5">订单号｜商品名｜单价｜数量｜支付金额｜发货时间</text>
 <text x="720.0" y="781" class="body" text-anchor="middle" data-svg-container="node-5">订单 + 支付 + 商品 + 物流 → 一张可分析的宽表</text>
 <text x="720.0" y="815" class="body" text-anchor="middle" data-svg-container="node-5">统计商品销售额时，不必每次临时关联多张业务表</text>
-<text x="720" y="950" class="note" text-anchor="middle" data-svg-label="">实时通道不等待凌晨批处理：事件持续进入平台，交给流计算更新指标与画像。</text>
-<text x="720" y="995" class="note" text-anchor="middle" data-svg-label="">ETL 描述数据搬运与加工过程；具体同步工具可以不同。</text>
+<text x="720" y="950" class="note" text-anchor="middle" data-svg-label="">实时通道不等待凌晨批处理：事件先进入消息队列，再交给流计算更新状态。</text>
+<text x="720" y="995" class="note" text-anchor="middle" data-svg-label="">抽取可全量、增量或 CDC；也可先落原始区再转换（ELT）。</text>
 </svg>

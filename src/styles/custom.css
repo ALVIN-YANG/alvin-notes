@@ -2473,3 +2473,27 @@ body:has(.role-bank) .content-panel { border: 0; }
   background: #101627;
   border-radius: .65rem;
 }
+
+
+.article-diagram-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.sl-markdown-content .article-diagram-scroll img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 50rem) {
+  .sl-markdown-content .article-diagram-scroll img {
+    width: 880px;
+    max-width: none;
+  }
+}
+@media print {
+  .article-diagram-scroll { overflow-x: visible; }
+  .sl-markdown-content .article-diagram-scroll img { width: 100%; }
+}

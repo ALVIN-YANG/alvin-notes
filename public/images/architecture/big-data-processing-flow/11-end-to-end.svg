@@ -23,12 +23,12 @@
 <text x="370.0" y="491" class="body" text-anchor="middle" data-svg-container="node-4">生成销售与留存报表</text>
 <rect id="node-5" data-svg-box="" x="55" y="600" width="630" height="185" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
 <text x="370.0" y="645" class="head" text-anchor="middle" data-svg-container="node-5">⑤ 实时计算</text>
-<text x="370.0" y="682" class="body" text-anchor="middle" data-svg-container="node-5">点击、停留、滑动持续入湖</text>
-<text x="370.0" y="716" class="body" text-anchor="middle" data-svg-container="node-5">Flink 更新实时画像与销售额</text>
+<text x="370.0" y="682" class="body" text-anchor="middle" data-svg-container="node-5">事件先进入 Kafka 等通道</text>
+<text x="370.0" y="716" class="body" text-anchor="middle" data-svg-container="node-5">Flink 计算并写在线存储与湖仓</text>
 <rect id="node-6" data-svg-box="" x="755" y="600" width="630" height="185" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
 <text x="1070.0" y="645" class="head" text-anchor="middle" data-svg-container="node-6">⑥ 在线推荐</text>
 <text x="1070.0" y="682" class="body" text-anchor="middle" data-svg-container="node-6">用户再次打开 App</text>
-<text x="1070.0" y="716" class="body" text-anchor="middle" data-svg-container="node-6">推荐系统调用实时标签 API</text>
+<text x="1070.0" y="716" class="body" text-anchor="middle" data-svg-container="node-6">API 读取在线画像并推荐商品</text>
 <rect id="node-7" data-svg-box="" x="755" y="825" width="630" height="185" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
 <text x="1070.0" y="870" class="head" text-anchor="middle" data-svg-container="node-7">⑦ 精准营销</text>
 <text x="1070.0" y="907" class="body" text-anchor="middle" data-svg-container="node-7">筛选浏览运动鞋未下单用户</text>

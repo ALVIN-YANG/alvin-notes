@@ -139,23 +139,23 @@
       "mode": "legacy"
     },
     "public/images/architecture/big-data-processing-flow/01-overview.svg": {
-      "sha256": "962b3074faa0294aaec612ef6b3405f98fb66295c8877bc2432d73c5284f90c2",
+      "sha256": "dc99a8f63fff8304a3fbb1b80b186d0f3253653a9c5bdaf175baa66967832481",
       "mode": "checked"
     },
     "public/images/architecture/big-data-processing-flow/02-database-to-warehouse.svg": {
-      "sha256": "8fe3343e27b58564ec48a1a8d50a8cb0d8199ae1b543b17e80ad9d8457d14cec",
+      "sha256": "2e032339cfb855326cdbd23c04637241ba7d1906db1e426b2a417709e7867dde",
       "mode": "checked"
     },
     "public/images/architecture/big-data-processing-flow/03-etl.svg": {
-      "sha256": "5f0efee6bca5aae1c65105c19dc67ef765fb3fc789822bc030ce64fafd75a77f",
+      "sha256": "eb90bd4cfc51d273f19d7c54e52e8669f47eb92de99cfeca115701c0f26f11e7",
       "mode": "checked"
     },
     "public/images/architecture/big-data-processing-flow/04-storage.svg": {
-      "sha256": "c0d3491c2bf6d7df3229f418bfb723d0fd2439fdf16572cc36934e4f245e0cab",
+      "sha256": "7a356e4a895074871ca5b27dd5a5eb73ecd9adb774854ff4d012891ae048ddf4",
       "mode": "checked"
     },
     "public/images/architecture/big-data-processing-flow/05-hdfs.svg": {
-      "sha256": "35abfb94072d78f0419143fea1ce830cca1c2e7bbb683ae2b599bb1c9b3a99cb",
+      "sha256": "1b9d5b403640daa030af97d1a862bac356695106414427362586c3e1b50ff702",
       "mode": "checked"
     },
     "public/images/architecture/big-data-processing-flow/06-mapreduce.svg": {
@@ -179,7 +179,7 @@
       "mode": "checked"
     },
     "public/images/architecture/big-data-processing-flow/11-end-to-end.svg": {
-      "sha256": "be997958863a5ab3afd30ee1704c68ab265eae4ee4caa22098babd9c408c037a",
+      "sha256": "a92200b62164633ef0530cd4d47e7bbba882e119175796bf4a018ffd02478236",
       "mode": "checked"
     },
     "public/images/architecture/ipc-decision-tree.svg": {

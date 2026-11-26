@@ -23,14 +23,14 @@
 <text x="86" y="634" class="body" text-anchor="start" data-svg-container="node-3">评论等数据可留待未来训练模型</text>
 <rect id="node-4" data-svg-box="" x="755" y="450" width="625" height="260" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
 <text x="781" y="495" class="head" text-anchor="start" data-svg-container="node-4">湖仓一体｜打通湖与仓</text>
-<text x="781" y="532" class="body" text-anchor="start" data-svg-container="node-4">原始数据统一入湖，再清洗转换</text>
+<text x="781" y="532" class="body" text-anchor="start" data-svg-container="node-4">统一开放表格式与元数据</text>
 <text x="781" y="566" class="body" text-anchor="start" data-svg-container="node-4">Delta Lake、Apache Iceberg</text>
-<text x="781" y="600" class="body" text-anchor="start" data-svg-container="node-4">属于常见表格式实现</text>
-<text x="781" y="634" class="body" text-anchor="start" data-svg-container="node-4">支持湖仓数据互通与联合计算</text>
+<text x="781" y="600" class="body" text-anchor="start" data-svg-container="node-4">支持多引擎访问同一数据</text>
+<text x="781" y="634" class="body" text-anchor="start" data-svg-container="node-4">冷热分层不必复制两份</text>
 <rect id="node-5" data-svg-box="" x="60" y="790" width="1320" height="190" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
 <text x="720.0" y="835" class="head" text-anchor="middle" data-svg-container="node-5">冷热分层：把访问频度与存储成本放在一起考虑</text>
-<text x="720.0" y="872" class="body" text-anchor="middle" data-svg-container="node-5">故事示例：近三个月热订单放入数仓，保障高频查询</text>
-<text x="720.0" y="906" class="body" text-anchor="middle" data-svg-container="node-5">更冷的历史数据低成本归档在湖中；结果可写回仓或湖</text>
+<text x="720.0" y="872" class="body" text-anchor="middle" data-svg-container="node-5">近三个月热订单可提高存储与查询等级</text>
+<text x="720.0" y="906" class="body" text-anchor="middle" data-svg-container="node-5">更冷历史数据低成本归档；分层不等于跨系统复制</text>
 <text x="90" y="1040" class="head" text-anchor="start" data-svg-label="" style="fill:#b35c2e">数据沼泽警告</text>
 <text x="90" y="1082" class="note" text-anchor="start" data-svg-label="">文件重名、无人知道含义、垃圾不敢删——缺少元数据、目录和权限，湖就会失控。</text>
 <text x="90" y="1122" class="note" text-anchor="start" data-svg-label="">云对象存储提供弹性扩容并减少自运维；迁移与否仍取决于成本、合规和现有架构。</text>

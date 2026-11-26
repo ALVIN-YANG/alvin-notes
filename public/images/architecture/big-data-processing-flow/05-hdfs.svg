@@ -35,8 +35,8 @@
 <path d="M 675 305 L 675 350 L 845 350 L 845 395" class="arrow"/>
 <path d="M 675 305 L 675 350 L 1185 350 L 1185 395" class="arrow"/>
 <text x="730" y="340" class="note" text-anchor="start" data-svg-label="">分发数据块</text>
-<line x1="1210" y1="330" x2="1210" y2="385" class="gray-arrow dash"/>
-<text x="1280" y="365" class="note" text-anchor="middle" data-svg-label="">维护索引</text>
+<line x1="1210" y1="395" x2="1210" y2="345" class="gray-arrow dash"/>
+<text x="1080" y="390" class="note" text-anchor="middle" data-svg-label="">心跳 / BlockReport</text>
 <rect id="node-7" data-svg-box="" x="60" y="700" width="285" height="150" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
 <text x="202.5" y="745" class="head" text-anchor="middle" data-svg-container="node-7">客户端读取</text>
 <text x="202.5" y="782" class="body" text-anchor="middle" data-svg-container="node-7">① 问 NameNode</text>
@@ -44,7 +44,7 @@
 <rect id="node-8" data-svg-box="" x="440" y="700" width="420" height="150" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
 <text x="650.0" y="745" class="head" text-anchor="middle" data-svg-container="node-8">② 直接去 DataNode 读写</text>
 <text x="650.0" y="782" class="body" text-anchor="middle" data-svg-container="node-8">无需让 NameNode 传输文件内容</text>
-<text x="650.0" y="816" class="body" text-anchor="middle" data-svg-container="node-8">某节点故障时读取其他副本</text>
+<text x="650.0" y="816" class="body" text-anchor="middle" data-svg-container="node-8">DataNode 故障读其他副本</text>
 <rect id="node-9" data-svg-box="" x="960" y="700" width="420" height="150" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
 <text x="1170.0" y="745" class="head" text-anchor="middle" data-svg-container="node-9">③ 得到完整文件</text>
 <text x="1170.0" y="782" class="body" text-anchor="middle" data-svg-container="node-9">分布式细节由 HDFS 屏蔽</text>
