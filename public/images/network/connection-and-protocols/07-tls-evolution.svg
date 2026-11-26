@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 860" role="img" aria-labelledby="t">
+<title id="t">HTTPS 加密演进：被攻击倒逼出的设计</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="860" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">HTTPS 加密演进：被攻击倒逼出的设计</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">对称、非对称、混合加密与 CA 证书链——每一步都在补上一个的洞</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="300" height="180" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="78" y="194" font-size="24" font-weight="700" data-svg-container="node-1">对称加密</text>
+<text x="78" y="232" font-size="22" data-svg-container="node-1">快，但密钥也要经</text>
+<text x="78" y="262" font-size="22" data-svg-container="node-1">不可信信道分发</text>
+<text x="78" y="292" font-size="22" data-svg-container="node-1">——形成死结</text>
+<rect id="node-2" data-svg-box="" x="420" y="150" width="300" height="180" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="438" y="194" font-size="24" font-weight="700" data-svg-container="node-2">非对称加密</text>
+<text x="438" y="232" font-size="22" data-svg-container="node-2">公钥可公开，但慢</text>
+<text x="438" y="262" font-size="22" data-svg-container="node-2">且只能解决单向</text>
+<text x="438" y="292" font-size="22" data-svg-container="node-2">加密问题</text>
+<rect id="node-3" data-svg-box="" x="780" y="150" width="280" height="180" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="798" y="194" font-size="24" font-weight="700" data-svg-container="node-3">混合加密</text>
+<text x="798" y="232" font-size="22" data-svg-container="node-3">非对称手段护送</text>
+<text x="798" y="262" font-size="22" data-svg-container="node-3">对称会话密钥</text>
+<text x="798" y="292" font-size="22" data-svg-container="node-3">之后全走对称加密</text>
+<rect id="node-4" data-svg-box="" x="1120" y="150" width="260" height="180" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="1138" y="194" font-size="24" font-weight="700" data-svg-container="node-4">CA 证书链</text>
+<text x="1138" y="232" font-size="22" data-svg-container="node-4">公钥可能被调包</text>
+<text x="1138" y="262" font-size="22" data-svg-container="node-4">CA 私钥签名公钥信息</text>
+<text x="1138" y="292" font-size="22" data-svg-container="node-4">根证书沿链验签</text>
+<line x1="364" y1="240" x2="416" y2="240" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<line x1="724" y1="240" x2="776" y2="240" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<line x1="1064" y1="240" x2="1116" y2="240" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect id="node-5" data-svg-box="" x="60" y="400" width="640" height="280" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="444" font-size="26" font-weight="700" data-svg-container="node-5">RSA 密钥交换：历史模型</text>
+<text x="78" y="482" font-size="23" data-svg-container="node-5">“用服务器公钥加密预主密钥”</text>
+<text x="78" y="516" font-size="23" data-svg-container="node-5">是演进史上的经典模型，不是现行流程</text>
+<text x="78" y="550" font-size="23" data-svg-container="node-5">TLS 1.3 已移除 RSA 静态密钥交换</text>
+<text x="78" y="584" font-size="23" data-svg-container="node-5">它没有前向安全：私钥泄露，历史流量全失守</text>
+<rect id="node-6" data-svg-box="" x="740" y="400" width="640" height="280" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="758" y="444" font-size="26" font-weight="700" data-svg-container="node-6">版本协商的兼容细节</text>
+<text x="758" y="482" font-size="23" data-svg-container="node-6">ClientHello 的 legacy_version 仍写 1.2</text>
+<text x="758" y="516" font-size="23" data-svg-container="node-6">真实版本由 supported_versions 扩展协商</text>
+<text x="758" y="550" font-size="23" data-svg-container="node-6">中间设备看到陌生版本号可能丢包</text>
+<text x="758" y="584" font-size="23" data-svg-container="node-6">只好在版本字段上“装旧”</text>
+<rect id="node-7" data-svg-box="" x="60" y="720" width="1320" height="80" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="767.9" font-size="22" text-anchor="middle" data-svg-container="node-7">HTTPS = HTTP over TLS：加密、完整性、身份认证三件套，伪造者盖不出 CA 的章</text>
+</g></svg>

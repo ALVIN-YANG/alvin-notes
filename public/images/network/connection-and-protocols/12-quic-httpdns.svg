@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" role="img" aria-labelledby="t">
+<title id="t">QUIC、HTTP/3 与 HTTPDNS</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="810" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">QUIC、HTTP/3 与 HTTPDNS</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">用户态重写可靠传输消除队头阻塞，以及移动端解析的防劫持补丁</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="320" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="78" y="194" font-size="26" font-weight="700" data-svg-container="node-1">QUIC（RFC 9000/9001）</text>
+<text x="78" y="232" font-size="23" data-svg-container="node-1">用户态基于 UDP 重写可靠传输</text>
+<text x="78" y="264" font-size="23" data-svg-container="node-1">传输握手与 TLS 1.3 合并：1-RTT</text>
+<text x="78" y="296" font-size="23" data-svg-container="node-1">可 0-RTT 恢复会话</text>
+<text x="78" y="328" font-size="23" data-svg-container="node-1">流相互独立：单流丢包不堵其他流</text>
+<text x="78" y="360" font-size="23" data-svg-container="node-1">→ 消除 TCP 层队头阻塞</text>
+<text x="78" y="392" font-size="23" data-svg-container="node-1">连接 ID 标识连接：Wi-Fi 切蜂窝不断连</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="320" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="758" y="194" font-size="26" font-weight="700" data-svg-container="node-2">HTTP/3 = HTTP over QUIC</text>
+<text x="758" y="232" font-size="23" data-svg-container="node-2">跑在 QUIC 上的 HTTP</text>
+<text x="758" y="266" font-size="23" data-svg-container="node-2">工程上不要唯版本论</text>
+<text x="758" y="300" font-size="23" data-svg-container="node-2">优先 HTTP/3，链路不通自动降级</text>
+<text x="758" y="334" font-size="23" data-svg-container="node-2">降级链：HTTP/3 → HTTP/2 → HTTP/1.1</text>
+<rect id="node-3" data-svg-box="" x="60" y="510" width="1320" height="240" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="78" y="554" font-size="26" font-weight="700" data-svg-container="node-3">HTTPDNS：移动端的解析补丁</text>
+<text x="78" y="592" font-size="23" data-svg-container="node-3">传统 DNS 走 UDP 53 明文查询：易被劫持、调度粗糙</text>
+<text x="78" y="626" font-size="23" data-svg-container="node-3">App 通过 HTTP/HTTPS 接口直接向服务商解析</text>
+<text x="78" y="660" font-size="23" data-svg-container="node-3">防劫持；按出口 IP 就近返回 IP 列表，客户端自行择优</text>
+<text x="78" y="694" font-size="23" data-svg-container="node-3">适合对解析可控性要求高的移动端</text>
+</g></svg>

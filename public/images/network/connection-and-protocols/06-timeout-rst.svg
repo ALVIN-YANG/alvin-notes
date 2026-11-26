@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 970" role="img" aria-labelledby="t">
+<title id="t">超时、RST 与连接容量</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="970" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">超时、RST 与连接容量</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">两类超时怎么配、RST 三成因的排查顺序、服务器连接数的真实瓶颈</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="280" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="194" font-size="26" font-weight="700" data-svg-container="node-1">超时按阶段分两类</text>
+<text x="78" y="232" font-size="23" data-svg-container="node-1">连接超时：SYN 发出后等待应答的期限</text>
+<text x="78" y="266" font-size="23" data-svg-container="node-1">读写超时：已建立连接上单次收发的期限</text>
+<text x="78" y="300" font-size="23" data-svg-container="node-1">都应小于中间设备的空闲清理时间</text>
+<text x="78" y="334" font-size="23" data-svg-container="node-1">否则永远在复用已被静默回收的连接</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="280" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="758" y="194" font-size="26" font-weight="700" data-svg-container="node-2">RST：强制断连，数据可能被丢弃</text>
+<text x="758" y="232" font-size="23" data-svg-container="node-2">① 访问没有进程监听的端口</text>
+<text x="758" y="266" font-size="23" data-svg-container="node-2">② 空闲连接被中间设备清理后再发数据</text>
+<text x="758" y="300" font-size="23" data-svg-container="node-2">③ 服务端重启丢失连接状态</text>
+<text x="758" y="334" font-size="23" data-svg-container="node-2">只监听 127.0.0.1：外部被 RST，本机自测正常</text>
+<rect id="node-3" data-svg-box="" x="60" y="470" width="1320" height="110" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="720.0" y="516.4" font-size="22" text-anchor="middle" data-svg-container="node-3">排查顺序：抓包确定 RST 是谁发的 → 查进程是否在听 → 查中间设备超时 → 最后查业务代码</text>
+<text x="720.0" y="549.4" font-size="22" text-anchor="middle" data-svg-container="node-3">不要一上来就改业务代码</text>
+<rect id="node-4" data-svg-box="" x="60" y="620" width="1320" height="290" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="78" y="664" font-size="26" font-weight="700" data-svg-container="node-4">服务器能扛多少连接？</text>
+<text x="78" y="702" font-size="23" data-svg-container="node-4">65535 限制的是单客户端对单一目标的源端口数，不是服务器上限</text>
+<text x="78" y="736" font-size="23" data-svg-container="node-4">服务器一个端口可服务大量四元组不同的连接</text>
+<text x="78" y="770" font-size="23" data-svg-container="node-4">真实瓶颈：文件描述符上限、每连接内存（内核缓冲区 KB 级）、CPU</text>
+<text x="78" y="804" font-size="23" data-svg-container="node-4">默认几千连接；配合 epoll 与调优可到百万级（C10M）</text>
+<text x="78" y="838" font-size="23" data-svg-container="node-4">listen 的 backlog 队列满时新 SYN 被直接丢弃</text>
+<text x="78" y="872" font-size="23" data-svg-container="node-4">→ 客户端表现为连接超时而非拒绝，压测中“莫名超时”常源于此</text>
+</g></svg>

@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1108" role="img" aria-labelledby="svgTitle">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1440" role="img" aria-labelledby="svgTitle">
 <title id="svgTitle">完整旅程：输入网址后一个数据包的一生</title>
 <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
-<rect width="1440" height="1108" fill="#fbfaf6"/>
+<rect width="1440" height="1440" fill="#fbfaf6"/>
 <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
 <text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">输入网址到页面显示：一个数据包的一生</text>
 <text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">每一跳只做一件事：解析名字、找到下一跳、转发、翻译地址、送达进程；排障就是在这条链上定位断点</text>
@@ -46,5 +46,12 @@
 <text x="112" y="1019" font-size="26" font-weight="700" fill="#ffffff" text-anchor="middle" data-svg-container="node-7">7</text>
 <text x="164" y="995" font-size="24" font-weight="700" fill="#24282f" data-svg-container="node-7">送达进程、响应返回与关闭</text>
 <text x="164" y="1036" font-size="22" fill="#5c626b" data-svg-container="node-7">服务器解封装、按端口交给 Web 进程；响应沿路返回未必同路；持久连接复用请求，最终四次挥手关闭</text>
+<rect id="node-8" data-svg-box="" x="60" y="1110" width="1320" height="290" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="88" y="1155" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-8">排障：在这条链上定位断点</text>
+<text x="88" y="1188" font-size="22" fill="#24282f" data-svg-container="node-8">ping 五步走：回环 127.0.0.1 → 内网 IP → 网关 → 目标 IP → 域名，由近及远定界</text>
+<text x="88" y="1226" font-size="22" fill="#24282f" data-svg-container="node-8">依次验证协议栈、网卡、路由器、本端远端与 DNS</text>
+<text x="88" y="1264" font-size="22" fill="#5c626b" data-svg-container="node-8">TTL 是对方初始值（Linux 常见 64、Windows 常见 128）减去经过的路由器跳数，反映距离</text>
+<text x="88" y="1302" font-size="22" fill="#5c626b" data-svg-container="node-8">请求超时是有去无回；目标主机不可达是对端下线或地址错误；硬件错误查本机网卡网线</text>
+<text x="88" y="1340" font-size="22" fill="#5c626b" data-svg-container="node-8">超时分类定位：连接超时多在网络层或对端未监听；读超时是建连后等不到响应，多在服务端慢</text>
 </g>
 </svg>

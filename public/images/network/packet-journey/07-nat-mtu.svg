@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">NAT 改写地址与端口，MTU 约束包的大小</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="900" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">NAT 改了什么，包能有多大</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">SNAT 出方向改源地址端口，DNAT 入方向映射到内网；MSS 由双方各自通告，工程上用 PMTUD 避免分片</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="470" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">NAT：私网地址如何上公网</text>
+<text x="88" y="238" font-size="22" fill="#24282f" data-svg-container="node-1">SNAT 改源地址；NAPT 把端口也纳入映射表</text>
+<rect id="node-2" data-svg-box="" x="88" y="262" width="584" height="140" rx="14" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="108" y="302" font-size="22" font-weight="700" fill="#24282f" data-svg-container="node-2">NAPT 映射表（示例）</text>
+<text x="108" y="340" font-size="22" fill="#24282f" data-svg-container="node-2">192.168.1.10:5000 ↔ 203.0.113.5:60001</text>
+<text x="108" y="378" font-size="22" fill="#24282f" data-svg-container="node-2">192.168.1.11:5000 ↔ 203.0.113.5:60002</text>
+<text x="88" y="466" font-size="22" fill="#24282f" data-svg-container="node-1">回包按目的端口对号入座；DNAT 反向映射到内网服务器</text>
+<text x="88" y="506" font-size="22" fill="#5c626b" data-svg-container="node-1">代价：外网无法主动连入，需补 DNAT 规则</text>
+<text x="88" y="546" font-size="22" fill="#5c626b" data-svg-container="node-1">一个公网地址仅六万多个端口；端到端直连被打破</text>
+<text x="88" y="587" font-size="22" fill="#5c626b" data-svg-container="node-1">运营商可再做一层 CGNAT：WAN 口拿到的也是内网地址</text>
+<rect id="node-3" data-svg-box="" x="740" y="150" width="640" height="470" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="768" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-3">MTU 1500 与 MSS 1460</text>
+<rect id="node-4" data-svg-box="" x="768" y="225" width="150" height="62" rx="8" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="843.0" y="264" font-size="20" fill="#24282f" text-anchor="middle" data-svg-container="node-4">IP 头 20B</text>
+<rect id="node-5" data-svg-box="" x="918" y="225" width="170" height="62" rx="8" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="1003.0" y="264" font-size="20" fill="#24282f" text-anchor="middle" data-svg-container="node-5">TCP 头 20B</text>
+<rect id="node-6" data-svg-box="" x="1088" y="225" width="264" height="62" rx="8" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="1220.0" y="264" font-size="20" fill="#24282f" text-anchor="middle" data-svg-container="node-6">数据 = MSS 1460</text>
+<text x="768" y="330" font-size="22" fill="#24282f" data-svg-container="node-3">1500 − 20（IP 头）− 20（TCP 头）= 1460</text>
+<text x="768" y="368" font-size="22" fill="#24282f" data-svg-container="node-3">MSS 在 SYN 中由双方各自通告，发送不超过对方通告值</text>
+<text x="768" y="412" font-size="22" fill="#5c626b" data-svg-container="node-3">中间设备常用 MSS Clamping 压小通告值适应隧道</text>
+<text x="768" y="450" font-size="22" fill="#5c626b" data-svg-container="node-3">超 MTU 的 IPv4 包在网络层分片，任一片丢失整包重传</text>
+<text x="768" y="488" font-size="22" fill="#5c626b" data-svg-container="node-3">用 PMTUD：发大包置不分片位，沿途设备回 ICMP 报文</text>
+<text x="768" y="532" font-size="22" fill="#5c626b" data-svg-container="node-3">数据中心巨型帧约 9000 字节，出机房仍按 1500 规划</text>
+<rect id="node-7" data-svg-box="" x="60" y="660" width="1320" height="200" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="88" y="705" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-7">IPv6：128 位地址是最终解法，但迁移慢</text>
+<text x="88" y="748" font-size="22" fill="#24282f" data-svg-container="node-7">普及慢：NAT 缓解紧迫性；两版协议互不兼容、系统设备应用都要双栈；URL 方括号等细节抬高成本</text>
+<text x="88" y="789" font-size="22" fill="#24282f" data-svg-container="node-7">过渡靠双栈并行与隧道（IPv6 包封装进 IPv4 传输）；地址解析用 NDP 而非 ARP</text>
+<text x="88" y="829" font-size="22" fill="#5c626b" data-svg-container="node-7">NAT 只是地址转换，客观挡住一些主动连接，但不能当防火墙依赖</text>
+</g>
+</svg>

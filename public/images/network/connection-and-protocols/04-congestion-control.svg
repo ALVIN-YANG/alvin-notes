@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 930" role="img" aria-labelledby="t">
+<title id="t">拥塞控制：保护中间网络</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="930" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">拥塞控制：保护中间网络</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">丢包驱动的 Reno 与 CUBIC、模型驱动的 BBR，以及实践选型</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="1320" height="110" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="196.4" font-size="22" text-anchor="middle" data-svg-container="node-1">拥塞控制保护中间网络：路由器缓冲区填满就开始丢包</text>
+<text x="720.0" y="229.4" font-size="22" text-anchor="middle" data-svg-container="node-1">发送方实际发送上限 = min（接收窗口 rwnd，拥塞窗口 cwnd）</text>
+<rect id="node-2" data-svg-box="" x="60" y="300" width="420" height="380" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="78" y="344" font-size="26" font-weight="700" data-svg-container="node-2">Reno：丢包驱动</text>
+<text x="78" y="382" font-size="22" data-svg-container="node-2">慢启动：cwnd 指数翻倍</text>
+<text x="78" y="416" font-size="22" data-svg-container="node-2">过阈值后每 RTT 线性 +1</text>
+<text x="78" y="450" font-size="22" data-svg-container="node-2">丢包 → 快重传快恢复、减半</text>
+<text x="78" y="484" font-size="22" data-svg-container="node-2">随机丢包就减半</text>
+<text x="78" y="518" font-size="22" data-svg-container="node-2">高带宽链路浪费严重</text>
+<rect id="node-3" data-svg-box="" x="510" y="300" width="420" height="380" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="528" y="344" font-size="26" font-weight="700" data-svg-container="node-3">CUBIC：Linux 默认</text>
+<text x="528" y="382" font-size="22" data-svg-container="node-3">记录丢包时的最大窗口 Wmax</text>
+<text x="528" y="416" font-size="22" data-svg-container="node-3">三次函数先平缓逼近 Wmax</text>
+<text x="528" y="450" font-size="22" data-svg-container="node-3">再加速越过，适配高带宽长距离</text>
+<text x="528" y="484" font-size="22" data-svg-container="node-3">仍是丢包驱动</text>
+<text x="528" y="518" font-size="22" data-svg-container="node-3">无线随机丢包照样误降速</text>
+<rect id="node-4" data-svg-box="" x="960" y="300" width="420" height="380" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="978" y="344" font-size="26" font-weight="700" data-svg-container="node-4">BBR：模型驱动</text>
+<text x="978" y="382" font-size="22" data-svg-container="node-4">丢包只触发重传，不参与测速</text>
+<text x="978" y="414" font-size="22" data-svg-container="node-4">采样瓶颈带宽与最小 RTT 建模</text>
+<text x="978" y="446" font-size="18" data-svg-container="node-4">Startup→Drain→ProbeBW→ProbeRTT</text>
+<text x="978" y="478" font-size="22" data-svg-container="node-4">Wi-Fi / 4G/5G 随机丢包链路更好</text>
+<text x="978" y="510" font-size="22" data-svg-container="node-4">短板：与 CUBIC 共存的公平性</text>
+<text x="978" y="542" font-size="22" data-svg-container="node-4">探测期有瞬时排队波动</text>
+<rect id="node-5" data-svg-box="" x="60" y="720" width="1320" height="150" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="78" y="764" font-size="26" font-weight="700" data-svg-container="node-5">实践选型</text>
+<text x="78" y="802" font-size="23" data-svg-container="node-5">有线数据中心常用 CUBIC；无线移动场景倾向 BBR</text>
+<text x="78" y="836" font-size="23" data-svg-container="node-5">平衡带宽利用率、排队延迟与丢包三者的关系</text>
+</g></svg>

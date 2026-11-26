@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">ARP 与三张表：局域网里怎么交付</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="980" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">知道 IP 之后，怎么找到那块网卡</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">ARP 把 IP 翻译成 MAC；ARP 表、MAC 表、路由表三张表接力完成交付</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="310" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">ARP：把 IP 翻译成 MAC</text>
+<text x="88" y="239" font-size="23" fill="#24282f" data-svg-container="node-1">发方广播“谁是 192.168.1.1？”，目标单播应答</text>
+<text x="88" y="280" font-size="22" fill="#24282f" data-svg-container="node-1">结果写入 ARP 缓存表，不用则几分钟后老化删除</text>
+<text x="88" y="323" font-size="22" fill="#5c626b" data-svg-container="node-1">设备主动广播自己的绑定（免费 ARP）做冲突检测</text>
+<text x="88" y="363" font-size="22" fill="#5c626b" data-svg-container="node-1">伪造免费 ARP 可让全网把网关流量发给攻击者</text>
+<text x="88" y="403" font-size="22" fill="#5c626b" data-svg-container="node-1">防御靠交换机 DAI 或静态绑定；IPv6 用 NDP 替代</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="310" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="768" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-2">三张表接力：依据包上四个地址</text>
+<text x="768" y="238" font-size="22" fill="#24282f" data-svg-container="node-2">ARP 表｜主机与路由器：IP 到了找谁</text>
+<text x="768" y="279" font-size="22" fill="#24282f" data-svg-container="node-2">MAC 表｜交换机：从哪个口出去，查不到就洪泛</text>
+<text x="768" y="319" font-size="22" fill="#24282f" data-svg-container="node-2">路由表｜主机与路由器：跨网段下一跳交给谁</text>
+<text x="768" y="362" font-size="22" fill="#5c626b" data-svg-container="node-2">主机发包前也查路由表选出口，匹配不到走默认路由</text>
+<text x="768" y="402" font-size="22" fill="#5c626b" data-svg-container="node-2">设备换端口而表项未老化，是“突然不通”的常见原因</text>
+<rect id="node-3" data-svg-box="" x="60" y="500" width="1320" height="140" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="88" y="542" font-size="23" font-weight="700" fill="#24282f" data-svg-container="node-3">交换机只工作在二层；跨 VLAN 互访超出二层能力，必须由三层设备转发</text>
+<text x="88" y="582" font-size="22" fill="#5c626b" data-svg-container="node-3">VLAN 把一台物理交换机划成多个广播域；三层交换机第一个包查路由、后续包硬件直转——一次路由、多次转发</text>
+<rect id="node-4" data-svg-box="" x="60" y="680" width="1320" height="260" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="88" y="725" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-4">三种交付方式：单播、广播、组播</text>
+<text x="88" y="758" font-size="23" fill="#24282f" data-svg-container="node-4">单播一对一：日常网页与消息；广播一对所有：如 ARP 询问</text>
+<text x="88" y="798" font-size="23" fill="#24282f" data-svg-container="node-4">组播一对一组：D 类地址 224.0.0.0/4，主机用 IGMP 加组，每条链路只走一份</text>
+<text x="88" y="842" font-size="22" fill="#5c626b" data-svg-container="node-4">组播难落地：TCP 不支持、公网沿途路由器难全支持——百万级直播实际用 CDN 分发加单播</text>
+<text x="88" y="882" font-size="22" fill="#5c626b" data-svg-container="node-4">实时音视频走 RTP（通常基于 UDP）；防火墙只放行 TCP 时回退 RTP over TCP，代价是队头阻塞</text>
+</g>
+</svg>

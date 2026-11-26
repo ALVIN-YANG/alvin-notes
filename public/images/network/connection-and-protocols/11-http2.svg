@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 870" role="img" aria-labelledby="t">
+<title id="t">HTTP/1.1 到 HTTP/2：连接效率之战</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="870" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">HTTP/1.1 到 HTTP/2：连接效率之战</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">持久连接与多路复用解决了什么，又是什么洞留给了 QUIC</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="300" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="194" font-size="26" font-weight="700" data-svg-container="node-1">HTTP/1.1</text>
+<text x="78" y="232" font-size="23" data-svg-container="node-1">持久连接：TCP 不再每个请求都关</text>
+<text x="78" y="264" font-size="23" data-svg-container="node-1">但请求串行：响应没回完下一个不能发</text>
+<text x="78" y="296" font-size="23" data-svg-container="node-1">→ 应用层队头阻塞</text>
+<text x="78" y="328" font-size="23" data-svg-container="node-1">浏览器对策：每域名并行约 6 条连接</text>
+<text x="78" y="360" font-size="23" data-svg-container="node-1">（6 条是实现策略，不是协议规定）</text>
+<text x="78" y="392" font-size="23" data-svg-container="node-1">pipelining 响应须按序 → 名存实亡</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="300" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="758" y="194" font-size="26" font-weight="700" data-svg-container="node-2">HTTP/2（RFC 9113，源自 SPDY）</text>
+<text x="758" y="232" font-size="23" data-svg-container="node-2">二进制帧：多个流在同一连接交错传输</text>
+<text x="758" y="266" font-size="23" data-svg-container="node-2">多路复用解决 HTTP 层队头阻塞</text>
+<text x="758" y="300" font-size="23" data-svg-container="node-2">HPACK 头部压缩</text>
+<text x="758" y="334" font-size="23" data-svg-container="node-2">服务器推送浪费带宽，少有浏览器启用</text>
+<text x="60" y="496" font-size="22" fill="#5f6672" text-anchor="start" data-svg-label="">例：一条连接上三个流的帧交错发送</text>
+<rect id="node-3" data-svg-box="" x="60" y="510" width="200" height="64" rx="10" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="160.0" y="549.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-3">流 1</text>
+<rect id="node-4" data-svg-box="" x="284" y="510" width="200" height="64" rx="10" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="384.0" y="549.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-4">流 3</text>
+<rect id="node-5" data-svg-box="" x="508" y="510" width="200" height="64" rx="10" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="608.0" y="549.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-5">流 1</text>
+<rect id="node-6" data-svg-box="" x="732" y="510" width="200" height="64" rx="10" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="832.0" y="549.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-6">流 5</text>
+<rect id="node-7" data-svg-box="" x="956" y="510" width="200" height="64" rx="10" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="1056.0" y="549.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-7">流 3</text>
+<rect id="node-8" data-svg-box="" x="1180" y="510" width="200" height="64" rx="10" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="1280.0" y="549.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-8">流 5</text>
+<text x="720" y="624" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">单条流响应慢，不阻塞其他流（HTTP 层）</text>
+<rect id="node-9" data-svg-box="" x="60" y="660" width="1320" height="150" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="78" y="704" font-size="26" font-weight="700" data-svg-container="node-9">但 TCP 层队头阻塞仍在</text>
+<text x="78" y="742" font-size="23" data-svg-container="node-9">一个 TCP 丢包 → 所有流一起停下等重传</text>
+<text x="78" y="776" font-size="23" data-svg-container="node-9">TCP 在内核里改不动、升级慢，弱网还把随机丢包误判为拥塞 → 这个洞留给 QUIC 补</text>
+</g></svg>

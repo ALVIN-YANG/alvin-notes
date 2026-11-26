@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 850" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">安全：防火墙怎么拦，DDoS 怎么淹，VPN 怎么绕</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="850" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">攻击在哪一环，防守就在哪一环</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">防火墙按规则放行；DDoS 不入侵只淹没，缓解靠稀释、清洗与入口过滤；VPN 建私有通道</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="250" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">防火墙：按规则放行或拦截</text>
+<text x="88" y="238" font-size="22" fill="#24282f" data-svg-container="node-1">按端口：对公网封闭 3389 等高危端口</text>
+<text x="88" y="279" font-size="22" fill="#24282f" data-svg-container="node-1">按 IP 黑白名单；按连接状态只放行正常 TCP</text>
+<text x="88" y="319" font-size="22" fill="#24282f" data-svg-container="node-1">按协议：禁用明文的 Telnet/FTP</text>
+<text x="88" y="360" font-size="22" fill="#24282f" data-svg-container="node-1">按时间、按应用内容识别</text>
+<rect id="node-2" data-svg-box="" x="60" y="440" width="640" height="370" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="88" y="485" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-2">DDoS：不入侵，只淹没</text>
+<text x="88" y="528" font-size="22" fill="#24282f" data-svg-container="node-2">带宽层：ICMP/UDP 洪水；反射放大——几十字节</text>
+<text x="88" y="567" font-size="22" fill="#24282f" data-svg-container="node-2">DNS 查询可换近 3000 字节响应（约 50 倍）</text>
+<text x="88" y="609" font-size="22" fill="#24282f" data-svg-container="node-2">连接层：SYN 洪水只发 SYN 不完成握手，</text>
+<text x="88" y="648" font-size="22" fill="#24282f" data-svg-container="node-2">耗尽半连接队列（backlog 决定全连接队列长度）</text>
+<text x="88" y="690" font-size="22" fill="#24282f" data-svg-container="node-2">应用层：HTTP 洪水用真实 IP 或代理池打计算与 IO</text>
+<text x="88" y="732" font-size="22" fill="#5c626b" data-svg-container="node-2">缓解：CDN 稀释、流量清洗（代答握手、按信誉过滤）</text>
+<text x="88" y="771" font-size="22" fill="#5c626b" data-svg-container="node-2">BCP 38 入口源地址过滤依赖全球运营商协作</text>
+<rect id="node-3" data-svg-box="" x="740" y="150" width="640" height="250" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="768" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-3">VPN：公网上的私有通道</text>
+<text x="768" y="238" font-size="22" fill="#24282f" data-svg-container="node-3">隧道封装 + 加密 + 身份认证</text>
+<text x="768" y="279" font-size="22" fill="#24282f" data-svg-container="node-3">三类：站点到站点、远程访问、SSL VPN</text>
+<text x="768" y="321" font-size="22" fill="#5c626b" data-svg-container="node-3">代价：信任 VPN 服务商，加解密与绕行降速</text>
+<text x="768" y="360" font-size="22" fill="#5c626b" data-svg-container="node-3">且须合规使用</text>
+<rect id="node-4" data-svg-box="" x="740" y="440" width="640" height="370" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="768" y="485" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-4">攻击面：不止链路层</text>
+<text x="768" y="528" font-size="22" fill="#24282f" data-svg-container="node-4">社会工程、密码攻击、中间人、漏洞利用与</text>
+<text x="768" y="567" font-size="22" fill="#24282f" data-svg-container="node-4">恶意软件同样高发，防御思路各不相同</text>
+<text x="768" y="609" font-size="22" fill="#24282f" data-svg-container="node-4">链路上最典型的是 ARP 欺骗：伪造免费 ARP</text>
+<text x="768" y="648" font-size="22" fill="#24282f" data-svg-container="node-4">让全网把网关流量发给攻击者（见第 3 章）</text>
+<text x="768" y="690" font-size="22" fill="#5c626b" data-svg-container="node-4">DDoS 不追求入侵，而是用流量耗尽带宽、</text>
+<text x="768" y="728" font-size="22" fill="#5c626b" data-svg-container="node-4">连接表或应用资源</text>
+</g>
+</svg>

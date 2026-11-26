@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 770" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">DHCP：四步拿到地址，按租期续约</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="770" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">设备连上网，第一个 IP 地址从哪来</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">DHCP 基于 UDP：服务器监听 67 端口、客户端用 68 端口，四步交互后租约生效</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="1320" height="580" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">DHCP 四步（DORA）</text>
+<rect id="node-2" data-svg-box="" x="110" y="225" width="240" height="108" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="230" y="268" font-size="24" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-2">客户端</text>
+<text x="230" y="309" font-size="22" fill="#5c626b" text-anchor="middle" data-svg-container="node-2">还没有地址</text>
+<rect id="node-3" data-svg-box="" x="1090" y="225" width="240" height="108" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="1210" y="268" font-size="24" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-3">DHCP 服务器</text>
+<text x="1210" y="309" font-size="22" fill="#5c626b" text-anchor="middle" data-svg-container="node-3">从地址池分配</text>
+<path d="M230 333L230 650" fill="none" stroke="#c9c2b2" stroke-width="2" stroke-dasharray="6 7"/>
+<path d="M1210 333L1210 650" fill="none" stroke="#c9c2b2" stroke-width="2" stroke-dasharray="6 7"/>
+<text x="720" y="373" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">① Discover 广播：源 0.0.0.0 → 255.255.255.255，寻找服务器</text>
+<path d="M230 385L1198 385" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="720" y="446" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">② Offer：空闲地址 + 子网掩码 + 网关 + DNS 服务器 + 租期</text>
+<path d="M1210 458L242 458" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="720" y="519" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">③ Request 广播：声明选中哪一份，其他服务器撤销预留</text>
+<path d="M230 531L1198 531" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="720" y="592" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">④ ACK：租约生效，地址可用</text>
+<path d="M1210 604L242 604" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="88" y="662" font-size="22" fill="#5c626b" data-svg-container="node-1">租期 50% 时单播续约，失败则 87.5% 改广播再试，100% 仍失败就停用地址重新申请</text>
+<text x="88" y="700" font-size="22" fill="#5c626b" data-svg-container="node-1">拿到地址后通常发无故 ARP，探测地址是否冲突</text>
+</g>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 910" role="img" aria-labelledby="t">
+<title id="t">流量控制：保护接收方</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="910" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">流量控制：保护接收方</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">接收窗口随 ACK 右滑、零窗口探测与糊涂窗口综合症</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="1320" height="110" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="196.4" font-size="22" text-anchor="middle" data-svg-container="node-1">接收方在每个 ACK 里携带接收窗口 rwnd（缓冲区剩余空间）</text>
+<text x="720.0" y="229.4" font-size="22" text-anchor="middle" data-svg-container="node-1">发送窗口随 ACK 向右滑动；实际发送上限 = min（rwnd，cwnd）</text>
+<text x="60" y="296" font-size="22" fill="#5f6672" text-anchor="start" data-svg-label="">例：已确认到字节 4，对方通告 rwnd=8 → 发送窗口覆盖字节 5–12</text>
+<rect id="node-2" data-svg-box="" x="60" y="310" width="312" height="96" rx="10" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="216.0" y="350.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-2">已确认</text>
+<text x="216.0" y="380.9" font-size="22" text-anchor="middle" data-svg-container="node-2">字节 1–4</text>
+<rect id="node-3" data-svg-box="" x="396" y="310" width="312" height="96" rx="10" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="552.0" y="350.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-3">已发未确认</text>
+<text x="552.0" y="380.9" font-size="22" text-anchor="middle" data-svg-container="node-3">字节 5–8</text>
+<rect id="node-4" data-svg-box="" x="732" y="310" width="312" height="96" rx="10" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="888.0" y="350.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-4">可发送</text>
+<text x="888.0" y="380.9" font-size="22" text-anchor="middle" data-svg-container="node-4">字节 9–12</text>
+<rect id="node-5" data-svg-box="" x="1068" y="310" width="312" height="96" rx="10" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="1224.0" y="350.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-5">不可发送</text>
+<text x="1224.0" y="380.9" font-size="22" text-anchor="middle" data-svg-container="node-5">字节 13–16</text>
+<text x="720" y="452" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">收到 ACK=9 → 窗口右滑：字节 9–12 变成已发未确认，13–16 变成可发送</text>
+<rect id="node-6" data-svg-box="" x="60" y="490" width="640" height="240" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="534" font-size="26" font-weight="700" data-svg-container="node-6">零窗口与死锁</text>
+<text x="78" y="572" font-size="23" data-svg-container="node-6">缓冲区满 → 通告 rwnd=0，发送方停发</text>
+<text x="78" y="606" font-size="23" data-svg-container="node-6">窗口更新报文若丢失，双方互等成死锁</text>
+<text x="78" y="640" font-size="23" data-svg-container="node-6">解法：持续计时器定期发零窗口探测</text>
+<text x="78" y="674" font-size="23" data-svg-container="node-6">探测报文逼对方回报当前窗口</text>
+<rect id="node-7" data-svg-box="" x="740" y="490" width="640" height="240" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="758" y="534" font-size="26" font-weight="700" data-svg-container="node-7">糊涂窗口综合症</text>
+<text x="758" y="572" font-size="23" data-svg-container="node-7">应用每次只读 1 字节 → 通告 rwnd=1</text>
+<text x="758" y="606" font-size="23" data-svg-container="node-7">1 字节数据配 40 字节头部 → 小包塞满网络</text>
+<text x="758" y="640" font-size="23" data-svg-container="node-7">解法（Clark）：接收方攒够空间再通告</text>
+<text x="758" y="674" font-size="23" data-svg-container="node-7">解法（Nagle）：发送方凑够数据再发</text>
+<rect id="node-8" data-svg-box="" x="60" y="770" width="1320" height="80" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="817.9" font-size="22" text-anchor="middle" data-svg-container="node-8">流量控制只看接收方缓冲区：窗口跟着应用消费速度走，与网络拥塞无关</text>
+</g></svg>

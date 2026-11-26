@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">DNS：一棵树、两种查询、13 个根地址</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="810" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">域名怎么翻译成 IP 地址</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">客户端递归地问 LocalDNS，LocalDNS 迭代地问根、顶级域、权威；沿途每级都有缓存</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="1320" height="300" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">DNS 是一棵分层的树：根域 → 顶级域（.com、.cn）→ 具体域名</text>
+<rect id="node-2" data-svg-box="" x="100" y="250" width="170" height="70" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="185.0" y="294" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-2">客户端</text>
+<rect id="node-3" data-svg-box="" x="390" y="250" width="200" height="70" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="490.0" y="294" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-3">LocalDNS</text>
+<rect id="node-4" data-svg-box="" x="700" y="250" width="110" height="70" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="755.0" y="294" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-4">根</text>
+<rect id="node-5" data-svg-box="" x="850" y="250" width="130" height="70" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="915.0" y="294" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-5">顶级域</text>
+<rect id="node-6" data-svg-box="" x="1020" y="250" width="180" height="70" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="1110.0" y="294" font-size="23" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-6">权威服务器</text>
+<text x="330" y="236" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">递归查询：只要结果</text>
+<text x="950" y="236" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-1">迭代查询：每层只指出下一个该问谁</text>
+<path d="M272 285L388 285" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M592 285L698 285" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M812 285L848 285" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<path d="M982 285L1018 285" fill="none" stroke="#d97745" stroke-width="3" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="88" y="372" font-size="22" fill="#5c626b" data-svg-container="node-1">客户端先查浏览器缓存、系统缓存、hosts 文件，都未命中才问 LocalDNS</text>
+<text x="88" y="412" font-size="22" fill="#5c626b" data-svg-container="node-1">LocalDNS 由运营商或内网提供；沿途每级都有缓存，过期才重新走链路</text>
+<rect id="node-7" data-svg-box="" x="60" y="490" width="640" height="280" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="88" y="535" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-7">根服务器：13 个地址，上千镜像</text>
+<text x="88" y="579" font-size="23" fill="#24282f" data-svg-container="node-7">全世界只有 13 个根地址（A–M）</text>
+<text x="88" y="620" font-size="22" fill="#24282f" data-svg-container="node-7">源于早期 UDP 报文限 512 字节，</text>
+<text x="88" y="659" font-size="22" fill="#24282f" data-svg-container="node-7">根地址表必须装进一个报文</text>
+<text x="88" y="701" font-size="22" fill="#24282f" data-svg-container="node-7">任播：同一个 IP 全球同时宣告，路由到最近节点</text>
+<text x="88" y="741" font-size="22" fill="#5c626b" data-svg-container="node-7">镜像实例超一千个，命中哪个取决于运营商路由</text>
+<rect id="node-8" data-svg-box="" x="740" y="490" width="640" height="280" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="768" y="535" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-8">真正关键的是根区文件</text>
+<text x="768" y="579" font-size="23" fill="#24282f" data-svg-container="node-8">记录每个顶级域归谁管</text>
+<text x="768" y="620" font-size="22" fill="#24282f" data-svg-container="node-8">修改权限 2016 年起移交 ICANN 的多方参与流程</text>
+<text x="768" y="665" font-size="22" fill="#5c626b" data-svg-container="node-8">镜像命中取决于路由而非单纯地理距离</text>
+<text x="768" y="705" font-size="22" fill="#5c626b" data-svg-container="node-8">缓存让绝大多数查询在本地就得到答案</text>
+</g>
+</svg>

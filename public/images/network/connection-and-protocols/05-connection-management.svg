@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 980" role="img" aria-labelledby="t">
+<title id="t">长短连接与 Keepalive</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="980" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">长短连接与 Keepalive</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">复用的收益与四个坑、两层保活机制的分工</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="290" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="194" font-size="26" font-weight="700" data-svg-container="node-1">长连接：建一次复用多次</text>
+<text x="78" y="232" font-size="23" data-svg-container="node-1">靠连接池统一管理；HTTP/1.1 起持久连接是默认</text>
+<text x="78" y="266" font-size="23" data-svg-container="node-1">坑 1：NAT / 防火墙清会话表 → 复用时收 RST</text>
+<text x="78" y="300" font-size="23" data-svg-container="node-1">坑 2：连接泄漏耗尽文件句柄</text>
+<text x="78" y="334" font-size="23" data-svg-container="node-1">坑 3：服务端重启，客户端残留死连接</text>
+<text x="78" y="368" font-size="23" data-svg-container="node-1">坑 4：心跳太频浪费带宽，太慢剔不出死连接</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="290" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="758" y="194" font-size="26" font-weight="700" data-svg-container="node-2">短连接：一次请求一条连接</text>
+<text x="758" y="232" font-size="23" data-svg-container="node-2">用完四次挥手即关，无复用状态</text>
+<text x="758" y="266" font-size="23" data-svg-container="node-2">天然避开长连接的四个坑</text>
+<text x="758" y="300" font-size="23" data-svg-container="node-2">但每次重建都有握手与挥手开销</text>
+<text x="758" y="334" font-size="23" data-svg-container="node-2">高频短连接下 TIME_WAIT 堆积成容量问题</text>
+<rect id="node-3" data-svg-box="" x="60" y="480" width="1320" height="290" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="78" y="524" font-size="26" font-weight="700" data-svg-container="node-3">Keepalive 有两层，别混淆</text>
+<text x="78" y="562" font-size="23" data-svg-container="node-3">TCP Keepalive：内核级探测，判断对端是否活着</text>
+<text x="78" y="596" font-size="23" data-svg-container="node-3">Linux 默认空闲约 7200 秒才开始探测</text>
+<text x="78" y="630" font-size="23" data-svg-container="node-3">HTTP Keep-Alive：应用层连接复用，与内核探测互不相干</text>
+<text x="78" y="664" font-size="23" data-svg-container="node-3">拔了网线 TCP 不会立刻报错：没有报文交互就没有失败信号</text>
+<text x="78" y="698" font-size="23" data-svg-container="node-3">只能靠重传超时或 keepalive 在数十秒到数小时后发现</text>
+<rect id="node-4" data-svg-box="" x="60" y="810" width="1320" height="110" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="856.4" font-size="22" text-anchor="middle" data-svg-container="node-4">NAT 会改写地址和端口，响应路径也不保证对称</text>
+<text x="720.0" y="889.4" font-size="22" text-anchor="middle" data-svg-container="node-4">中间设备上的连接状态比端点脆弱——心跳周期要对齐它们的空闲超时</text>
+</g></svg>

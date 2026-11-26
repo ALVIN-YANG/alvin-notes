@@ -4,20 +4,20 @@
 <rect width="1440" height="1130" fill="#fbfaf6"/>
 <g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
 <text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">TCP 连接生命周期：握手、序号与关闭</text>
-<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">三次握手同步初始序列号，序号与累积 ACK 维持可靠，四次挥手与 TIME_WAIT 收尾</text>
-<rect id="node-1" data-svg-box="" x="200" y="150" width="200" height="72" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
-<text x="300.0" y="194.4" font-size="24" font-weight="700" text-anchor="middle" data-svg-container="node-1">客户端</text>
-<rect id="node-2" data-svg-box="" x="1040" y="150" width="200" height="72" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
-<text x="1140.0" y="194.4" font-size="24" font-weight="700" text-anchor="middle" data-svg-container="node-2">服务端</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">三次握手同步初始序列号、各自通告 MSS；序号与累积 ACK 维持可靠，四次挥手收尾</text>
+<rect id="node-1" data-svg-box="" x="200" y="150" width="200" height="72" rx="10" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="300.0" y="193.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-1">客户端</text>
+<rect id="node-2" data-svg-box="" x="1040" y="150" width="200" height="72" rx="10" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="1140.0" y="193.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-2">服务端</text>
 <line x1="300" y1="222" x2="300" y2="940" stroke="#c9c2b2" stroke-width="2" stroke-dasharray="6 6"/>
 <line x1="1140" y1="222" x2="1140" y2="940" stroke="#c9c2b2" stroke-width="2" stroke-dasharray="6 6"/>
 <line x1="300" y1="255" x2="1132" y2="255" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
-<text x="720" y="243" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">① SYN，SEQ=x</text>
+<text x="720" y="243" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">① SYN，SEQ=x，通告自己的 MSS</text>
 <line x1="1140" y1="315" x2="308" y2="315" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
-<text x="720" y="303" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">② SYN+ACK，SEQ=y，ACK=x+1</text>
+<text x="720" y="303" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">② SYN+ACK，SEQ=y，ACK=x+1，也通告自己的 MSS</text>
 <line x1="300" y1="375" x2="1132" y2="375" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
-<text x="720" y="363" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">③ ACK=y+1</text>
-<text x="720" y="418" font-size="22" fill="#24282f" text-anchor="middle" data-svg-label="">状态：服务端 LISTEN → SYN_RCVD，客户端 SYN_SENT，双方进入 ESTABLISHED</text>
+<text x="720" y="363" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">③ ACK=y+1，双方进入 ESTABLISHED</text>
+<text x="720" y="418" font-size="22" fill="#24282f" text-anchor="middle" data-svg-label="">状态：服务端 LISTEN → SYN_RCVD，客户端 SYN_SENT；两个方向的 MSS 可以不同</text>
 <line x1="300" y1="480" x2="1132" y2="480" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
 <text x="720" y="468" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">数据 SEQ=101，100 字节；超时未确认即重传</text>
 <line x1="1140" y1="540" x2="308" y2="540" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
@@ -35,12 +35,12 @@
 <line x1="300" y1="880" x2="1132" y2="880" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
 <text x="720" y="868" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">ACK</text>
 <text x="720" y="925" font-size="22" fill="#24282f" text-anchor="middle" data-svg-label="">主动方进入 TIME_WAIT 等 2MSL：最后的 ACK 丢失时对方能重发 FIN</text>
-<rect id="node-3" data-svg-box="" x="60" y="955" width="640" height="130" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
-<text x="78" y="996" font-size="23" font-weight="700" data-svg-container="node-3">为什么不是两次握手</text>
-<text x="78" y="1032" font-size="22" data-svg-container="node-3">延迟的旧 SYN 会让服务端为早已放弃的连接分配资源</text>
-<text x="78" y="1062" font-size="22" data-svg-container="node-3">空等、耗尽连接表；四次则多余：SYN 与 ACK 可合并</text>
-<rect id="node-4" data-svg-box="" x="740" y="955" width="640" height="130" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
-<text x="758" y="996" font-size="23" font-weight="700" data-svg-container="node-4">TIME_WAIT 的意义与代价</text>
-<text x="758" y="1032" font-size="22" data-svg-container="node-4">等 2MSL 保证最后一个 ACK 可重传</text>
-<text x="758" y="1062" font-size="22" data-svg-container="node-4">堆积是高频短连接场景的容量问题</text>
+<rect id="node-3" data-svg-box="" x="60" y="955" width="640" height="142" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="78" y="999" font-size="26" font-weight="700" data-svg-container="node-3">为什么不是两次握手</text>
+<text x="78" y="1037" font-size="22" data-svg-container="node-3">延迟的旧 SYN 会让服务端为早已放弃的连接分配资源</text>
+<text x="78" y="1067" font-size="22" data-svg-container="node-3">空等、耗尽连接表；四次则多余：SYN 与 ACK 可合并</text>
+<rect id="node-4" data-svg-box="" x="740" y="955" width="640" height="142" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="758" y="999" font-size="26" font-weight="700" data-svg-container="node-4">TIME_WAIT 的意义与代价</text>
+<text x="758" y="1037" font-size="22" data-svg-container="node-4">等 2MSL 保证最后一个 ACK 可重传</text>
+<text x="758" y="1067" font-size="22" data-svg-container="node-4">堆积是高频短连接场景的容量问题</text>
 </g></svg>

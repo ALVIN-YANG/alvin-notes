@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 860" role="img" aria-labelledby="t">
+<title id="t">身份认证的演进：Cookie、Session 与 JWT</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="860" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">身份认证的演进：Cookie、Session 与 JWT</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">HTTP 无状态，认证是补出来的——每一步都在补部署形态带来的洞</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="220" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="78" y="194" font-size="26" font-weight="700" data-svg-container="node-1">Cookie：浏览器自动携带</text>
+<text x="78" y="232" font-size="23" data-svg-container="node-1">自动保存并携带登录标记，配签名防篡改</text>
+<text x="78" y="266" font-size="22" data-svg-container="node-1">HttpOnly / Secure / SameSite</text>
+<text x="78" y="300" font-size="23" data-svg-container="node-1">缓解 XSS 与 CSRF 两类攻击</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="220" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="758" y="194" font-size="26" font-weight="700" data-svg-container="node-2">Session：数据挪到服务端</text>
+<text x="758" y="232" font-size="23" data-svg-container="node-2">浏览器只存 Session ID</text>
+<text x="758" y="266" font-size="23" data-svg-container="node-2">分布式下被负载均衡打到别的机器 → 掉登录</text>
+<text x="758" y="300" font-size="23" data-svg-container="node-2">常规解法：Redis 中心化存储（留意其瓶颈）</text>
+<line x1="700" y1="260" x2="740" y2="260" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect id="node-3" data-svg-box="" x="60" y="410" width="1320" height="240" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="78" y="454" font-size="26" font-weight="700" data-svg-container="node-3">Token 与 JWT（RFC 7519）</text>
+<text x="78" y="492" font-size="23" data-svg-container="node-3">移动端没有浏览器的自动携带机制 → 客户端手动维护 Token</text>
+<text x="78" y="526" font-size="23" data-svg-container="node-3">JWT 三段 Header.Payload.Signature：重算签名即可校验，无需查会话存储 → 无状态</text>
+<text x="78" y="560" font-size="23" data-svg-container="node-3">Payload 只签名不加密，敏感数据不能放进去</text>
+<text x="78" y="594" font-size="23" data-svg-container="node-3">签发后难吊销 → 用短过期 + 刷新 Token 弥补</text>
+<line x1="1060" y1="370" x2="1060" y2="406" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<rect id="node-4" data-svg-box="" x="60" y="690" width="1320" height="110" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="736.4" font-size="22" text-anchor="middle" data-svg-container="node-4">浏览器单体应用：Cookie + Session 就够；多端、分布式、要无状态扩展：JWT</text>
+<text x="720.0" y="769.4" font-size="22" text-anchor="middle" data-svg-container="node-4">三者都在补同一件事：HTTP 协议本身无状态</text>
+</g></svg>

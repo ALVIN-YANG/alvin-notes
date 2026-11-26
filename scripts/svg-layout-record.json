@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "checkerHash": "b345b71795e5d41e549543a76a8def0c71a4ac5875b7a7d09d23bd683108781c",
+  "checkerHash": "8b96cda533c55f2a1b82e9c366f9bcddcf2c0c234e851b64d1ab6f54e694f1cd",
   "files": {
     "public/images/ai/agent-memory-landscape/02-claude-code.svg": {
       "sha256": "84015405faf04e2bbc59ef3824c3e9778ee14872b7ea150b85421545252e3239",
@@ -287,34 +287,58 @@
       "mode": "checked"
     },
     "public/images/network/connection-and-protocols/02-tcp-lifecycle.svg": {
-      "sha256": "9a21e87b28aaafc021fda1a2824d20236d53f0b112db98c68ff15e969fa104e7",
+      "sha256": "b00b32fe274a58a05c0e65b6814cad7a276e31cf2a660c064930783160cdbfb1",
       "mode": "checked"
     },
-    "public/images/network/connection-and-protocols/03-flow-congestion.svg": {
-      "sha256": "ffcb0d8ca74d0db635fe522d82c8b9570bc0b141a01f87a0a962835890fdd873",
+    "public/images/network/connection-and-protocols/03-flow-control.svg": {
+      "sha256": "7f1af2680cf8938cbe7f4a9e3ac33eda1c5c132a7d643718da5b1049acf8fa46",
       "mode": "checked"
     },
-    "public/images/network/connection-and-protocols/04-connection-management.svg": {
-      "sha256": "5673cf56167dd5781210d964a236bbfdd2e7ff62bb7c4787320b3640ca93f534",
+    "public/images/network/connection-and-protocols/04-congestion-control.svg": {
+      "sha256": "b54f34df0701fb8223f02b4c2567a4888e84a2865c71f6745c5fc5d9228211d0",
       "mode": "checked"
     },
-    "public/images/network/connection-and-protocols/05-tls.svg": {
-      "sha256": "3fe8fc29d4e40678f097152071f5e1336c859c09bcee6b3bee5524dbfa79a327",
+    "public/images/network/connection-and-protocols/05-connection-management.svg": {
+      "sha256": "7ee758b235925022600bc0c5bead2fc8419eb06c29d5b3f9958979b89bc2b215",
       "mode": "checked"
     },
-    "public/images/network/connection-and-protocols/06-http-evolution.svg": {
-      "sha256": "f9baa06e352c84d766e910eaa5cfd6454c19585a89b734e43ec4706696e35b8a",
+    "public/images/network/connection-and-protocols/06-timeout-rst.svg": {
+      "sha256": "f4fe2292f57fc534c1901ef1b8d9e2a28ee6ad860d282b96b5ca6be41ce86484",
       "mode": "checked"
     },
-    "public/images/network/connection-and-protocols/07-application-protocols.svg": {
+    "public/images/network/connection-and-protocols/07-tls-evolution.svg": {
+      "sha256": "ae094643ddc9e2b2d633249ca55bd0ed5a892c30fe00a4e828d9ebe2cdbb3841",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/08-tls13.svg": {
+      "sha256": "8f6f1fadaac07cdea68b4425a44be05bdd49da3bc92113ca60eb5826c47758a0",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/09-http-basics.svg": {
+      "sha256": "f42741c451b9cc41123be22b72ddaeb5ee994902378f28e55c5f32351a2ac0e0",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/10-authentication.svg": {
+      "sha256": "779b5531073855d98e52005cf4b737962093f55f1322fcaa2b0504c1ae6a334b",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/11-http2.svg": {
+      "sha256": "1efa38b2624044531a8cbe9cc4d522eb2b64575a23518d7eacf4ecd43e5c8c32",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/12-quic-httpdns.svg": {
+      "sha256": "0b4516ae482d008ad11f7e733ef048f546dce99eeb2e31906c0deb79aa86c112",
+      "mode": "checked"
+    },
+    "public/images/network/connection-and-protocols/13-application-protocols.svg": {
       "sha256": "33c657ea3137a290b2bea9e260d225509a57d848f952c85f681ac2a2585ee90a",
       "mode": "checked"
     },
-    "public/images/network/connection-and-protocols/08-streaming.svg": {
+    "public/images/network/connection-and-protocols/14-streaming.svg": {
       "sha256": "12bf658f4f159fdb8ed9979b82adb9a7c79b880a60f2af1d737155eb3ca305cc",
       "mode": "checked"
     },
-    "public/images/network/connection-and-protocols/09-delivery.svg": {
+    "public/images/network/connection-and-protocols/15-delivery.svg": {
       "sha256": "de63cbf741e259269655c1c0706115c4e655eb7caa0f26daaa3dff458ce89936",
       "mode": "checked"
     },
@@ -322,28 +346,48 @@
       "sha256": "b2e50152578b217fe7add91acc1161ab3baaad740d12273a9b345cdaa016f780",
       "mode": "checked"
     },
-    "public/images/network/packet-journey/02-onboarding.svg": {
-      "sha256": "5056665d65805f9078483b07ee95d667fe78ad811d2d2244dc08408fa7daf274",
+    "public/images/network/packet-journey/02-dhcp.svg": {
+      "sha256": "7444c4f594da4de174e0d6f44735eaf15f320cae2fab080845be3e56657cb4c9",
       "mode": "checked"
     },
-    "public/images/network/packet-journey/03-local-delivery.svg": {
-      "sha256": "a9ec7a8dca6d6509a2fa5872b42a2c5919191454a1a5080f81d0f05c67fd914b",
+    "public/images/network/packet-journey/03-ip-subnet.svg": {
+      "sha256": "59a835fb3e4949d3c079720c808b0ae74203daa58b02bc978cd752254f553e1c",
       "mode": "checked"
     },
-    "public/images/network/packet-journey/04-routing-nat.svg": {
-      "sha256": "c194249469a1159cecd6d69d9c9bf8df90a2cf25b16396376c933af4411d4cf7",
+    "public/images/network/packet-journey/04-dns.svg": {
+      "sha256": "e89eb879f031a40a78ac49eec1d5eaaf0618de2e93b7c8118b5215926585d6dc",
       "mode": "checked"
     },
-    "public/images/network/packet-journey/05-wireless.svg": {
-      "sha256": "9ba044b8b73b88d9d308007bc2d57a0f49894b75d5b093b52e5dc44ad1d8e1f9",
+    "public/images/network/packet-journey/05-arp-tables.svg": {
+      "sha256": "dd9388069eeee08c5b6112a4f368a9eb46582b8f783639b7620fd01387840494",
       "mode": "checked"
     },
-    "public/images/network/packet-journey/06-security-cdn.svg": {
-      "sha256": "3ae7552d64c2187f2b33d529e7be2af5fe77a3c8a76e9b9c55ee4aaa367b2972",
+    "public/images/network/packet-journey/06-routing.svg": {
+      "sha256": "1f544340b44969fe1021f7d7f97adaecc8148896cdb286e908761a05456d67d9",
       "mode": "checked"
     },
-    "public/images/network/packet-journey/07-full-journey.svg": {
-      "sha256": "d22d82f43c5cb09ad379b379d80c006200b017249ba5f184fdfa21a4571aca3b",
+    "public/images/network/packet-journey/07-nat-mtu.svg": {
+      "sha256": "f95a2e4c2b2b3827ace8b7c76dc8bfe1498e9ee13530fb71148b2de80911c5ac",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/08-wireless.svg": {
+      "sha256": "2ea95515dd01651adff7c96111cb275107da52f47b7fdf769ba21c2344aa3f64",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/09-wifi-cellular.svg": {
+      "sha256": "3d19de087cb9d158eb929490bbd0191978b1e17e8ab3dafef1e1241521618db0",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/10-security.svg": {
+      "sha256": "e257f23527ccd24cb7f37de05cc985c9c4b94c9d14840e8e80d784849d571934",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/11-cdn-optimization.svg": {
+      "sha256": "9ec4a8c87254575e05582b1bd9fa02804f576c48a977e90107d4c3e5a16ee8e0",
+      "mode": "checked"
+    },
+    "public/images/network/packet-journey/12-full-journey.svg": {
+      "sha256": "a0372fca119321e093938b6376df0768db10f997cb8fef9ea011c1ffd2513614",
       "mode": "checked"
     },
     "public/images/opencode/omo-architecture.svg": {

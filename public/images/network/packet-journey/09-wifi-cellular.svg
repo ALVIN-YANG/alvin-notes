@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 720" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">WiFi 与蜂窝：分工而非替代</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="720" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">为什么家里靠 WiFi，出门靠蜂窝</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">WiFi 用免费频谱在局部提供大带宽，蜂窝用授权频谱换无处不在</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="380" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">WiFi：免费频谱，局部大带宽</text>
+<text x="88" y="239" font-size="23" fill="#24282f" data-svg-container="node-1">路由器发射功率受法规限制：</text>
+<text x="88" y="278" font-size="22" fill="#24282f" data-svg-container="node-1">2.4GHz 通常 ≤100mW、5GHz ≤200mW 量级</text>
+<text x="88" y="321" font-size="22" fill="#24282f" data-svg-container="node-1">贵的路由器也打不穿墙，摆放位置比换设备有效</text>
+<text x="88" y="365" font-size="22" fill="#5c626b" data-svg-container="node-1">Wi-Fi 8 方向是可靠性：多 AP 协同降干扰、</text>
+<text x="88" y="403" font-size="22" fill="#5c626b" data-svg-container="node-1">按设备能力切分子信道、先连新 AP 再断旧</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="380" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="768" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-2">蜂窝：授权频谱，无处不在</text>
+<text x="768" y="239" font-size="23" fill="#24282f" data-svg-container="node-2">宏基站单载波功率数十瓦，比路由器高数百倍</text>
+<text x="768" y="280" font-size="22" fill="#24282f" data-svg-container="node-2">覆盖主力用 700/800/900MHz 低频，绕射强</text>
+<text x="768" y="321" font-size="22" fill="#24282f" data-svg-container="node-2">同样一堵混凝土墙，损耗远小于 2.4/5GHz</text>
+<text x="768" y="363" font-size="22" fill="#24282f" data-svg-container="node-2">授权频谱干扰可控，加上统一建设的小区切换漫游</text>
+<text x="768" y="405" font-size="22" fill="#5c626b" data-svg-container="node-2">5G 中高频单站半径只有数百米，低频段仍可覆盖公里级</text>
+<text x="768" y="446" font-size="22" fill="#5c626b" data-svg-container="node-2">6G 预计 2030 年前后商用（ITU IMT-2030 愿景）</text>
+<rect id="node-3" data-svg-box="" x="60" y="570" width="1320" height="110" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="88" y="612" font-size="23" font-weight="700" fill="#24282f" data-svg-container="node-3">分工而非替代：家庭与办公的局部高速靠 WiFi，移动与广域覆盖靠蜂窝</text>
+<text x="88" y="652" font-size="22" fill="#5c626b" data-svg-container="node-3">WiFi 信号进家主要靠反射和绕射，不是硬穿墙体</text>
+</g>
+</svg>

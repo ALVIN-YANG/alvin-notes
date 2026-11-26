@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 880" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">IP 地址、子网掩码与私有地址段</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="880" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">32 位地址怎么切分，哪些地址不能上公网</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">子网掩码把地址切成网络位与主机位；RFC 1918 三段私网地址供内部自由使用</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="440" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">IPv4 地址：32 位，点分十进制</text>
+<rect id="node-2" data-svg-box="" x="88" y="225" width="130" height="64" rx="8" fill="#ffffff" stroke="#b9c6d4" stroke-width="2"/>
+<text x="153.0" y="266" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-2">192</text>
+<rect id="node-3" data-svg-box="" x="224" y="225" width="130" height="64" rx="8" fill="#ffffff" stroke="#b9c6d4" stroke-width="2"/>
+<text x="289.0" y="266" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-3">168</text>
+<rect id="node-4" data-svg-box="" x="360" y="225" width="130" height="64" rx="8" fill="#ffffff" stroke="#b9c6d4" stroke-width="2"/>
+<text x="425.0" y="266" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-4">1</text>
+<rect id="node-5" data-svg-box="" x="496" y="225" width="130" height="64" rx="8" fill="#ffffff" stroke="#b9c6d4" stroke-width="2"/>
+<text x="561.0" y="266" font-size="23" fill="#24282f" text-anchor="middle" data-svg-container="node-5">10</text>
+<text x="88" y="330" font-size="22" fill="#5c626b" data-svg-container="node-1">每段 8 位取值 0–255，地址同时携带网络号与主机号</text>
+<text x="88" y="372" font-size="23" fill="#24282f" data-svg-container="node-1">子网掩码是切分这两段信息的尺子</text>
+<rect id="node-6" data-svg-box="" x="88" y="398" width="340" height="62" rx="8" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="258.0" y="437" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-6">网络位（连续的 1）</text>
+<rect id="node-7" data-svg-box="" x="428" y="398" width="212" height="62" rx="8" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="534.0" y="437" font-size="22" fill="#24282f" text-anchor="middle" data-svg-container="node-7">主机位（0）</text>
+<text x="88" y="502" font-size="22" fill="#5c626b" data-svg-container="node-1">主机位全 0 是网段地址、全 1 是广播地址</text>
+<text x="88" y="540" font-size="22" fill="#5c626b" data-svg-container="node-1">/24 实际可分配 254 台；划子网是为限制广播范围</text>
+<rect id="node-8" data-svg-box="" x="740" y="150" width="640" height="440" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="768" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-8">RFC 1918 私网地址与特殊地址</text>
+<text x="768" y="240" font-size="23" fill="#24282f" data-svg-container="node-8">10.0.0.0/8、172.16.0.0/12、192.168.0.0/16</text>
+<text x="768" y="280" font-size="22" fill="#5c626b" data-svg-container="node-8">172 段最容易被误当成公网</text>
+<text x="768" y="330" font-size="23" fill="#24282f" data-svg-container="node-8">127.0.0.1 本机回环；0.0.0.0 常表示任意地址</text>
+<text x="768" y="372" font-size="23" fill="#24282f" data-svg-container="node-8">169.254.0.0/16 是 DHCP 失败时的链路本地地址</text>
+<text x="768" y="424" font-size="22" fill="#5c626b" data-svg-container="node-8">IANA 的 IPv4 地址池 2011 年已分配完毕</text>
+<text x="768" y="462" font-size="22" fill="#5c626b" data-svg-container="node-8">私有地址加 NAT 是 IPv4 延续至今的关键</text>
+<text x="768" y="510" font-size="22" fill="#5c626b" data-svg-container="node-8">公网地址全球唯一、可在线上路由</text>
+<rect id="node-9" data-svg-box="" x="60" y="630" width="1320" height="210" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="88" y="675" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-9">虚拟机网络：同一套概念的四种模式</text>
+<rect id="node-10" data-svg-box="" x="88" y="700" width="300" height="100" rx="14" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="238" y="741" font-size="22" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-10">NAT 模式</text>
+<text x="238" y="777" font-size="20" fill="#5c626b" text-anchor="middle" data-svg-container="node-10">独立组网，出得去进不来</text>
+<rect id="node-11" data-svg-box="" x="403" y="700" width="300" height="100" rx="14" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="553" y="741" font-size="22" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-11">NAT 网络</text>
+<text x="553" y="777" font-size="20" fill="#5c626b" text-anchor="middle" data-svg-container="node-11">多虚拟机同网段互通</text>
+<rect id="node-12" data-svg-box="" x="718" y="700" width="300" height="100" rx="14" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="868" y="741" font-size="22" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-12">桥接模式</text>
+<text x="868" y="777" font-size="20" fill="#5c626b" text-anchor="middle" data-svg-container="node-12">接入局域网与宿主机平级</text>
+<rect id="node-13" data-svg-box="" x="1033" y="700" width="300" height="100" rx="14" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="1183" y="741" font-size="22" font-weight="700" fill="#24282f" text-anchor="middle" data-svg-container="node-13">仅主机模式</text>
+<text x="1183" y="777" font-size="20" fill="#5c626b" text-anchor="middle" data-svg-container="node-13">完全隔离，只通宿主机</text>
+</g>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 940" role="img" aria-labelledby="t">
+<title id="t">TLS 1.3：1-RTT、全加密与前向安全</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="940" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" data-svg-label="">TLS 1.3：1-RTT、全加密与前向安全</text>
+<text x="60" y="112" font-size="23" fill="#5f6672" data-svg-label="">瘦身、提速、安全三件事，以及 0-RTT 会话恢复的重放限制</text>
+<rect id="node-1" data-svg-box="" x="200" y="150" width="200" height="64" rx="10" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="300.0" y="189.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-1">客户端</text>
+<rect id="node-2" data-svg-box="" x="1040" y="150" width="200" height="64" rx="10" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="1140.0" y="189.9" font-size="22" font-weight="700" text-anchor="middle" data-svg-container="node-2">服务端</text>
+<line x1="300" y1="214" x2="300" y2="410" stroke="#c9c2b2" stroke-width="2" stroke-dasharray="6 6"/>
+<line x1="1140" y1="214" x2="1140" y2="410" stroke="#c9c2b2" stroke-width="2" stroke-dasharray="6 6"/>
+<line x1="300" y1="250" x2="1132" y2="250" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<text x="720" y="238" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">① ClientHello：携带 ECDHE 密钥协商材料</text>
+<line x1="1140" y1="310" x2="308" y2="310" stroke="#d97745" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<text x="720" y="298" font-size="22" fill="#5f6672" text-anchor="middle" data-svg-label="">② ServerHello …… 此后握手与数据全部加密</text>
+<text x="720" y="368" font-size="22" fill="#24282f" text-anchor="middle" data-svg-label="">握手 1-RTT 完成；会话密钥由 HKDF 从多个随机源派生</text>
+<rect id="node-3" data-svg-box="" x="60" y="430" width="640" height="300" rx="14" fill="#e4ecdf" stroke="#a9c0a4" stroke-width="2"/>
+<text x="78" y="474" font-size="26" font-weight="700" data-svg-container="node-3">TLS 1.3 的三件事</text>
+<text x="78" y="512" font-size="23" data-svg-container="node-3">瘦身：只留 AEAD，移除 RC4/DES/CBC、</text>
+<text x="78" y="544" font-size="23" data-svg-container="node-3">MD5/SHA-1 与 RSA 静态密钥交换</text>
+<text x="78" y="576" font-size="23" data-svg-container="node-3">提速：材料随 ClientHello 携带，1-RTT</text>
+<text x="78" y="608" font-size="23" data-svg-container="node-3">ServerHello 之后全部加密</text>
+<text x="78" y="640" font-size="23" data-svg-container="node-3">安全：ECDHE 临时密钥（推荐 X25519）</text>
+<text x="78" y="672" font-size="23" data-svg-container="node-3">每次会话独立 → 前向安全</text>
+<rect id="node-4" data-svg-box="" x="740" y="430" width="640" height="300" rx="14" fill="#f9ecdf" stroke="#e0b48f" stroke-width="2"/>
+<text x="758" y="474" font-size="26" font-weight="700" data-svg-container="node-4">PSK 会话恢复与 0-RTT</text>
+<text x="758" y="512" font-size="23" data-svg-container="node-4">恢复会话可用 PSK 实现 0-RTT</text>
+<text x="758" y="544" font-size="23" data-svg-container="node-4">不是不握手：握手同时携带 early data</text>
+<text x="758" y="576" font-size="23" data-svg-container="node-4">early data 可被重放 → 只用于幂等请求</text>
+<text x="758" y="608" font-size="23" data-svg-container="node-4">并配合时间戳或随机数校验</text>
+<text x="758" y="640" font-size="23" data-svg-container="node-4">首次连接仍需完整的 1-RTT 握手</text>
+<rect id="node-5" data-svg-box="" x="60" y="770" width="1320" height="110" rx="14" fill="#fffef9" stroke="#c9c2b2" stroke-width="2"/>
+<text x="720.0" y="816.4" font-size="22" text-anchor="middle" data-svg-container="node-5">前向安全：每次会话用独立的 ECDHE 临时密钥</text>
+<text x="720.0" y="849.4" font-size="22" text-anchor="middle" data-svg-container="node-5">拿到长期私钥也解不开历史流量——RSA 密钥交换则是私钥泄露即全部失守</text>
+</g></svg>

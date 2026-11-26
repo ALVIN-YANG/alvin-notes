@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 650" role="img" aria-labelledby="svgTitle">
+<title id="svgTitle">跨网段：路由器每跳做什么，下一跳怎么选</title>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#d97745"/></marker></defs>
+<rect width="1440" height="650" fill="#fbfaf6"/>
+<g font-family="system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif" fill="#24282f">
+<text x="60" y="68" font-size="38" font-weight="700" fill="#24282f" data-svg-label="">跨网段靠路由：最长匹配选下一跳</text>
+<text x="60" y="112" font-size="23" fill="#5c626b" data-svg-label="">不经 NAT 时源/目的 IP 全程不变、每跳 MAC 重写；响应路径未必与去程对称</text>
+<rect id="node-1" data-svg-box="" x="60" y="150" width="640" height="460" rx="14" fill="#e7edf3" stroke="#b9c6d4" stroke-width="2"/>
+<text x="88" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-1">路由器转发一个包做四件事</text>
+<text x="88" y="239" font-size="23" fill="#24282f" data-svg-container="node-1">① 校验帧完整性（FCS），剥掉 MAC 头</text>
+<text x="88" y="281" font-size="23" fill="#24282f" data-svg-container="node-1">② TTL 减 1，减到 0 丢弃并回 ICMP 超时</text>
+<text x="88" y="323" font-size="23" fill="#24282f" data-svg-container="node-1">③ 用最长匹配原则查路由表</text>
+<text x="88" y="365" font-size="23" fill="#24282f" data-svg-container="node-1">④ 按下一跳重新封装 MAC 头发出</text>
+<text x="88" y="409" font-size="22" fill="#5c626b" data-svg-container="node-1">traceroute 正是利用 TTL 超时回报工作</text>
+<text x="88" y="450" font-size="22" fill="#5c626b" data-svg-container="node-1">路由表来源：接口直连、静态配置、OSPF/BGP 学习</text>
+<text x="88" y="490" font-size="22" fill="#5c626b" data-svg-container="node-1">网关是逻辑角色：默认网关 = 默认路由的下一跳</text>
+<rect id="node-2" data-svg-box="" x="740" y="150" width="640" height="460" rx="14" fill="#efe9f4" stroke="#c3b4d6" stroke-width="2"/>
+<text x="768" y="195" font-size="26" font-weight="700" fill="#24282f" data-svg-container="node-2">最长匹配：选前缀最长的一条</text>
+<rect id="node-3" data-svg-box="" x="768" y="225" width="584" height="180" rx="14" fill="#ffffff" stroke="#c9c2b2" stroke-width="2"/>
+<text x="788" y="266" font-size="22" font-weight="700" fill="#24282f" data-svg-container="node-3">路由表（示例）</text>
+<text x="788" y="303" font-size="22" fill="#24282f" data-svg-container="node-3">10.0.0.0/8 → 下一跳 A</text>
+<text x="788" y="340" font-size="22" fill="#24282f" data-svg-container="node-3">10.1.0.0/16 → 下一跳 B</text>
+<text x="788" y="377" font-size="22" fill="#24282f" data-svg-container="node-3">目的 10.1.2.3 同时匹配两条，选 /16</text>
+<text x="768" y="462" font-size="23" fill="#24282f" data-svg-container="node-2">不经 NAT：源/目的 IP 全程不变，每跳 MAC 重写</text>
+<text x="768" y="502" font-size="22" fill="#5c626b" data-svg-container="node-2">NAT 场景下 IP 和端口会被改写（见下一节）</text>
+<text x="768" y="543" font-size="22" fill="#5c626b" data-svg-container="node-2">响应路径不保证与去程对称：路由可以不对称</text>
+<text x="768" y="583" font-size="22" fill="#5c626b" data-svg-container="node-2">NAT 场景要求回程经过同一台转换设备查映射</text>
+</g>
+</svg>
