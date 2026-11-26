@@ -28,15 +28,26 @@ const latinWords = (plainText.match(/[A-Za-z][A-Za-z'-]*/g) || []).length;
 const readingMinutes = Math.max(1, Math.ceil(chineseCharacters / 400 + latinWords / 220));
 const showReadingTime = readingMinutes > 1;
 
-const updatedValue = entry.data.lastUpdated || entry.data.date;
-const updatedDate = updatedValue ? new Date(updatedValue) : undefined;
-const updatedLabel = updatedDate
-  ? new Intl.DateTimeFormat('zh-CN', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }).format(updatedDate)
-  : '';
+const toValidDate = (value: unknown) => {
+  if (!value) return undefined;
+  const date = new Date(value as string | number | Date);
+  return Number.isFinite(date.getTime()) ? date : undefined;
+};
+const publishedDate = toValidDate(entry.data.date);
+const modifiedDate = toValidDate(entry.data.lastUpdated);
+const updatedDate = modifiedDate && (!publishedDate || modifiedDate.getTime() !== publishedDate.getTime())
+  ? modifiedDate
+  : undefined;
+const primaryDate = publishedDate || updatedDate;
+const dateItems = [
+  publishedDate ? { label: '发布于', date: publishedDate } : null,
+  updatedDate ? { label: '更新于', date: updatedDate } : null,
+].filter((item) => item !== null);
+const formatDate = (date: Date) => new Intl.DateTimeFormat('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
 ---
 
 {
@@ -48,20 +59,21 @@ const updatedLabel = updatedDate
       {isPhoenix && <p class="phoenix-credit">周志明《凤凰架构》 · 免费阅读 · <a href="/phoenix/#协议">CC BY-NC-SA 4.0</a></p>}
       <h1 id="_top">{entry.data.title}</h1>
       {
-        (updatedDate || showReadingTime || showViewCount) && (
+        (primaryDate || showReadingTime || showViewCount) && (
           <p class="article-meta">
             {
-              updatedDate && (
-                <span>
-                  更新于 <time datetime={updatedDate.toISOString()}>{updatedLabel}</time>
-                </span>
-              )
+              dateItems.map((item, index) => (
+                <>
+                  {index > 0 && <span class="meta-separator" aria-hidden="true">·</span>}
+                  <span>{item.label} <time datetime={item.date.toISOString()}>{formatDate(item.date)}</time></span>
+                </>
+              ))
             }
-            {updatedDate && showReadingTime && <span class="meta-separator" aria-hidden="true">·</span>}
+            {primaryDate && showReadingTime && <span class="meta-separator" aria-hidden="true">·</span>}
             {showReadingTime && <span>约 {readingMinutes} 分钟阅读</span>}
             {
               showViewCount && (
-                <PageViewCount path={Astro.url.pathname} withSeparator={Boolean(updatedDate || showReadingTime)} />
+                <PageViewCount path={Astro.url.pathname} withSeparator={Boolean(primaryDate || showReadingTime)} />
               )
             }
           </p>
